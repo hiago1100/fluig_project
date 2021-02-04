@@ -1,0 +1,281 @@
+var ZOOM = (function()
+{
+    var instance;
+
+    function init(){
+
+        var dataTableFill = function (nometabela, campos, data, paginas, isSearching){
+            if ($.fn.DataTable.isDataTable(nometabela)) {
+                var table = $(nometabela).DataTable();
+                table.destroy();
+            }
+
+            $(nometabela).DataTable({
+                'pagingType': 'simple',
+                'paging': true,
+                "searching": isSearching,
+                "lengthChange": false,
+                "pageLength": paginas,
+                "columns": campos,
+                "data": data,
+                "language": {
+                    "sEmptyTable": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "_MENU_ resultados por página",
+                    "sLoadingRecords": "Carregando...",
+                    "sProcessing": "Processando...",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sSearch": "Pesquisar",
+                    "oPaginate": {
+                        "sNext": "Próximo",
+                        "sPrevious": "Anterior",
+                        "sFirst": "Primeiro",
+                        "sLast": "Último"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Ordenar colunas de forma ascendente",
+                        "sSortDescending": ": Ordenar colunas de forma descendente"
+                    }
+                }
+            });
+        }
+
+        var CarregaTabelaPeriodoHistorico = function(chapa,coligada){
+            nometabela = '#tableHistoricoPeriodo';
+
+            campos = [
+                { title: "Inicio", data: "INICIO_PERIODO" },
+                { title: "Fim", data: "FINAL_PERIODO" },
+                { title: "Saldo", data: "SALDO" },
+                { title: "Aberto", data: "PERIO_DOABERTO" },
+                { title: "Perdido", data: "FINAL_PERIODO" }
+            ];
+
+            data = Model.get_DS0143(chapa, coligada).values;
+
+            dataTableFill(nometabela, campos, data, 4, false);
+        };
+        
+        var CarregaTabelaPeriodoSituacao = function(chapa, coligada){
+            nometabela = '#tableSituacaoPeriodo';
+
+            campos = [
+                { title: "Data mudança", data: "DATAMUDANCA" },
+                { title: "Motivo", data: "MOTIVO" },
+                { title: "Situação", data: "NOVASITUACAO" }
+            ];
+
+            data = Model.get_DS0144(chapa, coligada).values
+
+            dataTableFill(nometabela, campos, data, 4, false);
+            
+        };
+        
+        var CarregaTabelaPeriodoFaltas = function(chapa, coligada){
+
+            nometabela = '#tableFaltasPeriodo';
+
+            campos = [
+                { title: "Quantidade faltas", data: "QTD_FALTAS" },
+                { title: "Quantidade estorno", data: "QTD_ESTORNO" },
+                { title: "Data competência", data: "MESANOCOMP" }
+            ];
+
+            data = Model.get_DS0142(chapa,coligada).values;
+
+            dataTableFill(nometabela, campos, data, 4, false);
+
+        };
+        
+        var CarregaTabelaPeriodoAfastamentos = function(chapa, coligada){
+
+            nometabela = '#tableAfastamentosPeriodo';
+
+            campos = [
+                    { title: "Início", data: "INICIO_AFASTAMENTO" },
+                    { title: "Fim", data: "FINAL_AFASTAMENTO" },
+                    { title: "Tipo", data: "TIPO" },
+                    { title: "Motivo", data: "MOTIVO" },
+                    { title: "Dias", data: "DIAS" }
+            ];
+
+            data = Model.get_DS0141(chapa,coligada).values;
+
+            dataTableFill(nometabela, campos, data, 4, false);
+
+        };
+
+        var CarregaTabelaLiquidoFerias = function(chapa, coligada, dataFimPeriodoAquisitivo) {
+
+            nometabela = '#tableliquidoFerias';
+
+            campos = [
+                    { title: "Evento", data: "EVENTO" },
+                    { title: "Tipo evento", data: "TIPO_EVENTO" },
+                    { title: "Quantidade", data: "QUANTIDADE" },
+                    { title: "Valor", data: "VALOR" },
+                    { title: "Data pagamento", data: "DATA_PAGTO" },
+                    { title: "Líquido", data: "LIQUIDO_FERIAS" }
+            ];
+
+            data = Model.get_DS0145(chapa, coligada, dataFimPeriodoAquisitivo).values;
+
+            dataTableFill(nometabela, campos, data, 4, false);
+        };
+
+        var GetSecoesAssociadasUsuario = function(login){
+            var titulo = "Buscar Obra/Departamento";
+
+            var data = Model.get_DS0007(login).values;
+
+            var campos = [
+                {"title" : "Obra/Departamento", "data" : "DEPARTAMENTO"},
+                {"title" : "Cod.Secao", "data" : "CODSECAO", "visible" : false},
+                {"title" : "Cod.Coligada", "data" : "CODCOLIGADA", "visible" : false},
+                {"title" : "Chapa gestor", "data" : "GESTOR", "visible" : false},
+                {"title" : "Nome gestor", "data" : "NOME_GESTOR", "visible" : false},
+                {"title" : "Chapa GG", "data" : "CHAPA_GG", "visible" : false},
+                {"title" : "Nome GG", "data" : "NOME_GG", "visible" : false},
+                {"title" : "Chapa superintendente", "data" : "SUP", "visible" : false},
+                { "title": "Nome superintendente", "data": "NOME_SUP", "visible": false },
+                {"title" : "Chapa diretor", "data" : "DIRETOR", "visible" : false},
+                {"title" : "Nome diretor", "data" : "NOME_DIRETOR", "visible" : false},
+                {"title" : "Empresa", "data" : "EMPRESA", "visible" : false},
+            ];
+
+            ZoomModal.getInstance().open(titulo, campos, data, 'ZoomSecaoSelecionada', ['PDF','EXCEL']);
+        }
+
+        var GetColaboradoresSecao = function(coligada,secao){
+
+
+            var titulo = "Busca Colaboradores";
+            var data = Model.get_DS0013(secao, coligada).values;
+            var campos = [
+            {"title" : "Nome", "data" : "NOME"},
+            {"title" : "Matrícula", "data" : "CHAPA"},
+            {"title" : "Cargo", "data" : "FUNCAO"},
+            {"title" : "Data de Admissão", "data" : "DATAADMISSAO"},
+            {"title" : "Gerente Geral", "data" : "CHAPA_GG", "visible": false},
+            {"title" : "Gerente Geral", "data" : "CHAPA_GG", "visible": false},
+            {"title" : "Superintendente", "data" : "CHAPA_SUP", "visible": false},
+            {"title" : "Diretor", "data" : "CHAPA_DIRETOR", "visible": false},
+            {"title" : "Data nascimento", "data" : "DTNASCIMENTO", "visible": false},
+            {"title" : "Situação", "data" : "SITUACAO", "visible": false},
+            {"title" : "Idade", "data" : "IDADE", "visible": false},
+            { "title": "CTPS", "data": "CARTEIRATRAB", "visible": false },
+            { "title": "Coligada", "data": "CODCOLIGADA", "visible": false }
+            ];
+
+            ZoomModal.getInstance().open(titulo, campos, data, 'ZoomColaboradorSelecionado', ['PDF', 'EXCEL']);
+            
+        };
+
+        var GetGestoresSecao = function(chapa, coligada){
+            var titulo = "Busca Gestores";
+            var data = Model.get_DS0003(chapa, coligada).values;
+            var campos = [
+                {"title" : "Sessão", "data" : "SECAO"},
+                {"title" : "Gestor", "data" : "NOME_GESTOR"},
+                {"title" : "Chapa do Gestor", "data" : "CHAPA_GESTOR"},
+            ];
+
+            ZoomModal.getInstance().open(titulo, campos, data, 'ZoomGestorSelecionado', ['PDF', 'EXCEL']);
+            
+        };
+
+        var GetGestoresSecaoSeg = function(chapa, coligada){
+            var titulo = "Busca Gestores";
+            var data = Model.get_DS0003(chapa, coligada).values;
+            var campos = [
+                {"title" : "Sessão", "data" : "SECAO"},
+                {"title" : "Gestor", "data" : "NOME_GESTOR"},
+                {"title" : "Chapa do Gestor", "data" : "CHAPA_GESTOR"},
+            ];
+
+            ZoomModal.getInstance().open(titulo, campos, data, 'ZoomGestorSelecionadoSeg', ['PDF', 'EXCEL']);
+            
+        };
+
+        var GetTodosCentroCusto = function (){
+            var titulo = "Buscar Obra/Departamento";
+            var data = Model.get_DS0006().values;
+            var campos = [
+                {"title" : "Obra/Departamento", "data" : "SECAO"},
+                {"title" : "Cod. Seção", "data" : "CODSECAO", "visible" : true},
+                {"title" : "Cod. Coligada", "data" : "CODCOLIGADA", "visible" : true},
+            ];
+
+            ZoomModal.getInstance().open(titulo, campos, data, 'ZoomSecaoSelecionada', ['PDF', 'EXCEL']);
+        };
+
+        var GetTodosCentroCustoSubst = function (){
+            var titulo = "Buscar Empresa UAU";
+            var data = Model.get_DS1000('SP_FLUIG_1007','').values;
+            var campos = [
+                {"title" : "Empresa", "data" : "EMPRESA"},
+                {"title" : "CNPJ", "data" : "CNPJ", "visible" : true}
+            ];
+
+            ZoomModal.getInstance().open(titulo, campos, data, 'ZoomSecaoSelecionadaSubst', ['PDF', 'EXCEL']);
+        };
+
+        var GetTodosCentroCustoSubstSeg = function (){
+            var titulo = "Buscar Obra/Departamento";
+            var data = Model.get_DS0006().values;
+            var campos = [
+                {"title" : "Obra/Departamento", "data" : "SECAO"},
+                {"title" : "Cod. Seção", "data" : "CODSECAO", "visible" : true},
+                {"title" : "Cod. Coligada", "data" : "CODCOLIGADA", "visible" : true},
+            ];
+
+            ZoomModal.getInstance().open(titulo, campos, data, 'ZoomSecaoSelecionadaSubstSeg', ['PDF', 'EXCEL']);
+        };
+
+        var GetTodosCentroCustoDois = function (){
+            var titulo = "Buscar Obra/Departamento";
+            var data = Model.get_DS0006().values;
+            var campos = [
+                {"title" : "Obra/Departamento", "data" : "SECAO"},
+                {"title" : "Cod. Seção", "data" : "CODSECAO", "visible" : true},
+                {"title" : "Cod. Coligada", "data" : "CODCOLIGADA", "visible" : true},
+            ];
+
+            ZoomModal.getInstance().open(titulo, campos, data, 'ZoomSecaoSelecionadaDois', ['PDF', 'EXCEL']);
+        };
+        
+        return {
+            CarregaTabelaPeriodoHistorico: CarregaTabelaPeriodoHistorico,
+            CarregaTabelaPeriodoSituacao: CarregaTabelaPeriodoSituacao,
+            CarregaTabelaPeriodoFaltas: CarregaTabelaPeriodoFaltas,
+            CarregaTabelaPeriodoAfastamentos: CarregaTabelaPeriodoAfastamentos,
+            CarregaTabelaLiquidoFerias: CarregaTabelaLiquidoFerias,
+            GetSecoesAssociadasUsuario: GetSecoesAssociadasUsuario,
+            GetColaboradoresSecao: GetColaboradoresSecao,
+            GetTodosCentroCusto: GetTodosCentroCusto,
+
+            // zoom criado para trazer os gestores
+            GetGestoresSecao: GetGestoresSecao,
+            GetTodosCentroCustoSubst: GetTodosCentroCustoSubst,
+            GetGestoresSecaoSeg: GetGestoresSecaoSeg,
+            GetTodosCentroCustoSubstSeg: GetTodosCentroCustoSubstSeg,
+            GetTodosCentroCustoDois: GetTodosCentroCustoDois
+        };
+    }
+
+    return {
+        getInstance: function()
+        {
+            if (!instance)
+            {
+                instance = init();
+            }
+
+            return instance;
+        }
+    }
+})();

@@ -1,0 +1,870 @@
+var ultimaLinha = 0;
+var ultimaLinhaProg = 0;
+var ultimaLinhaConf = 0;
+var UltimaLinhaConcat = 0;
+var myLoading2  = FLUIGC.loading(window);
+var carregaProg = FLUIGC.loading("#home");
+var carregaConf = FLUIGC.loading("#menu1");
+
+
+
+
+
+var controle = [];
+var ARYForms = {
+        params: {},
+        initForm: function(params) {    
+            this.params = params;
+            var $this = this;   
+            $(function () {
+                if (params.formMode == "ADD" || params.formMode == "MOD") { 
+                    $this.onEdit(params);
+                } else {
+                    $this.onView(params);
+                }
+            });
+        },
+        onView: function(params) { //Visualização do formulário sem a possibilidade de edição (consulta)
+
+        },
+        onEdit: function(params) {  //Edição do formulário
+
+        var cod_solicitante = $("#matriculaSolicitante").val()
+           
+         carregaRepresentante(cod_solicitante);             
+            
+
+            
+
+
+           
+            $("input[name='aprova']").change(
+                  function(e)
+                  {               
+                        if ($(this).val() === 'sim') {
+                          $("#aprovacaoSupDir").val("sim");
+                        } else if ($(this).val() === 'nao') {
+                          $("#aprovacaoSupDir").val("nao");
+                        }     
+                  });
+
+                        $("input[name='aprovaDif']").change(
+                  function(e)
+                  {               
+                        if ($(this).val() === 'sim') {
+                          $("#aprovacaoDif").val("sim");
+                        } else if ($(this).val() === 'nao') {
+                          $("#aprovacaoDif").val("nao");
+                        }     
+                  });
+            
+            
+            
+            
+
+           
+            
+            // carregaProgramasAll($("#codDoGrupo").val());
+            // carregaUsuariosAll($("#codDoGrupo").val());
+            // carregaTela($("#codDoGrupo").val());  
+            
+
+
+
+            var WKNumState = params.WKNumState;
+            
+
+      
+
+            // Atividade gestor Usuário - Aprovar
+              
+            }   
+            
+
+
+
+
+ 
+            
+  
+            
+
+
+
+
+
+
+
+
+
+
+                                   
+};
+
+
+function carregaTela(cod_grupo,cod_grupo_all,cod_solicitante){
+
+
+
+    carregaRepresentante(cod_solicitante);
+
+}
+
+setTimeout(carregaTela, 0);
+
+function carregaConflitos (cod_grupo_revisao){
+
+ var dadoss2 = '';
+cod_grupo_revisao =  $("#codDoGrupo").val();
+
+
+ var dados = {"name": "ARY-sql2dataset-programa-conflito-inclusao2","fields":null,"constraints":[
+                      {"_field":"cod_grupo","_initialValue":cod_grupo_revisao,"_finalValue": cod_grupo_revisao,"_type":1}
+               ]};
+   $.ajax({
+       method: "POST",
+       url: "/api/public/ecm/dataset/datasets/",
+       data: JSON.stringify(dados),
+       contentType: "application/json", 
+       async: true,
+       error: function(x, e) {
+        if (x.status == 500) {
+         alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+        }
+         },
+            beforeSend: function(){
+
+              carregaConf.show();
+             
+            },
+         success:function(model) {
+
+                
+            $.each(model.content.values, function(index, value){
+
+                 // wdkAddChild('tabela_programas2');
+
+                 // ultimaLinha = ultimaLinha + 1;
+
+                var confAux          =   value.APPMAIN;
+                var grupoAux         =   value.APPCONFLITO; 
+                var progConfAux      =   value.DESCCONFLITO;
+                var grupoConfAux     =   value.COD_GRUPO; 
+                var descConfAux      =   value.GRUPO_CONFLITO;
+                var riscoAux         =   value.APPRISCO;  
+
+
+                dadoss2 += '<table width="100%" class="table">';
+                if(riscoAux == "alto"){
+                    dadoss2 += '<tr style="background-color:F2DEDE;">';
+                }
+                if(riscoAux == "medio"){
+                    dadoss2 += '<tr style="background-color:FCF8E3;">';
+                }
+                if(riscoAux == "baixo"){
+                    dadoss2 += '<tr style="background-color:DFF0D8">';
+                }
+
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + confAux +      '</td>';     
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + grupoConfAux + '</td>';     
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + grupoAux +     '</td>';     
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + descConfAux +  '</td>';     
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + progConfAux +  '</td>';     
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + riscoAux +     '</td>';
+                dadoss2 += '</tr>';
+
+                dadoss2 += '</table>';
+
+                console.log(dadoss2);
+
+            });
+           $(".testeColappse2").html(dadoss2);
+           carregaConf.hide();         }
+
+      });
+
+}
+
+/*
+function carregaProgramas(cod_grupo){
+ 
+ if (cod_grupo != ""){  
+
+    var dados = {"name": "ARY-sql2dataset-programas","fields":null,"constraints":[
+                      {"_field":"cod_grupo","_initialValue":cod_grupo,"_finalValue": cod_grupo,"_type":1}
+               ]};
+   $.ajax({
+       method: "POST",
+       url: "/api/public/ecm/dataset/datasets/",
+       data: JSON.stringify(dados),
+       contentType: "application/json", 
+       async: true,
+       error: function(x, e) {
+        if (x.status == 500) {
+         alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+        }
+         },
+            beforeSend: function(){
+             
+            },
+         success:function(model) {
+             
+     
+             
+            $.each(model.content.values, function(index, value){
+
+                 wdkAddChild('tabela_programas2');
+
+                 ultimaLinha = ultimaLinha + 1;
+               
+                var codigo_program = value.COD_PROGRAM;
+                var descricao_Program = value.DESCRIPTION_PROGRAM;
+
+                $("#nomeProgAux___"+ultimaLinha).val(codigo_program);
+                $("#descProgAux___"+ultimaLinha).val(descricao_Program);
+
+            });
+            
+        
+
+
+            setaUltimaLinha();
+            
+ //           return model;
+         }
+      });
+ }
+ }  // Fim da function carregaProgramas
+*/
+
+
+ function carregaRepresentante(cod_solicitante){
+ 
+  var cod_solicitante = $("#matriculaSolicitante").val();
+   
+   
+ if (cod_solicitante != ""){  
+   
+   console.log(cod_solicitante);
+
+  var dados = {"name": "repres_Solicitante","fields":null,"constraints":[
+                      {"_field":"matr_fluig","_initialValue": cod_solicitante,"_finalValue": cod_solicitante,"_type":1}
+               ]};
+   $.ajax({
+       method: "POST",
+       url: "/api/public/ecm/dataset/datasets/",
+       data: JSON.stringify(dados),
+       contentType: "application/json", 
+       async: false,
+       error: function(x, e) {
+        if (x.status == 500) {
+         alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+        }
+         },
+          
+          beforeSend: function(){
+          
+         },
+         
+         success:function(model) {
+
+
+          $.each(model.content.values, function(index, value){
+
+               
+                var nomeRegiao = value.nome_ab_reg;
+                var nomeSuper = value.nome_super;
+                var hideSuper = value.supervisor;
+
+                console.log(nomeSuper);
+                console.log(nomeRegiao);
+
+                $("#supervisor").val(nomeSuper);
+                $("#regional").val(nomeRegiao);
+
+
+                if(hideSuper == "NÃO"){
+
+                  $("#zoomRep").removeClass("hide");
+                }
+
+
+            });
+
+
+
+             
+   
+            return model;
+         }
+      });
+ }
+ }
+
+ function carregaUsuariosAll(cod_grupo_all){
+   
+   if (cod_grupo_all != ""){  
+
+var dados = {"name": "repres_Solicitante","fields":null,"constraints":[
+                      {"_field":"matr_fluig","_initialValue": "rodrigo.baione","_finalValue": "rodrigo.baione","_type":1}
+               ]};
+   $.ajax({
+       method: "POST",
+       url: "/api/public/ecm/dataset/datasets/",
+       data: JSON.stringify(dados),
+       contentType: "application/json", 
+       async: true,
+       error: function(x, e) {
+        if (x.status == 500) {
+         alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+        }
+         },
+            beforeSend: function(){
+             
+            },
+         success:function(model) {
+             
+
+           
+            
+            return model;
+         }
+      });
+   }
+   }
+ 
+function carregaUsuarios(cod_grupo_revisao){
+    
+if (cod_grupo_revisao != ""){ 
+
+    var dadoss = "";    
+    var parametros = "";
+    var teste = concatenaDesc();
+    var cod_progAux = teste;
+    
+    console.log(cod_progAux);
+
+
+    var dados = {"name": "ARY-sql2dataset-usuario-grupos","fields":null,"constraints":[
+    {"_field":"cod_grupo_revisao","_initialValue":cod_grupo_revisao,"_finalValue": cod_grupo_revisao,"_type":1}
+       ]};
+    
+
+    
+    $.ajax({
+        method: "POST",
+        url: "/api/public/ecm/dataset/datasets/",
+        data: JSON.stringify(dados),
+        contentType: "application/json", 
+        async: true,
+        error: function(x, e) {
+            if (x.status == 500) {
+                alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+            }
+        },
+        beforeSend: function(){
+
+        },
+        success:function(model) {
+            contaUser = model.content.values.length;
+            
+            parametros = model.content.values;
+
+    
+            $.each(model.content.values, function(index, value){
+
+                
+            
+                
+                // var cod_progAux = $("#cont_aprovador").val();
+                console.log("codigo do maldito : " , cod_progAux);
+
+                var nomeUsuario          =   value.NOME_USUARIO;
+                var nomeGestor           =   value.NOME_GESTOR;
+                var codigoUser          =   value.COD_USUARIO;
+                var codUserAux =    codigoUser.replace(".","_");
+                // alert(codUserAux);
+                
+                
+                var dados1 = {"name": "ARY-sql2dataset-programa-conflito-inclusao2","fields":null,"constraints":[
+                                                                                                                {"_field":"cod_usuarioAux","_initialValue":codigoUser,"_finalValue": codigoUser,"_type":1},
+                                                                                                                {"_field":"cod_progAux","_initialValue":cod_progAux,"_finalValue": cod_progAux,"_type":1}
+                                                                                                                    ]};
+                
+                $.ajax({
+                    method: "POST",
+                    url: "/api/public/ecm/dataset/datasets/",
+                    data: JSON.stringify(dados1),
+                    contentType: "application/json", 
+                    async: true,
+                    error: function(x, e) {
+                        if (x.status == 500) {
+                            alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+                        }
+                    },
+                    beforeSend: function(){
+                         myLoading2.show(); 
+                    },
+                    success:function(modelo1) {
+
+                  var contador = modelo1.content.values.length ;
+
+                  //              console.log(modelo1.content.values.length);
+                dadoss += '<table width="100%" class="table">';
+                dadoss += '<tr width="100%">';
+                dadoss += '<td align="center">'; 
+                dadoss += '';
+
+                dadoss += '<a style="text-decoration: none;" class="collapse-icon up" data-toggle="collapse" data-parent="#accordion" href="#unidade'+ index+'">';
+                  if (contador < 1) {
+                dadoss += '<span align="center" class="badge badge-sucess">' + contador + '</span>';
+                dadoss += '<button class="valordoDia form-control" style="width:100%;background-color: rgba(0, 255, 0, 0.3);">';
+                dadoss += ''+ nomeUsuario + '</button></a>';
+                                      }
+
+                dadoss += '<div id="unidade'+ index+'" class="panel-collapse collapse">';
+                
+                dadoss += '<table class="table table-bordered text-center" id="tt-usuarios" width="100%">';
+                
+                dadoss += '<thead>';
+                dadoss += '<tr  id="desc" style="background-color: #f0f0f5;" width="100%">';
+                dadoss += '<th style="text-align: center;">Gestor   </th></tr>';              
+                dadoss += '<tr class="concat" id="concatUser">';     
+                dadoss += '<td class="col-sm-12">' + nomeGestor + ' </td></tr>';
+                dadoss += '<table width="100%" class="table">';
+                dadoss += '<tr>';
+                dadoss += '<th class="col-sm-2" style="text-align: center;">Programa conflito   </th>';
+                dadoss += '<th class="col-sm-2" style="text-align: center;">Grupo               </th>';
+                dadoss += '<th class="col-sm-2" style="text-align: center;">Programa Conflitante</th>';
+                dadoss += '<th class="col-sm-2" style="text-align: center;">Grupo Conflitante   </th>';
+                dadoss += '<th class="col-sm-2" style="text-align: center;">Descrição conflito  </th>';
+                dadoss += '<th class="col-sm-2" style="text-align: center;">Risco               </th></tr></table>';
+
+
+                $.each(modelo1.content.values, function(index1, value1){   
+                    var contadorConf = modelo1.content.values.length ;
+                    $("#contConfli").html(contadorConf);
+                    
+                    if (contadorConf > 0){
+                        
+                         $("#temConflito").val("sim");
+                        
+                    } else {
+                        
+                         $("#temConflito").val("nao");
+                    }
+                
+
+
+           /*          if(tamanhoAux > 0 ){
+                    $("#imgConflito").css("visibility","visible");
+                } else {
+                    $("#imgConflito").css("visibility","hidden");
+                }
+                                 */
+
+                                var confAux          =   value1.APPMAIN;
+                                var grupoAux         =   value1.APPCONFLITO; 
+                                var progConfAux      =   value1.DESCCONFLITO;
+                                var grupoConfAux     =   value1.COD_GRUPO; 
+                                var descConfAux      =   value1.GRUPO_CONFLITO;
+                                var riscoAux         =   value1.APPRISCO;  
+                            
+
+
+                                dadoss += '<table width="100%" class="table" >';
+
+                                if(riscoAux == "alto"){
+                                    dadoss += '<tr style="background-color:F2DEDE;">';
+                                }
+                                if(riscoAux == "medio"){
+                                    dadoss += '<tr style="background-color:FCF8E3;">';
+                                }
+                                if(riscoAux == "baixo"){
+                                    dadoss += '<tr style="background-color:DFF0D8">';
+                                }
+
+                                if (confAux == ""){
+                                  $(".valordoDia").css('background-color','red');
+                                }
+
+                                dadoss += '<td style="text-align: center;" class="col-sm-2">' + confAux +      '</td>';     
+                                dadoss += '<td style="text-align: center;" class="col-sm-2">' + grupoConfAux + '</td>';     
+                                dadoss += '<td style="text-align: center;" class="col-sm-2">' + grupoAux +     '</td>';     
+                                dadoss += '<td style="text-align: center;" class="col-sm-2">' + descConfAux +  '</td>';     
+                                dadoss += '<td style="text-align: center;" class="col-sm-2">' + progConfAux +  '</td>';     
+                                dadoss += '<td style="text-align: center;" class="col-sm-2">' + riscoAux +     '</td>';
+                                dadoss += '</tr>';
+                                dadoss += '</table>';
+
+
+
+
+
+
+
+
+
+                            }); // Segundo Each
+                            
+                dadoss += '</table></thead></table></td></tr></table></table></tr></div>';
+                $(".testeColappse").html(dadoss);
+                myLoading2.hide();          
+                        } // Segundo Sucess
+
+                    }); // Segundo ajax
+
+
+                }); //primeiro each
+        
+        } // Primeiro Sucess
+
+    }); // Primeiro Ajax
+
+ 
+ }
+
+
+
+}
+
+
+function setSelectedZoomItem(selectedItem) {     
+  
+  var removeGrupo = "removeGrupo"; 
+  console.log(selectedItem);
+    if(selectedItem.inputName == 'codGrupo'){  
+
+//    console.log("------ Atualizando zoom de --------------")
+  //    console.log(selectedItem);
+    //  reloadZoomFilterValues("removeGrupo", "cod_grupo_remove," + selectedItem["cod_grupo"]);
+   //   reloadZoomFilterValues("removeGrupoDesc", "cod_grupo_remove," + selectedItem["cod_grupo"]);
+    
+        // $('input[id^="nomeUsuarioAux___"]').parent().parent('tr').remove(); 
+        // $('input[id^="nomeProgAuxTwo___"]').parent().parent('tr').remove(); 
+        $('input[id^="nomeProgAux___"]').parent().parent('tr').remove();
+        $('input[id^="appConflitoC___"]').parent().parent('tr').remove();         
+        $('#nomeGrupo').val(selectedItem['desc_grupo']);
+        $('#gestorGrupo').val(selectedItem['NOME_GESTOR']);
+        $("#recebeCod").val(selectedItem["GESTOR"]);
+        $("#codGest").val(selectedItem["GESTOR"]);
+
+        var cod_grupo = selectedItem['cod_grupo'];
+        //carregaScroll();
+        $("#codDoGrupo").val(cod_grupo);
+        $(".grupoSetado").text(cod_grupo);
+
+        var cod_grupo = $("#codDoGrupo").val();
+        var cod_grupo_all = $("#codDoGrupo").val();
+        var indiceGrupo = 0;
+        var indiceScroll = 0;
+
+        /*
+        $("#content").scroll(function(){
+            //alert("passa do scroll");      
+
+            indiceScroll = indiceScroll+1;   
+
+
+    var  idUsuario = $("#codGest").val();
+
+    var dados = {"name": "ARY-sql2dataset-usuario-grupos","fields":null,"constraints":[
+                      {"_field":"cod_usuario","_initialValue":idUsuario,"_finalValue": idUsuario,"_type":1}
+               ]};
+   $.ajax({
+       method: "POST",
+       url: "/api/public/ecm/dataset/datasets/",
+       data: JSON.stringify(dados),
+       contentType: "application/json", 
+       async: true,
+       error: function(x, e) {
+        if (x.status == 500) {
+         alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+        }
+         },
+            beforeSend: function(){
+             
+            },
+         success:function(model) {
+
+            if(indiceScroll > 1){
+                indiceGrupo = ultimaLinha / model.content.values.length;  
+              }
+                  var cod_grupo = $("#codDoGrupo").val();
+
+
+    var dados = {"name": "ARY-sql2dataset-programas","fields":null,"constraints":[
+                      {"_field":"cod_grupo","_initialValue":cod_grupo,"_finalValue": cod_grupo,"_type":1},
+                      {"_field":"indice","_initialValue":indiceGrupo,"_finalValue": indiceGrupo,"_type":1}
+               ]};
+   $.ajax({
+       method: "POST",
+       url: "/api/public/ecm/dataset/datasets/",
+       data: JSON.stringify(dados),
+       contentType: "application/json", 
+       async: true,
+       error: function(x, e) {
+        if (x.status == 500) {
+         alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+        }
+         },
+            beforeSend: function(){
+              
+
+              carregaProg.show(); 
+             
+            },
+         success:function(modelo2) {
+            $.each(modelo2.content.values, function(index1, value1){
+    
+                var codPrograma      =   value1.COD_PROGRAM;
+                var descricaoProgram =   value1.DESCRIPTION_PROGRAM;                    
+                    wdkAddChild('tabela_programas2');
+                    ultimaLinha = ultimaLinha + 1;
+                    $("#nomeProgAux___"+ultimaLinha).val(codPrograma);
+                    $("#descProgAux___"+ultimaLinha).val(descricaoProgram);
+       
+
+            });
+            
+            setaUltimaLinha();
+            carregaProg.hide(); 
+
+            
+ //           return model;
+         }
+      });
+
+ //           return model;
+         }
+      });
+            //}    
+    }); // Fim do Scroll
+    */    
+  
+        carregaTela(cod_grupo,cod_grupo_all); 
+        //  carregaProgramas(cod_grupo);
+        carregaProgramasAll(cod_grupo_all);
+        carregaUsuariosAll(cod_grupo_all);
+
+    } else if(selectedItem.inputName == "codGrupoDesc"){
+      
+      $('input[id^="nomeProgAux___"]').parent().parent('tr').remove();
+        $('input[id^="appConflitoC___"]').parent().parent('tr').remove();         
+        $('#nomeGrupo').val(selectedItem['desc_grupo']);
+        $('#gestorGrupo').val(selectedItem['NOME_GESTOR']);
+        $("#recebeCod").val(selectedItem["GESTOR"]);
+        $("#codGest").val(selectedItem["GESTOR"]);
+
+        var cod_grupo = selectedItem['cod_grupo'];
+        //carregaScroll();
+        $("#codDoGrupo").val(cod_grupo);
+        $(".grupoSetado").text(cod_grupo);
+
+        var cod_grupo = $("#codDoGrupo").val();
+        var cod_grupo_all = $("#codDoGrupo").val();
+        var indiceGrupo = 0;
+        var indiceScroll = 0;
+
+        carregaTela(cod_grupo,cod_grupo_all); 
+        //  carregaProgramas(cod_grupo);
+        carregaProgramasAll(cod_grupo_all);
+        carregaUsuariosAll(cod_grupo_all);
+
+        
+    } else if(selectedItem.inputName == "addGrupo") {
+
+        $("#codProgramaCopiaAux").val(selectedItem['cod_program']);
+        $("#nomeProgramaCopiaAux").val(selectedItem['description_program']);
+        $("#codGestorModuloCopiaAux").val(selectedItem['COD_GESTOR']);
+        $("#nomeGestorModuloCopiaAux").val(selectedItem['NOME_GESTOR']);
+        $("#codModuloCopiaAux").val(selectedItem['COD_MODULO']);
+        
+       
+    } else if (selectedItem.inputName == "addGrupoCod"){ 
+      //console.log("addGrupoCod");
+      console.log(selectedItem);
+      $("#codProgramaCopiaAux").val(selectedItem['cod_program']);
+        $("#nomeProgramaCopiaAux").val(selectedItem['description_program']);
+        $("#codGestorModuloCopiaAux").val(selectedItem['COD_GESTOR']);
+        $("#nomeGestorModuloCopiaAux").val(selectedItem['NOME_GESTOR']);
+        $("#codModuloCopiaAux").val(selectedItem['COD_MODULO']);
+      
+    } else if(selectedItem.inputName == "removeGrupo"){
+
+    console.log("------ Atualizando zoom de removeGrupo --------------");
+//    reloadZoomFilterValues("removeGrupo", "cod_grupo_remove," + selectedItem["codGrupo"]);
+//      
+    $("#codProgramaRemoveAux").val(selectedItem['cod_program']);
+        $("#descProgramaRemoveAux").val(selectedItem['description_program']);
+        
+        
+   
+    } else if(selectedItem.inputName == "removeGrupoDesc"){
+
+    console.log("------ Atualizando zoom de removeGrupoDesc --------------");
+//    reloadZoomFilterValues("removeGrupo", "cod_grupo_remove," + selectedItem["codGrupo"]);
+//      
+    $("#codProgramaRemoveAux").val(selectedItem['cod_program']);
+        $("#descProgramaRemoveAux").val(selectedItem['description_program']);
+    }
+   
+
+}
+
+
+
+
+
+
+function concatenaDesc(){
+    var arr = [] ;
+    var arr1 = [] ;
+    var arr2 = [] ;
+    var teste = "";
+    $('input[id^="descProgAuxTwo___"]').each(function(x){
+        var context = $(this);
+        var linha = context.attr('id').split("___")[1];
+        var aspa = "'";
+        arr.push(aspa+$("#nomeProgAuxTwo___"+linha).val()+aspa);  
+        var contador = arr.length;
+
+    });
+    
+    $('input[id^="descProgAuxTwo___"]').each(function(x){
+        var context = $(this);
+        var linha = context.attr('id').split("___")[1];
+        
+        if($("#codGestorModuloTwo___"+linha).val() != ""){
+            arr1.push($("#codGestorModuloTwo___"+linha).val());  
+            var contador = arr1.length;
+            
+        } 
+      
+
+    });
+    
+    
+    
+    $('input[id^="descProgAuxTwo___"]').each(function(x){
+        var context = $(this);
+        var linha = context.attr('id').split("___")[1];
+        
+        if($("#codGestorModuloTwo___"+linha).val() == ""){
+     
+            teste = "sim";
+            
+        }
+      
+
+    });
+    
+    
+ $("#semGestor").val(teste);
+ $("#cont_aprovador").val(arr1);
+
+
+    return arr;
+}
+
+function carregaScroll() {
+
+
+
+    setaUltimaLinha();
+
+}
+
+function fnCustomDelete(oElement){
+
+    // Chamada a funcao padrao, NAO RETIRAR
+    fnWdkRemoveChild(oElement);
+    var numRegistros = $("#tabela_programas3 tr").length  - 2;
+    $(".numProg").text(numRegistros);
+    
+    $("#recebeContAux").val(numRegistros);
+    concatenaDesc();
+
+
+    var cod_grupo_revisao = $("#codDoGrupo").val();
+
+    carregaUsuarios(cod_grupo_revisao);
+    
+  
+
+}
+
+function getIDUserResp(idElemento){
+    idElemento = idElemento.replace(/[^0-9]/g,'');
+    if ($("#NomUserResp___" + idElemento).val() == "" || $("#NomUserResp___" + idElemento).val() == null){
+        var UserRespTrick = $("#NomUserResptrick").val();
+        $("#NomUserResp___" + idElemento).val(UserRespTrick);
+    }
+
+    if ($("#NomUserDif___" + idElemento).val() == "" || $("#NomUserDif___" + idElemento).val() == null){
+        var UserRespTrick = $("#NomUserResptrick").val();
+        $("#NomUserDif___" + idElemento).val(UserRespTrick);
+    }
+}
+
+
+    function getID(idElemento){
+  idElemento = idElemento.replace(/[^0-9]/g,'');
+    if ($("#HoraResp___" + idElemento).val() == "" || $("#HoraResp___" + idElemento).val() == null){
+        var dataResp = new Date();
+        $("#HoraResp___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+    }
+
+    if ($("#HoraRespDif___" + idElemento).val() == "" || $("#HoraRespDif___" + idElemento).val() == null){
+        var dataResp = new Date();
+        $("#HoraRespDif___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+    }
+}
+
+function respbtn(){
+//  var texto = ""; 
+
+    
+ wdkAddChild('tabelaNF');  
+
+     
+      }
+
+
+  function respostaAprova(){
+    wdkAddChild('respoCham');
+      
+  }   
+
+ function respostaDiferenca(){
+
+  wdkAddChild('respoChamDif');    
+
+}
+
+ function tableDesc(){
+
+  wdkAddChild('respoChamDesc');    
+
+}
+
+
+
+function setaUltimaLinha(){
+
+  $('input[id^="codItem___"]').each(function(){
+     var context = $(this);
+     ultimaLinha = parseInt(context.attr('id').split('___')[1]);     
+    
+    });
+
+}
+  
+  function ReadInputArea(){
+
+    $('.respArea').each(function(i){
+      if ($(this).val() !="" || $(this).val() == null){
+        $(this).attr('readonly', true);
+      }
+    });
+  }

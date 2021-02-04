@@ -1,0 +1,486 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<div class="fluig-style-guide">
+	<form name="form" role="form" oninput="verificaQuantidade();">
+	<div class="container" >
+	<div>
+		 <input type="hidden" name="auxAprovador" id="auxAprovador">
+		 <input type="hidden" name="auxAdquirir" id="auxAdquirir">
+		 <input type="hidden" name="auxNecessitaCompra" id="auxNecessitaCompra">
+		 <input type="hidden" name="auxAntecipa" id="auxAntecipa">
+	</div>
+		<div class=" row form-group" id="gestao">	
+			<div class="col-md-2">
+				<img src="http://combio.fluig.com/portal/api/servlet/image/1/custom/logo_image.png" class="imagen">
+			</div>
+			<div class="col-md-5 col-md-offset-2 titulo">		 
+				<h1><b>Solicitação de Manutenção</b></h1>
+			</div>
+		</div> <br>
+	
+		<div id="div_solicitante" name="div_solicitante">
+			<div class="form-group row col-md-3">
+			    <label for="solicitante">Solicitante <span class="fs-color-danger">*</span> </label>
+			    <input type="text" class="form-control" id="solicitante" name="solicitante" readonly="" >
+			    <input type="hidden" name="solicitanteId" id="solicitanteId">
+			</div>
+			<div class="col-md-3">
+				<label ">Equipamentos <span class="fs-color-danger">*</span></label>
+			<!-- 	teste para integração -->
+			 <input type="text" name="descricaoEquipamento_aux" id="descricaoEquipamento_aux" class="form-control" style="display: none"> 		
+					<input type="zoom" 
+						name="descricaoEquipamento" 
+						id="descricaoEquipamento"
+					    data-zoom="{
+					        'displayKey':'Descrição',
+					        'datasetId':'ds_zoom_descricaoEquipamento',
+					        'fields':[
+					            {
+					               'field':'Descrição',
+					               'label':'Descrição',
+					               'search':'true'
+					            },{
+
+					            	'field' : 'Código',
+					            	'label' : 'Codigo'
+					        }
+					            ]
+					    }" 
+					/>
+			</div>
+
+			<div class="col-md-3">
+				<label ">Manutenção <span class="fs-color-danger">*</span></label>
+				<input type="text" name="manutencao_aux" id="manutencao_aux" style="display: none">
+				<input type="zoom" 
+				     name="manutencao" 
+				     id="manutencao"
+				        data-zoom="{
+				            'displayKey':'Descrição',
+				            'datasetId':'ds_zoom_manutencao',
+				            'fields':[
+				                {
+				                   'field':'Descrição',
+				                   'label':'Descrição',
+				                   'search':'true'
+				                },{
+				                 'field': 'Codigo',
+				                 'label': 'Código'
+				            }
+				                ]
+				        }" 
+				    />
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-3 col-xs-12">
+					<label for="numOrdem"> Número da Ordem<span class="fs-color-danger">*</span></label>
+					<input type="text" name="numOrdem" id="numOrdem" class="form-control" readonly="readonly">
+				</div>
+			</div>
+			<br>		
+
+			<div class="row form-group">
+				<div class="col-md-12 col-xs-12">
+					<label for="descSituacao"> Descrição da Situação/Problema <span class="fs-color-danger">*</span></label>
+					<textarea name="descSituacao" id="descSituacao"  rows="3" class="form-control" ></textarea>
+				</div>
+			</div>
+		</div>
+
+		<div id="div_aprovacao" name="div_aprovacao" style="display: none">
+			<div class=" col-md-12 row form-group">				
+				<h2><b>Aprovação</b></h2>
+				<hr>
+			</div>
+			
+			</br>
+
+			<div class="row form-group">
+				<div class="col-md-4">
+					<label ">Equipe <span class="fs-color-danger">*</span></label>
+					<!-- Teste integração -->
+					<input type="text" name="equipe_aux" id="equipe_aux" class="form-control" style="display: none">
+					<input type="zoom" 
+						name="equipe" 
+						id="equipe"
+					    data-zoom="{
+					        'displayKey':'Descrição',
+					        'datasetId':'ds_zoom_equipe',
+					        'fields':[
+					          {
+					               'field':'Descrição',
+					               'label':'Descrição',
+					               'search':'true'
+					               
+					            },{
+					               'field':'Código',
+					               'label':'Código'
+					            },{
+					               'field':'Responsavel',
+					               'label':'Responsável'
+					               
+					            }
+					            ]
+					    }" 
+					/>
+				</div>
+
+				<div class="col-md-5">
+					<label ">Estabelecimento <span class="fs-color-danger">*</span></label>
+					<!-- Teste integração -->
+					<input type="text" name="estabelecimento_aux" id="estabelecimento_aux" class="form-control" style="display: none">
+					<input type="hidden" name="estabelecimento_iD" id="estabelecimento_iD" class="form-control">
+					<input type="zoom" 
+						name="estabelecimento" 
+						id="estabelecimento"
+					    data-zoom="{
+					        'displayKey':'Nome',
+					        'datasetId':'ds_zoom_estabelecimento',
+					        'fields':[
+					           {
+					               'field':'Nome',
+					               'label':'Nome',
+					               'search':'true'
+					            },{
+					               'field':'Código Estabelecimento',
+					               'label':'Código Estabelecimento'
+					               
+					            }
+					            ]
+					    }" 
+					/>
+				</div>
+			</div>
+		 	<div  class="row form-group" id="botaoAprovado" name="botaoAprovado" >
+				<div class="col-md-3 col-xs-12">
+			        <button type="button" class="btn btn-success form-control" name="aprovado" id="aprovado">Aprovado</button>
+			    </div>
+	         	<div class="col-md-3 col-xs-12">
+	         		<button type="button" class="btn btn-danger form-control" name="reprovado" id="reprovado">Reprovado</button>
+			 	</div> 
+			</div>
+
+
+
+			<div class="row form-group" id="divMotivo_revisor" name="divMotivo_revisor" style="display: none">
+				<div class="col-md-7 col-xs-12">
+					<label for="motivo">Motivo da Reprovação <span class="fs-color-danger">*</span></label>					
+					<textarea name="motivo" id="motivo" class="form-control"  rows="3"></textarea>
+				</div>
+			</div>		
+		</div>
+
+		<div id="div_planejarManutencao" name="div_planejarManutencao" style="display: none">
+			<div class=" col-md-12 row form-group">				
+				<h2><b>Planejar Manutenção <i>(MI0307)</i></b></h2>							
+				<hr>				
+			</div>
+			
+			<div class=" form-field" name="planejaManutencao">
+				<table class="table" cellspacing="0" tablename="tbPlanejaManutencao" noaddbutton=true nodeletebutton=true addbuttonclass="wdkbuttonClass" customFnDelete="retirarLinhaExternos(this)">
+
+				<thead>
+					<tr class="tableHeadRow">
+						<th class="tableColumn" width="7%">Tarefa</th>
+						<th class="tableColumn" width="18%">Descrição</th>
+												
+						<th class="tableColumn" width="8%">Tempo Execução</th>
+						<th class="tableColumn" width="35%">Especialidade</th>
+						<th class="tableColumn" width="5%">Homens</th>
+						<th class="tableColumn" width="10%">Tempo</th>						
+						<th class="tableColumn" width="5%">Tipo Espec.</th>
+						<th class="tableColumn" width="5%">Tipo Tempo</th>
+					</tr>
+				</thead>
+					<tbody>
+						<tr>
+							<div class="form-group">
+								<td class="">
+									<input type="text" name="tarefa" id="tarefa" class="form-control calendario"/>	
+								</td>
+							</div>
+							<div class="form-group">
+								<td class=" ">									
+									<textarea name="tbDescricao" id="tbDescricao" rows="2" class="form-control"></textarea>	
+								</td>
+							</div>
+						
+							<div class="form-group">
+								<td class="">					
+									<input type="text" name="tempoExecucao" id="tempoExecucao" mask="00:00:00" class="form-control">
+								</td>
+							</div>
+							<div class="form-group">
+								<td class="">	
+									<!-- Teste integração -->
+								<input type="text" name="tbEspecialidade_aux" id="tbEspecialidade_aux" class="form-control" style="display: none">							
+									<input type="zoom" 
+										name="tbEspecialidade" 
+										id="tbEspecialidade"
+									    data-zoom="{
+										        'displayKey':'Código',
+										        'datasetId':'ds_zoom_especialidades',
+										        'fields':[
+												            {
+												               'field':'Código',
+												               'label':'Código',
+												               'search':'true'
+												            },{
+															      'field':'Descrição',
+															      'label':'Descrição',
+															      'standard':'true'
+															    }
+										            	]
+										    		}" 	/>
+								</td>
+							</div>
+							<div class="form-group">
+								<td class="">
+									<input name="homens" id="homens"  class="form-control">						
+								</td>
+							</div>
+							<div class="form-group">
+								<td class="">
+									<input name="tempoAlocacao" id="tempoAlocacao"  mask="00:00:00" class="form-control"><br>
+									<input name="tempoMinimo" id="tempoMinimo" mask="00:00:00" placeholder="A.Mín" class="form-control"><br>
+									<input name="tempoMaximo" id="tempoMaximo" mask="00:00:00" placeholder="A.Máx" class="form-control"><br>					
+								</td>
+							</div>
+							<div class="form-group">
+								<td>
+								<div class="radio">
+								    <label>
+								    <input type="radio" name="tipo" id="normal" value="1" checked>
+								    	Normal
+								    </label>
+								</div>
+								<div class="radio">
+								    <label>
+								    <input type="radio" name="tipo" id="apoio" value="2">
+								    	Apoio
+								    </label>
+								</div>
+								</td>
+							</div>
+							<div class="form-group">
+								<td>
+								<div class="radio">
+								    <label>
+								    <input type="radio" name="tipo2" id="individual" value="1" checked>
+								    	Individual
+								    </label>
+								</div>
+								<div class="radio">
+								    <label>
+								    <input type="radio" name="tipo2" id="total" value="2">
+								    	Total
+								    </label>
+								</div>
+								</td>
+							</div>
+							
+							<!-- botao remover -->
+							<td class="col-md-1 col-sm-3" id="remove" name="remove">
+								<div class="row form-group">
+									<input type="button" onClick="retirarLinhaExternos(this)" name="remover" id="remover" class="btn btn-danger" value="Excluir"/>
+								</div>									
+							</td>												
+						</tr>
+					</tbody>
+				</table>
+
+					<!-- botão adicionar -->
+				<div class="row form-group" id="divAdicionar" name="divAdicionar" >
+					<button type="button" class="btn btn-primary" name="adicionar" id="inputAdicionar" onclick="adicionarLinha()">Adicionar</button>
+				</div>
+			</div>
+			
+			<div id="adquirir" name="adquirir">
+		 		<div class="row form-group">
+		 			<label> Deseja adquirir ou contratar</label>
+				</div><br><br>
+			 	<div  class="row form-group" id="botaoContratar" name="botaoContratar" >	
+					<div class="col-md-2 col-xs-12">
+				        <button type="button" class="btn btn-success form-control" value="sim" name="btnSim" id="btnSim">Sim</button>
+				    </div>
+		         	<div class="col-md-2 col-xs-12">
+		         		<button type="button" class="btn btn-danger form-control" value="nao" name="btnNao" id="btnNao">Não</button>
+				 	</div> 
+				</div>
+			</div>
+		</div>
+
+		<div id="div_incluiItens" name="div_incluiItens" style="display: none">
+			<div class=" col-md-12 row form-group">				
+				<h2><b>Incluir itens e Quantidades</b></h2>
+				<hr>
+			</div><br>
+
+			<div class="row form-group">
+				
+
+				<div class="col-md-5">
+					<label ">Item <span class="fs-color-danger">*</span></label>
+					<!-- Teste integração -->
+					<input type="text" name="item_aux" id="item_aux" style="display: none">
+					<input type="zoom" 
+						name="item" 
+						id="item"
+					    data-zoom="{
+					        'displayKey':'Código',
+					        'datasetId':'ds_zoom_item',
+					        'fields':[
+					            {
+					               'field':'Código',
+					               'label':'Código',
+					               'search':'true'
+					               
+					            },{
+					               'field':'Descrição',
+					               'label':'Descrição'
+					               
+					            },{
+					               'field':'Quantidade Atual',
+					               'label':'Quantidade'
+					               
+					            }
+					            ]
+					    }" 
+					/>
+				</div>
+
+				<div class="col-md-5">
+					<label ">Quantidade </label>
+					<input type="text" name="item_quantidade" id="item_quantidade" class="form-control" readonly="">
+				</div>	
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-2">
+					<label for="qtdItem">Quantidade de Itens</label><span class="fs-color-danger">*</span>
+					<input type="text" class="form-control" name="qtdItem" id="qtdItem" onblur="verificaQuantidade(this.value)">
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-4" >
+					<h3>Nessecita Compra</h3>
+					<input type="text" name="necessita_compra" id="necessita_compra" class="form-control" readonly="">
+				<!-- 	<label class="radio-inline">
+					    <input type="radio" name="btnRadio" id="radioSim" value="sim" onclick="necessitaCompra(this.value)"> SIM
+					</label>
+					<label class="radio-inline">
+					    <input type="radio" name="btnRadio" id="radioNao" value="nao" onclick="necessitaCompra(this.value)"> NÂO
+					</label> -->
+				</div>
+			</div>
+
+		    <div class="form-group col-md-12">
+	 			<label id="labelAntecipa" name="labelAntecipa">Deseja antecipar Programação</label>
+			</div>
+		 	<div  class="row form-group" id="botaoAntecipa" name="botaoAntecipa" > 		
+				<div class="col-md-2 col-xs-12">
+			        <button type="button" class="btn btn-success form-control" value="sim" name="antecipaProgSim" id="antecipaProgSim">Sim</button>
+			    </div>
+	         	<div class="col-md-2 col-xs-12">
+	         		<button type="button" class="btn btn-danger form-control" value="nao" name="antecipaProgNao" id="antecipaProgNao">Não</button>
+			 	</div> 
+			</div>			
+		</div>
+		<!-- ============ O CÓDIGO ESTAVA COMENTADO ============== -->
+		<!-- <div id="necessitaCompra" name="necessitaCompra" style="display: none">
+	 		<div class="form-group col-md-5">
+	 			<label id="nCompra">Necessita Compra</label>
+			</div><br><br>
+		 	<div  class="row form-group" id="botaoNecessita" name="botaoNecessita" >		 		
+				<div class="col-md-2 col-xs-12">
+			        <button type="button" class="btn btn-success form-control" value="sim" name="compraSim" id="compraSim">Sim</button>
+			    </div>
+	         	<div class="col-md-2 col-xs-12">
+	         		<button type="button" class="btn btn-danger form-control" value="nao" name="compraNao" id="compraNao">Não</button>
+			 	</div> 
+			</div>
+		</div>  -->
+
+		<!-- =================FINAL DO CÓDIGO QUE ESTAVA COMENTADO ==== -->
+		<div id="compra" name="compra" style="display: none">
+		
+
+			<div id="div_antecipa" name="div_antecipa" style="display: none">
+				<div class="row form-group">
+					<div class="col-md-3">
+						<label for="qtdDesejada">Informar quantidade desejada</label>
+						<input type="text" class="form-control" name="qtdDesejada" id="qtdDesejada">
+					</div>
+				</div>
+			</div>
+
+		
+		</div>
+
+		<div id="div_programarManutencao" name="div_programarManutencao" style="display: none">
+			
+			<div class=" col-md-12 row form-group">				
+				<h2><b>Programar Manutenção</b></h2>
+				<hr>
+			</div><br>
+
+			<div class="row form-group ">
+				<div class="col-md-3">	
+				    <label for="dtManutencao">Data Prevista Manutenção <span class="fs-color-danger">*</span> </label>
+				    <input type="text" class="form-control calendario" id="dtManutencao" name="dtManutencao" onclick="calendario()" >
+				</div>
+				
+				<div class="col-md-3">	
+				    <label for="dtTermino">Data Prevista Término <span class="fs-color-danger">*</span> </label>
+				    <input type="text" class="form-control calendario" id="dtTermino" name="dtTermino" onclick="calendario()">
+				</div>
+			</div>
+
+			<div class="row form-group">
+				<div class="col-md-4">
+					<label ">Planejador <span class="fs-color-danger">*</span></label>
+					<!-- Teste integração -->
+					<input type="text" name="planejador_aux" id="planejador_aux" class="form-control" style="display: none">
+					<input type="zoom" 
+						name="planejador" 
+						id="planejador"
+					    data-zoom="{
+					        'displayKey':'Nome',
+					        'datasetId':'ds_zoom_planejador',
+					        'fields':[
+					            {
+					               'field':'Código',
+					               'label':'Código',
+					               'search':'true'
+					            },{
+					               'field':'Nome',
+					               'label':'Nome'
+					               
+					            }
+					            ]
+					    }" 
+					/>
+				</div>
+
+			
+			</div>
+		</div>
+	</div>
+	</form><br><br><br>
+</div>
+</body>
+</html>

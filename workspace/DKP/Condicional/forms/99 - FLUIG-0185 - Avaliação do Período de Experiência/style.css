@@ -1,0 +1,39 @@
+*{
+	outline:none !important;
+}
+.atividade-titulo {
+    cursor: pointer;
+}
+
+#ID_LINK_MANUAL {
+    color: #5bc0de !important;
+}
+
+.avaliacao {
+    width: 20%;
+}
+
+.processado{
+	border-radius: 10px;
+}
+
+
+ a{ 
+ 	color:#5bc0de !important; 
+ }
+ 
+ .bpm-mobile-trash-column {
+     text-align: center;
+ }
+ 
+ .bpm-mobile-trash-column img {
+     width: 20px;
+ }
+ 
+ .ui-datepicker-trigger {
+     display: none;
+ }
+
+ div[id^='panelHeaderAtividade_'] span.label-warning:last-child{
+ 	display:none;
+ }

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_221" class="java.beans.XMLDecoder">
+ <object class="java.util.HashMap">
+  <void method="put">
+   <string>volume</string>
+   <array class="java.lang.String" length="1">
+    <void index="0">
+     <string>Default</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>expediente</string>
+   <array class="java.lang.String" length="1">
+    <void index="0">
+     <string>Default</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>mecanismo</string>
+   <array class="[Ljava.lang.Object;" length="9">
+    <void index="0">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Associação</string>
+      </void>
+      <void index="1">
+       <string>Associado</string>
+      </void>
+     </array>
+    </void>
+    <void index="1">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Campo de Formulário</string>
+      </void>
+      <void index="1">
+       <string>Campo Formulário</string>
+      </void>
+     </array>
+    </void>
+    <void index="2">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Executor de Atividade</string>
+      </void>
+      <void index="1">
+       <string>Executor Atividade</string>
+      </void>
+     </array>
+    </void>
+    <void index="3">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Grupo</string>
+      </void>
+      <void index="1">
+       <string>Grupo</string>
+      </void>
+     </array>
+    </void>
+    <void index="4">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Grupos do Colaborador</string>
+      </void>
+      <void index="1">
+       <string>Grupos Colaborador</string>
+      </void>
+     </array>
+    </void>
+    <void index="5">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Papel</string>
+      </void>
+      <void index="1">
+       <string>Papel</string>
+      </void>
+     </array>
+    </void>
+    <void index="6">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição para um Grupo</string>
+      </void>
+      <void index="1">
+       <string>Pool Grupo</string>
+      </void>
+     </array>
+    </void>
+    <void index="7">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição para um Papel</string>
+      </void>
+      <void index="1">
+       <string>Pool Papel</string>
+      </void>
+     </array>
+    </void>
+    <void index="8">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Usuário</string>
+      </void>
+      <void index="1">
+       <string>Usuário</string>
+      </void>
+     </array>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 24</string>
+   <array class="java.lang.String" length="53">
+    <void index="0">
+     <string>cbRenova</string>
+    </void>
+    <void index="1">
+     <string>cdAdvogado</string>
+    </void>
+    <void index="2">
+     <string>cdAreaSol</string>
+    </void>
+    <void index="3">
+     <string>cdAssJur</string>
+    </void>
+    <void index="4">
+     <string>cdAtivo</string>
+    </void>
+    <void index="5">
+     <string>cdCajuri</string>
+    </void>
+    <void index="6">
+     <string>cdEntAtivo</string>
+    </void>
+    <void index="7">
+     <string>cdEntPassivo</string>
+    </void>
+    <void index="8">
+     <string>cdFilialNS7</string>
+    </void>
+    <void index="9">
+     <string>cdPassivo</string>
+    </void>
+    <void index="10">
+     <string>cdResponsavel</string>
+    </void>
+    <void index="11">
+     <string>cdSolicitante</string>
+    </void>
+    <void index="12">
+     <string>cdTipoCon</string>
+    </void>
+    <void index="13">
+     <string>dtPrazoTarefa</string>
+    </void>
+    <void index="14">
+     <string>dtSolicitacao</string>
+    </void>
+    <void index="15">
+     <string>linkFolder</string>
+    </void>
+    <void index="16">
+     <string>numSolic</string>
+    </void>
+    <void index="17">
+     <string>optAtivo</string>
+    </void>
+    <void index="18">
+     <string>optPassivo</string>
+    </void>
+    <void index="19">
+     <string>sAdvogado</string>
+    </void>
+    <void index="20">
+     <string>sAprovacao</string>
+    </void>
+    <void index="21">
+     <string>sAreaSol</string>
+    </void>
+    <void index="22">
+     <string>sAtivo</string>
+    </void>
+    <void index="23">
+     <string>sBairro</string>
+    </void>
+    <void index="24">
+     <string>sCep</string>
+    </void>
+    <void index="25">
+     <string>sCidade</string>
+    </void>
+    <void index="26">
+     <string>sCnpj</string>
+    </void>
+    <void index="27">
+     <string>sCodigoJuridico</string>
+    </void>
+    <void index="28">
+     <string>sCondPagamento</string>
+    </void>
+    <void index="29">
+     <string>sDescSol</string>
+    </void>
+    <void index="30">
+     <string>sDocs</string>
+    </void>
+    <void index="31">
+     <string>sEndereco</string>
+    </void>
+    <void index="32">
+     <string>sEstado</string>
+    </void>
+    <void index="33">
+     <string>sExecutorFluig</string>
+    </void>
+    <void index="34">
+     <string>sFilialNS7</string>
+    </void>
+    <void index="35">
+     <string>sMailAdvogado</string>
+    </void>
+    <void index="36">
+     <string>sObservacao</string>
+    </void>
+    <void index="37">
+     <string>sObsFW</string>
+    </void>
+    <void index="38">
+     <string>sPassivo</string>
+    </void>
+    <void index="39">
+     <string>sPastaCaso</string>
+    </void>
+    <void index="40">
+     <string>sRazaoSocial</string>
+    </void>
+    <void index="41">
+     <string>sRenovacao</string>
+    </void>
+    <void index="42">
+     <string>sSolicitante</string>
+    </void>
+    <void index="43">
+     <string>sStatusAtiv</string>
+    </void>
+    <void index="44">
+     <string>sStatusProc</string>
+    </void>
+    <void index="45">
+     <string>sStepDestinoCanc</string>
+    </void>
+    <void index="46">
+     <string>sStepDestinoConc</string>
+    </void>
+    <void index="47">
+     <string>sTipoCon</string>
+    </void>
+    <void index="48">
+     <string>sTipoParte</string>
+    </void>
+    <void index="49">
+     <string>sTransferencia</string>
+    </void>
+    <void index="50">
+     <string>sValor</string>
+    </void>
+    <void index="51">
+     <string>sVigenciaAte</string>
+    </void>
+    <void index="52">
+     <string>sVigenciaDe</string>
+    </void>
+   </array>
+  </void>
+ </object>
+</java>

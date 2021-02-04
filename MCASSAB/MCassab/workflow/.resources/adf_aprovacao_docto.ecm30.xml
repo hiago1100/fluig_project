@@ -1,0 +1,1482 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>adf_aprovacao_docto</processId>
+    </processDefinitionPK>
+    <processDescription>Aprovação de Documentos</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>ADF</categoryId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;admin&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Aprovação de Documentos</processId>
+      <version>8</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>27174</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>true</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>120</positionX>
+      <positionY>96</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </processStatePK>
+      <stateName>Selecionar Aprovadores</stateName>
+      <stateDescription>Selecionar Aprovadores</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>190</positionX>
+      <positionY>284</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>87</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </processStatePK>
+      <stateName>Aprovação de Documento</stateName>
+      <stateDescription>Aprovação de Documento</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>true</joint>
+      <agreementPercentage>100</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>2</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>340</positionX>
+      <positionY>488</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Aprovar Documento</stateName>
+      <stateDescription>Aprovar Documento</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>500</positionX>
+      <positionY>284</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>87</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </processStatePK>
+      <stateName>Reprovar Documento</stateName>
+      <stateDescription>Reprovar Documento</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>690</positionX>
+      <positionY>284</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>87</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>6</sequence>
+      </processStatePK>
+      <stateName>Pendente?</stateName>
+      <stateDescription>Pendente?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>620</positionX>
+      <positionY>120</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>7</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>780</positionX>
+      <positionY>96</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>8</version>
+        <sequence>6</sequence>
+      </conditionProcessStatePK>
+      <condition>aprovacaoPendente()==true</condition>
+      <destinationSequenceId>2</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>8</version>
+        <sequence>6</sequence>
+      </conditionProcessStatePK>
+      <condition>aprovacaoPendente()==false</condition>
+      <destinationSequenceId>7</destinationSequenceId>
+    </ConditionProcessState>
+  </list>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <linkSequence>13</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>2</initialStateSequence>
+      <finalStateSequence>3</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <linkSequence>14</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>3</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <linkSequence>15</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>3</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <linkSequence>16</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>6</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <linkSequence>17</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>6</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <linkSequence>18</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>6</initialStateSequence>
+      <finalStateSequence>2</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <linkSequence>19</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>6</initialStateSequence>
+      <finalStateSequence>7</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <linkSequence>20</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>2</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <linkSequence>21</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>2</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Aprovação Automática</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterStateEntry</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterStateEntry(sequenceId) {
+
+  log.info(&apos;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; afterStateEntry, sequenceId: &apos; + sequenceId);
+
+  var Params = parametros();
+
+  if (sequenceId == Params.atividades.aprovarDocumento || sequenceId == Params.atividades.reprovarDocumento) {
+
+    var aprovado = sequenceId == Params.atividades.aprovarDocumento;
+    var currentAprovadorSeq = hAPI.getCardValue(&quot;currentAprovadorSeq&quot;);
+    var lastAprovadorSeq = hAPI.getCardValue(&quot;lastAprovadorSeq&quot;);
+
+    if (aprovado) {
+      if (Number(currentAprovadorSeq) == Number(lastAprovadorSeq)) {
+        hAPI.setCardValue(&quot;status&quot;, &apos;A&apos;);
+      }
+    } else {
+      hAPI.setCardValue(&quot;status&quot;, &apos;R&apos;);
+    }
+
+    var users = new java.util.ArrayList();
+    users.add(&quot;System:Auto&quot;)
+
+    hAPI.setAutomaticDecision(Params.atividades.pendente, users, aprovado ? &quot;Documento Aprovado&quot; : &quot;Documento Reprovado&quot;);
+  }
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>getParamGeral</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function getParamGeral() {
+  var constraintsParam = new Array(DatasetFactory.createConstraint(&apos;metadata#active&apos;, true, true, ConstraintType.MUST));
+
+  var dsParam = DatasetFactory.getDataset(&apos;adf_param_geral&apos;, null, constraintsParam, null);
+  var Param = {};
+  var campos = [&apos;usuarioErp&apos;, &apos;senhaErp&apos;, &apos;empresaFluig&apos;, &apos;usuarioFluig&apos;, &apos;senhaFluig&apos;, &apos;emailNotifica&apos;, &apos;emailNotificaErros&apos;];
+
+  if (dsParam.rowsCount &gt; 0) {
+    campos.forEach(function (campo) {
+      Param[campo] = String(dsParam.getValue(0, campo));
+    });
+  }
+
+  return Param;
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>calculaPrazo</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function calculaPrazo(colleagueId) {
+
+  var prazoPadrao = 0;
+  var prazo = 0;
+  var prazoInformado = &quot;&quot;;
+  var codTipoDocto = hAPI.getCardValue(&quot;codTipoDocto&quot;);
+  var processo = getValue(&quot;WKNumProces&quot;);
+
+  var constraintsTipoDocto = new Array(DatasetFactory.createConstraint(&quot;codigo&quot;, codTipoDocto, codTipoDocto, ConstraintType.MUST));
+
+  var tipoDocto = DatasetFactory.getDataset(&quot;adf_tipo_documento&quot;, null, constraintsTipoDocto, null);
+
+  if (tipoDocto) {
+    prazoPadrao = Number(tipoDocto.getValue(0, &quot;prazoPadrao&quot;));
+  }
+
+  if (hAPI.getCardValue(&quot;prazo&quot;) != &quot;&quot;) {
+    
+    // prazoInformado = Date.parse(String(hAPI.getCardValue(&quot;prazo&quot;)));
+    // prazoInformado = new Date(String(hAPI.getCardValue(&quot;prazo&quot;)));
+    var arrPrazoInformado = hAPI.getCardValue(&quot;prazo&quot;)
+      .split(&quot;T&quot;)[0].split(&quot;-&quot;);
+
+    prazoInformado = new Date();
+    prazoInformado.setDate(arrPrazoInformado[2]);
+    prazoInformado.setMonth(arrPrazoInformado[1] - 1);
+    prazoInformado.setFullYear(arrPrazoInformado[0]);
+
+    var segundos = prazoInformado.getSeconds() + (prazoInformado.getMinutes() * 60) + (prazoInformado.getHours() * 3600);
+
+    hAPI.setDueDate(processo, 0, colleagueId, prazoInformado, segundos);
+
+  } else {
+
+    if (hAPI.getCardValue(&quot;nivelEmergencial&quot;) != &quot;&quot;) {
+
+      var nivelEmergencial = hAPI.getCardValue(&quot;nivelEmergencial&quot;);
+
+      var tempo = &quot;&quot;;
+
+      var constraints = new Array(DatasetFactory.createConstraint(&quot;codTipoDocto&quot;, codTipoDocto, codTipoDocto, ConstraintType.MUST));
+
+      var dataset = DatasetFactory.getDataset(&quot;adf_nivel_emergencial&quot;, null, constraints, null);
+
+      if (dataset) {
+        for (var i = 0; i &lt; dataset.rowsCount; i++) {
+          var documentId = dataset.getValue(i, &quot;metadata#id&quot;);
+          var documentVersion = dataset.getValue(i, &quot;metadata#version&quot;);
+
+          //Cria as constraints para buscar os campos filhos, passando o tablename, número da formulário e versão
+          var c1 = DatasetFactory.createConstraint(&quot;tablename&quot;, &quot;niveis&quot;, &quot;niveis&quot;, ConstraintType.MUST);
+          var c2 = DatasetFactory.createConstraint(&quot;metadata#id&quot;, documentId, documentId, ConstraintType.MUST);
+          var c3 = DatasetFactory.createConstraint(&quot;metadata#version&quot;, documentVersion, documentVersion, ConstraintType.MUST);
+          var constraintsFilhos = new Array(c1, c2, c3);
+
+          //Busca o dataset
+          var datasetFilhos = DatasetFactory.getDataset(&quot;adf_nivel_emergencial&quot;, null, constraintsFilhos, null);
+
+          for (var j = 0; j &lt; datasetFilhos.rowsCount; j++) {
+            var nivel = JSON.parse(datasetFilhos.getValue(j, &quot;nivel&quot;));
+            if (Number(nivel.codigo) == Number(nivelEmergencial)) {
+              tempo = datasetFilhos.getValue(j, &quot;tempo&quot;);
+            }
+          }
+        }
+
+        if (tempo != &quot;&quot;) {
+          prazo = (Number(tempo.split(&quot;:&quot;)[0])) + (Number(tempo.split(&quot;:&quot;)[1] / 60));
+        }
+      }
+    } else {
+      prazo = prazoPadrao;
+    }
+
+    if (prazo != 0) {
+
+      var hoje = new Date();
+      var hojeSeconds = hoje.getSeconds() + (hoje.getMinutes() * 60) + (hoje.getHours() * 3600);
+
+      var obj = hAPI.calculateDeadLineHours(hoje, hojeSeconds, prazo, &quot;Default&quot;);
+      var dt = obj[0];
+      var segundos = obj[1];
+
+      hAPI.setDueDate(processo, 0, colleagueId, dt, segundos);
+    }
+  }
+
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>parametros</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function parametros() {
+    var Params = {};
+
+    Params.atividades = {
+        &quot;inicio&quot;: 1,
+        &quot;selecionarAprovadores&quot;: 2,
+        &quot;aprovacaoDocumento&quot;: 3,
+        &quot;aprovarDocumento&quot;: 4,
+        &quot;reprovarDocumento&quot;: 5,
+        &quot;pendente&quot;: 6,
+        &quot;fim&quot;: 7
+    }
+
+    return Params;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskComplete</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskComplete(colleagueId, nextSequenceId, userList) {
+
+  var WKUser = getValue(&apos;WKUser&apos;);
+  var WKNumState = getValue(&apos;WKNumState&apos;);
+  var WKCompletTask = getValue(&apos;WKCompletTask&apos;);
+  var WKNumProces = String(getValue(&quot;WKNumProces&quot;));
+  var statusNarrativa = hAPI.getCardValue(&apos;statusNarrativa&apos;) || &apos;&apos;;
+
+  if (WKNumState == 3 &amp;&amp; WKCompletTask &amp;&amp; statusNarrativa != &apos;&apos;) {
+    hAPI.setTaskComments(WKUser, WKNumProces, 0, statusNarrativa);
+  }
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>atribuiAprovadores</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function atribuiAprovadores() {
+
+  var Params = parametros();
+
+  var Aprovadores = [];
+
+  var valor = String(hAPI.getCardValue(&quot;valor&quot;));
+  var codLotacao = String(hAPI.getCardValue(&quot;codLotacao&quot;));
+  var codTipoDocto = String(hAPI.getCardValue(&quot;codTipoDocto&quot;));
+  var codEmpresa = String(hAPI.getCardValue(&quot;codEmpresa&quot;));
+  var codEstab = String(hAPI.getCardValue(&quot;codEstab&quot;));
+  var codItem = String(hAPI.getCardValue(&quot;codItem&quot;));
+  var codFamilia = String(hAPI.getCardValue(&quot;codFamilia&quot;));
+  var codReferencia = String(hAPI.getCardValue(&quot;codReferencia&quot;));
+
+  var consGetAprovadores = new Array(
+    DatasetFactory.createConstraint(&quot;valor&quot;, valor, valor, ConstraintType.MUST),
+    DatasetFactory.createConstraint(&quot;lotacao&quot;, codLotacao, codLotacao, ConstraintType.MUST),
+    DatasetFactory.createConstraint(&quot;tipDoc&quot;, codTipoDocto, codTipoDocto, ConstraintType.MUST),
+    DatasetFactory.createConstraint(&quot;epCodigo&quot;, codEmpresa, codEmpresa, ConstraintType.MUST),
+    DatasetFactory.createConstraint(&quot;codEstab&quot;, codEstab, codEstab, ConstraintType.MUST),
+    DatasetFactory.createConstraint(&quot;codItem&quot;, codItem, codItem, ConstraintType.MUST),
+    DatasetFactory.createConstraint(&quot;codFamilia&quot;, codFamilia, codFamilia, ConstraintType.MUST),
+    DatasetFactory.createConstraint(&quot;codReferencia&quot;, codReferencia, codReferencia, ConstraintType.MUST)
+  );
+
+  var aprovadores = DatasetFactory.getDataset(&quot;adf_get_aprovadores&quot;, null, consGetAprovadores, null);
+  var lastAprovadorSeq = 0;
+
+  log.info(&apos;&gt;&gt;&gt;&gt;&gt;&gt; aprovadores.rowsCount: &apos; + aprovadores.rowsCount);
+
+  if (!aprovadores || aprovadores.rowsCount == 0) {
+    //return &quot;Aprovadores não encontrados.&quot;;
+  } else {
+    for (var i = 0; i &lt; aprovadores.rowsCount; i++) {
+
+      log.info(&apos;&gt;&gt;&gt;&gt;&gt;&gt; aprovadores i: &apos; + i);
+
+      var aprovadorCodigo = String(aprovadores.getValue(i, &quot;usuario&quot;));
+      var aprovadorSeq = String(aprovadores.getValue(i, &quot;sequencia&quot;));
+      var aprovadorQtdMinima = String(aprovadores.getValue(i, &quot;qtdMinima&quot;));
+      var aprovadorEmail = &quot;&quot;;
+      var colleagueId = 0;
+
+      lastAprovadorSeq = aprovadorSeq;
+
+      var consColleague = new Array(DatasetFactory.createConstraint(&quot;login&quot;, aprovadorCodigo, aprovadorCodigo, ConstraintType.MUST));
+
+      var colleague = DatasetFactory.getDataset(&quot;colleague&quot;, null, consColleague, null);
+
+      if (colleague &amp;&amp; colleague.rowsCount &gt; 0) {
+        aprovadorEmail = colleague.getValue(0, &quot;mail&quot;);
+        colleagueId = colleague.getValue(0, &quot;colleaguePK.colleagueId&quot;);
+      } else {
+        consColleague = new Array(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, aprovadorCodigo, aprovadorCodigo, ConstraintType.MUST));
+
+        colleague = DatasetFactory.getDataset(&quot;colleague&quot;, null, consColleague, null);
+
+        if (colleague &amp;&amp; colleague.rowsCount &gt; 0) {
+          aprovadorEmail = colleague.getValue(0, &quot;mail&quot;);
+          colleagueId = colleague.getValue(0, &quot;colleaguePK.colleagueId&quot;);
+        }
+      }
+
+      log.info(&quot;adicionou: &quot; + aprovadorEmail + &quot; / &quot; + aprovadorCodigo);
+
+      var childData = new java.util.HashMap();
+      log.info(&quot;aprovadorEmail: &quot; + String(aprovadorEmail));
+      childData.put(&quot;aprovadorEmail&quot;, String(aprovadorEmail));
+      log.info(&quot;colleagueId: &quot; + String(colleagueId));
+      childData.put(&quot;aprovadorCodigo&quot;, String(colleagueId));
+      log.info(&quot;aprovadorSeq: &quot; + String(aprovadorSeq));
+      childData.put(&quot;aprovadorSeq&quot;, String(aprovadorSeq));
+      log.info(&quot;aprovadorQtdMinima: &quot; + String(aprovadorQtdMinima));
+      childData.put(&quot;aprovadorQtdMinima&quot;, String(aprovadorQtdMinima));
+
+      hAPI.addCardChild(&quot;tabelaAprovadores&quot;, childData);
+
+      Aprovadores.push({
+        &quot;i&quot;: i + 1,
+        &quot;email&quot;: aprovadorEmail,
+        &quot;codigo&quot;: colleagueId,
+        &quot;qtdMinima&quot;: aprovadorQtdMinima,
+        &quot;seq&quot;: aprovadorSeq
+      })
+
+    }
+  }
+
+  hAPI.setCardValue(&quot;lastAprovadorSeq&quot;, lastAprovadorSeq);
+
+  var users = new java.util.ArrayList();
+  users.add(&quot;System:Auto&quot;)
+
+  hAPI.setAutomaticDecision(Params.atividades.selecionarAprovadores, users, &quot;Selecionar Aprovadores&quot;);
+
+  return Aprovadores;
+
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>calculateAgreement</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function calculateAgreement(currentState, agreementData) {&#xd;
+  //Implementation here&#xd;
+&#xd;
+  var Params = parametros();&#xd;
+  var Aprovadores = getAprovadores();&#xd;
+&#xd;
+  var currentAprovadorSeq = String(hAPI.getCardValue(&quot;currentAprovadorSeq&quot;));&#xd;
+&#xd;
+  var aprovados = 0;&#xd;
+  var reprovados = 0;&#xd;
+  var aprovadorQtdMinima = 0;&#xd;
+  var aprovadorTotal = 0;&#xd;
+  var comStatus = 0;&#xd;
+&#xd;
+  Aprovadores.forEach(function (aprovador) {&#xd;
+    if (Number(aprovador.seq) == Number(currentAprovadorSeq)) {&#xd;
+      if (aprovador.status &amp;&amp; aprovador.status != &apos;&apos;) {&#xd;
+        if (aprovador.status == &apos;R&apos;) {&#xd;
+          reprovados++;&#xd;
+        } else {&#xd;
+          if (aprovador.status == &apos;A&apos;) {&#xd;
+            aprovados++;&#xd;
+          }&#xd;
+        }&#xd;
+        comStatus++;&#xd;
+      }&#xd;
+      aprovadorQtdMinima = Number(aprovador.qtdMinima);&#xd;
+      aprovadorTotal++;&#xd;
+    }&#xd;
+  })&#xd;
+&#xd;
+  if (aprovadorQtdMinima == 0 || !aprovadorQtdMinima || aprovadorQtdMinima &gt; aprovadorTotal) {&#xd;
+    aprovadorQtdMinima = aprovadorTotal;&#xd;
+  }&#xd;
+&#xd;
+  log.info(&apos;&gt;&gt;&gt;&gt; reprovados: &apos; + reprovados);&#xd;
+  log.info(&apos;&gt;&gt;&gt;&gt; aprovados: &apos; + aprovados);&#xd;
+  log.info(&apos;&gt;&gt;&gt;&gt; aprovadorQtdMinima: &apos; + aprovadorQtdMinima);&#xd;
+  log.info(&apos;&gt;&gt;&gt;&gt; comStatus: &apos; + comStatus);&#xd;
+  log.info(&apos;&gt;&gt;&gt;&gt; aprovadorTotal: &apos; + aprovadorTotal);&#xd;
+&#xd;
+  // Se já atingiu a quantidade mínima de aprovações, &#xd;
+  // ou se a quantidade que resta nao alcançar a quantidade mínima&#xd;
+  if (aprovados &gt;= aprovadorQtdMinima || aprovadorTotal - comStatus + aprovados &lt; aprovadorQtdMinima) {&#xd;
+    var users = new java.util.ArrayList();&#xd;
+    users.add(&quot;System:Auto&quot;);&#xd;
+&#xd;
+    agreementData.put(&quot;currentPercentage&quot;, 100);&#xd;
+    agreementData.put(&quot;currentDestState&quot;, aprovados &gt;= aprovadorQtdMinima ? Params.atividades.aprovarDocumento : Params.atividades.reprovarDocumento);&#xd;
+    agreementData.put(&quot;currentDestUsers&quot;, &quot;System:Auto&quot;);&#xd;
+  }&#xd;
+}&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>scripttask4</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function scripttask4() {
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>scripttask5</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function scripttask5() {
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>aprovacaoPendente</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function aprovacaoPendente() {
+
+    var status = hAPI.getCardValue(&quot;status&quot;);
+
+    return status == &apos;P&apos; || status == &apos;&apos;;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterCancelProcess</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterCancelProcess(colleagueId,processId){
+    log.info(&apos;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; afterCancelProcess, sequenceId: &apos; + processId);
+
+    hAPI.setCardValue(&quot;integrado&quot;, &apos;false&apos;);
+    hAPI.setCardValue(&quot;status&quot;, &apos;C&apos;);
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>scripttask2</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function scripttask2() {
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateEntry</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateEntry(sequenceId) {
+
+  log.info(&apos;&gt;&gt;&gt;&gt;&gt; beforeStateEntry&apos;);
+
+  var Params = parametros();
+
+  if (sequenceId == Params.atividades.selecionarAprovadores) {
+    try {
+
+      var codProcesso = hAPI.getCardValue(&apos;codProcesso&apos;);
+      var WKNumProces = String(getValue(&quot;WKNumProces&quot;));
+
+      log.info(&apos;&gt;&gt;&gt;&gt;&gt;&gt;&gt; codProcesso: &apos; + codProcesso);
+      log.info(&apos;&gt;&gt;&gt;&gt;&gt;&gt;&gt; WKNumProces: &apos; + WKNumProces);
+
+      if (!codProcesso || codProcesso == &apos;&apos;) {
+        log.info(&apos;&gt;&gt;&gt;&gt;&gt;&gt;&gt; seta codProcesso &apos;);
+
+        hAPI.setCardValue(&quot;codProcesso&quot;, WKNumProces);
+      }
+
+      var aprovacaoAutomatica = hAPI.getCardValue(&quot;aprovacaoAutomatica&quot;);
+
+      if (aprovacaoAutomatica == &quot;true&quot;) {
+        var users = new java.util.ArrayList();
+        users.add(&quot;System:Auto&quot;);
+
+        hAPI.setAutomaticDecision(Params.atividades.aprovarDocumento, users, &quot;Aprovação Automática&quot;);
+      } else {
+
+        var Aprovadores = getAprovadores();
+
+        if (Aprovadores.length == 0) {
+          Aprovadores = atribuiAprovadores();
+        }
+
+        if (Aprovadores.length == 0) {
+          throw &quot;Não foi possível definir os aprovadores do documento.&quot;;
+        }
+
+        Aprovadores.forEach(function (aprovador) {
+
+          if (!aprovador || aprovador.email == &quot;&quot;) {
+            throw &quot;Email não informado ou usuário não encontrado. Código do usuário: &quot; + aprovador.codigo;
+          }
+
+          var constraints = new Array(
+            DatasetFactory.createConstraint(&quot;mail&quot;, aprovador.email, aprovador.email, ConstraintType.SHOULD),
+            DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, aprovador.codigo, aprovador.codigo, ConstraintType.SHOULD),
+            DatasetFactory.createConstraint(&quot;login&quot;, aprovador.codigo, aprovador.codigo, ConstraintType.SHOULD)
+          );
+
+          var dataset = DatasetFactory.getDataset(&quot;colleague&quot;, null, constraints, null);
+
+          if (!dataset || dataset.rowsCount == 0) {
+            throw &quot;Usuário não encontrado com o email informado: &quot; + aprovador.email;
+          }
+
+        })
+
+        selecionaAprovadores(Aprovadores);
+      }
+
+    } catch (error) {
+      log.info(error);
+      throw &quot;Não foi possível definir os aprovadores do documento.&quot;;
+    }
+
+  }
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>getAprovadores</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function getAprovadores() {
+
+    var i = 0;
+    var Aprovadores = new Array();
+    var email;
+
+    do {
+        i++;
+        email = hAPI.getCardValue(&quot;aprovadorEmail___&quot; + i);
+        if (email) {
+            Aprovadores.push({
+                &quot;i&quot;: i,
+                &quot;email&quot;: email,
+                &quot;codigo&quot;: String(hAPI.getCardValue(&quot;aprovadorCodigo___&quot; + i)),
+                &quot;prioridade&quot;: String(hAPI.getCardValue(&quot;aprovadorPrioridade___&quot; + i)),
+                &quot;qtdMinima&quot;: String(hAPI.getCardValue(&quot;aprovadorQtdMinima___&quot; + i)),
+                &quot;seq&quot;: String(hAPI.getCardValue(&quot;aprovadorSeq___&quot; + i)),
+                &quot;status&quot;: String(hAPI.getCardValue(&quot;aprovadorStatus___&quot; + i)),
+                &quot;rejeicao&quot;: String(hAPI.getCardValue(&quot;aprovadorRejeicao___&quot; + i)),
+                &quot;narrativa&quot;: String(hAPI.getCardValue(&quot;aprovadorNarrativa___&quot; + i)),
+                &quot;data&quot;: String(hAPI.getCardValue(&quot;aprovadorData___&quot; + i))
+            });
+        }
+    } while (email);
+
+    return Aprovadores;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>selecionaAprovadores</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function selecionaAprovadores(Aprovadores){
+
+  var Params = parametros();
+  
+  var currentAprovadorSeq = String(hAPI.getCardValue(&quot;currentAprovadorSeq&quot;));
+
+  var aprovadorSeq = Number(currentAprovadorSeq) + 1;
+
+  hAPI.setCardValue(&quot;currentAprovadorSeq&quot;, aprovadorSeq);
+
+  var users = new java.util.ArrayList();
+
+  Aprovadores.forEach(function (aprovador){
+    if (aprovador.seq == aprovadorSeq) {
+      users.add(aprovador.codigo);
+    }
+  });
+
+  //users.add(&quot;admin.adf&quot;);
+  
+  hAPI.setAutomaticDecision(Params.atividades.aprovacaoDocumento, users, &quot;Aprovação de Documento Fluig&quot;);
+  log.info(users);
+
+  return &quot;OK&quot;;
+
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterStateLeave</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterStateLeave(sequenceId) {
+  log.info(&apos;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; afterStateLeave, sequenceId: &apos; + sequenceId);
+
+  
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskCreate</eventId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskCreate(colleagueId) {
+
+    var atividade = getValue(&apos;WKCurrentState&apos;);
+
+    var Params = parametros();
+
+    if (atividade == Params.atividades.aprovacaoDocumento) {
+        calculaPrazo(colleagueId);
+    }
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list>
+    <AdvancedProcessProperties>
+      <advancedProcessPropertiesPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <propertyId>AutomaticTasks</propertyId>
+        <version>8</version>
+      </advancedProcessPropertiesPK>
+      <propertieValue>2,4,5</propertieValue>
+    </AdvancedProcessProperties>
+  </list>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>611</height>
+      <width>878</width>
+      <positionX>13</positionX>
+      <positionY>10</positionY>
+      <stateName>Aprovação de Documentos</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>203</height>
+      <width>848</width>
+      <positionX>43</positionX>
+      <positionY>10</positionY>
+      <stateName>ERP</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>203</height>
+      <width>848</width>
+      <positionX>43</positionX>
+      <positionY>213</positionY>
+      <stateName>Fluig</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>205</height>
+      <width>848</width>
+      <positionX>43</positionX>
+      <positionY>416</positionY>
+      <stateName>Aprovador</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>8</version>
+        <linkSequence>13</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>242</positionX>
+      <positionY>520</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>8</version>
+        <linkSequence>14</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>552</positionX>
+      <positionY>520</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>8</version>
+        <linkSequence>15</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>742</positionX>
+      <positionY>520</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>8</version>
+        <linkSequence>16</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>552</positionX>
+      <positionY>168</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>8</version>
+        <linkSequence>17</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>742</positionX>
+      <positionY>168</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>8</version>
+        <linkSequence>18</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>650</positionX>
+      <positionY>90</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>8</version>
+        <linkSequence>18</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>242</positionX>
+      <positionY>90</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>8</version>
+        <linkSequence>19</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>716</positionX>
+      <positionY>113</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>8</version>
+        <linkSequence>20</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>137</positionX>
+      <positionY>317</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list>
+    <ExtendedPropertyField>
+      <extendedPropertyFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <version>8</version>
+        <stateSequence>0</stateSequence>
+        <propertyName>AutomaticTasks</propertyName>
+      </extendedPropertyFieldPK>
+      <propertyType>0</propertyType>
+      <propertyDescription>AutomaticTasks</propertyDescription>
+      <propertyValue>2,4,5</propertyValue>
+      <isDefaultProperty>false</isDefaultProperty>
+    </ExtendedPropertyField>
+  </list>
+  <list>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>codDoctoTemplate</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>codDoctoTemplate</fieldDescription>
+      <slotId>1</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>codEspecie</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>codEspecie</fieldDescription>
+      <slotId>2</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>codEstab</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>codEstab</fieldDescription>
+      <slotId>3</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>codProcesso</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>codProcesso</fieldDescription>
+      <slotId>4</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>codTipoDocto</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>codTipoDocto</fieldDescription>
+      <slotId>5</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>dataRef</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>dataRef</fieldDescription>
+      <slotId>6</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>descricao</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>descricao</fieldDescription>
+      <slotId>7</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>empresa</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>empresa</fieldDescription>
+      <slotId>8</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>estab</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>estab</fieldDescription>
+      <slotId>9</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>labelDataRef</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>labelDataRef</fieldDescription>
+      <slotId>10</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>nrTrans</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>nrTrans</fieldDescription>
+      <slotId>11</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>tipoDocto</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>tipoDocto</fieldDescription>
+      <slotId>12</slotId>
+    </ProcessFormField>
+    <ProcessFormField>
+      <processFormFieldPK>
+        <companyId>1</companyId>
+        <processId>adf_aprovacao_docto</processId>
+        <fieldId>valor</fieldId>
+      </processFormFieldPK>
+      <fieldDescription>valor</fieldDescription>
+      <slotId>13</slotId>
+    </ProcessFormField>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

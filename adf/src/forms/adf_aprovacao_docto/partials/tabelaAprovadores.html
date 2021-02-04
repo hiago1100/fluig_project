@@ -1,0 +1,27 @@
+<table ng-show="vm.show" tablename="tabelaAprovadores" id="tabelaAprovadores" noaddbutton="true" nodeletebutton="true">
+    <thead>
+        <tr>
+            <td>
+            </td>
+        </tr>
+    </thead>
+    <tbody class="tbody">
+        <tr>
+            <td id="registroAprovador">
+                <input placeholder="aprovadorSeq" type="text" ng-show="vm.show" name="aprovadorSeq" />
+                <input placeholder="aprovadorPrioridade" type="text" ng-show="vm.show" name="aprovadorPrioridade" />
+                <input placeholder="aprovadorEmail" type="text" ng-show="vm.show" name="aprovadorEmail" />
+                <input placeholder="aprovadorCodigo" type="text" ng-show="vm.show" name="aprovadorCodigo" />
+                <input placeholder="aprovadorQtdMinima" type="text" ng-show="vm.show" name="aprovadorQtdMinima" />
+                <input placeholder="aprovadorStatus" type="text" ng-show="vm.show" name="aprovadorStatus" />
+                <input placeholder="aprovadorRejeicao" type="text" ng-show="vm.show" name="aprovadorRejeicao" />
+                <input placeholder="aprovadorNarrativa" type="text" ng-show="vm.show" name="aprovadorNarrativa" />
+                <input placeholder="aprovadorData" type="text" ng-show="vm.show" name="aprovadorData" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button ng-show="vm.show" class="btn btn-default" ng-click="vm.adicionaAprovador()">Add Aprov</button>
+
+<div class="clearfix"></div>

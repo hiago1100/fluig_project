@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Alterações no Documento</h3>
+    </div>
+    <div class="panel-body">
+
+        <i ng-if="!documento.Alteracoes">Documento sem alterações</i>
+
+        <div ng-if="documento.Alteracoes">
+            <div class="alert alert-warning animate" role="alert">
+                <span class="fluigicon fluigicon-md fluigicon-exclamation-sign"></span> O documento foi alterado. Segue abaixo o histórico de alterações:
+            </div>
+            <table class="table">
+                <thead class="hidden-xs">
+                    <tr>
+                        <th>
+                            <div class="col-sm-2">Data</div>
+                            <div class="col-sm-4">Usuário</div>
+                            <div class="col-sm-6">Observações</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="alteracao in documento.Alteracoes" ng-if="$index < 2">
+                        <td>
+                            <div class="col-sm-2">
+                                <p><b class="visible-xs-inline">Data: </b> {{alteracao.alteracaoData | date:'medium'}}</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p><b class="visible-xs-inline">Usuário: </b>{{alteracao.alteracaoUsuario}}</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p><b class="visible-xs-inline">Observações: </b>{{alteracao.alteracaoObservacoes}}</p>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

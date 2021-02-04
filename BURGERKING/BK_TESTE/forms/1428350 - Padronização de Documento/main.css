@@ -1,0 +1,110 @@
+.bk_panel-heading {
+	background-color: #ffd175 !important;
+	color: #000000 !important;
+	border: 1px solid #ffd175 !important;
+}
+.bk_default {
+	border: 1px solid #ffd175 !important;
+}
+
+body{
+	font-family: sans-serif;  
+}
+  
+.title{
+	text-align: center;
+	font-family: "Trebuchet MS", sans-serif;
+	color: #ff6800 !important;
+	font-size: 25px;
+  /*color: #356da3 !important;*/
+	margin-top: 0 !important;
+}
+
+.label {
+	/*font-family: "Trebuchet MS", sans-serif;*/
+	color: #777 !important;
+}
+  
+.hrClass{
+	border-color: #ff6800 !important;
+}
+
+/* ---------------------------------------------------------------------------------RADIO BUTTON---------------------------------------------------------------------------------- */
+
+.switch-field {
+	font-family: "Trebuchet MS", sans-serif;
+  /* padding: 40px; */
+	overflow: hidden;
+}
+
+.switch-title {
+  margin-bottom: 6px;
+}
+
+.switch-field input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+}
+
+.switch-field label {
+  float: left;
+}
+
+.switch-field label {
+  display: inline-block;
+  width: 100px;
+  background-color: #e4e4e4;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  text-shadow: none;
+  padding: 6px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition:    all 0.1s ease-in-out;
+  -ms-transition:     all 0.1s ease-in-out;
+  -o-transition:      all 0.1s ease-in-out;
+  transition:         all 0.1s ease-in-out;
+}
+
+.switch-field label:hover {
+	cursor: pointer;
+}
+
+.switch-field input:checked + label {
+  color: #fff !important;
+  background-color: #92D050 !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.switch-field input:checked.reprovado + label {
+  color: #fff !important;
+  background-color: red !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.switch-field label:first-of-type {
+  border-radius: 4px 0 0 4px;
+}
+
+.switch-field label:last-of-type {
+  border-radius: 0 4px 4px 0;
+}
+
+ul li.active #doc{
+  background-color: #92D050;
+  color:white; 
+}
+
+ul li.active #configuracao{
+  background-color: #92D050;
+  color:white; 
+}

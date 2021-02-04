@@ -1,0 +1,108 @@
+<div class="panel panel-default">
+    <div class="panel-heading fs-cursor-pointer" ng-click="detalhesCollapsed = !detalhesCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': detalhesCollapsed}">
+                Detalhes
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': detalhesCollapsed}">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center"><strong><span class="fluigicon fluigicon-calendar"></span> Datas</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-6 col-md-12">
+                                <label>Data do Contrato</label>
+                                <p>{{documento.contratoDataContrato | date}}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <label>Data Inicial</label>
+                                <p>{{documento.contratoDataInicial | date}}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <label>Data Final</label>
+                                <p>{{documento.contratoDataFinal | date}}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <label>Data da Revisão</label>
+                                <p>{{documento.contratoDataRevisao | date}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center"><strong><span class="fluigicon fluigicon-money"></span> Condições e Valores</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-6 col-md-12">
+                                <label>Condição de Pagamento</label>
+                                <p>{{documento.contratoCondPagto || 'Não informada'}}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <label>Condição de Faturamento</label>
+                                <p>{{documento.contratoCondFaturamento || 'Não informada'}}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <label>Valor Limite</label>
+                                <p>{{documento.contratoLimiteValor || 'Não informado' | currency:documento.contratoMoeda}}</p>
+                            </div>
+                            <div class="col-sm-6 col-md-12">
+                                <label>Variação (Qtde / Preço)</label>
+                                <p>{{documento.contratoVariacaoQtd || 0 | percentage:2}} / {{documento.contratoVariacaoPreco
+                                    || 0 | percentage:2}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center"><strong><span class="fluigicon fluigicon-group"> </span> Responsáveis</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-4 col-md-12">
+                                <label>Comprador</label>
+                                <p>{{documento.contratoComprador || 'Não informado'}}</p>
+                            </div>
+                            <div class="col-sm-4 col-md-12">
+                                <label>Contato</label>
+                                <p>{{documento.contratoContato || 'Não informado'}}</p>
+                            </div>
+                            <div class="col-sm-4 col-md-12">
+                                <label>Gestor Técnico</label>
+                                <p>{{documento.contratoGestorTecnico || 'Não informado'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center"><strong><span class="fa fa-truck"></span> Transporte</strong></h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-4 col-md-12">
+                                <label>Transportador</label>
+                                <p>{{documento.contratoTransportador || 'Não informado'}}</p>
+                            </div>
+                            <div class="col-sm-4 col-md-12">
+                                <label>Via Transporte</label>
+                                <p>{{documento.contratoViaTransporte || 'Não informado'}}</p>
+                            </div>
+                            <div class="col-sm-4 col-md-12">
+                                <label>Frete</label>
+                                <p>{{documento.contratoFrete || 'Não informado'}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

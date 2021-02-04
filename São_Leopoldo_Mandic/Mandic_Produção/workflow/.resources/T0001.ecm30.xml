@@ -1,0 +1,3176 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>T0001</processId>
+    </processDefinitionPK>
+    <processDescription>Requisição de Compras</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Suprimentos</categoryId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;Consulta_solicitacoes&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>true</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Requisição de Compras</processId>
+      <version>46</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>665</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>true</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>true</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Requisição de Material</stateName>
+      <stateDescription>Requisição de Material</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Grupo</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Group&gt;Requisitantes&lt;/Group&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>180</positionX>
+      <positionY>49</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </processStatePK>
+      <stateName>Analise de Necessidade</stateName>
+      <stateDescription>Analise de Necessidade</stateDescription>
+      <instruction>Gestor do Centro de Custo deve analisar a necessidade do material solicitado</instruction>
+      <deadlineTime>57600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtUsuarioAprovador&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>90</positionX>
+      <positionY>142</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>20</sequence>
+      </processStatePK>
+      <stateName>Analise Compras</stateName>
+      <stateDescription>Analise Compras</stateDescription>
+      <instruction>Para compras de Produtos/Serviços o Departamento de Compras irá analisar o que vai para o Almoxarifado e o que vai para Solicitação de Compras</instruction>
+      <deadlineTime>57600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>400</positionX>
+      <positionY>240</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>32</sequence>
+      </processStatePK>
+      <stateName>Revisão do Requisitante</stateName>
+      <stateDescription>Revisão do Requisitante</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>460</positionX>
+      <positionY>34</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>46</sequence>
+      </processStatePK>
+      <stateName>CD/PC: Apr Financeiro</stateName>
+      <stateDescription>CD/PC: Apr Financeiro</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>57600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>130</positionX>
+      <positionY>348</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>69</sequence>
+      </processStatePK>
+      <stateName>CD/PC: Apr Mantenedora</stateName>
+      <stateDescription>CD/PC: Apr Mantenedora</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>57600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>130</positionX>
+      <positionY>458</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>15</sequence>
+      </processStatePK>
+      <stateName>Aprova?</stateName>
+      <stateDescription>Aprova?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>340</positionX>
+      <positionY>133</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>77</sequence>
+      </processStatePK>
+      <stateName>Aprova?</stateName>
+      <stateDescription>Aprova?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>560</positionX>
+      <positionY>353</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>79</sequence>
+      </processStatePK>
+      <stateName>Aprova?</stateName>
+      <stateDescription>Aprova?</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>690</positionX>
+      <positionY>463</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>87</sequence>
+      </processStatePK>
+      <stateName>Gestor Compras</stateName>
+      <stateDescription>Gestor Compras</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>660</positionX>
+      <positionY>236</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>92</sequence>
+      </processStatePK>
+      <stateName>Série</stateName>
+      <stateDescription>Série</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>70</positionX>
+      <positionY>18</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>63</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>420</positionX>
+      <positionY>610</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>90</sequence>
+      </processStatePK>
+      <stateName>Requisição Cancelada</stateName>
+      <stateDescription>Requisição Cancelada</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>665</positionX>
+      <positionY>608</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>46</version>
+        <sequence>15</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDREVISADOCCU&quot;) &gt; &quot;0000&quot;</condition>
+      <destinationSequenceId>32</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtSolicitanteRM&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>46</version>
+        <sequence>15</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDAPROVADOCCU&quot;)  == hAPI.getCardValue(&quot;ESTOQUETOTAL&quot;) &amp;&amp; hAPI.getCardValue(&quot;txtTipoProcesso&quot;) == &quot;1&quot; </condition>
+      <destinationSequenceId>63</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtSolicitanteRM&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>46</version>
+        <sequence>15</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDAPROVADOCCU&quot;)  &gt; hAPI.getCardValue(&quot;ESTOQUETOTAL&quot;) &amp;&amp; hAPI.getCardValue(&quot;txtTipoProcesso&quot;) == &quot;1&quot; </condition>
+      <destinationSequenceId>20</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;91f40689-807a-4612-b8ac-5b31ed6a1efd&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Usuário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>4</expressionOrder>
+        <version>46</version>
+        <sequence>15</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDAPROVADOCCU&quot;) &gt; &quot;0000&quot; &amp;&amp; hAPI.getCardValue(&quot;txtTipoProcesso&quot;) == &quot;2&quot; </condition>
+      <destinationSequenceId>46</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;d112e810-e496-49f8-81d3-f51917e879cb&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Usuário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>5</expressionOrder>
+        <version>46</version>
+        <sequence>15</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDAPROVADOCCU&quot;) &gt; &quot;0000&quot; &amp;&amp; hAPI.getCardValue(&quot;txtTipoProcesso&quot;) == &quot;3&quot; </condition>
+      <destinationSequenceId>46</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;d112e810-e496-49f8-81d3-f51917e879cb&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Usuário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>6</expressionOrder>
+        <version>46</version>
+        <sequence>15</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDAPROVADOCCU&quot;)  &gt; hAPI.getCardValue(&quot;ESTOQUETOTAL&quot;) &amp;&amp; hAPI.getCardValue(&quot;txtTipoProcesso&quot;) == &quot;4&quot; </condition>
+      <destinationSequenceId>20</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;91f40689-807a-4612-b8ac-5b31ed6a1efd&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Usuário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>7</expressionOrder>
+        <version>46</version>
+        <sequence>15</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDREPROVADOCCU&quot;) &gt; &quot;0000&quot;</condition>
+      <destinationSequenceId>63</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtSolicitanteRM&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>46</version>
+        <sequence>77</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDREVISADOFIN&quot;) &gt; &quot;0000&quot;</condition>
+      <destinationSequenceId>32</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtSolicitanteRM&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>46</version>
+        <sequence>77</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDAPROVADOFIN&quot;) &gt; &quot;0000&quot;</condition>
+      <destinationSequenceId>69</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;a603f788-74cd-4213-86fe-0c0c1f329d98&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Usuário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>46</version>
+        <sequence>77</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDREPROVADOFIN&quot;) &gt; &quot;0000&quot;</condition>
+      <destinationSequenceId>63</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtSolicitanteRM&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>46</version>
+        <sequence>79</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDREVISADOMAN&quot;) &gt; &quot;0000&quot;</condition>
+      <destinationSequenceId>32</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtSolicitanteRM&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>46</version>
+        <sequence>79</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;QTDREVISADOMAN&quot;) == &quot;0000&quot;</condition>
+      <destinationSequenceId>63</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtSolicitanteRM&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>46</version>
+        <sequence>87</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;ckbFinalizar&quot;) == &quot;1&quot;</condition>
+      <destinationSequenceId>90</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtSolicitanteRM&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>46</version>
+        <sequence>87</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;ckbFinalizar&quot;) != &quot;1&quot;</condition>
+      <destinationSequenceId>63</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtSolicitanteRM&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>46</version>
+        <sequence>92</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;tipoSerie&quot;) == &quot;D&quot; &amp;&amp; hAPI.getCardValue(&quot;txtTipoProcesso&quot;) == &quot;3&quot;</condition>
+      <destinationSequenceId>46</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;d112e810-e496-49f8-81d3-f51917e879cb&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Usuário</engineAllocationId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>46</version>
+        <sequence>92</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>5</destinationSequenceId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;txtUsuarioAprovador&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+    </ConditionProcessState>
+  </list>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>21</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>15</initialStateSequence>
+      <finalStateSequence>20</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>33</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>15</initialStateSequence>
+      <finalStateSequence>32</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>34</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>32</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>38</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>15</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>47</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>15</initialStateSequence>
+      <finalStateSequence>46</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>78</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>46</initialStateSequence>
+      <finalStateSequence>77</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>80</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>69</initialStateSequence>
+      <finalStateSequence>79</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>81</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>77</initialStateSequence>
+      <finalStateSequence>32</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>82</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>79</initialStateSequence>
+      <finalStateSequence>32</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>83</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>79</initialStateSequence>
+      <finalStateSequence>63</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>84</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>77</initialStateSequence>
+      <finalStateSequence>63</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>85</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>77</initialStateSequence>
+      <finalStateSequence>69</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>86</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>15</initialStateSequence>
+      <finalStateSequence>63</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>88</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>20</initialStateSequence>
+      <finalStateSequence>87</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>89</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>87</initialStateSequence>
+      <finalStateSequence>63</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>91</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>87</initialStateSequence>
+      <finalStateSequence>90</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>93</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>92</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>94</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>92</initialStateSequence>
+      <finalStateSequence>46</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>95</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>92</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list>
+    <ProcessAttachmentSecurity>
+      <processAttachmentSecurityPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processAttachmentSecurityPK>
+      <engineAllocationId>Todos os Usuários</engineAllocationId>
+      <accessLevel>PRMOED</accessLevel>
+      <editionMode>false</editionMode>
+    </ProcessAttachmentSecurity>
+  </list>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessFinish</eventId>
+        <processId>T0001</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessFinish(processId){&#xd;
+	&#xd;
+	var TipoProcesso = hAPI.getCardValue(&quot;txtTipoProcesso&quot;);&#xd;
+  var atv = hAPI.getCardValue(&quot;ATIVIDADEATUAL&quot;);&#xd;
+  var numProcess   = getValue(&quot;WKNumProces&quot;);&#xd;
+&#xd;
+  log.info(&quot;*** CRM *** - Entrei no AfterProcessFinish&quot;);&#xd;
+&#xd;
+if ( atv != 20){&#xd;
+&#xd;
+   if (atv == 46 ) {&#xd;
+      var revisado     = hAPI.getCardValue(&quot;QTDREVISADOFIN&quot;);&#xd;
+      var reprovado    = hAPI.getCardValue(&quot;QTDREPROVADOFIN&quot;);&#xd;
+      var aprovado     = hAPI.getCardValue(&quot;QTDAPROVADOFIN&quot;);&#xd;
+&#xd;
+    } else if (atv == 69 ) {&#xd;
+          var revisado     = hAPI.getCardValue(&quot;QTDREVISADOMAN&quot;);&#xd;
+          var reprovado    = hAPI.getCardValue(&quot;QTDREPROVADOMAN&quot;);&#xd;
+          var aprovado     = hAPI.getCardValue(&quot;QTDAPROVADOMAN&quot;);&#xd;
+            }&#xd;
+&#xd;
+&#xd;
+  var activity     = getValue(&apos;WKNumState&apos;);&#xd;
+&#xd;
+  var estoquetotal     = hAPI.getCardValue(&quot;ESTOQUETOTAL&quot;);&#xd;
+&#xd;
+  var qtditens     = parseFloat(revisado) + parseFloat(reprovado) + parseFloat(aprovado);&#xd;
+  &#xd;
+  var itens        = hAPI.getCardData(numProcess);&#xd;
+  var codcoligada  = hAPI.getCardValue(&quot;CODCOLIGADA&quot;);&#xd;
+  var codfilial    = hAPI.getCardValue(&quot;CODFILIAL&quot;);&#xd;
+  var codloc       = hAPI.getCardValue(&quot;CODLOC&quot;);&#xd;
+  var codtmv       = &quot;&quot;;&#xd;
+ &#xd;
+        &#xd;
+           if (revisado &gt; &quot;0000&quot;) {&#xd;
+&#xd;
+               throw &quot;Requisição deve passar por Revisão antes de ser finalizada&quot;;&#xd;
+&#xd;
+           }  else if ( aprovado &gt; &quot;0000&quot; ) {&#xd;
+&#xd;
+                  &#xd;
+              if (TipoProcesso == &quot;2&quot;){&#xd;
+                         &#xd;
+                         log.info( &quot;*** CRM ***  Incluisão do parcela de contrato (1.1.17) para o Processo &quot;+numProcess+&quot; na coligada &quot;+codcoligada+&quot; filial&quot;+codfilial+&quot; e Local de Estoque &quot;+codloc );&#xd;
+                         &#xd;
+                         codtmv = hAPI.getCardValue(&quot;CODTMV&quot;);  &#xd;
+&#xd;
+                         } else if (TipoProcesso == &quot;3&quot;)  {&#xd;
+&#xd;
+                             log.info( &quot;*** CRM ***  Incluisão do Compras Direta (1.1.18) para o Processo &quot;+numProcess+&quot; na coligada &quot;+codcoligada+&quot; filial&quot;+codfilial+&quot; e Local de Estoque &quot;+codloc );&#xd;
+                             &#xd;
+                             codtmv = &quot;1.1.18&quot;;  &#xd;
+                                 &#xd;
+                                 }&#xd;
+                geraMov (numProcess, codcoligada, codfilial, codloc, codtmv);&#xd;
+                log.info(&quot;======= FIM DA INCLUSAO ===============================&quot;);&#xd;
+                        &#xd;
+        &#xd;
+          }&#xd;
+  } // movimento de compras não passam por aqui&#xd;
+}&#xd;
+&#xd;
+function geraMov (numProcess, codcoligada, codfilial,codloc,codtmv){&#xd;
+    &#xd;
+    var NOME_DATASERVER = &quot;MovMovimentoTBCData&quot;;  &#xd;
+    var usuario         = &quot;mestre&quot;; &#xd;
+    var senha           = &quot;FR5G1I2EmFdNkE00SUYO&quot;;          &#xd;
+    var authService     = getWebService(usuario, senha);  &#xd;
+    var context         = &quot;CodUsuario=mestre;CodSistema=T;CodColigada=&quot;+codcoligada;&#xd;
+    var nseq            = 0;&#xd;
+    var historicoMOV    = hAPI.getCardValue(&quot;txtHistoricoMOV&quot;);&#xd;
+    var codcolcfo       = hAPI.getCardValue(&quot;CODCOLCFO&quot;);&#xd;
+    var codcfo          = hAPI.getCardValue(&quot;CODCFO&quot;);&#xd;
+    var idcnt           = hAPI.getCardValue(&quot;IDCNT&quot;);&#xd;
+    var codcpg          = hAPI.getCardValue(&quot;CODCPG&quot;);&#xd;
+    var CODVEN          = hAPI.getCardValue(&quot;CODVEN&quot;);&#xd;
+    var USUARIO         = hAPI.getCardValue(&quot;txtUsuarioRM&quot;);&#xd;
+    var FRETE           = hAPI.getCardValue(&quot;txtValorFrete&quot;);&#xd;
+    var DESCONTO        = hAPI.getCardValue(&quot;txtValorDesconto&quot;);&#xd;
+    var OBSERVACAO      = hAPI.getCardValue(&quot;txtComentarioComprador&quot;);&#xd;
+   &#xd;
+    &#xd;
+&#xd;
+    if (codtmv == &quot;1.1.18&quot;) {&#xd;
+&#xd;
+      log.info(&quot;======= PASSANDO POR TIPOS DE SERIES ===============================&quot;);&#xd;
+&#xd;
+      codcpg = &quot;001&quot;;&#xd;
+      var NUMEROMOV       = &quot;&quot;;&#xd;
+      var serie = hAPI.getCardValue(&quot;comSerie&quot;);&#xd;
+      if (serie == &quot;F&quot;){ serie = &quot;FOL&quot;;}else if(serie == &quot;D&quot;){serie = &quot;DIR&quot;;} else { serie = &quot;PCA&quot;;}&#xd;
+      var dataentrega = hAPI.getCardValue(&quot;txtCondPagamento&quot;);&#xd;
+      var DATAEMISSAO  = hAPI.getCardValue(&quot;txtEmissaoCD&quot;);&#xd;
+      var CODNAT = &quot;&quot;;&#xd;
+      var datafimfat = &quot;&quot;; &#xd;
+      var datainifat = &quot;&quot;;&#xd;
+&#xd;
+      log.info(&quot;======= SERIE = &quot; + serie);     &#xd;
+&#xd;
+&#xd;
+    } else { &#xd;
+      &#xd;
+        var NUMEROMOV       = hAPI.getCardValue(&quot;txtNumNF&quot;);&#xd;
+        var DATAEMISSAO  = hAPI.getCardValue(&quot;txtEmissaoCNT&quot;);&#xd;
+        var serie = &quot;1&quot;;&#xd;
+        var dataentrega = dataAtualFormatada(); &#xd;
+        var datainifat = dataAtualFormatada(); &#xd;
+        var datafimfat = dataAtualFormatada(); &#xd;
+        var CODNAT = hAPI.getCardValue(&quot;IDNAT&quot;);&#xd;
+        &#xd;
+      }&#xd;
+&#xd;
+&#xd;
+    if (CODCOMP == null ){&#xd;
+      CODCOMP = &quot;9999&quot;;&#xd;
+    }&#xd;
+  &#xd;
+    if (CODVEN == null ){&#xd;
+      CODVEN = &quot;9999&quot;;&#xd;
+    }&#xd;
+  &#xd;
+&#xd;
+    if ((codcolcfo == &quot;&quot;) || (codcolcfo == null)) {&#xd;
+    	codcolcfo = 0;&#xd;
+    	}&#xd;
+    &#xd;
+    var XML = &#xd;
+            &quot;&lt;MovMovimento &gt;&quot; +   &#xd;
+            &quot;  &lt;TMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;CODFILIAL&gt;&quot;+codfilial+&quot;&lt;/CODFILIAL&gt;&quot; + &#xd;
+            &quot;    &lt;NUMEROMOV&gt;&quot;+NUMEROMOV+&quot;&lt;/NUMEROMOV&gt;&quot;+  &#xd;
+            &quot;    &lt;CODLOC&gt;&quot;+codloc+&quot;&lt;/CODLOC&gt;&quot; +    &#xd;
+            &quot;    &lt;CODLOCDESTINO&gt;&quot;+codloc+&quot;&lt;/CODLOCDESTINO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODTMV&gt;&quot;+codtmv+&quot;&lt;/CODTMV&gt;&quot; +   &#xd;
+            &quot;    &lt;TIPO&gt;A&lt;/TIPO&gt;&quot; +   &#xd;
+            &quot;    &lt;DATAEMISSAO&gt;&quot;+DATAEMISSAO+&quot;&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+            &quot;    &lt;DATABASEMOV&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATABASEMOV&gt;&quot; + &#xd;
+            &quot;    &lt;DATAENTREGA&gt;&quot;+dataentrega+&quot;&lt;/DATAENTREGA&gt;&quot;+  &#xd;
+            &quot;    &lt;DATAMOVIMENTO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATAMOVIMENTO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODFILIALDESTINO&gt;&quot;+codfilial+&quot;&lt;/CODFILIALDESTINO&gt;&quot; +      &#xd;
+            &quot;    &lt;DATALANCAMENTO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATALANCAMENTO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLCFO&gt;&quot;+codcolcfo+&quot;&lt;/CODCOLCFO&gt;&quot;;&#xd;
+            &#xd;
+            if (codcfo != &quot;&quot;) {&#xd;
+            	 XML = XML +&quot;    &lt;CODCFO&gt;&quot;+codcfo+&quot;&lt;/CODCFO&gt;&quot;; }&#xd;
+            if (codcpg != &quot;&quot;) {&#xd;
+               XML = XML +&quot;    &lt;CODCPG&gt;&quot;+codcpg+&quot;&lt;/CODCPG&gt;&quot;; }&#xd;
+            &#xd;
+          XML = XML +&#xd;
+            &quot;	 &lt;SERIE&gt;&quot;+serie+&quot;&lt;/SERIE&gt;&quot;+&#xd;
+            &quot;    &lt;CODCCUSTO&gt;&lt;/CODCCUSTO&gt;&quot;+ &#xd;
+            &quot;    &lt;IDNAT&gt;&quot;+CODNAT+&quot;&lt;/IDNAT&gt;&quot;+ &#xd;
+            &quot;    &lt;CODVEN1&gt;9999&lt;/CODVEN1&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN2&gt;&quot;+CODVEN+&quot;&lt;/CODVEN2&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN3&gt;9999&lt;/CODVEN3&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN4&gt;9999&lt;/CODVEN4&gt;&quot; +&#xd;
+            &quot;    &lt;VALORDESC&gt;&quot;+DESCONTO+&quot;&lt;/VALORDESC&gt;&quot;+&#xd;
+            &quot;    &lt;VALORFRETE&gt;&quot;+FRETE+&quot;&lt;/VALORFRETE&gt;&quot;+&#xd;
+            &quot;    &lt;OBSERVACAO&gt;&quot;+OBSERVACAO+&quot;&lt;/OBSERVACAO&gt;&quot;+&#xd;
+            &quot;    &lt;USUARIOCRIACAO&gt;&quot;+USUARIO+&quot;&lt;/USUARIOCRIACAO&gt;&quot; +&#xd;
+            &quot;    &lt;HISTORICOLONGO&gt;&quot;+historicoMOV+&quot;&lt;/HISTORICOLONGO&gt;&quot; +&#xd;
+            &quot;  &lt;/TMOV&gt;&quot; +  &#xd;
+            &#xd;
+            &quot;  &lt;TNFE&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;  &lt;/TNFE&gt;&quot; +   &#xd;
+            &quot;  &lt;TMOVFISCAL&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;  &lt;/TMOVFISCAL&gt;&quot; ;&#xd;
+&#xd;
+&#xd;
+    var itens = hAPI.getCardData(numProcess);&#xd;
+    var keys = itens.keySet().toArray();&#xd;
+    for (var key in keys) {&#xd;
+      var field = keys[key];&#xd;
+&#xd;
+      if (field.indexOf(&quot;comAprovado___&quot;) &gt; -1) {&#xd;
+        &#xd;
+          var index = field.replace(&quot;comAprovado___&quot;, &quot;&quot;); &#xd;
+          var aprovado = hAPI.getCardValue(&quot;comAprMantenedora___&quot;+index);&#xd;
+&#xd;
+            log.info(&quot;============ MOVIMENTO APROVADO &quot;+aprovado);&#xd;
+          &#xd;
+          if (aprovado == &quot;S&quot;){&#xd;
+          &#xd;
+              var idprd = hAPI.getCardValue(&quot;IDPRD___&quot;+index);&#xd;
+&#xd;
+              if (codtmv == &apos;1.1.02&apos;){&#xd;
+&#xd;
+                var qtdSolicitada = parseFloat(hAPI.getCardValue(&quot;txtQtdCompra___&quot;+index));&#xd;
+&#xd;
+              } else {&#xd;
+&#xd;
+                var qtdSolicitada = hAPI.getCardValue(&quot;txtQtdSolicitada___&quot;+index);&#xd;
+              }&#xd;
+&#xd;
+              log.info( &quot;*** CRM ***  QUANTIDADE é &quot;+qtdSolicitada);&#xd;
+&#xd;
+              var precounitario = hAPI.getCardValue(&quot;txtPrecoUnitario___&quot;+index);&#xd;
+              var valortotalitem = hAPI.getCardValue(&quot;txtTotalItem___&quot;+index);&#xd;
+              var codccusto = hAPI.getCardValue(&quot;CODCCUSTO___&quot;+index);&#xd;
+              var historicoITMMOV = hAPI.getCardValue(&quot;txtHistoricoITMMOV___&quot;+index);&#xd;
+              var CODCOMP         = hAPI.getCardValue(&quot;CODCOMP___&quot;+index);&#xd;
+&#xd;
+              log.info( &quot;*** CRM ***  Comprador - &quot;+CODCOMP);&#xd;
+                 &#xd;
+          &#xd;
+                  &#xd;
+                  if (qtdSolicitada != 0) {&#xd;
+&#xd;
+                  var nseq = index; &#xd;
+&#xd;
+&#xd;
+&#xd;
+                  XML = XML +    &#xd;
+                        &quot;  &lt;TITMMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+                        &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;NSEQITMMOV&gt;&quot;+nseq+&quot;&lt;/NSEQITMMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;CODFILIAL&gt;&quot;+codfilial+&quot;&lt;/CODFILIAL&gt;&quot; +   &#xd;
+                        &quot;    &lt;NUMEROSEQUENCIAL&gt;&quot;+nseq+&quot;&lt;/NUMEROSEQUENCIAL&gt;&quot; +   &#xd;
+                        &quot;    &lt;IDPRD&gt;&quot;+idprd+&quot;&lt;/IDPRD&gt;&quot; +&#xd;
+                        &quot;    &lt;QUANTIDADE&gt;&quot;+qtdSolicitada+&quot;&lt;/QUANTIDADE&gt;&quot; +   &#xd;
+                        &quot;    &lt;PRECOUNITARIO&gt;&quot;+precounitario+&quot;&lt;/PRECOUNITARIO&gt;&quot; +&#xd;
+                        &quot;    &lt;VALORTOTALITEM&gt;&quot;+valortotalitem+&quot;&lt;/VALORTOTALITEM&gt;&quot;+   &#xd;
+                        &quot;    &lt;DATAEMISSAO&gt;&quot;+DATAEMISSAO+&quot;&lt;/DATAEMISSAO&gt;&quot; +&#xd;
+                        &quot;    &lt;DATAFATCONTRATO&gt;&quot;+DATAEMISSAO+&quot;&lt;/DATAFATCONTRATO&gt;&quot;+     &#xd;
+                        &quot;    &lt;CODLOC&gt;&quot;+codloc+&quot;&lt;/CODLOC&gt;&quot; + &#xd;
+                        &quot;    &lt;IDNAT&gt;&quot;+CODNAT+&quot;&lt;/IDNAT&gt;&quot;+ &#xd;
+                        &quot;    &lt;CODVEN1&gt;&quot;+CODCOMP+&quot;&lt;/CODVEN1&gt;&quot; +  &#xd;
+                        &quot;    &lt;DATAINIFAT&gt;&quot;+datainifat+&quot;&lt;/DATAINIFAT&gt;&quot;+&#xd;
+                        &quot;    &lt;DATAFIMFAT&gt;&quot;+datafimfat+&quot;&lt;/DATAFIMFAT&gt;&quot;+&#xd;
+                        &quot;    &lt;CODCCUSTO&gt;&quot;+codccusto+&quot;&lt;/CODCCUSTO&gt;&quot;;&#xd;
+                  &#xd;
+                       if (idcnt != null) {&#xd;
+                    	   XML = XML +&quot;    &lt;IDCNT&gt;&quot;+idcnt+&quot;&lt;/IDCNT&gt;&quot;; }&#xd;
+                   XML = XML +&#xd;
+                       &quot;    &lt;HISTORICOLONGO&gt;&quot;+historicoITMMOV+&quot;&lt;/HISTORICOLONGO&gt;&quot;+     &#xd;
+                       &quot;    &lt;/TITMMOV&gt;&quot;; &#xd;
+                  }&#xd;
+&#xd;
+              }&#xd;
+            &#xd;
+        }              &#xd;
+    }&#xd;
+&#xd;
+&#xd;
+   if (nseq &gt; 0){&#xd;
+&#xd;
+        XML = XML +    &#xd;
+           &quot;  &lt;TMOVCOMPL&gt;&quot; +   &#xd;
+           &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +      &#xd;
+           &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+           &quot;    &lt;NUMFLUIG&gt;&quot;+numProcess+&quot;&lt;/NUMFLUIG&gt;&quot; +&#xd;
+           &quot;  &lt;/TMOVCOMPL&gt;&quot;+                      &#xd;
+           &quot;&lt;/MovMovimento&gt;&quot;;&#xd;
+        &#xd;
+        &#xd;
+       &#xd;
+       &#xd;
+       try{&#xd;
+          &#xd;
+          log.info( &quot;*** CRM *** XML do movimnto é &quot;+XML);&#xd;
+&#xd;
+          var result = new String(authService.saveRecord(NOME_DATASERVER, XML, context));&#xd;
+&#xd;
+          log.info(&quot;*** CRM *** Fluig &quot;+numProcess+&quot;.integracao com RM resultado  VER IDMOV - &quot;+result);&#xd;
+           &#xd;
+           &#xd;
+           if (result.length &gt; 20){&#xd;
+             var mensagemErro = result;  &#xd;
+             throw mensagemErro; &#xd;
+           } else {&#xd;
+&#xd;
+                  var idmov = result.substring(result.search(&quot;;&quot;)+1,result.length);&#xd;
+                  log.info(&quot;*** CRM *** FINISH IDMOV SALVAR&quot;+idmov); &#xd;
+                  hAPI.setCardValue(&quot;IDMOV&quot;,idmov);&#xd;
+                }&#xd;
+        }  &#xd;
+      &#xd;
+       &#xd;
+        catch (e)   &#xd;
+        {  &#xd;
+            if (e == null) e = &quot;*** CRM *** Erro desconhecido!&quot;;  &#xd;
+            &#xd;
+            var mensagemErro = &quot;*** CRM *** Ocorreu um erro ao salvar dados no RM (coligada &quot;+codcoligada+&quot; ): &quot; + e;  &#xd;
+            &#xd;
+            throw mensagemErro;  &#xd;
+        }&#xd;
+    }&#xd;
+&#xd;
+}&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+/**&apos;&#xd;
+* A API de autenticação da Totvs baseia no &quot;Basic access authentication&quot; do HTTP.&#xd;
+* Código Java para autenticação &#xd;
+* Programa responsável por integrar com os Webservices do RM &#xd;
+*  Exemplo dev valores para os parâmetros &#xd;
+*       @param string Usuario = &quot;mestre&quot;;&#xd;
+*       @param string Senha = &quot;totvs&quot;;&#xd;
+*/&#xd;
+&#xd;
+function getWebService(Usuario, Senha){&#xd;
+&#xd;
+ var Nome_Servico = &quot;WS&quot;;&#xd;
+ var Caminho_Servico = &quot;com.totvs.WsDataServer&quot;;&#xd;
+ &#xd;
+    var dataServerService = ServiceManager.getServiceInstance(Nome_Servico);&#xd;
+    if(dataServerService == null){&#xd;
+        throw &quot;Servico nao encontrado: &quot; + Nome_Servico;&#xd;
+    }&#xd;
+    &#xd;
+    var serviceLocator = dataServerService.instantiate(Caminho_Servico);&#xd;
+    if(serviceLocator == null){&#xd;
+        throw &quot;Instancia do servico nao encontrada: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var service = serviceLocator.getRMIwsDataServer();  &#xd;
+    if(service == null){&#xd;
+        throw &quot;Instancia do dataserver do invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var serviceHelper = dataServerService.getBean();&#xd;
+    if(serviceHelper == null){&#xd;
+        throw &quot;Instancia do service helper invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var authService = serviceHelper.getBasicAuthenticatedClient(service, &quot;com.totvs.IwsDataServer&quot;, Usuario, Senha);      &#xd;
+    if(serviceHelper == null){&#xd;
+        throw &quot;Instancia do auth service invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+    &#xd;
+    return authService;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcReadView(dataservername, context, usuario, senha, filtro)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+      &#xd;
+   // lê os dados da visão respeitando o filtro passado&#xd;
+      var viewData = new String(authService.readView(dataservername, filtro, context));&#xd;
+&#xd;
+      return viewData;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcReadRecord(dataservername, context, usuario, senha, primaryKey)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+&#xd;
+   // lê os dados do registro respeitando a pk passada&#xd;
+      try&#xd;
+      {&#xd;
+        var recordData = new String(authService.readRecord(dataservername, primaryKey, context));&#xd;
+      }&#xd;
+      catch (e) &#xd;
+      {&#xd;
+          var recordData = new String(authService.getSchema(dataservername, context));&#xd;
+      }&#xd;
+      &#xd;
+      return recordData;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcSaveRecord(dataservername, context, usuario, senha, xml)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+&#xd;
+   // salva o registro de acordo com o xml passado&#xd;
+      var pk = new String(authService.readRecord(dataservername, xml, context));&#xd;
+          &#xd;
+      return pk;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+//Transforma o conceito de constraints do Fluig para o Filtro do TBC.&#xd;
+function parseConstraints(constraints, filterRequired)&#xd;
+{&#xd;
+    // inicializa o resultado...&#xd;
+    var result = [];&#xd;
+    result.context = &quot;&quot;;&#xd;
+    &#xd;
+    // inicializa o filtro...&#xd;
+    var filter = &quot;&quot;;&#xd;
+    &#xd;
+    // varre as contraints...&#xd;
+ for    (con in constraints) {&#xd;
+    var fieldName = con.getFieldName().toUpperCase();&#xd;
+    if (fieldName == &quot;RMSCONTEXT&quot;)&#xd;
+    {&#xd;
+        result.context = con.getInitialValue();&#xd;
+        continue;&#xd;
+    }&#xd;
+    &#xd;
+    filter += &quot;(&quot;;&#xd;
+    &#xd;
+    if (fieldName == &quot;RMSFILTER&quot;)&#xd;
+        {&#xd;
+        filter += con.getInitialValue();&#xd;
+        }&#xd;
+    else&#xd;
+        {&#xd;
+        if (con.getInitialValue() == con.getFinalValue() || isEmpty(con.getFinalValue()))&#xd;
+            {&#xd;
+                filter += con.getFieldName();&#xd;
+                var isLike = false;&#xd;
+                switch(con.getConstraintType())&#xd;
+                {&#xd;
+                    case ConstraintType.MUST:&#xd;
+                        filter += &quot; = &quot;;&#xd;
+                    break;&#xd;
+                    case ConstraintType.MUST_NOT:&#xd;
+                        filter += &quot; = &quot;;&#xd;
+                    break;&#xd;
+                    case ConstraintType.SHOULD:&#xd;
+                        filter += &quot; LIKE &quot;;&#xd;
+                        isLike = true;&#xd;
+                    break;&#xd;
+                    case ConstraintType.SHOULD_NOT:&#xd;
+                        filter += &quot; NOT LIKE &quot;;&#xd;
+                        isLike = true;&#xd;
+                    break;&#xd;
+                }&#xd;
+                filter += getFormattedValue(con.getInitialValue(), isLike);&#xd;
+            }&#xd;
+        else&#xd;
+            {&#xd;
+            filter += con.getFieldName();&#xd;
+            filter += &quot; BETWEEN &quot;;&#xd;
+            filter += getFormattedValue(con.getInitialValue(), false);&#xd;
+            filter += &quot; AND &quot;;&#xd;
+            filter += getFormattedValue(con.getFinalValue(), false);&#xd;
+            }&#xd;
+        }&#xd;
+    &#xd;
+        filter += &quot;) AND &quot;;&#xd;
+    }&#xd;
+ &#xd;
+ if (filter.length == 0)&#xd;
+ {&#xd;
+    if(filterRequired){&#xd;
+      filter = &quot;1=1&quot;;&#xd;
+    }&#xd;
+    else{&#xd;
+      filter = &quot;1=1&quot;;&#xd;
+    }&#xd;
+ }&#xd;
+ else&#xd;
+    filter = filter.substring(0, filter.length-5);&#xd;
+ &#xd;
+ // guarda o filtro...&#xd;
+ result.filter = filter;&#xd;
+ &#xd;
+ // retorna o resultado...&#xd;
+ return result;&#xd;
+}&#xd;
+&#xd;
+function isEmpty(str) {&#xd;
+ return (!str || 0 === str.length);&#xd;
+}&#xd;
+&#xd;
+function getFormattedValue(value, isLike){&#xd;
+    if(isLike){&#xd;
+      return &quot;&apos;%&quot; + value + &quot;%&apos;&quot;;&#xd;
+    }&#xd;
+    else{&#xd;
+      return &quot;&apos;&quot; + value + &quot;&apos;&quot;;&#xd;
+    }&#xd;
+}&#xd;
+&#xd;
+&#xd;
+&#xd;
+function getXMLFromString(xmlString) {&#xd;
+    var factory = javax.xml.parsers.DocumentBuilderFactory.newInstance();&#xd;
+    var parser = factory.newDocumentBuilder();&#xd;
+    var is = new org.xml.sax.InputSource();&#xd;
+ is.setCharacterStream(new java.io.StringReader(xmlString));&#xd;
+    return parser.parse(is);&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function abrirPesquisa(DATASET_ID, dataFields, resultFields, type, title){  &#xd;
+    window.open(&quot;/webdesk/zoom.jsp&quot; +&#xd;
+    &quot;?datasetId=&quot; +&#xd;
+    DATASET_ID +&#xd;
+    &quot;&amp;dataFields=&quot; +&#xd;
+    dataFields +&#xd;
+    &quot;&amp;resultFields=&quot; +&#xd;
+    resultFields +&#xd;
+    &quot;&amp;type=&quot; +&#xd;
+    type+&#xd;
+    &quot;&amp;title=&quot; +&#xd;
+    title   &#xd;
+    , &quot;zoom&quot;, &quot;status,scroolbars=no,width=600,height=350,top=0,left=0&quot;);&#xd;
+}&#xd;
+&#xd;
+function checkIsPK(result, qtd){&#xd;
+    var lines = result.split(&apos;\r&apos;);&#xd;
+    &#xd;
+    if(lines.length == 1){&#xd;
+        var pk = result.split(&apos;;&apos;);&#xd;
+        if(pk.length == qtd)&#xd;
+            return;&#xd;
+    }&#xd;
+        throw result;&#xd;
+    &#xd;
+}&#xd;
+&#xd;
+function ChekExist(result)&#xd;
+{&#xd;
+     var lines = result.split(&apos;\r&apos;);&#xd;
+    if(lines.length &gt; 1)&#xd;
+        return true&#xd;
+    else&#xd;
+        return false;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function replaceValue(text, columnName, newValue){&#xd;
+&#xd;
+    &#xd;
+    if ((newValue != null) &amp;&amp; (newValue.trim() != &quot;&quot;))&#xd;
+    {&#xd;
+        var regex = new RegExp(&quot;&lt;&quot; + columnName + &quot;&gt;(.*?)&lt;\\/&quot; + columnName + &quot;&gt;&quot;, &quot;g&quot;);&#xd;
+        var replaceText = &quot;&lt;&quot; + columnName + &quot;&gt;&quot; + newValue + &quot;&lt;/&quot; + columnName + &quot;&gt;&quot;;&#xd;
+        &#xd;
+        return text.replace(regex, replaceText);&#xd;
+    }&#xd;
+    else&#xd;
+        return text;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function isEmpty(str) {&#xd;
+ return (!str || 0 === str.length);&#xd;
+}&#xd;
+function GetXml()  &#xd;
+{  &#xd;
+ return &quot;&lt;MovMovimento &gt;&quot; +   &#xd;
+&quot;  &lt;TMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIAL&gt;1&lt;/CODFILIAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOC&gt;001&lt;/CODLOC&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOCENTREGA&gt;001&lt;/CODLOCENTREGA&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOCDESTINO&gt;001&lt;/CODLOCDESTINO&gt;&quot; +   &#xd;
+&quot;    &lt;CODTMV&gt;1.1.15&lt;/CODTMV&gt;&quot; +   &#xd;
+&quot;    &lt;TIPO&gt;A&lt;/TIPO&gt;&quot; +   &#xd;
+&quot;    &lt;DATAEMISSAO&gt;2017-12-22T00:00:00&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+&quot;    &lt;VALORBRUTO&gt;6500.0000&lt;/VALORBRUTO&gt;&quot; +   &#xd;
+&quot;    &lt;VALORLIQUIDO&gt;6500.0000&lt;/VALORLIQUIDO&gt;&quot; +   &#xd;
+&quot;    &lt;DATABASEMOV&gt;2017-12-22T00:00:00&lt;/DATABASEMOV&gt;&quot; +   &#xd;
+&quot;    &lt;DATAMOVIMENTO&gt;2017-12-22T00:00:00&lt;/DATAMOVIMENTO&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIALDESTINO&gt;1&lt;/CODFILIALDESTINO&gt;&quot; +   &#xd;
+&quot;    &lt;CAMPOLIVRE1&gt; ADM &lt;CAMPOLIVRE1 /&gt;&quot; +   &#xd;
+&quot;    &lt;HORULTIMAALTERACAO&gt;2017-12-22T11:04:44&lt;/HORULTIMAALTERACAO&gt;&quot; +   &#xd;
+&quot;    &lt;DATALANCAMENTO&gt;2017-12-22T00:00:00&lt;/DATALANCAMENTO&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOV&gt;&quot; +   &#xd;
+&quot;  &lt;TNFE&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TNFE&gt;&quot; +   &#xd;
+&quot;  &lt;TMOVFISCAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOVFISCAL&gt;&quot; +   &#xd;
+&quot;  &lt;TITMMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;    &lt;NSEQITMMOV&gt;1&lt;/NSEQITMMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIAL&gt;1&lt;/CODFILIAL&gt;&quot; +   &#xd;
+&quot;    &lt;NUMEROSEQUENCIAL&gt;1&lt;/NUMEROSEQUENCIAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODIGOPRD&gt;01.02.03.0050&lt;/CODIGOPRD&gt;&quot; +   &#xd;
+&quot;    &lt;NOMEFANTASIA&gt;PERFILADO 19X38 3MTS&lt;/NOMEFANTASIA&gt;&quot; +   &#xd;
+&quot;    &lt;QUANTIDADE&gt;10.0000&lt;/QUANTIDADE&gt;&quot; +   &#xd;
+&quot;    &lt;PRECOUNITARIO&gt;630.0000000000&lt;/PRECOUNITARIO&gt;&quot; +   &#xd;
+&quot;    &lt;DATAEMISSAO&gt;2017-12-22T00:00:00&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+&quot;    &lt;CODUND&gt;UN&lt;/CODUND&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOC&gt;001&lt;/CODLOC&gt;&quot; +   &#xd;
+&quot;    &lt;NSEQITMMOV1&gt;1&lt;/NSEQITMMOV1&gt;&quot; +   &#xd;
+&quot;  &lt;/TITMMOV&gt;&quot;+   &#xd;
+&quot;  &lt;TMOVCOMPL&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOVCOMPL&gt;&quot;+   &#xd;
+&quot;&lt;/MovMovimento&gt;&quot;;  &#xd;
+   &#xd;
+}  &#xd;
+&#xd;
+function dataAtualFormatada(){&#xd;
+    &#xd;
+    var data = new Date();&#xd;
+    var dia = data.getDate();&#xd;
+    if (dia.toString().length == 1)&#xd;
+      dia = &quot;0&quot;+dia;&#xd;
+    var mes = data.getMonth()+1;&#xd;
+    if (mes.toString().length == 1)&#xd;
+      mes = &quot;0&quot;+mes;&#xd;
+    var ano = data.getFullYear();  &#xd;
+    return ano+&quot;-&quot;+mes+&quot;-&quot;+dia;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dataentrega(){&#xd;
+    &#xd;
+    var data = new Date();&#xd;
+    data.setDate(data.getDate()+ 15 );&#xd;
+    var dia = data.getDate();&#xd;
+    if (dia.toString().length == 1)&#xd;
+      dia = &quot;0&quot;+dia;&#xd;
+    var mes = data.getMonth()+1;&#xd;
+    if (mes.toString().length == 1)&#xd;
+      mes = &quot;0&quot;+mes;&#xd;
+    var ano = data.getFullYear();  &#xd;
+    return ano+&quot;-&quot;+mes+&quot;-&quot;+dia;&#xd;
+}&#xd;
+&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeTaskSave</eventId>
+        <processId>T0001</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeTaskSave(colleagueId,nextSequenceId,userList){&#xd;
+&#xd;
+	var fnEmail      = loadLivTNU([&quot;com.totvsNacoesUnidas.fluig.js.ds.CustomEmail&quot;]);&#xd;
+	&#xd;
+	var TipoProcesso = hAPI.getCardValue(&quot;txtTipoProcesso&quot;);&#xd;
+    var activity     = getValue(&apos;WKNumState&apos;);&#xd;
+    var atv = hAPI.getCardValue(&quot;ATIVIDADEATUAL&quot;);&#xd;
+    var numProcess = getValue(&quot;WKNumProces&quot;);&#xd;
+  &#xd;
+    &#xd;
+&#xd;
+    &#xd;
+    // dados para o E-mail&#xd;
+&#xd;
+    var parametroPrincipal = hAPI.getCardValue(&apos;txtTipoProcesso&apos;);&#xd;
+&#xd;
+    &#xd;
+&#xd;
+    log.info(&quot;numero do processo&quot;+ numProcess);&#xd;
+&#xd;
+&#xd;
+&#xd;
+    var linkProcess = &quot;https://fluig.slmandic.edu.br/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=&quot;+numProcess+&quot; &quot;; &#xd;
+    var linkAux = &quot;&lt;a href=&apos;&quot;+linkProcess+&quot;&apos; _blank&gt;&quot;+numProcess+&quot;&lt;/a&gt;&quot;;&#xd;
+&#xd;
+    &#xd;
+    var solicitante     =  hAPI.getCardValue(&apos;txtUsuarioRM&apos;);      &#xd;
+    var eUnidade        =  hAPI.getCardValue(&apos;txtFilial&apos;);      &#xd;
+    var dataSolicitacao =  hAPI.getCardValue(&apos;txtData&apos;);             &#xd;
+    var obsDois         =  hAPI.getCardValue(&apos;txtHistoricoMOV&apos;); &#xd;
+    var aprovSup        =  &quot;&quot;;&#xd;
+    var gestorCentro    =  hAPI.getCardValue(&apos;lbAprovador&apos;);&#xd;
+    &#xd;
+    var emailSolicitante = &quot;&quot;;&#xd;
+&#xd;
+    if (emailSolicitante != &quot;&quot; || emailSolicitante != undefined || emailSolicitante != null) {&#xd;
+&#xd;
+       emailSolicitante = hAPI.getCardValue(&apos;emailSolicitante&apos;);&#xd;
+&#xd;
+    }&#xd;
+&#xd;
+    //********************************** dados que serão do PaixFilho **********************************&#xd;
+&#xd;
+    // var item            =  hAPI.getCardValue(&apos;txtcodigoPRD&apos;);      &#xd;
+    // var unidade         =  hAPI.getCardValue(&apos;txtCodCCusto&apos;);      &#xd;
+    // var quantidade      =  hAPI.getCardValue(&apos;txtQtdSolicitada&apos;);      &#xd;
+    // var valorUnitario   =  hAPI.getCardValue(&apos;txtPrecoUnitario&apos;);      &#xd;
+    // var obs             =  hAPI.getCardValue(&apos;txtHistoricoITMMOV&apos;);      &#xd;
+       &#xd;
+    //**********************************fim dados que serão do PaixFilho ********************&#xd;
+    var valorTotal      =  hAPI.getCardValue(&apos;txtValorItens&apos;);   &#xd;
+    //**********************************fim dados para E-mail ******************************* &#xd;
+ &#xd;
+    var fornecedor      =  hAPI.getCardValue(&apos;txtFornecedor&apos;); &#xd;
+        if (fornecedor == &quot;undefined&quot; || fornecedor == undefined || fornecedor == null) {&#xd;
+&#xd;
+            fornecedor = &quot;&quot;;&#xd;
+        }&#xd;
+&#xd;
+&#xd;
+ if(atv == 5){ &#xd;
+&#xd;
+     var aprovado     = hAPI.getCardValue(&quot;QTDAPROVADOCCU&quot;);&#xd;
+&#xd;
+     if (aprovado == &quot;0000&quot;) {&#xd;
+&#xd;
+        aprovSup = &quot;Reprovado&quot;;&#xd;
+&#xd;
+      }else{&#xd;
+&#xd;
+        aprovSup = &quot;Aprovado&quot;;&#xd;
+      }&#xd;
+ &#xd;
+&#xd;
+&#xd;
+   }else if (atv == 46 ) {&#xd;
+&#xd;
+          var aprovado     = hAPI.getCardValue(&quot;QTDAPROVADOFIN&quot;);&#xd;
+&#xd;
+         if (aprovado == &quot;0000&quot;) {&#xd;
+&#xd;
+            aprovSup = &quot;Reprovado&quot;;&#xd;
+&#xd;
+          }else{&#xd;
+&#xd;
+            aprovSup = &quot;Aprovado&quot;;&#xd;
+          }&#xd;
+&#xd;
+&#xd;
+    } else if (atv == 69 ) {&#xd;
+&#xd;
+          var aprovado     = hAPI.getCardValue(&quot;QTDAPROVADOMAN&quot;);&#xd;
+&#xd;
+          if (aprovado == &quot;0000&quot;) {&#xd;
+&#xd;
+            aprovSup = &quot;Reprovado&quot;;&#xd;
+&#xd;
+          }else{&#xd;
+&#xd;
+            aprovSup = &quot;Aprovado&quot;;&#xd;
+          }&#xd;
+&#xd;
+    }&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+    if(nextSequenceId == 63) { // Pós testes será 63&#xd;
+&#xd;
+        &#xd;
+&#xd;
+        log.info(&quot;*** Dentro do nextSequenceId&quot;);&#xd;
+&#xd;
+            //regra para diferentes tipos de inicio de solicitação&#xd;
+&#xd;
+            var index = getChildrenIndexes(&quot;txtHistoricoITMMOV&quot;);&#xd;
+            var strTipo = &quot;&quot;;&#xd;
+&#xd;
+&#xd;
+            for (var i= 0;i&lt;index.length; i++) {&#xd;
+                &#xd;
+                var item            =  hAPI.getCardValue(&apos;txtcodigoPRD___&apos;+index[i]);      &#xd;
+                var unidade         =  hAPI.getCardValue(&apos;txtCodCCusto___&apos;+index[i]);      &#xd;
+                var quantidade      =  hAPI.getCardValue(&apos;txtQtdSolicitada___&apos;+index[i]);      &#xd;
+                var valorUnitario   =  hAPI.getCardValue(&apos;txtPrecoUnitario___&apos;+index[i]);      &#xd;
+                var obs             =  hAPI.getCardValue(&apos;txtHistoricoITMMOV___&apos;+index[i]);&#xd;
+                var aprovItem       =  hAPI.getCardValue(&apos;comAprovado___&apos;+index[i]);&#xd;
+                var obsAprovItem    =  hAPI.getCardValue(&apos;txtJustificativa___&apos;+index[i]);&#xd;
+                var aprovItem2      =  hAPI.getCardValue(&apos;comAprFinanceiro___&apos;+index[i]);&#xd;
+                var obsAprovItem2   =  hAPI.getCardValue(&apos;txtJustificativaFin___&apos;+index[i]);&#xd;
+                var aprovItem3      =  hAPI.getCardValue(&apos;comAprMantenedora___&apos;+index[i]);&#xd;
+                var obsAprovItem3   =  hAPI.getCardValue(&apos;txtJustificativaMan___&apos;+index[i]);     &#xd;
+&#xd;
+                log.info(&quot;*** Dados1 &quot;+item);&#xd;
+                log.info(&quot;*** Dados2 &quot;+unidade);&#xd;
+                log.info(&quot;*** Dados3 &quot;+quantidade);&#xd;
+                log.info(&quot;*** Dados4 &quot;+valorUnitario);&#xd;
+                log.info(&quot;*** Dados5 &quot;+obs);&#xd;
+&#xd;
+                &#xd;
+                var dadosTable = &quot;&lt;tr&gt;&quot;+ &#xd;
+                                 &quot;&lt;td align=&apos;center&apos;&gt;&quot;+item+&quot;&lt;br&gt;(&quot;+unidade+&quot;)&lt;/td&gt;&quot; +&#xd;
+                                 //&quot;&lt;td align=&apos;center&apos;&gt;&quot;+unidade+&quot;&lt;/td&gt;&quot; +&#xd;
+                                 &quot;&lt;td align=&apos;center&apos;&gt;&quot;+quantidade+&quot;&lt;/td&gt;&quot; +&#xd;
+                                 &quot;&lt;td align=&apos;center&apos;&gt;&quot;+valorUnitario+&quot;&lt;/td&gt;&quot; +&#xd;
+                                 &quot;&lt;td align=&apos;center&apos;&gt;&quot;+obs+&quot;&lt;/td&gt;&quot;+&#xd;
+                                 &quot;&lt;td align=&apos;center&apos;&gt;&quot;+aprovItem+ &quot; - &quot; +obsAprovItem+ &quot;&lt;br&gt;&quot;+aprovItem2+ &quot; - &quot;+obsAprovItem2+&quot;&lt;br&gt;&quot;+aprovItem3+ &quot; - &quot; +obsAprovItem3+ &quot;&lt;/td&gt;&quot;;&#xd;
+&#xd;
+&#xd;
+&#xd;
+             }&#xd;
+                    dadosTable = dadosTable + &quot;&lt;/tr&gt;&quot;;&#xd;
+&#xd;
+       if(parametroPrincipal == &quot;1&quot; || parametroPrincipal == &quot;2&quot; || parametroPrincipal == &quot;4&quot;) {&#xd;
+        &#xd;
+&#xd;
+        if (TipoProcesso == &quot;1&quot;) {&#xd;
+             strTipo = &quot;Requisição de Produtos ou Serviços.&quot;;&#xd;
+        }else if(TipoProcesso == &quot;2&quot;){&#xd;
+             strTipo = &quot;Parcela de contrato já estabelecida para pagamento.&quot;;&#xd;
+        }else if (TipoProcesso == &quot;4&quot;) {&#xd;
+             strTipo = &quot;Resuprimento do Almoxarifado.&quot;;&#xd;
+        }&#xd;
+&#xd;
+           // var fornecedor = &quot;&quot;;&#xd;
+&#xd;
+            fnEmail.mail.sendCustomEmail({&#xd;
+                companyId: getValue(&quot;WKCompany&quot;),&#xd;
+                subject: &quot;Status de Aprovação Requisição de Compras #&quot;+numProcess+&quot; &quot;+aprovSup+&quot; &quot;,&#xd;
+                from: &quot;hiago.oliveira@grupodkp.com.br&quot;,&#xd;
+                to: emailSolicitante,&#xd;
+                templateId: &quot;tempEmailReqMaterial&quot;,&#xd;
+                templateDialect: &quot;pt_BR&quot;,&#xd;
+                templateHtml: &quot;statusAprovacao.html&quot;,&#xd;
+                dados: {&#xd;
+                    &quot;numProcesso&quot;: linkAux,&#xd;
+                    &quot;solicitante&quot;: solicitante,&#xd;
+                    &quot;eUnidade&quot;: eUnidade,                    &#xd;
+                    &quot;dataSolicitacao&quot;: dataSolicitacao,&#xd;
+                    &quot;tipoSolic&quot;:strTipo,&#xd;
+                    &quot;fornecedor&quot;:&apos;&apos;, //Apenas para tipo 3&#xd;
+                    &quot;dadosTable&quot;:dadosTable,&#xd;
+                    &quot;valorTotal&quot;:valorTotal,&#xd;
+                    &quot;obsDois&quot;:obsDois &#xd;
+                }&#xd;
+            });&#xd;
+&#xd;
+            log.info(&quot;*** Fim do envio E-mail&quot;);&#xd;
+&#xd;
+         }else if(parametroPrincipal == &quot;3&quot;) {&#xd;
+&#xd;
+            if (TipoProcesso == &quot;3&quot;) {&#xd;
+             strTipo = &quot;Compra direta, aprovada pela mantenedora.&quot;;&#xd;
+             }&#xd;
+&#xd;
+&#xd;
+            fnEmail.mail.sendCustomEmail({&#xd;
+                companyId: getValue(&quot;WKCompany&quot;),&#xd;
+                subject: &quot;Status de Aprovação Requisição de Compras #&quot;+numProcess+&quot; &quot;+aprovSup+&quot; &quot;,&#xd;
+                from: &quot;hiago.oliveira@grupodkp.com.br&quot;,&#xd;
+                to: emailSolicitante,&#xd;
+                templateId: &quot;tempEmailReqMaterial&quot;,&#xd;
+                templateDialect: &quot;pt_BR&quot;,&#xd;
+                templateHtml: &quot;statusAprovacao.html&quot;,&#xd;
+                dados: {&#xd;
+                    &quot;numProcesso&quot;: linkAux,&#xd;
+                    &quot;solicitante&quot;: solicitante,&#xd;
+                    &quot;eUnidade&quot;: eUnidade,                    &#xd;
+                    &quot;dataSolicitacao&quot;: dataSolicitacao,&#xd;
+                    &quot;tipoSolic&quot;:strTipo,&#xd;
+                    &quot;fornecedor&quot;:fornecedor, //ok&#xd;
+                    &quot;dadosTable&quot;:dadosTable,&#xd;
+                    &quot;valorTotal&quot;:valorTotal,&#xd;
+                    &quot;obsDois&quot;:obsDois &#xd;
+                }&#xd;
+            });&#xd;
+&#xd;
+&#xd;
+&#xd;
+&#xd;
+        }&#xd;
+        &#xd;
+&#xd;
+    }&#xd;
+    &#xd;
+    &#xd;
+    &#xd;
+&#xd;
+        if ((activity == 4) || (activity == 0)){&#xd;
+&#xd;
+    &#xd;
+          if ((TipoProcesso != &quot;1&quot; ) &amp; (TipoProcesso != &quot;4&quot; )) {&#xd;
+&#xd;
+            var anexos   = hAPI.listAttachments();&#xd;
+            var temAnexo = false;&#xd;
+&#xd;
+&#xd;
+            if (anexos.size() &gt; 0) {&#xd;
+                temAnexo = true;&#xd;
+            }&#xd;
+&#xd;
+            if ((!temAnexo)){&#xd;
+                throw &quot;Para este Tipo de Requisição deve ter Arquivo Anexado! &quot;;&#xd;
+            }&#xd;
+          }&#xd;
+        } else if ((activity == 5) &amp;&amp; (TipoProcesso == &quot;1&quot;)) {&#xd;
+&#xd;
+        var revisado     = hAPI.getCardValue(&quot;QTDREVISADOCCU&quot;);&#xd;
+        var reprovado    = hAPI.getCardValue(&quot;QTDREPROVADOCCU&quot;);&#xd;
+        var aprovado     = hAPI.getCardValue(&quot;QTDAPROVADOCCU&quot;);&#xd;
+&#xd;
+        log.info(&quot;*** CRM *** QTD Revisado &quot;+revisado);&#xd;
+        log.info(&quot;*** CRM *** QTD Reprovado &quot;+reprovado);&#xd;
+        log.info(&quot;*** CRM *** QTD Aprovado &quot;+aprovado);&#xd;
+       &#xd;
+        if ((revisado == &quot;0000&quot;) &amp;&amp; ( aprovado &gt; &quot;0000&quot; )) {&#xd;
+&#xd;
+                    var nseq = 0;&#xd;
+&#xd;
+&#xd;
+                    // Criando o Processo de Estoque T0002&#xd;
+&#xd;
+            &#xd;
+                        var workflowEngineServiceProvider = ServiceManager.getServiceInstance(&quot;WorkflowEngineService&quot;);&#xd;
+                        var workflowEngineServiceLocator = workflowEngineServiceProvider.instantiate(&quot;com.totvs.technology.ecm.workflow.ws.ECMWorkflowEngineServiceService&quot;);&#xd;
+                        var workflowEngineService = workflowEngineServiceLocator.getWorkflowEngineServicePort();&#xd;
+          &#xd;
+                        log.info(&quot;*** CRM *** Criado o Serviço &quot;);&#xd;
+          &#xd;
+                        // Cria o ProcessAttachmentDtoArray&#xd;
+                        var processAttachmentDtoArray = workflowEngineServiceProvider.instantiate(&quot;com.totvs.technology.ecm.workflow.ws.ProcessAttachmentDtoArray&quot;);&#xd;
+                      &#xd;
+                        // Cria o ObjectFactory&#xd;
+                        var objectFactory = workflowEngineServiceProvider.instantiate(&quot;net.java.dev.jaxb.array.ObjectFactory&quot;);&#xd;
+                          &#xd;
+                        var cardData = objectFactory.createStringArrayArray();&#xd;
+&#xd;
+                        var fieldCampo1 = objectFactory.createStringArray();&#xd;
+                        fieldCampo1.getItem().add(&quot;txtNumRequisicao&quot;); &#xd;
+                        fieldCampo1.getItem().add(numProcess.toString());        &#xd;
+                        cardData.getItem().add(fieldCampo1); &#xd;
+&#xd;
+                        var fieldCampo2 = objectFactory.createStringArray();&#xd;
+                        fieldCampo2.getItem().add(&quot;txtColigada&quot;); &#xd;
+                        fieldCampo2.getItem().add(hAPI.getCardValue(&quot;txtColigada&quot;));        &#xd;
+                        cardData.getItem().add(fieldCampo2); &#xd;
+&#xd;
+                        var fieldCampo3 = objectFactory.createStringArray();&#xd;
+                        fieldCampo3.getItem().add(&quot;CODCOLIGADA&quot;); &#xd;
+                        fieldCampo3.getItem().add(hAPI.getCardValue(&quot;CODCOLIGADA&quot;));        &#xd;
+                        cardData.getItem().add(fieldCampo3);&#xd;
+&#xd;
+&#xd;
+                        var fieldCampo4 = objectFactory.createStringArray();&#xd;
+                        fieldCampo4.getItem().add(&quot;txtFilial&quot;); &#xd;
+                        fieldCampo4.getItem().add(hAPI.getCardValue(&quot;txtFilial&quot;));        &#xd;
+                        cardData.getItem().add(fieldCampo4);&#xd;
+&#xd;
+&#xd;
+                        var fieldCampo5 = objectFactory.createStringArray();&#xd;
+                        fieldCampo5.getItem().add(&quot;CODFILIAL&quot;); &#xd;
+                        fieldCampo5.getItem().add(hAPI.getCardValue(&quot;CODFILIAL&quot;));        &#xd;
+                        cardData.getItem().add(fieldCampo5);&#xd;
+&#xd;
+&#xd;
+                        var fieldCampo6 = objectFactory.createStringArray();&#xd;
+                        fieldCampo6.getItem().add(&quot;txtLocalEstoque&quot;); &#xd;
+                        fieldCampo6.getItem().add(hAPI.getCardValue(&quot;txtLocalEstoque&quot;));        &#xd;
+                        cardData.getItem().add(fieldCampo6);&#xd;
+&#xd;
+                        var fieldCampo7 = objectFactory.createStringArray();&#xd;
+                        fieldCampo7.getItem().add(&quot;CODLOC&quot;); &#xd;
+                        fieldCampo7.getItem().add(hAPI.getCardValue(&quot;CODLOC&quot;));        &#xd;
+                        cardData.getItem().add(fieldCampo7);&#xd;
+&#xd;
+                        var fieldCampo8 = objectFactory.createStringArray();&#xd;
+                        fieldCampo8.getItem().add(&quot;txtSolicitanteRM&quot;); &#xd;
+                        fieldCampo8.getItem().add(hAPI.getCardValue(&quot;txtRequisitante&quot;));        &#xd;
+                        cardData.getItem().add(fieldCampo8);&#xd;
+&#xd;
+                        var fieldCampo9 = objectFactory.createStringArray();&#xd;
+                        fieldCampo9.getItem().add(&quot;txtUsuarioAprovador&quot;); &#xd;
+                        fieldCampo9.getItem().add(hAPI.getCardValue(&quot;txtUserApr&quot;));        &#xd;
+                        cardData.getItem().add(fieldCampo9);&#xd;
+&#xd;
+                        var fieldCampo6 = objectFactory.createStringArray();&#xd;
+                        fieldCampo6.getItem().add(&quot;CODVEN&quot;); &#xd;
+                        fieldCampo6.getItem().add(hAPI.getCardValue(&quot;CODVEN&quot;));        &#xd;
+                        cardData.getItem().add(fieldCampo6);&#xd;
+&#xd;
+                        var itens = hAPI.getCardData(numProcess);&#xd;
+                        var keys = itens.keySet().toArray();&#xd;
+                        &#xd;
+                          for (var key in keys) {&#xd;
+                              var field = keys[key];&#xd;
+&#xd;
+                            if (field.indexOf(&quot;txtEstoque___&quot;) &gt; -1) {&#xd;
+                              &#xd;
+                              var index = field.replace(&quot;txtEstoque___&quot;, &quot;&quot;);&#xd;
+                              &#xd;
+                                if ( hAPI.getCardValue(&quot;txtEstoque___&quot;+index) &gt; &quot;0&quot;) {&#xd;
+&#xd;
+                                        nseq = nseq + 1;&#xd;
+&#xd;
+                                                var fieldCampoA = objectFactory.createStringArray();&#xd;
+                                                fieldCampoA.getItem().add(&quot;txtCodigoPRD___&quot;+index); &#xd;
+                                                fieldCampoA.getItem().add(hAPI.getCardValue(&quot;txtCodigoPRD___&quot;+index));        &#xd;
+                                                cardData.getItem().add(fieldCampoA);&#xd;
+&#xd;
+                                                var fieldCampoB = objectFactory.createStringArray();&#xd;
+                                                fieldCampoB.getItem().add(&quot;IDPRD___&quot;+index); &#xd;
+                                                fieldCampoB.getItem().add(hAPI.getCardValue(&quot;IDPRD___&quot;+index));        &#xd;
+                                                cardData.getItem().add(fieldCampoB);&#xd;
+&#xd;
+                                                var fieldCampoC = objectFactory.createStringArray();&#xd;
+                                                fieldCampoC.getItem().add(&quot;CODIGOPRD___&quot;+index); &#xd;
+                                                fieldCampoC.getItem().add(hAPI.getCardValue(&quot;CODIGOPRD___&quot;+index));        &#xd;
+                                                cardData.getItem().add(fieldCampoC);&#xd;
+&#xd;
+                                                var fieldCampoD = objectFactory.createStringArray();&#xd;
+                                                fieldCampoD.getItem().add(&quot;txtCodCCusto___&quot;+index); &#xd;
+                                                fieldCampoD.getItem().add(hAPI.getCardValue(&quot;txtCodCCusto___&quot;+index));        &#xd;
+                                                cardData.getItem().add(fieldCampoD);&#xd;
+&#xd;
+                                                var fieldCampoE = objectFactory.createStringArray();&#xd;
+                                                fieldCampoE.getItem().add(&quot;CODCCUSTO___&quot;+index); &#xd;
+                                                fieldCampoE.getItem().add(hAPI.getCardValue(&quot;CODCCUSTO___&quot;+index));        &#xd;
+                                                cardData.getItem().add(fieldCampoE);&#xd;
+&#xd;
+                                                var quantidade = hAPI.getCardValue(&quot;txtEstoque___&quot;+index);&#xd;
+                                                var quantidade = quantidade.replace(&quot;.&quot;,&quot;,&quot;);&#xd;
+&#xd;
+                                                var fieldCampoF = objectFactory.createStringArray();&#xd;
+                                                fieldCampoF.getItem().add(&quot;txtEstoque___&quot;+index); &#xd;
+                                                fieldCampoF.getItem().add(quantidade);        &#xd;
+                                                cardData.getItem().add(fieldCampoF);&#xd;
+&#xd;
+                                            }&#xd;
+                                    }&#xd;
+                                }  //for dos input              &#xd;
+                          &#xd;
+                          if (nseq != 0 ) {&#xd;
+&#xd;
+                            log.info(&quot;*** CRM *** Criado os campos &quot;);&#xd;
+          &#xd;
+                            var colleaguesId = objectFactory.createStringArray(); &#xd;
+&#xd;
+                            colleaguesId.getItem().add(&quot;Pool:Group:Almoxarifado&quot;); //hAPI.getCardValue(&quot;txtSolicitanteRM&quot;)&#xd;
+                              &#xd;
+                            var appointment =  workflowEngineServiceProvider.instantiate(&quot;com.totvs.technology.ecm.workflow.ws.ProcessTaskAppointmentDtoArray&quot;);&#xd;
+                            &#xd;
+                            log.info(&quot;*** CRM *** - nova requisição será com essas informações - &gt;&quot; + String(cardData));&#xd;
+&#xd;
+                            var New_process = &#xd;
+                            workflowEngineService.startProcess(&#xd;
+                                                                 &quot;rm-ged&quot;, //username&#xd;
+                                                                 &quot;DCRk3Drsm2vijjON5N3T&quot;, //password&#xd;
+                                                                 1, //companyId&#xd;
+                                                                 &quot;T0002&quot;, //processId&#xd;
+                                                                 0, //choosedState&#xd;
+                                                                 colleaguesId, // colleagueIds -- quem é responsabel pelo Atendimento&#xd;
+                                                                 &quot;Origem T0001&quot;, // comments&#xd;
+                                                                 hAPI.getCardValue(&quot;txtSolicitanteRM&quot;),// userId Quem Cria --&#xd;
+                                                                 true, // completeTask&#xd;
+                                                                 processAttachmentDtoArray, // attachments&#xd;
+                                                                 cardData, // cardData&#xd;
+                                                                 appointment, // appointment&#xd;
+                                                                 false);             &#xd;
+&#xd;
+                            log.info(&quot;*** CRM *** T0002 - CRIADO COM SUCESSO NUMERO : &quot; + New_process);&#xd;
+                        }&#xd;
+&#xd;
+    } &#xd;
+&#xd;
+}&#xd;
+&#xd;
+&#xd;
+} // fim da função&#xd;
+&#xd;
+function loadLivTNU(e){var t={};if(e==null){return t}var n=function(e,t){for(var n=0;n&lt;e.length;n++){if(e[n]==t)return true}return false};var r=DatasetFactory.getDataset(&quot;tnuCustomJS&quot;,null,null,null);for(var i=0;i&lt;r.rowsCount;i++){var s=r.getValue(i,&quot;liv&quot;);if(n(e,s)){var o=r.getValue(i,&quot;src&quot;);var u=r.getValue(i,&quot;name&quot;);try{var a=new Function(&quot;liv&quot;,&quot;return &quot;+o);t[u]=a(t)}catch(f){log.error(&quot;*** Erro ao compilar livraria &quot;+s+&quot;:&quot;+f)}}}return t}          &#xd;
+&#xd;
+function getChildrenIndexes(fieldName) {&#xd;
+    var datos = hAPI.getCardData(getValue(&quot;WKNumProces&quot;));&#xd;
+    var enteries = datos.entrySet().iterator();&#xd;
+    var indexes = [];&#xd;
+&#xd;
+    while (enteries.hasNext()) {&#xd;
+        var e = enteries.next();&#xd;
+        if (e.getKey().startsWith(fieldName + &quot;___&quot;)) {&#xd;
+            indexes.push(e.getKey().split(&quot;___&quot;)[1]);&#xd;
+        }&#xd;
+    }&#xd;
+    return indexes;&#xd;
+}&#xd;
+          &#xd;
+          &#xd;
+      &#xd;
+      &#xd;
+   &#xd;
+    &#xd;
+&#xd;
+&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskSave</eventId>
+        <processId>T0001</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskSave(colleagueId,nextSequenceId,userList){&#xd;
+	&#xd;
+	var activity   = getValue(&apos;WKNumState&apos;);&#xd;
+  var numProcess = getValue(&quot;WKNumProces&quot;);&#xd;
+  var Finalizar  = getValue(&quot;cbkFinalizar&quot;);&#xd;
+  var frete      = getValue(&quot;txtValorFrete&quot;);&#xd;
+  var desconto   = getValue(&quot;txtValorDesconto&quot;);&#xd;
+&#xd;
+   log.info(&quot;*** CRM *** - Everton Cancelou &quot;+Finalizar);&#xd;
+&#xd;
+    if ((activity == 4) || (activity == 0)){&#xd;
+    &#xd;
+		&#xd;
+	    hAPI.setCardValue(&quot;txtNumeroProcesso&quot;,numProcess);&#xd;
+      &#xd;
+      // if ( frete == null ){ hAPI.setCardValue(&quot;txtValorFrete&quot;,&quot;0,00&quot;); }&#xd;
+      // if ( desconto == null ){ hAPI.setCardValue(&quot;txtValorDesconto&quot;,&quot;0,00&quot;); }&#xd;
+&#xd;
+&#xd;
+	} else if (activity == 20) {&#xd;
+&#xd;
+      if (Finalizar != &apos;1&apos;) {&#xd;
+&#xd;
+        var c1 = DatasetFactory.createConstraint(&quot;NUMEROPROCESSO&quot;, numProcess, numProcess, ConstraintType.MUST);&#xd;
+        var constraints   = new Array(c1);&#xd;
+    &#xd;
+        log.info(&quot;*** CRM *** - Entrei no num Processo &quot;+numProcess);&#xd;
+&#xd;
+        var dataset = DatasetFactory.getDataset(&quot;dsMovComprador&quot;, null, constraints, null);&#xd;
+&#xd;
+        var rowsCount = dataset.values.length;&#xd;
+    &#xd;
+        var i = 0;&#xd;
+    &#xd;
+        while (i&lt;rowsCount){&#xd;
+&#xd;
+&#xd;
+          var documentoId  = dataset.getValue(i, &quot;documentid&quot;);&#xd;
+          var codcomp 	   = dataset.getValue(i, &quot;CODCOMP&quot;);&#xd;
+          var codcoligada  = hAPI.getCardValue(&quot;CODCOLIGADA&quot;);&#xd;
+          var codfilial    = hAPI.getCardValue(&quot;CODFILIAL&quot;);&#xd;
+          var codloc       = hAPI.getCardValue(&quot;CODLOC&quot;);&#xd;
+          var codtmv       = &quot;1.1.02&quot;;&#xd;
+&#xd;
+           log.info(&quot;*** CRM *** - O Comprador &quot;+codcomp);&#xd;
+&#xd;
+          GeraMovCompra(numProcess,codcoligada, codfilial, codloc, codtmv, documentoId, codcomp);&#xd;
+&#xd;
+            i = i + 1;&#xd;
+&#xd;
+        }&#xd;
+&#xd;
+&#xd;
+    }&#xd;
+  }&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function GeraMovCompra (numProcess, codcoligada, codfilial,codloc,codtmv,documentoId, codcomp){&#xd;
+    &#xd;
+    var NOME_DATASERVER = &quot;MovMovimentoTBCData&quot;;  &#xd;
+    var usuario         = &quot;mestre&quot;; &#xd;
+    var senha           = &quot;FR5G1I2EmFdNkE00SUYO&quot;;          &#xd;
+    var authService     = getWebService(usuario, senha);  &#xd;
+    var context         = &quot;CodUsuario=mestre;CodSistema=T;CodColigada=&quot;+codcoligada;&#xd;
+    var nseq            = 0;&#xd;
+    var historicoMOV    = hAPI.getCardValue(&quot;txtHistoricoMOV&quot;);&#xd;
+    var CODVEN          = hAPI.getCardValue(&quot;CODVEN&quot;);&#xd;
+    var USUARIO         = getValue(&apos;WKUser&apos;);&#xd;
+    var FRETE           = hAPI.getCardValue(&quot;txtValorFrete&quot;);&#xd;
+    var DESCONTO        = hAPI.getCardValue(&quot;txtValorDesconto&quot;);&#xd;
+    var OBSERVACAO      = hAPI.getCardValue(&quot;txtComentarioComprador&quot;);&#xd;
+    &#xd;
+    log.info(&quot;*** CRM *** MOVIMENTO COMPRADOR DENTRO DO ITEM &quot;+codcomp);&#xd;
+&#xd;
+    var XML = &#xd;
+            &quot;&lt;MovMovimento &gt;&quot; +   &#xd;
+            &quot;  &lt;TMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;CODFILIAL&gt;&quot;+codfilial+&quot;&lt;/CODFILIAL&gt;&quot; +   &#xd;
+            &quot;    &lt;CODLOC&gt;&quot;+codloc+&quot;&lt;/CODLOC&gt;&quot; +    &#xd;
+            &quot;    &lt;CODLOCDESTINO&gt;&quot;+codloc+&quot;&lt;/CODLOCDESTINO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODTMV&gt;&quot;+codtmv+&quot;&lt;/CODTMV&gt;&quot; +   &#xd;
+            &quot;    &lt;TIPO&gt;A&lt;/TIPO&gt;&quot; +   &#xd;
+            &quot;    &lt;DATAEMISSAO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+            &quot;    &lt;DATABASEMOV&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATABASEMOV&gt;&quot; + &#xd;
+            &quot;    &lt;DATAENTREGA&gt;&quot;+dataentrega()+&quot;&lt;/DATAENTREGA&gt;&quot;+  &#xd;
+            &quot;    &lt;DATAMOVIMENTO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATAMOVIMENTO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODFILIALDESTINO&gt;&quot;+codfilial+&quot;&lt;/CODFILIALDESTINO&gt;&quot; +      &#xd;
+            &quot;    &lt;DATALANCAMENTO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATALANCAMENTO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLCFO&gt;0&lt;/CODCOLCFO&gt;&quot;+&#xd;
+            &quot;    &lt;CODCFO&gt;&lt;/CODCFO&gt;&quot;+&#xd;
+            &quot;    &lt;CODCCUSTO&gt;&lt;/CODCCUSTO&gt;&quot;+ &#xd;
+            &quot;    &lt;CODVEN1&gt;&quot;+codcomp+&quot;&lt;/CODVEN1&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN2&gt;&quot;+CODVEN+&quot;&lt;/CODVEN2&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN3&gt;9999&lt;/CODVEN3&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN4&gt;9999&lt;/CODVEN4&gt;&quot; +&#xd;
+            &quot;    &lt;VALORDESC&gt;&quot;+DESCONTO+&quot;&lt;/VALORDESC&gt;&quot;+&#xd;
+            &quot;    &lt;VALORFRETE&gt;&quot;+FRETE+&quot;&lt;/VALORFRETE&gt;&quot;+&#xd;
+            &quot;    &lt;OBSERVACAO&gt;&quot;+OBSERVACAO+&quot;&lt;/OBSERVACAO&gt;&quot;+&#xd;
+            &quot;    &lt;USUARIOCRIACAO&gt;&quot;+USUARIO+&quot;&lt;/USUARIOCRIACAO&gt;&quot; +&#xd;
+            &quot;    &lt;HISTORICOLONGO&gt;&quot;+historicoMOV+&quot;&lt;/HISTORICOLONGO&gt;&quot; +&#xd;
+            &quot;  &lt;/TMOV&gt;&quot; +  &#xd;
+            &#xd;
+            &quot;  &lt;TNFE&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;  &lt;/TNFE&gt;&quot; +   &#xd;
+            &quot;  &lt;TMOVFISCAL&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;  &lt;/TMOVFISCAL&gt;&quot; ;&#xd;
+&#xd;
+            &#xd;
+          &#xd;
+            var c1 = DatasetFactory.createConstraint(&quot;documentoId&quot;, documentoId, documentoId, ConstraintType.MUST);&#xd;
+            var c2 = DatasetFactory.createConstraint(&quot;CODCOMP&quot;,codcomp, codcomp, ConstraintType.MUST);&#xd;
+            var constraints   = new Array(c1,c2);&#xd;
+    &#xd;
+            var dataset = DatasetFactory.getDataset(&quot;dsItmMovComprador&quot;, null, constraints, null);&#xd;
+&#xd;
+            var rowsCount = dataset.values.length;&#xd;
+&#xd;
+            var i=0;&#xd;
+            var nseq= 1;&#xd;
+&#xd;
+             while (i&lt;rowsCount){&#xd;
+&#xd;
+              var idprd = dataset.getValue(i, &quot;IDPRD&quot;);&#xd;
+              var qtdSolicitada = dataset.getValue(i, &quot;txtQtdCompra&quot;);&#xd;
+              var qtdSolicitada = qtdSolicitada.replace(&quot;.&quot;,&quot;,&quot;);&#xd;
+              var precounit = dataset.getValue(i, &quot;txtPrecoUnitario&quot;);&#xd;
+              var historicoITMMOV = dataset.getValue(i, &quot;txthistoricoITMMOV&quot;);&#xd;
+              var codccusto = dataset.getValue(i, &quot;CODCCUSTO&quot;);&#xd;
+&#xd;
+            XML = XML +    &#xd;
+                        &quot;  &lt;TITMMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+                        &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;NSEQITMMOV&gt;&quot;+nseq+&quot;&lt;/NSEQITMMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;CODFILIAL&gt;&quot;+codfilial+&quot;&lt;/CODFILIAL&gt;&quot; +   &#xd;
+                        &quot;    &lt;NUMEROSEQUENCIAL&gt;&quot;+nseq+&quot;&lt;/NUMEROSEQUENCIAL&gt;&quot; +   &#xd;
+                        &quot;    &lt;IDPRD&gt;&quot;+idprd+&quot;&lt;/IDPRD&gt;&quot; +&#xd;
+                        &quot;    &lt;QUANTIDADE&gt;&quot;+qtdSolicitada+&quot;&lt;/QUANTIDADE&gt;&quot; +   &#xd;
+                        &quot;    &lt;PRECOUNITARIO&gt;&quot;+precounit+&quot;&lt;/PRECOUNITARIO&gt;&quot; +   &#xd;
+                        &quot;    &lt;DATAEMISSAO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATAEMISSAO&gt;&quot; +&#xd;
+                        &quot;    &lt;CODCCUSTO&gt;&quot;+codccusto+&quot;&lt;/CODCCUSTO&gt;&quot;+&#xd;
+                        &quot;    &lt;CODLOC&gt;&quot;+codloc+&quot;&lt;/CODLOC&gt;&quot; + &#xd;
+                        &quot;    &lt;HISTORICOLONGO&gt;&quot;+historicoITMMOV+&quot;&lt;/HISTORICOLONGO&gt;&quot;+     &#xd;
+                        &quot;  &lt;/TITMMOV&gt;&quot;;&#xd;
+&#xd;
+                 i = i + 1 ;&#xd;
+                 nseq = nseq + 1;&#xd;
+                  }&#xd;
+&#xd;
+       log.info( &quot;*** CRM ***  NSEQ - &quot;+nseq+&quot;  XML do movimnto é &quot;+XML);&#xd;
+&#xd;
+   if (nseq &gt; 0){&#xd;
+&#xd;
+        XML = XML +    &#xd;
+           &quot;  &lt;TMOVCOMPL&gt;&quot; +   &#xd;
+           &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +      &#xd;
+           &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+           &quot;    &lt;NUMFLUIG&gt;&quot;+numProcess+&quot;&lt;/NUMFLUIG&gt;&quot; +&#xd;
+           &quot;  &lt;/TMOVCOMPL&gt;&quot;+                      &#xd;
+           &quot;&lt;/MovMovimento&gt;&quot;;&#xd;
+        &#xd;
+        log.info( &quot;*** CRM *** XML do movimnto é &quot;+XML);&#xd;
+       &#xd;
+       &#xd;
+       try{&#xd;
+          &#xd;
+           var result = new String(authService.saveRecord(NOME_DATASERVER, XML, context));&#xd;
+&#xd;
+           log.info(&quot;*** CRM *** Fluig &quot;+numProcess+&quot;.integracao com RM resultado  VER IDMOV - &quot;+result);&#xd;
+           &#xd;
+           &#xd;
+           if (result.length &gt; 20){&#xd;
+             var mensagemErro = result;  &#xd;
+             throw mensagemErro; &#xd;
+           } else {&#xd;
+&#xd;
+                  var idmov = result.substring(result.search(&quot;;&quot;)+1,result.length);&#xd;
+                  log.info(&quot;*** CRM *** AFTERSAVE IDMOV SALVAR&quot;+idmov); &#xd;
+                  hAPI.setCardValue(&quot;IDMOV&quot;,idmov);&#xd;
+                }&#xd;
+        }  &#xd;
+      &#xd;
+       &#xd;
+        catch (e)   &#xd;
+        {  &#xd;
+            if (e == null) e = &quot;*** CRM *** Erro desconhecido!&quot;;  &#xd;
+            &#xd;
+            var mensagemErro = &quot;*** CRM *** Ocorreu um erro ao salvar dados no RM (coligada &quot;+codcoligada+&quot; ): &quot; + e;  &#xd;
+            &#xd;
+            throw mensagemErro;  &#xd;
+        }&#xd;
+    }&#xd;
+}&#xd;
+&#xd;
+/**&apos;&#xd;
+* A API de autenticação da Totvs baseia no &quot;Basic access authentication&quot; do HTTP.&#xd;
+* Código Java para autenticação &#xd;
+* Programa responsável por integrar com os Webservices do RM &#xd;
+*  Exemplo dev valores para os parâmetros &#xd;
+*       @param string Usuario = &quot;mestre&quot;;&#xd;
+*       @param string Senha = &quot;totvs&quot;;&#xd;
+*/&#xd;
+&#xd;
+function getWebService(Usuario, Senha){&#xd;
+&#xd;
+ var Nome_Servico = &quot;WS&quot;;&#xd;
+ var Caminho_Servico = &quot;com.totvs.WsDataServer&quot;;&#xd;
+ &#xd;
+    var dataServerService = ServiceManager.getServiceInstance(Nome_Servico);&#xd;
+    if(dataServerService == null){&#xd;
+        throw &quot;Servico nao encontrado: &quot; + Nome_Servico;&#xd;
+    }&#xd;
+    &#xd;
+    var serviceLocator = dataServerService.instantiate(Caminho_Servico);&#xd;
+    if(serviceLocator == null){&#xd;
+        throw &quot;Instancia do servico nao encontrada: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var service = serviceLocator.getRMIwsDataServer();  &#xd;
+    if(service == null){&#xd;
+        throw &quot;Instancia do dataserver do invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var serviceHelper = dataServerService.getBean();&#xd;
+    if(serviceHelper == null){&#xd;
+        throw &quot;Instancia do service helper invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var authService = serviceHelper.getBasicAuthenticatedClient(service, &quot;com.totvs.IwsDataServer&quot;, Usuario, Senha);      &#xd;
+    if(serviceHelper == null){&#xd;
+        throw &quot;Instancia do auth service invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+    &#xd;
+    return authService;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcReadView(dataservername, context, usuario, senha, filtro)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+      &#xd;
+   // lê os dados da visão respeitando o filtro passado&#xd;
+      var viewData = new String(authService.readView(dataservername, filtro, context));&#xd;
+&#xd;
+      return viewData;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcReadRecord(dataservername, context, usuario, senha, primaryKey)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+&#xd;
+   // lê os dados do registro respeitando a pk passada&#xd;
+      try&#xd;
+      {&#xd;
+        var recordData = new String(authService.readRecord(dataservername, primaryKey, context));&#xd;
+      }&#xd;
+      catch (e) &#xd;
+      {&#xd;
+          var recordData = new String(authService.getSchema(dataservername, context));&#xd;
+      }&#xd;
+      &#xd;
+      return recordData;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcSaveRecord(dataservername, context, usuario, senha, xml)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+&#xd;
+   // salva o registro de acordo com o xml passado&#xd;
+      var pk = new String(authService.readRecord(dataservername, xml, context));&#xd;
+          &#xd;
+      return pk;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+//Transforma o conceito de constraints do Fluig para o Filtro do TBC.&#xd;
+function parseConstraints(constraints, filterRequired)&#xd;
+{&#xd;
+    // inicializa o resultado...&#xd;
+    var result = [];&#xd;
+    result.context = &quot;&quot;;&#xd;
+    &#xd;
+    // inicializa o filtro...&#xd;
+    var filter = &quot;&quot;;&#xd;
+    &#xd;
+    // varre as contraints...&#xd;
+ for    (con in constraints) {&#xd;
+    var fieldName = con.getFieldName().toUpperCase();&#xd;
+    if (fieldName == &quot;RMSCONTEXT&quot;)&#xd;
+    {&#xd;
+        result.context = con.getInitialValue();&#xd;
+        continue;&#xd;
+    }&#xd;
+    &#xd;
+    filter += &quot;(&quot;;&#xd;
+    &#xd;
+    if (fieldName == &quot;RMSFILTER&quot;)&#xd;
+        {&#xd;
+        filter += con.getInitialValue();&#xd;
+        }&#xd;
+    else&#xd;
+        {&#xd;
+        if (con.getInitialValue() == con.getFinalValue() || isEmpty(con.getFinalValue()))&#xd;
+            {&#xd;
+                filter += con.getFieldName();&#xd;
+                var isLike = false;&#xd;
+                switch(con.getConstraintType())&#xd;
+                {&#xd;
+                    case ConstraintType.MUST:&#xd;
+                        filter += &quot; = &quot;;&#xd;
+                    break;&#xd;
+                    case ConstraintType.MUST_NOT:&#xd;
+                        filter += &quot; = &quot;;&#xd;
+                    break;&#xd;
+                    case ConstraintType.SHOULD:&#xd;
+                        filter += &quot; LIKE &quot;;&#xd;
+                        isLike = true;&#xd;
+                    break;&#xd;
+                    case ConstraintType.SHOULD_NOT:&#xd;
+                        filter += &quot; NOT LIKE &quot;;&#xd;
+                        isLike = true;&#xd;
+                    break;&#xd;
+                }&#xd;
+                filter += getFormattedValue(con.getInitialValue(), isLike);&#xd;
+            }&#xd;
+        else&#xd;
+            {&#xd;
+            filter += con.getFieldName();&#xd;
+            filter += &quot; BETWEEN &quot;;&#xd;
+            filter += getFormattedValue(con.getInitialValue(), false);&#xd;
+            filter += &quot; AND &quot;;&#xd;
+            filter += getFormattedValue(con.getFinalValue(), false);&#xd;
+            }&#xd;
+        }&#xd;
+    &#xd;
+        filter += &quot;) AND &quot;;&#xd;
+    }&#xd;
+ &#xd;
+ if (filter.length == 0)&#xd;
+ {&#xd;
+    if(filterRequired){&#xd;
+      filter = &quot;1=1&quot;;&#xd;
+    }&#xd;
+    else{&#xd;
+      filter = &quot;1=1&quot;;&#xd;
+    }&#xd;
+ }&#xd;
+ else&#xd;
+    filter = filter.substring(0, filter.length-5);&#xd;
+ &#xd;
+ // guarda o filtro...&#xd;
+ result.filter = filter;&#xd;
+ &#xd;
+ // retorna o resultado...&#xd;
+ return result;&#xd;
+}&#xd;
+&#xd;
+function isEmpty(str) {&#xd;
+ return (!str || 0 === str.length);&#xd;
+}&#xd;
+&#xd;
+function getFormattedValue(value, isLike){&#xd;
+    if(isLike){&#xd;
+      return &quot;&apos;%&quot; + value + &quot;%&apos;&quot;;&#xd;
+    }&#xd;
+    else{&#xd;
+      return &quot;&apos;&quot; + value + &quot;&apos;&quot;;&#xd;
+    }&#xd;
+}&#xd;
+&#xd;
+&#xd;
+&#xd;
+function getXMLFromString(xmlString) {&#xd;
+    var factory = javax.xml.parsers.DocumentBuilderFactory.newInstance();&#xd;
+    var parser = factory.newDocumentBuilder();&#xd;
+    var is = new org.xml.sax.InputSource();&#xd;
+ is.setCharacterStream(new java.io.StringReader(xmlString));&#xd;
+    return parser.parse(is);&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function abrirPesquisa(DATASET_ID, dataFields, resultFields, type, title){  &#xd;
+    window.open(&quot;/webdesk/zoom.jsp&quot; +&#xd;
+    &quot;?datasetId=&quot; +&#xd;
+    DATASET_ID +&#xd;
+    &quot;&amp;dataFields=&quot; +&#xd;
+    dataFields +&#xd;
+    &quot;&amp;resultFields=&quot; +&#xd;
+    resultFields +&#xd;
+    &quot;&amp;type=&quot; +&#xd;
+    type+&#xd;
+    &quot;&amp;title=&quot; +&#xd;
+    title   &#xd;
+    , &quot;zoom&quot;, &quot;status,scroolbars=no,width=600,height=350,top=0,left=0&quot;);&#xd;
+}&#xd;
+&#xd;
+function checkIsPK(result, qtd){&#xd;
+    var lines = result.split(&apos;\r&apos;);&#xd;
+    &#xd;
+    if(lines.length == 1){&#xd;
+        var pk = result.split(&apos;;&apos;);&#xd;
+        if(pk.length == qtd)&#xd;
+            return;&#xd;
+    }&#xd;
+        throw result;&#xd;
+    &#xd;
+}&#xd;
+&#xd;
+function ChekExist(result)&#xd;
+{&#xd;
+     var lines = result.split(&apos;\r&apos;);&#xd;
+    if(lines.length &gt; 1)&#xd;
+        return true&#xd;
+    else&#xd;
+        return false;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function replaceValue(text, columnName, newValue){&#xd;
+&#xd;
+    &#xd;
+    if ((newValue != null) &amp;&amp; (newValue.trim() != &quot;&quot;))&#xd;
+    {&#xd;
+        var regex = new RegExp(&quot;&lt;&quot; + columnName + &quot;&gt;(.*?)&lt;\\/&quot; + columnName + &quot;&gt;&quot;, &quot;g&quot;);&#xd;
+        var replaceText = &quot;&lt;&quot; + columnName + &quot;&gt;&quot; + newValue + &quot;&lt;/&quot; + columnName + &quot;&gt;&quot;;&#xd;
+        &#xd;
+        return text.replace(regex, replaceText);&#xd;
+    }&#xd;
+    else&#xd;
+        return text;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function isEmpty(str) {&#xd;
+ return (!str || 0 === str.length);&#xd;
+}&#xd;
+function GetXml()  &#xd;
+{  &#xd;
+ return &quot;&lt;MovMovimento &gt;&quot; +   &#xd;
+&quot;  &lt;TMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIAL&gt;1&lt;/CODFILIAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOC&gt;001&lt;/CODLOC&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOCENTREGA&gt;001&lt;/CODLOCENTREGA&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOCDESTINO&gt;001&lt;/CODLOCDESTINO&gt;&quot; +   &#xd;
+&quot;    &lt;CODTMV&gt;1.1.15&lt;/CODTMV&gt;&quot; +   &#xd;
+&quot;    &lt;TIPO&gt;A&lt;/TIPO&gt;&quot; +   &#xd;
+&quot;    &lt;DATAEMISSAO&gt;2017-12-22T00:00:00&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+&quot;    &lt;VALORBRUTO&gt;6500.0000&lt;/VALORBRUTO&gt;&quot; +   &#xd;
+&quot;    &lt;VALORLIQUIDO&gt;6500.0000&lt;/VALORLIQUIDO&gt;&quot; +   &#xd;
+&quot;    &lt;DATABASEMOV&gt;2017-12-22T00:00:00&lt;/DATABASEMOV&gt;&quot; +   &#xd;
+&quot;    &lt;DATAMOVIMENTO&gt;2017-12-22T00:00:00&lt;/DATAMOVIMENTO&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIALDESTINO&gt;1&lt;/CODFILIALDESTINO&gt;&quot; +   &#xd;
+&quot;    &lt;CAMPOLIVRE1&gt; ADM &lt;CAMPOLIVRE1 /&gt;&quot; +   &#xd;
+&quot;    &lt;HORULTIMAALTERACAO&gt;2017-12-22T11:04:44&lt;/HORULTIMAALTERACAO&gt;&quot; +   &#xd;
+&quot;    &lt;DATALANCAMENTO&gt;2017-12-22T00:00:00&lt;/DATALANCAMENTO&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOV&gt;&quot; +   &#xd;
+&quot;  &lt;TNFE&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TNFE&gt;&quot; +   &#xd;
+&quot;  &lt;TMOVFISCAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOVFISCAL&gt;&quot; +   &#xd;
+&quot;  &lt;TITMMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;    &lt;NSEQITMMOV&gt;1&lt;/NSEQITMMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIAL&gt;1&lt;/CODFILIAL&gt;&quot; +   &#xd;
+&quot;    &lt;NUMEROSEQUENCIAL&gt;1&lt;/NUMEROSEQUENCIAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODIGOPRD&gt;01.02.03.0050&lt;/CODIGOPRD&gt;&quot; +   &#xd;
+&quot;    &lt;NOMEFANTASIA&gt;PERFILADO 19X38 3MTS&lt;/NOMEFANTASIA&gt;&quot; +   &#xd;
+&quot;    &lt;QUANTIDADE&gt;10.0000&lt;/QUANTIDADE&gt;&quot; +   &#xd;
+&quot;    &lt;PRECOUNITARIO&gt;630.0000000000&lt;/PRECOUNITARIO&gt;&quot; +   &#xd;
+&quot;    &lt;DATAEMISSAO&gt;2017-12-22T00:00:00&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+&quot;    &lt;CODUND&gt;UN&lt;/CODUND&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOC&gt;001&lt;/CODLOC&gt;&quot; +   &#xd;
+&quot;    &lt;NSEQITMMOV1&gt;1&lt;/NSEQITMMOV1&gt;&quot; +   &#xd;
+&quot;  &lt;/TITMMOV&gt;&quot;+   &#xd;
+&quot;  &lt;TMOVCOMPL&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOVCOMPL&gt;&quot;+   &#xd;
+&quot;&lt;/MovMovimento&gt;&quot;;  &#xd;
+   &#xd;
+}  &#xd;
+&#xd;
+function dataAtualFormatada(){&#xd;
+    &#xd;
+    var data = new Date();&#xd;
+    var dia = data.getDate();&#xd;
+    if (dia.toString().length == 1)&#xd;
+      dia = &quot;0&quot;+dia;&#xd;
+    var mes = data.getMonth()+1;&#xd;
+    if (mes.toString().length == 1)&#xd;
+      mes = &quot;0&quot;+mes;&#xd;
+    var ano = data.getFullYear();  &#xd;
+    return ano+&quot;-&quot;+mes+&quot;-&quot;+dia;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dataentrega(){&#xd;
+    &#xd;
+    var data = new Date();&#xd;
+    data.setDate(data.getDate()+ 15 );&#xd;
+    var dia = data.getDate();&#xd;
+    if (dia.toString().length == 1)&#xd;
+      dia = &quot;0&quot;+dia;&#xd;
+    var mes = data.getMonth()+1;&#xd;
+    if (mes.toString().length == 1)&#xd;
+      mes = &quot;0&quot;+mes;&#xd;
+    var ano = data.getFullYear();  &#xd;
+    return ano+&quot;-&quot;+mes+&quot;-&quot;+dia;&#xd;
+}&#xd;
+&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>661</height>
+      <width>771</width>
+      <positionX>10</positionX>
+      <positionY>10</positionY>
+      <stateName>Requisição Compras</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>0080C0</color>
+      <height>110</height>
+      <width>741</width>
+      <positionX>40</positionX>
+      <positionY>10</positionY>
+      <stateName>Requisitantes</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>adc9ac</color>
+      <height>111</height>
+      <width>741</width>
+      <positionX>40</positionX>
+      <positionY>560</positionY>
+      <stateName>Suprimentos</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>d0daae</color>
+      <height>110</height>
+      <width>741</width>
+      <positionX>40</positionX>
+      <positionY>230</positionY>
+      <stateName>Aprov.Centro Custo</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>d6e0d0</color>
+      <height>110</height>
+      <width>741</width>
+      <positionX>40</positionX>
+      <positionY>120</positionY>
+      <stateName>Dir Financeiro</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>c9c3ac</color>
+      <height>110</height>
+      <width>741</width>
+      <positionX>40</positionX>
+      <positionY>450</positionY>
+      <stateName>RM Nucleus</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>6</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>82b0b7</color>
+      <height>110</height>
+      <width>741</width>
+      <positionX>40</positionX>
+      <positionY>340</positionY>
+      <stateName>Mantenedora</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <sequence>7</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list>
+    <ProcessComponGraf>
+      <componType>1</componType>
+      <positionX>800</positionX>
+      <positionY>395</positionY>
+      <processComponGrafPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <componGrafSequence>66</componGrafSequence>
+      </processComponGrafPK>
+      <stateName>Gera Movimentos: 1) Atender pelo Estoque (WK T0002) - 2) Gerar Solicitação de Compras - 3) Movimento de Faturamento de Contrato - 4) Movimento de Pedido Aprovado</stateName>
+    </ProcessComponGraf>
+  </list>
+  <list>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>1</version>
+        <linkSequence>67</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>66</initialStateSequence>
+      <finalStateSequence>63</finalStateSequence>
+    </ProcessLinkAssoc>
+  </list>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>46</version>
+        <linkSequence>94</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>73</positionX>
+      <positionY>115</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>T0001</processId>
+        <version>46</version>
+        <linkSequence>94</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>73</positionX>
+      <positionY>380</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description>Aprovação Necessidade</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description>Verifique a Necessidade</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description>txtTotalItens</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>5</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>20</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description>Analise Compras</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>20</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description>Indicar os Compradores Responsáveis</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>20</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description>txtValotItens</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>20</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>20</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>32</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>32</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>32</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>32</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>32</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>46</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description>Aprovação Diretoria Financeira</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>46</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description>Aprovação da Diretoria Financeira</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>46</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description>txtTotalItens</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>46</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>46</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>69</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description>Aprovação Mantenedora</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>69</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description>Aprovação Mantenedora</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>69</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description>txtTotalItens</description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>69</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0001</processId>
+      <processVersion>46</processVersion>
+      <stateSequence>69</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+  </list>
+  <list/>
+</list>

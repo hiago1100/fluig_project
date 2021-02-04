@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>87</string>
+	<key>AMApplicationVersion</key>
+	<string>1.0.4</string>
+	<key>AMDocumentVersion</key>
+	<string>1</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.iphoto.item-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.iphoto.item-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>iPhoto</string>
+						<key>Resource</key>
+						<string>com.apple.iPhoto</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>4.0.2</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Get Specified iPhoto Items.action</string>
+				<key>ActionIconName</key>
+				<string>iPhoto</string>
+				<key>ActionName</key>
+				<string>Get Specified iPhoto Items</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>items</key>
+					<array/>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>iPhoto</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.GetSpecifiediPhotoItems</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>iPhoto</string>
+				</array>
+				<key>Class Name</key>
+				<string>GetiPhotoItemsAction</string>
+				<key>InputUUID</key>
+				<string>F0C944C6-FD02-45C9-8A99-C309743EFA44</string>
+				<key>Keywords</key>
+				<array/>
+				<key>OutputUUID</key>
+				<string>3A4AF83E-7039-4690-9C6A-352958463590</string>
+				<key>ShowWhenRun</key>
+				<true/>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>91290E25-4564-4976-8472-76BFD44B0070</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>iPhoto</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<array/>
+						<key>name</key>
+						<string>items</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Get Specified iPhoto Items.action/Contents/Resources/English.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>852.000000:-5287.666504</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.presentation.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft PowerPoint</string>
+						<key>Resource</key>
+						<string>com.microsoft.powerpoint</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Create PowerPoint Picture Slide Shows.action</string>
+				<key>ActionName</key>
+				<string>Create PowerPoint Picture Slide Shows</string>
+				<key>ActionParameters</key>
+				<dict/>
+				<key>Application</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Create_PowerPoint_Picture_Slide_Shows</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryPresentations</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>FF4157AC-D4EF-4031-BB07-3DF3A264B1D3</string>
+				<key>Keywords</key>
+				<array>
+					<string>movie</string>
+					<string>convert</string>
+					<string>presentation</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>12A68052-30FA-45E6-B63F-968E5ED61841</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>28A2B535-FF02-4C1F-A8B4-A97ABF8331D7</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
+				<key>nibPath</key>
+				<string>/Library/Automator/Create PowerPoint Picture Slide Shows.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>1132.000000:-1414.333496</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.presentation.object</string>
+						<string>com.microsoft.powerpoint.slideshow.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.slideshow.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft PowerPoint</string>
+						<key>Resource</key>
+						<string>com.microsoft.powerpoint</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Play PowerPoint Slide Shows.action</string>
+				<key>ActionName</key>
+				<string>Play PowerPoint Slide Shows</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>waitForSlideshow</key>
+					<true/>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Play_PowerPoint_Slideshows</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryPresentations</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>F2467E44-5C5C-46E1-AF02-9AD60EE68C25</string>
+				<key>Keywords</key>
+				<array>
+					<string>run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>45CA5ED2-1780-4660-B1CB-A0248FE6F47E</string>
+				<key>UUID</key>
+				<string>2E671AA4-C05C-4DEC-B464-D2D7BF56EA18</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>waitForSlideshow</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Play PowerPoint Slide Shows.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>852.000000:79.000000</string>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>2D47DA4D-EB13-4A31-B971-AA332CF93DCA</key>
+		<dict>
+			<key>from</key>
+			<string>28A2B535-FF02-4C1F-A8B4-A97ABF8331D7 - 12A68052-30FA-45E6-B63F-968E5ED61841</string>
+			<key>to</key>
+			<string>2E671AA4-C05C-4DEC-B464-D2D7BF56EA18 - F2467E44-5C5C-46E1-AF02-9AD60EE68C25</string>
+		</dict>
+		<key>E8E64D62-F131-4FA5-B086-37CCFBC57896</key>
+		<dict>
+			<key>from</key>
+			<string>91290E25-4564-4976-8472-76BFD44B0070 - 3A4AF83E-7039-4690-9C6A-352958463590</string>
+			<key>to</key>
+			<string>28A2B535-FF02-4C1F-A8B4-A97ABF8331D7 - FF4157AC-D4EF-4031-BB07-3DF3A264B1D3</string>
+		</dict>
+	</dict>
+	<key>state</key>
+	<dict>
+		<key>actionsSplitView</key>
+		<real>175</real>
+		<key>layoutFrame</key>
+		<string>{{0, 0}, {536, 581}}</string>
+		<key>layoutScrollPosition</key>
+		<string>{{0, 0}, {536, 581}}</string>
+		<key>mainSplitView</key>
+		<real>373</real>
+		<key>minorSplitView</key>
+		<real>439</real>
+		<key>windowFrame</key>
+		<string>{{271, 455}, {939, 709}}</string>
+	</dict>
+</dict>
+</plist>

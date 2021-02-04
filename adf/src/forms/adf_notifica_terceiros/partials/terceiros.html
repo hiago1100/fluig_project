@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Notificados</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-condensed table-striped" tablename="notificados" noaddbutton="true" nodeletebutton="true">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <th class="col-sm-4">Nome</th>
+                        <th class="col-sm-4">Área</th>
+                        <th class="col-sm-4">E-mail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span ng-if="vm.Params.edit" ng-click="vm.removeNotificado($event)" class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+                        </td>
+                        <td ng-child="vm.Formulario.nome" id="nome">
+                            <input type="text" class="form-control" name="nome" ng-model="vm.Formulario.nome" ng-value="vm.Formulario.nome">
+                        </td>
+                        <td ng-child="vm.Formulario.area" id="area">
+                            <input type="text" class="form-control" name="area" ng-model="vm.Formulario.area" ng-value="vm.Formulario.area">
+                        </td>
+                        <td ng-child="vm.Formulario.email" id="email">
+                            <input type="text" class="form-control" name="email" ng-model="vm.Formulario.email" ng-value="vm.Formulario.email">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button ng-if="vm.Params.edit" type="button" class="btn btn-lg btn-default" ng-click="vm.adicionaNotificado()">Incluir Notificado</button>
+        </div>
+    </div>
+</div>

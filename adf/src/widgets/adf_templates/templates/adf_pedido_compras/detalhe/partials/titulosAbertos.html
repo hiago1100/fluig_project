@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+    <div class="panel-heading fs-cursor-pointer" ng-click="titulosCollapsed=!titulosCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': titulosCollapsed}">
+                Títulos Abertos do Fornecedor
+            </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse animated" ng-class="{'in': titulosCollapsed}">
+        <div class="panel-body">
+            <i ng-if="!documento.TitulosAbertos || documento.TitulosAbertos.length<=0">Fornecedor sem Títulos Abertos</i>
+            <div class="row" ng-if="documento.TitulosAbertos.length>0">
+                
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead class="hidden-xs">
+                            <tr>
+                                <th>
+                                    <div class="col-sm-2">Número</div>
+                                    <div class="col-sm-2">Parcela</div>
+                                    <div class="col-sm-2">Tipo</div>
+                                    <div class="col-sm-2">Vencimento</div>
+                                    <div class="col-sm-2">Valor</div>
+                                    <div class="col-sm-2">Espécie</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="titulo in documento.TitulosAbertos">
+                                <td>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Número</label>
+                                        <p>{{titulo.titAbertoNumero}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Parcela</label>
+                                        <p>{{titulo.titAbertoParcela}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Tipo</label>
+                                        <p>{{titulo.titAbertoTipo || 'Não informado'}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Vencimento</label>
+                                        <p>{{titulo.titAbertoDataVencimento | date}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Valor</label>
+                                        <p>{{titulo.titAbertoValor | currency:titulo.titAbertoMoeda}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Espécie</label>
+                                        <p>{{titulo.titAbertoEspecie}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

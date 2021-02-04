@@ -1,0 +1,2066 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>SGA-Revisao_de_acessos</processId>
+    </processDefinitionPK>
+    <processDescription>SGA-Revisao_de_acessos</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Gestão_de_acessos</categoryId>
+    <managerEngineAllocationId>Usuário</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;hiagodo.a2&lt;/User&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>SGA-Revisao_de_acessos</processId>
+      <version>1</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>3471</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;admin&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>100</positionX>
+      <positionY>207</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </processStatePK>
+      <stateName>Validar usuário</stateName>
+      <stateDescription>Validar usuário</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>60</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;codGest&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>150</positionX>
+      <positionY>341</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>9</sequence>
+      </processStatePK>
+      <stateName>Validar grupo</stateName>
+      <stateDescription>Validar grupo</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>60</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;recebeCod&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>317</positionX>
+      <positionY>485</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>21</sequence>
+      </processStatePK>
+      <stateName>Gravar próximo aprovador</stateName>
+      <stateDescription>Gravar próximo aprovador</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>500</positionX>
+      <positionY>478</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>82</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>1</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>29</sequence>
+      </processStatePK>
+      <stateName>Integração</stateName>
+      <stateDescription>Integração</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>870</positionX>
+      <positionY>197</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>82</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>1</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>34</sequence>
+      </processStatePK>
+      <stateName>Analisar problema</stateName>
+      <stateDescription>Analisar problema</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>60</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;T.i&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>870</positionX>
+      <positionY>30</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>37</sequence>
+      </processStatePK>
+      <stateName>Validar acessos</stateName>
+      <stateDescription>Validar acessos</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>60</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Pool Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;si&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>870</positionX>
+      <positionY>649</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>52</sequence>
+      </processStatePK>
+      <stateName>Retirada de acesso por atraso</stateName>
+      <stateDescription>Retirada de acesso por atraso</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1067</positionX>
+      <positionY>197</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>82</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>1</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>27</sequence>
+      </processStatePK>
+      <stateName>Intermediate</stateName>
+      <stateDescription>Intermediate</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>580</positionX>
+      <positionY>499</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>43</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>21</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>33</sequence>
+      </processStatePK>
+      <stateName>Intermediate</stateName>
+      <stateDescription>Intermediate</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>920</positionX>
+      <positionY>187</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>43</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>29</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>53</sequence>
+      </processStatePK>
+      <stateName>Intermediário</stateName>
+      <stateDescription>Intermediário</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1142</positionX>
+      <positionY>195</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>43</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>52</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>7</sequence>
+      </processStatePK>
+      <stateName>Bloquear Usuário</stateName>
+      <stateDescription>Bloquear Usuário</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>340</positionX>
+      <positionY>318</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>11</sequence>
+      </processStatePK>
+      <stateName>Possui Conflito</stateName>
+      <stateDescription>Possui Conflito</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>800</positionX>
+      <positionY>462</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>22</sequence>
+      </processStatePK>
+      <stateName>Possui aprovador</stateName>
+      <stateDescription>Possui aprovador</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>680</positionX>
+      <positionY>455</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>48</sequence>
+      </processStatePK>
+      <stateName>Aprovação</stateName>
+      <stateDescription>Aprovação</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>340</positionX>
+      <positionY>570</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>18</sequence>
+      </processStatePK>
+      <stateName>End</stateName>
+      <stateDescription>End</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1010</positionX>
+      <positionY>207</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>1</version>
+        <sequence>7</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;bloquear&quot;) == &quot;on&quot;</condition>
+      <destinationSequenceId>29</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>1</version>
+        <sequence>7</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;bloquear&quot;) == &quot;&quot;</condition>
+      <destinationSequenceId>9</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>1</version>
+        <sequence>11</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;temConflito&quot;) == &quot;sim&quot;</condition>
+      <destinationSequenceId>37</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>1</version>
+        <sequence>11</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;temConflito&quot;) == &quot;nao&quot;</condition>
+      <destinationSequenceId>29</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>1</version>
+        <sequence>22</sequence>
+      </conditionProcessStatePK>
+      <condition>valida_aprovador()</condition>
+      <destinationSequenceId>9</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>1</version>
+        <sequence>22</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>11</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>1</version>
+        <sequence>48</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprovacaoProg&quot;) == &quot;sim&quot;</condition>
+      <destinationSequenceId>21</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>1</version>
+        <sequence>48</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;aprovacaoProg&quot;) == &quot;nao&quot; </condition>
+      <destinationSequenceId>5</destinationSequenceId>
+    </ConditionProcessState>
+  </list>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>6</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>8</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>7</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>10</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>7</initialStateSequence>
+      <finalStateSequence>9</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Não</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>24</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>21</initialStateSequence>
+      <finalStateSequence>22</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>25</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>22</initialStateSequence>
+      <finalStateSequence>9</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Sim</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>26</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>22</initialStateSequence>
+      <finalStateSequence>11</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Não</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>31</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>29</initialStateSequence>
+      <finalStateSequence>18</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>32</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>7</initialStateSequence>
+      <finalStateSequence>29</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Sim</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>35</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>33</initialStateSequence>
+      <finalStateSequence>34</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>36</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>29</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>38</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>11</initialStateSequence>
+      <finalStateSequence>37</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Sim</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>39</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>37</initialStateSequence>
+      <finalStateSequence>29</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>44</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>11</initialStateSequence>
+      <finalStateSequence>29</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Não</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>45</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>27</initialStateSequence>
+      <finalStateSequence>22</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>47</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>37</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Reprovar</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>49</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>9</initialStateSequence>
+      <finalStateSequence>48</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>50</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>48</initialStateSequence>
+      <finalStateSequence>21</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>51</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>48</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>54</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>53</initialStateSequence>
+      <finalStateSequence>34</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>56</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>52</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <expression></expression>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>57</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>52</initialStateSequence>
+      <finalStateSequence>18</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>58</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>52</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>59</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>37</initialStateSequence>
+      <finalStateSequence>52</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>60</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>9</initialStateSequence>
+      <finalStateSequence>52</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeTaskSave</eventId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeTaskSave(colleagueId,nextSequenceId,userList){&#xd;
+	&#xd;
+		&#xd;
+		var WKNumState = getValue(&quot;WKNumSTATE&quot;);&#xd;
+&#xd;
+	&#xd;
+	 var cod_gestorAux = hAPI.getCardValue(&apos;cont_aprovador&apos;);&#xd;
+	 var cont = parseInt(hAPI.getCardValue(&apos;cont&apos;));    &#xd;
+	 var codGest =  cod_gestorAux.split(&quot;,&quot;);     &#xd;
+	 var force = hAPI.getCardValue(&apos;gestorHide___1&apos;);&#xd;
+&#xd;
+&#xd;
+	 //log.info(&quot;***&quot; + codGest[0]);&#xd;
+	 &#xd;
+	  if(nextSequenceId == 5 ){  &#xd;
+		  &#xd;
+&#xd;
+	      try {&#xd;
+	          hAPI.setCardValue(&apos;recebeCod&apos;, force );&#xd;
+	          hAPI.setCardValue(&apos;cont&apos;,&apos;1&apos;);&#xd;
+	          &#xd;
+	    	 &#xd;
+&#xd;
+	      } catch(error) { &#xd;
+	        log.info(&quot;##### ERRO&quot; + error)&#xd;
+&#xd;
+	      }&#xd;
+	    }&#xd;
+	  &#xd;
+	  &#xd;
+	  if(nextSequenceId == 21 ){  &#xd;
+		  &#xd;
+			log.info(&quot;***** BEFORE Contador : &quot; +  cont);&#xd;
+			log.info(&quot;***** BEFORE  hapi cont : &quot; +  hAPI.getCardValue(&apos;cont&apos;));&#xd;
+			log.info(&quot;***** BEFORE  hapi tamanho Array : &quot; +  codGest.length);&#xd;
+		  &#xd;
+		  &#xd;
+	      try {&#xd;
+&#xd;
+	        hAPI.setCardValue(&apos;recebeCod&apos;, codGest[cont]);   &#xd;
+	        hAPI.setCardValue(&apos;cont&apos;, cont + 1);&#xd;
+	       &#xd;
+	      } catch(error) { &#xd;
+	        log.info(&quot;##### ERRO&quot; + error)&#xd;
+&#xd;
+	      }&#xd;
+	    }&#xd;
+	  &#xd;
+	    &#xd;
+	}&#xd;
+	&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>servicetask21</eventId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function servicetask21(attempt, message) {
+
+	var cod_gestorAux = hAPI.getCardValue(&apos;cont_aprovador&apos;);
+	var cont = parseInt(hAPI.getCardValue(&apos;cont&apos;));    
+	var codGest =  cod_gestorAux.split(&quot;,&quot;);  
+
+	log.info(&quot;***** SERVICE Contador : &quot; +  cont);
+	log.info(&quot;***** SERVICE hapi cont : &quot; +  hAPI.getCardValue(&apos;cont&apos;));
+	log.info(&quot;***** SERVICE hapi Array : &quot; +  codGest[cont]);
+	log.info(&quot;***** SERVICE hapi tamanho Array : &quot; +  codGest.length);
+
+	try {
+		if (codGest.length &lt; cont) {
+			hAPI.setCardValue(&apos;recebeCod&apos;, codGest[cont]);
+	
+		}     
+	} catch(error) { 
+		log.info(&quot;ERRO looping : &quot; + error);
+	}
+
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>servicetask52</eventId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function servicetask52(attempt, message) {
+
+  try {
+    var serviceProvider = ServiceManager.getService(&apos;WSEXECBO&apos;);
+    var serviceLocator = serviceProvider.instantiate(&apos;com.totvs.framework.ws.execbo.service.WebServiceExecBO&apos;);
+    var service = serviceLocator.getWebServiceExecBOPort();
+    var bloqueio = hAPI.getCardValue(&quot;bloquear&quot;);
+
+    var token = service.userLogin(&quot;super&quot;);
+    log.info(&apos;&gt;&gt;&gt; servicetask17 token: &apos; + token);
+
+    var params = [] ;
+    var jsonParams;
+
+   //   if(bloqueio == &quot;on&quot;){
+
+            // Prepara os parametros da procedure a ser chamada no Progress
+      //       var param1 = {} ;
+      //       param1.dataType = &quot;character&quot;;
+      //       param1.name = &quot;c_usuario&quot;;
+      //       param1.value = &apos;&quot;&apos; + hAPI.getCardValue(&quot;idUsuario&quot;)+ &apos;&quot;&apos; ;
+      //       param1.type = &quot;input&quot;;
+      //       params[0] = param1;
+      //   
+      //       var param2 = {};
+      //       param2.dataType = &quot;character&quot;;
+      //       param2.name = &quot;retorno&quot;;
+      //       param2.value = &quot;&quot;;
+      //       param2.type = &quot;output&quot;;
+      //       params[1] = param2;
+      
+      // jsonParams = JSON.stringify(params).replace( /[\\][&quot;]/g, &apos;&apos; );
+        
+  //  } else {
+
+      var param1 = [
+        &apos;cod_usuario&apos;,
+        &apos;cod_grp_usuar&apos;,
+        &apos;acao&apos;,
+        ];
+
+      var fields = createFields(param1);    
+
+      log.info(&apos;&gt;&gt;&gt; indices Inicio &apos;);
+      var indices = getChildrenIndexes(&apos;manterGrupo&apos;);
+      var records = [];
+
+      log.info(&apos;&gt;&gt;&gt; indices: &apos; + indices);
+      for (var i = 0; i &lt; indices.length; i++) {
+        var j = 1 + 1;
+
+        log.info(&apos;@@@ idusuario: &apos; + hAPI.getCardValue(&apos;idUsuario&apos;));
+        log.info(&apos;@@@ GrupoCod: &apos; + hAPI.getCardValue(&apos;grupoCod___&apos; + indices[i]));
+        log.info(&apos;@@@ Manter: &apos; + hAPI.getCardValue(&apos;manterGrupo___&apos; + indices[i]));
+
+        records[i] = {};
+        records[i][&apos;cod_usuario&apos;] = &apos;&quot;&apos; + hAPI.getCardValue(&apos;idUsuario&apos;) + &apos;&quot;&apos;;
+        records[i][&apos;cod_grp_usuar&apos;] = &apos;&quot;&apos; + hAPI.getCardValue(&apos;grupoCod___&apos;+indices[i]) + &apos;&quot;&apos;;
+        records[i][&apos;acao&apos;] = &apos;ESC&apos; ;
+
+        
+        log.info(&quot;### PASSOU &quot;);
+      
+      }
+
+      var temptable = {
+          &apos;name&apos;: &quot;ttGrupoUsuario&quot;, 
+          &apos;fields&apos;: fields,
+          &apos;records&apos;: records            
+      };
+
+      var retorno = {
+          &apos;dataType&apos;: &apos;character&apos;,
+          &apos;name&apos;: &apos;retorno&apos;,
+          &apos;value&apos;: &apos;&apos;,
+          &apos;type&apos;: &apos;output&apos;
+      };
+
+      var capa = {
+          &apos;name&apos;: &apos;ttGrupoUsuario&apos;,
+          &apos;type&apos;: &apos;input&apos;,
+          &apos;dataType&apos;: &apos;temptable&apos;,
+          &apos;value&apos;: temptable
+      };
+
+      params.push(capa, retorno);
+      
+      jsonParams = JSON.stringify(params).replace( /[\\][&quot;]/g, &apos;&apos; );
+
+ //   }
+
+
+//    var jsonParams = JSON.stringify(params).replace( /[\\][&quot;]/g, &apos;&apos; );
+    
+    log.info(&apos;&gt;&gt;&gt; Parametros da procedure: &apos; + jsonParams);
+
+    // if(bloqueio == &quot;on&quot;){
+    //   var resp = service.callProcedureWithToken(token, &quot;esp/essec005b.p&quot;, &quot;piBloqueiaUsuario&quot;, jsonParams);
+    //   log.info(&apos;### resp: &apos; + resp);
+    // }else{
+      var resp = service.callProcedureWithToken(token, &quot;esp/essec005b.p&quot;, &quot;piGrupoUsuario&quot;, jsonParams);
+      log.info(&apos;### resp: &apos; + resp);
+  //  }
+    
+    var respObj = JSON.parse(resp);    
+    log.info(&apos;??? respObj[0].value: &apos; + respObj[0].value);
+
+  } catch(error) { 
+    log.error(error);
+    throw error;
+  }
+}
+
+function createFields(param){
+  var fields = [];
+
+  for(i in param) {
+    fields[i] = {};
+    fields[i][&apos;name&apos;] = param[i];
+    fields[i][&apos;label&apos;] = param[i];
+    fields[i][&apos;type&apos;] = &apos;character&apos;;
+  }
+
+  return fields;
+}
+
+function getChildrenIndexes(fieldName){
+
+  
+  log.info(&apos;@@@ NUMERO DO PROCESSO : &apos; + getValue(&quot;WKNumProces&quot;));
+
+  var dados = hAPI.getCardData(getValue(&quot;WKNumProces&quot;));
+  var entries = dados.entrySet().iterator();
+  var indexes = [];
+
+  while (entries.hasNext()) {
+    var e = entries.next();
+    log.info(&apos;&gt;&gt;&gt; fieldName : &apos; + fieldName);
+    log.info(&apos;&gt;&gt;&gt; e.getKey(): &apos; + e.getKey());
+    if (e.getKey().match(fieldName + &quot;___&quot;)) {
+//      if (e.getKey().startWith(fieldName + &quot;___&quot;)) {
+//      log.info(&apos;@@@ getChildrenIndexes indice: &apos; + e.getKey().split(&quot;___&quot;)[1]);
+      indexes.push(e.getKey().split(&quot;___&quot;)[1])
+    }
+  }
+  return indexes;
+};
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>valida_aprovador</eventId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function valida_aprovador(){
+
+	var cod_gestorAux = hAPI.getCardValue(&apos;cont_aprovador&apos;);
+	var cont = parseInt(hAPI.getCardValue(&apos;cont&apos;));    
+	var codGest =  cod_gestorAux.split(&quot;,&quot;);   
+
+	log.info(&quot;***** VERIFICA Contador : &quot; +  cont);
+	log.info(&quot;***** VERIFICA  hapi cont : &quot; +  hAPI.getCardValue(&apos;cont&apos;));
+	log.info(&quot;***** VERIFICA  hapi Array : &quot; +  codGest[cont]);
+	log.info(&quot;***** VERIFICA  hapi tamanho Array : &quot; +  codGest.length);
+
+	log.info(&quot;######## antes de entrar no if&quot;);
+	
+	if (codGest.length &lt; cont) {
+		log.info(&quot;######## PASSOU NO FALSE&quot;);		
+
+		return false;
+	} else {
+		log.info(&quot;######## PASSOU NO TRUE&quot;);		
+		
+		return true ;
+	}
+
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskCreate</eventId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskCreate(colleagueId) {
+    var atividade = getValue(&apos;WKCurrentState&apos;);
+    log.info(&quot;@@@ ENTROU NO AFTERTASK : &quot; );
+    // Atividade de sequência 5 é a da tarefa criada e que vou alterar o prazo de conclusão
+   // if (atividade == 11) {
+        // Recuperando a data informada no campo do formulário
+        var prazoFormulario = hAPI.getCardValue(&apos;dataRevisao&apos;);
+       log.info(&quot;@@@ ENTROU NO AFTERTASK : &quot; + prazoFormulario );
+        
+        
+        if (prazoFormulario != undefined &amp;&amp; prazoFormulario != &apos;&apos;) {
+            var numeroDaSolicitacao = getValue(&apos;WKNumProces&apos;);
+            var threadDaSolicitacao = 0; // Normalmente 0, quando não for atividade paralela
+            var responsavelPelaTarefa = colleagueId;
+             
+            /* Nesse caso o formato da data salva pelo formulário no exemplo é DD/MM/AAAA, mas isso pode variar de acordo com a formatação utilizada, 
+               mudando assim as posições das informações dentro do array */
+             
+            /* Extrai os dados da data do formulário para um array, para posteriormente transformar em data do Javascript */
+            var arrayPrazoConclusao = prazoFormulario.split(&quot;/&quot;);
+            var dia = arrayPrazoConclusao[0]; // Posição 0 do array é o dia
+            var mes = arrayPrazoConclusao[1] - 1; // Posição 1 do array é o mês (Subtraímos 1 porque na data do Javascript o mês vai de 0 a 11)
+            var ano = arrayPrazoConclusao[2]; // Posição 2 do array é o ano
+             
+            var horaDoPrazo = (24*60*60) - 1; /* A hora é em milisegundos, e esse cálculo tem resultado de 23:59:59, ou seja, 
+            o prazo de conclusão vai ser até o último segundo do dia informado no formulário */
+             
+            // Cria a data no Javascript
+            var dataDoPrazo = new Date();
+            dataDoPrazo.setDate(dia);
+            dataDoPrazo.setMonth(mes);
+            dataDoPrazo.setFullYear(ano);
+
+            log.info(&quot;@@@ PRAZO ATUALIZADO : &quot; + dataDoPrazo);
+             
+            // Altera o prazo de conclusão
+            hAPI.setDueDate(numeroDaSolicitacao, threadDaSolicitacao, responsavelPelaTarefa, dataDoPrazo, horaDoPrazo);
+        }
+  //  } 
+    // if (atividade == 15) {
+    //     // Recuperando a data informada no campo do formulário
+    //     var prazoFormulario = hAPI.getCardValue(&apos;adequaData2&apos;);
+    //     log.info(&quot;@@@ ENTROU NO AFTERTASK : &quot; + prazoFormulario );
+        
+        
+    //     if (prazoFormulario != undefined &amp;&amp; prazoFormulario != &apos;&apos;) {
+    //         var numeroDaSolicitacao = getValue(&apos;WKNumProces&apos;);
+    //         var threadDaSolicitacao = 0; // Normalmente 0, quando não for atividade paralela
+    //         var responsavelPelaTarefa = colleagueId;
+             
+    //         /* Nesse caso o formato da data salva pelo formulário no exemplo é DD/MM/AAAA, mas isso pode variar de acordo com a formatação utilizada, 
+    //            mudando assim as posições das informações dentro do array */
+             
+    //         /* Extrai os dados da data do formulário para um array, para posteriormente transformar em data do Javascript */
+    //         var arrayPrazoConclusao = prazoFormulario.split(&quot;/&quot;);
+    //         var dia = arrayPrazoConclusao[0]; // Posição 0 do array é o dia
+    //         var mes = arrayPrazoConclusao[1] - 1; // Posição 1 do array é o mês (Subtraímos 1 porque na data do Javascript o mês vai de 0 a 11)
+    //         var ano = arrayPrazoConclusao[2]; // Posição 2 do array é o ano
+             
+    //         var horaDoPrazo = (24*60*60) - 1; /* A hora é em milisegundos, e esse cálculo tem resultado de 23:59:59, ou seja, 
+    //         o prazo de conclusão vai ser até o último segundo do dia informado no formulário */
+             
+    //         // Cria a data no Javascript
+    //         var dataDoPrazo = new Date();
+    //         dataDoPrazo.setDate(dia);
+    //         dataDoPrazo.setMonth(mes);
+    //         dataDoPrazo.setFullYear(ano);
+             
+    //         // Altera o prazo de conclusão
+    //         hAPI.setDueDate(numeroDaSolicitacao, threadDaSolicitacao, responsavelPelaTarefa, dataDoPrazo, horaDoPrazo);
+    //     }
+    // }
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>servicetask29</eventId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function servicetask29(attempt, message) {
+
+	try {
+		var serviceProvider = ServiceManager.getService(&apos;WSEXECBO&apos;);
+		var serviceLocator = serviceProvider.instantiate(&apos;com.totvs.framework.ws.execbo.service.WebServiceExecBO&apos;);
+		var service = serviceLocator.getWebServiceExecBOPort();
+		var bloqueio = hAPI.getCardValue(&quot;bloquear&quot;);
+
+		var token = service.userLogin(&quot;super&quot;);
+		log.info(&apos;&gt;&gt;&gt; servicetask17 token: &apos; + token);
+
+		var params = [] ;
+		var jsonParams;
+
+		  if(bloqueio == &quot;on&quot;){
+
+			      // Prepara os parametros da procedure a ser chamada no Progress
+			      var param1 = {} ;
+			      param1.dataType = &quot;character&quot;;
+			      param1.name = &quot;c_usuario&quot;;
+			      param1.value = &apos;&quot;&apos; + hAPI.getCardValue(&quot;idUsuario&quot;)+ &apos;&quot;&apos; ;
+			      param1.type = &quot;input&quot;;
+			      params[0] = param1;
+			  
+			      var param2 = {};
+			      param2.dataType = &quot;character&quot;;
+			      param2.name = &quot;retorno&quot;;
+			      param2.value = &quot;&quot;;
+			      param2.type = &quot;output&quot;;
+			      params[1] = param2;
+			
+			jsonParams = JSON.stringify(params).replace( /[\\][&quot;]/g, &apos;&apos; );
+			  
+		} else {
+
+			var param1 = [
+				&apos;cod_usuario&apos;,
+				&apos;cod_grp_usuar&apos;,
+				&apos;acao&apos;,
+				];
+
+			var fields = createFields(param1);		
+
+			log.info(&apos;&gt;&gt;&gt; indices Inicio &apos;);
+			var indices = getChildrenIndexes(&apos;manterGrupo&apos;);
+			var records = [];
+
+			log.info(&apos;&gt;&gt;&gt; indices: &apos; + indices);
+			for (var i = 0; i &lt; indices.length; i++) {
+				var j = 1 + 1;
+
+				log.info(&apos;@@@ idusuario: &apos; + hAPI.getCardValue(&apos;idUsuario&apos;));
+				log.info(&apos;@@@ GrupoCod: &apos; + hAPI.getCardValue(&apos;grupoCod___&apos; + indices[i]));
+				log.info(&apos;@@@ Manter: &apos; + hAPI.getCardValue(&apos;manterGrupo___&apos; + indices[i]));
+
+				records[i] = {};
+				records[i][&apos;cod_usuario&apos;] = &apos;&quot;&apos; + hAPI.getCardValue(&apos;idUsuario&apos;) + &apos;&quot;&apos;;
+				records[i][&apos;cod_grp_usuar&apos;] = &apos;&quot;&apos; + hAPI.getCardValue(&apos;grupoCod___&apos;+indices[i]) + &apos;&quot;&apos;;
+				records[i][&apos;acao&apos;] = (hAPI.getCardValue(&apos;manterGrupo___&apos;+indices[i]) == &apos;on&apos;) ? &apos;INC&apos; : &apos;ESC&apos; ;
+
+			
+			}
+
+			var temptable = {
+					&apos;name&apos;: &quot;ttGrupoUsuario&quot;, 
+					&apos;fields&apos;: fields,
+					&apos;records&apos;: records			      
+			};
+
+			var retorno = {
+					&apos;dataType&apos;: &apos;character&apos;,
+					&apos;name&apos;: &apos;retorno&apos;,
+					&apos;value&apos;: &apos;&apos;,
+					&apos;type&apos;: &apos;output&apos;
+			};
+
+			var capa = {
+					&apos;name&apos;: &apos;ttGrupoUsuario&apos;,
+					&apos;type&apos;: &apos;input&apos;,
+					&apos;dataType&apos;: &apos;temptable&apos;,
+					&apos;value&apos;: temptable
+			};
+
+			params.push(capa, retorno);
+			
+			jsonParams = JSON.stringify(params).replace( /[\\][&quot;]/g, &apos;&apos; );
+
+		}
+
+
+//		var jsonParams = JSON.stringify(params).replace( /[\\][&quot;]/g, &apos;&apos; );
+		
+		log.info(&apos;&gt;&gt;&gt; Parametros da procedure: &apos; + jsonParams);
+
+		if(bloqueio == &quot;on&quot;){
+			var resp = service.callProcedureWithToken(token, &quot;esp/essec005b.p&quot;, &quot;piBloqueiaUsuario&quot;, jsonParams);
+			log.info(&apos;### resp: &apos; + resp);
+		}else{
+			var resp = service.callProcedureWithToken(token, &quot;esp/essec005b.p&quot;, &quot;piGrupoUsuario&quot;, jsonParams);
+			log.info(&apos;### resp: &apos; + resp);
+		}
+		
+		var respObj = JSON.parse(resp);    
+		log.info(&apos;??? respObj[0].value: &apos; + respObj[0].value);
+
+	} catch(error) { 
+		log.error(error);
+		throw error;
+	}
+}
+
+function createFields(param){
+	var fields = [];
+
+	for(i in param) {
+		fields[i] = {};
+		fields[i][&apos;name&apos;] = param[i];
+		fields[i][&apos;label&apos;] = param[i];
+		fields[i][&apos;type&apos;] = &apos;character&apos;;
+	}
+
+	return fields;
+}
+
+function getChildrenIndexes(fieldName){
+
+	
+	log.info(&apos;@@@ NUMERO DO PROCESSO : &apos; + getValue(&quot;WKNumProces&quot;));
+
+	var dados = hAPI.getCardData(getValue(&quot;WKNumProces&quot;));
+	var entries = dados.entrySet().iterator();
+	var indexes = [];
+
+	while (entries.hasNext()) {
+		var e = entries.next();
+		log.info(&apos;&gt;&gt;&gt; fieldName : &apos; + fieldName);
+		log.info(&apos;&gt;&gt;&gt; e.getKey(): &apos; + e.getKey());
+		if (e.getKey().match(fieldName + &quot;___&quot;)) {
+//			if (e.getKey().startWith(fieldName + &quot;___&quot;)) {
+//			log.info(&apos;@@@ getChildrenIndexes indice: &apos; + e.getKey().split(&quot;___&quot;)[1]);
+			indexes.push(e.getKey().split(&quot;___&quot;)[1])
+		}
+	}
+	return indexes;
+};
+</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>145</height>
+      <width>1144</width>
+      <positionX>27</positionX>
+      <positionY>295</positionY>
+      <stateName>Gestor Usuário</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>145</height>
+      <width>1144</width>
+      <positionX>27</positionX>
+      <positionY>151</positionY>
+      <stateName>Fluig</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>142</height>
+      <width>1144</width>
+      <positionX>27</positionX>
+      <positionY>10</positionY>
+      <stateName>TI</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>145</height>
+      <width>1143</width>
+      <positionX>27</positionX>
+      <positionY>610</positionY>
+      <stateName>SI</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>172</height>
+      <width>1143</width>
+      <positionX>27</positionX>
+      <positionY>439</positionY>
+      <stateName>Gestor Grupos</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>6</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>117</positionX>
+      <positionY>369</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>25</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>674</positionX>
+      <positionY>411</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>25</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>434</positionX>
+      <positionY>411</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>32</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>370</positionX>
+      <positionY>224</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>35</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>950</positionX>
+      <positionY>137</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>36</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>894</positionX>
+      <positionY>130</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>38</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>830</positionX>
+      <positionY>684</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>44</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>829</positionX>
+      <positionY>224</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>47</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>203</positionX>
+      <positionY>675</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>50</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>553</positionX>
+      <positionY>617</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>51</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>228</positionX>
+      <positionY>618</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>56</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>203</positionX>
+      <positionY>16</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>56</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>1117</positionX>
+      <positionY>16</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>59</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1120</positionX>
+      <positionY>674</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>60</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>415</positionX>
+      <positionY>612</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>60</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>552</positionX>
+      <positionY>612</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SGA-Revisao_de_acessos</processId>
+        <version>1</version>
+        <linkSequence>60</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>1088</positionX>
+      <positionY>612</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list>
+    <ProcessStateService>
+      <companyId>1</companyId>
+      <processId>SGA-Revisao_de_acessos</processId>
+      <version>1</version>
+      <sequence>21</sequence>
+      <attempts>0</attempts>
+      <sucessFullMessage></sucessFullMessage>
+      <frequency>1</frequency>
+      <frequencyType>0</frequencyType>
+    </ProcessStateService>
+    <ProcessStateService>
+      <companyId>1</companyId>
+      <processId>SGA-Revisao_de_acessos</processId>
+      <version>1</version>
+      <sequence>29</sequence>
+      <attempts>0</attempts>
+      <sucessFullMessage></sucessFullMessage>
+      <serviceName>WSEXECBO</serviceName>
+      <frequency>1</frequency>
+      <frequencyType>0</frequencyType>
+    </ProcessStateService>
+    <ProcessStateService>
+      <companyId>1</companyId>
+      <processId>SGA-Revisao_de_acessos</processId>
+      <version>1</version>
+      <sequence>52</sequence>
+      <attempts>0</attempts>
+      <sucessFullMessage></sucessFullMessage>
+      <serviceName></serviceName>
+      <frequency>1</frequency>
+      <frequencyType>0</frequencyType>
+    </ProcessStateService>
+  </list>
+  <list/>
+</list>

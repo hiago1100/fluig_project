@@ -1,0 +1,251 @@
+function defineStructure() {
+
+}
+function onSync(lastSyncDate) {
+
+}
+function createDataset(fields, constraints, sortFields) {
+
+     var dataset = DatasetBuilder.newDataset();
+     
+       dataset.addColumn("COUNT");
+       dataset.addColumn("COD_USUARIO");
+       dataset.addColumn("Nome_Usuario");
+       dataset.addColumn("COD_GESTOR");
+       dataset.addColumn("NOME_GESTOR");
+       dataset.addColumn("ID_PROCESSO");
+        
+       
+     var dataConclusao         = findConstraint("dataConclusao",constraints,"");
+     var idEmpresa             = findConstraint("idEmpresa",constraints,"");
+     var razaoSocial           = findConstraint("razaoSocial",constraints,"");
+
+     var servicoIntegracao     = findConstraint("servicoIntegracao",constraints,"");
+     var urlIntegracao         = findConstraint("urlIntegracao",constraints,"");
+     var userIntegracao        = findConstraint("userIntegracao",constraints,"");
+
+     
+     log.info("$$$ DataConclusao" + dataConclusao);
+     var cUser = DatasetFactory.createConstraint("idEmpresa", idEmpresa, idEmpresa, ConstraintType.MUST);
+     var dsUsuarios = DatasetFactory.getDataset('SGA-sql2dataset-usuarios', null, [cUser],null);
+    
+     
+     log.info("@@@ DATASET :" + dsUsuarios.rowsCount); 
+     
+ for(var i = 0;i<dsUsuarios.rowsCount;i++){
+ //for(var i = 1;i<=28;i++){
+         var cod_usuario = dsUsuarios.getValue(i,'cod_usuario');
+         var cod_usuario_int = dsUsuarios.getValue(i,'idUsuario');
+
+         log.info("@@@ DENTRO DO DATASET : "+ cod_usuario_int);
+
+         log.info("@@@ DENTRO DO DATASET : "+ cod_usuario);
+         
+         if(cod_usuario == "adm_tec"){     
+         
+        
+             log.info("@@@ ENTROU NO FOR");
+             
+         var c10 = DatasetFactory.createConstraint("colleaguePK.colleagueId", cod_usuario, cod_usuario, ConstraintType.MUST);
+         var colleague = DatasetFactory.getDataset('colleague', null, [c10],null);
+         
+        if(colleague.rowsCount > 0){
+        
+            
+            log.info("@@@ ENTROU NO IF ");
+
+            
+            var workflowEngineServiceProvider = ServiceManager.getServiceInstance("ECMWorkflowEngineService");
+       
+            var workflowEngineServiceLocator = workflowEngineServiceProvider.instantiate("com.totvs.technology.ecm.workflow.ws.ECMWorkflowEngineServiceService");
+         
+            var workflowEngineService = workflowEngineServiceLocator.getWorkflowEngineServicePort();
+    
+            var objectFactory = workflowEngineServiceProvider.instantiate("com.totvs.technology.ecm.workflow.ws.ObjectFactory");
+    
+            var cardData = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArrayArray");
+
+            var processAttachmentDtoArray = workflowEngineServiceProvider.instantiate("com.totvs.technology.ecm.workflow.ws.ProcessAttachmentDtoArray");
+
+            var colleaguesId = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+//            colleaguesId.getItem().addAll([dsUsuarios.getValue(i,'COD_GEST')]);
+            colleaguesId.getItem().addAll(["admin"]);
+
+            var appointment =  workflowEngineServiceProvider.instantiate("com.totvs.technology.ecm.workflow.ws.ProcessTaskAppointmentDtoArray");;
+      
+
+            
+            var itemForm1 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+            itemForm1.getItem().add("nomeUsuario");
+            itemForm1.getItem().add(dsUsuarios.getValue(i,'nome_usuario'));
+            cardData.getItem().add(itemForm1);
+            log.info("### Nome Usuario "+ dsUsuarios.getValue(i,'nome_usuario'));
+
+            
+            var itemForm2 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+            itemForm2.getItem().add("codUsuario");
+            itemForm2.getItem().add(dsUsuarios.getValue(i,'cod_usuario'));
+            cardData.getItem().add(itemForm2);
+
+            log.info("### Codigo Usuario "+ dsUsuarios.getValue(i,'cod_usuario'));
+ 
+            
+                     
+             var itemForm3 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+             itemForm3.getItem().add("gestorUsuario");
+             itemForm3.getItem().add("Administrador do usuário");
+             cardData.getItem().add(itemForm3);
+
+             log.info("### Gestor usuario admin");
+    
+            
+            var itemForm4 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+            itemForm4.getItem().add("codGest");
+            //itemForm4.getItem().add(dsUsuarios.getValue(i,'COD_GEST'));
+            itemForm4.getItem().add("admin");
+             cardData.getItem().add(itemForm4);
+
+            log.info("### Codigo Gestor usuario admin");
+            
+//            var itemForm11 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+//            itemForm11.getItem().add("count");
+//            itemForm11.getItem().add(dsUsuarios.getValue(f,'ID_PROCESSO'));
+//            cardData.getItem().add(itemForm11);
+            
+//            
+//            log.info("### Número solicitação "+ dsUsuariosGrupo.getValue(f,'ID_PROCESSO'));
+// 
+//          
+
+            
+            var c1  = DatasetFactory.createConstraint("idUsuario", cod_usuario_int, cod_usuario_int, ConstraintType.MUST);
+            var c11 = DatasetFactory.createConstraint("idEmpresa", "4", "4", ConstraintType.MUST);
+            var dsUsuariosGrupo = DatasetFactory.getDataset('SGA-sql2dataset-usuario-grupos', null, [c1,c11],null);
+            
+
+            for(var f=0;f<dsUsuariosGrupo.rowsCount;f++){
+
+                log.info("### Segundo For");
+
+                var a = f+1;
+                var itemForm5 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+                itemForm5.getItem().add("grupoCod___"+a);
+                itemForm5.getItem().add(dsUsuariosGrupo.getValue(f,'idLegGrupo'));
+                cardData.getItem().add(itemForm5);
+                    
+                
+                log.info("### codigo do Grupo "+ dsUsuariosGrupo.getValue(f,'idLegGrupo'));
+                
+                var itemForm6 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+                itemForm6.getItem().add("grupoDesc___"+a);
+                itemForm6.getItem().add(dsUsuariosGrupo.getValue(f,'descAbrev'));
+                cardData.getItem().add(itemForm6);
+
+                log.info("### Desc do Grupo "+ dsUsuariosGrupo.getValue(f,'descAbrev'));
+            
+                
+                var itemForm7 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+                itemForm7.getItem().add("grupoGestor___"+a);
+                itemForm7.getItem().add(dsUsuariosGrupo.getValue(f,'nomeGestor'));
+                cardData.getItem().add(itemForm7);
+
+                log.info("### Gestor do Grupo "+ dsUsuariosGrupo.getValue(f,'nomeGestor'));
+   
+                
+                var itemForm8 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+                itemForm8.getItem().add("gestorHide___"+a);
+                //itemForm8.getItem().add(dsUsuariosGrupo.getValue(f,'GESTOR'));
+                // cardData.getItem().addAll(["admin"]);
+                
+                                  
+               
+            }
+         
+        }
+        
+
+        var itemForm9 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+        itemForm9.getItem().add("idUsuario");
+        itemForm9.getItem().add(dsUsuarios.getValue(i,'z_sga_usuarios_id'));
+        cardData.getItem().add(itemForm9);
+   
+
+        var itemForm10 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+        itemForm10.getItem().add("dataRevisao"); // nome do campo.
+        itemForm10.getItem().add(dataConclusao); // valor do campo.        
+        cardData.getItem().add(itemForm10);
+
+        var itemForm19 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+        itemForm19.getItem().add("nomeEmpresa"); // nome do campo.
+        itemForm19.getItem().add(razaoSocial); // valor do campo.        
+        cardData.getItem().add(itemForm19);
+
+        var itemForm20 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+        itemForm20.getItem().add("codigoEmpresa"); // nome do campo.
+        itemForm20.getItem().add(idEmpresa); // valor do campo.        
+        cardData.getItem().add(itemForm20);
+
+        var itemForm21 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+        itemForm21.getItem().add("servicoIntegracao"); // nome do campo.
+        itemForm21.getItem().add(servicoIntegracao); // valor do campo.        
+        cardData.getItem().add(itemForm21);
+
+        var itemForm22 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+        itemForm22.getItem().add("urlIntegracao"); // nome do campo.
+        itemForm22.getItem().add(urlIntegracao); // valor do campo.        
+        cardData.getItem().add(itemForm22);
+
+        var itemForm23 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+        itemForm23.getItem().add("userIntegracao"); // nome do campo.
+        itemForm23.getItem().add(userIntegracao); // valor do campo.        
+        cardData.getItem().add(itemForm23);
+
+        
+
+
+
+
+            log.info("@@@ CARD VALUE"+ cardData);
+              
+            // Cria uma solicitação com os dados obtidos
+            var rest =  workflowEngineService.startProcess("admin", "adm", 1, "ARY-Revisao_de_acessos", 0, colleaguesId, "Revisão iniciada pelo admnistrador ", "admin", true, processAttachmentDtoArray, cardData, appointment, false);
+           
+            log.info("@@@ id do processo" + rest);    
+   
+             dataset.addRow([i,
+                            dsUsuarios.getValue(i,'cod_usuario'),
+                            dsUsuarios.getValue(i,'nome_usuario'),
+                            dsUsuarios.getValue(i,'cod_gest'),
+                            dsUsuarios.getValue(i,'GEST'),                            
+                            rest.getItem().get(4).getItem().get(1)]);
+
+         }  // fim do if usuario  
+         
+     }
+    
+   
+   log.info("** FIM DO DATASET");
+    
+    return dataset;
+    
+}
+
+function findConstraint(fieldName, constraints, defaultValue) {
+     if (constraints != null) {
+      
+      for (var i=0; i<constraints.length; i++){
+       log.info("***CONSTRAN : " + constraints[i].fieldName );
+       log.info("***CONSTRAN2 : " + constraints[i].initialValue);
+       if (constraints[i].fieldName == fieldName){
+        return constraints[i].initialValue;
+       }
+      }
+     }
+     return defaultValue;
+    }
+
+
+
+function onMobileSync(user) {
+
+}

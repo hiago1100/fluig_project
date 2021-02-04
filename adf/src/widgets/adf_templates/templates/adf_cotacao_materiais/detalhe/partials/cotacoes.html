@@ -1,0 +1,72 @@
+<div class="panel panel-default" ng-init="cotacoesCollapsed = true">
+    <div class="panel-heading fs-cursor-pointer" ng-click="cotacoesCollapsed = !cotacoesCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': cotacoesCollapsed}">
+                Cotações
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': cotacoesCollapsed}">
+        <div class="panel-body">
+            <i ng-if="documento.Cotacoes.length<=0">Sem Cotações</i>
+            <div class="row" ng-if="documento.Cotacoes.length>0">
+                <div class="col-md-8">
+                    <table class="table table-striped">
+
+                        <tbody>
+                            <tr ng-repeat="cotacao in documento.Cotacoes">
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <b>Fornecedor:</b>
+                                            <p>{{cotacao.cotacaoFornecedor || 'Não informado'}}</p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <b>Data da Cotação: </b>
+                                            <p>{{cotacao.cotacaoData | date}}</p>
+                                        </div>
+
+
+                                        <div class="col-sm-3">
+                                            <b>Cond. Pagto: </b>
+                                            <p>{{cotacao.cotacaoCondPagto}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <b>Valor Unitário: </b>
+                                            <p>{{cotacao.cotacaoValor | currency:cotacao.cotacaoMoeda}}</p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <b>IPI: </b>
+                                            <p>{{cotacao.cotacaoValorIpi | currency:cotacao.cotacaoMoeda}}</p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <b>Frete: </b>
+                                            <p>{{cotacao.cotacaoValorFrete | currency:cotacao.cotacaoMoeda}}</p>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <b>Desconto: </b>
+                                            <p>{{cotacao.cotacaoValorDesconto | currency:cotacao.cotacaoMoeda}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-sm-12">
+                                            <i>{{cotacao.cotacaoNarrativa}}</i>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <canvas id="bar" class="chart chart-bar" chart-options="chartOptions" chart-data="cotacoesData" chart-labels="cotacoesLabels" chart-series="cotacoesSeries">
+                    </canvas>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

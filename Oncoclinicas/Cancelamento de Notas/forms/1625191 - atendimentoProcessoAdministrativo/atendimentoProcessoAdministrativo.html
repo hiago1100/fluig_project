@@ -1,0 +1,205 @@
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="CSS/style.css">
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous">
+	<style type="text/css">
+		.form-group {
+			margin-left: 0px;
+		}
+		select[readonly] {
+		  background: #eee; /*Simular campo inativo - Sugestão @GabrielRodrigues*/
+		  pointer-events: none;
+		  touch-action: none;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<div class="container">
+				<div>
+					<!-- campos hidden -->
+					<input type="hidden" name="codFilial" id="codFilial">
+					<input type="hidden" name="idFluig" id="idFluig">
+					<input type="hidden" name="serieNf" id="serieNf">
+					<input type="hidden" name="startProcess" id="startProcess" value="false">
+				</div>
+				<br>
+
+				<div id="div_solicitante" name="div_solicitante">
+
+					<div class="form-group row">
+						<div class="col-md-6">
+							<span class="required text-info">
+								<label>Solicitante </label>
+							</span>
+							<input type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante" readonly>
+						</div>
+
+						<div class="col-md-4">
+							<span class="required text-info">
+								<label>Data Solicitação </label>
+							</span>
+							<input type="date" name="dataSolicitacao" id="dataSolicitacao" class="form-control" readonly>
+						</div>
+						
+						
+	
+
+					</div>
+					<div class="row form-group">
+						<div class="col-md-6">
+							<span class="required text-info">
+								<label>Filial</label>
+							</span>
+							<input type=" text" class="form-control" name="cpFilial" id="cpFilial" readonly>
+						</div>
+
+						<div class="col-md-6">
+							<span class="required text-info">
+								<label>Número da Nota</label>
+							</span>
+							<input type=" text" class="form-control" name="cpNumeroNota" id="cpNumeroNota" readonly>
+						</div>
+					</div>
+				</div>
+				<div class="row form-group">
+
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label>Data de Emissão</label>
+						</span>
+						<input type="text" name="cpDataEmissao" id="cpDataEmissao" class="form-control" readonly>
+					</div>
+
+
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label>CPF/CNPJ do Cliente</label>
+						</span>
+						<input type="text" name="cpCnpjCliente" id="cpCnpjCliente" class="form-control" readonly>
+					</div>
+				</div>
+				<div class="row form-group">
+
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label for="cpRazaoSocial">Razão Social</label>
+						</span>
+						<input type="text" class="form-control" name="cpRazaoSocial" id="cpRazaoSocial" readonly>
+					</div>
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label for="cpValorNf" align="left">Valor na NF</label>
+						</span>
+						<input type="text" class="form-control" name="cpValorNf" id="cpValorNf" readonly>
+					</div>
+				</div>
+
+				<div class="row form-group">
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label for="cpStatusNf">Status da NF</label>
+						</span>
+						<input type="text" class="form-control" name="cpStatusNf" id="cpStatusNf" readonly>
+					</div>
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label for="cpMotivo" align="left">Motivo Cancelamento</label>
+						</span>
+						<input type="text" class="form-control" name="cpMotivo" id="cpMotivo" readonly>
+					</div>
+				</div>
+
+				<div class="row form-group">
+
+					<div class="col-md-12">
+						<span class="required text-info">
+							<label for="cpObservacao">Observações</label>
+						</span>
+						<textarea class="form-control" name="cpObservacao" id="cpObservacao" rows="10" cols="10" readonly></textarea>
+					</div>
+				</div>
+				<fieldset id="analiseFiscal">
+					<legend>Análise Fiscal</legend>
+					<div class="row form-group">
+						<div class="col-md-6">
+							<span class="required text-info">
+								<label for="responsavelAnalise">Responsavel</label>
+							</span>
+							<input type="text" class="form-control" name="responsavelAnalise" id="responsavelAnalise" readonly>
+						</div>
+						<div class="col-md-6">
+							<span class="required text-info">
+								<label for="dataAnalise" align="left">Data Análise</label>
+							</span>
+							<input type="date" class="form-control" name="dataAnalise" id="dataAnalise" readonly>
+						</div>
+					</div>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<span class="required text-info">
+								<label for="consideracoes">Considerações</label>
+							</span>
+							<textarea class="form-control" name="consideracoes" id="consideracoes" rows="10" cols="10"></textarea>
+						</div>
+					</div>
+
+				</fieldset>
+				<fieldset id="acompanhamento">
+					<div class="row form-group">
+						<div class="col-md-5">
+							<span class="required text-info">
+								<label for="responsavelAconpanhamento">Responsavel</label>
+							</span>
+							<input type="text" class="form-control" name="responsavelAcompanhamento" id="responsavelAcompanhamento" readonly>
+						</div>
+						<div class="col-md-3">
+							<span class="required text-info">
+								<label for="dataAconpanhamento" align="left">Data Análise</label>
+							</span>
+							<input type="date" class="form-control" name="dataAcompanhamento" id="dataAcompanhamento" readonly>
+						</div>
+						<div class="col-md-4">
+							<span class="required text-info">
+								<label for="deferido" align="left">Deferimento</label>
+							</span>
+						<select id="cpDeferido" name="cpDeferido" class="form-control hide" onchange="confirmaDef(this.value);" >
+							<option value="">Selecione...</option>
+							<option value="sim">Deferido</option>
+							<option value="nao">Indeferido</option>
+						</select>			
+						</div>
+					</div>
+					<legend>Análise Fiscal</legend>
+					<div class="row form-group">
+						<div class="col-md-12">
+							<span class="required text-info">
+								<label for="consideracoesAconpanhamento">Considerações</label>
+							</span>
+							<textarea class="form-control" name="consideracoesAconpanhamento" id="consideracoesAconpanhamento" rows="10"
+							 cols="10"></textarea>
+						</div>
+					</div>
+
+
+				</fieldset>
+			</div>
+	</div> <br><br><!-- Ultima Div -->
+	</form>
+	</div>
+</body>
+
+</html>

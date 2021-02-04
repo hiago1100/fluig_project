@@ -1,0 +1,118 @@
+/**
+ * Ejemplo de uso 
+*/
+
+function createDataset(fields, constraints, sortFields) { 
+    
+    log.info("### DATASET ARY-sql2Dataset-grupo-user");
+    
+    var cod = findConstraint("cod_usuario",constraints,"");
+    var cod_usuarioAux = findConstraint("cod_usuarioAux",constraints,"");
+    var cod_progAux = findConstraint("cod_progAux",constraints,"");
+    var cod_grupo = findConstraint("cod_grupo",constraints,"");
+    //var cod = 'dfaria';
+    //var cod_usuarioAux = 'akoehler';
+    //var cod_progAux = "'pd4000'";
+    //var cod_grupo = 'AS1';
+    
+    var arq = arqMarvinLoad("v1", {
+        sql: "com.arquimeda.marvin.server.js.Sql-v1"
+    });
+    
+    var script = "SELECT cod_usuario FROM  V_ARY_PROGRAMAS_USUARIO; ";
+    
+    if(cod != ""){
+        script = "select DISTINCT " +
+                    "cod_usuario    AS cod_usuario , " +
+                    "programa       AS appMain, " +
+                    "prog_confl     AS appConflito, " +
+                    "cod_grupo      AS cod_grupo, " +
+                    "ds_conflito    AS descConflito, " +
+                    "apprisco       AS apprisco," +
+                    "gr_confl       AS grupo_conflito," +
+                    "ds_gr_confl     AS desc_grupo" +  
+                    " from V_ARY_PROGRAMAS_USUARIO "+
+                    "WHERE cod_usuario = '"+cod+"' AND GR_CONFL IS NOT NULL ";
+    }
+    
+    if(cod != ""){
+        script = "select DISTINCT"+   
+        "cod_usuario    AS cod_usuario,"+   
+        "programa       AS appMain,"+   
+        "ds_programa    AS desc_programa,"+  
+        "prog_confl     AS appConflito,"+   
+        "ds_prog_confl  AS desc_progConflito,"+  
+        "cod_grupo      AS cod_grupo,"+   
+        "desc_grupo     AS desc_grupo,"+  
+        "ds_conflito    AS descConflito,"+   
+        "apprisco       AS apprisco,"+  
+        "gr_confl       AS grupo_conflito "+  
+        "from V_ARY_PROGRAMAS_USUARIO"+  
+    "WHERE cod_usuario = '"+cod+"' AND GR_CONFL IS NOT NULL";
+}
+    
+    
+    
+    
+    if(cod_usuarioAux != "" && cod_progAux != ""){
+       
+    	script =  "select a.APPMAIN || ' - ' || a.APPMAINDESC AS appMain " +
+					      ",a.APPMAINDESC ds_programa " +
+					      ",decode(a.APPMAIN,gp.programa,gu.cod_grupo,'Grupo Em Alteracao') AS cod_grupo " +
+					      ",t.APLICATIVO || ' - ' || t.APPDESCRICAO AS appConflito " +
+					      ",t.APPDESCRICAO ds_prg_conflito " +
+					      ",decode(t.APLICATIVO,gp.programa,gu.cod_grupo,'Grupo Em Alteracao') AS grupo_conflito " +
+					      ",gu.desc_grupo " +
+					      ",t.DOCUMENTID " +
+					      ",a.DESCRICAO AS descConflito " +
+					      ",t.APPRISCO 	AS apprisco "+
+					"from V_ARY_CONFLITOS_PAIFILHO t " +
+					    ",V_ARY_CADASTROCONFLITOS a " +
+					    ",Z_ARY_GRUPO_PROGRAMA gp " +
+					    ",z_ary_grupos gu " +
+					"where a.DOCUMENTID = t.DOCUMENTID " +
+					"and a.VERSION = t.VERSION " +
+					"and a.VERSION = (select x.nr_versao from USR_FLUIG.DOCUMENTO x where x.nr_documento = a.DOCUMENTID and x.versao_ativa = 1) " +
+					"and gu.cod_usuario = '"+cod_usuarioAux+"' " +
+					"and gu.cod_grupo = gp.cod_grupo " +
+					"and (t.APLICATIVO in ("+cod_progAux.toString().replace("[","").replace("]","")+") or a.APPMAIN in ("+cod_progAux.toString().replace("[","").replace("]","")+")) " +
+					"and (t.APLICATIVO = gp.programa or a.APPMAIN = gp.programa) ";
+
+    }
+    if(cod_grupo != ""){
+        script = "select  cd_programa ||' - ' || ds_programa as APPMAIN, "+ 
+        				"cd_prog_confl || ' - ' || ds_prog_confl  as APPCONFLITO, "+ 
+				       "ds_conflito		as DESCCONFLITO, "+
+				       "cd_grupo       as COD_GRUPO, "+
+				       "cd_grupo_confl as GRUPO_CONFLITO, "+
+				       "tp_risco       as APPRISCO " +
+				       "from V_ARY_CONFLITOS_GRUPOS WHERE cd_grupo = '"+cod_grupo+"' AND cd_grupo_confl = '"+cod_grupo+"' ";
+    }
+    
+    log.info("### SCRIPT : "+script);
+    
+    return arq.sql.sql2Dataset({
+        jndiName: "java:/jdbc/FluigDS",
+        sql: script ,           
+        log: 1
+    });
+    
+}
+
+
+function findConstraint(fieldName, constraints, defaultValue) {
+     if (constraints != null) {
+      
+      for (var i=0; i<constraints.length; i++){
+       log.info("***CONSTRAN : " + constraints[i].fieldName );
+       log.info("***CONSTRAN2 : " + constraints[i].initialValue);
+       if (constraints[i].fieldName == fieldName){
+        return constraints[i].initialValue;
+       }
+      }
+     }
+     return defaultValue;
+    }
+
+/*! arqMarvinLoad - v1.1 - All rights reserverd */
+function arqMarvinLoad(a,b){var c={};if(null==b)return c;var d=(new javax.naming.InitialContext).lookup("java:global/arq-marvin-"+a+"/MarvinLibLoaderEJB");for(var e in b)try{var f=new Function("lib","return "+d.getLib(b[e],"1"));c[e]=f(c)}catch(a){log.error("*** Error compilando libreria "+e+":"+a)}return c}

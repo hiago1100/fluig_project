@@ -1,0 +1,1680 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet"
+  href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+<script type="text/javascript"
+  src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript"
+  src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript"
+  src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript"
+  src="/portal/resources/style-guide/js/fluig-style-guide.min.js"
+  charset="utf-8"></script>
+
+<link rel="stylesheet" type="text/css"
+  href="/portal/resources/style-guide/css/fluig-style-guide-filter.min.css">
+<script
+  src="/portal/resources/style-guide/js/fluig-style-guide-filter.min.js"></script>
+
+<script type="text/javascript" src="../vcXMLRPC.js"></script>
+
+
+
+<!-- Css y Scripts Arq -->
+
+
+<style>
+.form-group {
+  float: left;
+  width: 100%;
+}
+
+.select2-container {
+  width: 370px !important;
+}
+
+*[readonly="readonly"], *[disabled="disabled"],
+  .select2-container--disabled li span {
+  color: #000 !important;
+}
+
+.conflict {
+  background-color: #a00e0e;
+}
+
+.fluig-style-guide .bootstrap-tagsinput .tag .tag-text {
+  font-weight: 100;
+}
+
+.fluig-style-guide .tab-content {
+  float: left;
+  width: 100%;
+  border: solid 1px #ddd;
+  border-top: none;
+}
+
+.fluigicon-trash {
+  display: none !important;
+}
+
+.Bcolor {
+  background-color: #FFFACD;
+  height: 80px;
+}
+
+.mostraMod {
+  align-contet: center;
+}
+
+#menu2 .tab-content {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+#menu2 .tab-content {
+  color: white;
+  background-color: #E0FFFF;
+  padding: 5px 15px;
+}
+
+.grupoSetado {
+  color: #0000FF;
+}
+
+#imgConflito {
+  visibility: hidden;
+  margin-left: 16px;
+}
+
+td.a {
+  float: right;
+  width: 100px;
+}
+
+.fluig-style-guide .nav-tabs>li.active>a.btn-danger, .fluig-style-guide .nav-tabs>li>a.btn-danger:hover,
+  .fluig-style-guide .nav-tabs>li.active>a.btn-danger:focus,
+  .fluig-style-guide .nav-tabs>li.active>a.btn-danger:hover,
+  .fluig-style-guide .nav-tabs>li.active>a.btn-danger:visited {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.fluig-style-guide .nav-tabs>li>a.btn-sucess, .fluig-style-guide .nav-tabs>li>a.btn-sucess:hover,
+  .fluig-style-guide .nav-tabs>li.active>a.btn-sucess, .fluig-style-guide .nav-tabs>li.active>a.btn-sucess:focus,
+  .fluig-style-guide .nav-tabs>li.active>a.btn-sucess:hover,
+  .fluig-style-guide .nav-tabs>li.active>a.btn-sucess:visited {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+/*
+li.active.red a {
+    
+}*/
+</style>
+
+</head>
+<body onload="ReadInputArea()">
+  <div class="fluig-style-guide">
+    <form name="form" role="form" id="form">
+
+      <input class="hide" type="text" name="cont_aprovador"
+        id="cont_aprovador" /> <input type="text" class="hide"
+        name="recebeCod" id="recebeCod"> <input type="text"
+        class="hide" name="recebeCod1" id="recebeCod1"> <input
+        type="text" class="hide" name="codDoGrupo" id="codDoGrupo">
+      <input type="text" name="cont" id="cont" class="hide" value="0">
+      <input type="text" name="incluirOk" class="hide" id="incluirOk"
+        value=""> <input type="text" name="recebeContAux"
+        class="hide" id="recebeContAux" value="0"> <input
+        type="text" class="hide" name="NomUserResptrick"
+        id="NomUserResptrick"> <input type="text" class="hide"
+        name="aprovacaoSupDir" id="aprovacaoSupDir" value=""> <input
+        type="text" class="hide" name="aprovacaoDif" id="aprovacaoDif"
+        value=""> <input type="text" class="hide"
+        name="verificaSuper" id="verificaSuper" value=""> <input
+        type="text" class="hide" name="aprovador1" id="aprovador1" value="">
+      <input type="text" class="hide" name="aprovador2" id="aprovador2"
+        value=""> <input type="text" class="hide" name="aprovador3"
+        id="aprovador3" value=""> <input type="text" class="hide"
+        name="numeroAtividade" id="numeroAtividade" value=""> <input
+        type="text" class="hide" name="testeSubstituto" id="testeSubstituto"
+        value=""> <input type="text" class="hide"
+        name="cod_emitenteTwo" id="cod_emitenteTwo" value=""> <input
+        type="text" class="hide" name="it_codigoTt" id="it_codigoTt"
+        value=""> <input type="text" class="hide" name="versao"
+        id="versao" value="1"> <input type="text" class="hide"
+        name="linhaAprova" id="linhaAprova" value="1"> <input
+        type="text" class="hide" name="Dest_Ret" id="Dest_Ret"> <input
+        type="text" class="hide" name="aprovaVerifica1" id="aprovaVerifica1">
+      <input type="text" class="hide" name="aprovaVerifica2"
+        id="aprovaVerifica2"> <input type="text" class="hide"
+        name="aprovaVerifica3" id="aprovaVerifica3"> <input
+        type="text" class="hide" name="aprovaVerifica4" id="aprovaVerifica4">
+      <input type="text" class="hide" name="aprovaVerifica5"
+        id="aprovaVerifica5"> <input type="text" class="hide"
+        name="aprovaVerifica6" id="aprovaVerifica6"> <input
+        type="text" class="hide" name="comparaAprov" id="comparaAprov">
+      <input type="text" class="hide" name="dataRetorna" id="dataRetorna">
+
+
+
+
+
+
+
+      <!--       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row text-center">
+        <h2 style="margin-bottom: 75px;">Descritivo de Devolu&ccedil;&atilde;o</h2>
+      </div>
+ -->
+      <ul class="nav nav-tabs nav-justified ">
+        <li style="background-color: #364287">
+          <h2 style="margin-bottom: 10px;; color: white" align="center">Descritivo
+            de Devolu&ccedil;&atilde;o</h2> </a>
+        </li>
+      </ul>
+
+
+
+      <div class="form-group">
+
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <label for="dataSolic" class="control-label">Data</label> <input
+              type="text" class="form-control dataSolic" name="dataSolic"
+              id="dataSolic" readonly>
+          </div>
+        </div>
+
+        <div class="label-field">
+          <div class="label-field">
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
+              <label for="horaSolic" class="control-label">Hora</label> <input
+                type="text" class="form-control horaSolic" name="horaSolic"
+                id="horaSolic" readonly>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="form-group">
+
+
+        <div class="label-field">
+          <div class="form-group selecioneHid">
+            <div class="col-md-2">
+              <label for="devolucaoVenda" class="control-label">Devolu&ccedil;&atilde;o
+                de vendas</label> <select class="form-control selectPrograma"
+                name="devolucaoVenda" id="devolucaoVenda">
+                <option value="">Selecione</option>
+                <option value='nao'>N&atilde;o</option>
+                <option value='sim'>Sim</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="nfdEmitida" class="control-label">NFD
+                j&aacute; Emitida</label> <select class="form-control selectPrograma"
+                name="nfdEmitida" id="nfdEmitida">
+                <option value='nao'>N&atilde;o</option>
+                <option value='sim'>Sim</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="matriculaSolicitante" class="control-label">Solicitante</label>
+            <input type="text" class="form-control matriculaSolicitante hide"
+              name="matriculaSolicitante" id="matriculaSolicitante"> <input
+              type="text" class="form-control nomeSolicitante"
+              name="nomeSolicitante" id="nomeSolicitante" readonly>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="supervisor" class="control-label">Supervisor</label> <input
+              type="text" class="form-control supervisor" name="supervisor"
+              id="supervisor" readonly>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="regional" class="control-label">Regi&atilde;o
+            de Vendas</label> <input type="text" class="form-control regional"
+            name="regional" id="regional" readonly>
+        </div>
+
+        <div id="zoomRep" class="col-xs-12 col-sm-12 col-md-8 col-lg-8 hide">
+          <label for="representanteZoom" class="control-label">Vendedor
+            / Representante vendas</label> <input type="zoom" class="form-control"
+            name="representanteZoom" id="representanteZoom"
+            data-zoom="{             
+                                'displayKey':'nome',
+                                'datasetId':'repres_supervisor',      
+                                'maximumSelectionLength':'1',
+                                'placeholder':'Escolha o Representante',
+                                'fields':[
+                                    {
+                                       'field':'nome',
+                                       'label':'Nome',
+                                       'standard':'true'
+                                    },{
+                                      'field':'cod_rep',
+                                      'label':'Código Rep'
+                                    },{
+                                      'field':'nome_super',
+                                      'label':'Supervisor'                                      
+                                    }
+                                ]
+                             }" />
+        </div>
+
+
+      </div>
+
+
+      <input type="text" class="hide" name="temConflito" id="temConflito" />
+      <br></br>
+      <div id="menu" class="row-fluid">
+        <ul class="nav nav-tabs nav-justified">
+          <li id="aprovAba1" class="active"><a href="#tab1"
+            data-toggle="tab">Solicitante</a></li>
+          <li id="aprovAba2"><a href="#tab2" data-toggle="tab">Aprova&ccedil;&atilde;o</a></li>
+          <li id="aprovAba3"><a href="#tab3" data-toggle="tab">Comparar
+              Descritivo</a></li>
+          <li id="aprovAba4"><a href="#tab4" data-toggle="tab">Log&iacute;stica</a></li>
+          <li id="aprovAba5"><a href="#tab5" data-toggle="tab">Aprova&ccedil;&atilde;o
+              Diferen&ccedil;a</a></li>
+        </ul>
+      </div>
+
+      <div class='tab-content'>
+        <div class="tab-pane active" id="tab1">
+
+
+          <!--        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row text-center" style="background-color: #364287">
+         <h4 style="margin-bottom: 20px;color: white;">Dados do Cliente</h4>
+       </div> -->
+
+
+          <ul class="nav nav-tabs nav-justified " style="margin-top: 5%">
+            <li style="background-color: #364287">
+              <h2 style="margin-bottom: 10px; color: white" align="center">Dados
+                do Cliente</h2> </a>
+            </li>
+          </ul>
+
+          <div class="form-group" style="margin-top: 5%">
+            
+
+            <div class="label-field">
+               <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 hide" id="campoZoomCli">
+                <label for="codCliente" class="control-label">C&oacute;digo do Cliente</label>
+                <div class="nomeCliente">
+                  <input type="zoom" class="form-control" name="zoomCliente"
+                          id="zoomCliente"
+                          data-zoom="{             
+              'displayKey':'cod_emitente',
+              'datasetId':'cliente_repres',      
+              'maximumSelectionLength':'1',
+              'placeholder':'Escolha o Cliente',
+              'fields':[
+                    {
+                     'field':'Código Emitente',
+                     'label':'cod_emitente',
+                     'standard':'true'
+                     },{
+                     'field':'nome',
+                     'label':'Nome'
+                     },{
+                    'field':'canal_venda',
+                    'label':'Canal de vendas'
+                    },{
+                    'field':'endereco',
+                    'label':'Endereço'
+                  }
+              ]
+           }" />
+                </div>
+
+              </div>
+            </div>
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                <label for="nomeAbrev" class="control-label">Nome
+                  Abreviado</label> <input type="text" class="form-control nomeAbrev"
+                  name="nomeAbrev" id="nomeAbrev" readonly>
+              </div>
+            </div>
+
+
+            <div class="label-field">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">       
+
+                <label for="nomeCliente" class="control-label">Nome do Cliente</label>
+                 <input type="text" class="form-control nomeCliente" name="nomeCliente" id="nomeCliente" readonly>
+                
+              </div>
+            </div>
+
+
+          </div>
+
+
+          <div class="form-group">
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="cnpjCli" class="control-label">CNPJ</label> <input
+                  type="text" class="form-control cnpjCli" name="cnpjCli"
+                  id="cnpjCli" readonly>
+              </div>
+            </div>
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="enderecoCli" class="control-label">Endere&ccedil;o</label>
+                <input type="text" class="form-control enderecoCli"
+                  name="enderecoCli" id="enderecoCli" readonly>
+              </div>
+            </div>
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="cidade" class="control-label">Cidade</label> <input
+                  type="text" class="form-control cidade" name="cidade"
+                  id="cidade" readonly>
+              </div>
+            </div>
+
+
+
+          </div>
+
+
+
+          <div class="form-group">
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="estado" class="control-label">Estado</label> <input
+                  type="text" class="form-control estado" name="estado"
+                  id="estado" readonly>
+              </div>
+            </div>
+
+            <div class="label-field">
+
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="bairro" class="control-label">Bairro</label> <input
+                  type="text" class="form-control bairro" name="bairro"
+                  id="bairro" readonly>
+              </div>
+
+            </div>
+
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="cep" class="control-label">Cep</label> <input
+                  type="text" class="form-control cep" name="cep" id="cep"
+                  readonly>
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+          <div class="form-group" style="margin-left: 7%">
+
+
+
+            <div class="label-field" align="center">
+              <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10"
+                align="center">
+                <label for="email" class="control-label">E-mail</label> <input
+                  type="text" class="form-control email" name="email" id="email"
+                  placeholder="Digite o email do cliente">
+              </div>
+            </div>
+
+          </div>
+
+
+
+
+        </div>
+
+        <div class="tab-pane" id="tab2">
+
+          <ul class="nav nav-tabs nav-justified " style="margin-top: 5%">
+            <li style="background-color: #364287">
+              <h2 style="margin-bottom: 10px; color: white" align="center">Aprova&ccedil;&atilde;o</h2>
+              </a>
+            </li>
+          </ul>
+
+          <ul class="nav nav-tabs nav-justified" style="margin-top: 3%;">
+            <li id="li1" class="active red"><a href="#aprov1"
+              data-toggle="tab">Supervisor Vendas</a></li>
+            <li id="li2" class="red"><a href="#aprov2" data-toggle="tab">Gerente
+                regional</a></li>
+            <li id="li3" class="red"><a href="#aprov3" data-toggle="tab">Diretor
+                Vendas</a></li>
+            <li id="li4" class="red"><a href="#aprov4" data-toggle="tab">Diretor
+                ou Presidente</a></li>
+          </ul>
+
+          <div class='tab-content'>
+            <div class="tab-pane active" id="aprov1">
+
+
+              <ul class="nav nav-tabs nav-justified " style="margin-top: 5%">
+                <li style="background-color: #6495ED">
+                  <h4 style="margin-bottom: 10px; color: white" align="center">Supervisor
+                    Vendas</h4> </a>
+                </li>
+              </ul>
+
+
+
+              <table class="TablUnidade" align="center" style="margin-top: 3%">
+
+                <tr>
+                  <td><label>Aprovar</label></td>
+                  <td align="left"><input type="radio" class="aprova"
+                    name="aprova" id="aprova" value="sim" style="margin-top: 4%"></td>
+                </tr>
+                <tr>
+                  <td><label>Reprovar</label></td>
+                  <td align="left"><input type="radio" class="aprova"
+                    name="aprova" id="aprova" value="nao"></td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                </tr>
+
+                <br>
+              </table>
+
+              <table class="viaportaltab4" tablename="respoCham" id="respoCham"
+                noaddbutton=true align="center">
+
+                <thead>
+
+                  <tr>
+
+                    <td></td>
+
+                    <td></td>
+
+                  </tr>
+
+                </thead>
+
+                <tr>
+
+                  <td style="text-align: left; margin-top: 5%"><input
+                    class="form-control input-sm UsernamResp" type="text"
+                    id="NomUserPadrao" name="NomUserPadrao" readonly> <input
+                    type="text" class="HoraRespPadrao" id="HoraRespPadrao"
+                    name="HoraRespPadrao" readonly> <textarea
+                      onfocus="getIDUserResp(this.id)"
+                      onblur="getID(this.id); ObsResponse(this.id);"
+                      class="form-control 
+    input-sm respArea" cols="64"
+                      type="text" rows="8" id="areaRespPadrao"
+                      name="areaRespPadrao"></textarea></td>
+
+                </tr>
+
+              </table>
+              <div align="center" class="btnrespContainer"
+                id="btnrespContainer" name="btnrespContainer"
+                style="height: 250px; margin-top: 50px">
+
+                <button class="btn btn-default btnResp1" id="botaoEsconde"
+                  onclick="respostaAprova()">Resposta</button>
+
+              </div>
+
+            </div>
+
+
+
+            <!-- APROVA 2 -->
+
+            <div class="tab-pane" id="aprov2">
+
+              <ul class="nav nav-tabs nav-justified " style="margin-top: 5%">
+                <li style="background-color: #6495ED">
+                  <h4 style="margin-bottom: 10px; color: white" align="center">Supervisor
+                    Região</h4> </a>
+                </li>
+              </ul>
+
+              <table class="TablUnidade" align="center" style="margin-top: 3%">
+
+                <tr>
+                  <td><label>Aprovar</label></td>
+                  <td align="left"><input type="radio"
+                    class="aprovaRegional" name="aprovaRegional"
+                    id="aprovaRegional" value="sim" style="margin-top: 4%"></td>
+                </tr>
+                <tr>
+                  <td><label>Reprovar</label></td>
+                  <td align="left"><input type="radio"
+                    class="aprovaRegional" name="aprovaRegional"
+                    id="aprovaRegional" value="nao"></td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                </tr>
+
+                <br>
+              </table>
+
+              <table class="viaportaltab4" tablename="respRegional"
+                id="respRegional" noaddbutton=true align="center">
+
+                <thead>
+
+                  <tr>
+
+                    <td></td>
+
+                    <td></td>
+
+                  </tr>
+
+                </thead>
+
+                <tr>
+
+                  <td style="text-align: left; margin-top: 5%"><input
+                    class="form-control input-sm UsernamResp" type="text"
+                    id="NomUserRegional" name="NomUserRegional" readonly>
+                    <input type="text" class="HoraRespRegional"
+                    id="HoraRespRegional" name="HoraRespRegional" readonly>
+
+                    <textarea onfocus="getIDUserResp(this.id)"
+                      onblur="getID(this.id); ObsResponse(this.id);"
+                      class="form-control 
+    input-sm respArea" cols="64"
+                      type="text" rows="8" id="areaRespRegional"
+                      name="areaRespRegional"></textarea></td>
+
+                </tr>
+
+              </table>
+              <div align="center" class="btnrespContainer"
+                id="btnrespContainer" name="btnrespContainer"
+                style="height: 250px; margin-top: 50px">
+
+                <button class="btn btn-default btnResp2" id="botaoEscondeRegi"
+                  onclick="respostaAprova1()">Resposta</button>
+
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+            <div class="tab-pane" id="aprov3">
+              <ul class="nav nav-tabs nav-justified " style="margin-top: 5%">
+                <li style="background-color: #6495ED">
+                  <h4 style="margin-bottom: 10px; color: white" align="center">Diretor
+                    Vendas</h4> </a>
+                </li>
+              </ul>
+
+
+
+              <table class="TablUnidade" align="center" style="margin-top: 3%">
+
+                <tr>
+                  <td><label>Aprovar</label></td>
+                  <td align="left"><input type="radio" class="aprovaDiretor"
+                    name="aprovaDiretor" id="aprovaDiretor" value="sim"
+                    style="margin-top: 4%"></td>
+                </tr>
+                <tr>
+                  <td><label>Reprovar</label></td>
+                  <td align="left"><input type="radio" class="aprovaDiretor"
+                    name="aprovaDiretor" id="aprovaDiretor" value="nao"></td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                </tr>
+
+                <br>
+              </table>
+
+              <table class="viaportaltab4" tablename="respDiretor"
+                id="respDiretor" noaddbutton=true align="center">
+
+                <thead>
+
+                  <tr>
+
+                    <td></td>
+
+                    <td></td>
+
+                  </tr>
+
+                </thead>
+
+                <tr>
+
+                  <td style="text-align: left; margin-top: 5%"><input
+                    class="form-control input-sm UsernamResp" type="text"
+                    id="NomUserDiretor" name="NomUserDiretor" readonly> <input
+                    type="text" class="HoraRespDiretor" id="HoraRespDiretor"
+                    name="HoraRespDiretor" readonly> <textarea
+                      onfocus="getIDUserResp(this.id)"
+                      onblur="getID(this.id); ObsResponse(this.id);"
+                      class="form-control 
+    input-sm respArea" cols="64"
+                      type="text" rows="8" id="areaRespDiretor"
+                      name="areaRespDiretor"></textarea></td>
+
+                </tr>
+
+              </table>
+              <div align="center" class="btnrespContainer"
+                id="btnrespContainer" name="btnrespContainer"
+                style="height: 250px; margin-top: 50px">
+
+                <button class="btn btn-default btnResp3" id="botaoEscondeRegi"
+                  onclick="respostaAprova2()">Resposta</button>
+
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="tab-pane" id="aprov4">
+              <ul class="nav nav-tabs nav-justified " style="margin-top: 5%">
+                <li style="background-color: #6495ED">
+                  <h4 style="margin-bottom: 10px; color: white" align="center">Diretor
+                    ou Presidente</h4> </a>
+                </li>
+              </ul>
+
+
+
+
+
+
+              <table class="TablUnidade" align="center" style="margin-top: 3%">
+
+                <tr>
+                  <td><label>Aprovar</label></td>
+                  <td align="left"><input type="radio"
+                    class="aprovaPresidente" name="aprovaPresidente"
+                    id="aprovaPresidente" value="sim" style="margin-top: 4%"></td>
+                </tr>
+                <tr>
+                  <td><label>Reprovar</label></td>
+                  <td align="left"><input type="radio"
+                    class="aprovaPresidente" name="aprovaPresidente"
+                    id="aprovaPresidente" value="nao"></td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                </tr>
+
+                <br>
+              </table>
+
+              <table class="viaportaltab4" tablename="respPresidente"
+                id="respPresidente" noaddbutton=true align="center">
+
+                <thead>
+
+                  <tr>
+
+                    <td></td>
+
+                    <td></td>
+
+                  </tr>
+
+                </thead>
+
+                <tr>
+
+                  <td style="text-align: left; margin-top: 5%"><input
+                    class="form-control input-sm UsernamResp" type="text"
+                    id="NomUserPresidente" name="NomUserPresidente" readonly>
+                    <input type="text" class="HoraRespPresidente"
+                    id="HoraRespPresidente" name="HoraRespPresidente" readonly>
+
+                    <textarea onfocus="getIDUserResp(this.id)"
+                      onblur="getID(this.id); ObsResponse(this.id);"
+                      class="form-control 
+    input-sm respArea" cols="64"
+                      type="text" rows="8" id="areaRespPresidente"
+                      name="areaRespPresidente"></textarea></td>
+
+                </tr>
+
+              </table>
+              <div align="center" class="btnrespContainer"
+                id="btnrespContainer" name="btnrespContainer"
+                style="height: 250px; margin-top: 50px">
+
+                <button class="btn btn-default btnResp4" id="botaoEscondePresi"
+                  onclick="respostaAprova3()">Resposta</button>
+
+              </div>
+
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+        <!-- FIM DA ABA NUMERO 2 -->
+
+
+        <div class="tab-pane" id="tab5">
+
+          <ul class="nav nav-tabs nav-justified " style="margin-top: 5%">
+            <li style="background-color: #364287">
+              <h2 style="margin-bottom: 10px; color: white" align="center">Aprova&ccedil;&atilde;o
+                Diferen&ccedil;a</h2> </a>
+            </li>
+          </ul>
+
+          <table class="TablUnidade" align="center" style="margin-top: 3%">
+
+            <tr>
+              <td><label>Aprovar</label></td>
+              <td align="left"><input type="radio" class="aprovaDif"
+                name="aprovaDif" id="aprovaDif" value="sim"
+                style="margin-top: 4%"></td>
+            </tr>
+            <tr>
+              <td><label>Reprovar</label></td>
+              <td align="left"><input type="radio" class="aprovaDif"
+                name="aprovaDif" id="aprovaDif" value="nao"></td>
+            </tr>
+
+            <tr>
+              <td></td>
+            </tr>
+
+            <br>
+          </table>
+
+          <div class="table-responsive">
+            <table class="viaportaltab3" tablename="respoChamDif"
+              id="respoChamDif" noaddbutton=true align="center">
+
+              <thead>
+
+                <tr>
+
+                  <td></td>
+
+                  <td></td>
+
+                </tr>
+
+              </thead>
+
+              <tr>
+
+                <td style="text-align: left; margin-top: 5%"><input
+                  class="form-control input-sm UsernamResp" type="text"
+                  id="NomUserDif" name="NomUserDif" readonly> <input
+                  type="text" class="HoraRespDif" id="HoraRespDif"
+                  name="HoraRespDif" readonly> <textarea
+                    onfocus="getIDUserResp(this.id)"
+                    onblur="getID(this.id); ObsResponse(this.id);"
+                    class="form-control 
+    input-sm respArea" cols="64"
+                    type="text" rows="8" id="areaRespDif" name="areaRespDif"></textarea></td>
+
+              </tr>
+
+            </table>
+            <div align="center" class="btnrespContainer" id="btnrespContainer"
+              name="btnrespContainer" style="height: 250px; margin-top: 90px">
+
+              <button class="btn btn-default btnResp5"
+                onclick="respostaDiferenca()">Resposta</button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <div id="tab3" class="tab-pane">
+
+
+          <ul class="nav nav-tabs nav-justified " style="margin-top: 5%">
+            <li style="background-color: #364287">
+              <h2 style="margin-bottom: 10px; color: white" align="center">Comparar
+                Descritivo</h2> </a>
+            </li>
+          </ul>
+
+
+          <div class="row" style="margin-top: 5%">
+            <div class="col-md-12" align="center">
+
+
+
+
+
+              <input type="radio" class="comparar" name="comparar"
+                id="compAprova" value="sim"
+                onclick="retiradaDestruicao(this.id)"> Continuar Fluxo <input
+                type="radio" class="comparar" name="comparar" id="compReprova"
+                value="nao" onclick="retiradaDestruicao(this.id)">
+              Retornar para representante
+
+            </div>
+
+
+            <div style="margin-top: 4%">
+
+
+              <table class="" style="width: 100%">
+
+
+                <th></th>
+                <th>Total Icms</th>
+                <th>Total IPI</th>
+                <th>Total ST</th>
+                <th>Total Mercadoria</th>
+                <th>Total NFD</th>
+
+
+                <tr>
+                  <div class="col-md-1">
+
+                    <td><label class="">Total NFD</label></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalGetalIcms" id="TotalGetalIcms"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalGetalIpi" id="TotalGetalIpi"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalGetalSt" id="TotalGetalSt"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalGetalMerc" id="TotalGetalMerc"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalGetalNFD" id="TotalGetalNFD"></td>
+
+                  </div>
+                </tr>
+
+
+                <!-- SEGUNDA LINHA -->
+
+
+
+                <tr>
+                  <div class="col-md-1">
+
+                    <td><label class="">Total Descritivo</label></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalDescGetalIcms" id="TotalDescGetalIcms"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalDescGetalIpi" id="TotalDescGetalIpi"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalDescGetalSt" id="TotalDescGetalSt"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalDescGetalMerc" id="TotalDescGetalMerc"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalDescGetalNFD" id="TotalDescGetalNFD"></td>
+
+                  </div>
+                </tr>
+
+                <!-- TERCEIRA LINHA -->
+
+                <tr>
+                  <div class="col-md-1">
+
+                    <td><label class="">Total Diferen&ccedil;a</label></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalDifGetalIcms" id="TotalDifGetalIcms"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalDifGetalIpi" id="TotalDifGetalIpi"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalDifGetalSt" id="TotalDifGetalSt"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalDifGetalMerc" id="TotalDifGetalMerc"></td>
+
+                    <td><input readonly="" type="text" class="form-control"
+                      name="TotalDifGetalNFD" id="TotalDifGetalNFD"></td>
+
+                  </div>
+                </tr>
+
+              </table>
+            </div>
+
+
+            <div class="row" style="margin-top: 5%">
+              <div class="col-md-12" align="center">
+                <label for="numeroNotas" class="control-label">N&uacute;mero
+                  de Notas</label> <input type="zoom" class="form-control"
+                  name="numeroNotas" id="numeroNotas"
+                  data-zoom="{
+                  'displayKey': 'NRO_NFE',
+                  'maximumSelectionLength':'1',
+                  'datasetId':'nfds_receiver',
+                  'fields':[
+                    {
+                      'field':'NRO_NFE',
+                      'label':'NF',                                                         
+                      'standard':'true'
+                    },{
+                      'field':'NRO_SERIE_NFE',
+                      'label':'N&uacute;mero s&eacute;rie'                                                         
+                    },{
+                      'field':'DAT_EMISSAO',
+                      'label':'Data Emiss&atilde;o'                                                         
+                    },{
+                      'field':'VLR_TOTAL_NFE',
+                      'label':'Valor Total'                                                         
+                    },{
+                      'field':'PROT_CHAVE_ACESSO',
+                      'label':'Valor Total'                                                         
+                    }
+                  ]
+                }" />
+              </div>
+            </div>
+          </div>
+
+
+          <table tablename="respoChamDesc" id="respoChamDesc"
+            noaddbutton=true align="center" deleteicon="rubbish-bin.png"
+            customFnDelete="fnCustomDelete(this)">
+
+            <thead>
+
+              <tr>
+
+                <td></td>
+
+                <td></td>
+
+              </tr>
+
+            </thead>
+
+
+            <tr>
+
+              <td>
+
+                <div style="background-color: #364287">
+                  <h4 style="color: white;">Adicionar NFD</h4>
+                </div>
+
+                <div class="row">
+
+
+                  <div class="col-md-5">
+
+                    <label for="chaveNfd" class="control-label">Chave
+                      acesso da NFD</label> <input readonly="" type="text"
+                      class="form-control" name="chaveNfd" id="chaveNfd">
+                  </div>
+
+
+                  <div class="col-md-2">
+
+                    <label for="numeroNotaFis" class="control-label">NFD</label> <input
+                      readonly="" type="text" class="form-control"
+                      name="numeroNotaFis" id="numeroNotaFis">
+                  </div>
+
+                  <div class="col-md-1">
+                    <label for="serieNota" class="control-label">S&eacute;rie</label>
+                    <input readonly="" type="text" class="form-control serieNota"
+                      name="serieNota" id="serieNota">
+                  </div>
+                  <div class="col-md-2">
+                    <label for="dataEmissao" class="control-label">Data de
+                      Emiss&atilde;o</label> <input readonly="" type="text"
+                      class="form-control dataEmissao" name="dataEmissao"
+                      id="dataEmissao">
+                  </div>
+
+                  <div class="col-md-2">
+
+                    <label for="totalIPI" class="control-label">Total IPI</label>
+                    <input readonly="" type="text" class="form-control"
+                      name="totalIPI" id="TotalIpi">
+                  </div>
+
+
+                </div>
+
+
+                <div class="row">
+                  <div class="col-md-2">
+
+                    <label for="totalMercadoriaLog" class="control-label">Total
+                      da Mercadoria</label> <input readonly="" type="text"
+                      class="form-control totalMercadoriaLog"
+                      name="totalMercadoriaLog" id="totalMercadoriaLog">
+
+
+                  </div>
+                  <div class="col-md-2">
+                    <label for="baseCms" class="control-label">Base
+                      C&aacute;lculo CMS</label> <input readonly="" type="text"
+                      class="form-control" name="baseCms" id="baseCms">
+                  </div>
+
+                  <div class="col-md-2">
+                    <label for="totalCms" class="control-label">Total CMS</label>
+                    <input readonly="" type="text" class="form-control totalCms"
+                      name="totalCms" id="totalCms">
+                  </div>
+
+                  <div class="col-md-2">
+                    <label for="baseCalcST" class="control-label">Base
+                      C&aacute;lculo ST</label> <input readonly="" type="text"
+                      class="form-control baseCalcST" name="baseCalcST"
+                      id="baseCalcST">
+                  </div>
+
+                  <div class="col-md-2">
+                    <label for="totalSt" class="control-label">Total ST</label> <input
+                      readonly="" type="text" class="form-control totalSt"
+                      name="totalSt" id="totalSt">
+                  </div>
+
+                  <div class="col-md-2">
+                    <label for="valorTotalNota" class="control-label">Valor
+                      Total da Nota</label> <input readonly="" type="text"
+                      class="form-control valorTotalNota" name="valorTotalNota"
+                      id="valorTotalNota">
+                  </div>
+
+                </div>
+
+              </td>
+            </tr>
+
+
+          </table>
+
+
+
+        </div>
+
+
+
+
+        <div id="tab4" class="tab-pane">
+
+
+          <ul class="nav nav-tabs nav-justified " style="margin-top: 5%">
+            <li style="background-color: #364287">
+              <h2 style="margin-bottom: 10px; color: white" align="center">Log&iacute;stica</h2>
+              </a>
+            </li>
+          </ul>
+
+
+          <table id="respoChamDesc" noaddbutton=true align="center">
+
+
+            <tr>
+
+              <td>
+
+                <div style="background-color: #364287">
+                  <h4 style="color: white;">A&ccedil;&atilde;o Item</h4>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12" align="center">
+
+                    <input type="radio" class="logistica" name="logistica"
+                      id="retirar" value="retirar"
+                      onclick="retiradaDestruicao(this.id)"> Retirar <input
+                      type="radio" class="logistica" name="logistica" id="destruir"
+                      value="destruir" onclick="retiradaDestruicao(this.id)">
+                    Destruir
+
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div id="controlaDestruicao" class="hide"
+                    style="margin-top: 5%;">
+                    <div class="col-md-4">
+                      <label for="dataRetirada" class="control-label">Data
+                        de Retirada</label> <input type="date" class="form-control"
+                        name="dataRetirada" id="dataRetirada" readonly="">
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="transportadoraCli" class="control-label">Transportadora</label>
+                      <input type="zoom" class="form-control transportadoraCli"
+                        name="transportadoraCli" id="transportadoraCli"
+                        data-zoom="{
+                  'displayKey': 'nome_transp',
+                  'maximumSelectionLength':'1',
+                  'datasetId':'transportadora',
+                  'fields':[
+                    {
+                      'field':'nome_transp',
+                      'label':'Transportadora',                                                         
+                      'standard':'true'
+                    },{
+                      'field':'cnpj_transp',
+                      'label':'cnpj'                                                         
+                    }
+                  ]
+                }" />
+                    </div>
+                    <div class="col-md-4">
+                      <label for="cnpjTransp" class="control-label">Cnpj
+                        Transportadora</label> <input type="text" class="form-control"
+                        name="cnpjTransp" id="cnpjTransp" readonly="">
+                    </div>
+                  </div>
+                </div>
+
+
+              </td>
+            </tr>
+
+
+          </table>
+
+        </div>
+
+
+      </div>
+      <!-- Fim da div tab-content-->
+
+
+
+      <div class="tab-content">
+
+        <div id="menu1" class="tab-pane fade in active">
+
+
+
+          <ul class="nav nav-tabs nav-justified ">
+            <li style="background-color: #364287">
+              <h2 style="margin-bottom: 10px; color: white" align="center">Preenchimento
+                de Itens</h2> </a>
+            </li>
+          </ul>
+
+          <div class="form-group">
+
+            <div class="label-field">
+
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"
+                style="border-right: 2px solid">
+
+
+                <h4 align="center">Pesquisar por NF</h4>
+
+                <label for="numeroNF" class="control-label">N&uacute;mero
+                  NF</label> <input type="text" class="form-control numeroNF"
+                  name="numeroNF" id="numeroNF"> <label for="serieNF"
+                  class="control-label">S&eacute;rie NF</label> <input
+                  type="text" class="form-control serieNF" name="serieNF"
+                  id="serieNF"> <label for="estabNF"
+                  class="control-label">Estabelecimento</label> <input
+                  type="text" class="form-control" name="estabNF" id="estabNF"
+                  readonly="">
+
+
+                <div align="center">
+                  <button class="btn btn-success" name="pesquisaNF"
+                    id="pesquisaNF" style="margin-top: 7%; align-items: center;">Pesquisar</button>
+                  <input type="text" style="margin-top: 5px" class="form-control"
+                    name="mensagemRetorno" id="mensagemRetorno" readonly="">
+
+                </div>
+
+
+              </div>
+            </div>
+
+
+            <div class="label-field">
+
+
+
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+                <h4 align="center">Pesquisar por Item</h4>
+
+                <label for="familia" class="control-label">Fam&iacute;lia</label>
+                <input type="zoom" class="form-control" name="familia"
+                  id="familia"
+                  data-zoom="{
+                  'displayKey':'descricao',
+                  'maximumSelectionLength':'1',
+                  'datasetId':'familia_com',
+                  'placeholder':'Escolha a Familia',
+                  'fields':[
+                    {
+                      'field':'descricao',
+                      'label':'Familia',                                                         
+                      'standard':'true'
+                    },{
+                     'field':'des_categoria',
+                     'label':'Desc. Categoria' 
+                    }
+                  ]
+                }" />
+
+                <label for="item" class="control-label">Item</label> <input
+                  type="zoom" class="form-control" name="item" id="item"
+                  data-zoom="{
+                  'displayKey': 'it_codigo',
+                  'maximumSelectionLength':'1',
+                  'datasetId':'item_familia',
+                  'fields':[
+                    {
+                      'field':'it_codigo',
+                      'label':'Codigo',                                                         
+                      'standard':'true'
+                    },{
+                     'field':'desc_item',
+                     'label':'Desc. Item' 
+                    },{
+                     'field':'ean',
+                     'label':'Ean' 
+                    },{
+                     'field':'dun',
+                     'label':'Dun' 
+                    }
+                  ]
+                }" />
+
+
+
+
+                <label for="descItem" class="control-label">Descri&ccedil;&atilde;o</label>
+                <input type="text" class="form-control descItem" name="descItem"
+                  id="descItem" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group"></div>
+
+        <div class="form-group">
+
+          <div class="row">
+            <div class="col-md-12">
+              <label for="codItem" class="control-label">Pesquisa
+                Item/NFS</label> <input type="zoom" class="form-control" name="codItem"
+                id="codItem"
+                data-zoom="{
+                  'displayKey': 'descr_item',
+                  'maximumSelectionLength':'1',
+                  'datasetId':'nfs_cli_item',
+                  'placeholder':'Pesquisa Item/NFS',
+                  'fields':[
+                    {
+                      'field':'descr_item',
+                      'label':'Item',                                                         
+                      'standard':'true'
+                    },{
+                     'field':'it_codigo',
+                     'label':'Codigo' 
+                    },{
+                     'field':'peso_liq',
+                     'label':'Peso liq.' 
+                    },{
+                     'field':'saldo_nf',
+                     'label':'Saldo NF' 
+                    }
+                  ]
+                }" />
+            </div>
+          </div>
+
+
+          <table class="table table-striped" tablename="tabelaNF"
+            id="tabelaNF" noaddbutton=true align="center"
+            deleteicon="rubbish-bin.png" customFnDelete="fnCustomDelete(this)">
+
+            <thead>
+
+              <tr>
+
+                <td></td>
+
+                <td></td>
+
+              </tr>
+
+            </thead>
+
+            <thead>
+              <tr style="margin-top: 20px">
+
+                <td>
+                  <!--       <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#relacaoItem">Simple collapsible</button>
+ -->
+                  <div style="background-color: #364287">
+                    <h4 style="color: white;">Adicionar Item</h4>
+                  </div>
+
+                  <div class="row">
+
+
+                    <div class="col-md-2">
+                      <label for="cod_item" class="control-label">C&oacute;digo;</label>
+                      <input type="text" class="form-control" name="cod_item"
+                        id="cod_item" readonly>
+                    </div>
+
+
+
+                    <div class="col-md-2">
+                      <label for="referencia" class="control-label">Refer&ecirc;ncia</label>
+                      <input type="text" class="form-control" name="referencia"
+                        id="referencia" readonly>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="descricaoItem" class="control-label">Descri&ccedil;&atilde;o</label>
+                      <input type="text" class="form-control descricaoItem"
+                        name="descricaoItem" id="descricaoItem" readonly>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="unidade" class="control-label">Unidade</label> <input
+                        type="text" class="form-control unidade" name="unidade"
+                        id="unidade" readonly>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="nfsaida" class="control-label">NF
+                        Sa&iacute;da</label> <input type="text" class="form-control nfsaida"
+                        name="nfsaida" id="nfsaida" readonly>
+                    </div>
+
+
+                  </div>
+
+                  <div class="row">
+
+                    <div class="col-md-2">
+                      <label for="emissao" class="control-label">Emiss&atilde;o</label>
+                      <input type="text" class="form-control emissao"
+                        name="emissao" id="emissao" readonly>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="natop" class="control-label">Nat. Op.</label> <input
+                        type="text" class="form-control natop" name="natop"
+                        id="natop" readonly>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="venda" class="control-label">Venda</label> <input
+                        type="text" class="form-control venda" name="venda"
+                        id="venda" readonly>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="eanTt" class="control-label">Ean</label> <input
+                        type="text" class="form-control ean" name="eantT" id="eantT"
+                        readonly>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="dunTt" class="control-label">Dun</label> <input
+                        type="text" class="form-control dun" name="dunTt" id="dunTt"
+                        readonly>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="pesokg" class="control-label">Peso KG</label> <input
+                        type="text" class="form-control pesokg" name="pesokg"
+                        id="pesokg" readonly> <input type="text"
+                        class="form-control pesokgUnit hide" name="pesokgUnit"
+                        id="pesokgUnit" readonly>
+
+                    </div>
+
+                  </div>
+
+
+
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label for="quantidade" class="control-label">Qtd</label> <input
+                        type="text" class="form-control quantidade"
+                        name="quantidade" id="quantidade">
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="motivo" class="control-label">Motivo</label> <input
+                        name="motivo" id="motivo" class="form-control" type="zoom"
+                        data-zoom="{
+                  'displayKey': 'desc_motivo',
+                  'maximumSelectionLength':'1',
+                  'datasetId':'motivos_dev',
+                  'fields':[
+                    {
+                      'field':'desc_motivo',
+                      'label':'Codigo',                                                         
+                      'standard':'true'
+                    },{
+                     'field':'id_motivo',
+                     'label':'Id' 
+                    }
+                  ]
+                }" />
+
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="ispreco" class="control-label">IS
+                        Pre&ccedil;o</label> <input type="text" class="form-control ispreco"
+                        name="ispreco" id="ispreco" readonly>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="precobruto" class="control-label">Pre&ccedil;</label>
+                      <input type="text" class="form-control precobruto"
+                        name="precobruto" id="precobruto" readonly>
+                    </div>
+
+                    <div class="col-md-2">
+
+                      <label for="desconto" class="control-label">Desconto</label>
+                      <input type="text" class="form-control desconto"
+                        name="desconto" id="desconto" readonly>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="precoliquido" class="control-label">Pre&ccedil;
+                        L&iacute;quido</label> <input type="text"
+                        class="form-control precoliquido" name="precoliquido"
+                        id="precoliquido" readonly>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label for="ipi" class="control-label">IPI %</label> <input
+                        type="text" class="form-control ipi" name="ipi" id="ipi"
+                        readonly>
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="icms" class="control-label">ICMS %</label> <input
+                        type="text" class="form-control icms" name="icms" id="icms"
+                        readonly>
+                    </div>
+
+
+                    <div class="col-md-2">
+                      <label for="valorIpi" class="control-label">IPI R$</label> <input
+                        type="text" class="form-control ipi" name="valorIpi"
+                        id="valorIpi" readonly> <input type="text"
+                        class="form-control valorIpiUnit hide" name="valorIpiUnit"
+                        id="valorIpiUnit" readonly>
+
+
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="bcicms" class="control-label">BC ICMS R$</label>
+                      <input type="text" class="form-control bcicms" name="bcicms"
+                        id="bcicms" readonly> <input type="text"
+                        class="form-control bcicmsUnit hide" name="bcicmsUnit"
+                        id="bcicmsUnit" readonly>
+
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="valoricms" class="control-label">ICMS R$</label>
+                      <input type="text" class="form-control valoricms"
+                        name="valoricms" id="valoricms" readonly> <input
+                        type="text" class="form-control valoricmsUnit hide"
+                        name="valoricmsUnit" id="valoricmsUnit" readonly>
+
+                    </div>
+
+                    <div class="col-md-2">
+                      <label for="totalMercadoria" class="control-label">Total
+                        Merc.</label> <input type="text"
+                        class="form-control totalMercadoria" name="totalMercadoria"
+                        id="totalMercadoria" readonly>
+                        <input type="text" class="hide" name="totalMercadoriaUnit" id="totalMercadoriaUnit">
+
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+
+                      <label for="valorbcst" class="control-label">BC ST R$</label>
+                      <input type="text" class="form-control valorbcst"
+                        name="valorbcst" id="valorbcst" readonly> <input
+                        type="text" class="form-control valorbcstUnit hide"
+                        name="valorbcstUnit" id="valorbcstUnit" readonly>
+
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="valorst" class="control-label">ST R$</label> <input
+                        type="text" class="form-control valorst" name="valorst"
+                        id="valorst" readonly> <input type="text"
+                        class="form-control valorstUnit hide" name="valorstUnit"
+                        id="valorstUnit" readonly>
+
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="totalitem" class="control-label">Total
+                        item</label> <input type="text" class="form-control totalitem"
+                        name="totalitem" id="totalitem" readonly> <input
+                        type="text" class="form-control totalitemUnit hide"
+                        name="totalitemUnit" id="totalitemUnit" readonly>
+                    </div>
+
+                  </div>
+
+
+                </td>
+
+
+                </div>
+              </tr>
+            </thead>
+          </table>
+
+
+
+        </div>
+
+
+
+
+
+
+
+      </div>
+  </div>
+
+  </div>
+
+
+  </div>
+
+  <!-- INICIO DA TABELA DE USUARIOS -->
+
+  <div id="menu3" class="tab-pane fade">
+    <div class="testeColappse"></div>
+
+  </div>
+
+  <!-- FIM DA LISTA USUARIOS -->
+
+  </div>
+
+  </form>
+  </div>
+</body>
+
+
+<script type="text/javascript" src="main.js" charset="utf-8"></script>
+
+
+</html>

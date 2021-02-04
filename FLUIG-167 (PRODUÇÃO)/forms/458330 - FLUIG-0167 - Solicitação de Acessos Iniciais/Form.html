@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>FLUIG-0167</title>
+		<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+		<link href="https://csc.direcional.com.br/scripts/js/jquery-ui/jquery-ui.css" rel="stylesheet" />
+		<link href="https://csc.direcional.com.br/scripts/js/datatables/datatables.min.css" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/css/estilo.css" />
+		<link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/css/jquery.timepicker.css" />
+		<link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/js/toast/toastr.min.css" />
+		<link type="text/css" rel="stylesheet" href="Style.css" />
+	</head>
+
+	<body>
+		<div class="fluig-style-guide">
+			<form name="form" role="form" id="form">
+				<input type="hidden" class="limparCamposNovoColab" name="cpCodColigada" id="cpCodColigada">
+				<input type="hidden" name="cpGerente" id="cpGerente">
+				<input type="hidden" name="cpLoginRecolhedor" id="cpLoginRecolhedor">
+				<input type="hidden" class="limparCamposNovoColab" name="cpSolicitanteCarregado"
+					id="cpSolicitanteCarregado">
+				<input type="hidden" name="cpCodSecao" id="cpCodSecao">
+				<input type="hidden" name="cpGestor" id="cpGestor">
+				<input type="hidden" class="dadosResponsavel" name="cpCodSecaoResponsavel" id="cpCodSecaoResponsavel">
+				<input type="hidden" class="dadosResponsavel" name="cpCodColigadaResponsavel"
+					id="cpCodColigadaResponsavel">
+				<input type="hidden" class="dadosResponsavel detalheResponsavel" name="cpMatriculaResponsavel"
+					id="cpMatriculaResponsavel">
+				<input type="hidden" name="cpCodSecaoEscolhida" id="cpCodSecaoEscolhida">
+				<input type="hidden" name="cpMatriculaSolAcessos" id="cpMatriculaSolAcessos">
+				<input type="hidden" name="cpMatriculaSolParceiro" id="cpMatriculaSolParceiro">
+				<input type="hidden" class="limparCamposNovoColab" name="cpAuxRegraSolicAcesso"
+					id="cpAuxRegraSolicAcesso">
+				<input type="hidden" class="limpaColaborador" name="cpColaborador" id="cpColaborador">
+				<input type="hidden" class="limpaColaborador" name="cpObraSede" id="cpObraSede">
+				<input type="hidden" class="limpaCampos limpaCamposPosSolicitacaoPara" name="cpRegional"
+					id="cpRegional">
+				<input type="hidden" class="limpaCamposOcultos limpaGerente" name="cpGerenteGeral" id="cpGerenteGeral">
+				<input type="hidden" class="limpaCamposOcultos limpaGerente" name="cpSuperintendente"
+					id="cpSuperintendente">
+				<input type="hidden" class="limpaCamposOcultos limpaGerente" name="cpDiretor" id="cpDiretor">
+				<input type="hidden" class="limpaCamposOcultos limpaGerente" name="cpFolha" id="cpFolha">
+				<input type="hidden" class="limpaCamposOcultos limpaGerente" name="cpParceria" id="cpParceria">
+				<input type="hidden" class="limpaCamposOcultos limpaGerente" name="cpConstrutor" id="cpConstrutor">
+				<input type="hidden" class="limpaCamposOcultos limpaGerente" name="cpCodSecaoSolicitante"
+					id="cpCodSecaoSolicitante">
+				<input type="hidden" name="cpTipoSecao" id="cpTipoSecao">
+				<input type="hidden" name="cpLoginFluig" id="cpLoginFluig">
+				<input type="hidden" name="cpDescritor" id="cpDescritor">
+				<input type="hidden" name="cpSupAdm" id="cpSupAdm">
+				<input type="hidden" name="cpMatriculaSolicitante" id="cpMatriculaSolicitante">
+				<input type="hidden" name="cpObraSedeSolicitante" id="cpObraSedeSolicitante">
+				<input type="hidden" name="cpGestorSolicitante" id="cpGestorSolicitante">
+				<input type="hidden" name="cpGerenteGeralSolicitante" id="cpGerenteGeralSolicitante">
+				<input type="hidden" name="cpSuperintendenteSolicitante" id="cpSuperintendenteSolicitante">
+				<input type="hidden" name="cpDiretorSolicitante" id="cpDiretorSolicitante">
+				<input type="hidden" name="cpChapaGestor" id="cpChapaGestor">
+				<input type="hidden" name="cpChapaGestor2" id="cpChapaGestor2">
+				<input type="hidden" name="cpSec" id="cpSec">
+				<input type="hidden" name="cpColg" id="cpColg">
+				<input type="hidden" name="cpNomeResponsavelAprov" id="cpNomeResponsavelAprov">
+				<input type="hidden" name="cpHistAtv13" id="cpHistAtv13">
+				<input type="hidden" name="cpHistAtv19" id="cpHistAtv19">
+				<input type="hidden" name="cpHistAtv8" id="cpHistAtv8">
+				<input type="hidden" name="cpHistAtv21" id="cpHistAtv21">
+				<input type="hidden" name="cpChapaGerenteGeral" id="cpChapaGerenteGeral">
+				<input type="hidden" name="cpChapaSuperintendente" id="cpChapaSuperintendente">
+				<input type="hidden" name="cpIsAberturaAutomatica" id="cpIsAberturaAutomatica">
+
+				<div class="panel panel-default panelTitulo">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+							data-target="#panelAtividade_Titulo">
+							<span class="fluigicon fluigicon-home fluigicon-lg"></span>
+							<span class="descricaoProcesso"></span>
+						</div>
+					</div>
+					<div id="panelAtividade_Titulo" class="panel-collapse collapse">
+						<div class="panel-body">
+							O formul&aacute;rio abaixo refere-se ao preenchimento de informa&ccedil;&otilde;es
+							necess&aacute;rias no processo de <b><span class="descricaoProcesso"></span></b>.
+							<br>
+							<br> Para conhecer o passo a passo dessa solicita&ccedil;&atilde;o e conferir todas as
+							regras
+							para a abertura desse chamado <b><a
+									href="http://csc.direcional.com.br:8080/portal/p/1/ecmnavigation?app_ecm_navigation_doc="
+									target="_blank" id="ID_LINK_MANUAL" class="LinkManual">acesse o manual</a></b>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default panelDadosSolicitante">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+							data-target="#panelAtividade_Solicitante">
+							<h3 class="panel-title">
+								<span class="fluigicon fluigicon-user fluigicon-lg"></span>
+								Dados do solicitante
+							</h3>
+						</div>
+					</div>
+					<div id="panelAtividade_Solicitante" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="labelField">N&uacute;mero da solicita&ccedil;&atilde;o</label>
+										<input type="text" class="form-control" readonly="readonly"
+											name="cpNumeroSolicitacao" id="cpNumeroSolicitacao" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="labelField">Data de abertura</label>
+										<input type="text" class="form-control" readonly="readonly"
+											name="cpDataAbertura" id="cpDataAbertura" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="labelField">Solicitante</label>
+										<input type="text" class="form-control" readonly="readonly"
+											name="cpSolicitanteNome" id="cpSolicitanteNome" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="labelField">Fun&ccedil;&atilde;o</label>
+										<input type="text" class="form-control" readonly="readonly"
+											name="cpSolicitanteFuncao" id="cpSolicitanteFuncao" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="labelField">Empresa</label>
+										<input type="text" class="form-control" readonly="readonly"
+											name="cpSolicitanteEmpresa" id="cpSolicitanteEmpresa" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="labelField">Obra/Departamento</label>
+										<input type="text" class="form-control" readonly="readonly"
+											name="cpSolicitanteObraDep" id="cpSolicitanteObraDep" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="labelField">Estado</label>
+										<input type="text" class="form-control" readonly="readonly"
+											name="cpSolicitanteEstado" id="cpSolicitanteEstado" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="labelField">Email</label>
+										<input type="text" class="form-control" readonly="readonly"
+											name="cpSolicitanteEmail" id="cpSolicitanteEmail" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default panelDadosSolicitacao">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<span class="fluigicon fluigicon-user fluigicon-lg"></span>
+								&nbsp;Dados da Solicitação
+							</h3>
+						</div>
+						<div class="panel-body">
+							<div class="panel-body container">
+								<div id="divInfColab">
+									<div>
+										<h4>
+											<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+												data-toggle="collapse"></span>
+											&nbsp;Informa&ccedil;&otilde;es do colaborador
+										</h4>
+									</div>
+									<div class="row">
+										<div class="col-md-8">
+											<div class="form-group">
+												<label class="labelField">Obra/Departamento</label>
+												<div class="input-group">
+													<input type="text" class="form-control limparCamposNovoColab"
+														name="cpSecaoNovoColaborador" id="cpSecaoNovoColaborador"
+														readonly obrigatorio>
+													<div class="input-group-btn">
+														<button class="btn btn-info buttonZoom"
+															id="btBuscaSecaoNovoColaborador"
+															name="btBuscaSecaoNovoColaborador">
+															<span class="fluigicon fluigicon-search"></span>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="labelField">C&oacute;digo da Se&ccedil;&atilde;o</label>
+												<input type="text" class="form-control limparCamposNovoColab"
+													name="cpInfCodSecao" id="cpInfCodSecao" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="labelField">Colaborador</label>
+												<div class="input-group">
+													<input type="text" class="form-control" name="cpNomeNovoColaborador"
+														id="cpNomeNovoColaborador" readonly obrigatorio>
+													<div class="input-group-btn">
+														<button class="btn btn-info buttonZoom"
+															id="btBuscaNovoColaboradorN" name="btBuscaNovoColaboradorN">
+															<span class="fluigicon fluigicon-search"></span>
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="labelField">Matr&iacute;cula</label>
+												<input type="text" class="form-control" name="cpChapaNovoColaborador"
+													id="cpChapaNovoColaborador" readonly>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="labelField">Fun&ccedil;&atilde;o</label>
+												<input type="text" class="form-control" name="cpInfFuncao"
+													id="cpInfFuncao" readonly>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="labelField">Data de admiss&atilde;o</label>
+												<input type="text" class="form-control"
+													name="cpDtAdmissaoNovoColaborador" id="cpDtAdmissaoNovoColaborador"
+													readonly>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-8">
+											<div class="form-group">
+												<label class="labelField">Empresa</label>
+												<input type="text" class="form-control limparCamposNovoColab"
+													name="cpInfColigada" id="cpInfColigada" readonly>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div class="form-group">
+												<label class="labelField">C&oacute;digo</label>
+												<input type="text" class="form-control limparCamposNovoColab"
+													name="cpInfCodColigada" id="cpInfCodColigada" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="labelField">Gestor</label>
+												<input type="text" class="form-control limparCamposNovoColab"
+													name="cpInfGestor" id="cpInfGestor" readonly>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="labelField">Gerente geral</label>
+												<input type="text" class="form-control limparCamposNovoColab"
+													name="cpInfGerenteGeral" id="cpInfGerenteGeral" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6" id="blockRequisicaox">
+											<div class="form-group">
+												<label class="labelField">N. solicitação gerada (Cadastro de novos
+													colaboradores)</label>
+												<input type="text" class="form-control" name="cpReqCadastro"
+													id="cpReqCadastro" readonly>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="labelField">Observa&ccedil;&atilde;o</label>
+												<textarea class="form-control" rows="3" name="cpObsInfColab"
+													id="cpObsInfColab"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="divInfAcessos">
+									<div>
+										<h4>
+											<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+												data-toggle="collapse"></span>
+											&nbsp;Informa&ccedil;&otilde;es dos acessos
+										</h4>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group">
+												<h4>Usu&aacute;rio de rede</h4>
+												<div class="row">
+													<div class="alert alert-warning" role="alert">
+														<i
+															class="fluigicon fluigicon-warning-sign icon-xl"></i>&nbsp;Favor
+														alterar senha no primeiro acesso. A senha precisa conter letras,
+														n&uacute;meros e caracteres especiais
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="form-group">
+															<label class="labelField">Login</label>
+															<input type="text" class="form-control"
+																name="cpLoginNovoUsuario" id="cpLoginNovoUsuario"
+																obrigatorio>
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label class="labelField">Senha</label>
+															<div class="input-group">
+																<input type="password" class="form-control senha"
+																	value="dire@123" readonly name="cpSenhaNovoUsuario"
+																	id="cpSenhaNovoUsuario" obrigatorio>
+																<div class="input-group-btn">
+																	<button class="btn btn-info"
+																		id="btSenhaNovoUsuario">
+																		<span
+																			class="fluigicon fluigicon-eye-open icon-xl"></span>
+																	</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<h4>E-Mail</h4>
+												<div class="row">
+													<div class="alert alert-warning" role="alert">
+														<ul>
+															<li>
+																Gentileza alterar a senha de rede antes de logar pela
+																primeira vez no e-mail. A senha do e-mail &eacute; a
+																mesma do DE.
+																<a target="_blank"
+																	href="https://webmail.direcional.com.br">Efetuar
+																	login atrav&eacute;s do Webmail</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-8">
+														<div class="form-group">
+															<label class="labelField">E-mail</label>
+															<input type="text" class="form-control"
+																name="cpEmailNovoUsuario" id="cpEmailNovoUsuario"
+																value="@direcional.com.br" obrigatorio>
+														</div>
+													</div>
+												</div>
+												<h4>CSC</h4>
+												<div class="row">
+													<div class="alert alert-warning" role="alert">
+														<ul>
+															<li>
+																Usu&aacute;rio e Senha do CSC s&atilde;o os mesmos
+																utilizados para logar no computador (Usu&aacute;rio de
+																Rede)
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="form-group">
+															<label class="labelField">Usu&aacute;rio do CSC
+																Criado?</label>
+															<select class="form-control" name="cpUsuarioCriadoCSC"
+																id="cpUsuarioCriadoCSC" obrigatorio>
+																<option value="">Selecione...</option>
+																<option value="Sim">Sim</option>
+																<option value="Nao">N&atilde;o</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<h4>Portal RH</h4>
+												<div class="row">
+													<div class="alert alert-warning" role="alert">
+														<ul>
+															<li>
+																Usu&aacute;rio e senha do Portal RH os mesmos utilizados
+																para logar no computador (Usu&aacute;rio de Rede)
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="form-group">
+															<label class="labelField">Usu&aacute;rio do Portal RH
+																criado?</label>
+															<select class="form-control" name="cpUsuarioPortalRH"
+																id="cpUsuarioPortalRH" obrigatorio>
+																<option value="">Selecione...</option>
+																<option value="Sim">Sim</option>
+																<option value="Nao">N&atilde;o</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<label class="labelField">Observa&ccedil;&otilde;es</label>
+															<textarea class="form-control" rows="3"
+																name="cpObsAcessosIniciais"
+																id="cpObsAcessosIniciais"></textarea>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default panelEtapaProcesso">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+							data-target="#panelAtividade_etapas">
+							<h3 class="panel-title">
+								<span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+								Etapas do processo
+							</h3>
+						</div>
+					</div>
+					<div id="panelAtividade_Etapas" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="panel-group panelAtividade panelAtividade_3">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+											data-target="#panelAtividade_3">
+											Solicita&ccedil;&atilde;o de acessos específicos - Gestor
+										</div>
+									</div>
+									<div id="panelAtividade_3" class="panel-collapse collapse">
+										<div class="panel-body">
+											<div class="row">
+												<h4>
+													<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+														data-toggle="collapse"></span>
+													Acessos específicos - Gestor
+												</h4>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Colaborador ficar&aacute; lotado na
+															sede?</label>
+														<select class="form-control" name="cpNaSede" id="cpNaSede">
+															<option value="">Selecione</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6" id="blockNotebook">
+													<div class="form-group">
+														<label class="labelField">Colaborador utilizar&aacute;
+															notebook?</label>
+														<select class="form-control" name="cpNotebook" id="cpNotebook">
+															<option value="">Selecione</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<h4>
+													<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+														data-toggle="collapse"></span>
+													UAU
+												</h4>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Acesso ao UAU?</label>
+														<select class="form-control " name="cpNecessidadeUAU"
+															id="cpNecessidadeUAU">
+															<option value="">Selecione...</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Grupo de Acesso/Perfil</label>
+														<input type="text" class="form-control acessoUau"
+															name="cpGrupoUAU" id="cpGrupoUAU">
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Empresas / Obras</label>
+														<textarea class="form-control acessoUau" rows="2"
+															name="cpObrasUAU" id="cpObrasUAU"></textarea>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Observa&ccedil;&otilde;es</label>
+														<textarea class="form-control acessoUau" rows="2"
+															name="cpObsUAU" id="cpObsUAU"></textarea>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<h4>
+													<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+														data-toggle="collapse"></span>
+													RM
+												</h4>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Acesso ao RM?</label>
+														<select class="form-control " name="cpNecessidadeRM"
+															id="cpNecessidadeRM">
+															<option value="">Selecione...</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div id="blockRM">
+												<div class="row">
+													<div class="col-md-6" id="divColigadaRM">
+														<div class="form-group">
+															<label class="labelField">Coligada /
+																Se&ccedil;&atilde;o</label>
+															<textarea class="form-control acessoRm" rows="2"
+																name="cpColigadaRM" id="cpColigadaRM"></textarea>
+														</div>
+													</div>
+													<div class="col-md-6" id="divObsRM">
+														<div class="form-group">
+															<label class="labelField">Observações</label>
+															<textarea class="form-control acessoRm" rows="2"
+																name="cpObsRM" id="cpObsRM"></textarea>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-4">
+													<div class="form-group">
+														<label class="labelField">Perfil Labore</label>
+														<select class="form-control acessoRm" name="cpPerfilLabore"
+															id="cpPerfilLabore">
+															<option value="">Selecione...</option>
+															<option value="0">N&atilde;o Utiliza</option>
+															<option value="1">CONTROLADORIA</option>
+															<option value="2">CORRETORA AM</option>
+															<option value="3">CORRETORA DF</option>
+															<option value="4">CORRETORA MG</option>
+															<option value="5">CORRETORA PA</option>
+															<option value="6">CORRETORA RJ</option>
+															<option value="7">CORRETORA RO</option>
+															<option value="8">CSC.CENTRAL</option>
+															<option value="9">DP BENEFICIOS</option>
+															<option value="10">DP CADASTRO</option>
+															<option value="11">DP COORDENACAO</option>
+															<option value="12">DP FERIAS</option>
+															<option value="13">DP FOLHA</option>
+															<option value="14">DP FOLHA PERIO</option>
+															<option value="15">DP OBRA</option>
+															<option value="16">DP OBRA FOLHA</option>
+															<option value="17">DP OBRA PONTO</option>
+															<option value="18">DP RATEIO</option>
+															<option value="19">DP RESCIS LIDER</option>
+															<option value="20">DP RESCISAO</option>
+															<option value="21">DP SEDE</option>
+															<option value="22">DP SUPERVISOR</option>
+															<option value="23">JURIDICO</option>
+															<option value="24">RH</option>
+															<option value="25">SUPORTE_INFRA</option>
+															<option value="26">TI SISTEMA</option>
+															<option value="27">TI_SUPORTE</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-4" id="divPerfilChronus">
+													<div class="form-group">
+														<label class="labelField">Perfil Chronus</label>
+														<select class="form-control acessoRm" name="cpPerfilChronus"
+															id="cpPerfilChronus">
+															<option value="">Selecione...</option>
+															<option value="0">N&atilde;o Utiliza</option>
+															<option value="1">COMERCIAL PA</option>
+															<option value="2">CORRETORA AM</option>
+															<option value="3">DEP.SECRETARIA</option>
+															<option value="4">DP COORDENACAO</option>
+															<option value="5">DP ERCAM</option>
+															<option value="6">DP FOLHA</option>
+															<option value="7">DP LCTO PONTO</option>
+															<option value="8">DP OBRA</option>
+															<option value="9">DP OBRA PONTO</option>
+															<option value="10">DP SEDE</option>
+															<option value="11">RH</option>
+															<option value="12">TI INFRA</option>
+															<option value="13">TI SISTEMAS</option>
+															<option value="14">TI SUPORTE</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-4" id="divPerfilVitae">
+													<div class="form-group">
+														<label class="labelField">Perfil Vitae</label>
+														<select class="form-control acessoRm" name="cpPerfilVitae"
+															id="cpPerfilVitae">
+															<option value="">Selecione...</option>
+															<option value="0">N&atilde;o Utiliza</option>
+															<option value="1">DP COORDENACAO</option>
+															<option value="2">DP-OBRA</option>
+															<option value="3">DRH-SESMT</option>
+															<option value="4">RH</option>
+															<option value="5">RH II</option>
+															<option value="6">RH III</option>
+															<option value="7">RH-REMUNERACAO</option>
+															<option value="8">SSMT</option>
+															<option value="9">SUPORTE_INFRA</option>
+															<option value="10">TI SISTEMA</option>
+															<option value="11">TI SUPORTE</option>
+															<option value="12">TREINAMENTO</option>
+															<option value="13">TREINAMENTO 2</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<h4>
+													<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+														data-toggle="collapse"></span>
+													Pasta de rede
+												</h4>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Acesso a pasta de rede?</label>
+														<select class="form-control " name="cpNecessidadePastas"
+															id="cpNecessidadePastas">
+															<option value="">Selecione...</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6" id="divTipoPermissaoPastas">
+													<div class="form-group">
+														<label class="labelField">Tipo de Permiss&atilde;o</label>
+														<select class="form-control acessoPastaRede"
+															name="cpTipoPermissaoPastas" id="cpTipoPermissaoPastas">
+															<option value="">Selecione...</option>
+															<option value="1">Leitura</option>
+															<option value="2">Leitura e Grava&ccedil;&otilde;es</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12" id="divObsPastas">
+													<div class="form-group">
+														<label class="labelField">Observa&ccedil;&otilde;es</label>
+														<textarea rows="2" class="form-control acessoPastaRede"
+															name="ObsPastas" id="ObsPastas"></textarea>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<h4>
+													<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+														data-toggle="collapse"></span>
+													E-mail
+												</h4>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Necess&aacute;rio E-mail?</label>
+														<select class="form-control " name="cpNecessarioEmail"
+															id="cpNecessarioEmail">
+															<option value="">Selecione...</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+
+											</div>
+											<div class="row">
+												<h4>
+													<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+														data-toggle="collapse"></span>
+													Internet
+												</h4>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Perfil de acesso &agrave;
+															Internet?</label>
+														<select class="form-control " name="cpNecessarioInternet"
+															id="cpNecessarioInternet">
+															<option value="">Selecione...</option>
+															<option value="1">B&aacute;sico</option>
+															<option value="2">Intermedi&aacute;rio</option>
+															<option value="3">Avan&ccedil;ado</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<div class="alert alert-info" role="alert"><i
+																class="fluigicon fluigicon-exclamation-sign icon-xl"></i>&nbsp;
+															<a href="/portal/p/1/ecmnavigation?app_ecm_navigation_doc=824161"
+																target="_blank" id="docDetPerfilInternet">
+																Clique aqui para visualizar o detalhamento de cada
+																perfil
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<h4>
+													<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+														data-toggle="collapse"></span>
+													Outros acessos
+												</h4>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<div class="alert alert-info" role="alert"><i
+																class="fluigicon fluigicon-exclamation-sign icon-xl"></i>&nbsp;
+															<a href="/portal/p/1/pageworkflowview?processID=FLUIG-0223"
+																target="_blank" id="processo223">Clique
+																aqui para solicitar outros serviços de TI, como: acesso
+																aos outros sistemas, sites, telefonia,
+																equipamento
+																de
+																TI, etc
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<h4>
+													<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+														data-toggle="collapse"></span>
+													Usuário espelho
+												</h4>
+											</div>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Usu&aacute;rio espelho</label>
+														<input type="text" class="form-control" name="cpUsuarioEspelho"
+															id="cpUsuarioEspelho">
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Usu&aacute;rio de rede
+															espelho(DE)</label>
+														<input type="text" class="form-control"
+															name="cpUsuarioRedeEspelho" id="cpUsuarioRedeEspelho">
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="labelField">Observações</label>
+														<textarea class="form-control" rows="3" name="cpObsUsuario"
+															id="cpObsUsuario"></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-group panelAtividade panelAtividade_97">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+											data-target="#panelAtividade_97">
+											Solicita&ccedil;&atilde;o de acessos espec&iacute;ficos - Parceiro
+										</div>
+									</div>
+									<div id="panelAtividade_97" class="panel-collapse collapse">
+										<div class="panel-body container">
+											<div class="row" id="blockSedeMG2">
+												<div>
+													<h4>
+														<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+															data-toggle="collapse"></span>
+														Acessos específicos - Parceiro
+													</h4>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Colaborador ficar&aacute; lotado na
+															sede?</label>
+														<select class="form-control" name="cpNaSede2" id="cpNaSede2">
+															<option value="">Selecione</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6" id="blockNotebook2">
+													<div class="form-group">
+														<label class="labelField">Colaborador utilizar&aacute;
+															notebook?</label>
+														<select class="form-control" name="cpNotebook2"
+															id="cpNotebook2">
+															<option value="">Selecione</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div>
+													<h4>
+														<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+															data-toggle="collapse"></span>
+														UAU
+													</h4>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Acesso ao UAU?</label>
+														<select class="form-control " name="cpNecessidadeUAU2"
+															id="cpNecessidadeUAU2">
+															<option value="">Selecione...</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6" id="divcpGrupoUAU2">
+													<div class="form-group">
+														<label class="labelField">Grupo de Acesso/Perfil</label>
+														<input type="text" class="form-control" name="cpGrupoUAU2"
+															id="cpGrupoUAU2">
+													</div>
+												</div>
+											</div>
+											<div id="blockUAU2">
+												<div class="row">
+													<div class="col-md-6" id="blockUAU2">
+														<div class="form-group">
+															<label class="labelField">Empresas / Obras</label>
+															<textarea class="form-control" rows="2" name="cpObrasUAU2"
+																id="cpObrasUAU2"></textarea>
+														</div>
+													</div>
+													<div class="col-md-6" id="blockObsUAU2">
+														<div class="form-group">
+															<label class="labelField">Observa&ccedil;&otilde;es</label>
+															<textarea class="form-control" rows="2" name="cpObsUAU2"
+																id="cpObsUAU2"></textarea>
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div>
+													<h4>
+														<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+															data-toggle="collapse"></span>
+														RM
+													</h4>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Acesso ao RM?</label>
+														<select class="form-control " name="cpNecessidadeRM2"
+															id="cpNecessidadeRM2">
+															<option value="">Selecione...</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div id="blockRM2">
+												<div class="row">
+													<div class="col-md-6" id="divColigadaRM2">
+														<div class="form-group">
+															<label class="labelField">Coligada /
+																Se&ccedil;&atilde;o</label>
+															<textarea class="form-control" rows="2" name="cpColigadaRM2"
+																id="cpColigadaRM2"></textarea>
+														</div>
+													</div>
+													<div class="col-md-6" id="divObsRM2">
+														<div class="form-group">
+															<label class="labelField">Observa&ccedil;&atilde;o</label>
+															<textarea class="form-control" rows="2" name="cpObsRM2"
+																id="cpObsRM2"></textarea>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-4" id="divPerfilLabore2">
+													<div class="form-group">
+														<label class="labelField">Perfil Labore</label>
+														<select class="form-control" name="cpPerfilLabore2"
+															id="cpPerfilLabore2">
+															<option value="">Selecione...</option>
+															<option value="0">N&atilde;o Utiliza</option>
+															<option value="1">CONTROLADORIA</option>
+															<option value="2">CORRETORA AM</option>
+															<option value="3">CORRETORA DF</option>
+															<option value="4">CORRETORA MG</option>
+															<option value="5">CORRETORA PA</option>
+															<option value="6">CORRETORA RJ</option>
+															<option value="7">CORRETORA RO</option>
+															<option value="8">CSC.CENTRAL</option>
+															<option value="9">DP BENEFICIOS</option>
+															<option value="10">DP CADASTRO</option>
+															<option value="11">DP COORDENACAO</option>
+															<option value="12">DP FERIAS</option>
+															<option value="13">DP FOLHA</option>
+															<option value="14">DP FOLHA PERIO</option>
+															<option value="15">DP OBRA</option>
+															<option value="16">DP OBRA FOLHA</option>
+															<option value="17">DP OBRA PONTO</option>
+															<option value="18">DP RATEIO</option>
+															<option value="19">DP RESCIS LIDER</option>
+															<option value="20">DP RESCISAO</option>
+															<option value="21">DP SEDE</option>
+															<option value="22">DP SUPERVISOR</option>
+															<option value="23">JURIDICO</option>
+															<option value="24">RH</option>
+															<option value="25">SUPORTE_INFRA</option>
+															<option value="26">TI SISTEMA</option>
+															<option value="27">TI_SUPORTE</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-4" id="divPerfilChronus2">
+													<div class="form-group">
+														<label class="labelField">Perfil Chronus</label>
+														<select class="form-control" name="cpPerfilChronus2"
+															id="cpPerfilChronus2">
+															<option value="">Selecione...</option>
+															<option value="0">N&atilde;o Utiliza</option>
+															<option value="1">COMERCIAL PA</option>
+															<option value="2">CORRETORA AM</option>
+															<option value="3">DEP.SECRETARIA</option>
+															<option value="4">DP COORDENACAO</option>
+															<option value="5">DP ERCAM</option>
+															<option value="6">DP FOLHA</option>
+															<option value="7">DP LCTO PONTO</option>
+															<option value="8">DP OBRA</option>
+															<option value="9">DP OBRA PONTO</option>
+															<option value="10">DP SEDE</option>
+															<option value="11">RH</option>
+															<option value="12">TI INFRA</option>
+															<option value="13">TI SISTEMAS</option>
+															<option value="14">TI SUPORTE</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-4" id="divPerfilVitae2">
+													<div class="form-group">
+														<label class="labelField">Perfil Vitae</label>
+														<select class="form-control" name="cpPerfilVitae2"
+															id="cpPerfilVitae2">
+															<option value="">Selecione...</option>
+															<option value="0">N&atilde;o Utiliza</option>
+															<option value="1">DP COORDENACAO</option>
+															<option value="2">DP-OBRA</option>
+															<option value="3">DRH-SESMT</option>
+															<option value="4">RH</option>
+															<option value="5">RH II</option>
+															<option value="6">RH III</option>
+															<option value="7">RH-REMUNERACAO</option>
+															<option value="8">SSMT</option>
+															<option value="9">SUPORTE_INFRA</option>
+															<option value="10">TI SISTEMA</option>
+															<option value="11">TI SUPORTE</option>
+															<option value="12">TREINAMENTO</option>
+															<option value="13">TREINAMENTO 2</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div>
+													<h4>
+														<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+															data-toggle="collapse"></span>
+														Pasta de rede
+													</h4>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Acesso a pasta de rede?</label>
+														<select class="form-control " name="cpNecessidadePastas2"
+															id="cpNecessidadePastas2">
+															<option value="">Selecione...</option>
+															<option value="1">Sim</option>
+															<option value="2">N&atilde;o</option>
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6" id="divTipoPermissaoPastas2">
+													<div class="form-group">
+														<label class="labelField">Tipo de Permiss&atilde;o</label>
+														<select class="form-control" name="cpTipoPermissaoPastas2"
+															id="cpTipoPermissaoPastas2">
+															<option value="">Selecione...</option>
+															<option value="1">Leitura</option>
+															<option value="2">Leitura e Grava&ccedil;&otilde;es</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12" id="divObsPastas2">
+													<div class="form-group">
+														<label class="labelField">Observa&ccedil;&otilde;es</label>
+														<textarea rows="2" class="form-control" name="ObsPastas2"
+															id="ObsPastas2"></textarea>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div>
+													<h4>
+														<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+															data-toggle="collapse"></span>
+														E-mail
+													</h4>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Necessário E-mail?</label>
+														<select class="form-control " name="cpNecessarioEmailParceiro"
+															id="cpNecessarioEmailParceiro">
+															<option value="">Selecione...</option>
+															<option value="1">Sim</option>
+															<option value="2">Não</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div>
+													<h4>
+														<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+															data-toggle="collapse"></span>
+														Internet
+													</h4>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Perfil de acesso &agrave;
+															Internet?</label>
+														<select class="form-control "
+															name="cpNecessarioInternetParceiro"
+															id="cpNecessarioInternetParceiro">
+															<option value="">Selecione...</option>
+															<option value="1">B&aacute;sico</option>
+															<option value="2">Intermedi&aacute;rio</option>
+															<option value="3">Avan&ccedil;ado</option>
+														</select>
+													</div>
+												</div>
+
+												<div class="col-md-6">
+													<div class="form-group">
+														<div class="alert alert-primary" role="alert">
+															<a href="/portal/p/1/ecmnavigation?app_ecm_navigation_doc=824161"
+																target="_blank" id="docDetPerfilInternetParceiro">
+																Clique aqui para visualizar o detalhamento de cada
+																perfil
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row" id="btOutroTipoAcesso2">
+												<div>
+													<h4>
+														<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+															data-toggle="collapse"></span>
+														Outros acessos
+													</h4>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<div class="alert alert-primary" role="alert">
+															<a href="/portal/p/1/pageworkflowview?processID=FLUIG-0223"
+																target="_blank" id="processo223">Clique
+																aqui para solicitar outros serviços de TI, como: acesso
+																aos outros sistemas, sites, telefonia,
+																equipamento
+																de
+																TI, etc
+															</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div>
+													<h4>
+														<span class="fluigicon fluigicon-pointer-right fluigicon-sm"
+															data-toggle="collapse"></span>
+														Usuário espelho
+													</h4>
+												</div>
+												<div class="col-md-6">
+													<label class="labelField">Usu&aacute;rio espelho</label>
+													<input type="text" class="form-control" name="cpUsuarioEspelho2"
+														id="cpUsuarioEspelho2">
+												</div>
+												<div class="col-md-6">
+													<label class="labelField">Usu&aacute;rio de rede espelho(DE)</label>
+													<input type="text" class="form-control" name="cpUsuarioRedeEspelho2"
+														id="cpUsuarioRedeEspelho2">
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="labelField">Observa&ccedil;&atilde;o</label>
+														<textarea class="form-control" rows="2" name="cpObsUsuario2"
+															id="cpObsUsuario2"></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-group panelAtividade panelAtividade_8">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+											data-target="#panelAtividade_8">
+											Aprova&ccedil;&atilde;o do gestor DP
+										</h3>
+									</div>
+									<div id="panelAtividade_8" class="panel-collapse collapse">
+										<div class="panel-body container">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Aprova&ccedil;&atilde;o</label>
+														<select class="form-control" name="cpAprovacaoGestorDP"
+															id="cpAprovacaoGestorDP" aprovacao>
+															<option value="">Selecione...</option>
+															<option value="1">Aprovado </option>
+															<option value="2">Reprovado</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="labelField">Parecer</label>
+														<textarea rows="3" class="form-control"
+															name="cpParecerAprGestorDP" id="cpParecerAprGestorDP"
+															parecer></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-group panelAtividade panelAtividade_211">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+											data-target="#panelAtividade_211">
+											Aprova&ccedil;&atilde;o do gerente geral
+										</h3>
+									</div>
+									<div id="panelAtividade_211" class="panel-collapse collapse">
+										<div class="panel-body container">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Aprova&ccedil;&atilde;o</label>
+														<select class="form-control" name="cpAprovacaoGerenteGeral"
+															id="cpAprovacaoGerenteGeral" aprovacao>
+															<option value="">Selecione...</option>
+															<option value="1">Aprovado </option>
+															<option value="2">Reprovado</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="labelField">Parecer</label>
+														<textarea rows="3" class="form-control"
+															name="cpParecerGerenteGeral" id="cpParecerGerenteGeral"
+															parecer></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-group panelAtividade panelAtividade_212">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+											data-target="#panelAtividade_212">
+											Aprova&ccedil;&atilde;o do superintendente
+										</h3>
+									</div>
+									<div id="panelAtividade_212" class="panel-collapse collapse">
+										<div class="panel-body container">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Aprova&ccedil;&atilde;o</label>
+														<select class="form-control" name="cpAprovacaoSuperintendente"
+															id="cpAprovacaoSuperintendente" aprovacao>
+															<option value="">Selecione...</option>
+															<option value="1">Aprovado </option>
+															<option value="2">Reprovado</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="labelField">Parecer</label>
+														<textarea rows="3" class="form-control"
+															name="cpParecerSuperintendente"
+															id="cpParecerSuperintendente" parecer></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-group panelAtividade panelAtividade_13">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+											data-target="#panelAtividade_13">
+											&nbsp;Cria&ccedil;&atilde;o de acessos espec&iacute;ficos solicitados - TI
+										</h3>
+									</div>
+									<div id="panelAtividade_13" class="panel-collapse collapse">
+										<div class="panel-body container">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Aprova&ccedil;&atilde;o</label>
+														<select class="form-control" name="cpAprovacaoCriacao"
+															id="cpAprovacaoCriacao" aprovacao>
+															<option value="">Selecione...</option>
+															<option value="1">Acessos Liberados</option>
+															<option value="3">Enviado para aprova&ccedil;&atilde;o
+																espec&iacute;fica</option>
+															<option value="2">Reprovado</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row" id="blockResponsavel">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Obra / Departamento
+															respons&aacute;vel</label>
+														<div class="input-group">
+															<input class="form-control dadosResponsavel limpaSecaoResp"
+																name="cpSecaoResponsavel" id="cpSecaoResponsavel"
+																readonly>
+															<div class="input-group-btn">
+																<button class="btn btn-info buttonZoom"
+																	id="buscaSecaoResponsavel"
+																	name="buscaSecaoResponsavel">
+																	<span class="fluigicon fluigicon-search"></span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Respons&aacute;vel pela
+															aprova&ccedil;&atilde;o</label>
+														<div class="input-group">
+															<input class="form-control dadosResponsavel "
+																name="cpResponsavel" id="cpResponsavel" readonly>
+															<div class="input-group-btn">
+																<button class="btn btn-info buttonZoom"
+																	id="buscaResponsavel" name="buscaResponsavel">
+																	<span class="fluigicon fluigicon-search"></span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="labelField">Parecer</label>
+														<textarea rows="3" class="form-control" name="cpObsCriacao"
+															id="cpObsCriacao" parecer></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-group panelAtividade panelAtividade_19">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+											data-target="#panelAtividade_19">
+											&nbsp;Aprova&ccedil;&atilde;o espec&iacute;fica - Respons&aacute;vel da
+											&aacute;rea
+										</h3>
+									</div>
+									<div id="panelAtividade_19" class="panel-collapse collapse">
+										<div class="panel-body container">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Aprova&ccedil;&atilde;o</label>
+														<select class="form-control" name="cpAprovacaoResponsavel"
+															id="cpAprovacaoResponsavel" aprovacao>
+															<option value="">Selecione...</option>
+															<option value="1">Aprovado</option>
+															<option value="2">Reprovado</option>
+															<option value="3">Gestor Incorreto</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="labelField">Parecer</label>
+														<textarea rows="3" class="form-control"
+															name="cpParecerResponsavel" id="cpParecerResponsavel"
+															parecer></textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel-group panelAtividade panelAtividade_21">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+											data-target="#panelAtividade_21">
+											&nbsp;Confirma&ccedil;&atilde;o de atendimento - Gestor
+										</h3>
+									</div>
+									<div id="panelAtividade_21" class="panel-collapse collapse">
+										<div class="panel-body container">
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Solicita&ccedil;&atilde;o
+															Atendida?</label>
+														<select class="form-control" name="cpConfirmacao"
+															id="cpConfirmacao" aprovacao>
+															<option value="">Selecione...</option>
+															<option value="1">Aprovado - Finalizar Chamado</option>
+															<option value="2">Reprovado - enviar para Ajustes</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="labelField">Parecer</label>
+														<textarea rows="3" class="form-control"
+															name="cpParecerConfirmacao" id="cpParecerConfirmacao"
+															parecer></textarea>
+													</div>
+												</div>
+											</div>
+											<div class="row" id="divSatisfacao">
+												<h4>
+													<span
+														class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Avaliação
+													de atendimento
+												</h4>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="labelField">Qual o seu grau de
+															satisfa&ccedil;&atilde;o quanto ao atendimento desse
+															chamado?
+														</label>
+														<select class="form-control limparCampoGrauSatisfacao"
+															name="cpGrauSatisfacao" id="cpGrauSatisfacao">
+															<option value="">Selecione...</option>
+															<option value="1">Muito satisfeito</option>
+															<option value="2">Satisfeito</option>
+															<option value="3">Insatisfeito (Justifique)</option>
+															<option value="4">Muito insatisfeito (Justifique)</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="row" id="divJustificativaSatisfacao">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label class="labelField limparCampoObservacao">Observações /
+															Justificativas</label>
+														<textarea class="form-control" rows="3" name="cpJustifObs"
+															id="cpJustifObs">
+														</textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/vcXMLRPC.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery.mask.min.js"></script>
+		<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery.timepicker.min.js"></script>
+		<script type="text/javascript"
+			src="https://csc.direcional.com.br/scripts/js/jquery-ui/datepicker-pt-BR.js"></script>
+		<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js"
+			charset="utf-8"></script>
+		<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/zoom/zoom.js"
+			charset="utf-8"></script>
+		<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/compartilhados.js"
+			charset="utf-8"></script>
+		<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/model.js" charset="utf-8"></script>
+		<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/formShared.js"
+			charset="utf-8"></script>
+		<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/datatables/datatables.min.js"
+			charset="utf-8"></script>
+		<script type="text/javascript"
+			src="https://csc.direcional.com.br/scripts/js/datatables/Buttons-1.5.1/js/buttons.html5.min.js"
+			charset="utf-8"></script>
+		<script type="text/javascript"
+			src="https://csc.direcional.com.br/scripts/js/datatables/Buttons-1.5.1/js/buttons.jqueryui.min.js"
+			charset="utf-8"></script>
+		<script type="text/javascript"
+			src="https://csc.direcional.com.br/scripts/js/datatables/Buttons-1.5.1/js/dataTables.buttons.min.js"
+			charset="utf-8"></script>
+		<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/aes.js" charset="utf-8"></script>
+		<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/toast/toastr.min.js"
+			charset="utf-8"></script>
+		<!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+
+		<script type="text/javascript" src="Zoom.js" charset="utf-8"></script>
+		<script type="text/javascript" src="View.js" charset="utf-8"></script>
+		<script type="text/javascript" src="Mensagens.js" charset="utf-8"></script>
+	</body>
+
+</html>

@@ -1,0 +1,276 @@
+$(document).ready(function(){
+	buscaUsuario();
+	verificaQuantidade();
+	var attrBtn = [];
+
+	// botao aprovador
+	$("#botaoAprovado button").on("click", function(){
+		attrBtn.push($(this).attr('name'));
+		
+		// Se houver 2 cliques, verifique se foi no mesmo botão
+		if(attrBtn.length == 2){
+			if(attrBtn[0] == attrBtn[1]){
+				window.parent.$('button[data-send]').first().click();
+				attrBtn = [];
+			}else{
+				var aux = attrBtn[1];
+				attrBtn = [];
+				attrBtn.push(aux);
+				aux = "";
+			}
+		}
+	});
+	
+	$('#botaoAprovado button').click(function(){
+
+		// ->> Efeito de ativar/desativar botao
+		$('#botaoAprovado button.active').removeClass('active');
+		$(this).toggleClass('active');
+
+		// ->> Recebe o valor se foi aprovado/reprovado e gravar no input auxiliar
+		var resultado = $(this).attr('name');
+		$('#auxAprovador').val(resultado);
+
+	});
+
+	$('#botaoAprovado').click(function() {
+		if ($('#auxAprovador').val() == "aprovado") {
+			$('#divMotivo_revisor').css('display', 'none');															
+		}else if ($('#auxAprovador').val() == "reprovado") {
+				$('#divMotivo_revisor').css('display', 'block');															
+		}
+	});
+
+	// botao adquirir ou contratar
+	var attrBtn = [];
+
+	$("#botaoContratar button").on("click", function(){
+		attrBtn.push($(this).attr('name'));
+		
+		// Se houver 2 cliques, verifique se foi no mesmo botão
+		if(attrBtn.length == 2){
+			if(attrBtn[0] == attrBtn[1]){
+				window.parent.$('button[data-send]').first().click();
+				attrBtn = [];
+			}else{
+				var aux = attrBtn[1];
+				attrBtn = [];
+				attrBtn.push(aux);
+				aux = "";
+			}
+		}
+	});
+	
+	$('#botaoContratar button').click(function(){
+
+		// ->> Efeito de ativar/desativar botao
+		$('#botaoContratar button.active').removeClass('active');
+		$(this).toggleClass('active');
+
+		// ->> Recebe o valor se foi aprovado/reprovado e gravar no input auxiliar
+		var resultado = $(this).attr('name');
+		$('#auxAdquirir').val(resultado);
+	});
+
+	// botao necessita compra
+		var attrBtn = [];
+
+		$("#botaoNecessita button").on("click", function(){
+			attrBtn.push($(this).attr('name'));
+			
+			// Se houver 2 cliques, verifique se foi no mesmo botão
+			if(attrBtn.length == 2){
+				if(attrBtn[0] == attrBtn[1]){
+					window.parent.$('button[data-send]').first().click();
+					attrBtn = [];
+				}else{
+					var aux = attrBtn[1];
+					attrBtn = [];
+					attrBtn.push(aux);
+					aux = "";
+				}
+			}
+		});
+		
+		$('#botaoNecessita button').click(function(){
+
+			// ->> Efeito de ativar/desativar botao
+			$('#botaoNecessita button.active').removeClass('active');
+			$(this).toggleClass('active');
+
+			// ->> Recebe o valor se foi aprovado/reprovado e gravar no input auxiliar
+			var resultado = $(this).attr('name');
+			$('#auxNecessitaCompra').val(resultado);
+	});
+
+			var attrBtn = [];
+
+			$("#botaoAntecipa button").on("click", function(){
+				attrBtn.push($(this).attr('name'));
+				
+				// Se houver 2 cliques, verifique se foi no mesmo botão
+				if(attrBtn.length == 2){
+					if(attrBtn[0] == attrBtn[1]){
+						window.parent.$('button[data-send]').first().click();
+						attrBtn = [];
+					}else{
+						var aux = attrBtn[1];
+						attrBtn = [];
+						attrBtn.push(aux);
+						aux = "";
+					}
+				}
+			});
+			
+			$('#botaoAntecipa button').click(function(){
+
+				// ->> Efeito de ativar/desativar botao
+				$('#botaoAntecipa button.active').removeClass('active');
+				$(this).toggleClass('active');
+
+				// ->> Recebe o valor se foi aprovado/reprovado e gravar no input auxiliar
+				var resultado = $(this).attr('name');
+				$('#auxAntecipa').val(resultado);
+		});
+
+});
+
+// remove linha da tabela
+function retirarLinhaExternos(elemento){
+	fnWdkRemoveChild(elemento);
+}
+
+// função botão adicionar linha na tabela 
+function adicionarLinha(){
+	wdkAddChild('tbPlanejaManutencao');
+}
+
+function calendario(){
+	var calendario  = FLUIGC.calendar('.calendario');
+}
+
+function necessitaCompra(value){
+	console.log(value)
+	if( value == 'sim'){
+		console.log("entro no if")
+		$("#div_antecipa").css('display', 'block');
+	}else{
+		$("#div_antecipa").css('display', 'none');
+	}
+}
+
+function validaSaldo(value){
+	var descricao =  $('#item').val();
+	console.log(value +"  "+ descricao );
+	var c1 = DatasetFactory.createConstraint('descricao', descricao, descricao, ConstraintType.MUST);
+	var constraint = new Array(c1);
+	var dataset = DatasetFactory.getDataset('ds_zoom_item', null, constraint, null);
+
+	console.log(dataset);
+	for(var i = 0; i <dataset.values.length; i++){
+		var saldo = dataset.values[i]['quantidade'];
+	}
+
+	console.log(value);
+	console.log(saldo);
+	if(value > saldo){
+		$("#compra").css('display', 'block');
+	}
+}
+
+function setSelectedZoomItem(selectedItem) {
+
+	if(selectedItem.inputId == "descricaoEquipamento"){
+			$('#descricaoEquipamento_aux').val(selectedItem["Código"]);
+			console.log('teste');
+	}
+
+	if(selectedItem.inputId == "manutencao"){
+			$('#manutencao_aux').val(selectedItem["Código"]);
+	}
+
+    var index = selectedItem.inputId.split("___")[1];
+	if(selectedItem.inputId == "tbEspecialidade___"+index){
+			$('#tbEspecialidade_aux___'+index).val(selectedItem["Código"]);
+	}
+
+	if(selectedItem.inputId == "estabelecimento"){
+			$('#estabelecimento_aux').val(selectedItem["Nome"]);
+	}
+
+	if(selectedItem.inputId == "item"){
+			$('#item_aux').val(selectedItem["Código"]);
+			$('#item_quantidade').val(selectedItem["Quantidade Atual"]);
+
+	}
+
+	if(selectedItem.inputId == "planejador"){
+			$('#planejador_aux').val(selectedItem["Código"]);
+	}
+
+	if(selectedItem.inputId == "equipe"){
+			$('#equipe_aux').val(selectedItem["Código"]);
+
+	}if(selectedItem.inputName == "estabelecimento"){
+			
+			$('#estabelecimento_iD').val(selectedItem["Código Estabelecimento"]);
+			console.log("Id do estabelecimento"+ selectedItem["Código Estabelecimento"]);
+
+	}
+
+
+
+}
+
+function verificaQuantidade(value){
+	var qtdSelecionada = 0;
+	qtdSelecionada = parseFloat($("#item_quantidade").val());
+	console.log(qtdSelecionada);
+	var qtdDigitada = 0;
+	qtdDigitada = parseFloat(value);
+	console.log(qtdDigitada);
+
+	if(qtdSelecionada < qtdDigitada) {
+		console.log("dentro ")
+		$('#necessita_compra').val("Necessita");
+
+	}else{
+		$('#necessita_compra').val("Não necessita");
+	}
+}
+
+function buscaUsuario(){
+ 
+ var c1 = DatasetFactory.createConstraint("colleaguePK.colleagueId", $("#solicitanteId").val(), $("#solicitanteId").val(), ConstraintType.MUST);
+ var constraints = new Array(c1);
+ var colaborador = DatasetFactory.getDataset("colleague", null, constraints, null);
+ console.log(colaborador);
+ return colaborador; 
+}
+
+function carregaZoom(){
+
+	console.log("------------- Entrou na Function");
+
+
+	var idEstabelecimento =  $('#estabelecimento_iD').val();
+
+	console.log("Id do estabelecimento =  " + idEstabelecimento);
+
+	reloadZoomFilterValues("item", "idEstab," + idEstabelecimento);
+
+
+	// setTimeout(function(){
+
+	// 	var c1 = DatasetFactory.createConstraint("idEstab", idEstabelecimento, idEstabelecimento, ConstraintType.SHOULD);
+	// 	var dataset = DatasetFactory.getDataset("ds_zoom_item", null, [c1], null);
+
+
+	// 	},1000);
+
+
+
+
+
+
+} 

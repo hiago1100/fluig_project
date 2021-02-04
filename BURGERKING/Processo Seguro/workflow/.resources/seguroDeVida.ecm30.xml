@@ -1,0 +1,341 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>seguroDeVida</processId>
+    </processDefinitionPK>
+    <processDescription>Seguro de vida</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Seguro de Vida</categoryId>
+    <managerEngineAllocationId></managerEngineAllocationId>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Seguro de vida</processId>
+      <version>1</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>4575906</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>seguroDeVida</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Papel</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;admin&lt;/Role&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>150</positionX>
+      <positionY>128</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>seguroDeVida</processId>
+        <version>1</version>
+        <sequence>7</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>566</positionX>
+      <positionY>128</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list/>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>seguroDeVida</processId>
+        <version>1</version>
+        <linkSequence>8</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>7</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateEntry</eventId>
+        <processId>seguroDeVida</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateEntry(sequenceId) {&#xd;
+  &#xd;
+   var idPastaDestino = hAPI.getCardValue(&quot;idPasta&quot;);&#xd;
+   var pastaCriada = hAPI.getCardValue(&quot;pastaCriada&quot;);&#xd;
+   var pastaSeguraExistente = hAPI.getCardValue(&quot;pastaSeguraExistente&quot;);&#xd;
+   if (sequenceId == 7) {      &#xd;
+       validaAnexo();  &#xd;
+      if (pastaCriada == &apos;sim&apos;) {&#xd;
+         enviaDoc(pastaSeguraExistente);  &#xd;
+      }else if (pastaCriada == &apos;nao&apos;) {  &#xd;
+         var novaPasta = createFoldersChildren(parseInt(idPastaDestino));&#xd;
+         enviaDoc(novaPasta);&#xd;
+&#xd;
+    }&#xd;
+  }&#xd;
+}&#xd;
+&#xd;
+&#xd;
+&#xd;
+function createFoldersChildren(idPastaPai){&#xd;
+&#xd;
+try{&#xd;
+// Cria pasta dentro da pasta pai&#xd;
+var dto = docAPI.newDocumentDto();&#xd;
+  dto.setDocumentDescription(&quot;Seguro de Vida&quot;); // nome da pasta criada, obrigatoriedades&#xd;
+  dto.setDocumentType(&quot;1&quot;);               // tipo de documento &#xd;
+  dto.setParentDocumentId(parseInt(idPastaPai));  // Número da pasta principal que vai receber os arquivos&#xd;
+  dto.setAdditionalComments(&quot;(Processo seguro de vida) Número: &quot;+getValue(&quot;WKNumProces&quot;))&#xd;
+  dto.setDocumentTypeId(&quot;&quot;);&#xd;
+  dto.setInheritSecurity(true);&#xd;
+  dto.setUpdateIsoProperties(true);&#xd;
+      &#xd;
+  var approvesArray = new java.util.ArrayList();&#xd;
+  var folder = docAPI.createFolder(dto, null, null);&#xd;
+  var gedNewParentId = folder.getDocumentId();  &#xd;
+&#xd;
+  log.info(&quot;ID DA PASTA CRIADA &quot;+ gedNewParentId); &#xd;
+&#xd;
+  return gedNewParentId&#xd;
+  }catch(error){&#xd;
+    throw &quot;Erro ao criar a pasta: &quot;+error;&#xd;
+  }&#xd;
+  &#xd;
+}&#xd;
+&#xd;
+function enviaDoc(idPastaDoc){&#xd;
+&#xd;
+        var attachments = hAPI.listAttachments();&#xd;
+        for ( var i = 0; i &lt; attachments.size(); i++) {&#xd;
+            var docDto = attachments.get(i);&#xd;
+  &#xd;
+            if (docDto.getDocumentType() == &quot;7&quot;) {&#xd;
+                // var idPastaDoc = createFoldersChildren(idPastaDestino);                               &#xd;
+                docAPI.copyDocumentToUploadArea(docDto.getDocumentId(), docDto.getVersion());          &#xd;
+                docDto.setDocumentId(0);&#xd;
+                // Criar uma pasta para armazenar os anexos como documentos, concedendo à mesma as permissões de segurança e aprovação necessárias&#xd;
+                docDto.setParentDocumentId(parseInt(idPastaDoc));&#xd;
+                var attachArray = new java.util.ArrayList();&#xd;
+                var mainAttach = docAPI.newAttachment();&#xd;
+                mainAttach.setFileName(docDto.getPhisicalFile());&#xd;
+                mainAttach.setPrincipal(true);&#xd;
+                mainAttach.setAttach(false);&#xd;
+                attachArray.add(mainAttach);&#xd;
+                        // Adicionando aprovadores&#xd;
+               docDto.setActiveVersion(true);&#xd;
+               docDto.setColleagueId(getValue(&quot;WKUser&quot;)); // Informar o usuário logado.&#xd;
+               docDto.setPublisherId(getValue(&quot;WKUser&quot;)); // Informar o publicador.&#xd;
+  &#xd;
+              var aprovador = docAPI.newApproverDto();&#xd;
+              aprovador.setCompanyId(getValue(&quot;WKCompany&quot;));&#xd;
+              aprovador.setColleagueId(getValue(&quot;WKUser&quot;)); // Informar o aprovador&#xd;
+              aprovador.setDocumentId(3939579);&#xd;
+              aprovador.setVersion(1); // Versão do documento&#xd;
+              aprovador.setLevelId(1); // Nível de aprovação&#xd;
+              aprovador.setApproverType(0); //Tipo de aprovadores (0 = Colaboradores, 1 = Grupo)&#xd;
+              var aprovadoresArray = new java.util.ArrayList();&#xd;
+              aprovadoresArray.add(aprovador);&#xd;
+ &#xd;
+ &#xd;
+                try {&#xd;
+                    var doc = docAPI.createDocument(docDto, attachArray, null, null,null);&#xd;
+                    log.info(&quot;DOCUMENTO CRIADO COM O ID: &quot; + doc.getDocumentId());&#xd;
+                } catch (e) {&#xd;
+                    log.error(&quot;Problemas na criação do documento:\n&quot; + e);&#xd;
+                }&#xd;
+            }&#xd;
+        }&#xd;
+&#xd;
+}&#xd;
+&#xd;
+function validaAnexo(){&#xd;
+&#xd;
+    var atv      = getValue(&quot;WKNumState&quot;);&#xd;
+    var nextAtv  = getValue(&quot;WKNextState&quot;);&#xd;
+&#xd;
+        var anexos   = hAPI.listAttachments();&#xd;
+        var temAnexo = false;&#xd;
+&#xd;
+        if (anexos.size() &gt; 0) {&#xd;
+            temAnexo = true;&#xd;
+        }&#xd;
+&#xd;
+        if (!temAnexo) {&#xd;
+            throw &quot;É preciso anexar o formulário para continuar o processo !&quot;;&#xd;
+        }&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskCreate</eventId>
+        <processId>seguroDeVida</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskCreate(colleagueId){&#xd;
+    var processo = getValue(&quot;WKNumProces&quot;);&#xd;
+    hAPI.setCardValue(&quot;cpNumSolicita&quot;, processo);&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>290</height>
+      <width>831</width>
+      <positionX>10</positionX>
+      <positionY>10</positionY>
+      <stateName>Segura de Vida</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>seguroDeVida</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>9F9F9F</color>
+      <height>290</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>10</positionY>
+      <stateName>Solicitante</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>seguroDeVida</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

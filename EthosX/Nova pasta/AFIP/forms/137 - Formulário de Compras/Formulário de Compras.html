@@ -1,0 +1,911 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	</meta>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js"
+		charset="utf-8"></script>
+
+	<script src="/webdesk/vcXMLRPC.js" type="text/javascript"></script>
+	<script type="text/javascript" src="custom.js" charset="utf-8"></script>
+	<script type="text/javascript" src="zoom.js" charset="utf-8"></script>
+
+	<style>
+		.tabela {
+			width: 100%;
+			/*Largura da Div*/
+			overflow-y: hidden;
+			/*Barra de rolagem VERTICAL, para tivar altere de "hidden" para "auto" ou "scroll", *veja qual funciona melhor*/
+			overflow-x: scroll;
+			/*Barra de rolagem horizontal, pode ser utilizado o valor "auto" ou "scroll", veja qual funciona melhor*/
+			padding-bottom: 5px;
+			position: block;
+		}
+	</style>
+
+
+</head>
+
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+
+			<!-- ########################################## CAMPOS DE CONTROLE ################################################ -->
+
+			<input type="hidden" name="numAtividade" id="numAtividade" value="">
+			<input type="hidden" name="pre_aprovador" id="pre_aprovador" value="">
+			<input type="hidden" name="anexo_fornecedor" id="anexo_fornecedor" value="">
+			<input type="hidden" name="ativAtual" id="ativAtual">
+
+			<!-- ########################################## CABECALHO DA SOLICITACAO ################################################ -->
+			<div class="panel panel-default" id="panelCabecalho">
+				<div class="panel-body">
+					<h1>
+						<b>Processo de Compras</b>
+					</h1>
+					<br>
+
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label class="">Nome do Solicitante</label> <input type="text" class="form-control"
+								name="nmSolicitante" id="txtSolicitante" readonly="">
+						</div>
+						<div class="form-group col-md-3">
+							<label class="">Nº da Solicitação</label> <input type="text" class="form-control"
+								name="numSolicitacao" id="numSolicitacao" readonly="">
+						</div>
+						<div class="form-group col-md-3">
+							<label class="">Data da Solicitação</label> <input type="text" class="form-control"
+								name="dtSolicitacao" id="dtSolicitacao" mask="00/00/0000" readonly="readonly">
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- ########################################## DADOS DA SOLICITAÇÃO ################################################ -->
+
+			<div class="panel panel-default" id="panelDadosSolicitacao">
+				<div class="panel-heading ">
+					<h3 class="panel-title">
+						<b>Dados da solicitação</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group row">
+
+						<!-- <div class="col-md-5" id="divCentroCusto">
+							<label>Centro de Custo</label>
+							<div class="input-group zoom">
+								<input type="text" id="zoomCentroCusto" name="zoomCentroCusto"
+									class="form-control"> <span
+									class="input-group-addon fs-cursor-pointer"
+									onclick="zoomCentroDeCusto('centroDeCusto')"> <span
+									class="fluigicon fluigicon-zoom-in"></span>
+								</span>
+							</div>
+						</div> -->
+
+
+						<div class="col-md-5" id="divCentroCusto">
+							<label>Centro de Custo*</label> <input type="zoom" id="zoomCentroCusto"
+								name="zoomCentroCusto" data-zoom="{ 
+									        'displayKey':'CODIGO',
+									        'datasetId':'ds_centroCusto',
+									        'maximumSelectionLength':'10',
+									        'placeholder':'Escolha o centro de custo',
+									        'fields':[
+									            {
+									               'field':'CODIGO',
+									               'label':'Codigo'
+									              
+									              
+									            },{
+									              'field':'DESCRICAO',
+									              'label':'Descricao',
+									              'standard':'true',
+									               'search':'true'
+									               
+									              
+									            }
+									        ]
+									     }">
+
+							<input type="hidden" id="zoomCentroCustoValues" name="zoomCentroCustoValues">
+						</div>
+
+
+
+						<div class="col-md-4">
+							<label for="PrAprovador_8">Pré-Aprovador*</label> <input type="zoom" id="zoomPreAprovador"
+								name="zoomPreAprovador" data-zoom="{'displayKey':'colleagueName'
+									   			              ,'datasetId':'ds_pre_aprovadores'
+									   			              ,'fields':[{'field':'colleagueName','label':'Nome','standard':'true','search':'true'}]}">
+
+
+						</div>
+						<div class="col-md-3">
+							<label for="Prioridade_11">Prioridade*</label> <select class="form-control"
+								name="txtPrioridade" id="txtPrioridade">
+								<option value="valor0"></option>
+								<option value="Baixa">Baixa</option>
+								<option value="Media">Média</option>
+								<option value="Alta">Alta</option>
+							</select>
+						</div>
+					</div>
+
+					<br> <br>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="txtJustificativaPedido">Justificativa do
+									Pedido de Compra*</label>
+								<textarea class="form-control" name="txtJustificativaPedido" id="txtJustificativaPedido"
+									rows="3"></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div id="panelItens">
+						<div class="form-group row" id="divAdicionarItens">
+
+							<div class="col-md-12">
+								<label>Para adicionar o produto clique em: </label>&nbsp;
+								<button type="button" name="addItens" id="addItens" class="btn btn-primary"
+									onclick="wdkAddChild('tableItens')">Adicionar</button>
+							</div>
+
+
+						</div>
+
+
+						<div>
+							<table tablename="tableItens" id="tableItens" class="table table-striped table-bordered"
+								noaddbutton="true" nodeletebutton="true">
+								<thead>
+									<tr>
+										<td></td>
+										<td><b>Quantidade</b></td>
+										<td><b>Produto</b></td>
+										<td><b>Descrição do Produto</b></td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="text-center">
+										<td><span class="fluigicon fluigicon-trash fluigicon-md fs-cursor-pointer"
+												id="removerProduto" onclick="Javascript:fnWdkRemoveChild(this)"></span>
+										</td>
+										<td><input type="text" class="form-control" name="quantidadeProduto"
+												id="quantidadeProduto"></td>
+										<td><input type="text" class="form-control" name="nomeProduto" id="nomeProduto">
+										</td>
+										<td><textarea class="form-control" name="descricaoProduto"
+												id="descricaoProduto"></textarea></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tabela">
+							<div id="tabelaItens" width="300px"></div>
+						</div>
+						<div class="col-md-12" id="instrucao01">
+							<label>Para finalizar o processo, clique no botão
+								"Enviar" posicionado no canto superior direito. </label>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ########################################## VERIFICAR REQUISIÇÃO ################################################ -->
+
+			<div class="panel panel-default" id="panelVerificaRequisicao">
+				<div class="panel-heading ">
+					<h3 class="panel-title">
+						<b>Verificador - Verificar Requisição</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+
+					<div class="form-group row">
+						<div class="col-md-12" id="observacaoVerificador">
+							<label>Observação Verificador</label>
+							<textarea class="form-control" name="observacaoVerificador"
+								id="observacaoVerificador"></textarea>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="AprovaRequisicao">Aprova Requisição?*</label>
+							<div class="radio">
+								<label> <input name="txtAprovaRequisicao" id="radioRequisicao1" value="Sim"
+										type="radio"> <span class="">Sim</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="txtAprovaRequisicao" id="radioRequisicao2" value="Nao"
+										type="radio"> <span class="">Não</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="txtAprovaRequisicao" id="radioRequisicao3" value="Duvida"
+										type="radio"> <span class="">Duvida</span>
+								</label>
+							</div>
+
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-12" id="duvidaVerificador">
+							<label for="txtDuvidaVerificador">Dúvida*:</label>
+							<textarea class="form-control" name="txtDuvidaVerificador"
+								id="txtDuvidaVerificador"></textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-12" id="respostaVerificador">
+							<label for="txtRespostaDuvidaVerificador">Resposta*:</label>
+							<textarea class="form-control" name="txtRespostaDuvidaVerificador"
+								id="txtRespostaDuvidaVerificador"></textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-4" id="motivo">
+							<label for="txtMotivoVerificador">Motivo*</label> <select class="form-control"
+								name="txtMotivoVerificador" id="txtMotivoVerificador">
+
+								<option value="valor0"></option>
+								<option value="Motivo1">Desconhecimento da tarefa</option>
+								<option value="Motivo2">Desistência</option>
+								<option value="Motivo3">Falta de informação</option>
+
+							</select>
+						</div>
+						<div class="col-md-12" id="justificativa">
+							<label for="txtJustificativaVerificador">Justificativa*</label>
+							<textarea class="form-control" name="txtJustificativaVerificador"
+								id="txtJustificativaVerificador"></textarea>
+						</div>
+					</div>
+
+					<div class="col-md-12" id="instrucao02">
+						<label>Para finalizar o processo, clique no botão "Enviar"
+							posicionado no canto superior direito. </label>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<!-- ########################################## AVALIAR REQUISIÇÃO E REALIZAR ORÇAMENTO ################################################ -->
+
+			<div class="panel panel-default" id="panelAvaliarRequisicaoOrcamento">
+				<div class="panel-heading ">
+					<h3 class="panel-title">
+						<b>Comprador - Orçamento</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group row">
+						<div id="panelAprovacaoOrcamento">
+							<div class="col-md-4">
+								<label for="AprovaRequisio_65">Aprova Requisição?*</label>
+								<div class="radio">
+									<label> <input name="txtAprovaRequisicaoCompras" id="txtAprovaRequisicaoCompras1"
+											value="Sim" type="radio">
+										<span class="">Sim</span>
+									</label>
+								</div>
+								<div class="radio">
+									<label> <input name="txtAprovaRequisicaoCompras" id="txtAprovaRequisicaoCompras2"
+											value="Nao" type="radio">
+										<span class="">Não</span>
+									</label>
+								</div>
+								<div class="radio">
+									<label> <input name="txtAprovaRequisicaoCompras" id="txtAprovaRequisicaoCompras3"
+											value="Baixa_Manual" type="radio"> <span class="">Baixa Manual</span>
+									</label>
+								</div>
+								<div class="radio">
+									<label> <input name="txtAprovaRequisicaoCompras" id="txtAprovaRequisicaoCompras4"
+											value="Duvida" type="radio">
+										<span class="">Duvida</span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row" id="justificativaCompras">
+						<div class="col-md-4">
+							<label for="Motivo_76">Motivo*</label> <select class="form-control" name="txtMotivoCompras"
+								id="txtMotivoCompras">
+								<option value="valor0"></option>
+								<option value="Motivo1">Desconhecimento da tarefa</option>
+								<option value="Motivo2">Custo elevado</option>
+								<option value="Motivo3">Desistência</option>
+								<option value="Motivo4">Falta de informação</option>
+							</select>
+						</div>
+						<div class="col-md-12">
+							<label for="JustificativaComprador_3">Justificativa
+								Comprador*</label>
+							<textarea class="form-control" name="JustificativaComprador_3"
+								id="JustificativaComprador_3"></textarea>
+						</div>
+
+
+					</div>
+					<div class="form-group row" id="Baixa_Manual">
+						<div class="col-md-12">
+							<label>Observações Comprador</label>
+							<textarea class="form-control" name="txtObservacaoCompras"
+								id="txtObservacaoCompras"></textarea>
+						</div>
+					</div>
+					<div class="form-group row" id="DuvidaCompras">
+						<div class="col-md-12">
+							<label for="DuvidaComprador_4">Duvida Comprador*</label>
+							<textarea class="form-control" name="txtDuvidaCompras" id="txtDuvidaCompras"></textarea>
+						</div>
+						<div class="col-md-12">
+							<label for="RespostaSolicitante_5">Resposta Solicitante*</label>
+							<textarea class="form-control" name="txtRespostaCompras" id="txtRespostaCompras"></textarea>
+						</div>
+					</div>
+					<div id="cotacao">
+						<div class="form-group row">
+							<div class="col-md-12 fs-txt-left" id="divAdicionarFornecedor">
+								<label>Para adicionar o produto clique em: </label>&nbsp;
+								<button type="button" name="addFornecedor" id="addFornecedor" class="btn btn-primary"
+									onclick="wdkAddChild('tableFornecedor')">Adicionar</button>
+							</div>
+						</div>
+
+
+						<div>
+							<table tablename="tableFornecedor" id="tableFornecedor"
+								class="table table-striped table-bordered" noaddbutton="true" nodeletebutton="true">
+								<thead>
+									<tr>
+										<td></td>
+										<td><b>Aprovação</b></td>
+										<td><b>Nome do Fornecedor/Documento</b></td>
+										<td><b>Condição de Pagamento</b></td>
+										<td><b>Prazo de Entrega</b></td>
+										<td><b>Valor de orçamento</b></td>
+										<!-- <td><b>Anexo do Orçamento</b></td> -->
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="text-center">
+										<td><span class="fluigicon fluigicon-trash fluigicon-md fs-cursor-pointer"
+												id="removeFornecedor" name="removeFornecedor"
+												onclick="Javascript:fnWdkRemoveChild(this)"></span></td>
+										<td><input name="checkAprovacaoFornecedor" id="checkAprovacaoFornecedor"
+												value="Aprovado" type="checkbox"></td>
+										<td><input type="text" class="form-control" name="nomeFornecedor"
+												id="nomeFornecedor"></td>
+										<td><input type="text" class="form-control" name="condicaoPagamento"
+												id="condicaoPagamento"></td>
+										<td><input type="text" class="form-control" name="prazoEntrega"
+												id="prazoEntrega"></td>
+										<td><input type="text" class="form-control" name="valorFornecedor"
+												id="valorFornecedor"
+												onkeypress="return(MascaraMoeda(this,'.',',',event))"></td>
+										<!-- <td>
+											<div class="input-group">
+												<select id="fornecedorAnexo" name="fornecedorAnexo"
+													class="form-control"></select> <span
+													class="input-group-addon group-zoom no-view reload-attach">
+													<span class="fluigicon fluigicon-tint"
+													onclick="Javascript:reloadattach(this)"></span>
+												</span>
+											</div>
+										</td> -->
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="tabela">
+							<div id="tabelaFornecedores" width="300px"></div>
+						</div>
+
+						<div class="col-md-12" id="instrucao03">
+							<label>Para finalizar o processo, clique no botão
+								"Enviar" posicionado no canto superior direito. </label>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ########################################## PRÉ-APROVADOR ################################################ -->
+
+			<div class="panel panel-default" id="panelPreAprovador">
+				<div class="panel-heading ">
+					<h3 class="panel-title">
+						<b>Pré-Aprovador - Realizar aprovação</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>Unidade de Negócio*</label>
+							<select class="form-control" id="undNegocio" name="undNegocio">
+								<option value="">Selecione</option>
+								<option value="AFIP">AFIP</option>
+								<option value="CEACNORTE">CEAC NORTE</option>
+								<option value="CEACSUL">CEAC SUL</option>
+								<option value="CAC">CAC</option>
+							</select>
+						</div>
+						<div class="col-md-4">
+							<label for="AprovaSolicitao_132">Aprova Solicitação?*</label>
+							<div class="radio">
+								<label> <input name="txtAprovacaoPreAProvador" id="txtAprovacaoPreAProvador" value="Sim"
+										type="radio">
+									<span class="">Sim</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="txtAprovacaoPreAProvador" id="txtAprovacaoPreAProvador" value="Nao"
+										type="radio">
+									<span class="">Não</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="txtAprovacaoPreAProvador" id="txtAprovacaoPreAProvador"
+										value="Duvida_Solicitante" type="radio"> <span class="">Dúvida com o
+										Solicitante</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="txtAprovacaoPreAProvador" id="txtAprovacaoPreAProvador"
+										value="Duvida_Comprador" type="radio"> <span class="">Dúvida com o
+										Comprador</span>
+								</label>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div id="mensagemAprovarSolicitacao" style="display: none; font-weight: bold; color: red;">
+								Para
+								prosseguir com a solicitação selecione um dos orçamentos acima!</div>
+						</div>
+					</div>
+					<div class="form-group row" id="DuvidaPreAprovador_Solicitante">
+						<div class="col-md-12">
+							<label for="DvidaPrAprovador_10">Dúvida Pré-Aprovador*</label>
+							<textarea class="form-control" name="DuvidaPreAprovadorS"
+								id="DuvidaPreAprovadorS"></textarea>
+						</div>
+						<div class="col-md-12">
+							<label for="RespostaPreAprovadorS">Resposta Solicitante*</label>
+							<textarea class="form-control" name="RespostaPreAprovadorS"
+								id="RespostaPreAprovadorS"></textarea>
+						</div>
+					</div>
+					<div class="form-group row" id="DuvidaPreAprovador_Comprador">
+						<div class="col-md-12">
+							<label for="DvidaPrAprovador_9">Dúvida Pré-Aprovador*</label>
+							<textarea class="form-control" name="DuvidaPreAprovadorC"
+								id="DuvidaPreAprovadorC"></textarea>
+						</div>
+						<div class="col-md-12">
+							<label for="RespostaSPreAprovadorC">Resposta Comprador*</label>
+							<textarea class="form-control" name="RespostaPreAprovadorC"
+								id="RespostaPreAprovadorC"></textarea>
+						</div>
+					</div>
+					<div class="form-group row" id="Reprova_PreAprovador">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="Motivo_146">Motivo*</label> <select class="form-control"
+									name="txtMotivoPreAProvador" id="txtMotivoPreAProvador">
+									<option value="valor0"></option>
+									<option value="Motivo1">Desconhecimento da tarefa</option>
+									<option value="Motivo2">Custo elevado</option>
+									<option value="Motivo3">Desistência</option>
+									<option value="Motivo4">Falta de informação</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="JustificativaPrAprovador_8">Justificativa
+									Pré-Aprovador*</label>
+								<textarea class="form-control" name="txtObsPreAProvador"
+									id="txtObsPreAProvador"></textarea>
+							</div>
+						</div>
+					</div>
+					<div id="Aprova_PreAprovador">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="diretor">Diretor Responsável pela Aprovação*</label> <select
+										class="form-control" name="diretor" id="diretor" dataset="ds_diretoresCompra"
+										datasetvalue="colleagueName" datasetkey="colleaguePK.colleagueId"
+										addblankline="true"></select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="JustificativaPrAprovador_7">Justificativa Pré-Aprovador*</label>
+									<textarea class="form-control" name="txtObsPreAProvadorAprov"
+										id="txtObsPreAProvadorAprov"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12" id="instrucao04">
+						<label>Para finalizar o processo, clique no botão "Enviar"
+							posicionado no canto superior direito. </label>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- ########################################## FINANCEIRO - REALIZAR APROVAÇÃO ######################################### -->
+
+			<div class="panel panel-default" id="panelFinanceiro">
+				<div class="panel-heading ">
+					<h3 class="panel-title">
+						<b>Financeiro - Realizar aprovação*</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="AprovaSolicitao_132">Aprova Solicitação?*</label>
+							<div class="radio">
+								<label> <input name="txtAprovacaoFinanceiro" id="txtAprovacaoFinanceiro" value="Sim"
+										type="radio">
+									<span class="">Sim</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="txtAprovacaoFinanceiro" id="txtAprovacaoFinanceiro" value="Nao"
+										type="radio">
+									<span class="">Não</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="txtAprovacaoFinanceiro" id="txtAprovacaoFinanceiro"
+										value="Duvida_Solicitante" type="radio"> <span class="">Dúvida com o
+										Solicitante</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="txtAprovacaoFinanceiro" id="txtAprovacaoFinanceiro"
+										value="Duvida_Comprador" type="radio"> <span class="">Dúvida com o
+										Comprador</span>
+								</label>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div id="mensagemAprovarSolicitacao" style="display: none; font-weight: bold; color: red;">
+								Para
+								prosseguir com a solicitação selecione um dos orçamentos acima!</div>
+						</div>
+					</div>
+					<div class="form-group row" id="DuvidaFinanceiro_Solicitante">
+						<div class="col-md-12">
+							<label for="DvidaPrAprovador_10">Dúvida Financeiro*</label>
+							<textarea class="form-control" name="DuvidaFinanceiroS"
+								id="DuvidaFinanceiroS"></textarea>
+						</div>
+						<div class="col-md-12">
+							<label for="RespostaFinanceiroS">Resposta Solicitante*</label>
+							<textarea class="form-control" name="RespostaFinanceiroS"
+								id="RespostaFinanceiroS"></textarea>
+						</div>
+					</div>
+					<div class="form-group row" id="DuvidaFinanceiro_Comprador">
+						<div class="col-md-12">
+							<label for="DvidaPrAprovador_9">Dúvida Financeiro*</label>
+							<textarea class="form-control" name="DuvidaFinanceiroC"
+								id="DuvidaFinanceiroC"></textarea>
+						</div>
+						<div class="col-md-12">
+							<label for="RespostaSFinanceiroC">Resposta Comprador*</label>
+							<textarea class="form-control" name="RespostaFinanceiroC"
+								id="RespostaFinanceiroC"></textarea>
+						</div>
+					</div>
+					<div class="form-group row" id="Reprova_Financeiro">
+						<div class="col-md-4">
+							<div class="form-group">
+								<label for="Motivo_146">Motivo*</label> <select class="form-control"
+									name="txtMotivoFinanceiro" id="txtMotivoFinanceiro">
+									<option value="valor0"></option>
+									<option value="Motivo1">Desconhecimento da tarefa</option>
+									<option value="Motivo2">Custo elevado</option>
+									<option value="Motivo3">Desistência</option>
+									<option value="Motivo4">Falta de informação</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label for="JustificativaPrAprovador_8">Justificativa Financeiro*</label>
+								<textarea class="form-control" name="txtObsFinanceiro"
+									id="txtObsFinanceiro"></textarea>
+							</div>
+						</div>
+					</div>
+					<div id="Aprova_Financeiro">
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group">
+									<label for="diretor">Diretor Responsável pela Aprovação*</label> <select
+										class="form-control" name="diretorFinanceiro" id="diretorFinanceiro" dataset="ds_diretoresCompra"
+										datasetvalue="colleagueName" datasetkey="colleaguePK.colleagueId"
+										addblankline="true"></select>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<label for="JustificativaPrAprovador_7">Justificativa Financeiro*</label>
+									<textarea class="form-control" name="txtObsFinanceiroAprov"
+										id="txtObsFinanceiroAprov"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12" id="instrucao05">
+						<label>Para finalizar o processo, clique no botão "Enviar"
+							posicionado no canto superior direito. </label>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- ########################################## CLASSIFICAR ################################################ -->
+
+			<div class="panel panel-default" id="panelClassificar">
+				<div class="panel-heading ">
+					<h3 class="panel-title">
+						<b>Comprador - Classificar</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="Escolhaumaopo_153">Escolha uma opção:</label>
+							<div class="radio">
+								<label> <input name="radioClassificacao" id="txtOpcaoClassificacao" value="Baixa_Manual"
+										type="radio">
+									<span class="">Baixa Manual</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="radioClassificacao" id="txtOpcaoClassificacao"
+										value="Enviar_diretoria" type="radio"> <span class="">Enviar para
+										Diretoria</span>
+								</label>
+							</div>
+						</div>
+
+						<div class="col-md-12" id="Classificacao_Baixa_Manual">
+							<label for="Observaes_78">Observações</label>
+							<textarea class="form-control" name="txtObsClassificacao"
+								id="txtObsClassificacao"></textarea>
+						</div>
+
+					</div>
+
+					<div class="col-md-12" id="instrucao06">
+						<label>Para finalizar o processo, clique no botão "Enviar"
+							posicionado no canto superior direito. </label>
+
+					</div>
+				</div>
+			</div>
+
+			<!-- ########################################## APROVAÇÃO DIRETORIA ################################################ -->
+
+
+			<div class="panel panel-default" id="panelAprovaoDiretoria">
+				<div class="panel-heading ">
+					<h3 class="panel-title">
+						<b>Diretoria - Realizar Aprovação</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="AprovaSolicitao_164">Aprova Solicitação?*</label>
+							<div class="radio">
+								<label> <input name="txtAprovacaoDiretoria" id="txtAprovacaoDiretoria" value="Sim"
+										type="radio"> <span class="">Sim</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="txtAprovacaoDiretoria" id="txtAprovacaoDiretoria" value="Nao"
+										type="radio"> <span class="">Não</span>
+								</label>
+							</div>
+						</div>
+						'
+
+						<div class="col-md-12">
+							<label>Observações Diretoria</label>
+							<textarea class="form-control" name="txtObsDiretoria" id="txtObsDiretoria"></textarea>
+						</div>
+
+						<div class="col-md-12" id="instrucao07">
+							<label>Para finalizar o processo, clique no botão
+								"Enviar" posicionado no canto superior direito. </label>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- ########################################## INFORMAR DADOS DA COMPRA ################################################ -->
+
+			<div class="panel panel-default" id="panelDadosdaCompra">
+				<div class="panel-heading ">
+					<h3 class="panel-title">
+						<b>Comprador - Informar Dados da Compra</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group row">
+						<div class="col-md-12 fs-txt-left">
+							<button type="button" id="addDadosDaCompra" name="addDadosDaCompra" class="btn btn-primary"
+								onclick="wdkAddChild('tableDadosDaCompra')">Adicionar</button>
+						</div>
+					</div>
+
+					<div class="form-group row">
+
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table tablename="tableDadosDaCompra" id="tableDadosDaCompra"
+									class="table table-striped table-bordered" noaddbutton="true" nodeletebutton="true">
+									<thead>
+										<tr>
+											<td></td>
+											<td><b>Nome do Fornecedor/Documento</b></td>
+											<td><b>Valor(Pedido/NF/Orçamento)</b></td>
+											<!-- <td><b>Anexo do Pedido</b></td> -->
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="text-center">
+											<td><span class="fluigicon fluigicon-trash fluigicon-md fs-cursor-pointer"
+													id="removerDados" name="removerDados"
+													onclick="Javascript:fnWdkRemoveChild(this)"></span></td>
+											<td><input type="text" class="form-control" name="nomeFornecedor2"
+													id="nomeFornecedor2"></td>
+											<td><input type="text" class="form-control" name="valorFornecedor2"
+													id="valorFornecedor2"
+													onkeypress="return(MascaraMoeda(this,'.',',',event))"></td>
+											<!-- <td>
+												<div class="input-group">
+													<select id="fornecedorAnexo2" name="fornecedorAnexo2"
+														class="form-control"></select> <span
+														class="input-group-addon group-zoom no-view reload-attach">
+														<span class="fluigicon fluigicon-tint"
+														onclick="Javascript:reloadattach(this)"></span>
+													</span>
+												</div>
+											</td> -->
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+
+						<div class="col-md-12" id="instrucao08">
+							<label>Para finalizar o processo, clique no botão
+								"Enviar" posicionado no canto superior direito. </label>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- ########################################## ENTREGA ################################################ -->
+
+
+			<div class="panel panel-default" id="panelEntrega">
+				<div class="panel-heading ">
+					<h3 class="panel-title">
+						<b>Comprador - Informações da Entrega</b>
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label>Nota fiscal foi anexada ao processo?</label>
+							<div class="radio">
+								<label> <input name="rdNotaFiscalAnexado" id="rdNotaFiscalAnexado1" value="Sim"
+										type="radio"> <span class="">Sim</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label> <input name="rdNotaFiscalAnexado" id="rdNotaFiscalAnexado2" value="Nao"
+										type="radio"> <span class="">Não</span>
+								</label>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<label for="dtEntrega">Data do Recebimento</label>
+							<div class="input-group date">
+								<input name="dtEntrega" id="dtEntrega" type="text" class="form-control" maxlength="10"
+									mask="00/00/0000">
+								<span class="input-group-addon"> <span class="fluigicon fluigicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-12">
+							<label for="ObservaesComprador_12">Observações Comprador</label>
+							<textarea class="form-control" name="txtObsEntrega" id="txtObsEntrega"></textarea>
+						</div>
+					</div>
+					<div class="col-md-12" id="instrucao09">
+						<label>Para finalizar o processo, clique no botão "Enviar"
+							posicionado no canto superior direito. </label>
+
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	$("document").ready(
+		function () {
+			$("[name^='checkAprovacaoFornecedor___']").attr("onclick",
+				"validaAprov(this);");
+		});
+
+	function validaAprov(obj) {
+		if (mobile) {
+			$("[name^='chkAprovacaoFornecedor___']").each(
+				function () {
+					var idx = $(this).attr("id").split("___")[1];
+					if ($(this).attr("id") != $(obj).attr("id")) {
+						$(this).prop("checked", false);
+						$("#checkAprovacaoFornecedor___" + idx).prop(
+							"checked", false);
+					} else {
+						$("#checkAprovacaoFornecedor___" + idx).prop(
+							"checked", $(obj).prop("checked"));
+					}
+				});
+		} else {
+			if ($(obj).prop("checked")) {
+				$("[name^='checkAprovacaoFornecedor___']").each(function () {
+					if ($(this).attr("id") != $(obj).attr("id")) {
+						$(this).prop("checked", false);
+					}
+				});
+			}
+		}
+
+	}
+</script>
+
+</html>

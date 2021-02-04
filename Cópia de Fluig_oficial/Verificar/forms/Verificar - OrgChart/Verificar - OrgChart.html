@@ -1,0 +1,106 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+	<link rel="stylesheet" type="text/css" href="orgchart.css">
+	<script src="/portal/resources/js/jquery/jquery.js"></script>
+	<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+	<script src="/webdesk/vcXMLRPC.js"></script>
+	<script src="filedrop.js"></script>
+	<script src="orgchart.js"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form role="form">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-2 col-xs-offset-1">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<div id="drag_and_drop" class="drag_and_drop">
+									<p>Arraste a imagem do perfil aqui.</p>
+								</div>
+							</div>
+						</div>						
+						<p id="zerar_drag_and_drop">Apagar imagem</p>
+					</div>
+					
+					<div class="col-xs-9">
+						
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="form-group">
+									<label for="base">Organograma base:</label>
+									<div class="input-group">
+							            <input type="text" name="org_name" id="org_name" class="form-control" />
+							            <div class="input-group-addon fs-cursor-pointer" onclick="zoomFormulario('title', 'Verificar_OrgBase', 'org_name,Organograma','documentid,org_name', 'base');">
+							            	<span class="fluigicon fluigicon-search"></span>
+							            </div>
+							        </div>
+								</div>
+							</div>
+						</div>
+					
+						<!-- email & nome -->
+						<div class="row">
+							<div class="col-xs-12 col-sm-5">
+								<div class="form-group">
+									<label for="email">Email:</label>
+									<input type="mail" name="email" id="email" class="form-control" />
+								</div>
+							</div>
+							
+							<div class="col-xs-12 col-sm-7">
+								<div class="form-group">
+									<label for="nome">Nome:</label>
+									<input type="text" name="nome" id="nome" class="form-control" />
+								</div>
+							</div>
+						</div>
+						
+						<!-- cargo & telefone -->
+						<div class="row">
+							<div class="col-xs-12 col-sm-5">
+								<div class="form-group">
+									<label for="telefone">Telefone:</label>
+									<input type="phone" name="telefone" id="telefone" class="form-control" />
+								</div>
+							</div>
+							
+							<div class="col-xs-12 col-sm-7">
+								<div class="form-group">
+									<label for="cargo">Cargo:</label>
+									<input type="text" name="cargo" id="cargo" class="form-control" />
+								</div>
+							</div>			
+						</div>
+						
+						<!-- chefe -->
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="form-group">
+									<label for="chefe_nome">Subordinado a:</label>			
+									<div class="input-group">
+							            <input type="text" name="chefe_nome" id="chefe_nome" class="form-control" />
+							            <div class="input-group-addon fs-cursor-pointer" onclick="zoomFormulario('title', 'Verificar_OrgChart', 'nome,Nome,email,E-mail','documentid,email,nome', 'nofield');">
+							            	<span class="fluigicon fluigicon-search"></span>
+							            </div>
+							        </div>						
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+				
+			
+			<input type="hidden" name="useralias" id="useralias" />
+			<input type="hidden" name="perfil" id="perfil" />
+			<input type="hidden" name="chefe_codigo" id="chefe_codigo" />			
+			<input type="hidden" name="chefe_email" id="chefe_email" />
+			<input type="hidden" name="org_id" id="org_id" />
+		</form>
+	</div>
+</body>
+</html>

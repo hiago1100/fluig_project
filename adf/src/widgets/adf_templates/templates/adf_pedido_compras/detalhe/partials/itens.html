@@ -1,0 +1,70 @@
+<div class="panel-group" ng-init="itensCollapsed = true">
+    <div class="panel panel-default">
+        <div class="panel-heading fs-cursor-pointer" ng-click="itensCollapsed = !itensCollapsed">
+            <a class="collapse-icon" ng-class="{'up': itensCollapsed}">
+                <h3 class="panel-title">Itens do Pedido</h3>
+            </a>
+        </div>
+        <div id="collapseItens" class="panel-collapse collapse" ng-class="{'in': itensCollapsed}">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-info" ng-repeat="item in documento.Itens">
+                    <div class="panel-heading fs-cursor-pointer" ng-click="item.collapsed=!item.collapsed">
+                        <a class="collapse-icon" ng-class="{'up': item.collapsed}">
+                            <!--data-toggle="collapse" data-parent="#accordion" href="#collapseItem{{item.itemSeq}}"-->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <b>Item</b>
+                                    <p>{{item.itemCodigo}} {{item.itemDescricao || 'Não informado'}}</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <b>Conta Contábil</b>
+                                    <p>{{item.itemCodContaContabil}} {{item.itemContaContabil || 'Não informada'}}</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <b>Centro de Custo</b>
+                                    <p>{{item.itemCodCCusto}} {{item.itemCCusto || 'Não informado'}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <b>Qtde</b>
+                                    <p>{{item.itemQtdRequisitada | number : 2}} {{item.itemUnMedida}}</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <b>Valor Unitário</b>
+                                    <p>{{item.itemValor | currency:item.itemMoeda}}</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <b>Valor Total</b>
+                                    <p>{{item.itemValorTotal | currency:item.itemMoeda}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <b>Narrativa</b>
+                                    <p>{{item.itemNarrativa}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseItem{{item.itemSeq}}" ng-class="{'in': item.collapsed}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion{{item.itemSeq}}">
+                                <!-- partial:item-UltCompras.html -->
+                                <!-- partial -->
+                                <!-- partial:item-Cotacoes.html -->
+                                <!-- partial -->
+                                <!-- partial:item-Requisicoes.html -->
+                                <!-- partial -->
+                                <!-- partial:item-Entregas.html -->
+                                <!-- partial -->
+                                <!-- partial:item-Impostos.html -->
+                                <!-- partial -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

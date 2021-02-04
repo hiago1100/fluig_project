@@ -1,0 +1,1865 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>T0002</processId>
+    </processDefinitionPK>
+    <processDescription>Retiradas no Almoxarifado</processDescription>
+    <instruction>Deverá ser feita a Baixa do Lançamento</instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Suprimentos</categoryId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;Consulta_solicitacoes&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>true</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Retiradas no Almoxarifado</processId>
+      <version>19</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>667</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>true</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>0</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>100</positionX>
+      <positionY>56</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </processStatePK>
+      <stateName>Em Atendimento</stateName>
+      <stateDescription>Em Atendimento</stateDescription>
+      <instruction>Almoxarifado deverá fazer a separação dos Itens</instruction>
+      <deadlineTime>57600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;6&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>240</positionX>
+      <positionY>160</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Pendente Retirada</stateName>
+      <stateDescription>Pendente Retirada</stateDescription>
+      <instruction>Requisitante deverá Retirar os Materiais solicitados</instruction>
+      <deadlineTime>57600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;2&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>430</positionX>
+      <positionY>160</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <sequence>6</sequence>
+      </processStatePK>
+      <stateName>Pendente Almoxarifado</stateName>
+      <stateDescription>Pendente Almoxarifado</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>57600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>60</positionX>
+      <positionY>160</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId>Default</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <sequence>13</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>470</positionX>
+      <positionY>56</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list/>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <linkSequence>5</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>2</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <linkSequence>7</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>6</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <linkSequence>14</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>13</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <linkSequence>15</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>6</initialStateSequence>
+      <finalStateSequence>2</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessCreate</eventId>
+        <processId>T0002</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessCreate(processId){&#xd;
+   &#xd;
+    log.info(&quot;*** CRM *** Aqui é o Inicio  T0002&quot;);&#xd;
+    &#xd;
+   var numProcess = getValue(&quot;WKNumProces&quot;);&#xd;
+   hAPI.setCardValue(&quot;txtNumeroProcesso&quot;,numProcess);&#xd;
+&#xd;
+   var today = new Date();     &#xd;
+		var year = today.getFullYear();     &#xd;
+		var month = today.getMonth() + 1 &lt; 10 ? &apos;0&apos; + (today.getMonth() + 1) : (today.getMonth() + 1);     &#xd;
+		var day = today.getDate() &lt; 10 ? &apos;0&apos; + today.getDate() : today.getDate();     &#xd;
+		&#xd;
+	hAPI.setCardValue(&apos;txtData&apos;, day + &apos;/&apos; + month  + &apos;/&apos; + year);&#xd;
+&#xd;
+&#xd;
+&#xd;
+    var NOME_DATASERVER = &quot;MovMovimentoTBCData&quot;;  &#xd;
+    var usuario         = &quot;mestre&quot;; &#xd;
+    var senha           = &quot;FR5G1I2EmFdNkE00SUYO&quot;;      &#xd;
+    var codcoligada		= hAPI.getCardValue(&quot;CODCOLIGADA&quot;);     &#xd;
+    var authService     = getWebService(usuario, senha);  &#xd;
+    var context         = &quot;CodUsuario=mestre;CodSistema=T;CodColigada=&quot;+codcoligada;&#xd;
+    var nseq            = 0;&#xd;
+    var historicoMOV    = hAPI.getCardValue(&quot;txtHistoricoMOV&quot;);&#xd;
+    var codfilial   	  = hAPI.getCardValue(&quot;CODFILIAL&quot;);&#xd;
+    var codloc          = hAPI.getCardValue(&quot;CODLOC&quot;);&#xd;
+    &#xd;
+    log.info(&quot;*** CRM *** Aqui é o Inicio &quot;);&#xd;
+&#xd;
+    var XML = &#xd;
+            &quot;&lt;MovMovimento &gt;&quot; +   &#xd;
+            &quot;  &lt;TMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;CODFILIAL&gt;&quot;+codfilial+&quot;&lt;/CODFILIAL&gt;&quot; +   &#xd;
+            &quot;    &lt;CODLOC&gt;&quot;+codloc+&quot;&lt;/CODLOC&gt;&quot; +    &#xd;
+            &quot;    &lt;CODLOCDESTINO&gt;&quot;+codloc+&quot;&lt;/CODLOCDESTINO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODTMV&gt;1.1.05&lt;/CODTMV&gt;&quot; +   &#xd;
+            &quot;    &lt;TIPO&gt;A&lt;/TIPO&gt;&quot; +   &#xd;
+            &quot;    &lt;DATAEMISSAO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+            &quot;    &lt;DATABASEMOV&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATABASEMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;DATAMOVIMENTO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATAMOVIMENTO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODFILIALDESTINO&gt;&quot;+codfilial+&quot;&lt;/CODFILIALDESTINO&gt;&quot; +      &#xd;
+            &quot;    &lt;DATALANCAMENTO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATALANCAMENTO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLCFO&gt;0&lt;/CODCOLCFO&gt;&quot;+&#xd;
+            &quot;    &lt;CODCCUSTO&gt;4.01.07.006&lt;/CODCCUSTO&gt;&quot;+ &#xd;
+            &quot;    &lt;CODVEN1&gt;9999&lt;/CODVEN1&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN2&gt;9999&lt;/CODVEN2&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN3&gt;9999&lt;/CODVEN3&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN4&gt;9999&lt;/CODVEN4&gt;&quot; +&#xd;
+            &quot;    &lt;HISTORICOLONGO&gt;&quot;+historicoMOV+&quot;&lt;/HISTORICOLONGO&gt;&quot; +&#xd;
+            &quot;  &lt;/TMOV&gt;&quot; +  &#xd;
+            &#xd;
+            &quot;  &lt;TNFE&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;  &lt;/TNFE&gt;&quot; +   &#xd;
+            &quot;  &lt;TMOVFISCAL&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;  &lt;/TMOVFISCAL&gt;&quot; ;&#xd;
+&#xd;
+&#xd;
+    var itens = hAPI.getCardData(numProcess);&#xd;
+    var keys = itens.keySet().toArray();&#xd;
+    for (var key in keys) {&#xd;
+      var field = keys[key];&#xd;
+&#xd;
+      if (field.indexOf(&quot;IDPRD___&quot;) &gt; -1) {&#xd;
+        &#xd;
+        var index = field.replace(&quot;IDPRD___&quot;, &quot;&quot;); &#xd;
+		    var idprd = hAPI.getCardValue(&quot;IDPRD___&quot;+index);&#xd;
+		    var qtdSolicitada = hAPI.getCardValue(&quot;txtEstoque___&quot;+index);&#xd;
+        var precounitario = CustoMedio(codcoligada, codfilial, codloc, idprd);&#xd;
+        var codccusto = hAPI.getCardValue(&quot;CODCCUSTO___&quot;+index);&#xd;
+        var historicoITMMOV = hAPI.getCardValue(&quot;txtHistoricoITMMOV___&quot;+index);&#xd;
+&#xd;
+        qtdSolicitada = qtdSolicitada.replace( &quot;.&quot;, &quot;&quot; );&#xd;
+        qtdSolicitada = qtdSolicitada.replace( &quot;.&quot;, &quot;&quot; );&#xd;
+        qtdSolicitada = qtdSolicitada.replace( &quot;.&quot;, &quot;&quot; );&#xd;
+        qtd           = qtdSolicitada;&#xd;
+&#xd;
+         unitario = precounitario.replace( &quot;.&quot;, &quot;,&quot; );&#xd;
+        &#xd;
+&#xd;
+        var nseq = index; &#xd;
+&#xd;
+         log.info( &quot;*** CRM ***  NSEQ - &quot;+nseq);&#xd;
+&#xd;
+                  XML = XML +    &#xd;
+                        &quot;  &lt;TITMMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+                        &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;NSEQITMMOV&gt;&quot;+nseq+&quot;&lt;/NSEQITMMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;CODFILIAL&gt;&quot;+codfilial+&quot;&lt;/CODFILIAL&gt;&quot; +   &#xd;
+                        &quot;    &lt;NUMEROSEQUENCIAL&gt;&quot;+nseq+&quot;&lt;/NUMEROSEQUENCIAL&gt;&quot; +   &#xd;
+                        &quot;    &lt;IDPRD&gt;&quot;+idprd+&quot;&lt;/IDPRD&gt;&quot; +&#xd;
+                        &quot;    &lt;QUANTIDADE&gt;&quot;+qtd+&quot;&lt;/QUANTIDADE&gt;&quot; +   &#xd;
+                        &quot;    &lt;PRECOUNITARIO&gt;&quot;+unitario+&quot;&lt;/PRECOUNITARIO&gt;&quot;+&#xd;
+                        &quot;    &lt;DATAEMISSAO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATAEMISSAO&gt;&quot; +     &#xd;
+                        &quot;    &lt;CODLOC&gt;&quot;+codloc+&quot;&lt;/CODLOC&gt;&quot; +   &#xd;
+                        &quot;    &lt;CODCCUSTO&gt;&quot;+codccusto+&quot;&lt;/CODCCUSTO&gt;&quot;+&#xd;
+                        &quot;    &lt;HISTORICOLONGO&gt;&quot;+historicoITMMOV+&quot;&lt;/HISTORICOLONGO&gt;&quot;+     &#xd;
+                        &quot;  &lt;/TITMMOV&gt;&quot;; &#xd;
+                  }&#xd;
+&#xd;
+    }           &#xd;
+&#xd;
+       log.info( &quot;*** CRM ***  NSEQ - &quot;+nseq+&quot;  XML do movimnto é &quot;+XML);&#xd;
+&#xd;
+   if (nseq &gt; 0){&#xd;
+&#xd;
+        XML = XML +    &#xd;
+           &quot;  &lt;TMOVCOMPL&gt;&quot; +   &#xd;
+           &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +      &#xd;
+           &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+           &quot;    &lt;NUMFLUIG&gt;&quot;+numProcess+&quot;&lt;/NUMFLUIG&gt;&quot; +&#xd;
+           &quot;  &lt;/TMOVCOMPL&gt;&quot;+                      &#xd;
+           &quot;&lt;/MovMovimento&gt;&quot;;&#xd;
+        &#xd;
+        log.info( &quot;*** CRM *** XML do movimnto é &quot;+XML);&#xd;
+       &#xd;
+       &#xd;
+       try{&#xd;
+          &#xd;
+          	log.info(&quot;*** CRM *** contexto &quot;+context+&quot; - Nome dataserver &quot;+NOME_DATASERVER);&#xd;
+&#xd;
+ 			      log.info(&quot;*** CRM *** Movimento será criado com esse XML &quot;+XML);&#xd;
+           &#xd;
+           var result = new String(authService.saveRecord(NOME_DATASERVER, XML, context));&#xd;
+&#xd;
+           log.info(&quot;*** CRM *** Fluig &quot;+numProcess+&quot;.integracao com RM resultado &quot;+result);&#xd;
+           &#xd;
+           &#xd;
+           if (result.length &gt; 20){&#xd;
+             var mensagemErro = result;  &#xd;
+             throw mensagemErro; &#xd;
+           } else {&#xd;
+&#xd;
+             var idmov = result.substring(result.search(&quot;;&quot;)+1,result.length);&#xd;
+             hAPI.setCardValue(&quot;IDMOV&quot;,idmov);&#xd;
+           }&#xd;
+        }  &#xd;
+      &#xd;
+       &#xd;
+        catch (e)   &#xd;
+        {  &#xd;
+            if (e == null) e = &quot;*** CRM *** Erro desconhecido!&quot;;  &#xd;
+            &#xd;
+            var mensagemErro = &quot;*** CRM *** Ocorreu um erro ao salvar dados no RM (coligada &quot;+codcoligada+&quot; ): &quot; + e;  &#xd;
+            &#xd;
+            throw mensagemErro;  &#xd;
+        }&#xd;
+    }&#xd;
+}&#xd;
+&#xd;
+  function CustoMedio(coligada, filial, local, idprd) {&#xd;
+&#xd;
+        var c1 = DatasetFactory.createConstraint(&quot;CODCOLIGADA&quot;, coligada, coligada, ConstraintType.MUST);&#xd;
+        var c2 = DatasetFactory.createConstraint(&quot;CODFILIAL&quot;, filial, filial, ConstraintType.MUST);&#xd;
+        var c3 = DatasetFactory.createConstraint(&quot;CODLOCAL&quot;, local, local, ConstraintType.MUST);&#xd;
+        var c4 = DatasetFactory.createConstraint(&quot;IDPRD&quot;, idprd, idprd, ConstraintType.MUST);&#xd;
+        var constraints   = new Array(c1,c2,c3,c4);&#xd;
+        var dataset         = DatasetFactory.getDataset(&quot;dsTPRDLOC&quot;, null, constraints, null);&#xd;
+       &#xd;
+&#xd;
+         console.info(&quot;enviar para o DataSet ==&gt;&gt; &quot;+c1+c2+c3+c4);&#xd;
+&#xd;
+            var vlrcusto = dataset.getValue(0, &quot;CUSTOUNITARIO&quot;);&#xd;
+            vlrcusto = parseFloat( vlrcusto ).toFixed(2);&#xd;
+            &#xd;
+            return vlrcusto;&#xd;
+      }&#xd;
+&#xd;
+&#xd;
+&#xd;
+/**&apos;&#xd;
+* A API de autenticação da Totvs baseia no &quot;Basic access authentication&quot; do HTTP.&#xd;
+* Código Java para autenticação &#xd;
+* Programa responsável por integrar com os Webservices do RM &#xd;
+*  Exemplo dev valores para os parâmetros &#xd;
+*       @param string Usuario = &quot;mestre&quot;;&#xd;
+*       @param string Senha = &quot;totvs&quot;;&#xd;
+*/&#xd;
+&#xd;
+function getWebService(Usuario, Senha){&#xd;
+&#xd;
+ var Nome_Servico = &quot;WS&quot;;&#xd;
+ var Caminho_Servico = &quot;com.totvs.WsDataServer&quot;;&#xd;
+ &#xd;
+    var dataServerService = ServiceManager.getServiceInstance(Nome_Servico);&#xd;
+    if(dataServerService == null){&#xd;
+        throw &quot;Servico nao encontrado: &quot; + Nome_Servico;&#xd;
+    }&#xd;
+    &#xd;
+    var serviceLocator = dataServerService.instantiate(Caminho_Servico);&#xd;
+    if(serviceLocator == null){&#xd;
+        throw &quot;Instancia do servico nao encontrada: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var service = serviceLocator.getRMIwsDataServer();  &#xd;
+    if(service == null){&#xd;
+        throw &quot;Instancia do dataserver do invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var serviceHelper = dataServerService.getBean();&#xd;
+    if(serviceHelper == null){&#xd;
+        throw &quot;Instancia do service helper invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var authService = serviceHelper.getBasicAuthenticatedClient(service, &quot;com.totvs.IwsDataServer&quot;, Usuario, Senha);      &#xd;
+    if(serviceHelper == null){&#xd;
+        throw &quot;Instancia do auth service invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+    &#xd;
+    return authService;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcReadView(dataservername, context, usuario, senha, filtro)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+      &#xd;
+   // lê os dados da visão respeitando o filtro passado&#xd;
+      var viewData = new String(authService.readView(dataservername, filtro, context));&#xd;
+&#xd;
+      return viewData;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcReadRecord(dataservername, context, usuario, senha, primaryKey)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+&#xd;
+   // lê os dados do registro respeitando a pk passada&#xd;
+      try&#xd;
+      {&#xd;
+        var recordData = new String(authService.readRecord(dataservername, primaryKey, context));&#xd;
+      }&#xd;
+      catch (e) &#xd;
+      {&#xd;
+          var recordData = new String(authService.getSchema(dataservername, context));&#xd;
+      }&#xd;
+      &#xd;
+      return recordData;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcSaveRecord(dataservername, context, usuario, senha, xml)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+&#xd;
+   // salva o registro de acordo com o xml passado&#xd;
+      var pk = new String(authService.readRecord(dataservername, xml, context));&#xd;
+          &#xd;
+      return pk;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+//Transforma o conceito de constraints do Fluig para o Filtro do TBC.&#xd;
+function parseConstraints(constraints, filterRequired)&#xd;
+{&#xd;
+    // inicializa o resultado...&#xd;
+    var result = [];&#xd;
+    result.context = &quot;&quot;;&#xd;
+    &#xd;
+    // inicializa o filtro...&#xd;
+    var filter = &quot;&quot;;&#xd;
+    &#xd;
+    // varre as contraints...&#xd;
+ for    (con in constraints) {&#xd;
+    var fieldName = con.getFieldName().toUpperCase();&#xd;
+    if (fieldName == &quot;RMSCONTEXT&quot;)&#xd;
+    {&#xd;
+        result.context = con.getInitialValue();&#xd;
+        continue;&#xd;
+    }&#xd;
+    &#xd;
+    filter += &quot;(&quot;;&#xd;
+    &#xd;
+    if (fieldName == &quot;RMSFILTER&quot;)&#xd;
+        {&#xd;
+        filter += con.getInitialValue();&#xd;
+        }&#xd;
+    else&#xd;
+        {&#xd;
+        if (con.getInitialValue() == con.getFinalValue() || isEmpty(con.getFinalValue()))&#xd;
+            {&#xd;
+                filter += con.getFieldName();&#xd;
+                var isLike = false;&#xd;
+                switch(con.getConstraintType())&#xd;
+                {&#xd;
+                    case ConstraintType.MUST:&#xd;
+                        filter += &quot; = &quot;;&#xd;
+                    break;&#xd;
+                    case ConstraintType.MUST_NOT:&#xd;
+                        filter += &quot; = &quot;;&#xd;
+                    break;&#xd;
+                    case ConstraintType.SHOULD:&#xd;
+                        filter += &quot; LIKE &quot;;&#xd;
+                        isLike = true;&#xd;
+                    break;&#xd;
+                    case ConstraintType.SHOULD_NOT:&#xd;
+                        filter += &quot; NOT LIKE &quot;;&#xd;
+                        isLike = true;&#xd;
+                    break;&#xd;
+                }&#xd;
+                filter += getFormattedValue(con.getInitialValue(), isLike);&#xd;
+            }&#xd;
+        else&#xd;
+            {&#xd;
+            filter += con.getFieldName();&#xd;
+            filter += &quot; BETWEEN &quot;;&#xd;
+            filter += getFormattedValue(con.getInitialValue(), false);&#xd;
+            filter += &quot; AND &quot;;&#xd;
+            filter += getFormattedValue(con.getFinalValue(), false);&#xd;
+            }&#xd;
+        }&#xd;
+    &#xd;
+        filter += &quot;) AND &quot;;&#xd;
+    }&#xd;
+ &#xd;
+ if (filter.length == 0)&#xd;
+ {&#xd;
+    if(filterRequired){&#xd;
+      filter = &quot;1=1&quot;;&#xd;
+    }&#xd;
+    else{&#xd;
+      filter = &quot;1=1&quot;;&#xd;
+    }&#xd;
+ }&#xd;
+ else&#xd;
+    filter = filter.substring(0, filter.length-5);&#xd;
+ &#xd;
+ // guarda o filtro...&#xd;
+ result.filter = filter;&#xd;
+ &#xd;
+ // retorna o resultado...&#xd;
+ return result;&#xd;
+}&#xd;
+&#xd;
+function isEmpty(str) {&#xd;
+ return (!str || 0 === str.length);&#xd;
+}&#xd;
+&#xd;
+function getFormattedValue(value, isLike){&#xd;
+    if(isLike){&#xd;
+      return &quot;&apos;%&quot; + value + &quot;%&apos;&quot;;&#xd;
+    }&#xd;
+    else{&#xd;
+      return &quot;&apos;&quot; + value + &quot;&apos;&quot;;&#xd;
+    }&#xd;
+}&#xd;
+&#xd;
+&#xd;
+&#xd;
+function getXMLFromString(xmlString) {&#xd;
+    var factory = javax.xml.parsers.DocumentBuilderFactory.newInstance();&#xd;
+    var parser = factory.newDocumentBuilder();&#xd;
+    var is = new org.xml.sax.InputSource();&#xd;
+ is.setCharacterStream(new java.io.StringReader(xmlString));&#xd;
+    return parser.parse(is);&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function abrirPesquisa(DATASET_ID, dataFields, resultFields, type, title){  &#xd;
+    window.open(&quot;/webdesk/zoom.jsp&quot; +&#xd;
+    &quot;?datasetId=&quot; +&#xd;
+    DATASET_ID +&#xd;
+    &quot;&amp;dataFields=&quot; +&#xd;
+    dataFields +&#xd;
+    &quot;&amp;resultFields=&quot; +&#xd;
+    resultFields +&#xd;
+    &quot;&amp;type=&quot; +&#xd;
+    type+&#xd;
+    &quot;&amp;title=&quot; +&#xd;
+    title   &#xd;
+    , &quot;zoom&quot;, &quot;status,scroolbars=no,width=600,height=350,top=0,left=0&quot;);&#xd;
+}&#xd;
+&#xd;
+function checkIsPK(result, qtd){&#xd;
+    var lines = result.split(&apos;\r&apos;);&#xd;
+    &#xd;
+    if(lines.length == 1){&#xd;
+        var pk = result.split(&apos;;&apos;);&#xd;
+        if(pk.length == qtd)&#xd;
+            return;&#xd;
+    }&#xd;
+        throw result;&#xd;
+    &#xd;
+}&#xd;
+&#xd;
+function ChekExist(result)&#xd;
+{&#xd;
+     var lines = result.split(&apos;\r&apos;);&#xd;
+    if(lines.length &gt; 1)&#xd;
+        return true&#xd;
+    else&#xd;
+        return false;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function replaceValue(text, columnName, newValue){&#xd;
+&#xd;
+    &#xd;
+    if ((newValue != null) &amp;&amp; (newValue.trim() != &quot;&quot;))&#xd;
+    {&#xd;
+        var regex = new RegExp(&quot;&lt;&quot; + columnName + &quot;&gt;(.*?)&lt;\\/&quot; + columnName + &quot;&gt;&quot;, &quot;g&quot;);&#xd;
+        var replaceText = &quot;&lt;&quot; + columnName + &quot;&gt;&quot; + newValue + &quot;&lt;/&quot; + columnName + &quot;&gt;&quot;;&#xd;
+        &#xd;
+        return text.replace(regex, replaceText);&#xd;
+    }&#xd;
+    else&#xd;
+        return text;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function isEmpty(str) {&#xd;
+ return (!str || 0 === str.length);&#xd;
+}&#xd;
+function GetXml()  &#xd;
+{  &#xd;
+ return &quot;&lt;MovMovimento &gt;&quot; +   &#xd;
+&quot;  &lt;TMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIAL&gt;1&lt;/CODFILIAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOC&gt;001&lt;/CODLOC&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOCENTREGA&gt;001&lt;/CODLOCENTREGA&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOCDESTINO&gt;001&lt;/CODLOCDESTINO&gt;&quot; +   &#xd;
+&quot;    &lt;CODTMV&gt;1.1.15&lt;/CODTMV&gt;&quot; +   &#xd;
+&quot;    &lt;TIPO&gt;A&lt;/TIPO&gt;&quot; +   &#xd;
+&quot;    &lt;DATAEMISSAO&gt;2017-12-22T00:00:00&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+&quot;    &lt;VALORBRUTO&gt;6500.0000&lt;/VALORBRUTO&gt;&quot; +   &#xd;
+&quot;    &lt;VALORLIQUIDO&gt;6500.0000&lt;/VALORLIQUIDO&gt;&quot; +   &#xd;
+&quot;    &lt;DATABASEMOV&gt;2017-12-22T00:00:00&lt;/DATABASEMOV&gt;&quot; +   &#xd;
+&quot;    &lt;DATAMOVIMENTO&gt;2017-12-22T00:00:00&lt;/DATAMOVIMENTO&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIALDESTINO&gt;1&lt;/CODFILIALDESTINO&gt;&quot; +   &#xd;
+&quot;    &lt;CAMPOLIVRE1&gt; ADM &lt;CAMPOLIVRE1 /&gt;&quot; +   &#xd;
+&quot;    &lt;HORULTIMAALTERACAO&gt;2017-12-22T11:04:44&lt;/HORULTIMAALTERACAO&gt;&quot; +   &#xd;
+&quot;    &lt;DATALANCAMENTO&gt;2017-12-22T00:00:00&lt;/DATALANCAMENTO&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOV&gt;&quot; +   &#xd;
+&quot;  &lt;TNFE&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TNFE&gt;&quot; +   &#xd;
+&quot;  &lt;TMOVFISCAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOVFISCAL&gt;&quot; +   &#xd;
+&quot;  &lt;TITMMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;    &lt;NSEQITMMOV&gt;1&lt;/NSEQITMMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIAL&gt;1&lt;/CODFILIAL&gt;&quot; +   &#xd;
+&quot;    &lt;NUMEROSEQUENCIAL&gt;1&lt;/NUMEROSEQUENCIAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODIGOPRD&gt;01.02.03.0050&lt;/CODIGOPRD&gt;&quot; +   &#xd;
+&quot;    &lt;NOMEFANTASIA&gt;PERFILADO 19X38 3MTS&lt;/NOMEFANTASIA&gt;&quot; +   &#xd;
+&quot;    &lt;QUANTIDADE&gt;10.0000&lt;/QUANTIDADE&gt;&quot; +   &#xd;
+&quot;    &lt;PRECOUNITARIO&gt;630.0000000000&lt;/PRECOUNITARIO&gt;&quot; +   &#xd;
+&quot;    &lt;DATAEMISSAO&gt;2017-12-22T00:00:00&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+&quot;    &lt;CODUND&gt;UN&lt;/CODUND&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOC&gt;001&lt;/CODLOC&gt;&quot; +   &#xd;
+&quot;    &lt;NSEQITMMOV1&gt;1&lt;/NSEQITMMOV1&gt;&quot; +   &#xd;
+&quot;  &lt;/TITMMOV&gt;&quot;+   &#xd;
+&quot;  &lt;TMOVCOMPL&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOVCOMPL&gt;&quot;+   &#xd;
+&quot;&lt;/MovMovimento&gt;&quot;;  &#xd;
+   &#xd;
+}  &#xd;
+&#xd;
+function dataAtualFormatada(){&#xd;
+    &#xd;
+    var data = new Date();&#xd;
+    var dia = data.getDate();&#xd;
+    if (dia.toString().length == 1)&#xd;
+      dia = &quot;0&quot;+dia;&#xd;
+    var mes = data.getMonth()+1;&#xd;
+    if (mes.toString().length == 1)&#xd;
+      mes = &quot;0&quot;+mes;&#xd;
+    var ano = data.getFullYear();  &#xd;
+    return ano+&quot;-&quot;+mes+&quot;-&quot;+dia;&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeCancelProcess</eventId>
+        <processId>T0002</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
+	var NOME_DATASERVER = &quot;MovMovimentoTBCData&quot;;&#xd;
+    var usuario         = &quot;mestre&quot;; &#xd;
+    var senha           = &quot;FR5G1I2EmFdNkE00SUYO&quot;;   	&#xd;
+	var idmov           = hAPI.getCardValue(&quot;IDMOV&quot;);&#xd;
+	var codcoligada     = hAPI.getCardValue(&quot;CODCOLIGADA&quot;); &#xd;
+	var authService     = getWebService(usuario, senha);  &#xd;
+	var context         = &quot;CodUsuario=mestre;CodSistema=T;CodColigada=&quot;+codcoligada;&#xd;
+	&#xd;
+    XML =   &quot;&lt;MovMovimento &gt;&quot; +   &#xd;
+		    &quot;  &lt;TMOV&gt;&quot; +   &#xd;
+		    &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+		    &quot;    &lt;IDMOV&gt;&quot;+idmov+&quot;&lt;/IDMOV&gt;&quot; +&#xd;
+		    &quot;    &lt;CAMPOLIVRE1&gt;FLUIG&lt;/CAMPOLIVRE1&gt;&quot;+  &#xd;
+		    &quot;  &lt;/TMOV&gt;&quot; +  &#xd;
+		    &quot;&lt;/MovMovimento &gt;&quot;    ;&#xd;
+     &#xd;
+	log.info(&quot;*** CRM *** Iniciado Exclusão do Movimento &quot;+idmov);&#xd;
+	try{&#xd;
+	   var resultDelete = new String(authService.saveRecord(NOME_DATASERVER, XML, context));&#xd;
+	}&#xd;
+    catch (e)   &#xd;
+    {  &#xd;
+        if (e == null) e = &quot;*** CRM *** Erro desconhecido!&quot;;  &#xd;
+        &#xd;
+        var mensagemErro = &quot;*** CRM *** Ocorreu um erro ao excluir o movimentono RM (coligada &quot;+codcoligada+&quot; ): &quot; + e;  &#xd;
+        &#xd;
+        throw mensagemErro;  &#xd;
+    }&#xd;
+	&#xd;
+	&#xd;
+	log.info(&quot;*** CRM ***  &quot;+resultDelete);	&#xd;
+	&#xd;
+}&#xd;
+&#xd;
+&#xd;
+/**&apos;&#xd;
+* A API de autenticação da Totvs baseia no &quot;Basic access authentication&quot; do HTTP.&#xd;
+* Código Java para autenticação &#xd;
+* Programa responsável por integrar com os Webservices do RM &#xd;
+*  Exemplo dev valores para os parâmetros &#xd;
+*       @param string Usuario = &quot;mestre&quot;;&#xd;
+*       @param string Senha = &quot;totvs&quot;;&#xd;
+*/&#xd;
+&#xd;
+function getWebService(Usuario, Senha){&#xd;
+&#xd;
+ var Nome_Servico = &quot;WS&quot;;&#xd;
+ var Caminho_Servico = &quot;com.totvs.WsDataServer&quot;;&#xd;
+ &#xd;
+    var dataServerService = ServiceManager.getServiceInstance(Nome_Servico);&#xd;
+    if(dataServerService == null){&#xd;
+        throw &quot;Servico nao encontrado: &quot; + Nome_Servico;&#xd;
+    }&#xd;
+    &#xd;
+    var serviceLocator = dataServerService.instantiate(Caminho_Servico);&#xd;
+    if(serviceLocator == null){&#xd;
+        throw &quot;Instancia do servico nao encontrada: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var service = serviceLocator.getRMIwsDataServer();  &#xd;
+    if(service == null){&#xd;
+        throw &quot;Instancia do dataserver do invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var serviceHelper = dataServerService.getBean();&#xd;
+    if(serviceHelper == null){&#xd;
+        throw &quot;Instancia do service helper invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var authService = serviceHelper.getBasicAuthenticatedClient(service, &quot;com.totvs.IwsDataServer&quot;, Usuario, Senha);      &#xd;
+    if(serviceHelper == null){&#xd;
+        throw &quot;Instancia do auth service invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+    &#xd;
+    return authService;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcReadView(dataservername, context, usuario, senha, filtro)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+      &#xd;
+   // lê os dados da visão respeitando o filtro passado&#xd;
+      var viewData = new String(authService.readView(dataservername, filtro, context));&#xd;
+&#xd;
+      return viewData;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcReadRecord(dataservername, context, usuario, senha, primaryKey)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+&#xd;
+   // lê os dados do registro respeitando a pk passada&#xd;
+      try&#xd;
+      {&#xd;
+        var recordData = new String(authService.readRecord(dataservername, primaryKey, context));&#xd;
+      }&#xd;
+      catch (e) &#xd;
+      {&#xd;
+          var recordData = new String(authService.getSchema(dataservername, context));&#xd;
+      }&#xd;
+      &#xd;
+      return recordData;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcSaveRecord(dataservername, context, usuario, senha, xml)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+&#xd;
+   // salva o registro de acordo com o xml passado&#xd;
+      var pk = new String(authService.readRecord(dataservername, xml, context));&#xd;
+          &#xd;
+      return pk;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+//Transforma o conceito de constraints do Fluig para o Filtro do TBC.&#xd;
+function parseConstraints(constraints, filterRequired)&#xd;
+{&#xd;
+    // inicializa o resultado...&#xd;
+    var result = [];&#xd;
+    result.context = &quot;&quot;;&#xd;
+    &#xd;
+    // inicializa o filtro...&#xd;
+    var filter = &quot;&quot;;&#xd;
+    &#xd;
+    // varre as contraints...&#xd;
+ for    (con in constraints) {&#xd;
+    var fieldName = con.getFieldName().toUpperCase();&#xd;
+    if (fieldName == &quot;RMSCONTEXT&quot;)&#xd;
+    {&#xd;
+        result.context = con.getInitialValue();&#xd;
+        continue;&#xd;
+    }&#xd;
+    &#xd;
+    filter += &quot;(&quot;;&#xd;
+    &#xd;
+    if (fieldName == &quot;RMSFILTER&quot;)&#xd;
+        {&#xd;
+        filter += con.getInitialValue();&#xd;
+        }&#xd;
+    else&#xd;
+        {&#xd;
+        if (con.getInitialValue() == con.getFinalValue() || isEmpty(con.getFinalValue()))&#xd;
+            {&#xd;
+                filter += con.getFieldName();&#xd;
+                var isLike = false;&#xd;
+                switch(con.getConstraintType())&#xd;
+                {&#xd;
+                    case ConstraintType.MUST:&#xd;
+                        filter += &quot; = &quot;;&#xd;
+                    break;&#xd;
+                    case ConstraintType.MUST_NOT:&#xd;
+                        filter += &quot; = &quot;;&#xd;
+                    break;&#xd;
+                    case ConstraintType.SHOULD:&#xd;
+                        filter += &quot; LIKE &quot;;&#xd;
+                        isLike = true;&#xd;
+                    break;&#xd;
+                    case ConstraintType.SHOULD_NOT:&#xd;
+                        filter += &quot; NOT LIKE &quot;;&#xd;
+                        isLike = true;&#xd;
+                    break;&#xd;
+                }&#xd;
+                filter += getFormattedValue(con.getInitialValue(), isLike);&#xd;
+            }&#xd;
+        else&#xd;
+            {&#xd;
+            filter += con.getFieldName();&#xd;
+            filter += &quot; BETWEEN &quot;;&#xd;
+            filter += getFormattedValue(con.getInitialValue(), false);&#xd;
+            filter += &quot; AND &quot;;&#xd;
+            filter += getFormattedValue(con.getFinalValue(), false);&#xd;
+            }&#xd;
+        }&#xd;
+    &#xd;
+        filter += &quot;) AND &quot;;&#xd;
+    }&#xd;
+ &#xd;
+ if (filter.length == 0)&#xd;
+ {&#xd;
+    if(filterRequired){&#xd;
+      filter = &quot;1=1&quot;;&#xd;
+    }&#xd;
+    else{&#xd;
+      filter = &quot;1=1&quot;;&#xd;
+    }&#xd;
+ }&#xd;
+ else&#xd;
+    filter = filter.substring(0, filter.length-5);&#xd;
+ &#xd;
+ // guarda o filtro...&#xd;
+ result.filter = filter;&#xd;
+ &#xd;
+ // retorna o resultado...&#xd;
+ return result;&#xd;
+}&#xd;
+&#xd;
+function isEmpty(str) {&#xd;
+ return (!str || 0 === str.length);&#xd;
+}&#xd;
+&#xd;
+function getFormattedValue(value, isLike){&#xd;
+    if(isLike){&#xd;
+      return &quot;&apos;%&quot; + value + &quot;%&apos;&quot;;&#xd;
+    }&#xd;
+    else{&#xd;
+      return &quot;&apos;&quot; + value + &quot;&apos;&quot;;&#xd;
+    }&#xd;
+}&#xd;
+&#xd;
+&#xd;
+&#xd;
+function getXMLFromString(xmlString) {&#xd;
+    var factory = javax.xml.parsers.DocumentBuilderFactory.newInstance();&#xd;
+    var parser = factory.newDocumentBuilder();&#xd;
+    var is = new org.xml.sax.InputSource();&#xd;
+ is.setCharacterStream(new java.io.StringReader(xmlString));&#xd;
+    return parser.parse(is);&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function abrirPesquisa(DATASET_ID, dataFields, resultFields, type, title){  &#xd;
+    window.open(&quot;/webdesk/zoom.jsp&quot; +&#xd;
+    &quot;?datasetId=&quot; +&#xd;
+    DATASET_ID +&#xd;
+    &quot;&amp;dataFields=&quot; +&#xd;
+    dataFields +&#xd;
+    &quot;&amp;resultFields=&quot; +&#xd;
+    resultFields +&#xd;
+    &quot;&amp;type=&quot; +&#xd;
+    type+&#xd;
+    &quot;&amp;title=&quot; +&#xd;
+    title   &#xd;
+    , &quot;zoom&quot;, &quot;status,scroolbars=no,width=600,height=350,top=0,left=0&quot;);&#xd;
+}&#xd;
+&#xd;
+function checkIsPK(result, qtd){&#xd;
+    var lines = result.split(&apos;\r&apos;);&#xd;
+    &#xd;
+    if(lines.length == 1){&#xd;
+        var pk = result.split(&apos;;&apos;);&#xd;
+        if(pk.length == qtd)&#xd;
+            return;&#xd;
+    }&#xd;
+        throw result;&#xd;
+    &#xd;
+}&#xd;
+&#xd;
+function ChekExist(result)&#xd;
+{&#xd;
+     var lines = result.split(&apos;\r&apos;);&#xd;
+    if(lines.length &gt; 1)&#xd;
+        return true&#xd;
+    else&#xd;
+        return false;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function replaceValue(text, columnName, newValue){&#xd;
+&#xd;
+    &#xd;
+    if ((newValue != null) &amp;&amp; (newValue.trim() != &quot;&quot;))&#xd;
+    {&#xd;
+        var regex = new RegExp(&quot;&lt;&quot; + columnName + &quot;&gt;(.*?)&lt;\\/&quot; + columnName + &quot;&gt;&quot;, &quot;g&quot;);&#xd;
+        var replaceText = &quot;&lt;&quot; + columnName + &quot;&gt;&quot; + newValue + &quot;&lt;/&quot; + columnName + &quot;&gt;&quot;;&#xd;
+        &#xd;
+        return text.replace(regex, replaceText);&#xd;
+    }&#xd;
+    else&#xd;
+        return text;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function isEmpty(str) {&#xd;
+ return (!str || 0 === str.length);&#xd;
+}&#xd;
+&#xd;
+function dataAtualFormatada(){&#xd;
+    &#xd;
+    var data = new Date();&#xd;
+    var dia = data.getDate();&#xd;
+    if (dia.toString().length == 1)&#xd;
+      dia = &quot;0&quot;+dia;&#xd;
+    var mes = data.getMonth()+1;&#xd;
+    if (mes.toString().length == 1)&#xd;
+      mes = &quot;0&quot;+mes;&#xd;
+    var ano = data.getFullYear();  &#xd;
+    return ano+&quot;-&quot;+mes+&quot;-&quot;+dia;&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessFinish</eventId>
+        <processId>T0002</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessFinish(processId){&#xd;
+&#xd;
+    var numProcess = getValue(&quot;WKNumProces&quot;);&#xd;
+    var NOME_DATASERVER = &quot;MovMovimentoTBCData&quot;;  &#xd;
+    var usuario         = &quot;mestre&quot;; &#xd;
+    var senha           = &quot;FR5G1I2EmFdNkE00SUYO&quot;;   &#xd;
+    var codcoligada     = hAPI.getCardValue(&quot;CODCOLIGADA&quot;);        &#xd;
+    var authService     = getWebService(usuario, senha);  &#xd;
+    var context         = &quot;CodUsuario=mestre;CodSistema=T;CodColigada=&quot;+codcoligada;&#xd;
+    var nseq            = 0;&#xd;
+    var historicoMOV    = hAPI.getCardValue(&quot;txtHistoricoMOV&quot;);&#xd;
+    var codfilial   	= hAPI.getCardValue(&quot;CODFILIAL&quot;);&#xd;
+    var codloc          = hAPI.getCardValue(&quot;CODLOC&quot;);&#xd;
+    var idmov           = hAPI.getCardValue(&quot;IDMOV&quot;);&#xd;
+    var USUARIO         = getValue(&apos;WKUser&apos;);&#xd;
+    var IDFLUIG         = hAPI.getCardValue(&quot;txtNumRequisicao&quot;);&#xd;
+    var CODVEN          = hAPI.getCardValue(&quot;CODVEN&quot;);&#xd;
+&#xd;
+     log.info(&quot;*** CRM *** Aqui é o Final &quot;);&#xd;
+&#xd;
+    //exclui movimento de origem (reserva de materiais do estoque)&#xd;
+&#xd;
+&#xd;
+     XML =   &quot;&lt;MovMovimento &gt;&quot; +   &#xd;
+            &quot;  &lt;TMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;&quot;+idmov+&quot;&lt;/IDMOV&gt;&quot; +&#xd;
+            &quot;    &lt;CAMPOLIVRE1&gt;FLUIG&lt;/CAMPOLIVRE1&gt;&quot;+  &#xd;
+            &quot;  &lt;/TMOV&gt;&quot; +  &#xd;
+            &quot;&lt;/MovMovimento &gt;&quot;    &#xd;
+             &#xd;
+    log.info(&quot;*** CRM *** Iniciado Excluisão do Movimento &quot;+idmov);&#xd;
+&#xd;
+    var resultDelete = new String(authService.saveRecord(NOME_DATASERVER, XML, context));&#xd;
+&#xd;
+    log.info(&quot;*** CRM ***  &quot;+resultDelete);&#xd;
+&#xd;
+    var XML = &#xd;
+            &quot;&lt;MovMovimento &gt;&quot; +   &#xd;
+            &quot;  &lt;TMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;CODFILIAL&gt;&quot;+codfilial+&quot;&lt;/CODFILIAL&gt;&quot; +   &#xd;
+            &quot;    &lt;CODLOC&gt;&quot;+codloc+&quot;&lt;/CODLOC&gt;&quot; +    &#xd;
+            &quot;    &lt;CODLOCDESTINO&gt;&quot;+codloc+&quot;&lt;/CODLOCDESTINO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODTMV&gt;1.2.96&lt;/CODTMV&gt;&quot; +   &#xd;
+            &quot;    &lt;TIPO&gt;A&lt;/TIPO&gt;&quot; +   &#xd;
+            &quot;    &lt;DATAEMISSAO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+            &quot;    &lt;DATABASEMOV&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATABASEMOV&gt;&quot; +   &#xd;
+            &quot;    &lt;DATAMOVIMENTO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATAMOVIMENTO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODFILIALDESTINO&gt;&quot;+codfilial+&quot;&lt;/CODFILIALDESTINO&gt;&quot; +      &#xd;
+            &quot;    &lt;DATALANCAMENTO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATALANCAMENTO&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLCFO&gt;0&lt;/CODCOLCFO&gt;&quot;+&#xd;
+            &quot;    &lt;CODCCUSTO&gt;4.01.07.006&lt;/CODCCUSTO&gt;&quot;+ &#xd;
+            &quot;    &lt;CODVEN1&gt;9999&lt;/CODVEN1&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN2&gt;&quot;+CODVEN+&quot;&lt;/CODVEN2&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN3&gt;9999&lt;/CODVEN3&gt;&quot; +&#xd;
+            &quot;    &lt;CODVEN4&gt;9999&lt;/CODVEN4&gt;&quot; +&#xd;
+            &quot;    &lt;USUARIOCRIACAO&gt;&quot;+USUARIO+&quot;&lt;/USUARIOCRIACAO&gt;&quot; +&#xd;
+            &quot;    &lt;HISTORICOLONGO&gt;&quot;+historicoMOV+&quot;&lt;/HISTORICOLONGO&gt;&quot; +&#xd;
+            &quot;  &lt;/TMOV&gt;&quot; +  &#xd;
+            &#xd;
+            &quot;  &lt;TNFE&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;  &lt;/TNFE&gt;&quot; +   &#xd;
+            &quot;  &lt;TMOVFISCAL&gt;&quot; +   &#xd;
+            &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+            &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+            &quot;  &lt;/TMOVFISCAL&gt;&quot; ;&#xd;
+&#xd;
+&#xd;
+    var itens = hAPI.getCardData(numProcess);&#xd;
+    var keys = itens.keySet().toArray();&#xd;
+    for (var key in keys) {&#xd;
+      var field = keys[key];&#xd;
+&#xd;
+      if (field.indexOf(&quot;IDPRD___&quot;) &gt; -1) {&#xd;
+        &#xd;
+        var index = field.replace(&quot;IDPRD___&quot;, &quot;&quot;); &#xd;
+		var idprd = hAPI.getCardValue(&quot;IDPRD___&quot;+index);&#xd;
+		var qtdSolicitada = hAPI.getCardValue(&quot;txtEstoque___&quot;+index);&#xd;
+        var precounitario = CustoMedio(codcoligada, codfilial, codloc, idprd);&#xd;
+        var codccusto = hAPI.getCardValue(&quot;CODCCUSTO___&quot;+index);&#xd;
+        var historicoITMMOV = hAPI.getCardValue(&quot;txtHistoricoITMMOV___&quot;+index);&#xd;
+&#xd;
+        qtdSolicitada = qtdSolicitada.replace( &quot;.&quot;, &quot;&quot; );&#xd;
+        qtdSolicitada = qtdSolicitada.replace( &quot;.&quot;, &quot;&quot; );&#xd;
+        qtdSolicitada = qtdSolicitada.replace( &quot;.&quot;, &quot;&quot; );&#xd;
+        qtd           = qtdSolicitada;&#xd;
+&#xd;
+        unitario = precounitario.replace( &quot;.&quot;, &quot;,&quot; );&#xd;
+        &#xd;
+&#xd;
+&#xd;
+        var nseq = index; &#xd;
+&#xd;
+         log.info( &quot;*** CRM ***  NSEQ - &quot;+nseq);&#xd;
+&#xd;
+                  XML = XML +    &#xd;
+                        &quot;  &lt;TITMMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+                        &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;NSEQITMMOV&gt;&quot;+nseq+&quot;&lt;/NSEQITMMOV&gt;&quot; +   &#xd;
+                        &quot;    &lt;CODFILIAL&gt;&quot;+codfilial+&quot;&lt;/CODFILIAL&gt;&quot; +   &#xd;
+                        &quot;    &lt;NUMEROSEQUENCIAL&gt;&quot;+nseq+&quot;&lt;/NUMEROSEQUENCIAL&gt;&quot; +   &#xd;
+                        &quot;    &lt;IDPRD&gt;&quot;+idprd+&quot;&lt;/IDPRD&gt;&quot; +&#xd;
+                        &quot;    &lt;QUANTIDADE&gt;&quot;+qtd+&quot;&lt;/QUANTIDADE&gt;&quot; +   &#xd;
+                        &quot;    &lt;PRECOUNITARIO&gt;&quot;+unitario+&quot;&lt;/PRECOUNITARIO&gt;&quot;+&#xd;
+                        &quot;    &lt;DATAEMISSAO&gt;&quot;+dataAtualFormatada()+&quot;&lt;/DATAEMISSAO&gt;&quot; +     &#xd;
+                        &quot;    &lt;CODLOC&gt;&quot;+codloc+&quot;&lt;/CODLOC&gt;&quot; +   &#xd;
+                        &quot;    &lt;CODCCUSTO&gt;&quot;+codccusto+&quot;&lt;/CODCCUSTO&gt;&quot;+&#xd;
+                        &quot;    &lt;HISTORICOLONGO&gt;&quot;+historicoITMMOV+&quot;&lt;/HISTORICOLONGO&gt;&quot;+     &#xd;
+                        &quot;  &lt;/TITMMOV&gt;&quot;; &#xd;
+                  }&#xd;
+&#xd;
+    }           &#xd;
+&#xd;
+       log.info( &quot;*** CRM ***  NSEQ - &quot;+nseq+&quot;  XML do movimnto é &quot;+XML);&#xd;
+&#xd;
+   if (nseq &gt; 0){&#xd;
+&#xd;
+        XML = XML +    &#xd;
+           &quot;  &lt;TMOVCOMPL&gt;&quot; +   &#xd;
+           &quot;    &lt;CODCOLIGADA&gt;&quot;+codcoligada+&quot;&lt;/CODCOLIGADA&gt;&quot; +      &#xd;
+           &quot;    &lt;IDMOV&gt;-1&lt;/IDMOV&gt;&quot; +   &#xd;
+           &quot;    &lt;NUMFLUIG&gt;&quot;+IDFLUIG+&quot;&lt;/NUMFLUIG&gt;&quot; +&#xd;
+           &quot;  &lt;/TMOVCOMPL&gt;&quot;+                      &#xd;
+           &quot;&lt;/MovMovimento&gt;&quot;;&#xd;
+        &#xd;
+        log.info( &quot;*** CRM *** XML do movimnto é &quot;+XML);&#xd;
+       &#xd;
+       &#xd;
+       try{&#xd;
+          &#xd;
+           var result = new String(authService.saveRecord(NOME_DATASERVER, XML, context));&#xd;
+&#xd;
+           log.info(&quot;*** CRM *** Fluig &quot;+numProcess+&quot;.integracao com RM resultado &quot;+result);&#xd;
+           &#xd;
+           &#xd;
+           if (result.length &gt; 20){&#xd;
+             var mensagemErro = result;  &#xd;
+             throw mensagemErro; &#xd;
+           } else { &#xd;
+                &#xd;
+                var idmov = result.substring(result.search(&quot;;&quot;)+1,result.length);&#xd;
+                hAPI.setCardValue(&quot;IDMOV&quot;,idmov);&#xd;
+                &#xd;
+                }&#xd;
+        }  &#xd;
+      &#xd;
+       &#xd;
+        catch (e)   &#xd;
+        {  &#xd;
+            if (e == null) e = &quot;*** CRM *** Erro desconhecido!&quot;;  &#xd;
+            &#xd;
+            var mensagemErro = &quot;*** CRM *** Ocorreu um erro ao salvar dados no RM (coligada &quot;+codcoligada+&quot; ): &quot; + e;  &#xd;
+            &#xd;
+            throw mensagemErro;  &#xd;
+        }&#xd;
+    }&#xd;
+&#xd;
+&#xd;
+}&#xd;
+&#xd;
+ function CustoMedio(coligada, filial, local, idprd) {&#xd;
+&#xd;
+        var c1 = DatasetFactory.createConstraint(&quot;CODCOLIGADA&quot;, coligada, coligada, ConstraintType.MUST);&#xd;
+            var c2 = DatasetFactory.createConstraint(&quot;CODFILIAL&quot;, filial, filial, ConstraintType.MUST);&#xd;
+            var c3 = DatasetFactory.createConstraint(&quot;CODLOCAL&quot;, local, local, ConstraintType.MUST);&#xd;
+            var c4 = DatasetFactory.createConstraint(&quot;IDPRD&quot;, idprd, idprd, ConstraintType.MUST);&#xd;
+            var constraints   = new Array(c1,c2,c3,c4);&#xd;
+          var dataset         = DatasetFactory.getDataset(&quot;dsTPRDLOC&quot;, null, constraints, null);&#xd;
+&#xd;
+&#xd;
+         console.info(&quot;*** CRM *** Enviar para o DataSet ==&gt;&gt; &quot;+c1+c2+c3+c4);&#xd;
+&#xd;
+           var vlrcusto = dataset.getValue(0, &quot;CUSTOUNITARIO&quot;);&#xd;
+            vlrcusto = parseFloat( vlrcusto ).toFixed(2);&#xd;
+            &#xd;
+            return vlrcusto;&#xd;
+      }&#xd;
+&#xd;
+&#xd;
+/**&apos;&#xd;
+* A API de autenticação da Totvs baseia no &quot;Basic access authentication&quot; do HTTP.&#xd;
+* Código Java para autenticação &#xd;
+* Programa responsável por integrar com os Webservices do RM &#xd;
+*  Exemplo dev valores para os parâmetros &#xd;
+*       @param string Usuario = &quot;mestre&quot;;&#xd;
+*       @param string Senha = &quot;totvs&quot;;&#xd;
+*/&#xd;
+&#xd;
+function getWebService(Usuario, Senha){&#xd;
+&#xd;
+ var Nome_Servico = &quot;WS&quot;;&#xd;
+ var Caminho_Servico = &quot;com.totvs.WsDataServer&quot;;&#xd;
+ &#xd;
+    var dataServerService = ServiceManager.getServiceInstance(Nome_Servico);&#xd;
+    if(dataServerService == null){&#xd;
+        throw &quot;Servico nao encontrado: &quot; + Nome_Servico;&#xd;
+    }&#xd;
+    &#xd;
+    var serviceLocator = dataServerService.instantiate(Caminho_Servico);&#xd;
+    if(serviceLocator == null){&#xd;
+        throw &quot;Instancia do servico nao encontrada: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var service = serviceLocator.getRMIwsDataServer();  &#xd;
+    if(service == null){&#xd;
+        throw &quot;Instancia do dataserver do invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var serviceHelper = dataServerService.getBean();&#xd;
+    if(serviceHelper == null){&#xd;
+        throw &quot;Instancia do service helper invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+&#xd;
+    var authService = serviceHelper.getBasicAuthenticatedClient(service, &quot;com.totvs.IwsDataServer&quot;, Usuario, Senha);      &#xd;
+    if(serviceHelper == null){&#xd;
+        throw &quot;Instancia do auth service invalida: &quot; + Nome_Servico + &quot; - &quot; + Caminho_Servico;&#xd;
+    }&#xd;
+    &#xd;
+    return authService;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcReadView(dataservername, context, usuario, senha, filtro)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+      &#xd;
+   // lê os dados da visão respeitando o filtro passado&#xd;
+      var viewData = new String(authService.readView(dataservername, filtro, context));&#xd;
+&#xd;
+      return viewData;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcReadRecord(dataservername, context, usuario, senha, primaryKey)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+&#xd;
+   // lê os dados do registro respeitando a pk passada&#xd;
+      try&#xd;
+      {&#xd;
+        var recordData = new String(authService.readRecord(dataservername, primaryKey, context));&#xd;
+      }&#xd;
+      catch (e) &#xd;
+      {&#xd;
+          var recordData = new String(authService.getSchema(dataservername, context));&#xd;
+      }&#xd;
+      &#xd;
+      return recordData;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function dcSaveRecord(dataservername, context, usuario, senha, xml)&#xd;
+{    &#xd;
+   // carrega o webservice...&#xd;
+      var authService = getWebService(usuario, senha);&#xd;
+&#xd;
+   // salva o registro de acordo com o xml passado&#xd;
+      var pk = new String(authService.readRecord(dataservername, xml, context));&#xd;
+          &#xd;
+      return pk;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+//Transforma o conceito de constraints do Fluig para o Filtro do TBC.&#xd;
+function parseConstraints(constraints, filterRequired)&#xd;
+{&#xd;
+    // inicializa o resultado...&#xd;
+    var result = [];&#xd;
+    result.context = &quot;&quot;;&#xd;
+    &#xd;
+    // inicializa o filtro...&#xd;
+    var filter = &quot;&quot;;&#xd;
+    &#xd;
+    // varre as contraints...&#xd;
+ for    (con in constraints) {&#xd;
+    var fieldName = con.getFieldName().toUpperCase();&#xd;
+    if (fieldName == &quot;RMSCONTEXT&quot;)&#xd;
+    {&#xd;
+        result.context = con.getInitialValue();&#xd;
+        continue;&#xd;
+    }&#xd;
+    &#xd;
+    filter += &quot;(&quot;;&#xd;
+    &#xd;
+    if (fieldName == &quot;RMSFILTER&quot;)&#xd;
+        {&#xd;
+        filter += con.getInitialValue();&#xd;
+        }&#xd;
+    else&#xd;
+        {&#xd;
+        if (con.getInitialValue() == con.getFinalValue() || isEmpty(con.getFinalValue()))&#xd;
+            {&#xd;
+                filter += con.getFieldName();&#xd;
+                var isLike = false;&#xd;
+                switch(con.getConstraintType())&#xd;
+                {&#xd;
+                    case ConstraintType.MUST:&#xd;
+                        filter += &quot; = &quot;;&#xd;
+                    break;&#xd;
+                    case ConstraintType.MUST_NOT:&#xd;
+                        filter += &quot; = &quot;;&#xd;
+                    break;&#xd;
+                    case ConstraintType.SHOULD:&#xd;
+                        filter += &quot; LIKE &quot;;&#xd;
+                        isLike = true;&#xd;
+                    break;&#xd;
+                    case ConstraintType.SHOULD_NOT:&#xd;
+                        filter += &quot; NOT LIKE &quot;;&#xd;
+                        isLike = true;&#xd;
+                    break;&#xd;
+                }&#xd;
+                filter += getFormattedValue(con.getInitialValue(), isLike);&#xd;
+            }&#xd;
+        else&#xd;
+            {&#xd;
+            filter += con.getFieldName();&#xd;
+            filter += &quot; BETWEEN &quot;;&#xd;
+            filter += getFormattedValue(con.getInitialValue(), false);&#xd;
+            filter += &quot; AND &quot;;&#xd;
+            filter += getFormattedValue(con.getFinalValue(), false);&#xd;
+            }&#xd;
+        }&#xd;
+    &#xd;
+        filter += &quot;) AND &quot;;&#xd;
+    }&#xd;
+ &#xd;
+ if (filter.length == 0)&#xd;
+ {&#xd;
+    if(filterRequired){&#xd;
+      filter = &quot;1=1&quot;;&#xd;
+    }&#xd;
+    else{&#xd;
+      filter = &quot;1=1&quot;;&#xd;
+    }&#xd;
+ }&#xd;
+ else&#xd;
+    filter = filter.substring(0, filter.length-5);&#xd;
+ &#xd;
+ // guarda o filtro...&#xd;
+ result.filter = filter;&#xd;
+ &#xd;
+ // retorna o resultado...&#xd;
+ return result;&#xd;
+}&#xd;
+&#xd;
+function isEmpty(str) {&#xd;
+ return (!str || 0 === str.length);&#xd;
+}&#xd;
+&#xd;
+function getFormattedValue(value, isLike){&#xd;
+    if(isLike){&#xd;
+      return &quot;&apos;%&quot; + value + &quot;%&apos;&quot;;&#xd;
+    }&#xd;
+    else{&#xd;
+      return &quot;&apos;&quot; + value + &quot;&apos;&quot;;&#xd;
+    }&#xd;
+}&#xd;
+&#xd;
+&#xd;
+&#xd;
+function getXMLFromString(xmlString) {&#xd;
+    var factory = javax.xml.parsers.DocumentBuilderFactory.newInstance();&#xd;
+    var parser = factory.newDocumentBuilder();&#xd;
+    var is = new org.xml.sax.InputSource();&#xd;
+ is.setCharacterStream(new java.io.StringReader(xmlString));&#xd;
+    return parser.parse(is);&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function abrirPesquisa(DATASET_ID, dataFields, resultFields, type, title){  &#xd;
+    window.open(&quot;/webdesk/zoom.jsp&quot; +&#xd;
+    &quot;?datasetId=&quot; +&#xd;
+    DATASET_ID +&#xd;
+    &quot;&amp;dataFields=&quot; +&#xd;
+    dataFields +&#xd;
+    &quot;&amp;resultFields=&quot; +&#xd;
+    resultFields +&#xd;
+    &quot;&amp;type=&quot; +&#xd;
+    type+&#xd;
+    &quot;&amp;title=&quot; +&#xd;
+    title   &#xd;
+    , &quot;zoom&quot;, &quot;status,scroolbars=no,width=600,height=350,top=0,left=0&quot;);&#xd;
+}&#xd;
+&#xd;
+function checkIsPK(result, qtd){&#xd;
+    var lines = result.split(&apos;\r&apos;);&#xd;
+    &#xd;
+    if(lines.length == 1){&#xd;
+        var pk = result.split(&apos;;&apos;);&#xd;
+        if(pk.length == qtd)&#xd;
+            return;&#xd;
+    }&#xd;
+        throw result;&#xd;
+    &#xd;
+}&#xd;
+&#xd;
+function ChekExist(result)&#xd;
+{&#xd;
+     var lines = result.split(&apos;\r&apos;);&#xd;
+    if(lines.length &gt; 1)&#xd;
+        return true&#xd;
+    else&#xd;
+        return false;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function replaceValue(text, columnName, newValue){&#xd;
+&#xd;
+    &#xd;
+    if ((newValue != null) &amp;&amp; (newValue.trim() != &quot;&quot;))&#xd;
+    {&#xd;
+        var regex = new RegExp(&quot;&lt;&quot; + columnName + &quot;&gt;(.*?)&lt;\\/&quot; + columnName + &quot;&gt;&quot;, &quot;g&quot;);&#xd;
+        var replaceText = &quot;&lt;&quot; + columnName + &quot;&gt;&quot; + newValue + &quot;&lt;/&quot; + columnName + &quot;&gt;&quot;;&#xd;
+        &#xd;
+        return text.replace(regex, replaceText);&#xd;
+    }&#xd;
+    else&#xd;
+        return text;&#xd;
+}&#xd;
+&#xd;
+&#xd;
+function isEmpty(str) {&#xd;
+ return (!str || 0 === str.length);&#xd;
+}&#xd;
+function GetXml()  &#xd;
+{  &#xd;
+ return &quot;&lt;MovMovimento &gt;&quot; +   &#xd;
+&quot;  &lt;TMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIAL&gt;1&lt;/CODFILIAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOC&gt;001&lt;/CODLOC&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOCENTREGA&gt;001&lt;/CODLOCENTREGA&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOCDESTINO&gt;001&lt;/CODLOCDESTINO&gt;&quot; +   &#xd;
+&quot;    &lt;CODTMV&gt;1.1.15&lt;/CODTMV&gt;&quot; +   &#xd;
+&quot;    &lt;TIPO&gt;A&lt;/TIPO&gt;&quot; +   &#xd;
+&quot;    &lt;DATAEMISSAO&gt;2017-12-22T00:00:00&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+&quot;    &lt;VALORBRUTO&gt;6500.0000&lt;/VALORBRUTO&gt;&quot; +   &#xd;
+&quot;    &lt;VALORLIQUIDO&gt;6500.0000&lt;/VALORLIQUIDO&gt;&quot; +   &#xd;
+&quot;    &lt;DATABASEMOV&gt;2017-12-22T00:00:00&lt;/DATABASEMOV&gt;&quot; +   &#xd;
+&quot;    &lt;DATAMOVIMENTO&gt;2017-12-22T00:00:00&lt;/DATAMOVIMENTO&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIALDESTINO&gt;1&lt;/CODFILIALDESTINO&gt;&quot; +   &#xd;
+&quot;    &lt;CAMPOLIVRE1&gt; ADM &lt;CAMPOLIVRE1 /&gt;&quot; +   &#xd;
+&quot;    &lt;HORULTIMAALTERACAO&gt;2017-12-22T11:04:44&lt;/HORULTIMAALTERACAO&gt;&quot; +   &#xd;
+&quot;    &lt;DATALANCAMENTO&gt;2017-12-22T00:00:00&lt;/DATALANCAMENTO&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOV&gt;&quot; +   &#xd;
+&quot;  &lt;TNFE&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TNFE&gt;&quot; +   &#xd;
+&quot;  &lt;TMOVFISCAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOVFISCAL&gt;&quot; +   &#xd;
+&quot;  &lt;TITMMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;    &lt;NSEQITMMOV&gt;1&lt;/NSEQITMMOV&gt;&quot; +   &#xd;
+&quot;    &lt;CODFILIAL&gt;1&lt;/CODFILIAL&gt;&quot; +   &#xd;
+&quot;    &lt;NUMEROSEQUENCIAL&gt;1&lt;/NUMEROSEQUENCIAL&gt;&quot; +   &#xd;
+&quot;    &lt;CODIGOPRD&gt;01.02.03.0050&lt;/CODIGOPRD&gt;&quot; +   &#xd;
+&quot;    &lt;NOMEFANTASIA&gt;PERFILADO 19X38 3MTS&lt;/NOMEFANTASIA&gt;&quot; +   &#xd;
+&quot;    &lt;QUANTIDADE&gt;10.0000&lt;/QUANTIDADE&gt;&quot; +   &#xd;
+&quot;    &lt;PRECOUNITARIO&gt;630.0000000000&lt;/PRECOUNITARIO&gt;&quot; +   &#xd;
+&quot;    &lt;DATAEMISSAO&gt;2017-12-22T00:00:00&lt;/DATAEMISSAO&gt;&quot; +   &#xd;
+&quot;    &lt;CODUND&gt;UN&lt;/CODUND&gt;&quot; +   &#xd;
+&quot;    &lt;CODLOC&gt;001&lt;/CODLOC&gt;&quot; +   &#xd;
+&quot;    &lt;NSEQITMMOV1&gt;1&lt;/NSEQITMMOV1&gt;&quot; +   &#xd;
+&quot;  &lt;/TITMMOV&gt;&quot;+   &#xd;
+&quot;  &lt;TMOVCOMPL&gt;&quot; +   &#xd;
+&quot;    &lt;CODCOLIGADA&gt;1&lt;/CODCOLIGADA&gt;&quot; +   &#xd;
+&quot;    &lt;IDMOV&gt;0&lt;/IDMOV&gt;&quot; +   &#xd;
+&quot;  &lt;/TMOVCOMPL&gt;&quot;+   &#xd;
+&quot;&lt;/MovMovimento&gt;&quot;;  &#xd;
+   &#xd;
+}  &#xd;
+&#xd;
+function dataAtualFormatada(){&#xd;
+    &#xd;
+    var data = new Date();&#xd;
+    var dia = data.getDate();&#xd;
+    if (dia.toString().length == 1)&#xd;
+      dia = &quot;0&quot;+dia;&#xd;
+    var mes = data.getMonth()+1;&#xd;
+    if (mes.toString().length == 1)&#xd;
+      mes = &quot;0&quot;+mes;&#xd;
+    var ano = data.getFullYear();  &#xd;
+    return ano+&quot;-&quot;+mes+&quot;-&quot;+dia;&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>onNotify</eventId>
+        <processId>T0002</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function onNotify(subject, receivers, template, params){&#xd;
+	&#xd;
+	 var QualTemplate = template;&#xd;
+	 var QualParametro = params;&#xd;
+		&#xd;
+		log.info(&quot;*** CRM *** - Entrei OnNotify T0004&quot;);&#xd;
+		log.info(&quot;*** CRM *** - Template do E-mail &quot;+QualTemplate);&#xd;
+		log.info(&quot;*** CRM *** - Parametro do E-mail &quot;+QualParametro);&#xd;
+		&#xd;
+		&#xd;
+		receivers.add(&quot;nilson.ferreira@slmandic.edu.br&quot;); &#xd;
+	&#xd;
+	&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>290</height>
+      <width>581</width>
+      <positionX>0</positionX>
+      <positionY>0</positionY>
+      <stateName>Requisição Estoque</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>82b0b7</color>
+      <height>145</height>
+      <width>551</width>
+      <positionX>30</positionX>
+      <positionY>0</positionY>
+      <stateName>Requisitante</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>adc9ac</color>
+      <height>145</height>
+      <width>551</width>
+      <positionX>30</positionX>
+      <positionY>145</positionY>
+      <stateName>Almoxarifado</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>T0002</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0002</processId>
+      <processVersion>19</processVersion>
+      <stateSequence>4</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0002</processId>
+      <processVersion>19</processVersion>
+      <stateSequence>4</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0002</processId>
+      <processVersion>19</processVersion>
+      <stateSequence>4</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0002</processId>
+      <processVersion>19</processVersion>
+      <stateSequence>4</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0002</processId>
+      <processVersion>19</processVersion>
+      <stateSequence>4</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0002</processId>
+      <processVersion>19</processVersion>
+      <stateSequence>6</stateSequence>
+      <appKey>approval</appKey>
+      <appField>title</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0002</processId>
+      <processVersion>19</processVersion>
+      <stateSequence>6</stateSequence>
+      <appKey>approval</appKey>
+      <appField>description</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0002</processId>
+      <processVersion>19</processVersion>
+      <stateSequence>6</stateSequence>
+      <appKey>approval</appKey>
+      <appField>highlight</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0002</processId>
+      <processVersion>19</processVersion>
+      <stateSequence>6</stateSequence>
+      <appKey>approval</appKey>
+      <appField>approve</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+    <ProcessAppConfiguration>
+      <id>0</id>
+      <tenantId>0</tenantId>
+      <processId>T0002</processId>
+      <processVersion>19</processVersion>
+      <stateSequence>6</stateSequence>
+      <appKey>approval</appKey>
+      <appField>reject</appField>
+      <description></description>
+    </ProcessAppConfiguration>
+  </list>
+  <list/>
+</list>

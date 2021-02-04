@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Faixas</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-condensed table-striped" tablename="faixas" noaddbutton="true" nodeletebutton="true">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <th class="col-sm-2">Código</th>
+                        <th class="col-sm-4">Descrição</th>
+                        <th class="col-sm-3">Limite Inicial</th>
+                        <th class="col-sm-3">Limite Final</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span ng-if="vm.Params.edit" ng-click="vm.removeFaixa($event)" class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+                        </td>
+                        <td ng-child="vm.Formulario.faixaCodigo" id="faixaCodigo">
+                            <input type="text" class="form-control" name="faixaCodigo" ng-model="vm.Formulario.faixaCodigo" ng-value="vm.Formulario.faixaCodigo">
+                        </td>
+                        <td ng-child="vm.Formulario.faixaDescricao" id="faixaDescricao">
+                            <input type="text" class="form-control" name="faixaDescricao" ng-model="vm.Formulario.faixaDescricao" ng-value="vm.Formulario.faixaDescricao">
+                        </td>
+                        <td ng-child="vm.Formulario.faixaLimiteInicial" id="faixaLimiteInicial">
+                            <input type="text" ng-child-tags='{"fluig-money-mask":""}' class="form-control" name="faixaLimiteInicial_input" ng-model="vm.Formulario.faixaLimiteInicial">
+                            <input type="hidden" class="form-control" name="faixaLimiteInicial" ng-value="vm.Formulario.faixaLimiteInicial">
+                        </td>
+                        <td ng-child="vm.Formulario.faixaLimiteFinal" id="faixaLimiteFinal">
+                            <input type="text" ng-child-tags='{"fluig-money-mask":""}' class="form-control" name="faixaLimiteFinal_input" ng-model="vm.Formulario.faixaLimiteFinal">
+                            <input type="hidden" class="form-control" name="faixaLimiteFinal" ng-value="vm.Formulario.faixaLimiteFinal">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button ng-if="vm.Params.edit" type="button" class="btn btn-lg btn-default" ng-click="vm.adicionaFaixa()">Incluir Faixa</button>
+        </div>
+    </div>
+</div>

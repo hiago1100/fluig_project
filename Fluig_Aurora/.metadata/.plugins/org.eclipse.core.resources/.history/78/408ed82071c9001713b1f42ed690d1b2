@@ -1,0 +1,11 @@
+function enableFields(form){ 
+	
+	var numeroAtividade = form.getValue("numeroAtividade");
+	
+	
+	if(numeroAtividade == 0 || numeroAtividade == 4) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+	
+	
+}

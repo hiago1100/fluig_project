@@ -1,0 +1,97 @@
+
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+  <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+  <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+  <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="main.js" charset="utf-8"></script>
+   <script type="text/javascript" src="../vcXMLRPC.js"></script>
+</head>
+<body>
+  <div class="fluig-style-guide">
+    <form name="form" role="form">
+      <div class="container">
+       <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <center><h1>Revisão de Acesso</h1></center>
+        </div>
+        <div class="col-md-4"></div>
+       </div>
+
+          <br><br><br>
+          <div class="row">
+          <div class="col-md-6">
+            <label>Solicitante</label>
+            <input type="text" class="form-control" name="solicitante" id="solicitante" readonly="readonly">
+            <input type="text" class="form-control hide" name="valida" id="valida" readonly="readonly">
+          </div>
+          <div class="col-md-3">
+            <label>Data</label>
+            <input type="text" class="form-control" name="dataInicio" id="dataInicio" readonly="readonly">
+          </div>
+          <div class="col-md-3">
+            <label>Hora</label>
+            <input type="text" class="form-control" name="hora" id="hora" readonly="readonly">
+          </div>
+        </div>
+        <br><br><br>
+        <div class="row">
+          <div class="col-md-2">
+            <button class="btn btn-success" name="inicia" id="inicia">Inicia Revisão</button>
+          </div>
+        </div>
+        <br><br>
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-bordered table-condensed" id="tablaProvision" width="100%" tablename="tablaProvision" noaddbutton="true" nodeletebutton="true">
+                <thead>
+                          <tr>
+                            <th width="10%"><label for="count">Processo</label></th>
+                             <th width="35%"><label for="nomeUsuario">Nome Usuário</label></th>
+                            <th width="35%"><center><label for="nomeGestor">Nome Gestor</label></th></center>
+                            <th width="10%"><center><label for="status">Status</label></th></center>
+                            <th width="10%"><center><label for="status">Cancelar</label></th></center>    
+                          </tr>
+                    </thead>
+                     <tbody>
+                        <tr>
+                            <td>  
+                              <div class="label-field">
+                                <input type="arquivo" class="form-control count" name="count" id="count" readonly="readonly">
+                              </div>            
+                            </td>
+                            <td>  
+                              <div class="label-field">
+                            <input type="text" class="form-control nomeUsuario" name="nomeUsuario" id="nomeUsuario" readonly="readonly">
+                              </div>            
+                            </td>
+                            <td>  
+                              <div class="label-field">
+                            <input type="text" class="form-control" name="nomeGestor" id="nomeGestor" readonly="readonly">
+                              </div>            
+                            </td>
+                            <td>  
+                              <div class="label-field">
+                              <input type="text" class="form-control status" name="status" id="status" readonly="readonly">
+                              </div>            
+                            </td>
+                             <td>  
+                             <div class="label-field">
+                                 <button class="btn btn-danger cancelar" id="cancelar">Cancelar</button>
+                                </div>            
+                            </td>
+                      </tr>
+                    </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </form>
+  </div>
+</body>
+</html>

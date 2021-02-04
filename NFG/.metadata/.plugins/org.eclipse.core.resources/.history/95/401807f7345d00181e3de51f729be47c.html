@@ -1,0 +1,303 @@
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+  <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+  <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+  <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+  
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+  
+  <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="select2.min.css">
+  <script type="text/javascript" src="select2.min.js"></script>
+ <!-- <script type="text/javascript" src="main.js" charset="utf-8"></script> -->
+
+  <!-- Css y Scripts Arq -->   
+  <link rel="stylesheet" type="text/css" href="/arq-marvin-v1/ui/arq-marvin-ui.min.css">
+  <script src="/arq-marvin-v1/ui/arq-marvin-ui.min.js"></script>
+
+  <style>
+    .form-group{
+      float: left;
+      width: 100%;
+    }
+    .select2-container{
+      width: 370px !important;
+    }
+    *[readonly="readonly"], *[disabled="disabled"],
+    .select2-container--disabled li span {
+      color: #000 !important;
+    }
+    .select2-container ul li,
+    .select2-container ul span,
+    .select2-container--default .select2-selection--multiple .select2-selection__choice > span{
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice{
+      background-color:#777;
+      border: solid 1px #5e5e5e;
+      color:white;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice.conflict{
+      background-color:#a00e0e;
+    }
+    .conflict{
+      background-color:#a00e0e;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice > span{
+      color:white;
+    }
+    .fluig-style-guide .bootstrap-tagsinput .tag .tag-text{
+      font-weight:100;
+    }
+    .fluig-style-guide .tab-content {
+        float: left;
+        width: 100%;
+        border: solid 1px #ddd;
+        border-top: none;
+    }
+    .fluigicon-trash {
+        display: none !important;
+    }
+
+   .Bcolor{
+      background-color: #FFFACD ;
+      height: 80px;
+    }
+    
+   .mostraMod{
+      align-content : center;
+  }
+
+</style>  
+
+</head>
+<body onload="ReadInputArea()">
+<div class="fluig-style-guide">
+<form name="form" role="form" id="form">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row text-center">
+    <h2 style="margin-bottom:15px;">Controle de Acessos</h2>
+  </div>
+  <input type="text" class="hide" name="temConflito" id="temConflito" />
+  <input class="hide" type="text" name="cont_aprovador" id="cont_aprovador" />
+  <input type="text" name="cont" id="cont" class="hide" value="0"> 
+  <input type="text" class="hide" name="recebeCod" id="recebeCod">
+  <input type="text" class="hide" name="NomUserResptrick" id="NomUserResptrick">
+  <input type="text" class="hide" name="aprovacaoProg" id="aprovacaoProg">
+  
+  <input type="text" class="form-control hide" name="servicoIntegracao" id="servicoIntegracao" readonly="readonly">
+  <input type="text" class="form-control hide" name="urlIntegracao" id="urlIntegracao" readonly="readonly">
+  <input type="text" class="form-control hide" name="userIntegracao" id="userIntegracao" readonly="readonly">
+  
+  
+  <input type="text" class="hide" name="dataRevisao" id="dataRevisao" value="15/03/2018">
+      
+  <br></br>
+  <div id="menu" class="row-fluid">
+    <ul class="nav nav-tabs nav-justified">
+      <li id="li1" class="active"><a href="#tab1" data-toggle="tab">Controle Acessos</a></li>
+      <li id="li2"><a href="#tab2" data-toggle="tab">Observa&ccedil;&otilde;es</a></li>
+      <!-- <li id="li3"><a href="#tab3" data-toggle="tab">Gestor Grupo</a></li> -->
+    <!-- <li id="li4"><a href="#tab4" data-toggle="tab">Gestor da Informa&ccedil;&atilde;o</a></li> -->
+      <!-- <li id="li5"><a href="#tab5" data-toggle="tab">Gestor S.I</a></li> -->
+    </ul>
+  </div>
+  
+  <div class='tab-content'>
+    <div class="tab-pane active" id="tab1">
+      <div class="form-group">
+
+    <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="codigoEmpresa" class="control-label">Empresa</label>
+            <input type="zoom" class="form-control nomeEmpresa" name="nomeEmpresa" id="nomeEmpresa" readonly>             
+            <input type="text" class="form-control codigoEmpresa hide" name="codigoEmpresa" id="codigoEmpresa">
+          </div>    
+        </div>        
+
+
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="matriculaSolicitante" class="control-label">Solicitante</label>
+            <input type="text" class="form-control matriculaSolicitante hide" name="matriculaSolicitante" id="matriculaSolicitante">
+            <input type="text" class="form-control nomeSolicitante" name="nomeSolicitante" id="nomeSolicitante" readonly>                 
+          </div>    
+        </div>
+
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <label for="dataSolic" class="control-label">Data</label>
+            <input type="text" class="form-control dataSolic" name="dataSolic" id="dataSolic" readonly>                 
+          </div>    
+        </div>
+        
+        <div class="label-field">
+          <div class="label-field">
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
+              <label for="horaSolic" class="control-label">Hora</label>
+              <input type="text" class="form-control horaSolic" name="horaSolic" id="horaSolic" readonly>  
+            </div>    
+          </div>  
+        </div>
+        <div id="divAprova"> 
+        <div>
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 tiraStyle" style="margin-left:10%;margin-top:2%; " align="center">
+              <button type="button" class="btn btn-success btnAprov" name="aprov" id="aprov">Aprovar</button>
+            </div>
+          </div>
+          <div>
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 tiraStyle" style="margin-left:1%;margin-top:2%; " align="center">
+              <button type="button" class="btn btn-danger btnAprov" name="reprov" id="reprov">Reprovar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>  
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+          <label>Bloquear</label> 
+              <input type="checkbox" name="bloquear" id="bloquear"> 
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group"></div> 
+      <div class="clearfix"></div>
+    <div class="form-group selecioneHid">
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="codUsuario" class="control-label">Usu&aacute;rio</label>
+            <input type="zoom" class="form-control codUsuario" name="codUsuario" id="codUsuario" />
+            <input type="text" class="form-control hide" name="idUsuario" id="idUsuario">                 
+          </div>    
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="nomeUsuario" class="control-label">&nbsp;</label>
+          <input type="text" class="form-control nomeUsuario" name="nomeUsuario" id="nomeUsuario" readonly>                 
+        </div> 
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="gestorUsuario" class="control-label">Gestor</label>
+          <input type="text" class="form-control gestorUsuario" name="gestorUsuario" id="gestorUsuario" readonly>
+          <input type="text" class=" gestorUsuario hide" name="codGest" id="codGest" readonly> 
+                                   
+        </div>                 
+      </div>
+      <div class="clearfix"></div>
+
+     
+
+      <div class="form-group">
+        <div class="col-md-12">
+        <table class="table table-hover" id="tabela_programas2" tablename="tabela_programas2" width="100%" noaddbutton="true">
+          <thead>
+            <tr>
+              <th width="20%"><label>Grupo</label></th>
+              <th width="50%"><label>Descrição</label></th>
+              <th width="20%"> <label>Gestor</label></th>
+              <th width="10%"> <label>Manter</label></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input class="form-control" type="text" name="grupoCod" id="grupoCod" readonly />
+              </td>
+              <td>
+                <input class="form-control" type="text" name="grupoDesc" id="grupoDesc" readonly />
+              </td>
+              <td>
+                <input class="form-control" type="text" name="grupoGestor" id="grupoGestor" readonly />
+                <input class="hide" type="text" name="gestorHide" id="gestorHide" readonly />
+              </td>
+              <td>
+                <input type="checkbox" class="checkbox" name="manterGrupo" class="manterGrupo" id="manterGrupo"  />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>            
+      </div>
+
+      <ul class="nav nav-tabs nav-justified"">
+        <li class="active"><a data-toggle="pill" href="#menu1"><strong><p id="countConf"></p></strong>Programas com Conflitos</a></li>
+        <li ><a data-toggle="pill" href="#home"><p id="countProg"></p>Programas</a></li>      
+      </ul>
+
+      <div class="tab-content"  >
+        <div id="home" class="tab-pane fade">
+          <br><br>
+                  
+        <table class="table table-striped" id="tabela_programas" >
+        <table  id="divProgramas"> 
+        <thead>
+        <tr>
+        <th class="col-sm-2"><label>Grupo</th>
+        <th class="col-sm-2"><label>Cod. Programa</label></th>        
+        <th class="col-sm-2"><label>Desc. Programa</label></th>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+        </table>    
+        </table>         
+        
+        </div>
+        <div id="menu1"   class="tab-pane fade in active" >
+           <div class="alert alert-info semAcesso">
+              <strong>Não há conflito para este usuário</strong>
+           </div>
+          <table class="table table-striped hideTabela" id="tabela_conflitos" style="width: 100%;">
+            <thead>
+              <tr>
+                <th class="col-sm-2"><label>Programa Conflito</label></th>
+                <th class="col-sm-2"><label>Grupo</label></th>
+                <th class="col-sm-2"><label>Programa conflitante</label></th>
+                <th class="col-sm-2"><label>Grupo</label></th>
+                <th class="col-sm-3"><label>Descri&ccedil;&atilde;o Conflito</label></th>
+                <th class="col-sm-1"><label>Risco</label></th>
+              </tr>
+            </thead>
+            <tbody class="testeColappse2">
+            <div id="confLoad">        
+            </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!--FIM DA ABA CONFLITO -->
+    </div> 
+    <!-- Fim da div tab-pane aba1 -->
+    <div class="tab-pane" id="tab2">
+    <br>   
+    <div class="table-responsive">
+     <table class="viaportaltab3" tablename="respoCham" id="respoCham" noaddbutton=true align="center">
+      <thead>
+       <tr>
+        <td></td>
+        <td></td>
+       </tr>
+      </thead>
+     <tr>
+      <td style="text-align:left;">
+        <input class="form-control input-sm UsernamResp" type="text" id="NomUserResp" name="NomUserResp" readonly> 
+        <input type="text"  class="HoraResp" id="HoraResp" name="HoraResp" readonly>
+        <textarea onfocus="getIDUserResp(this.id)" onblur="getID(this.id);" class="form-control input-sm respArea" cols="64" type="text" rows="8" id="areaResp" name="areaResp"></textarea>
+     </td>
+    </tr>
+   </table>
+   <div align="center" class="btnrespContainer" id="btnrespContainer" name="btnrespContainer">
+    <button class="btn btn-default" onclick="respbtn()">Resposta</button>
+   </div>
+  </div>
+</div> <!-- Fim da div tab-pane aba2 -->
+
+  </div> <!-- Fim da div tab-content-->
+</form>
+</div>
+</body>
+ <script type="text/javascript" src="main.js" charset="utf-8"></script>
+</html>       

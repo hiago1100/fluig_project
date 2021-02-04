@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-8">
+                <h4>Ordem {{documento.cotacaoItemOrdem}}</h4>
+                <h4>{{documento.cotacaoItemEmpresa}} - {{documento.cotacaoItemEstab}}</h4>
+            </div>
+            
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-4">
+                <label> Item: </label>
+                <p>{{documento.cotacaoItemDescricao  || 'Não informada'}}</p>
+            </div>
+            <div class="col-sm-4">
+                <label> Comprador: </label>
+                <p>{{documento.cotacaoItemComprador || 'Não informado'}}</p>
+            </div>
+            <div class="col-sm-4">
+                <label> Fornecedor: </label>
+                <p>{{documento.cotacaoItemFornecedor}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label> Quantidade: </label>
+                <p>{{documento.cotacaoItemQtd  || 'Não informada'}}</p>
+            </div>
+            <div class="col-sm-4">
+                <h4> Valor Unitário</h4>
+                <h4> {{documento.cotacaoItemValor | currency:documento.cotacaoItemMoeda}}</h4>
+            </div>
+            <div class="col-sm-4">
+                <h4> Valor Total</h4>
+                <h4> {{documento.cotacaoItemValorTotal | currency:documento.cotacaoItemMoeda}}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <label> Comentários: </label>
+                <p ng-show="documento.cotacaoItemComentarios">{{documento.cotacaoItemComentarios}}</p>
+                <p><i ng-show="!documento.cotacaoItemComentarios">Não informado</i></p>
+            </div>
+        </div>
+    </div>
+</div>

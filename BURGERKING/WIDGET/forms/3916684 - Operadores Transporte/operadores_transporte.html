@@ -1,0 +1,128 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+
+			<div class="panel panel-default	">
+				<div class="tab-content">
+					<!-- Definição de campos -->
+					<div class="tab-pane fade in active" id="configuracoes">
+
+						<div class="row" id="cabecalho"><!-- Início da Row -->
+							<!-- Título do Formulário -->
+							<div class="col-md-12 title" id="id_titulo_pagina">
+								<h1><b>Cadastro de Transportadora</b></h1>
+							</div><!-- Título do Formulário -->
+
+						</div><!-- Fim da Row -->
+
+						<hr class="no-print" style="margin-bottom: 10px;"> <!-- LINHA -->
+
+						<div class="row">
+
+							<div class="col-md-6" id="div_nome_completo">
+								<label for="descricao">Descrição <span class="no-print">*</span></label>
+								<div class="form-group">
+
+									<input type="text" name="descricao" id="descricao" data-toggle="tooltip" title="Descrição" class=" form-control" maxlength="" placeholder="Descrição" />
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<label for="codigo">Código <span class="no-print">*</span></label>
+								<div class="form-group">
+
+									<input type="number" name="codigo" id="codigo" data-toggle="tooltip" title="Código" class=" form-control" maxlength="" placeholder="Código" />
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<label for="codigo_fornecedor">Código Fornecedor <span class="no-print">*</span></label>
+								<div class="form-group">
+
+									<input type="text" name="codigo_fornecedor" id="codigo_fornecedor" data-toggle="tooltip" title="Código Fornecedor" class=" form-control" maxlength="" placeholder="Código Fornecedor" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+
+							<div class="col-md-4">
+								<label for="grupo">Grupo <span class="no-print">*</span></label>
+								<div class="form-group">
+
+									<input type="text" name="grupo" id="grupo" data-toggle="tooltip" title="Nome do Grupo" class=" form-control" maxlength="" placeholder="Nome do Grupo" />
+								</div>
+							</div>
+
+                            <div class="col-md-4">
+                                <label for="subgrupo">Subgrupo <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" name="subgrupo" id="subgrupo" data-toggle="tooltip" title="Nome do SubGrupo" class=" form-control" maxlength="" placeholder="Nome do SubGrupo" />
+                                </div>
+                            </div>
+
+							<div class="col-md-4">
+								<label for="unitario">Valor Unitario<span class="no-print">*</span></label>
+								<div class="form-group">
+
+									<input type="number" name="unitario" id="unitario" data-toggle="tooltip" title="Valor unitário" class=" form-control" maxlength="" placeholder="Valor unitário" />
+								</div>
+							</div>
+
+						</div>
+
+						<div class="row ">
+
+							<div class="col-md-3">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" value="1" name="facial"> Facial
+									</label>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" value="1" name="multiplo"> Múltiplo
+									</label>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" value="1" name="blocado"> Blocado
+									</label>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" value="1" name="cartao"> Cartão
+									</label>
+								</div>
+							</div>
+						</div>
+						
+						
+
+					</div>
+
+				</div>
+			</div>
+
+		</form>
+	</div>
+</body>
+</html>

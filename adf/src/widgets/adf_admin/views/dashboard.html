@@ -1,0 +1,22 @@
+<!-- <h3>{{vm.Global.Cadastros.Fluig.Usuarios.content.length}} usuários</h3>
+<h3>{{vm.Global.Cadastros.ADF.TiposDocumento.content.length}} tipos de documento</h3>
+<h3>{{vm.Global.Cadastros.ADF.Lotacoes.content.length}} lotações</h3>
+<h3>{{vm.Global.Cadastros.ERP.Estabelecimentos.content.length}} estabelecimentos</h3> -->
+
+<!-- <pre>{{vm.Global | json}}</pre> -->
+
+<div class="row">
+    <div class="col-sm-4" ng-repeat="(key, value) in vm.Global.Cadastros.ADF">
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                {{vm.Global.Cadastros.ADF[key].title}}
+            </div>
+
+            <div class="panel-body">
+                <i ng-if="!vm.Global.Cadastros.ADF[key].loaded">Carregando cadastros. Aguarde...</i>
+                <center><h2 ng-if="vm.Global.Cadastros.ADF[key].loaded">{{vm.Global.Cadastros.ADF[key].content.length}} registro(s)</h2></center>
+            </div>
+        </div>
+    </div>
+</div>

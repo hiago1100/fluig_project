@@ -1,0 +1,9 @@
+<a class="company-logo" href="/">
+    <img src="/adf_lib/images/logo.png" ng-class="{grayscale:!logoOver}" height="50" ng-mouseover="logoOver=true" ng-mouseleave="logoOver=false">
+</a>
+
+<div class="sidebar-links">
+    <a ng-if="item.activetab" ng-class="{'active':$route.current.activetab == item.activetab}" ng-repeat="(key, item) in $route.routes" class="link-blue" ng-href="#!{{key}}">
+			<i ng-class="item.icon"></i> {{item.title}}
+		</a>
+</div>

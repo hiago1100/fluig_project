@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>87</string>
+	<key>AMApplicationVersion</key>
+	<string>1.0.4</string>
+	<key>AMDocumentVersion</key>
+	<string>1</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Get Specified Finder Items.action</string>
+				<key>ActionIconName</key>
+				<string>Finder</string>
+				<key>ActionName</key>
+				<string>Get Specified Finder Items</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>fileNames</key>
+					<array/>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Finder</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.SpecifiedFiles</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>Find</string>
+				</array>
+				<key>Class Name</key>
+				<string>SpecifiedFilesAction</string>
+				<key>InputUUID</key>
+				<string>2D4F0564-6AB5-41D2-8026-278BCF79481A</string>
+				<key>Keywords</key>
+				<array>
+					<string>File</string>
+					<string>Choose</string>
+					<string>Find</string>
+					<string>Get</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>56FA56F1-2387-4E05-BC49-C26EF84F5D25</string>
+				<key>ShowWhenRun</key>
+				<true/>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>0F26CC2E-B83F-41F5-A0A5-52334A064CEB</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Finder</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<array/>
+						<key>name</key>
+						<string>fileNames</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Get Specified Finder Items.action/Contents/Resources/English.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>852.000000:-1647.666748</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Excel</string>
+						<key>Resource</key>
+						<string>com.microsoft.excel</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Convert Format of Excel Files.action</string>
+				<key>ActionName</key>
+				<string>Convert Format of Excel Files</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>saveFormat</key>
+					<integer>0</integer>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Excel</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Convert_Format_of_Excel_Files</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryDocuments</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>5F6D4EC3-F3D1-4E47-837E-FCAC45FB3CE7</string>
+				<key>Keywords</key>
+				<array>
+					<string>save</string>
+					<string>save as</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>A0991F99-DD58-4C4E-BE40-3EA8078295D0</string>
+				<key>ShowWhenRun</key>
+				<true/>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>6439E7D7-031D-4106-901F-E153671464DD</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Excel</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>saveFormat</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Convert Format of Excel Files.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>567.000000:-199.000000</string>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>983E951B-A2C1-44CE-962E-8335A04B269A</key>
+		<dict>
+			<key>from</key>
+			<string>0F26CC2E-B83F-41F5-A0A5-52334A064CEB - 56FA56F1-2387-4E05-BC49-C26EF84F5D25</string>
+			<key>to</key>
+			<string>6439E7D7-031D-4106-901F-E153671464DD - 5F6D4EC3-F3D1-4E47-837E-FCAC45FB3CE7</string>
+		</dict>
+	</dict>
+	<key>state</key>
+	<dict>
+		<key>actionsSplitView</key>
+		<real>175</real>
+		<key>layoutFrame</key>
+		<string>{{0, 0}, {549, 638}}</string>
+		<key>layoutScrollPosition</key>
+		<string>{{0, 0}, {549, 638}}</string>
+		<key>mainSplitView</key>
+		<real>373</real>
+		<key>minorSplitView</key>
+		<real>496</real>
+		<key>windowFrame</key>
+		<string>{{197, 382}, {952, 766}}</string>
+	</dict>
+</dict>
+</plist>

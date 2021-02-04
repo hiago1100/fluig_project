@@ -1,0 +1,507 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<script type="text/javascript">
+		
+function reloadColigada(){ 
+	if(window['txtColigada'] == undefined){ 
+	setTimeout(reloadColigada(), 500); 
+	}else{ 
+	reloadZoomFilterValues("txtColigada", "CODUSUARIO,"+$('input[name="txtUsuarioRM"]').val());
+
+
+	} 
+}
+
+	</script>
+
+</head>
+<body onload="reloadColigada()">
+<div class="fluig-style-guide">
+	<form name="form" role="form">
+	<div class="container" >
+	<div>
+		 <input type="hidden" name="auxAprovador" id="auxAprovador">
+		 <input type="hidden" name="auxAdquirir" id="auxAdquirir">
+		 <input type="hidden" name="auxNecessitaCompra" id="auxNecessitaCompra">
+		 <input type="hidden" name="auxAntecipa" id="auxAntecipa">
+	</div>
+	<br>
+	
+		<div id="div_solicitante" name="div_solicitante">
+
+			<div class="form-group row">
+				<h3 align="center"><b>DADOS DA SOLICITAÇÃO</b></h3>
+				<div class="col-md-6">
+			    <label for="nomeSolicitante">Solicitante  </label>
+			    <input type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante" readonly="" >
+			    </div>
+			    <input type="hidden" name="txtUsuarioRM" id="txtUsuarioRM">
+			    <input type="hidden" name="emailSolicitante" id="emailSolicitante">
+			    
+			    <div class="col-md-4">
+			    	<label ">Tipo Solicitação</label>
+			    <!-- 	teste para integração -->
+			     <input type="text" name="tipoSolicita" class="form-control" id="tipoSolicita" readonly="">
+			     
+			    </div>
+
+
+
+			    <div class="col-md-2">
+			    	<label ">Data Solicitação </label>
+			    <!-- 	teste para integração -->
+			     <input type="text" name="dataSolicitacao" id="dataSolicitacao" class="form-control"  readonly=""> 
+			     
+			    </div>				
+						  
+			 </div>   
+
+			<div class="row form-group">
+			
+			 <div class="col-md-6">
+				<label>Nome Aluno</label>
+				<input  type="text" class="form-control" name="nomeAluno" id="nomeAluno" readonly="" />
+			    </div>
+
+			    <div class="col-md-6">
+			    	<label ">R.A</label>
+			    <!-- 	teste para integração -->
+			     <input type="text" name="raAluno" id="raAluno" class="form-control" readonly> 
+			     
+			    </div>
+
+			</div>	
+
+
+			<div class="row form-group">
+
+				<div class="col-md-6">
+					<label>Curso de Pós graduação</label>
+					<input type="text" name="cursoPosGrad" id="cursoPosGrad" class="form-control" readonly="">
+				</div>			
+
+
+				<div class="col-md-6">
+					<label>Coordenador</label>
+					<input type="text" name="coordenador" id="coordenador" class="form-control" readonly="readonly">
+				</div>
+			</div>
+
+			<div class="row form-group">
+
+				<div class="col-md-6">
+					<span class="required text-info">
+					 <label for="txtColigada">Coligada</label>
+							</span>
+							<input  type="text" class="form-control" name="txtColigada" id="txtColigada" readonly="">
+				</div>			
+				<div class="col-md-6">
+								<span class="required text-info">
+									<label for="txtFilial" align="left">Filial</label>
+								</span>
+								<input type="text" class="form-control" name="txtFilial" id="txtFilial" readonly="">
+				</div>
+			</div>
+
+
+
+
+
+
+		</div>
+	
+	</div> <br><br><!-- Ultima Div -->
+		
+
+	<!-- ********************* PRONTÁURIOS  ********************** -->
+
+<div class="container 1" >
+	<br>
+		<div id="div_solicitante2" name="div_solicitante2">
+			<div class="form-group row">
+				<h3 align="center"><b>PRONTUÁRIOS</b></h3>			    			    
+			    <div class="col-md-12">
+			    <input type="checkbox" name="pendenciaDOC" class=""> Sem Pendência de Documentos
+			    </div>
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="pendenciaRADIO" class=""> Sem Pendência de radiografia panorâmica (triagem)
+			    </div>	
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="semProntuarios" class=""> Curso não utiliza prontuários
+			    </div>
+
+			   </div>
+	    	
+	    	<div class="form-group row">
+
+			    <div class="col-md-3">
+			    <label>Responsável pela atividade:</label>
+			    <input type="text" name="respPront" id="respPront" class="form-control" readonly=""> 
+			    </div>
+
+
+			    <div class="col-md-3">
+			    <label>Data:</label>
+			    <input type="date" name="dataPRONT" id="dataPRONT" class="form-control" readonly=""> 
+			    </div>				
+			</div>   
+		</div>
+	
+	</div>	<br><br>
+
+	<!-- ********************* BIBLIOTECA  ********************** -->	
+
+<div class="container 2" >
+	<br>
+		<div id="div_solicitante3" name="div_solicitante3">
+			<div class="form-group row">
+				<h3 align="center"><b>BIBLIOTECA</b></h3>			    			    
+			    <div class="col-md-12">
+			    <input type="checkbox" name="copiaTese" class=""> Cópias da Tese/ Dissertação
+			    </div>
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="entregueMDT" class=""> Entregue: Monografia/ Dissertação/ Tese
+			    </div>
+			    
+			    <div class="col-md-12">
+			    <input type="checkbox" name="artigoCien" class=""> Artigo Científico
+			    </div>
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="cursoIsento" class=""> Curso isento da entrega de material na biblioteca
+			    </div>
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="entregaApre" id="entregaApre" class="" onclick="mostraDivLib()"> Entrega/ Apresentação da Monografia.
+			    </div>
+
+			    <div class="col-md-12 hide divBiblio">
+			    <table>
+			    <tr>
+			    <td class="col-md-6">
+			    <input type="radio" name="liberacaoBibl" value="sim" id="liberado" class="" onclick="mostraDivLib()"> Liberado
+			    </td>
+			    <td class="col-md-6">
+			    <input type="date" name="dataLibe" id="dataLibe" class="form-control" readonly="">
+			    </td>
+			    </tr>
+			    <tr>
+			    <td class="col-md-6">			    
+			    <input type="radio" name="liberacaoBibl" value="nao" id="naoLiberado" class="" onclick="mostraDivLib()"> Não Liberado
+			    </td>
+			    <td class="col-md-6">
+			    <input type="date" name="dataNo" id="dataNo" class="form-control" readonly="">	
+			    </td>
+			    </tr>			    
+			    </table>
+			    </div>
+
+		    	<div class="form-group row">	    
+
+					<div class="col-md-3">
+				    <label>Responsável pela atividade:</label>
+				    <input type="text" name="respBibli" id="respBibli" class="form-control" readonly=""> 
+				    </div>
+
+				    <div class="col-md-3">
+				    <label>Data:</label>
+				    <input type="date" name="dataBibli" id="dataBibli" class="form-control" readonly=""> 
+				    </div>
+
+				</div>
+
+
+			 </div>   
+		</div>
+	
+	</div>	<br><br>
+
+	<!-- ********************* Departamento Financeiro  ********************** -->	
+
+<div class="container 3" >
+	<br>
+		<div id="div_solicitante4" name="div_solicitante4">
+			<div class="form-group row">
+				<h3 align="center"><b>DEPARTAMENTO FINANCEIRO</b></h3>			    			    
+			    <div class="col-md-12">
+			    <input type="checkbox" name="semPendencia" class=""> Sem Pendência
+			    </div>
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="comPendencia" class=""> Com Pendência
+			    </div>
+
+			 </div>   
+
+		    	<div class="form-group row">	    
+
+					<div class="col-md-3">
+				    <label>Responsável pela atividade:</label>
+				    <input type="text" name="respFin" id="respFin" class="form-control" readonly=""> 
+				    </div>
+
+				    <div class="col-md-3">
+				    <label>Data:</label>
+				    <input type="date" name="dataDPF" id="dataDPF" class="form-control" readonly=""> 
+				    </div>
+
+				</div>
+
+			    <div class="col-md-12" align="center">
+			    <span style="text-align: center;"><b>Obs: Com pendência não sai da secretaria</b></span>
+			    </div>		
+
+
+		</div>
+	
+	</div>	<br><br>	
+
+	<!-- ********************* Comitê de ética em Pesquisas  ********************** -->	
+
+<div class="container 4" >
+	<br>
+		<div id="div_solicitante5" name="div_solicitante5">
+			<div class="form-group row">
+				<h3 align="center"><b>COMITÊ DE ÉTICA EM PESQUISAS / POSTER</b></h3>		    			    
+			    <div class="col-md-12">
+			    <input type="checkbox" name="dispensaSub" class=""> Dispensa de submissão
+			    </div>
+			    <div class="col-md-12">
+			    <table>
+			    <tr>
+			    <td class="">
+			    	<input type="checkbox" name="aprovaProt" class=""> Aprovado conforme protocolo de número: &nbsp;&nbsp;    
+			    </td>
+			    <td >
+			    	<input type="text" name="protocolo" placeholder="Numero do protocolo" class="form-control">
+			    </td>
+			    </tr>
+			    </table>
+			    </div>
+			    <div class="col-md-12">
+			    <input type="checkbox" name="painelCIE" class=""> Painel Científico
+			    </div>
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="projetoPainel" class=""> Este curso está Isento de Apresentar Projeto/Painel
+			    </div>
+			  </div>  
+	    	<div class="form-group row">	    
+
+			    <div class="col-md-3">
+			    <label>Responsável pela atividade:</label>
+			    <input type="text" name="respComite" id="respComite" class="form-control" readonly=""> 
+			    </div>
+
+			    <div class="col-md-3">
+			    <label>Data:</label>
+			    <input type="date" name="dataComite" id="dataComite" class="form-control" readonly=""> 
+			    </div>				
+			</div>
+   
+		</div>
+	
+	</div>	<br><br>	
+
+	<!-- ********************* Acadêmico  ********************** -->	
+
+<div class="container 5" >
+	<br>
+		<div id="div_solicitante6" name="div_solicitante6">
+			<div class="form-group row">
+				<h3 align="center"><b>ACADÊMICO</b></h3>			    		   
+			    <div class="col-md-12">
+			    <input type="checkbox" name="semPendenciaAcad" class=""> Sem pendência com documentação
+			    </div>
+			    <div class="col-md-12">
+			    <input type="checkbox" name="semPendenciaDipl" class=""> Sem pendência com créditos em disciplinas.
+			    </div>			    
+			    <div class="col-md-12">
+				    <table>
+				    <tr>
+				    <td class="col-md-6">
+				    	<input type="checkbox" name="dataMatricCheck" class=""> Data da Matrícula
+			    	</td>
+			    	<td class="col-md-6">
+				    	<input type="date" name="dataMatricula" class="form-control">
+				    </td>
+				    </tr>
+				    </table>
+			    </div>
+			    <div class="col-md-12">
+				    <table>
+				    <tr>
+				    <td class="col-md-6">
+				    	<input type="checkbox" name="dataDaQual" class=""> Data da qualificação
+				    </td>
+				    <td class="col-md-6">
+				    	<input type="date" name="dataQualifica" class="form-control">
+				    </td>
+				    </tr>
+				    </table>
+			    </div>	
+			    <div class="col-md-12">
+				    <table>
+				    <tr>
+				    <td class="col-md-6">
+				    	<input type="checkbox" name="dataDefCheck" class=""> Data da Defesa
+				    </td>
+				    <td class="col-md-6">
+				    	<input type="date" name="dataDefesa" class="form-control">
+				    </td>
+				    </tr>
+				    </table>
+			    </div>			    
+			 </div> 
+
+	    	<div class="form-group row">	    
+
+			    <div class="col-md-3">
+			    <label>Responsável pela atividade:</label>
+			    <input type="text" name="respAcade" id="respAcade" class="form-control" readonly="">
+			    </div>	
+
+
+			    <div class="col-md-3">
+			    <label>Data:</label>
+			    <input type="date" name="dataAcademico" id="dataAcademico" class="form-control" readonly="">
+			    </div>				
+			</div>
+   		</div>
+	
+	</div>	<br><br>	
+
+	<!-- ********************* EMPRESTIMO DE ARMARIOS  ********************** -->	
+
+<div class="container 6" >
+	<br>
+		<div id="div_solicitante7" name="div_solicitante7">
+			<div class="form-group row">
+				<h3 align="center"><b>EMPRÉSTIMO DE ARMÁRIOS (CLÍNICA)</b></h3>			    			    
+			    <div class="col-md-12">
+			    <input type="checkbox" name="semPendenciaArm" class=""> Sem Pendência de armários
+			    </div>
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="comPendenciaArm" class=""> Com Pendência de armários
+			    </div>
+		    </div>
+
+			<div class="form-group row">
+
+				<div class="col-md-3">
+			    <label>Responsável pela atividade:</label>
+			    <input type="text" name="respEmp" id="respEmp" class="form-control" readonly="">
+			    </div>	
+
+
+				<div class="col-md-3">
+			    <label>Data:</label>
+			    <input type="date" name="dataArm" class="form-control" readonly="">
+			    </div>			    	
+
+		    </div>
+	    
+		</div>
+	
+	</div>	<br><br>
+
+	<!-- ********************* liberação de qualificação  ********************** -->	
+<div class="container 7" >
+	<br>
+		<div id="div_solicitante7" name="div_solicitante7">
+			<div class="form-group row">
+				<h3 align="center"><b>DEPTO. FINANCEIRO LIBERAÇÃO PARA QUALIFICAÇÃO E DEFESA</b></h3>		
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="exameQual" id="exameQual" class="" onclick="mostraDivLib()"> Exame Qualificação
+			    </div>
+
+			    <div class="col-md-12 divLibera hide" >
+			    <table>
+			    <tr>
+			    <td class="col-md-6 ">
+			    <input type="radio" onclick="mostraDivLib()" name="liberaQual" id="libSim" value="sim" class=""> Liberado
+			    </td>
+			    <td class="col-md-6 ">
+			    <input type="date" name="dataLibeQual" readonly="" id="dataLibeQual" value="" class="form-control" >
+			    </td>
+			    </tr>
+			    <tr>
+			    <td class="col-md-6 ">			    
+			    <input type="radio" onclick="mostraDivLib()" name="liberaQual" id="libNao" value="nao" class=""> Não Liberado
+			    </td>
+			    <td class="col-md-6 ">
+			    <input type="date" name="dataNoQual" readonly="" id="dataNoQual" value="" class="form-control" >	
+			    </td>
+			    </tr>			    
+			    </table>
+			    </div>
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="defesa" id="defesa" class="" onclick="mostraDivLib()"> Defesa
+			    </div>
+
+
+			    <div class="col-md-12 divDefesa hide">
+			    <table>
+			    <tr>
+			    <td class="col-md-6">
+			    <input type="radio" name="defesaRadio" value="sim" id="defLibera" class="" onclick="mostraDivLib()"> Liberado
+			    </td>
+			    <td class="col-md-6">
+			    <input type="date" readonly="" name="dataLibeDef" class="form-control" id="dataLibeDef">
+			    </td>
+			    </tr>
+			    <tr>
+			    <td class="col-md-6">			    
+			    <input type="radio" name="defesaRadio" value="nao" id="defNaoLibera" class="" onclick="mostraDivLib()"> Não Liberado
+			    </td>
+			    <td class="col-md-6">
+			    <input type="date" readonly="" name="dataNoDef" class="form-control" id="dataNoDef">	
+			    </td>
+			    </tr>			    
+			    </table>
+			    </div>
+
+			    <div class="col-md-12">
+			    <input type="checkbox" name="naoUtiliza" class=""> Não utilizado por este curso
+			    </div>
+
+		    </div>
+
+			<div class="form-group row">
+				<div class="col-md-3">
+			    <label>Responsável pela atividade:</label>
+			    <input type="text" name="responsavelQuali" class="form-control" readonly="">
+			    </div>	
+
+				<div class="col-md-3">
+			    <label>Data de movimento da tarefa:</label>
+			    <input type="text" name="dataDef" class="form-control" readonly="">
+			    </div>			    		    	
+
+
+
+		    </div>
+		</div>
+	</div><br><br>
+</form>
+
+</div>
+</body>
+</html>

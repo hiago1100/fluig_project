@@ -1,0 +1,839 @@
+<html>
+
+<head>
+
+    <!-- Css y Scripts Fluig -->
+    <link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+    <script src="/portal/resources/js/jquery/jquery.js"></script>
+    <script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+
+    <!-- Css y Scripts Arq -->
+    <link rel="stylesheet" type="text/css" href="/arq-marvin-v1/ui/arq-marvin-ui.min.css">
+    <script src="/arq-marvin-v1/ui/arq-marvin-ui.min.js"></script>
+
+    <!-- Links Custom -->
+    <script type="text/javascript" src="tst_custom.js"></script>
+    <script type="text/javascript" src="jquery.mask.js"></script>
+    <script type="text/template" class="suggestion-template-colleague">
+        <div style="display:inline-block; width:100%">
+			<img height="100%" src="/social/api/rest/social/image/profile/{{colleagueId}}/X_SMALL_PICTURE" alt="{{colleagueName}}">&ensp;&ensp;{{colleagueName}}
+		</div>
+	</script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="preencheCampos.js" charset="utf-8"></script>
+    <style type="text/css">
+        /* fieldset*/
+        .bs-box {
+            border-color: #e5e5e5 #eee #eee;
+            border-style: solid;
+            border-width: 1px 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05) inset;
+            margin: 0 -15px 15px;
+            padding: 45px 15px 15px;
+            position: relative;
+        }
+
+        .bs-box:after {
+            color: #959595;
+            content: "";
+            font-size: 12px;
+            font-weight: 700;
+            left: 15px;
+            letter-spacing: 1px;
+            position: absolute;
+            text-transform: uppercase;
+            top: 15px;
+        }
+
+        .bs-box+.highlight {
+            border-radius: 0;
+            border-width: 0 0 1px;
+            margin: -15px -15px 15px;
+        }
+
+        @media (min-width: 768px) {
+            .bs-box {
+                background-color: #fff;
+                border-color: #ddd;
+                border-radius: 4px 4px 0 0;
+                border-width: 1px;
+                box-shadow: none;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .bs-box+.highlight {
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                border-width: 1px;
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: -16px;
+            }
+        }
+
+        .bs-box .container {
+            width: auto;
+        }
+
+        /* box tabs*/
+        .bs-box-tabs {
+            border-color: #e5e5e5 #eee #eee;
+            border-style: solid;
+            border-width: 1px 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05) inset;
+            margin: 0 -15px 15px;
+            padding: 45px 15px 15px;
+            position: relative;
+        }
+
+        .bs-box-tabs:after {
+            color: #959595;
+            content: "";
+            font-size: 12px;
+            font-weight: 700;
+            left: 15px;
+            letter-spacing: 1px;
+            position: absolute;
+            text-transform: uppercase;
+            top: 15px;
+        }
+
+        .bs-box-tabs+.highlight {
+            border-radius: 0;
+            border-width: 0 0 1px;
+            margin: -15px -15px 15px;
+        }
+
+        @media (min-width: 768px) {
+            .bs-box-tabs {
+                background-color: #fff;
+                border-color: #ddd;
+                border-radius: 4px 4px 0 0;
+                border-width: 1px;
+                box-shadow: none;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .bs-box-tabs+.highlight {
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                border-width: 1px;
+                margin-left: 0;
+                margin-right: 0;
+                margin-top: -16px;
+            }
+        }
+
+        .bs-box-tabs .container {
+            width: auto;
+        }
+
+        fieldset {
+            margin-top: 20px;
+        }
+
+        .title {
+            margin-bottom: 15px;
+        }
+
+        #logo {
+            width: auto;
+        }
+
+        legend {
+            -moz-border-bottom-colors: none;
+            -moz-border-left-colors: none;
+            -moz-border-right-colors: none;
+            -moz-border-top-colors: none;
+            border-color: -moz-use-text-color -moz-use-text-color #e5e5e5;
+            border-image: none;
+            border-style: none none solid;
+            border-width: 0 0 1px;
+            color: #FF9900;
+            display: block;
+            font-size: 15px;
+            line-height: inherit;
+            margin-bottom: 20px;
+            padding: 0;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        span.help-block:empty {
+            display: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+
+
+        <div class="container">
+            <div class="row title">
+                <div class="col-md-2"><img src="logo_tiger-01.png" width="200px"></div>
+            </div>
+            <div class="row title">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <h2>Limpeza de Equipamentos</h2>
+                </div>
+            </div>
+            <br>
+            <ul class="nav nav-pills nav-justified">
+                <li id="li1"><a data-toggle="tab" href="#home">Inicial</a></li>
+                <li id="li3"><a data-toggle="tab" href="#menu2">Descontaminação</a></li>
+                <li id="li5"><a data-toggle="tab" href="#menu4">Manutenção</a></li>
+                <li id="li6"><a data-toggle="tab" href="#menu5">Pintura</a></li>
+                <li id="li7"><a data-toggle="tab" href="#menu6">Certificações</a></li>
+                <li id="li8"><a data-toggle="tab" href="#menu7">Inspeção Final</a></li>
+            </ul>
+            <br>
+            <form class="form-horizontal" name="arqForm" id="arqForm" role="form">
+                <input type="hidden" id="__error" name="__error">
+                <div class="tab-content">
+                    <div id="home" class="tab-pane active ">
+                        <div class="bs-box-tabs" id="tabs">
+                            <legend>Identificação</legend>
+
+                            <div class="form-group">
+                                <label for="empresa" class="col-md-2 control-label">Empresa:</label>
+                                <div class="col-md-1">
+                                    <select id="empresa" name="empresa" class="form-control desabilitaAba01">
+                                        <option value="06">06</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="04">04</option>
+                                        <option value="07">07</option>
+                                    </select>
+                                </div>
+                                <div class="label-field">
+                                    <label for="filial" class="col-md-1 control-label">Filial:</label>
+                                    <div class="col-md-3">
+                                        <input type="text" name="filial" id="filial" class="form-control desabilitaAba01 filial" value="TIGER - MACAE">
+                                        <input type="hidden" name="codfilial" id="codfilial" class="form-control desabilitaAba01 codfilial" value="0602">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="nunSerie" class="col-md-2  col-sm-2 col-xs-2 control-label ">Nº de Série:</label>
+                                <div class="col-md-2">
+                                    <input type="text" name="nunSerie" id="nunSerie" class="form-control desabilitaAba01">
+                                </div>
+                                <div class="label-field">
+                                    <label for="dataRecebimento" class="col-md-2  col-sm-2 col-xs-2 control-label">Data de Recebimento:</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="dataRecebimento" id="dataRecebimento" class="form-control " readonly="readonly">
+                                    </div>
+                                </div>
+                                <div class="label-field">
+                                    <label for="nunOs" class="col-md-1  col-sm-2 col-xs-2 control-label">OS:</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="nunOs" id="nunOs" class="form-control" readonly="readonly">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="modelo" class="col-md-2  col-sm-2 col-xs-2 control-label">Modelo:</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="modelo" id="modelo" class="form-control " readonly="readonly">
+                                </div>
+                                <label for="receita" class="col-sm-1 control-label">Receita:</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" name="receita" id="receita">
+                                    <input type="hidden" class="form-control" name="codReceita" id="codReceita">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nomeDoCliente" class="col-md-2  col-sm-2 col-xs-2 control-label">Nome do Cliente:</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="nomeDoCliente" id="nomeDoCliente" class="form-control" readonly="readonly">
+                                    <input type="hidden" name="codNomeCliente" id="codNomeCliente" class="form-control" readonly="readonly">
+                                </div>
+                                <div class="label-field">
+                                    <label for="nf" class="col-md-1  col-sm-2 col-xs-2 control-label">NF:</label>
+                                    <div class="col-md-4">
+                                        <input type="text" name="nf" id="nf" class="form-control" readonly="readonly">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tipoOs" class="col-md-2 control-label desabilitaAba01">Tipo:</label>
+                                <div class="col-md-4">
+                                    <label class="radio-inline"><input type="radio" name="tipoOs" value="devolucao">Devolução/novo</label>
+                                    <label class="radio-inline"><input type="radio" name="tipoOs" value="servico">Serviço</label>
+                                    <label class="radio-inline"><input type="radio" name="tipoOs" value="locacao">Nova Locação</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inspetor" class="col-md-2  col-sm-2 col-xs-2 control-label">Inspetor:</label>
+                                <div class="col-md-4">
+                                    <input type="text" name="inspetor" id="inspetor" class="form-control desabilitaAba01">
+                                </div>
+
+                            </div>
+                            <input type="hidden" name="validaTipo" id="validaTipo" class="form-control">
+                            <div class="form-group">
+                                <label for="avariasTanque" class="col-md-4 control-label ">Há avarias no equipamento?</label>
+                                <div class="col-md-8">
+                                    <label class="radio-inline"><input type="radio" name="avariasTanque" value="sim">Sim</label>
+                                    <label class="radio-inline"><input type="radio" name="avariasTanque" value="nao">Não</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="perdaTotal" class="col-md-4 control-label">Houve perda Total?</label>
+                                <div class="col-md-8">
+                                    <label class="radio-inline"><input type="radio" name="perdaTotal" value="sim">Sim</label>
+                                    <label class="radio-inline"><input type="radio" name="perdaTotal" value="nao">Não</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="valorFranquia" class="col-md-4 control-label">Avarias vão ultrapassar o valor da franquia?</label>
+                                <div class="col-md-8">
+                                    <label class="radio-inline"><input type="radio" name="valorFranquia" value="sim">Sim</label>
+                                    <label class="radio-inline"><input type="radio" name="valorFranquia" value="nao">Não</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="aprovadoCliente" class="col-md-4 control-label">Cobrança aprovada pelo cliente?</label>
+                                <div class="col-md-8">
+                                    <label class="radio-inline"><input type="radio" name="aprovadoCliente" value="sim">Sim</label>
+                                    <label class="radio-inline"><input type="radio" name="aprovadoCliente" value="nao">Não</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="realizaManu" class="col-md-4 control-label">Realizar manutenção?</label>
+                                <div class="col-md-8">
+
+                                    <label class="checkbox-inline"><input type="checkbox" class="desabilitaAba01" name="Funcionalidade" value="Funcionalidade">Funcionalidade</label>
+                                    <label class="checkbox-inline"><input type="checkbox" class="desabilitaAba01" name="estrutura" value="estrutura">Estrutura</label>
+                                    <label class="checkbox-inline"><input type="checkbox" class="desabilitaAba01" name="tampa" value="tampa">Porta/tampa</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Realiza manutenção? Outros acessórios?</label>
+                                <div class="col-md-4">
+                                    <textarea class="form-control desabilitaAba01" id="descRealizamanutencao" name="descRealizamanutencao"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="segregarIBC" class="col-md-4  col-sm-2 col-xs-2 control-label"></label>
+                                <div class="col-md-8">
+                                    <label class="radio-inline"><input type="radio" name="segregarIBC" value="sim">Segregar o tanque e informar cliente</label>
+                                    <label class="radio-inline"><input type="radio" name="segregarIBC" value="nao">Descartar para posterior destinação</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="objResiduo" class="col-md-4  col-sm-2 col-xs-2 control-label">Objetos/Residuo no interior do equipamento?</label>
+                                <div class="col-md-8">
+                                    <label class="radio-inline"><input type="radio" name="objResiduo" value="sim">Sim</label>
+                                    <label class="radio-inline"><input type="radio" name="objResiduo" value="nao">Não</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="necessitaLavagem" class="col-md-4  col-sm-2 col-xs-2 control-label">Necessita descontaminação / Lavagem?</label>
+                                <div class="col-md-8">
+                                    <label class="radio-inline"><input type="radio" name="necessitaLavagem" value="sim">Sim</label>
+                                    <label class="radio-inline"><input type="radio" name="necessitaLavagem" value="nao">Não</label>
+                                </div>
+                            </div>
+
+                            <br>
+                            <legend>Testes</legend>
+                            <div class="form-group">
+                                <label for="dataInspecaoVisual" class="col-md-2  col-sm-2 col-xs-2 control-label">Data da próxima inspeção visual:</label>
+                                <div class="col-md-2">
+                                    <input type="text" name="dataInspecaoVisual" id="dataInspecaoVisual" class="form-control desabilitaAba01">
+                                    <input type="hidden" name="validadeInspecaoVisual" id="validadeInspecaoVisual">
+                                </div>
+                                <div class="label-field">
+                                    <label for="efetuarInpesaoVisual" class="col-md-2  col-sm-2 col-xs-2 control-label">Efetuar inpeção visual:</label>
+                                    <div class="col-md-4">
+                                        <label class="radio-inline"><input type="radio" name="efetuarInpesaoVisual" value="sim">Sim</label>
+                                        <label class="radio-inline"><input type="radio" name="efetuarInpesaoVisual" value="nao">Não</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="dataParticulaMagnetica" class="col-md-2  col-sm-2 col-xs-2 control-label">Data do próximo teste de partícula magnética:</label>
+                                <div class="col-md-2">
+                                    <input type="text" name="dataParticulaMagnetica" id="dataParticulaMagnetica" class="form-control desabilitaAba01">
+                                    <input type="hidden" name="validadeMagnetico" id="validadeMagnetico">
+                                </div>
+                                <div class="label-field">
+                                    <label for="testeParticulaMagnetica" class="col-md-2  col-sm-2 col-xs-2 control-label">Efetuar teste de particula magnética:</label>
+                                    <div class="col-md-4">
+                                        <label class="radio-inline"><input type="radio" name="testeParticulaMagnetica" value="sim">Sim</label>
+                                        <label class="radio-inline"><input type="radio" name="testeParticulaMagnetica" value="nao">Não</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu2" class="tab-pane">
+                        <div class="bs-box-tabs" id="tabs">
+                            <div class="form-group" id="alertaDescontaminacao">
+                                <div class="col-md-2"></div>
+                                <div class="alert alert alert-success">
+                                    <strong>Fila Descontaminação!</strong> Para iniciar Desontaminação favor movimentar para a proxima atividade.
+                                </div>
+                            </div>
+                            <div id="filaDescontaminacao">
+
+                                <legend>Descontaminação</legend>
+                                <br>
+                                <div class="form-group">
+                                    <label for="dataDescontaminacao" class="col-md-2 control-label desabilitaAba03">Data:</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="dataDescontaminacao" id="dataDescontaminacao" class="form-control desabilitaAba03" readonly="readonly">
+                                    </div>
+                                    <div class="label-field">
+                                        <label for="RespnsavelDesconta" class="col-md-3  col-sm-2 col-xs-2 control-label">Operador Responsável:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" name="RespnsavelDesconta" id="RespnsavelDesconta" class="form-control desabilitaAba03">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="menu4" class="tab-pane">
+                        <div class="bs-box-tabs" id="tabs">
+                            <div class="form-group" id="alertaManutencao">
+                                <div class="col-md-2"></div>
+                                <div class="alert alert alert-success">
+                                    <strong>Fila Manutenção!</strong> Para iniciar Manutenção favor movimentar para a proxima atividade.
+                                </div>
+                            </div>
+                            <div id="filaManutencao">
+                                <legend>peças/acessórios/produtos</legend>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-default pull-right desabilitaAba05" id="btnRequisicao">Novo Material</button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-condensed" id="tabelaRequisicao" tablename="tabelaRequisicao" noaddbutton="true" nodeletebutton="true">
+                                        <thead>
+                                            <tr>
+                                                <th width="20%"><label for="codigo">Código</label></th>
+                                                <th width="20%"><label for="servico">Serviço</label></th>
+                                                <th width="20%"><label for="trocarPor">Trocar Por</label></th>
+                                                <th width="10%"><label for="quantidadePeca">Qdt.</label></th>
+                                                <th width="10%"><label for="estoque">Estoque</label></th>
+                                                <th width="2%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control codigo desabilitaAba05" name="codcodigo" id="codcodigo">
+                                                        <label>Descrição do Codigo</label>
+                                                        <input type="text" class="form-control codigoDesc desabilitaAba05" name="codigo" id="codigo" readonly="readonly">
+
+                                                        <input type="hidden" class="form-control lStatus desabilitaAba05" name="lStatus" id="lStatus" readonly="readonly">
+
+                                                        <input type="hidden" class="form-control codigoIntegraServico desabilitaAba05" name="codigoIntegraServico" id="codigoIntegraServico" readonly="readonly">
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control Codservico  desabilitaAba05" name="Codservico" id="Codservico">
+                                                        <label>Descrição do Serviço</label>
+                                                        <input type="text" class="form-control servico espaco desabilitaAba05" name="servico" id="servico" readonly="readonly">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control trocarPor desabilitaAba05" name="codTrocarPor" id="codTrocarPor">
+                                                        <label>Descrição do Codigo</label>
+                                                        <input type="text" class="form-control trocarPordesc desabilitaAba05" name="trocarPor" id="trocarPor" readonly="readonly">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control desabilitaAba05 quantidadePeca" name="quantidadePeca" id="quantidadePeca">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control estoque desabilitaAba05" name="estoque" id="estoque" readonly="readonly">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group hidden-print">
+                                                        <div class="col-sm-12">
+                                                            <div class="pull-right">
+                                                                <span class="fluigicon fluigicon-trash deleteRow desabilitaAba05" title="Eliminar"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="form-group">
+                                    <label for="obs" class="col-md-1  col-sm-2 col-xs-2 control-label">OBS:</label>
+                                    <div class="col-md-10">
+                                        <textarea type="text" name="obs" id="obs" class="form-control desabilitaAba05" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="obs" class="col-md-1  col-sm-2 col-xs-2 control-label">OBS Inspeção:</label>
+                                    <div class="col-md-10">
+                                        <textarea type="text" name="obsInicial" id="obsInicial" class="form-control desabilitaAba05" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <br><br>
+                                <legend>Serviços</legend>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-default pull-right desabilitaAba05" id="btnServico">Novo Serviço</button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-condensed" id="tabelaServico" tablename="tabelaServico" noaddbutton="true" nodeletebutton="true">
+                                        <thead>
+                                            <tr>
+                                                <th width="30%"><label for="codExecutar">Serviços a Executar</label></th>
+                                                <th width="30%"><label for="servicoExrcutar">Serviço</label></th>
+                                                <th width="15%"><label for="horas">Horas</label></th>
+                                                <th width="20%"><label for="responsavelExecutar">Responsável</label></th>
+                                                <th width="5%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control codEaxcutar desabilitaAba05" name="codExecutar" id="codExecutar">
+                                                        <label>Descrição</label>
+                                                        <input type="text" class="form-control descricaoExecutar desabilitaAba05" name="descricaoExecutar" id="descricaoExecutar" readonly="readonly">
+                                                        <input type="hidden" class="form-control codIntegra desabilitaAba05" name="codIntegra" id="codIntegra" readonly="readonly">
+                                                    </div>
+                                                </td>
+
+
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control  desabilitaAba05 codServivoExecutar " name="codServivoExecutar" id="codServivoExecutar">
+                                                        <label>Descrição Serviço</label>
+                                                        <input type="text" class="form-control  desabilitaAba05 servicoExrcutar" name="servicoExrcutar" id="servicoExrcutar">
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control  desabilitaAba05 horas" name="horas" id="horas" value="00:00">
+                                                        <input type="hidden" class="form-control  desabilitaAba05" name="horasDecimal" id="horasDecimal">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control desabilitaAba05 desabilidaManu" name="responsavelExecutar" id="responsavelExecutar">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group hidden-print">
+                                                        <div class="col-sm-12">
+                                                            <div class="pull-right">
+                                                                <span class="fluigicon fluigicon-trash deleteRow desabilitaAba05" title="Eliminar"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu5" class="tab-pane">
+                        <div class="bs-box-tabs" id="tabs">
+                            <div class="form-group" id="alertaPintura">
+                                <div class="col-md-2"></div>
+                                <div class="alert alert alert-success">
+                                    <strong>Fila Pintura!</strong> Para iniciar Pintura favor movimentar para a proxima atividade.
+                                </div>
+                            </div>
+                            <div id="filaPintura">
+                                <legend>Pintura</legend>
+                                <br>
+                                <div class="form-group">
+                                    <label for="dataPintura" class="col-md-2 control-label desabilitaAba01">Data:</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="dataPintura" id="dataPintura" class="form-control" readonly="readonly">
+                                    </div>
+                                    <div class="label-field">
+                                        <label for="responsavelPintura" class="col-md-3  col-sm-2 col-xs-2 control-label">Operador Responsável:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" name="responsavelPintura" id="responsavelPintura" class="form-control desabilitaAba06">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu6" class="tab-pane">
+                        <div class="bs-box-tabs" id="tabs">
+                            <div class="form-group" id="alertaCertifica">
+                                <div class="col-md-2"></div>
+                                <div class="alert alert alert-success">
+                                    <strong>Fila Certificaçao!</strong> Para iniciar Certificação favor movimentar para a proxima atividade.
+                                </div>
+                            </div>
+                            <div id="filaCertifica">
+                                <legend>Certificações</legend>
+                                <input type="hidden" name="validacampo" id="validacampo" class="form-control" readonly="readonly">
+                                <br>
+                                <div class="form-group">
+                                    <label for="prximaInspecaoVisualCert" class="col-md-2 control-label ">Data da próxima inspeção visual:</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="prximaInspecaoVisualCert" id="prximaInspecaoVisualCert" class="form-control" readonly="readonly">
+                                    </div>
+                                    <div class="label-field">
+                                        <label for="inpecaoVisualCert" class="col-md-3  col-sm-2 col-xs-2 control-label">Efetuar inspeção visual:</label>
+                                        <div class="col-md-2">
+                                            <label class="radio-inline"><input type="radio" name="inpecaoVisualCert" value="sim">Sim</label>
+                                            <label class="radio-inline"><input type="radio" name="inpecaoVisualCert" value="nao">Não</label>
+                                        </div>
+                                    </div>
+                                    <div class="label-field">
+                                        <label for="dataInspeVisual" class="col-md-1  col-sm-1 col-xs-1 control-label">Data:</label>
+                                        <div class="col-md-2">
+                                            <input type="text" name="dataInspeVisual" id="dataInspeVisual" class="form-control desabilitaAba07">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dataPaticulaMagCert" class="col-md-2 control-label desabilitaAba01">Data do próximo teste de particula magnética:</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="dataPaticulaMagCert" id="dataPaticulaMagCert" class="form-control" readonly="readonly">
+                                    </div>
+                                    <div class="label-field">
+                                        <label for="inpecaoPartiMagCert" class="col-md-3  col-sm-2 col-xs-2 control-label">Efetuar teste de particula magnética:</label>
+                                        <div class="col-md-2">
+                                            <label class="radio-inline"><input type="radio" name="inpecaoPartiMagCert" value="sim">Sim</label>
+                                            <label class="radio-inline"><input type="radio" name="inpecaoPartiMagCert" value="nao">Não</label>
+                                        </div>
+                                    </div>
+                                    <div class="label-field">
+                                        <label for="dataMagnetica" class="col-md-1  col-sm-1 col-xs-1 control-label">Data:</label>
+                                        <div class="col-md-2">
+                                            <input type="text" name="dataMagnetica" id="dataMagnetica" class="form-control desabilitaAba07">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <legend>Serviços</legend>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-default pull-right desabilitaAba07" id="btnServicoAb7">Novo Serviço</button>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-condensed" id="tabelaServicoAb7" tablename="tabelaServicoAb7" noaddbutton="true" nodeletebutton="true">
+                                        <thead>
+                                            <tr>
+                                                <th width="30%"><label for="codExecutar">Serviços a Executar</label></th>
+                                                <th width="30%"><label for="servicoExrcutar">Serviço</label></th>
+                                                <th width="15%"><label for="horas">Horas</label></th>
+                                                <!--th width="20%"><label for="responsavelExecutar">Responsável</label></th-->
+                                                <!--th width="5%"></th-->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control desabilitaAba07 codEaxcutarAb7" name="codEaxcutarAb7" id="codEaxcutarAb7">
+                                                        <input type="text" class="form-control desabilitaAba07 descricaoExecutarAb7" name="descricaoExecutarAb7" id="descricaoExecutarAb7" readonly="readonly">
+                                                        <input type="hidden" class="form-control codIntegraAb7" name="codIntegraAb7" id="codIntegraAb7" readonly="readonly">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control desabilitaAba07 codServivoExecutarAb7 " name="codServivoExecutarAb7" id="codServivoExecutarAb7">
+                                                        <input type="text" class="form-control desabilitaAba07 servicoExrcutarAb7" name="servicoExrcutarAb7" id="servicoExrcutarAb7" readonly="readonly">
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control desabilitaAba07 horasAb7" name="horasAb7" id="horasAb7">
+                                                        <input type="hidden" class="form-control" desabilitaAba07 name="horasDecimalAb7" id="horasDecimalAb7">
+                                                    </div>
+                                                </td>
+                                                <!--td>
+                                                    <div class="label-field">
+                                                        <input type="text" class="form-control desabilitaAba05 desabilidaManu" name="responsavelExecutarAb7" id="responsavelExecutarAb7">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group hidden-print">
+                                                        <div class="col-sm-12">
+                                                            <div class="pull-right">
+                                                                <span class="fluigicon fluigicon-trash deleteRow desabilitaAba05" title="Eliminar"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td-->
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="dataCertifica" class="col-md-2 control-label desabilitaAba07">Data:</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="dataCertifica" id="dataCertifica" class="form-control desabilitaAba07">
+                                    </div>
+                                    <div class="label-field">
+                                        <label for="responsavelCertifica" class="col-md-3  col-sm-2 col-xs-2 control-label">Operador Responsável:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" name="responsavelCertifica" id="responsavelCertifica" class="form-control desabilitaAba07">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu7" class="tab-pane">
+                        <div class="bs-box-tabs" id="tabs">
+                            <div class="form-group" id="alertaInspecaoFinal">
+                                <div class="col-md-2"></div>
+                                <div class="alert alert alert-success">
+                                    <strong>Fila Inspeção Final!</strong> Para iniciar Inspeção Final favor movimentar para a proxima atividade.
+                                </div>
+                            </div>
+                            <div id="filaInspecaoFinal">
+                                <legend>Inspeção Final</legend>
+                                <div class="form-group">
+                                    <label for="identificaCodigoBrras" class="col-md-4  col-sm-2 col-xs-2 control-label">Placa de identificação e código de barras:</label>
+                                    <div class="col-md-4">
+                                        <label class="radio-inline"><input type="radio" name="identificaCodigoBrras" value="sim">Ok</label>
+                                        <label class="radio-inline"><input type="radio" name="identificaCodigoBrras" value="nao">NC</label>
+                                    </div>
+                                </div>
+                                <legend></legend>
+                                <div class="form-group">
+                                    <label for="identificaCodigoBrras" class="col-md-6  col-sm-2 col-xs-2 control-label">Datas de validade descritas nas placas correspondem com o sistema?</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="identificaCodigoBrras" class="col-md-3  col-sm-2 col-xs-2 control-label">Inspeção Visual:</label>
+                                    <div class="col-md-2">
+                                        <label class="radio-inline"><input type="radio" name="inspecaoVisualFinal" value="sim">Ok</label>
+                                        <label class="radio-inline"><input type="radio" name="inspecaoVisualFinal" value="nao">NC</label>
+                                    </div>
+                                    <div class="label-field">
+                                        <label for="dataInspecaoVisualAba5" class="col-md-1  col-sm-1 col-xs-1 control-label">Data:</label>
+                                        <div class="col-md-2">
+                                            <input type="text" name="dataInspecaoVisualAba5" id="dataInspecaoVisualAba5" class="form-control desabilitaAba04" readonly="readonly">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="particulaMagnatica" class="col-md-3  col-sm-2 col-xs-2 control-label">Teste de particula Magnética:</label>
+                                    <div class="col-md-2">
+                                        <label class="radio-inline"><input type="radio" name="particulaMagnatica" value="sim">Ok</label>
+                                        <label class="radio-inline"><input type="radio" name="particulaMagnatica" value="nao">NC</label>
+                                    </div>
+                                    <div class="label-field">
+                                        <label for="dataParticulaMagAba5" class="col-md-1  col-sm-1 col-xs-1 control-label">Data:</label>
+                                        <div class="col-md-2">
+                                            <input type="text" name="dataParticulaMagAba5" id="dataParticulaMagAba5" class="form-control desabilitaAba04" readonly="readonly">
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <legend></legend>
+                                <div class="form-group">
+                                    <label for="adesivosTigerRentank" class="col-md-5  col-sm-2 col-xs-2 control-label">Adesivos Tiger Rentank e, adesivos de advertência:</label>
+                                    <div class="col-md-4">
+                                        <label class="radio-inline"><input type="radio" name="adesivosTigerRentank" value="sim">Ok</label>
+                                        <label class="radio-inline"><input type="radio" name="adesivosTigerRentank" value="nao">NC</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="numeracaoIdentificacao" class="col-md-5  col-sm-2 col-xs-2 control-label">Numeração e identificação:</label>
+                                    <div class="col-md-4">
+                                        <label class="radio-inline"><input type="radio" name="numeracaoIdentificacao" value="sim">Ok</label>
+                                        <label class="radio-inline"><input type="radio" name="numeracaoIdentificacao" value="nao">NC</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="deformacaoNaEstrutura" class="col-md-5  col-sm-2 col-xs-2 control-label">Deformações na estrutura?</label>
+                                    <div class="col-md-4">
+                                        <label class="radio-inline"><input type="radio" name="deformacaoNaEstrutura" value="sim">Ok</label>
+                                        <label class="radio-inline"><input type="radio" name="deformacaoNaEstrutura" value="nao">NC</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="estruturaApresentaCorrosao" class="col-md-5  col-sm-2 col-xs-2 control-label">Estrutura, Fundo do equipamento, Elementos de fixação ou outro acessórios apresentam corrosão?</label>
+                                    <div class="col-md-4">
+                                        <label class="radio-inline"><input type="radio" name="estruturaApresentaCorrosao" value="sim">Ok</label>
+                                        <label class="radio-inline"><input type="radio" name="estruturaApresentaCorrosao" value="nao">NC</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="operaTampaDobradicas" class="col-md-5  col-sm-2 col-xs-2 control-label">Operacionalidade das portas, tampas e dobradiças?</label>
+                                    <div class="col-md-4">
+                                        <label class="radio-inline"><input type="radio" name="operaTampaDobradicas" value="sim">Ok</label>
+                                        <label class="radio-inline"><input type="radio" name="operaTampaDobradicas" value="nao">NC</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="livreEmpinhadeira" class="col-md-5  col-sm-2 col-xs-2 control-label"> Livre de objetos soltos na estrutura, no interior do equipamento ou guia de empilhadeira?</label>
+                                    <div class="col-md-4">
+                                        <label class="radio-inline"><input type="radio" name="livreEmpinhadeira" value="sim">Ok</label>
+                                        <label class="radio-inline"><input type="radio" name="livreEmpinhadeira" value="nao">NC</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="pinturaRefletiva" class="col-md-5  col-sm-2 col-xs-2 control-label">Pintura refletiva?</label>
+                                    <div class="col-md-4">
+                                        <label class="radio-inline"><input type="radio" name="pinturaRefletiva" value="sim">Ok</label>
+                                        <label class="radio-inline"><input type="radio" name="pinturaRefletiva" value="nao">NC</label>
+                                    </div>
+                                </div>
+                                <legend></legend>
+                                <div class="form-group">
+                                    <label for="dataInpesaoFinal" class="col-md-2 control-label desabilitaAba01">Data:</label>
+                                    <div class="col-md-2">
+                                        <input type="text" name="dataCertdataInpesaoFinalifica" id="dataInpesaoFinal" class="form-control" readonly="readonly">
+                                    </div>
+                                    <div class="label-field">
+                                        <label for="responsavelInspesaoFinal" class="col-md-3  col-sm-2 col-xs-2 control-label">Operador Responsável:</label>
+                                        <div class="col-md-4">
+                                            <input type="text" name="responsavelInspesaoFinal" id="responsavelInspesaoFinal" class="form-control desabilitaAba04">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

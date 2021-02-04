@@ -1,0 +1,685 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet"
+  href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+<script type="text/javascript"
+  src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript"
+  src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript"
+  src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript"
+  src="/portal/resources/style-guide/js/fluig-style-guide.min.js"
+  charset="utf-8"></script>
+
+<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+
+<link rel="stylesheet" type="text/css" href="select2.min.css">
+<script type="text/javascript" src="select2.min.js"></script>
+<script type="text/javascript" src="main.js" charset="utf-8"></script>
+
+<!-- Css y Scripts Arq -->
+<link rel="stylesheet" type="text/css"
+  href="/arq-marvin-v1/ui/arq-marvin-ui.min.css">
+<script src="/arq-marvin-v1/ui/arq-marvin-ui.min.js"></script>
+
+<style>
+.form-group {
+  float: left;
+  width: 100%;
+}
+
+.select2-container {
+  width: 370px !important;
+}
+
+*[readonly="readonly"], *[disabled="disabled"],
+  .select2-container--disabled li span {
+  color: #000 !important;
+}
+
+.select2-container ul li, .select2-container ul span,
+  .select2-container--default .select2-selection--multiple .select2-selection__choice>span
+  {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice
+  {
+  background-color: #777;
+  border: solid 1px #5e5e5e;
+  color: white;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice.conflict
+  {
+  background-color: #a00e0e;
+}
+
+.conflict {
+  background-color: #a00e0e;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice>span
+  {
+  color: white;
+}
+
+.fluig-style-guide .bootstrap-tagsinput .tag .tag-text {
+  font-weight: 100;
+}
+
+.fluig-style-guide .tab-content {
+  float: left;
+  width: 100%;
+  border: solid 1px #ddd;
+  border-top: none;
+}
+
+.fluigicon-trash {
+  display: none !important;
+}
+
+.Bcolor {
+  background-color: #FFFACD;
+  height: 80px;
+}
+
+.mostraMod {
+  align-contet: center;
+}
+
+#menu2 .tab-content {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+#menu2 .tab-content {
+  color: white;
+  background-color: #E0FFFF;
+  padding: 5px 15px;
+}
+
+.grupoSetado {
+  color: #0000FF;
+}
+
+
+#imgConflito{
+visibility:hidden;
+margin-left: 16px;
+}
+
+/*button.valordoDia {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 15px;
+ color: #050505;
+ padding: 10px 20px;
+ background: -webkit-gradient(
+  linear, left top, left bottom,
+  from(#D6D6D6),
+  color-stop(0.0, #ffffff),
+  to(#d6d6d6));
+ -moz-border-radius: 10px;
+ -webkit-border-radius: 10px;
+ border-radius: 10px;
+ border: 1px solid #a69fa6;
+ -moz-box-shadow:
+  0px 1px 3px rgba(000,000,000,0.5),
+  inset 0px 0px 48px rgba(192,192,192,1);
+ -webkit-box-shadow:
+  0px 1px 3px rgba(000,000,000,0.5),
+  inset 0px 0px 48px rgba(192,192,192,1);
+ box-shadow:
+  0px 1px 3px rgba(000,000,000,0.5),
+  inset 0px 0px 48px rgba(192,192,192,1);
+ text-shadow:
+  0px -2px 0px rgba(82,69,82,0),
+  0px 1px 0px rgba(255,255,255,1);
+}
+*/
+</style>
+
+</head>
+<body onload="ReadInputArea()">
+  <div class="fluig-style-guide">
+    <form name="form" role="form" id="form">
+
+        <input class="hide" type="text" name="cont_aprovador" id="cont_aprovador" /> 
+        <input type="text" class="hide" name="recebeCod"  id="recebeCod"> 
+         <input type="text" class="hide" name="recebeCod1"  id="recebeCod1"> 
+        <input type="text" class="hide" name="codDoGrupo" id="codDoGrupo"> 
+        <input type="text" name="cont" id="cont" class="hide" value="0"> 
+        <input type="text" name="incluirOk" class="hide" id="incluirOk" value="">
+         <input type="text" name="recebeContAux" class="hide" id="recebeContAux" value="0">
+          <input type="text" class="hide" name="NomUserResptrick" id="NomUserResptrick">
+          <input type="text" class="hide" name="semGestor" id="semGestor">
+          <input type="text" class="hide" name="aprovacaoProg" id="aprovacaoProg">
+          <input type="text" class="hide" name="obsIndex" id="obsIndex">
+          <input type="text" class="hide" name="validaConflito" id="validaConflito">
+
+          <input  type="radio" name="aprova" value="sim" class="aprova hide">
+          <input  type="radio" name="aprova" value="nao" class="aprova hide">  
+
+           
+          <input type="text" class="hide" name="servicoIntegracao" id="servicoIntegracao">
+          <input type="text" class="hide" name="urlIntegracao" id="urlIntegracao">
+          <input type="text" class="hide" name="userIntegracao" id="userIntegracao">
+              
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row text-center">
+        <h2 style="margin-bottom: 15px;">Controle de Acessos</h2>
+      </div>
+      <input type="text" class="hide" name="temConflito" id="temConflito" />
+      <br></br>
+      <div id="menu" class="row-fluid">
+        <ul class="nav nav-tabs nav-justified">
+          <li id="li1" class="active"><a href="#tab1" data-toggle="tab">Controle
+              Acessos</a></li>
+          <li id="li2"><a href="#tab2" data-toggle="tab">Observações</a></li>
+        </ul>
+      </div>
+
+      <div class='tab-content'>
+        <div class="tab-pane active" id="tab1">
+
+     <div class="form-group">
+      <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="codigoEmpresa" class="control-label">Empresa</label>
+            <input type="text" class="form-control codigoEmpresa hide" name="codigoEmpresa" id="codigoEmpresa">
+            <input type="zoom" class="form-control nomeEmpresa" name="nomeEmpresa" id="nomeEmpresa"
+              data-zoom="{
+                'displayKey':'razaoSocial',                
+                'datasetId':'SGA-sql2dataset-empresas',                               
+                'fields':[
+                  {
+                    'field':'idLegEmpresa',
+                    'label':'Codigo'
+                  },{
+                    'field':'razaoSocial',
+                    'label':'Razão Social',
+                    'filterValues': 'razaoSocial',                                                           
+                    'standard':'true'
+                  }
+                ]
+              }"
+            />             
+          </div>    
+        </div>
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="matriculaSolicitante" class="control-label">Solicitante</label>
+                <input type="text"
+                  class="form-control matriculaSolicitante hide"
+                  name="matriculaSolicitante" id="matriculaSolicitante">
+                <input type="text" class="form-control nomeSolicitante"
+                  name="nomeSolicitante" id="nomeSolicitante" readonly>
+              </div>
+            </div>
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <label for="dataSolic" class="control-label">Data</label> <input
+                  type="text" class="form-control dataSolic" name="dataSolic"
+                  id="dataSolic" readonly>
+              </div>
+            </div>
+
+            <div class="label-field">
+              <div class="label-field">
+                <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
+                  <label for="horaSolic" class="control-label">Hora</label> <input
+                    type="text" class="form-control horaSolic" name="horaSolic"
+                    id="horaSolic" readonly>
+                </div>
+              </div>
+            </div>
+
+           
+          <div>
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 tiraStyle" style="margin-left:10%;margin-top:2%; " align="center">
+              <button type="button" class="btn btn-success btnAprov" name="aprov" id="aprov">Aprovar</button>
+            </div>
+          </div>
+          <div>
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 tiraStyle" style="margin-left:1%;margin-top:2%; " align="center">
+              <button type="button" class="btn btn-danger btnAprov" name="reprov" id="reprov">Reprovar</button>
+            </div>
+          </div>
+
+          
+          <div class="label-field selectDestino hide">
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+               <label for="selectDestino" class="control-label ">Enviar para</label> 
+                <select class="form-control" name="selectDestino" id="selectDestino">
+                  <option value='selecione'>-</option>
+                  <option value='0'>Solicitante</option>
+                  <option value='11'>Gestor Grupo</option>
+                  <option value='13'>Gestor da Informa&ccedil;&auml;o</option>
+                  <option value='17'>Gestor S.I.</option>
+                  <option value='25'>Integra&ccedil;&auml;o</option>
+                </select>
+            </div>
+          </div>
+        
+           <!-- Fim da criação dos botões de aprovação -->
+
+           
+          
+           </div>
+          
+            
+
+          <div class="clearfix"></div>
+
+          <div class="form-group"></div>
+
+
+
+          <div class="clearfix"></div>
+          <div class="form-group selecioneHid">
+            
+            <div class="label-field">
+               
+            <div class="col-md-4 ">
+            <label for="codGrupo" class="control-label">Grupo</label>
+            <input type="zoom" class="form-control codGrupo" name="codGrupo" id="codGrupo"
+              data-zoom="{
+                'displayKey': 'descAbrev',
+                'datasetId':'SGA-sql2dataset-busca-grupos',
+                'fields':[
+                  {
+                    'field':'idLegGrupo',
+                    'label':'Grupo',                                                         
+                    'standard':'true'
+                  },{
+                   'field':'descAbrev',
+                   'filterValues': 'desc_grupo',  
+                   'label':'Desc. Grupo' 
+                  }
+                ]
+              }"   
+            />
+            <input type="zoom" class="form-control codGrupoAux hide" name="codGrupoAux" id="codGrupoAux">                       
+         </div>
+            </div>  
+
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+              <label for="nomeGrupo" class="control-label">&nbsp;</label> <input
+                type="text" class="form-control nomeGrupo" name="nomeGrupo"
+                id="nomeGrupo" readonly> <input type="text"
+                class="form-control hide" name="idUsuario" id="idUsuario">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+              <label for="gestorGrupo" class="control-label">Gestor</label> <input
+                type="text" class="form-control gestorGrupo" name="gestorGrupo"
+                id="gestorGrupo" readonly> <input type="text"
+                class="hide" name="codGest" id="codGest">
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <div class="clearfix"></div>
+
+        </div>
+        <!-- AQUI AS DIVS QUE COMPOEM OS SUB-MENUS -->
+
+
+
+        <!-- INICIO DA OBS 1 -->
+        <div class="tab-pane" id="tab2">
+
+
+          <div class="table-responsive">
+    <table class="viaportaltab3" tablename="respoCham" id="respoCham" noaddbutton=true align="center">
+
+ <thead>
+
+  <tr>
+
+   <td></td>
+
+   <td></td>
+
+  </tr>
+
+ </thead>
+  
+  <tr>
+   
+   <td style="text-align:left;"><input class="form-control input-sm UsernamResp" type="text" id="NomUserResp" name="NomUserResp" readonly> <input type="text"  class="HoraResp" id="HoraResp" name="HoraResp" readonly>
+    
+    <textarea onfocus="getIDUserResp(this.id)" onblur="getID(this.id); ObsResponse(this.id);" class="form-control input-sm respArea" cols="64" type="text" rows="8" id="areaResp" name="areaResp"></textarea>
+
+
+  </td>
+
+   </tr>
+
+</table>
+<div align="center" class="btnrespContainer" id="btnrespContainer" name="btnrespContainer"><button class="btn btn-default" onclick="respbtn()">Resposta</button></div>
+
+
+
+
+
+
+          </div>
+        </div>
+        <!-- Fim da div tab-pane aba2 -->
+
+        <div class="tab-pane" id="tab3">
+
+          <br>
+
+          <div class="form-group">
+            <input type="text" class="hide" name="aba3Index" id="aba3Index">
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <button type="button" class="btn btn-default pull-right"
+                id="btnNovo3">Nova Observa&ccedil;&atilde;o</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-condensed"
+              id="tabelaAba3" tablename="tabelaAba3" noaddbutton="true"
+              nodeletebutton="true">
+              <thead>
+                <tr>
+                  <th width="100%"><label for="aba3Obs">Observa&ccedil;&atilde;o</label></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="limpaTR">
+                  <td width="100%">
+                    <div class="label-field">
+                      <input type="text" class="form-control aba3Obs"
+                        name="aba3Obs" id="aba3Obs">
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Fim da div tab-pane aba3 -->
+
+        <div class="tab-pane" id="tab5">
+          <br>
+
+          <div class="form-group">
+            <input type="text" class="hide" name="aba5Index" id="aba5Index">
+          </div>
+          <div class="form-group">
+            <div class="col-md-12">
+              <button type="button" class="btn btn-default pull-right"
+                id="btnNovo5">Nova Observa&ccedil;&atilde;o</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-condensed"
+              id="tabelaAba5" tablename="tabelaAba5" noaddbutton="true"
+              nodeletebutton="true">
+              <thead>
+                <tr>
+                  <th width="100%"><label for="aba5Obs">Observa&ccedil;&atilde;o</label></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="limpaTR">
+                  <td width="100%">
+                    <div class="label-field">
+                      <input type="text" class="form-control aba5Obs"
+                        name="aba5Obs" id="aba5Obs">
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- Fim da div tab-pane aba5 -->
+      </div>
+      <!-- Fim da div tab-content-->
+
+
+       <div id="menu2" class="tab-pane fade">
+
+          <div class="col-md-6">
+            <label for="programaInc" class="control-label">Programas
+              inclusão</label> 
+              
+                <input type="zoom" class="form-control programaInc" name="programaInc" id="programaInc"
+                 data-zoom="{
+                'displayKey': 'cod_programa',
+                'datasetId':'SGA-sql2dataset-programas-zoom',
+                'fields':[
+                  {
+                    'field':'cod_programa',
+                    'label':'Programa',                                                          
+                    'standard':'true'
+                  }
+                ]
+              }"
+            />  
+          </div>
+
+<!--           <table class="table table-striped" id="tabela_programas3"
+            customFnDelete="fnCustomDelete(this)"
+            tablename="tabela_programas3" noaddbutton="true"
+            style="width: 100%;">
+            <thead>
+              <tr>
+                <th class="col-sm-1">Retirar</th>
+                <th class="col-sm-2">Programa</th>
+                <th class="col-sm-3">Descrição Programa</th>
+                <th class="col-sm-2">C&oacute;d M&oacute;dulo</th>
+                <th class="col-sm-3">Gestor Informa&ccedil;&atilde;o</th>
+                <th class="col-sm-1"></th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="concat" id="concatAdd">
+                <td class="col-sm-1">
+                  <img onclick="fnCustomDelete(this)" src="rubbish-bin.png" style="cursor: pointer;">
+                </td>
+                <td class="col-sm-2"><input class="form-control"
+                  type="text" name="nomeProgAuxTwo" id="nomeProgAuxTwo" readonly />
+                  <input type="text" class="hide" name="codGestorModuloTwo" id="codGestorModuloTwo" />
+                </td>
+                <td class="col-sm-3"><input type="text"
+                  name="descProgAuxTwo" id="descProgAuxTwo" class="form-control"
+                  readonly></td>
+                <td class="col-sm-2"><input type="text"
+                  name="codModuloTwo" id="codModuloTwo" class="form-control"
+                  readonly></td>
+                <td class="col-sm-3">
+                    <input type="text" name="nomeGestorModuloTwo" id="nomeGestorModuloTwo" class="form-control" readonly>
+                    <input type="text" name="ZoomCodGestorModuloTwo" id="ZoomCodGestorModuloTwo" class="hide" />
+                    <div class="zoomGestor hide">
+                      <input type="zoom" class="form-control ZoomNomeGestorModuloTwo" name="ZoomNomeGestorModuloTwo" id="ZoomNomeGestorModuloTwo" 
+                            data-zoom="{
+                              'displayKey': 'nome_usuario',
+                              'datasetId':'ARY-sql2Dataset-gestorInfo',
+                              'fields':[
+                                {
+                                  'field':'cod_gestor',
+                                  'label':'Cod. Gestor',                                                         
+                                  'standard':'true'
+                                },{
+                                 'field':'nome_usuario', 
+                                 'filterValues':'nome_usuario',
+                                 'label':'Nome Gestor' 
+                                }
+                              ]
+                            }"            
+                        />  
+                      </div>  
+                </td>    
+                <td class="col-sm-1">
+                  <input type="checkbox" name="manterTwo" id="manterTwo" checked="" class="form-control checkInclusao hide" />
+                  <input type="text" class="form-control  validaCheck hide" name="validaCheck2" id="validaCheck2" readonly />
+                </td>
+              </tr>
+            </tbody>
+          </table> -->
+        </div>
+
+
+
+      <ul class="nav nav-tabs nav-justified"">
+        <li class="active"><a data-toggle="pill" href="#menu1"><span
+            id="contConfli" class="badge badge-danger"></span>Conflitos Pr&eacute;-Existentes</a></li>
+        <li><a data-toggle="pill" href="#menu3"><span
+            id="contaUser" class="badge badge-danger"></span> Usuários do grupo <span class="grupoSetado"> </span><img src="signs.png" width="20px;" id="imgConflito"></a></li>
+        <li><a data-toggle="pill" href="#home"><span id="contaProgramas" class="badge badge-danger"></span> Exclus&atilde;o de Programas
+            <span class="grupoSetado"></span>
+        </a></li>
+        <li><a data-toggle="pill" href="#menu2"><!--<span class="numProg badge badge-danger"></span> --> Adi&ccedil;&atilde;o de  Programas 
+        </a></li>
+      </ul>
+
+      <input type="text" class="hide" name="codProgramaCopiaAux"  id="codProgramaCopiaAux" /> 
+      <input type="text" class="hide" name="nomeProgramaCopiaAux" id="nomeProgramaCopiaAux" />
+      <input type="text" class="hide" name="codGestorModuloCopiaAux" id="codGestorModuloCopiaAux" />
+      <input type="text" class="hide" name="nomeGestorModuloCopiaAux" id="nomeGestorModuloCopiaAux" />
+      <input type="text" class="hide" name="codModuloCopiaAux" id="codModuloCopiaAux" />
+        
+        
+    <input type="text" class="hide" name="codProgramaRemoveAux" id="codProgramaRemoveAux" />
+    <input type="text" class="hide" name="descProgramaRemoveAux" id="descProgramaRemoveAux" />
+
+      <div class="tab-content">
+
+ 
+
+       
+        <div id="home" class="tab-pane fade">
+         
+          <div style="width: 100%; height: 300px; overflow-y: scroll;"
+            id="content">
+            <div class="col-md-6 hideZooms">
+            <label for="removeGrupo" class="control-label hideZooms">Exclusão de Programas</label>
+             <div class="removeGrupo">
+               <input type="zoom" class="form-control " name="removeGrupo" id="removeGrupo"
+                data-zoom="{
+                  'displayKey': 'cod_program',
+                  'datasetId':'SGA-sql2dataset-programa',
+                  'fields':[
+                    {
+                      'field':'cod_programa',
+                      'label':'Programa',                                                                         
+                      'standard':'true'                    
+                    },{
+                     'field':'descricao_programa',                    
+                     'label':'Desc. Programa' 
+                    }
+                  ]
+                }"        
+              />
+            </div>
+
+             <!-- 
+              <input type="zoom" class="form-control removeGrupo" name="removeGrupo" id="removeGrupo"
+              data-zoom="{
+                'displayKey': 'cod_grupo_remove',
+                'datasetId':'ARY-sql2dataset-programas',
+                'fields':[
+                  {
+                    'field':'cod_program',
+                    'label':'Programa',                                                         
+                  },{
+                   'field':'description_program', 
+                   'standard':'true',           
+                   'label':'Desc. Programa' 
+                  }
+                ]
+              }"            
+            /> -->  
+          </div>
+          
+
+            <table align="left" class="table table-hover"
+              id="tabela_programas2" tablename="tabela_programas2"
+              customFnDelete="fnCustomDelete(this)"
+              style="margin-right: 30%" noaddbutton="true">
+              <thead>
+                <tr>
+                  <th class="col-sm-2">Retirar</th>
+                  <th class="col-sm-4">Programa</th>
+                  <th class="col-sm-4">Descrição Programa</th>
+                  <th class="col-sm-2"></th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="concat" id="concat">
+                  <td class="col-sm-2">
+                   <img onclick="fnCustomDelete(this)" src="rubbish-bin.png" style="cursor: pointer;">
+                  </td>
+                  <td class="col-sm-4"><input class="form-control"
+                    type="text" name="nomeProgAux" id="nomeProgAux" readonly /></td>
+                  <td class="col-sm-4"><input type="text" name="descProgAux"
+                    id="descProgAux" class="form-control" readonly></td>
+                  <td class="col-sm-4">
+                    <input type="checkbox" name="manter" id="manter" class="form-control " />
+                    <input type="text" class="form-control validaCheck hide" id="validaCheck1" name="validaCheck1" readonly />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div id="menu1" class="tab-pane fade in active">
+            <table width="100%" class="table ">
+                <tr>
+                <th class="col-sm-2" style="text-align: center">Programa conflito   </th>
+                <th class="col-sm-2" style="text-align: center">Grupo               </th>
+                <th class="col-sm-2" style="text-align: center">Programa Conflitante</th>
+                <th class="col-sm-2" style="text-align: center">Grupo Conflitante   </th>
+                <th class="col-sm-2" style="text-align: center">Descrição conflito  </th>
+                <th class="col-sm-2" style="text-align: center">Risco               </th>
+                </tr>
+                </table>
+          <div class="testeColappse2">      
+          </div>
+          </div>
+        
+  
+
+        <!-- INICIO DA TABELA DE ADIÃÂAO DE PROGRAMAS -->
+
+
+        <!-- FIM DOS PROGRAMAS ADICIONADOS -->
+
+        <!-- INICIO DA TABELA DE USUARIOS -->
+
+        <div id="menu3" class="tab-pane fade" >
+          <div class="testeColappse">
+          </div>
+
+        </div>
+
+
+
+        <!-- FIM DA LISTA USUARIOS -->
+
+
+        </div>
+        <!-- CONTAINERS AQUI EM CIMA -->
+      </div>
+
+    </form>
+  </div>
+</body>
+</html>

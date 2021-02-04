@@ -1,0 +1,492 @@
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	 crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.3/jquery.mask.min.js"></script>
+
+<style type="text/css">
+
+.form-group {
+	margin-left: 0px;
+}
+
+span.select2-dropdown.select2-dropdown--below{
+      width: calc(100% - 79px) !important;
+      border: 1px solid rgb(0, 144, 255);
+      border-radius: 4px;
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+}
+
+script + span.select2-container.fluig-container.select2-container--default.select2-container--open,
+script + div + span.select2-container.fluig-container.select2-container--default.select2-container--open,
+script + span + span.select2-container.fluig-container.select2-container--default.select2-container--open {
+    left: 40px !important;
+}
+
+select[readonly] {
+  background: #eee; 
+  pointer-events: none;
+  touch-action: none;
+}
+
+</style>
+
+</head>
+<body>
+
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+
+		<!-- HIDE PARA APROVAÇAO -->
+
+	<input type="hidden" name="proximoAprovador" id="proximoAprovador">
+	<input type="hidden" name="nivelAtualAprovacao" id="nivelAtualAprovacao">
+	<input type="hidden" name="nivelMaximoAprovacao" id="nivelMaximoAprovacao">
+	<input type="hidden" name="idAprovGestor1" id="idAprovGestor1">
+	<input type="hidden" name="idAprovGestor2" id="idAprovGestor2">
+	<input type="hidden" name="idAprovGestor3" id="idAprovGestor3">
+	<input type="hidden" name="idAprovGestor4" id="idAprovGestor4">
+	<input type="hidden" name="idAprovGestor5" id="idAprovGestor5">
+
+			<!-- FIM HIDE -->
+
+			<div class="container">
+				<br>
+				<div id="div_solicitante" name="div_solicitante">
+					<div class="form-group row">
+						<div class="col-md-6">
+							<label for="nomeSolicitante">Solicitante </label>
+							<input type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante" readonly="">
+						</div>
+
+						<div class="col-md-4">
+							<label ">Número da Solicitação</label>							
+							<input type="text" id="cpNumeroFluig" name="cpNumeroFluig"
+							 class="form-control" readonly="">
+						</div>
+						<div class="col-md-2">
+							<label ">Data Solicitação </label>							
+							<input type=" text" name="dataSolicitacao" id="dataSolicitacao"
+							 class="form-control" readonly="">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Filial</label>		
+									<input type="hidden" name="codFilial" id="codFilial">
+									<input type="zoom" class="form-control" name="filial" id="filial" 
+									 data-zoom="{
+						                  'displayKey':'DESCRICAO',
+						                  'maximumSelectionLength':'1',
+						                  'datasetId':'ds_filial',
+						                  'fields':[
+						                   {
+						                      'field':'DESCRICAO',
+						                      'label':'Filial',
+						                      'standard':'true'		
+						                    },{
+						                      'field':'CGC',
+						                      'label':'CGC'                                                         
+						                    },{
+						                      'field':'CODIGO',
+						                      'label':'Cod.'
+						                    }
+						                  ]
+						                }" />									
+							</div>
+						</div>	
+
+					<div class="col-md-6">
+						<label>CNPJ</label>
+						<input type="text" name="cnpjfornecedor" id="cnpjfornecedor" class="form-control" onblur="buscaFornecedor(this.value)">
+					</div>
+											
+					</div>
+				</div>
+				<div class="row form-group">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Fornecedor</label>
+								
+									<input type="text" class="form-control" name="fornecedor" id="fornecedor"> 
+											<!-- data-zoom="{
+								                  'displayKey': 'DESCRICAO',
+								                  'maximumSelectionLength':'1',
+								                  'datasetId':'ds_fornecedor',
+								                  'fields':[
+								                    {
+								                      'field':'CODIGO',
+								                      'label':'Cod.',
+								                      'size':'col-md-2'
+								                    },{
+								                      'field':'DESCRICAO',
+								                      'label':'Razão Social',
+								                      'standard':'true',
+								                      'size':'col-md-2'
+								                    },{
+								                      'field':'CGC',
+								                      'label':'CGC',                                                         
+								                      'size':'col-md-2'
+								                    },{
+								                      'field':'EMAIL',
+								                      'label':'Email' ,                   
+								                      'size':'col-md-2'
+								                    },{
+								                    'field':'LOJA',
+								                    'label':'Loja',
+								                    'size':'col-md-2'
+								                    }
+								                  ]
+								                }" /> -->		
+									<input type="hidden" name="codFornecedor" id="codFornecedor">
+									<input type="hidden" name="loja" id="loja">
+							</div>
+						</div>					
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label for="cpValorNf" align="left">E-mail</label>
+						</span>
+						<input type="text" class="form-control" name="email" id="email">
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label for="cpValorNf" align="left">Telefone</label>
+						</span>
+						<input type="text" class="form-control" name="cpTelefone" id="cpTelefone" >
+					</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Número Contrato</label>
+								
+									<input type="zoom" class="form-control" name="NumeroContrato" id="NumeroContrato" 
+											 data-zoom="{
+						                  'displayKey': 'CONTRATO',
+						                  'maximumSelectionLength':'1',
+						                  'datasetId':'ds_contrato',
+						                  'fields':[
+						                    {
+						                      'field':'FILIAL',
+						                      'label':'Filial'
+						                    },{
+						                      'field':'CONTRATO',
+						                      'label':'Contrato',
+						                      'standard':'true'
+						                    },{
+						                      'field':'DESC_AREA',
+						                      'label':'Descrição área'  
+						                    }
+						                  ]
+						                }" />
+			            			<input type="hidden" name="numeroContratoAux" id="numeroContratoAux">    
+							</div>
+						</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label for="cpValorNf" align="left">Saldo</label>
+						</span>
+						<input type="text" class="form-control" name="cpSaldo" id="cpSaldo">
+					</div>
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label for="cpValorNf" align="left">Centro de Custo</label>
+						</span>
+						<input type="zoom" class="form-control" name="cpCc" id="cpCc" 
+								data-zoom="{
+						                  'displayKey': 'DESCRICAO',
+						                  'maximumSelectionLength':'1',
+						                  'datasetId':'ds_centroCusto',
+						                  'fields':[
+						                    {
+						                      'field':'CODIGO',
+						                      'label':'Cod.'
+						                    },{
+						                      'field':'DESCRICAO',
+						                      'label':'Descrição',
+						                      'standard':'true'
+						                    }						                  ]
+						                }" /> 
+				         <input type="hidden" name="CTT_CUSTO" id="CTT_CUSTO">       
+					</div>
+				</div>
+				<div class="row form-group">
+					<div class="col-md-12">
+						<span class="required text-info">
+							<label for="cpMotivo" align="left">Motivo Cancelamento</label>
+						</span>
+						<textarea type="text" class="form-control" name="cpMotivo" id="cpMotivo" cols="12" rows="6"></textarea>
+					</div>
+				</div>
+				<fieldset id="multaContrato">
+					<div class="row form-group">
+						<div class="col-md-4">
+							<label for="multa">Possui multa?</label>
+							<select class="form-control" id="multa" name="multa" onchange="validaMulta(this.value)">
+								<option value="1">Não</option>
+								<option value="2">Sim</option>
+							</select>
+						</div>
+						<div class="col-md-1 campMult hide">
+							<span class="required text-info">
+								<label for="porcentagem">Percentual</label>
+							</span>
+							<input type="text" class="form-control porcentagem" name="porcentagem" id="porcentagem" >
+						</div>
+						<div class="col-md-2 campMult hide">
+
+							<label for="valor" align="left">Valor</label>
+							<input type="text" class="form-control" name="valor" id="valor" placeholder="R$00,00" mask="#00.000.000.000.000,00" onblur="buscaGestor()">
+						</div>
+						<div class="col-md-3 aprovaDiv" style="padding-top: 1.5em">
+							
+							<button onclick="appWorkflow(this.id)" type="button" class="btn btn-success" id="docOk">
+								<span class="hide fluigicon fluigicon-thumbs-up fluigicon-md likeDocOk"></span>
+								Prosseguir
+							</button>
+							<button onclick="appWorkflow(this.id)" type="button" class="btn btn-danger" id="analiseNok">
+								<span class="hide fluigicon fluigicon-thumbs-down fluigicon-md dislikeAnaliseNok"></span>
+								Reavaliar
+							</button>
+							<input type="hidden" name="analiseDoc" id="analiseDoc">
+						</div>
+					</div>
+				</fieldset>
+				<br><br>
+
+		 <div id="aprovacaoGestor">		
+            <fieldset id="avaliacaoGestor1">
+				<legend>Avaliação do Gestor - 1ª Alçada</legend>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nomeAprovGestor1">Aprovador:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="nomeAprovGestor1" id="nomeAprovGestor1" readonly="readonly"/>
+						</div>
+					</div>
+			
+					<div class="col-md-6">
+						<label for="dataAprovGestor1">Data da Aprovação:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="dataAprovGestor1" id="dataAprovGestor1" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="decisaoGestor1">Decisão:</label>
+						<div class="input-group">
+							<input type="radio" name="decisaoGestor1" id="decisaoGestor1Apro" value="Sim">Aprovar
+							<input type="radio" name="decisaoGestor1" id="decisaoGestor1Repro" value="Nao"> Reprovar
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<label for="motivoAprovGestor1">Motivo:</label>
+						<div class="form-group">
+							<textarea class="form-control" name="motivoAprovGestor1" id="motivoAprovGestor1"></textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			
+			<fieldset id="avaliacaoGestor2">
+				<legend>Avaliação do Gestor - 2ª Alçada</legend>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nomeAprovGestor2">Aprovador:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="nomeAprovGestor2" id="nomeAprovGestor2" readonly="readonly"/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="dataAprovGestor2">Data da Aprovação:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="dataAprovGestor2" id="dataAprovGestor2" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="decisaoGestor2">Decisão:</label>
+						<div class="input-group">
+							<input type="radio" name="decisaoGestor2" id="decisaoGestor2Apro" value="Sim">Aprovar
+							<input type="radio" name="decisaoGestor2" id="decisaoGestor2Repro" value="Nao"> Reprovar
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<label for="motivoAprovGestor2">Motivo:</label>
+						<div class="form-group">
+							<textarea class="form-control" name="motivoAprovGestor2" id="motivoAprovGestor2"></textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			
+			<fieldset id="avaliacaoGestor3">
+				<legend>Avaliação do Gestor - 3ª Alçada</legend>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nomeAprovGestor3">Aprovador:</label>
+						<div class="form-group">							
+							<input type="text" class="form-control" name="nomeAprovGestor3" id="nomeAprovGestor3" readonly="readonly"/>
+						</div>
+					</div>
+			
+					<div class="col-md-6">
+						<label for="dataAprovGestor3">Data da Aprovação:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="dataAprovGestor3" id="dataAprovGestor3" readonly="readonly"/>
+						</div>
+					</div>
+				</div>				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="decisaoGestor3">Decisão:</label>
+						<div class="input-group">
+							<input type="radio" name="decisaoGestor3" id="decisaoGestor3Apro" value="Sim">Aprovar
+							<input type="radio" name="decisaoGestor3" id="decisaoGestor3Repro" value="Nao"> Reprovar
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<label for="motivoAprovGestor3">Motivo:</label>
+						<div class="form-group">
+							<textarea class="form-control" name="motivoAprovGestor3" id="motivoAprovGestor3"></textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>			
+			<fieldset id="avaliacaoGestor4">
+				<legend>Avaliação do Gestor - 4ª Alçada</legend>				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nomeAprovGestor4">Aprovador:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="nomeAprovGestor4" id="nomeAprovGestor4" readonly="readonly"/>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<label for="dataAprovGestor4">Data da Aprovação:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="dataAprovGestor4" id="dataAprovGestor4" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label for="decisaoGestor4">Decisão:</label>
+						<div class="input-group">
+							<input type="radio" name="decisaoGestor4" id="decisaoGestor4Apro" value="Sim">Aprovar
+							<input type="radio" name="decisaoGestor4" id="decisaoGestor4Repro" value="Nao"> Reprovar
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<label for="motivoAprovGestor4">Motivo:</label>
+						<div class="form-group">
+							<textarea class="form-control" name="motivoAprovGestor4" id="motivoAprovGestor4"></textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset id="avaliacaoGestor5">
+				<legend>Avaliação do Gestor - 5ª Alçada</legend>	
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nomeAprovGestor5">Aprovador:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="nomeAprovGestor5" id="nomeAprovGestor5" readonly="readonly"/>
+						</div>
+					</div>			
+					<div class="col-md-6">
+						<label for="dataAprovGestor5">Data da Aprovação:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="dataAprovGestor5" id="dataAprovGestor5" readonly="readonly"/>
+						</div>
+					</div>
+				</div>	
+				<div class="row">
+					<div class="col-md-6">
+						<label for="decisaoGestor5">Decisão:</label>
+						<div class="input-group">
+							<input type="radio" name="decisaoGestor5" id="decisaoGestor5Apro" value="Sim">Aprovar
+							<input type="radio" name="decisaoGestor5" id="decisaoGestor5Repro" value="Nao"> Reprovar
+						</div>
+					</div>
+				</div>
+			  </fieldset>
+			</div>	
+
+	<!-- ********************************************************************** -->
+
+			<fieldset class="validacaoContrato hide">
+				<div class="row form-group">
+					<div class="col-md-6">
+						<span class="required text-info">
+							<label for="responsavelAconpanhamento">Responsavel validação</label>
+						</span>
+						<input type="text" class="form-control" name="responsavelAvalia" id="responsavelAvalia" readonly>
+					</div>
+					<div class="col-md-2">
+						<span class="required text-info">
+							<label for="dataAconpanhamento" align="left">Data validação</label>
+						</span>
+						<input type="date" class="form-control" name="dataAvalia" id="dataAvalia" readonly>
+					</div>
+					<div class="form-group col-md-4" style="padding-top: 1.5em">
+						<label for="aprov" class="required">Avaliação:</label>
+						<button onclick="avaliacaoContrato(this.id)" type="button" class="btn btn-success" id="avaliaOk">
+							<span class="fluigicon fluigicon-thumbs-up fluigicon-md AprovAvalia hide"></span>
+							OK
+						</button>
+						<button onclick="avaliacaoContrato(this.id)" type="button" class="btn btn-danger" id="avaliaNok">
+							<span class="fluigicon fluigicon-thumbs-down fluigicon-md ReprovAvalia hide"></span>
+							Revisar
+						</button>
+						<input type="hidden" name="avaliacao" id="avaliacao">
+					</div>
+					<div class="row form-group obsReprova">
+						<div class="col-md-12">
+						<textarea cols="12" rows="6" id="cpObs" name="cpObs" class="form-control">
+							
+						</textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			</div>
+	</div> <br><br><!-- Ultima Div -->
+	</form>
+	</div>
+</body>
+
+</html>

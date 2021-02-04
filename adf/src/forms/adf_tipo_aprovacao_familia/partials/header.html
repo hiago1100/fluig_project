@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Família</label>
+                <div class="col-sm-6">
+                    <input type="text" name="familia_input" class="form-control" fluig-autocomplete values="vm.Familias" display-key="displaykey"
+                        ng-model="vm.Formulario.familia" ng-change="vm.consultaDuplicado()" ng-disabled="vm.Params.formMode != 'ADD'">
+                    <textarea hidden name="familia" ng-value="vm.Formulario.familia | json:0" ng-bind="vm.Formulario.familia | json:0"></textarea>
+                    <input name="codFamilia" type="hidden" ng-value="vm.Formulario.familia.codigo">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

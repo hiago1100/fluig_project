@@ -1,0 +1,998 @@
+<html>
+  <head>
+	<link type="text/css" rel="stylesheet" href="http://oncoclinicastst.fluig.com/style-guide/css/fluig-style-guide.min.css" />
+	<script type="text/javascript" charset="UTF-8" src="http://oncoclinicastst.fluig.com/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="http://oncoclinicastst.fluig.com/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="http://oncoclinicastst.fluig.com/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="http://oncoclinicastst.fluig.com/style-guide/js/fluig-style-guide.min.js"></script>
+	<script type="text/javascript" src="View.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <style type="text/css">
+       select[readonly] {
+          background: #eee; /*Simular campo inativo*/
+          pointer-events: none;
+          touch-action: none;
+        }
+        .labelField{font-weight: bold;}
+    </style>
+  </head>
+  <body>     
+  	<div class="fluig-style-guide">
+
+  	  <form name="form" role="form">
+      <input type="text" name="cpAprovador" id="cpAprovador" class="hide" value="">
+      <input type="text" name="cpTipoResposta" id="cpTipoResposta" class="hide" value="">
+
+<div id="divSolicitante" class="panel panel-primary"  data-atividade="999">                                              
+                <div class="panel-heading active">
+                    <div class="panel-title collapse-icon up active" data-toggle="collapse"
+                        data-target="#solicitanteDiv">
+                        <h4>                                        
+                           Dados do Solicitante
+                        </h4>
+                    </div>
+                </div>
+                <div id="solicitanteDiv" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">              	
+                           <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <label class="labelField"><b>Num. Solicitação</b></label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpNumSolicitacao"
+                                        id="cpNumSolicitacao" />
+                                </div>
+                            </div>
+                            </div>   
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <label class="labelField"><b> Solicitante</b></label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteNome"
+                                        id="cpSolicitanteNome" />
+                                </div>
+                            </div>
+                            </div>  
+                                                                            	
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <label class="labelField"><b>Data solicitação</b></label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                        name="cpDataAbertura" id="cpDataAbertura" />
+                                </div>
+                            </div>
+                            </div>                    
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+		<div id="inicioSolicitacao" class="panel panel-primary"  data-atividade="999">                                              
+                <div class="panel-heading active">
+                    <div id="inicioSolicitaDiv" class="panel-title collapse-icon up active" data-toggle="collapse"
+                        data-target="#inicioSolicita">
+                        <h4>                                        
+                           VENDAS
+                        </h4>
+                    </div>
+                </div>
+                <div id="inicioSolicita" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Divisão</b></label>
+                                    <select id="slcDivisao" name="slcDivisao" class="form-control inputVendas">
+                                    	<option value="">Selecione</option>
+                                    	<option value="1">CAL</option>
+                                    	<option value="2">EMI</option>
+                                    	<option value="3">WAT</option>
+                                    	<option value="4">PRJ</option>
+                                    </select>
+                                           
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Representante</b></label>
+                                    <input type="zoom" class="form-control inputVendas" name="zoomRepresentante"
+                                           id="zoomRepresentante" 
+	                                       data-zoom="{
+							                'displayKey': 'representante',
+							                'datasetId':'ds_representanteERP',
+							                'fields':[
+							                  {
+							                    'field':'representante',
+							                    'label':'Grupo',                                                          
+							                    'standard':'true'
+							                  }
+							                ]
+							              }" 
+                                        />
+                                </div>
+                            </div>
+                            </div> 
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                 <div class="">
+                                   <label class="labelField"><b><span style="color: orange;">*</span>Finalidade</b></label>
+                                     <select id="slcFinalidade" name="slcFinalidade" class="form-control inputVendas">
+                                     	<option value="">Selecione</option>
+                                    	<option value="1">Revenda</option>
+                                    	<option value="2">Remessas</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>CNPJ</b></label>
+                                    <input type="zoom"
+                                           id="cnpj"
+                                           name="cnpj"
+                                           class="form-control inputVendas"                                            
+	                                       data-zoom="{
+							                'displayKey': 'cnpj',
+							                'datasetId':'ds_cnpjERP',
+							                'fields':[
+							                  {
+							                    'field':'cnpj',
+							                    'label':'Grupo',                                                          
+							                    'standard':'true'
+							                  }
+							                ]
+							              }" 
+                                        
+
+
+
+                                    />                                    
+                                </div>
+                            </div>
+                            </div>
+
+                            	
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Razão</b></label>
+                                    <input type="text" class="form-control inputVendas" value="" name="cpRazao"
+                                        id="cpRazao"  />
+                                </div>
+                            </div>
+                            </div> 
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Nome Fantasia</b></label>
+                                    <input type="text" class="form-control inputVendas" value="" name="cpNomeFantasia"
+                                        id="cpNomeFantasia"  />
+                                </div>
+                            </div>
+                            </div>
+
+                                                         
+                            <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Endereço</b></label>
+                                    <input type="text" name="cpEndereco" id="cpEndereco" class="form-control inputVendas">
+                                </div>
+                            </div>
+                            </div>         
+ 
+                            <div class="col-md-2">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Número</b></label>
+                                    <input type="text" class="form-control inputVendas" name="cpNumero"
+                                        id="cpNumero" />
+                                </div>
+                            </div>
+                            </div>                                  
+
+                            <div class="col-md-2">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Município</b></label>
+                                    <input type="text" class="form-control inputVendas" name="cpMunicipio"
+                                        id="cpMunicipio" />
+                                </div>
+                            </div>
+                            </div> 
+
+                            <div class="col-md-2">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Estado</b></label>
+                                    <input type="zoom" 
+                                    	class="form-control inputVendas" name="cpEstado"
+                                        id="cpEstado"
+                                        data-zoom="{
+							                'displayKey': 'cnpj',
+							                'datasetId':'ds_estadoERP',
+							                'fields':[
+							                  {
+							                    'field':'cnpj',
+							                    'label':'Grupo',                                                          
+							                    'standard':'true'
+							                  }
+							                ]
+							              }" 
+
+                                         />
+                                </div>
+                            </div>
+                            </div>                            
+    						 
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>País</b></label>
+                                    <input type="text" class="form-control inputVendas" name="cpPais"
+                                        id="cpPais" />
+                                </div>
+                            </div>
+                            </div>                                                        
+    
+                         <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="">
+                                <label class="labelField"><b><span style="color: orange;">*</span>Observação</b></label>
+                                <textarea obrigatorio class="form-control inputVendas solicitante" rows="3" cols="600"
+                                    name="txtSolicitante" id="txtSolicitante"
+                                    parecer placeholder="Digite uma observação"></textarea>
+                            </div>
+                        </div>                             
+                        </div>
+                    </div>
+                </div>  
+            </div>
+           </div>
+
+
+		<div id="atividadeSop" class="panel panel-primary"  data-atividade="999">                                              
+                <div class="panel-heading active">
+                    <div id="atividadeSopActive" class="panel-title collapse-icon up active" data-toggle="collapse"
+                        data-target="#atividadeSopDiv">
+                        <h4>                                        
+                           SOP
+                        </h4>
+                    </div>
+                </div>
+                <div id="atividadeSopDiv" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Fisica/Juridica</b></label>
+                                    <select id="slcJuridica" name="slcJuridica" class="form-control inputSop">
+                                    	<option value="">Selecione</option>
+                                    	<option value="J">Juridica</option>
+                                    </select>
+                                           
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Tipo</b></label>
+                                    <select id="slcTipo" name="slcTipo" class="form-control inputSop">
+                                    	<option value="">Selecione</option>
+                                    	<option value="F">Cons.Final</option>
+                                    	<option value="L">Produtor Rural</option>
+                                    	<option value="R">Revendedor</option>
+                                    	<option value="S">Solidario</option>
+                                    	<option value="X">Exportação</option>
+                                    </select>
+                                           
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Complemento</b></label>
+                                    <input type="text"
+                                           id="cpComplemento"
+                                           name="cpComplemento"
+                                           class="form-control inputSop"                                           
+                                    />                                    
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Bairro</b></label>
+                                    <input type="text"
+                                           id="cpBairro"
+                                           name="cpBairro"
+                                           class="form-control inputSop"                                           
+                                    />                                    
+                                </div>
+                            </div>
+                            </div>
+
+                            	
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Cod.Municipio</b></label>
+                                    <input type="zoom" class="form-control inputSop" name="zoomCodMunicipio"
+                                        id="zoomCodMunicipio"
+                                            data-zoom="{
+							                'displayKey': 'cnpj',
+							                'datasetId':'ds_municipioERP',
+							                'fields':[
+							                  {
+							                    'field':'cnpj',
+							                    'label':'Grupo',                                                          
+							                    'standard':'true'
+							                  }
+							                ]
+							              }" 
+                                          />
+                                </div>
+                            </div>
+                            </div> 
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>DDD</b></label>
+                                    <input type="text" class="form-control inputSop" value="" name="cpDdd"
+                                        id="cpDdd"  />
+                                </div>
+                            </div>
+                            </div>
+
+                                                         
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Telefone</b></label>
+                                    <input type="text" name="cpTelefone" id="cpTelefone" class="form-control inputSop">
+                                </div>
+                            </div>
+                            </div>         
+ 
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Telefone 2</b></label>
+                                    <input type="text" class="form-control inputSop" name="cpTelefoneAlter"
+                                        id="cpTelefoneAlter" />
+                                </div>
+                            </div>
+                            </div>                                  
+
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Contato</b></label>
+                                    <input type="text" class="form-control inputSop" name="cpContato"
+                                        id="cpContato" />
+                                </div>
+                            </div>
+                            </div> 
+
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>CEP</b></label>
+                                    <input type="text" class="form-control inputSop" name="cpCep"
+                                        id="cpCep" />
+                                </div>
+                            </div>
+                            </div>                            
+    						 
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>E-mail</b></label>
+                                    <input type="text" class="form-control inputSop" name="cpEmail"
+                                        id="cpEmail" />
+                                </div>
+                            </div>
+                            </div>
+
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Natureza</b></label>
+                                    <input type="zoom" class="form-control inputSop" name="zoomNatureza"
+                                        id="zoomNatureza" 
+                                        data-zoom="{
+							                'displayKey': 'cnpj',
+							                'datasetId':'ds_naturezaERP',
+							                'fields':[
+							                  {
+							                    'field':'cnpj',
+							                    'label':'Grupo',                                                          
+							                    'standard':'true'
+							                  }
+							                ]
+							              }"
+
+
+                                        />
+                                </div>
+                            </div>
+                            </div>
+
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>C. Contabil</b></label>
+                                    <input type="text" class="form-control inputSop" name="zoomCcontab"
+                                        id="zoomCcontab" />
+                                </div>
+                            </div>
+                            </div>
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Tipo de Frete</b></label>
+                                    <select id="slcTipoFrete" name="slcTipoFrete" class="form-control inputSop">
+                                    	<option value="">Selecione</option>
+                                    	<option value="C">CIF</option>
+                                    	<option value="F">FOB</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Grp. Vendas</b></label>
+                                    <input type="zoom" class="form-control inputSop" name="zoomGrpVendas"
+                                        id="zoomGrpVendas" 
+                                        data-zoom="{
+							                'displayKey': 'cnpj',
+							                'datasetId':'ds_grupoVendasERP',
+							                'fields':[
+							                  {
+							                    'field':'cnpj',
+							                    'label':'Grupo',                                                          
+							                    'standard':'true'
+							                  }
+							                ]
+							              }"
+
+                                        />
+                                </div>
+                            </div>
+                            </div>
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>E-mail Representante</b></label>
+                                    <input type="text" class="form-control inputSop" name="cpEmailRep"
+                                        id="cpEmailRep" />
+                                </div>
+                            </div>
+                            </div>                            
+
+    
+                         <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="">
+                                <label class="labelField"><b><span style="color: orange;">*</span>Observação</b></label>
+                                <textarea obrigatorio class="form-control inputSop" rows="3" cols="600"
+                                    name="txtSop" id="txtSop"
+                                    parecer placeholder="Digite uma observação"></textarea>
+                            </div>
+                        </div>                             
+                        </div>
+                    </div>
+                </div>  
+            </div>
+           </div>
+
+       
+		<div id="atividadeCredito" class="panel panel-primary"  data-atividade="999">                                              
+                <div class="panel-heading active">
+                    <div id="atividadeCreditoActive" class="panel-title collapse-icon up active" data-toggle="collapse"
+                        data-target="#atividadeCreditoDiv">
+                        <h4>                                        
+                           Credito
+                        </h4>
+                    </div>
+                </div>
+                <div id="atividadeCreditoDiv" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>End. Cobrança</b></label>
+                                    <input type="text" name="cpEnderecoCob" id="cpEnderecoCob" class="form-control credipoInput">
+                                           
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Bairro Cobrança</b></label>
+                                    <input type="text" name="cpBairroCobranca" id="cpBairroCobranca" class="form-control credipoInput">
+                                           
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Mun. Cobrança</b></label>
+                                    <input type="text"
+                                           id="cpMuniCobr"
+                                           name="cpMuniCobr"
+                                           class="form-control credipoInput"                                           
+                                    />                                    
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>CEP Cobrança</b></label>
+                                    <input type="text"
+                                           id="cpCepCobra"
+                                           name="cpCepCobra"
+                                           class="form-control credipoInput"                                           
+                                    />                                    
+                                </div>
+                            </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>UF de Cobrança</b></label>
+                                    <input type="zoom" class="form-control credipoInput" name="zoomUfCobra"
+                                        id="zoomUfCobra"  
+                                        data-zoom="{
+							                'displayKey': 'cnpj',
+							                'datasetId':'ds_estadoERP',
+							                'fields':[
+							                  {
+							                    'field':'cnpj',
+							                    'label':'Grupo',                                                          
+							                    'standard':'true'
+							                  }
+							                ]
+							              }"
+
+                                        />
+                                </div>
+                            </div>
+                            </div> 
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Pagamento Boleto?</b></label>
+                                    <select name="slcBoleto" id="slcBoleto" class="form-control credipoInput">
+                                    	<option value="S">Sim</option>
+                                    	<option value="N">Não</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+
+                                                         
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Email Boleto</b></label>
+                                    <input type="text" name="cpEmailBoleto" id="cpEmailBoleto" class="form-control credipoInput">
+                                </div>
+                            </div>
+                            </div>         
+ 
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Cond. Pagamento</b></label>
+                                     <input type="zoom" class="form-control credipoInput" name="cpCondPagamento"
+                                        id="cpCondPagamento" 
+									    data-zoom="{
+							                'displayKey': 'cnpj',
+							                'datasetId':'ds_estadoERP',
+							                'fields':[
+							                  {
+							                    'field':'cnpj',
+							                    'label':'Grupo',                                                          
+							                    'standard':'true'
+							                  }
+							                ]
+							              }"
+
+
+                                        />
+                                </div>
+                            </div>
+                            </div>                                  
+
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Prazo Md Pg</b></label>
+                                    <input type="text" class="form-control credipoInput" name="cpPrazoMd"
+                                        id="cpPrazoMd" />
+                                </div>
+                            </div>
+                            </div> 
+
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Risco</b></label>
+                                    <select name="slcRisco" id="slcRisco" class="form-control credipoInput">
+                                    	<option value="A">Risco A</option>
+                                    	<option value="B">Risco B</option>
+                                    	<option value="C">Risco C</option>
+                                    	<option value="D">Risco D</option>
+                                    	<option value="E">Risco E</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>                            
+    						 
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Limite de crédito interno</b></label>
+                                    <input type="text" class="form-control credipoInput" name="cpLimiteCreditoInter"
+                                        id="cpLimiteCreditoInter" />
+                                </div>
+                            </div>
+                            </div>
+
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Vencimento Lim. Cred.</b></label>
+                                    <input type="date" class="form-control credipoInput" name="dateLimCred"
+                                        id="dateLimCred" />
+                                </div>
+                            </div>
+                            </div>
+
+
+
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Lim. Cred. Seguro</b></label>
+                                    <input type="text" class="form-control credipoInput" name="cpLimiteCredSeguro"
+                                        id="cpLimiteCredSeguro" />
+                                </div>
+                            </div>
+                            </div>
+
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Vencimento Seguro</b></label>
+                                    <input type="date" class="form-control credipoInput" name="dateVencSeg"
+                                        id="dateVencSeg" />
+                                </div>
+                            </div>
+                            </div>
+
+
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Dt. Efet. Seguro</b></label>
+                                    <input type="date" class="form-control credipoInput" name="dateEfetSeg"
+                                        id="dateEfetSeg" />
+                                </div>
+                            </div>
+                            </div>
+
+
+
+
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Limite de crédito Sec</b></label>
+                                    <input type="text" class="form-control credipoInput" name="cpLimiteCreditoSec"
+                                        id="cpLimiteCreditoSec" />
+                                </div>
+                            </div>
+                            </div>
+
+
+							<div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Limite de crédito</b></label>
+                                    <input type="text" class="form-control credipoInput" name="cpLimiteCredito"
+                                        id="cpLimiteCredito" />
+                                </div>
+                            </div>
+                            </div>
+
+    
+                         <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="">
+                                <label class="labelField"><b><span style="color: orange;">*</span>Observação</b></label>
+                                <textarea obrigatorio class="form-control credipoInput" rows="3" cols="600"
+                                    name="txtCredito" id="txtCredito"
+                                    parecer placeholder="Digite uma observação"></textarea>
+                            </div>
+                        </div>                             
+                        </div>
+
+                         <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="">
+                                <label class="labelField"><b><span style="color: orange;">*</span>Informações adicionais REP</b></label>
+                                <textarea obrigatorio class="form-control credipoInput" rows="3" cols="600"
+                                    name="txtInfoAdi" id="txtInfoAdi"
+                                    parecer placeholder="Digite uma observação"></textarea>
+                            </div>
+                        </div>                             
+                        </div>
+
+
+
+                    </div>
+                </div>  
+            </div>
+           </div>
+
+
+
+<div id="atividadeFiscal" class="panel panel-primary"  data-atividade="999">                                              
+                <div class="panel-heading active">
+                    <div id="atividadeFiscalActive" class="panel-title collapse-icon up active" data-toggle="collapse"
+                        data-target="#atividadeFiscalDiv">
+                        <h4>                                        
+                           Fiscal
+                        </h4>
+                    </div>
+                </div>
+                <div id="atividadeFiscalDiv" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+
+                                                        <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Ins. Estad.</b></label>
+                                    <input type="text" name="cpInsEst" id="cpInsEst" class="form-control inputFiscal">
+                                           
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Cod. CNAE</b></label>
+                                    <input type="zoom" name="cpCodCnae" id="cpCodCnae" class="form-control inputFiscal"
+                                    data-zoom="{
+							                'displayKey': 'cnpj',
+							                'datasetId':'ds_cnaeERP',
+							                'fields':[
+							                  {
+							                    'field':'cnpj',
+							                    'label':'Grupo',                                                          
+							                    'standard':'true'
+							                  }
+							                ]
+							              }"
+
+                                    />
+                                           
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Status</b></label>
+                                    <select name="slcStatus" id="slcStatus" class="form-control inputFiscal">
+                                    	<option value="1">Inativo</option>
+                                    	<option value="2">Ativo</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>SUFRAMA</b></label>
+                                    <input type="text"
+                                           id="cpSuframa"
+                                           name="cpSuframa"
+                                           class="form-control inputFiscal"                                           
+                                    />                                    
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Cod. Mun. ZF</b></label>
+                                    <input type="zoom"
+                                           id="cpCodMunZf"
+                                           name="cpCodMunZf"
+                                           class="form-control inputFiscal"
+                                           data-zoom="{
+							                'displayKey': 'cnpj',
+							                'datasetId':'ds_codMunZfERP',
+							                'fields':[
+							                  {
+							                    'field':'cnpj',
+							                    'label':'Grupo',                                                          
+							                    'standard':'true'
+							                  }
+							                ]
+							              }"                                           
+                                    />                                    
+                                </div>
+                            </div>
+                            </div>
+
+                            	
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Pais Bacen</b></label>
+                                    <input type="text" class="form-control inputFiscal" name="cpPaisBacen"
+                                        id="cpPaisBacen" value="01058"  readonly="" />
+                                </div>
+                            </div>
+                            </div> 
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>TPJ</b></label>
+                                    <select name="slcTpj" id="slcTpj" class="form-control inputFiscal">
+                                    	<option value="1">ME - Micro Empresa</option>
+                                    	<option value="2">EPP = Empresas de Pequeno Porte</option>
+                                    	<option value="3">MEI - Microempreendedor Individual</option>
+                                    	<option value="4">Não Optante</option>                                    	
+                                    </select>	
+                                </div>
+                            </div>
+                            </div>
+    
+
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Opt. Simp Nac</b></label>
+                                    <select name="slcOptSimpNac" id="slcOptSimpNac" class="form-control inputFiscal">
+                                    	<option value="1">Sim</option>
+                                    	<option value="2">Não</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Opt. Simples</b></label>
+                                    <select name="slcOptSimples" id="slcOptSimples" class="form-control inputFiscal">
+                                    	<option value="1">Sim</option>
+                                    	<option value="2">Não</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Contribuinte</b></label>
+                                    <select name="slcContribuinte" id="slcContribuinte" class="form-control inputFiscal">
+                                    	<option value="1">Sim</option>
+                                    	<option value="2">Não</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Marcação</b></label>
+									<input type="text" name="cpMarcacao" id="cpMarcacao" class="form-control inputFiscal">
+                                </div>
+                            </div>
+                            </div>
+
+                         <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="">
+                                <label class="labelField"><b><span style="color: orange;">*</span>Observação</b></label>
+                                <textarea obrigatorio class="form-control inputFiscal solicitante" rows="3" cols="600"
+                                    name="txtFiscal" id="txtFiscal"
+                                    parecer placeholder="Digite uma observação"></textarea>
+                            </div>
+                        </div>                             
+                        </div>
+
+                    </div>
+                </div>  
+            </div>
+           </div>
+
+
+
+
+
+
+
+
+
+
+               
+
+                                 
+  	  </form>
+  	</div>
+  </body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Consulta Requisição de Compras - Rastreabilidade</title>
+
+		<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		<script type="text/javascript" src="funcoes.js"></script>
+
+
+			<script>
+
+		function disableZOOM(){
+
+			 window['txtRequisicao'].clear();
+			 window['txtRequisicao'].disable(true);
+
+
+		}
+		function setSelectedZoomItem(selectedItem) {  
+					
+				var CAMPO = selectedItem.inputName; 
+				
+               	if(CAMPO == 'txtRequisicao' ){ 
+						$('input[name="txtDataInicial"]').prop('disabled', true);
+						$('input[name="txtDataFinal"]').prop('disabled', true);
+						$('input[name="IDFLUIG"]').val(selectedItem["txtNumeroProcesso"]);
+
+						}
+		}
+
+		 function removedZoomItem(removedItem) {
+				
+				var CAMPO = removedItem.inputName; 
+  
+					if(CAMPO == 'txtRequisicao' ){ 
+						$('input[name="txtDataInicial"]').removeAttr('disabled');
+						$('input[name="txtDataFinal"]').removeAttr('disabled');
+					}
+		}
+
+		function DetalhesItens(botao){
+
+			var detalhe  = botao.id;
+			var retorno  = detalhe.split(";");
+			var IDFLUIG  = retorno[0];
+			var CAMPO    = retorno[1];
+			var IDPRD    = retorno[2]; ;
+						
+			var c1 = DatasetFactory.createConstraint("IDFLUIG", IDFLUIG, IDFLUIG , ConstraintType.MUST);
+			var c2 = DatasetFactory.createConstraint("IDPRD", IDPRD, IDPRD , ConstraintType.MUST);
+            var constraints   = new Array(c1,c2);
+    
+			var dataset = DatasetFactory.getDataset("dsITMDetalhesPesquisa", null,constraints, null);
+
+			var rowDT  = dataset.values[0];
+            
+            var sHTML = rowDT[CAMPO];
+
+
+
+			var myModal = FLUIGC.modal({
+                               title: 'Detalhamento Etapa ',
+                               content: sHTML,
+                               id: 'fluig-modal',
+        size: 'full',
+        actions: [{
+            'label': 'sair',
+            'bind': 'data-close-modal',
+            'autoClose': true
+        }]
+    }, 
+    function(err, data) {
+        if(err) {
+            // do error handling
+        } else {
+            // do something with data
+        }
+    });
+
+
+
+
+		}
+
+		function Pesquisa(){
+
+			$('div#collapse-tabs').hide();
+
+			var numfluig = $('input[name="IDFLUIG"]').val();
+
+			if (numfluig == ""){
+
+				numfluig = "null";
+			}
+
+			//console.log("TESTE "+numfluig);
+			
+			var datainicial = $('input[name="txtDataInicial"]').val();
+			
+			if (datainicial != null){
+
+				var datainicial = Left(datainicial,4)+String(datainicial).substring(5,7)+Right(datainicial,2);
+			}
+
+			var datafinal = $('input[name="txtDataFinal"]').val();
+
+			if (datafinal != null) {
+				
+				var datafinal = Left(datafinal,4)+String(datafinal).substring(5,7)+Right(datafinal,2)
+			}
+
+			var usuario = $('input[name="CODUSUARIO"]').val();
+
+			var c1 = DatasetFactory.createConstraint("NUMFLUIG", numfluig, numfluig , ConstraintType.MUST);
+			var c2 = DatasetFactory.createConstraint("DATAINICIAL", datainicial, datainicial , ConstraintType.MUST);
+			var c3 = DatasetFactory.createConstraint("DATAFINAL", datafinal, datafinal , ConstraintType.MUST);
+			var c4 = DatasetFactory.createConstraint("USUARIO", usuario, usuario , ConstraintType.MUST);
+            var constraints   = new Array(c1,c2,c3,c4);
+    
+			DatasetFactory.getDataset("dsSP_CRM_PESQUISAPROCESSO", null,constraints, null);
+
+			//  
+
+			var dataset = DatasetFactory.getDataset("dsPesquisaRequisicao", null,null, null);
+
+			//botÃµes das Tabelas
+			var btVermelho 	= '<input trocaid class="btn btn-danger btn-xm" title= "Reprovado - Concluído" type="button" onclick="DetalhesItens(this)" />';
+			var btVerde 	= '<input trocaid class="btn btn-success btn-xm" title= "Aprovado - Concluído" type="button" onclick="DetalhesItens(this)" />';
+			var btAmarelo 	= '<input trocaid class="btn btn-warning btn-xm" title= "Em Andamento - Em Atrasado" type="button" onclick="DetalhesItens(this)" />';
+			var btAzul 		= '<input trocaid class="btn btn-info btn-xm" title= "Aprovado - No Prazo" type="button" onclick="DetalhesItens(this)" />';
+
+            var rowsCount = dataset.values.length;
+
+            var HTML =  '<div class="well well-sm"> '+
+						'	<div class="fluig-style-guide">';
+
+            var i=0;
+
+
+             while (i<rowsCount){
+
+              var row  = dataset.values[i];
+              var requisicoes = row["IDFLUIG"];
+              var descricao = row["DESCRICAO"]
+
+               
+				//"Requisição Compras - Inicio"
+			
+				HTML = HTML+
+				'  <table class="table table-bordered">'+
+				'	<thead> '+
+				'		<tr><h4>'+descricao+'</h></tr>'+
+				'		<tr> '+
+				'			<th>Produto</th> '+	
+				'			<th title="Requisição Compras - Inicio">Req</th> '+
+				'			<th title="Revisão do Solicitante">Rev.</th>    '+
+				'			<th title="Aprovação da Necessidade">Nec.</th>   '+
+				'			<th title="Retirada do Almoxarifado">Alm.</th>    '+
+				'			<th title="Compras - Solicitação">Sol.</th>    '+
+				'			<th title="Compras - Cotação">Cot.</th>    '+
+				'			<th title="Aprovação do Gestor do Centro de Custo">Ccu.</th>    '+
+				'			<th title="Aprovação da Diretoria Financeira">Fin.</th>    '+
+				'			<th title="Aprovação da Mantenedora">Man.</th>    '+
+				'			<th title="Compras - Ordem de Compra">Ped.</th>    '+
+				'			<th title="Entrada de Nota Fiscal">NF.</th>     '+
+				'			<th title="Status do Pagamento">Pag.</th>    '+
+				'			<th title="Requisição Cancelada">Canc.</th>   '+		 
+				'		</tr> '+
+				'	</thead> '+	 
+				'   <tbody> ';
+				
+						
+						var c1 = DatasetFactory.createConstraint("IDFLUIG", requisicoes, requisicoes , ConstraintType.MUST);
+            			var constraints   = new Array(c1);
+    
+						var datasetIT = DatasetFactory.getDataset("dsITMPesquisaRequisicao", null,constraints, null);
+
+            			var rowsCountIT = datasetIT.values.length;
+
+            			var j=0;
+
+
+            			 while (j<rowsCountIT){
+
+            			 	var rowIT  = datasetIT.values[j];
+              				
+
+              				var IDPRD = rowIT["IDPRD"];
+              				var PRODUTO = rowIT["PRODUTO"];
+              				var REQUISICAO = rowIT["REQUISICAO"];
+              				var REVISAO= rowIT["REVISAO"];
+              				var APRNES = rowIT["APRNES"];
+              				var ALMOXARIFADO = rowIT["ALMOXARIFADO"];
+              				var SOLICITACAO = rowIT["SOLICITACAO"];
+              				var COTACAO = rowIT["COTACAO"];
+              				var APRCCU = rowIT["APRCCU"];
+              				var APRFIN = rowIT["APRFIN"];
+              				var APRMAN = rowIT["APRMAN"];
+              				var PEDIDO = rowIT["PEDIDO"];
+              				var ENTRADANF = rowIT["ENTRANF"];
+              				var PAGAMENTO = rowIT["PAGAMENTO"];
+              				var CANCELADO = rowIT["CANCELADO"];
+			
+              				var idbtn = 'id="'+requisicoes+';VAR;'+IDPRD+'"'
+
+              				if (REQUISICAO == 0) {
+              					REQUISICAO = btVermelho;
+              					var id = idbtn.replace("VAR","REQ");
+              					REQUISICAO = REQUISICAO.replace("trocaid",id);
+              				} else if (REQUISICAO == 1) {
+		              					REQUISICAO = btAmarelo;
+		              					var id = idbtn.replace("VAR","REQ");
+              							REQUISICAO = REQUISICAO.replace("trocaid",id);
+		              				} else if (REQUISICAO == 2) {
+				              					REQUISICAO = btVerde;
+				              					var id = idbtn.replace("VAR","REQ");
+              									REQUISICAO = REQUISICAO.replace("trocaid",id);
+              								}
+              				if (REVISAO == 0) {
+              					REVISAO = btVermelho;
+              					var id = idbtn.replace("VAR","REV");
+              					REVISAO = REVISAO.replace("trocaid",id);
+              				} else if (REVISAO == 1) {
+		              					REVISAO = btAmarelo;
+		              					var id = idbtn.replace("VAR","REV");
+              							REVISAO = REVISAO.replace("trocaid",id);
+		              				} else if (REVISAO == 2) {
+				              					REVISAO = btVerde;
+				              					var id = idbtn.replace("VAR","REV");
+              									REVISAO = REVISAO.replace("trocaid",id);
+				              				} else {REVISAO = ""}
+
+              				if (APRNES == 0) {
+              					APRNES = btVermelho;
+              					var id = idbtn.replace("VAR","NES");
+              					APRNES = APRNES.replace("trocaid",id);
+              				} else if (APRNES == 1) {
+		              					APRNES = btAmarelo;
+		              					var id = idbtn.replace("VAR","NES");
+              							APRNES = APRNES.replace("trocaid",id);
+		              				} else if (APRNES == 2) {
+				              					APRNES = btVerde;
+				              					var id = idbtn.replace("VAR","NES");
+              									APRNES = APRNES.replace("trocaid",id);
+				              				} else {APRNES = ""}
+
+				            if (ALMOXARIFADO == 0) {
+              					ALMOXARIFADO = btVermelho;
+              					var id = idbtn.replace("VAR","ALM");
+              					ALMOXARIFADO = ALMOXARIFADO.replace("trocaid",id);
+              				} else if (ALMOXARIFADO == 1) {
+		              					ALMOXARIFADO = btAmarelo;
+		              					var id = idbtn.replace("VAR","ALM");
+              							ALMOXARIFADO = ALMOXARIFADO.replace("trocaid",id);
+		              				} else if (ALMOXARIFADO == 2) {
+				              					ALMOXARIFADO = btVerde;
+				              					var id = idbtn.replace("VAR","ALM");
+              									ALMOXARIFADO = ALMOXARIFADO.replace("trocaid",id);
+				              				} else {ALMOXARIFADO = ""}
+
+				            if (SOLICITACAO == 0) {
+              					SOLICITACAO= btVermelho;
+              					var id = idbtn.replace("VAR","SOL");
+              					SOLICITACAO = SOLICITACAO.replace("trocaid",id);
+              				} else if (SOLICITACAO == 1) {
+		              					SOLICITACAO = btAmarelo;
+		              					var id = idbtn.replace("VAR","SOL");
+              							SOLICITACAO = SOLICITACAO.replace("trocaid",id);
+		              				} else if (SOLICITACAO == 2) {
+				              					SOLICITACAO = btVerde;
+				              					var id = idbtn.replace("VAR","SOL");
+              									SOLICITACAO = SOLICITACAO.replace("trocaid",id);
+				              				} else {SOLICITACAO = ""}
+
+				            if (COTACAO == 0) {
+              					COTACAO= btVermelho;
+              					var id = idbtn.replace("VAR","COT");
+              					COTACAO = COTACAO.replace("trocaid",id);
+              				} else if (COTACAO == 1) {
+		              					COTACAO = btAmarelo;
+		              					var id = idbtn.replace("VAR","COT");
+              							COTACAO = COTACAO.replace("trocaid",id);
+		              				} else if (COTACAO == 2) {
+				              					COTACAO = btVerde;
+				              					var id = idbtn.replace("VAR","COT");
+              									COTACAO = COTACAO.replace("trocaid",id);
+				              				} else {COTACAO = ""}
+
+				            if (APRCCU == 0) {
+              					APRCCU= btVermelho;
+              					var id = idbtn.replace("VAR","CCU");
+              					APRCCU = APRCCU.replace("trocaid",id);
+              				} else if (APRCCU == 1) {
+		              					APRCCU = btAmarelo;
+		              					var id = idbtn.replace("VAR","CCU");
+              							APRCCU = APRCCU.replace("trocaid",id);
+		              				} else if (APRCCU == 2) {
+				              					APRCCU = btVerde;
+				              					var id = idbtn.replace("VAR","CCU");
+              									APRCCU = APRCCU.replace("trocaid",id);
+				              				} else {APRCCU = ""}
+
+				            if (APRFIN == 0) {
+              					APRFIN= btVermelho;
+              					var id = idbtn.replace("VAR","FIN");
+              					APRFIN = APRFIN.replace("trocaid",id);
+              				} else if (APRFIN == 1) {
+		              					APRFIN = btAmarelo;
+		              					var id = idbtn.replace("VAR","FIN");
+              							APRFIN = APRFIN.replace("trocaid",id);
+		              				} else if (APRFIN == 2) {
+				              					APRFIN = btVerde;
+				              					var id = idbtn.replace("VAR","FIN");
+              									APRFIN = APRFIN.replace("trocaid",id);
+				              				} else {APRFIN = ""}
+
+				            if (APRMAN == 0) {
+              					APRMAN= btVermelho;
+              					var id = idbtn.replace("VAR","MAN");
+              					APRMAN = APRMAN.replace("trocaid",id);
+              				} else if (APRMAN == 1) {
+		              					APRMAN = btAmarelo;
+		              					var id = idbtn.replace("VAR","MAN");
+              							APRMAN = APRMAN.replace("trocaid",id);
+		              				} else if (APRMAN == 2) {
+				              					APRMAN = btVerde;
+				              					var id = idbtn.replace("VAR","MAN");
+              									APRMAN = APRMAN.replace("trocaid",id);
+				              				} else {APRMAN = ""}
+
+				            if (PEDIDO == 0) {
+              					PEDIDO= btVermelho;
+              					var id = idbtn.replace("VAR","PED");
+              					PEDIDO = PEDIDO.replace("trocaid",id);
+              				} else if (PEDIDO == 1) {
+		              					PEDIDO =btAmarelo;
+		              					var id = idbtn.replace("VAR","PED");
+              							PEDIDO = PEDIDO.replace("trocaid",id);
+		              				} else if (PEDIDO == 2) {
+				              					PEDIDO = btVerde;
+				              					var id = idbtn.replace("VAR","PED");
+              									PEDIDO = PEDIDO.replace("trocaid",id);
+				              				} else {PEDIDO = ""}
+
+				            if (ENTRADANF == 0) {
+              					ENTRADANF= btVermelho;
+              					var id = idbtn.replace("VAR","ENF");
+              					ENTRADANF = ENTRADANF.replace("trocaid",id);
+              				} else if (ENTRADANF == 1) {
+		              					ENTRADANF =btAmarelo;
+		              					var id = idbtn.replace("VAR","ENF");
+              							ENTRADANF = ENTRADANF.replace("trocaid",id);
+		              				} else if (ENTRADANF == 2) {
+				              					ENTRADANF = btVerde;
+				              					var id = idbtn.replace("VAR","ENF");
+              									ENTRADANF = ENTRADANF.replace("trocaid",id);
+				              				} else {ENTRADANF = ""}
+				            if (PAGAMENTO == 0) {
+              					PAGAMENTO= btVermelho;
+              					var id = idbtn.replace("VAR","PAG");
+              					PAGAMENTO = PAGAMENTO.replace("trocaid",id);
+              				} else if (PAGAMENTO == 1) {
+		              					PAGAMENTO =btAmarelo;
+		              					var id = idbtn.replace("VAR","PAG");
+              							PAGAMENTO = PAGAMENTO.replace("trocaid",id);
+		              				} else if (PAGAMENTO == 2) {
+				              					PAGAMENTO = btVerde;
+				              					var id = idbtn.replace("VAR","PAG");
+              									PAGAMENTO = PAGAMENTO.replace("trocaid",id);
+				              				} else {PAGAMENTO = ""}
+
+				            if (CANCELADO == 0) {
+              					CANCELADO= btVermelho;
+              					var id = idbtn.replace("VAR","CAN");
+              					CANCELADO = CANCELADO.replace("trocaid",id);
+              				} else if (CANCELADO == 1) {
+		              					CANCELADO =btAmarelo;
+		              					var id = idbtn.replace("VAR","CAN");
+              							CANCELADO = CANCELADO.replace("trocaid",id);
+		              				} else if (CANCELADO == 2) {
+				              					CANCELADO = btVerde;
+				              					var id = idbtn.replace("VAR","CAN");
+              									CANCELADO = CANCELADO.replace("trocaid",id);
+				              				} else {CANCELADO = ""}
+
+
+							 HTML = HTML +
+								 '	  <tr>	 '+	 
+								 '		<td  style="text-align:left;">'+PRODUTO+'</td> '+
+								 '		<td  style="text-align:center;">'+REQUISICAO+'</td> '+
+								  '		<td  style="text-align:center;">'+REVISAO+'</td> '+	
+								 '		<td  style="text-align:center;">'+APRNES+'</td> '+	 
+								 '		<td  style="text-align:center;">'+ALMOXARIFADO+'</td> '+		
+								 '		<td  style="text-align:center;">'+SOLICITACAO+'</td> '+		
+								 '		<td  style="text-align:center;">'+COTACAO+'</td> '+		
+								 '		<td  style="text-align:center;">'+APRCCU+'</td> '+
+								 '		<td  style="text-align:center;">'+APRFIN+'</td> '+
+								 '		<td  style="text-align:center;">'+APRMAN+'</td> '+
+								 '		<td  style="text-align:center;">'+ENTRADANF+'</td> '+
+								 '		<td  style="text-align:center;">'+PEDIDO+'</td> '+
+								 '		<td  style="text-align:center;">'+PAGAMENTO+'</td> '+	
+								 '		<td  style="text-align:center;">'+CANCELADO+'</td> '+
+								 '    </tr> ' ;	
+							
+							j = j + 1;
+
+						 }	
+					 
+					HTML = HTML +	 
+
+				     '  </tbody> '+
+					 '  </table> '+		
+					 ' <br/> <br/> <br/> ';
+			 
+
+			    i = i + 1;
+
+			}
+
+		HTML = HTML +
+			'</div>'+
+			'</div>'
+
+		document.body.innerHTML = HTML; 
+
+		}
+
+		function OcultaTabela(){
+
+			$('div#collapse-tabs').hide();
+			console.log("passei aqui tambem");
+
+		}
+
+
+			</script>
+
+		</head>
+        <body onload="OcultaTabela()">
+        	<div class="well well-sm">
+				<div class="fluig-style-guide">
+					<form name="form" role="form" >
+						 <div class="panel panel-default" align="center" id="pnlContrato">
+						       <div class="panel-heading" ><h3>Pesquisa</h3></div>
+						       <div class="panel-body">
+									<div class="col-md-3"  align="left" id="divCopiar">
+										<div class="form-group">
+										<span class="required text-info">
+											<label for="txtRequisicao" align="left">Número Requisição</label>
+										</span>
+											<input type="hidden" name="CODUSUARIO" id="CODUSUARIO">
+											<input type="hidden" name="IDFLUIG" id="IDFLUIG">
+											<input type="zoom" name="txtRequisicao" id="txtRequisicao"  data-zoom="
+																		{
+																		 'displayKey':'txtNumeroProcesso',
+																		 'datasetId':'dsProcCompras',
+																		 'placeholder':'Numero Processo',
+																		 'fields':[
+																		            {'field':'Numero Processo','label':'txtNumeroProcesso','standard':'true'}
+																		           ]
+																		}" class="form-control" fieldkey="txtNumeroProcesso" style="text-align:center;" />
+										</div>
+									</div>
+									<div class="col-md-3" align="center">
+										<div class="form-group">
+											<span class="required text-info">
+												<label for="txtDataInicial">Data Inicial</label>
+											</span>
+												<input type="date" id="txtDataInicial" name="txtDataInicial" class="form-control"  style="text-align:center;" onblur="disableZOOM()" />
+										</div>
+									</div>
+									<div class="col-md-3" align="center">
+										<div class="form-group">
+											<span class="required text-info">
+												<label for="txtDataFinal">Data Final</label>
+											</span>
+												<input type="date" id="txtDataFinal" name="txtDataFinal" class="form-control"  style="text-align:center;" onblur="disableZOOM()"/>
+										</div>
+									</div>
+									<div class="col-md-3" align="center">
+										<div class="form-group">
+											<input name="btnPesquisar" id="btnPesquisar" class="btn btn-info btn-lg" type="button" onclick="Pesquisa()" value="Pesquisar" />
+										</div>
+									</div>
+						</div>
+
+					</div>
+					<div id="Tabela">
+					</div>
+					</form>
+				</div>
+			</div>
+		</body>
+	</html>

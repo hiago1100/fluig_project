@@ -1,0 +1,86 @@
+function defineStructure() {
+
+}
+function onSync(lastSyncDate) {
+
+}
+function createDataset(fields, constraints, sortFields) {
+	
+	 var dataset = DatasetBuilder.newDataset();
+     
+	  dataset.addColumn("COUNT");
+
+	
+	 
+     var cUser = DatasetFactory.createConstraint("idEmpresa", "4", "4", ConstraintType.MUST);
+     var dsUsuarios = DatasetFactory.getDataset('SGA-sql2dataset-usuarios', null, [cUser],null);
+     
+     
+     
+     for(var i = 0;i<dsUsuarios.rowsCount;i++){
+    	 
+    	 var cod_usuario = dsUsuarios.getValue(i,'cod_usuario');
+         var cod_usuario_int = dsUsuarios.getValue(i,'idUsuario'); 
+         
+         
+         if(cod_usuario == "adm_tec"){ 
+        	 
+        	 
+        	 var c10 = DatasetFactory.createConstraint("colleaguePK.colleagueId", cod_usuario, cod_usuario, ConstraintType.MUST);
+             var colleague = DatasetFactory.getDataset('colleague', null, [c10],null);
+        	 
+             if(colleague.rowsCount > 0){
+            	 
+            	 var workflowEngineServiceProvider = ServiceManager.getServiceInstance("ECMWorkflowEngineService");
+                 
+                 var workflowEngineServiceLocator = workflowEngineServiceProvider.instantiate("com.totvs.technology.ecm.workflow.ws.ECMWorkflowEngineServiceService");
+              
+                 var workflowEngineService = workflowEngineServiceLocator.getWorkflowEngineServicePort();
+         
+                 var objectFactory = workflowEngineServiceProvider.instantiate("com.totvs.technology.ecm.workflow.ws.ObjectFactory");
+         
+                 var cardData = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArrayArray");
+
+                 var processAttachmentDtoArray = workflowEngineServiceProvider.instantiate("com.totvs.technology.ecm.workflow.ws.ProcessAttachmentDtoArray");
+
+                 var colleaguesId = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+                 //colleaguesId.getItem().addAll([dsUsuarios.getValue(i,'COD_GEST')]);
+                 colleaguesId.getItem().addAll(["admin"]);
+                 
+                 
+                 var appointment =  workflowEngineServiceProvider.instantiate("com.totvs.technology.ecm.workflow.ws.ProcessTaskAppointmentDtoArray");;
+                 
+                 var itemForm1 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+                 itemForm1.getItem().add("nomeUsuario");
+                 itemForm1.getItem().add(dsUsuarios.getValue(i,'nome_usuario'));
+                 cardData.getItem().add(itemForm1);
+                 log.info("### Nome Usuario "+ dsUsuarios.getValue(i,'nome_usuario'));
+                 
+                 
+                 var itemForm2 = workflowEngineServiceProvider.instantiate("net.java.dev.jaxb.array.StringArray");
+                 itemForm2.getItem().add("codGest");
+                 itemForm2.getItem().add("admin");
+                 cardData.getItem().add(itemForm2);
+
+                 
+                 
+                 
+                 
+                 
+                 var rest =  workflowEngineService.startProcess("admin", "adm", 1, "ARY-Revisao_de_acessos", 0, colleaguesId, "Revisão iniciada pelo admnistrador ", "admin", true, processAttachmentDtoArray, cardData, appointment, false);
+                 console.log("*** rest "+ rest);
+                 
+                 dataset.addRow([
+                                 dsUsuarios.getValue(i,'cod_usuario'),
+                                 ]);
+
+                
+             }	  
+         } 
+     }
+     
+     return dataset;
+
+}function onMobileSync(user) {
+
+}

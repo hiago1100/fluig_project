@@ -1,0 +1,68 @@
+.required{
+	color: red;
+}
+
+.input-group .btn{
+    border-radius: 0px 4px 4px 0px !important;
+}
+
+.input-group input{
+	border-radius: 4px 0px 0px 4px !important;
+}
+
+.row{
+	margin-bottom: 15px;
+}
+
+.row>.row{
+    margin: 0 !important;    
+}
+
+fieldset{
+	border: 1px solid #cecece !important;
+    padding: 10px 10px 0px 10px !important;
+    border-radius: 5px !important;
+}
+
+legend{
+	border: 0px !important;
+	width: auto !important;
+}
+/*Margem equivalente a altura ocupada pelos labels dos campos*/
+.marginLabel, .containerFile{
+	margin-top: 25px!important;
+}
+#tbBeneficios{
+	margin-top:10px;
+}
+.btn-add-beneficios{
+	
+}
+.btn-add-beneficios:hover{
+	cursor:pointer;
+}
+
+/* Scroll Pai filho de beneficios*/
+#table-wrapper-beneficio{
+  position:relative;
+}
+
+#table-scroll-beneficio{
+  max-height:400px;
+  overflow:auto;  
+}
+
+.hasDatepicker{
+    background-color: white !important;
+}
+
+.hasDatepicker:hover{
+    cursor: pointer !important;
+}
+
+/*
+Configura o Z-index do date-picker, para que ele não fique sob os campos zoom
+*/
+#ui-datepicker-div{
+	z-index: 10 !important;
+}

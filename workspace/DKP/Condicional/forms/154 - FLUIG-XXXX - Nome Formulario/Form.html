@@ -1,0 +1,155 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/jquery.timepicker.css" />
+    <link type="text/css" rel="stylesheet" href="Style.css" />
+</head>
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form" id="form">
+            <input type="hidden" name="cpMatriculaSolicitante" id="cpMatriculaSolicitante" />
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="fluigicon fluigicon-home fluigicon-lg"></span>
+                    <span class="descricaoProcesso"></span>
+                </div>
+                <div class="panel-body">
+                    O formul&aacute;rio abaixo refere-se ao preenchimento de informa&ccedil;&otilde;es necess&aacute;rias no processo de <b><span class="descricaoProcesso"></span></b>.
+                    <br>
+                    <br> Para conhecer o passo a passo dessa solicita&ccedil;&atilde;o e conferir todas as regras para a abertura desse chamado <b><a href="http://csc.direcional.com.br:8080/portal/p/1/ecmnavigation?app_ecm_navigation_doc=" target="_blank" id="ID_LINK_MANUAL" class="LinkManual">acesse o manual</a></b>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+							<span class="fluigicon fluigicon-user fluigicon-lg"></span>
+							Dados do solicitante
+						</h3>
+                </div>
+                <div class="panel-body container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">N&uacute;mero da solicita&ccedil;&atilde;o</label>
+								<input type="text" class="form-control" readonly="readonly" name="cpNumeroSolicitacao" id="cpNumeroSolicitacao" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Data de abertura</label>
+								<input type="text" class="form-control" readonly="readonly" name="cpDataAbertura" id="cpDataAbertura" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Solicitante</label>
+								<input type="text" class="form-control" readonly="readonly" name="cpSolicitanteNome" id="cpSolicitanteNome" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Fun&ccedil;&atilde;o</label>
+								<input type="text" class="form-control" readonly="readonly" name="cpSolicitanteFuncao" id="cpSolicitanteFuncao" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Empresa</label>
+								<input type="text" class="form-control" readonly="readonly" name="cpSolicitanteEmpresa" id="cpSolicitanteEmpresa" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Obra/Departamento</label>
+								<input type="text" class="form-control" readonly="readonly" name="cpSolicitanteObraDep" id="cpSolicitanteObraDep" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Estado</label>
+								<input type="text" class="form-control" readonly="readonly" name="cpSolicitanteEstado" id="cpSolicitanteEstado" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Email</label>
+								<input type="text" class="form-control" readonly="readonly" name="cpSolicitanteEmail" id="cpSolicitanteEmail" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+							<span class="fluigicon fluigicon-fileedit fluigicon-lg"></span>
+							Dados da solicitação
+						</h3>
+                </div>
+                <div class="panel-body container">
+                </div>
+            </div>
+            <div class="panel panel-default" id="divReabertura">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+							<span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+							&nbsp;Reabertura de processo
+						</h3>
+				</div>
+				<div class="panel-body container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="labelField">Aprova&ccedil;&atilde;o</label>
+								<select class="form-control" name="cpReaberturaChamado" id="cpReaberturaChamado" aprovacao obrigatorio>
+									<option value="">Selecione...</option>
+									<option value="1" data-status="success">Reenviar Chamado</option>
+									<option value="2" data-status="success">Cancelar</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<div class="form-group">
+								<label>Parecer</label>
+								<textarea rows="3" class="form-control" name="cpParecerReabertura" id="cpParecerReabertura" parecer></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+							<span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+							Etapas do processo
+						</h3>
+                </div>
+                <div class="panel-body">
+	               
+	        	</div>
+            </div>
+        </form>
+    </div>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/datepicker-pt-BR.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/Compartilhados/scripts/compartilhados.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/model.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/formShared.js" charset="utf-8"></script>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="Zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="BLL.js" charset="utf-8"></script>
+    <script type="text/javascript" src="View.js" charset="utf-8"></script>
+</body>
+
+</html>

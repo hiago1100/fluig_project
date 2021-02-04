@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Tipos</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-condensed table-striped" tablename="tipos" noaddbutton="true" nodeletebutton="true">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <th class="col-sm-2">Prioridade</th>
+                        <th class="col-sm-6">Tipo de Aprovação</th>
+                        <th class="col-sm-2">Qtde Mímina</th>
+                        <th class="col-sm-2">Somente com Limite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span ng-if="vm.Params.edit" ng-click="vm.removeTipo($event)" class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+                        </td>
+                        <td ng-child="vm.Formulario.tipoPrioridade" id="tipoPrioridade">
+                            <input ng-child-tags='{"fluig-number-mask":"0"}' type="text" class="form-control" name="tipoPrioridade" ng-model="vm.Formulario.tipoPrioridade" ng-value="vm.Formulario.tipoPrioridade">
+                        </td>
+                        <td ng-child="vm.Formulario.tipoTipoAprovacao" id="tipoTipoAprovacao">
+                            <input type="text" class="form-control" name="tipoTipoAprovacao_input" ng-model="vm.Formulario.tipoTipoAprovacao" ng-child-tags='{"fluig-autocomplete":""}'
+                                values="vm.TiposAprovacao" display-key="descricao">
+                            <textarea hidden ng-value="vm.Formulario.tipoTipoAprovacao | json:0" ng-bind="vm.Formulario.tipoTipoAprovacao | json:0" name="tipoTipoAprovacao"></textarea>
+                            <input type="hidden" name="tipoCodTipoAprovacao" ng-value="vm.Formulario.tipoTipoAprovacao.codigo">
+                        </td>
+                        <td ng-child="vm.Formulario.tipoQtdMinima" id="tipoQtdMinima">
+                            <input type="text" ng-child-tags='{"fluig-number-mask":"0"}' class="form-control" name="tipoQtdMinima" ng-model="vm.Formulario.tipoQtdMinima" ng-value="vm.Formulario.tipoQtdMinima">
+                        </td>
+                        <td ng-child="vm.Formulario.tipoSomenteComLimite" id="tipoSomenteComLimite">
+                            <input type="checkbox" ng-child-tags='{"fluig-switch":""}' name="tipoSomenteComLimite_input" ng-model="vm.Formulario.tipoSomenteComLimite" data-on-text="SIM"
+                            data-off-text="NÃO" data-on-color="success">
+                            <input type="hidden" name="tipoSomenteComLimite" ng-value="vm.Formulario.tipoSomenteComLimite">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button ng-if="vm.Params.edit" type="button" class="btn btn-lg btn-default" ng-click="vm.adicionaTipo()">Incluir Tipo</button>
+        </div>
+    </div>
+</div>

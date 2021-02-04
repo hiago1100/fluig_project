@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>87</string>
+	<key>AMApplicationVersion</key>
+	<string>1.0.4</string>
+	<key>AMDocumentVersion</key>
+	<string>1</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+						<string>com.microsoft.entourage.contact.object</string>
+						<string>com.microsoft.entourage.event.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Entourage</string>
+						<key>Resource</key>
+						<string>com.microsoft.entourage</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Get Selected Entourage Items.action</string>
+				<key>ActionName</key>
+				<string>Get Selected Entourage Items</string>
+				<key>ActionParameters</key>
+				<dict/>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Get_Selected_Entourage_Items</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>C0E102E9-26F1-4572-845F-243FCCA4EBD9</string>
+				<key>Keywords</key>
+				<array>
+					<string>selection</string>
+					<string>pass</string>
+					<string>obtain</string>
+					<string>mail</string>
+					<string>email</string>
+					<string>contact</string>
+					<string>event</string>
+					<string>message</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>CFC8441A-7CA2-46DA-A02B-9E4B57947604</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>15FDEBC4-2CFE-49D0-830F-13659F10DDF8</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
+				<key>nibPath</key>
+				<string>/Library/Automator/Get Selected Entourage Items.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>1122.000000:270.666626</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Entourage</string>
+						<key>Resource</key>
+						<string>com.microsoft.entourage</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Print Entourage Messages.action</string>
+				<key>ActionName</key>
+				<string>Print Entourage Messages</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>printCollated</key>
+					<true/>
+					<key>printCopies</key>
+					<string>1</string>
+					<key>printFromPage</key>
+					<string>1</string>
+					<key>printSpecifiedPages</key>
+					<false/>
+					<key>printToPage</key>
+					<string>1</string>
+					<key>printerName</key>
+					<string>Default Printer</string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Print_Entourage_Messages</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>A4EF0FE4-5735-449A-BEE8-B023167BF1B8</string>
+				<key>Keywords</key>
+				<array>
+					<string>mail</string>
+					<string>email</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>66879056-E8A5-40E6-ABA5-70C720B3E0B8</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>A1EADB3B-3A60-4378-8658-2A10BA23B229</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>1</string>
+						<key>name</key>
+						<string>printCopies</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string>1</string>
+						<key>name</key>
+						<string>printToPage</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>printSpecifiedPages</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string>Default Printer</string>
+						<key>name</key>
+						<string>printerName</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<true/>
+						<key>name</key>
+						<string>printCollated</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+					<key>5</key>
+					<dict>
+						<key>default value</key>
+						<string>1</string>
+						<key>name</key>
+						<string>printFromPage</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>5</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Print Entourage Messages.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>562.000000:224.000000</string>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>2BC25EC9-5634-47EA-B37A-785083D92A65</key>
+		<dict>
+			<key>from</key>
+			<string>15FDEBC4-2CFE-49D0-830F-13659F10DDF8 - CFC8441A-7CA2-46DA-A02B-9E4B57947604</string>
+			<key>to</key>
+			<string>A1EADB3B-3A60-4378-8658-2A10BA23B229 - A4EF0FE4-5735-449A-BEE8-B023167BF1B8</string>
+		</dict>
+	</dict>
+	<key>state</key>
+	<dict>
+		<key>actionsSplitView</key>
+		<real>175</real>
+		<key>layoutFrame</key>
+		<string>{{0, 0}, {564, 682}}</string>
+		<key>layoutScrollPosition</key>
+		<string>{{0, 0}, {564, 682}}</string>
+		<key>mainSplitView</key>
+		<real>373</real>
+		<key>minorSplitView</key>
+		<real>540</real>
+		<key>windowFrame</key>
+		<string>{{176, 318}, {967, 810}}</string>
+	</dict>
+</dict>
+</plist>

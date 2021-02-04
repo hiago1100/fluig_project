@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
+importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.com.datasul.technology.webdesk.search.controller);
+importPackage(Packages.java.util);
+importPackage(Packages.java.io);
+importPackage(Packages.java.text);
+var count = 0;
+var dataset = null;
+
+var countForm = 0;
+var datasetForm = null;
+
+pw = new PrintWriter(new FileWriter("/opt/fluig/logs_relatorios/log.log", true), true);
+
+
+
+pw.println("INITIALIZE***********************************");]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="nr_ficha" id="32">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="wkCompany" id="201">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="tableName" id="202">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="metaVersion" id="203">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <script-data-source name="FLUIG_DATASET" id="30"/>
+        <script-data-source name="Data Source" id="71"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="PR004_etapa_paixfilho" id="735">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">cd_regra</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">nm_regra</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">descricao_regra</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">status_regra_conforme</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">observacao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">como_verificar</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">cd_regra</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nm_regra</property>
+                </structure>
+                <structure>
+                    <property name="columnName">descricao_regra</property>
+                </structure>
+                <structure>
+                    <property name="columnName">status_regra_conforme</property>
+                </structure>
+                <structure>
+                    <property name="columnName">observacao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">como_verificar</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">cd_regra</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">nm_regra</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">descricao_regra</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">status_regra_conforme</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">observacao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">como_verificar</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+    var c2 = new Array();
+    var c3 = new Array();
+     
+    var sortingFields = new Array();
+    var i = 0;     
+
+    
+      
+    //Dataset
+    dataset = factory.getDataset("birt_consulta_PR004_table_regras", null, null, sortingFields);
+    
+    
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (dataset != null) {
+    if (count <  dataset.rowsCount){
+        //monta o objeto da linha
+        row["cd_regra"] = dataset.getValue(count, "cd_regra");
+        row["nm_regra"] = dataset.getValue(count, "nm_regra");
+        row["descricao_regra"] = dataset.getValue(count, "descricao_regra");
+        row["status_regra_conforme"] = dataset.getValue(count, "status_regra_conforme");
+        row["observacao"] = dataset.getValue(count, "observacao");
+        row["como_verificar"] = dataset.getValue(count, "como_verificar");
+         
+        count++;
+        return true;
+    }
+}
+
+if (datasetForm != null) {
+    if (countForm <  datasetForm.rowsCount){
+        //monta o objeto da linha
+        row["cd_etapa"] = datasetForm.getValue(countForm, "cd_etapa");         
+        countForm++;
+        return true;
+    }
+}
+
+
+return false;]]></method>
+        </script-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="leftMargin">0.13541666666666666in</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+</report>

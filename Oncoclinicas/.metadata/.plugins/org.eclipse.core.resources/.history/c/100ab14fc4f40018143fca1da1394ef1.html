@@ -1,0 +1,213 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+
+	<style type="text/css">
+
+		.form-group {margin-left: 0px;}
+		.DivTipoTitulo {align-items: center;}
+
+	</style>
+
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+
+		<!-- CAMPOS OCULTOS PARA REGRAS DE NEGOCIOS -->
+
+		<input  type="hidden" class="form-control" name="cpStatusNfAux" id="cpStatusNfAux" readonly="">
+
+		<input type="hidden" class="form-control" name="cpStatusNf" id="cpStatusNf" readonly="">
+
+<input type="hidden" class="form-control" name="cpTipoNotaAux" id="cpTipoNotaAux" readonly="">
+
+		
+
+		<input type="hidden" class="form-control" name="emailSolicitante" id="emailSolicitante" readonly="">
+
+
+		<!-- CAMPOS OCULTOS PARA REGRAS DE NEGOCIOS -->
+		<input type="hidden" name="cpTipoTitulo" id="cpTipoTitulo">
+			<div class="container">			
+				<br>		
+				<div id="div_solicitante" name="div_solicitante">
+					<div class="form-group row">
+						<div class="col-md-6">
+							<label for="nomeSolicitante" class="required text-info">Solicitante  </label>
+							<input type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante" readonly="" >
+						</div>
+
+						<div class="col-md-3">
+							<label class="required text-info">Número Solicitação </label>
+							<!--    teste para integração -->
+							<input type="text" name="cpNumeroSolicitacao" id="cpNumeroSolicitacao" class="form-control"  readonly=""> 
+							
+						</div>  						
+						
+						<div class="col-md-3">
+							<label class="required text-info">Data Solicitação </label>
+							<!--    teste para integração -->
+							<input type="text" name="dataSolicitacao" id="dataSolicitacao" class="form-control"  readonly=""> 
+							
+						</div>              
+
+					</div>   
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="required text-info">Filial</label>
+								<div class="input-group">
+									<input type="hidden" name="cpCodFiliais" id="cpCodFiliais">
+									<input type="text" class="form-control" name="cpFilial" id="cpFilial" readonly>
+									<span class="input-group-btn">
+										<button type="button" id="zoomFilial" class="btn btn-info zoomFilial" onclick="setZooms()" name="zoomFilial">
+											<span class="fluigicon fluigicon-search fluigicon-sm"></span>
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label class="required text-info">Número da Nota</label>
+								<input type="text" class="form-control" name="cpNumeroNota" id="cpNumeroNota" onblur="autoComplete()">
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label class="required text-info">Número Série</label>
+								<div class="input-group">
+								<input type="text" class="form-control" name="cpNumeSerie" id="cpNumeSerie">
+								<span class="input-group-btn">
+								<button type="button" id="btnBuscaNf" class="btn btn-info btnBuscaNf" onclick="buscaNfProtheus()" name="btnBuscaNf">
+									<span class="fluigicon fluigicon-search fluigicon-sm"></span>							
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row form-group">
+
+					<div class="col-md-6">
+						<label class="required text-info">Data de Emissão</label>
+						<input type="text" name="cpDataEmissao" id="cpDataEmissao" class="form-control" readonly="">
+					</div>          
+
+
+					<div class="col-md-6">
+						<label class="required text-info">CNPJ do Cliente</label>
+						<input type="text" name="cpCnpjCliente" id="cpCnpjCliente" class="form-control" readonly="readonly">
+					</div>
+				</div>
+				<div class="row form-group">
+
+					<div class="col-md-6">
+						<span class="required text-info">
+						 <label for="cpRazaoSocial">Razão Social</label>
+					 </span>
+					 <input  type="text" class="form-control" name="cpRazaoSocial" id="cpRazaoSocial" readonly="">
+				 </div>          
+				 <div class="col-md-6">
+					<span class="required text-info">
+						<label for="cpValorNf" align="left">Valor na NF</label>
+					</span>
+					<input type="text" class="form-control" name="cpValorNf" id="cpValorNf" readonly="">
+				</div>
+			</div>
+
+			<div class="row form-group" >          
+			 <div class="col-md-6">
+				<span class="required text-info">
+					<label for="cpMotivo">Motivo Cancelamento</label>
+				</span>
+				<select name="cpMotivoCanc" id="cpMotivoCanc" class="form-control">	
+					<option value="Duplicidade">Duplicidade</option>
+					<option value="Erro na retenção dos impostos">Erro na retenção dos impostos</option>
+					<option value="Outros">Outros</option>	
+				</select>
+				<!-- <input type="text" class="form-control" name="cpMotivo" id="cpMotivo" readonly="">
+ -->			</div>
+			<div class="col-md-6">
+				<label class="required text-info">Tipo da Nota</label>
+				<input type="text" id="cpTipoNota" name="cpTipoNota" class="form-control" readonly="">							
+			</div>	
+		</div>
+		<div class="row form-group" >          
+		    <div class="col-md-12">
+				<label class="required text-info">Status da Nota</label>
+				<input type="text" id="cpMensagemProtheus" name="cpMensagemProtheus" class="form-control" readonly="">			
+			</div>	
+		</div>
+
+		  <div class="alert alert-success hide DivTipoTitulo" role="alert" id="DivTipoTitulo" align="center">	
+	      </div>	
+
+		
+
+
+		<div class="row form-group">
+
+			<div class="col-md-12">
+				<span class="required text-info">
+				 <label for="cpObservacao">Observações</label>
+			 </span>
+			 <textarea class="form-control" name="cpObservacao" id="cpObservacao"  rows="10" cols="10"></textarea>
+		 </div>          
+	 </div>
+	 <fieldset id="aprovacao" style="display: none">
+		<div class="row form-group">
+			<div class="col-md-4">
+				<span class="required text-info">
+					<label for="responsavelAconpanhamento">Responsavel</label>
+				</span>
+				<input type="text" class="form-control" name="responsavelAprov" id="responsavelAprov" readonly>
+			</div>
+			<div class="col-md-3">
+				<span class="required text-info">
+					<label for="dataAconpanhamento" align="left">Data Análise</label>
+				</span>
+				<input type="date" class="form-control" name="dataAprov" id="dataAprov" readonly>
+			</div>
+			<div class="form-group col-md-4" id="divAprovacao" style="padding-top: 1em">
+				<label for="aprovacao" class="required">Aprovação</label>
+				<button onclick="startBtn(this.id)" type="button" class="btn btn-success" id="Aprov">
+					<span  class="fluigicon fluigicon-thumbs-up fluigicon-md Aprov" style="display: none;"></span>
+					Aprovar
+				</button>
+				<button onclick="startBtn(this.id)" type="button" class="btn btn-danger" id="Reprov">
+					<span  class="fluigicon fluigicon-thumbs-down fluigicon-md Reprov" style="display: none;"></span>
+					Reprovar
+				</button>
+				<input type="hidden" name="aprovacaoAux" id="aprovacaoAux">
+			</div>
+		</div>
+		<legend>Análise Fiscal</legend>
+		<div class="row form-group">
+			<div class="col-md-12">
+				<span class="required text-info">
+					<label for="consideracoesAconpanhamento">Considerações</label>
+				</span>
+				<textarea class="form-control" name="consideracoesAconpanhamento" id="consideracoesAconpanhamento" rows="10"
+				 cols="10"></textarea>
+			</div>
+		</div>
+
+
+	</fieldset>
+
+ </div>
+</div> <br><br><!-- Ultima Div -->
+</form>
+</div>
+</body>
+</html>

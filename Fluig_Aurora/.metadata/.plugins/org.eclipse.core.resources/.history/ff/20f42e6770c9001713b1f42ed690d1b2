@@ -1,0 +1,11 @@
+function enableFields(form){ 
+	
+	var WKNumState = form.getValue("numeroAtividade");
+	
+	
+	if(WKNumState == 0 || CURRENT_STATE == INICIO) {
+        form.setEnabled("transportador",false); // aqui você coloca o name do campo do formulário
+    }
+	
+	
+}

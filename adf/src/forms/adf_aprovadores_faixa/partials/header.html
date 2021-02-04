@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Estabelecimento</label>
+                <div class="col-sm-5">
+                    <input type="text" name="estabelecimento_input" class="form-control" fluig-autocomplete values="vm.Estabelecimentos" display-key="displaykey"
+                        ng-model="vm.Formulario.estabelecimento" ng-change="vm.consultaDuplicado();vm.buscaFaixas()" ng-readonly="vm.Params.formMode != 'ADD'">
+                    <textarea hidden name="estabelecimento" ng-value="vm.Formulario.estabelecimento | json:0" ng-bind="vm.Formulario.estabelecimento | json:0"></textarea>
+                    <input type="hidden" name="codEstab" ng-value="vm.Formulario.estabelecimento.codigo">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Lotação</label>
+                <div class="col-sm-5">
+                    <input type="text" name="lotacao_input" class="form-control" fluig-autocomplete values="vm.Lotacoes" display-key="displaykey"
+                        ng-model="vm.Formulario.lotacao" ng-change="vm.consultaDuplicado();buscaFaixas()" ng-readonly="vm.Params.formMode != 'ADD'">
+                    <textarea hidden name="lotacao" ng-value="vm.Formulario.lotacao | json:0" ng-bind="vm.Formulario.lotacao | json:0"></textarea>
+                    <input type="hidden" name="codLotacao" ng-value="vm.Formulario.lotacao.codigo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Tipo de Documento</label>
+                <div class="col-sm-5">
+                    <input type="text" name="tipoDocumento_input" class="form-control" fluig-autocomplete values="vm.TiposDocumento" display-key="displaykey"
+                        ng-model="vm.Formulario.tipoDocumento" ng-change="vm.consultaDuplicado();vm.buscaFaixas()" ng-readonly="vm.Params.formMode != 'ADD'">
+                    <textarea hidden name="tipoDocumento" ng-value="vm.Formulario.tipoDocumento | json:0" ng-bind="vm.Formulario.tipoDocumento | json:0"></textarea>
+                    <input type="hidden" name="codTipoDocto" ng-value="vm.Formulario.tipoDocumento.codigo">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Faixa</label>
+                <div class="col-sm-3">
+                    <input type="text" name="faixa_input" class="form-control" fluig-autocomplete values="vm.Faixas" display-key="faixaDescricao"
+                        ng-model="vm.Formulario.faixa" ng-change="vm.consultaDuplicado()" ng-readonly="vm.Params.formMode != 'ADD' || !vm.Faixas">
+                    <textarea hidden name="faixa" ng-value="vm.Formulario.faixa | json:0" ng-bind="vm.Formulario.faixa | json:0"></textarea>
+                    <input type="hidden" name="codFaixa" ng-value="vm.Formulario.faixa.faixaCodigo">
+                </div>
+                <div class="col-sm-2">
+                    <p readonly class="form-control" ng-bind="vm.Formulario.faixa.faixaLimiteInicial | currency"></p>
+                </div>
+                <div class="col-sm-2">
+                    <p readonly class="form-control" ng-bind="vm.Formulario.faixa.faixaLimiteFinal | currency"></p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

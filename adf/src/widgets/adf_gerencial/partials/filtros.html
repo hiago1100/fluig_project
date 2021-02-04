@@ -1,0 +1,93 @@
+<div class="col-md-12 mobile-tab-content">
+    
+    <div class="panel-group" id="accordion">
+
+        <div class="panel panel-default fs-no-margin fs-no-border" ng-show="vm.Processos.length > 0">
+            <div class="panel-heading fs-cursor-pointer" ng-click="filtroPeriodoRefCollapsed = !filtroPeriodoRefCollapsed">
+                <h4 class="panel-title">
+                    <a class="collapse-icon" ng-class="{'up': filtroPeriodoRefCollapsed}">
+                        <h4>Período de Referência</h4>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" ng-class="{'in': filtroPeriodoRefCollapsed}">
+                <div class="panel-body">
+                    <date-range-picker start="vm.Filtros.startDate" end="vm.Filtros.endDate" presets="vm.Filtros.presetsDate" on-close="vm.closeDateFilter()">
+                    </date-range-picker>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default fs-no-margin fs-no-border" ng-show="vm.Processos.length > 0">
+            <div class="panel-heading fs-cursor-pointer" ng-click="filtroTipoDoctoCollapsed = !filtroTipoDoctoCollapsed">
+                <h4 class="panel-title">
+                    <a class="collapse-icon" ng-class="{'up': filtroTipoDoctoCollapsed}">
+                        <h4>Tipos de Documento</h4>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" ng-class="{'in': filtroTipoDoctoCollapsed}">
+                <div class="panel-body">
+
+
+                    <li class="list-group-item fs-cursor-pointer" ng-click="vm.selectTipoDocto(tipoDocto)" ng-class="{'list-group-item-info':tipoDocto.selected}" ng-repeat="tipoDocto in vm.Filtros.TiposDocumento">
+                        <span class="badge badge-info">{{tipoDocto.qtd}}</span> {{tipoDocto.tipoDocto}}
+                    </li>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default fs-no-margin fs-no-border" ng-show="vm.Processos.length > 0">
+            <div class="panel-heading fs-cursor-pointer" ng-click="filtroEstabCollapsed = !filtroEstabCollapsed">
+                <h4 class="panel-title">
+                    <a class="collapse-icon" ng-class="{'up': filtroEstabCollapsed}">
+                        <h4>Estabelecimentos</h4>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" ng-class="{'in': filtroEstabCollapsed}">
+                <div class="panel-body">
+                    <li class="list-group-item fs-cursor-pointer" ng-click="vm.selectEstab(estab)" ng-class="{'list-group-item-info':estab.selected}" ng-repeat="estab in vm.Filtros.Estabelecimentos">
+                        <span class="badge badge-info">{{estab.qtd}}</span> {{estab.estab}}
+                    </li>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default fs-no-margin fs-no-border" ng-show="vm.Processos.length > 0">
+            <div class="panel-heading fs-cursor-pointer" ng-click="filtroEspeciesCollapsed = !filtroEspeciesCollapsed">
+                <h4 class="panel-title">
+                    <a class="collapse-icon" ng-class="{'up': filtroEspeciesCollapsed}">
+                        <h4>Espécies</h4>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" ng-class="{'in': filtroEspeciesCollapsed}">
+                <div class="panel-body">
+                    <li class="list-group-item fs-cursor-pointer" ng-click="vm.selectEspecie(especie)" ng-class="{'list-group-item-info':especie.selected}" ng-repeat="especie in vm.Filtros.Especies">
+                        <span class="badge badge-info">{{especie.qtd}}</span> {{especie.especie}}
+                    </li>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default fs-no-margin fs-no-border">
+            <div class="panel-heading fs-cursor-pointer" ng-click="filtroPerfilCollapsed = !filtroPerfilCollapsed">
+                <h4 class="panel-title">
+                    <a class="collapse-icon" ng-class="{'up': filtroPerfilCollapsed}">
+                        <h4>Perfil</h4>
+                    </a>
+                </h4>
+            </div>
+            <div class="panel-collapse collapse" ng-class="{'in': filtroPerfilCollapsed}">
+                <div class="panel-body">
+                    <li class="list-group-item fs-cursor-pointer" ng-click="vm.selectUser(user)" ng-class="{'list-group-item-info':vm.selectedUser.colleagueId===user.colleagueId}" ng-repeat="user in vm.Users">
+                        {{user.colleagueName}}
+                    </li>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

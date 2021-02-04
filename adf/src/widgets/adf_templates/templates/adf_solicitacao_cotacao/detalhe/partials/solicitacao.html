@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Solicitação de Cotação</h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <label> Estabelecimento: </label>
+                <p>{{documento.solicitacaoCodEstab}} - {{documento.solicitacaoEstab}}</p>
+            </div>
+            <div class="col-sm-6">
+                <label> Centro de Custo: </label>
+                <p>{{documento.solicitacaoCodCcustoRequisitante}} {{documento.solicitacaoCcustoRequisitante || 'Não informado'}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <label> Requisitante: </label>
+                <p>{{documento.solicitacaoRequisitante}}</p>
+            </div>
+            <div class="col-sm-6">
+                <label> Data da Requisição: </label>
+                <p>{{documento.solicitacaoData | date}}</p>
+            </div>
+        </div>
+    </div>
+</div>

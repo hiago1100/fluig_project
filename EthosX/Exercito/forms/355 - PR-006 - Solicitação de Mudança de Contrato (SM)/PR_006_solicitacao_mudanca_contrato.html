@@ -1,0 +1,695 @@
+<html>
+	<head>
+		<title>Demanda de Contrato</title>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css">
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+		<link href='css/visual.css' rel='stylesheet' />
+
+		<script type="text/javascript" src="js/activities.js" ></script>
+		<script type="text/javascript" src="js/requiredFields.js"></script>
+		<script type="text/javascript" src="js/enableFields.js"></script>
+		<script type="text/javascript" src="js/moment.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery.maskMoney.js"></script>
+
+		<script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/zoom.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		
+	</head>
+	<body>
+		<form>
+			
+			<input type="hidden" id="idFluig" name="idFluig" />
+			<input type="hidden" name="solic_cancelada" id="solic_cancelada" value="false" />
+			<input type="hidden" id="stateProcess" name="stateProcess" />
+			<input type="hidden" id="currentState" name="currentState" />
+
+			<div class="fluig-style-guide">
+			
+				<div class="panel panel-primary">
+					<div class="panel-body">
+						<h1>
+							<b>Solicitação de Mudança de Contrato (SM)</b>
+						</h1>
+					</div>
+				</div>
+				
+				<div class="panel panel-primary" id="panelDadosSolicitacao">
+					<div class="panel-heading ">
+						<h3 class="panel-title">
+							<b>Dados da solicitação</b>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group row">
+							<div class="col-md-2"> 
+								<label for="numSM">Nº SM</label> 
+								<input type="text" class="form-control" name="numSM" id="numSM" readonly />
+							</div>
+							<div class="col-md-4">
+								<label for="nmSolicitante">Solicitante</label>
+								<input type="hidden" id="idSolicitante" name="idSolicitante" />
+								<input type="text" class="form-control" name="nmSolicitante" id="nmSolicitante" readonly />
+							</div>
+							<div class="col-md-2">
+								<label for="dtHrSolicitacao">Data/Hora solicitação</label>
+								<input type="hidden" id="dtSolicitacaoFiltro" name="dtSolicitacaoFiltro" />
+								<input type="text" class="form-control"	name="dtHrSolicitacao" id="dtHrSolicitacao" readonly />
+							</div>
+							<div class="col-md-4">
+								<label for="solicitadoPor">Solicitado por</label>
+								<div class="radio">
+									<label for="solicitadoPorEB"> 
+										<input type="radio" name="solicitadoPor" id="solicitadoPorEB" value="EB" />
+										Exército Brasileiro
+									</label>
+									<label for="solicitadoPorContratada"> 
+										<input type="radio" name="solicitadoPor" id="solicitadoPorContratada" value="contratada" /> 
+										Contratada
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> <!-- END panelDadosSolicitacao-->
+
+				<div class="panel panel-primary" id="panelDetalhesSM" style="display: none;">
+					<div class="panel-heading ">
+						<h3 class="panel-title"><b>Detalhes SM</b></h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group row">
+							<div class="col-md-6">
+								<label for="nmContratada">Contratada</label>
+								<input type="hidden" id="cnpjContratada" name="cnpjContratada" />
+								<input type="zoom" class="form-control" name="nmContratada" id="nmContratada"
+									data-zoom="{
+										'displayKey':'ds_nome',
+										'datasetId':'geral_cadastro_fornecedor',
+										'maximumSelectionLength':'1',
+										'fields':[
+													{
+														'field':'ds_cnpj',
+														'label':'CNPJ Fornecedor',
+														'standard':false,
+														'visible':'true'
+													},
+													{
+														'field':'ds_nome',
+														'label':'Fornecedor',
+														'standard':true
+													}
+												]										
+										}"
+									/>	 
+							</div>
+							<div class="col-md-6">
+								<label for="contrato">Contrato</label>
+								<input type="hidden" id="idGestorContrato" name="idGestorContrato" />
+								<input type="hidden" id="nmGestorContrato" name="nmGestorContrato" />
+								<input type="hidden" id="idContrato" name="idContrato" />
+								<input type="zoom" class="form-control" name="contrato" id="contrato"
+									data-zoom="{
+										'displayKey':'nm_contrato',
+										'datasetId':'sm_consulta_contratos',
+										'maximumSelectionLength':'1',
+										'fields':[
+												{
+													'field':'cd_contrato',
+													'label':'Código',
+													'visible':'true'
+												},
+												{
+													'field':'nm_contrato',
+													'label':'Nome',
+													'standard':'true'
+												}
+											]
+										}"
+									/>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-6">
+								<label for="secao">Seção vínculada</label>
+								<input type="hidden" id="idSecao" name="idSecao" />
+								<input type="hidden" id="idChefeSecao" name="idChefeSecao" />
+								<input type="zoom" class="form-control" name="secao" id="secao"
+									data-zoom="{
+										'displayKey':'txt_nome',
+										'datasetId':'sm_consulta_secoes_vinculadas',
+										'maximumSelectionLength':'1',
+										'placeholder':'Selecione',
+										'fields':[
+												{
+													'field':'txt_sigla',
+													'label':'Sigla',
+													'visible':'true'
+												},
+												{
+													'field':'txt_nome',
+													'label':'Nome',
+													'standard':'true'
+												},
+												{
+													'field':'num_id_grupo_chefe',
+													'label':'ID grupo chefe seção',
+													'visible':'false'
+												}
+											]
+										}"
+									/>
+							</div>
+						</div>
+						<div class="page-header">
+							<h3>Contrato <small>Obrigações Acessórias</small></h3>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-2">
+								<input type="button" class="btn btn-primary" id="btnAddObrigacoes" value="Adicionar Obrigação">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-12">
+								<div class="table-responsive">
+									<table border="0" class="table table-striped table-bordered table-eb" 
+										tablename="tableObrigacoesAcessorias" id="tableObrigacoesAcessorias" 
+										nodeletebutton="false" noaddbutton="true" >
+									
+										<thead>
+											<tr>
+												<td style="width: 93%;"><b>Obrigação acessória</b></td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="fs-v-align-middle">
+													<input type="hidden" id="idObrigacaoAcessoria" name="idObrigacaoAcessoria" />
+													<input type="zoom" class="form-control" name="obrigacaoAcessoria" id="obrigacaoAcessoria"
+														data-zoom="{
+															'displayKey':'cod_obrigacao_acessoria',
+															'datasetId':'geral_consulta_obrigacoes_acessorias',
+															'maximumSelectionLength':'1',
+															'placeholder':'Selecione',
+															'fields':[
+																	{
+																		'field':'cod_obrigacao_acessoria',
+																		'label':'Código',
+																		'visible':'true'
+																	},
+																	{
+																		'field':'desc_obrigacao_acessoria',
+																		'label':'Nome',
+																		'standard':'true'
+																	}
+																]
+															}"
+														/>
+													
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="page-header">
+							<h3>Contrato <small>Etapas</small></h3>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-md-2">
+								<input type="button" class="btn btn-primary" id="btnAddEtapas" value="Adicionar Etapa">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-12">
+								<div class="table-responsive">
+									<table border="0" class="table table-striped table-bordered table-eb" 
+										tablename="tableEtapas" id="tableEtapas" 
+										nodeletebutton="false" noaddbutton="true" >
+									
+										<thead>
+											<tr>
+												<td style="width: 93%;"><b>Etapa</b></td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td class="fs-v-align-middle">
+													<input type="hidden" id="idEtapa" name="idEtapa" />
+													<input type="zoom" class="form-control filter-etapa" name="etapa" id="etapa"
+														data-zoom="{
+															'displayKey':'cd_etapa',
+															'datasetId':'sm_consulta_etapas',
+															'maximumSelectionLength':'1',
+															'fields':[
+																	{
+																		'field':'cd_etapa',
+																		'label':'Código'
+																	},
+																	{
+																		'field':'nm_etapa',
+																		'label':'Nome',
+																		'standard':'true'
+																	},
+																	{
+																		'field':'zoom_secao',
+																		'label':'Seção'
+																	},
+																	{
+																		'field':'zoom_fase',
+																		'label':'Fase'
+																	},
+																	{
+																		'field':'tipo',
+																		'label':'Tipo'
+																	}
+																]
+															}"
+														/>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-12"> 
+								<label for="descSM">Descrição da SM</label> 
+								<textarea class="form-control" name="descSM" id="descSM"></textarea>
+							</div>
+						</div>
+					</div>
+				</div> <!-- END panel panelDetalhesSM -->
+
+				<div class="panel panel-primary panel-primary" id="panelElaboracaoSM" style="display: none;">
+					<div class="panel-heading ">
+						<h3 class="panel-title"><b>Elaboração SM</b></h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group row">
+							<div class="col-md-12"> 
+								<label for="descSMProposta">Descrever SM de contrato proposta</label> 
+								<textarea class="form-control" name="descSMProposta" id="descSMProposta"></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4">
+								<label for="respElaboracao">Responsável elaboração</label>
+								<input type="hidden" id="idRespElaboracao" name="idRespElaboracao" />
+								<input type="hidden" id="nmRespElaboracao" name="nmRespElaboracao" />
+								<select class="form-control" name="respElaboracao" id="respElaboracao"></select>
+							</div>
+						</div>
+						<div id="divGestaoDemandas" style="display: none;">
+							<div class="page-header">
+								<h3>Demandar elaboração <small>Gestão de demandas</small></h3>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-4"> 
+									<label for="nmDemandante">Demandante</label> 
+									<input type="hidden" id="idDemandante" name="idDemandante" />
+									<input type="text" class="form-control" name="nmDemandante" id="nmDemandante" readonly />
+								</div>
+								<div class="col-md-5">
+									<label for="nmDemandado">Demandado</label>
+									<input type="hidden" id="idDemandado" name="idDemandado" />
+									<input type="hidden" id="cargoDemandado" name="cargoDemandado" />
+									<input type="hidden" id="experienciaDemandado" name="experienciaDemandado" />
+									<input type="hidden" id="secaoDemandado" name="secaoDemandado" />
+									<input type="zoom" 
+										class="form-control" 
+										id="nmDemandado"
+										name="nmDemandado"
+										data-zoom="{
+											'displayKey':'nomeCompleto',
+											'datasetId':'demandas_demandados',									
+											'fields':[
+												{
+													'field':'nomeCompleto',
+													'label':'Nome', 
+													'standard':'true'
+												},																	
+												{
+													'field':'login',
+													'label':'Login', 
+													'visible':'false'
+												},
+												{
+													'field':'secao',
+													'label':'Secao', 
+													'visible':'false'
+												}
+											]
+										}" 
+									/>
+								</div>
+								<div class="col-md-3">
+									<label for="dataLimiteDemanda">Data limite demanda</label>
+									<input type="hidden" name="dataLimiteDemandaFiltro" id="dataLimiteDemandaFiltro" />
+									<input type="text" class="form-control campo-data" name="dataLimiteDemanda" id="dataLimiteDemanda" mask="00/00/0000" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label for="descDemanda">Descrição</label>
+									<input type="hidden" id="assuntoDemanda" name="assuntoDemanda" />
+									<textarea name="descDemanda" id="descDemanda" class="form-control"></textarea>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-2">
+									<label for="numDemanda">Nº da demanda</label>
+									<input type="text" class="form-control" name="numDemanda" id="numDemanda" readonly />
+								</div>
+								<div class="col-md-4">
+									<label for="statusDemanda">Status da demanda</label>
+									<input type="text" class="form-control" name="statusDemanda" id="statusDemanda" readonly />
+								</div>
+								<div class="col-md-2">
+									<label>&nbsp;</label>
+									<input type="button" id="btnCriarDemanda" class="btn btn-primary form-control" value="Criar demanda" />
+								</div>
+							</div>
+						</div> <!-- END  divGestaoDemandas -->
+						<div class="page-header">
+							<h3>Impactos <small>analisados na elaboraração da SM</small></h3>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-3">
+								<label for="impactoEscopo">Impacto escopo</label>
+								<div class="radio">
+									<label for="impactoEscopoS"><input type="radio" name="impactoEscopo" id="impactoEscopoS" value="sim" />Sim</label>
+									<label for="impactoEscopoN"><input type="radio" name="impactoEscopo" id="impactoEscopoN" value="nao" />Não</label>
+								</div>
+							</div>
+							<div class="col-md-9"> 
+								<label for="descImpactoEscopo">Descrição impacto escopo</label>
+								<textarea class="form-control" name="descImpactoEscopo" id="descImpactoEscopo"></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-3">
+								<label for="impactoMetodologia">Impacto metodologia</label>
+								<div class="radio">
+									<label for="impactoMetodologiaS"><input type="radio" name="impactoMetodologia" id="impactoMetodologiaS" value="sim" />Sim</label>
+									<label for="impactoMetodologiaN"><input type="radio" name="impactoMetodologia" id="impactoMetodologiaN" value="nao" />Não</label>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<label for="descImpactoMetodologia">Descrição impacto metodologia</label>
+								<textarea class="form-control" name="descImpactoMetodologia" id="descImpactoMetodologia"></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-3">
+								<label for="impactoPrazo">Impacto prazo</label>
+								<div class="radio">
+									<label for="impactoPrazoS"><input name="impactoPrazo" id="impactoPrazoS" value="sim" type="radio">Sim</label>
+									<label for="impactoPrazoN"><input name="impactoPrazo" id="impactoPrazoN" value="nao" type="radio">Não</label>
+								</div>
+							</div>
+							<div class="col-md-9"> <label for="descImpactoPrazo">Descrição impacto prazo</label>
+								<textarea class="form-control" name="descImpactoPrazo" id="descImpactoPrazo"></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-3">
+								<label for="impactoSecoes">Impacto seções</label>
+								<div class="radio">
+									<label for="impactoSecoesS"><input type="radio" name="impactoSecoes" id="impactoSecoesS" value="sim" />Sim</label>
+									<label for="impactoSecoesN"><input type="radio" name="impactoSecoes" id="impactoSecoesN" value="nao" />Não</label>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<label for="descImpactoSecoes">Descrição impacto seções</label>
+								<textarea class="form-control" name="descImpactoSecoes" id="descImpactoSecoes"></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-3">
+								<label for="impactoCusto">Impacto custo</label>
+								<div class="radio">
+									<label for="impactoCustoS"><input type="radio" name="impactoCusto" id="impactoCustoS" value="sim" />Sim</label>
+									<label for="impactoCustoN"><input type="radio" name="impactoCusto" id="impactoCustoN" value="nao" />Não</label>
+								</div>
+							</div>
+							<div class="col-md-9"> 
+								<label for="descImpactoCusto">Descrição impacto custo</label>
+								<textarea class="form-control" name="descImpactoCusto" id="descImpactoCusto"></textarea>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-4"> 
+								<label for="valorImpactoCusto">Valor do custo</label> 
+								<input type="text" class="form-control money" id="valorImpactoCusto" name="valorImpactoCusto" />
+							</div>
+						</div>
+					</div> 
+				</div> <!-- END panelElaboracaoSM -->
+
+				<div class="panel panel-primary" id="panelQualificarSM" style="display: none;">
+					<div class="panel-heading ">
+						<h3 class="panel-title"><b>Qualificar SM</b></h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group row">
+							<div class="col-md-4">
+								<label for="respQualificarSM">Responsável (Gestão de contratos)</label>
+								<input type="hidden" id="idRespQualificarSM" name="idRespQualificarSM" />
+								<input type="text" class="form-control" name="respQualificarSM" id="respQualificarSM" readonly />
+							</div>
+							<div class="col-md-8">
+								<label for="qualificarSM">Qualificação SM</label>
+								<div class="radio"> 
+									<label for="qualificarAditivo"><input type="radio" name="qualificarSM" id="qualificarAditivo" value="aditivo" /> Aditivo </label>
+									<label for="qualificarApostilamento"><input type="radio" name="qualificarSM" id="qualificarApostilamento" value="apostilamento" /> Apostilamento</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-md-12"> 
+								<label for="descQualificaca">Descrever qualificação</label>
+								<textarea class="form-control" name="descQualificaca" id="descQualificaca"></textarea>
+							</div>
+						</div>
+					</div>
+				</div> <!-- END panelQualificarSM -->
+
+				<div class="panel panel-primary" id="panelCGM" style="display: none;">
+					<div class="panel-heading ">
+						<h3 class="panel-title"><b>CGM</b></h3>
+					</div>
+					<div class="panel-body">
+						<div id="divPreCGM" style="display: none;">
+							<div class="page-header">
+								<h3>Pré CGM<small></small></h3>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-4">
+									<label for="respPreCGM">Responsável (Gestão de contratos)</label>
+									<input type="hidden" id="idRespPreCGM" name="idRespPreCGM" />
+									<input type="text" class="form-control" name="respPreCGM" id="respPreCGM" readonly />
+								</div>
+								<div class="col-md-5">
+									<label for="pautaPreCGM">Esteve na pauta Pré CGM</label>
+									<div class="radio">
+										<label for="pautaPreCGMS"> <input type="radio" name="pautaPreCGM" id="pautaPreCGMS" value="sim" />Sim</label>
+										<label for="pautaPreCGMN"> <input type="radio" name="pautaPreCGM" id="pautaPreCGMN" value="nao" />Não</label>
+									</div>
+								</div>
+							</div>
+							<div class="page-header">
+								<h3>Reuniões <small>Pré CGM</small></h3>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-2">
+									<input type="button" class="btn btn-primary" id="btnAddPreCGM" value="Adicionar Reunião">
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-12">
+									<div class="table-responsive">
+										<table border="0" class="table table-striped table-bordered table-eb" 
+											tablename="tableReunioesPreCGM" id="tableReunioesPreCGM" 
+											nodeletebutton="false" noaddbutton="true" >
+										
+											<thead>
+												<tr>
+													<td style="width: 16%;"><b>Data</b></td>
+													<td style="width: 78%;"><b>Descrição</b></td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="fs-v-align-middle">
+														<input type="hidden" name="dataReuniaoPreCGMFiltro" id="dataReuniaoPreCGMFiltro" />
+															<input type="text" class="form-control campo-data" name="dataReuniaoPreCGM" id="dataReuniaoPreCGM" mask="00/00/0000" />
+													</td>
+													<td class="fs-v-align-middle">
+														<textarea class="form-control" name="descReuniaoPreCGM"	id="descReuniaoPreCGM"></textarea>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div> <!-- END divPreCGM -->
+						<div id="divCGM" style="display: none;">
+							<div class="page-header">
+								<h3>CGM <small></small></h3>
+							</div>
+							<div class="form-group row row-danger">
+								<div class="col-md-4"> 
+									<label for="respCGM">Responsável (Gestão de contratos)</label>
+									<input type="hidden" id="idRespCGM" name="idRespCGM" />
+									<input type="text" class="form-control" name="respCGM" id="respCGM" readonly>
+								</div>
+								<div class="col-md-5">
+									<label for="pautaCGM">Esteve na pauta CGM</label>
+									<div class="radio">
+										<label for="pautaCGMS"> <input type="radio" name="pautaCGM" id="pautaCGMS" value="sim" />Sim </label>
+										<label for="pautaCGMN"> <input type="radio" name="pautaCGM" id="pautaCGMN" value="nao" /> Não </label>
+									</div>
+								</div>
+							</div>
+							<div class="page-header">
+								<h3>Reuniões <small>CGM</small></h3>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-2">
+									<input type="button" class="btn btn-primary" id="btnAddCGM" value="Adicionar Reunião">
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-md-12">
+									<div class="table-responsive">
+										<table border="0" class="table table-striped table-bordered table-eb" 
+											tablename="tableReunioesCGM" id="tableReunioesCGM" 
+											nodeletebutton="false" noaddbutton="true" >
+										
+											<thead>
+												<tr>
+													<td style="width: 16%;"><b>Data</b></td>
+													<td style="width: 78%;"><b>Descrição</b></td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td class="fs-v-align-middle">
+														<input type="hidden" name="dataReuniaoCGMFiltro" id="dataReuniaoCGMFiltro" />
+														<input type="text" class="form-control campo-data" name="dataReuniaoCGM" id="dataReuniaoCGM" mask="00/00/0000" />
+													</td>
+													<td class="fs-v-align-middle">
+														<textarea class="form-control" name="descReuniaoCGM" id="descReuniaoCGM"></textarea>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div id="divDeliberacoesCGM">
+								<div class="page-header">
+									<h3>Deliberação da SM<small></small></h3>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="escopoDeliberacaoCGM">Escopo</label>
+										<div class="radio">
+											<label for="escopoDeliberacaoCGMS"> <input type="radio" name="escopoDeliberacaoCGM" id="escopoDeliberacaoCGMS" value="sim"/>Apovada </label>
+											<label for="escopoDeliberacaoCGMN"> <input type="radio" name="escopoDeliberacaoCGM" id="escopoDeliberacaoCGMN" value="nao" >Rerovado </label>
+											<label for="escopoDeliberacaoCGMR"> <input type="radio" name="escopoDeliberacaoCGM" id="escopoDeliberacaoCGMR" value="ressalva" />Aprovada, com ressalva (Pendência resolver) </label>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label for="metodologiaDeliberacaoCGM">Metodologia</label>
+										<div class="radio">
+											<label for="metodologiaDeliberacaoCGMS"> <input type="radio" name="metodologiaDeliberacaoCGM" id="metodologiaDeliberacaoCGMS" value="sim" />Aprovada </label>
+											<label for="metodologiaDeliberacaoCGMN"> <input type="radio" name="metodologiaDeliberacaoCGM" id="metodologiaDeliberacaoCGMN" value="nao" />Reprovada </label>
+											<label for="metodologiaDeliberacaoCGMR"> <input type="radio" name="metodologiaDeliberacaoCGM" id="metodologiaDeliberacaoCGMR" value="ressalva" />Aprovada, com ressalva (Pendência resolver) </label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="prazoDeliberacaoCGM">Prazo</label>
+										<div class="radio">
+											<label for="prazoDeliberacaoCGMS"> <input type="radio" name="prazoDeliberacaoCGM" id="prazoDeliberacaoCGMS" value="sim" />Aprovada </label>
+											<label for="prazoDeliberacaoCGMN"> <input type="radio" name="prazoDeliberacaoCGM" id="prazoDeliberacaoCGMN" value="nao" />Reprovada </label>
+											<label for="prazoDeliberacaoCGMR"> <input type="radio" name="prazoDeliberacaoCGM" id="prazoDeliberacaoCGMR" value="ressalva" />Aprovada, com ressalva (Pendência resolver) </label>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label for="custoDeliberacaoCGM">Custo</label>
+										<div class="radio">
+											<label for="custoDeliberacaoCGMS"> <input type="radio" name="custoDeliberacaoCGM" id="custoDeliberacaoCGMS" value="sim" />Aprovada </label>
+											<label for="custoDeliberacaoCGMN"> <input type="radio" name="custoDeliberacaoCGM" id="custoDeliberacaoCGMN" value="nao" />Reprovada </label>
+											<label for="custoDeliberacaoCGMR"> <input type="radio" name="custoDeliberacaoCGM" id="custoDeliberacaoCGMR" value="ressalva" />Aprovada, com ressalva (Pendência resolver) </label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-6">
+										<label for="pendenciasDeliberacaoCGM">Outras pendências resolver</label>
+										<div class="radio">
+											<label for="pendenciasDeliberacaoCGMS"> <input type="radio" name="pendenciasDeliberacaoCGM" id="pendenciasDeliberacaoCGMS" value="sim" />Sim (pendências resolver) </label>
+											<label for="pendenciasDeliberacaoCGMN"> <input type="radio" name="pendenciasDeliberacaoCGM" id="pendenciasDeliberacaoCGMN" value="nao" />Não </label>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<label for="confirmarQualificarSM">Confirmar/Qualificar SM</label>
+										<div class="radio"> 
+											<label for="confirmarAditivo"> <input type="radio" name="confirmarQualificarSM" id="confirmarAditivo" value="aditivo" /> Aditivo </label>
+											<label for="confirmarApostilamento"> <input type="radio" name="confirmarQualificarSM" id="confirmarApostilamento" value="apostilamento" /> Apostilamento </label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-12"> 
+										<label for="descPendenciasEB">Pendências Exército Brasileiro</label>
+										<textarea class="form-control" name="descPendenciasEB" id="descPendenciasEB"></textarea>
+									</div>
+								</div>
+								<div class="form-group row">
+									<div class="col-md-12">
+										<label for="descPendenciasContratada">Pendências contratada</label>
+										<textarea class="form-control" name="descPendenciasContratada" id="descPendenciasContratada"></textarea>
+									</div>
+								</div>
+							</div>
+						</div> <!-- END divCGM -->
+					</div>
+				</div> <!-- END panelCGM -->
+				<div class="panel panel-primary" id="panelAditivoApostilamento" style="display: none;">
+					<div class="panel-heading ">
+						<h3 class="panel-title"><b>Aditivo ou Apostilamento</b></h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group row">
+							<div class="col-md-2">
+								<label for="numAditivoApostilamento">Nº Aditivo/Apostilamento</label>
+								<input type="text" class="form-control" name="numAditivoApostilamento" id="numAditivoApostilamento" readonly />
+							</div>
+							<div class="col-md-3">
+								<label for="statusApostilamento">Status Aditivo/Apostilamento</label>
+								<input type="text" class="form-control" name="statusApostilamento" id="statusApostilamento" readonly />
+							</div>
+							<div class="col-md-3">
+								<label>&nbsp;</label>
+								<input type="button" id="btnConsultarAditivoApostilamento" class="btn btn-primary form-control" value="Consultar Aditivo/Apostilamento">
+							</div>
+						</div>
+					</div>
+				</div> <!-- END panelAditivoApostilamento -->
+			</div>
+		</form>
+	</body>
+</html>

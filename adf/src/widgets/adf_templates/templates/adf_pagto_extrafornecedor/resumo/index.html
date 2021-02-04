@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-4">
+        <label>Nº / Série / Parcela</label>
+        <p>{{documento.pagtoNumero}} / {{documento.pagtoSerie}} / {{documento.pagtoParcela}}</p>
+    </div>
+    <div class="col-sm-8">
+        <label>Fornecedor</label>
+        <p>{{documento.pagtoFornecedor || 'Não informado'}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <label>Data de Emissão</label>
+        <p>{{documento.pagtoDataEmissao | date}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Data de Vencimento</label>
+        <p>{{documento.pagtoDataVencimento | date}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Valor</label>
+        <p>{{documento.pagtoValor | currency : documento.pagtoMoeda}}</p>
+    </div>
+</div>

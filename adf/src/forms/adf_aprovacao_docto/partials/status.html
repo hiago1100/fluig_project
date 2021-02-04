@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Status Aprovação</h3>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="statusNarrativa">Narrativa:</label>
+                <div class="col-sm-6">
+                    <textarea name="statusNarrativa" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group fs-display-none">
+                <label class="col-sm-3 control-label" for="statusRejeicao">Rejeição:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control col-sm-6" name="statusRejeicao_input" fluig-autocomplete values="Rejeicao" ng-model="vm.Formulario.statusRejeicao"
+                        display-key="descricao">
+                    <input type="hidden" ng-value="vm.Formulario.statusRejeicao | json:0" name="statusRejeicao" ng-child="vm.Formulario.statusRejeicao">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

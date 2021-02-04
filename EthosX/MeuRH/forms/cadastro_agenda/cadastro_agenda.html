@@ -1,0 +1,160 @@
+<html>
+  <head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	    <script type="text/javascript" src="View.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webdesk/vcXMLRPC.js" type="text/javascript"></script>
+    <style type="text/css">
+       select[readonly] {
+          background: #eee; /*Simular campo inativo*/
+          pointer-events: none;
+          touch-action: none;
+        }
+        .labelField{font-weight: bold;}
+    </style>
+  </head>
+  <body>     
+    <div class="fluig-style-guide">
+
+      <form name="form" role="form">
+      <input type="text" name="cpAprovador" id="cpAprovador" class="hide" value="">
+      <input type="text" name="cpTipoResposta" id="cpTipoResposta" class="hide" value="">
+      <input type="text" name="hideCcontabil" id="hideCcontabil" class="hide" value="">
+      <input type="text" name="hideNatureza" id="hideNatureza" class="hide" value="">
+      <input type="text" name="hideCodMunicipio" id="hideCodMunicipio" class="hide" value="">
+      <input type="text" name="hideCodGrupoVendas" id="hideCodGrupoVendas" class="hide" value="">
+     
+
+
+<div id="divSolicitante" class="panel panel-primary"  data-atividade="999">                                              
+                <div class="panel-heading active">
+                    <div class="panel-title collapse-icon up active" data-toggle="collapse"
+                        data-target="#solicitanteDiv">
+                        <h4>                                        
+                           Dados do Solicitante
+                        </h4>
+                    </div>
+                </div>
+                <div id="solicitanteDiv" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">               
+ 
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <label class="labelField"><b> Solicitante</b></label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteNome"
+                                        id="cpSolicitanteNome" />
+                                </div>
+                            </div>
+                            </div>  
+                                                                              
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <label class="labelField"><b>Data solicitação</b></label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                        name="cpDataAbertura" id="cpDataAbertura" />
+                                </div>
+                            </div>
+                            </div>         
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+    <div id="inicioSolicitacao" class="panel panel-primary"  data-atividade="999">                                              
+                <div class="panel-heading active">
+                    <div id="inicioSolicitaDiv" class="panel-title collapse-icon up active" data-toggle="collapse"
+                        data-target="#inicioSolicita">
+                        <h4>                                        
+                           Dados do Agendamento
+                        </h4>
+                    </div>
+                </div>
+                <div id="inicioSolicita" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Analista</b></label>
+									<input  name="usuarioAgenda" type="zoom"
+																		    id = "usuarioAgenda"
+																		    data-zoom="{
+																		        'displayKey':'colleagueName',
+																		        'datasetId':'colleague',
+																		        'maximumSelectionLength':'2',
+																		        'placeholder':'Escolha o usuário',
+																		        'fields':[
+																		            {
+																		              'field':'colleagueName',
+																		              'label':'Nome',
+																		              'standard':'true'
+																		            }
+																		        ]
+																		     }"
+																		/>
+                                           
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Inicio</b></label>
+									<input type="date" class="form-control" name="dataInicio"  id = "dataInicio" />
+                                           
+                                </div>
+                            </div>
+                            </div>
+
+                        <div class="col-md-4">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Término</b></label>
+									<input type="date" class="form-control" name="dataTermino"  id = "dataTermino" />
+                                           
+                                </div>
+                            </div>
+                            </div>
+
+                         <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="">
+                                <label class="labelField"><b><span style="color: orange;">*</span>Observação</b></label>
+                                <textarea obrigatorio class="form-control inputVendas solicitante" rows="3" cols="600"
+                                    name="txtSolicitante" id="txtSolicitante"
+                                    parecer placeholder="Digite uma observação"></textarea>
+                            </div>
+                        </div>                             
+                        </div>
+
+
+
+
+
+                        </div>                             
+                        </div>
+                    </div>
+                </div>  
+            </div>
+           </div>
+
+      </form>
+    </div>
+  </body>
+</html>

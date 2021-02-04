@@ -1,0 +1,53 @@
+<div class="row" ng-show="vm.currentTab==2">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Aprovado</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Visualizar Detalhe</label>
+                        <input type="checkbox" name="aprovVisualizarDetalhe_input" ng-model="vm.Formulario.aprovVisualizarDetalhe" fluig-switch 
+                            data-on-text="SIM" data-off-text="NÃO" data-on-color="success">
+                        <input type="hidden" name="aprovVisualizarDetalhe" ng-value="vm.Formulario.aprovVisualizarDetalhe">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Obriga Narrativa</label>
+                        <input type="checkbox" name="aprovObrigaNarrativa_input" ng-model="vm.Formulario.aprovObrigaNarrativa" fluig-switch 
+                            data-on-text="SIM" data-off-text="NÃO" data-on-color="success">
+                        <input type="hidden" name="aprovObrigaNarrativa" ng-value="vm.Formulario.aprovObrigaNarrativa">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Reprovado</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Visualizar Detalhe</label>
+                        <input type="checkbox" name="reprovVisualizarDetalhe_input" ng-model="vm.Formulario.reprovVisualizarDetalhe" fluig-switch 
+                            data-on-text="SIM" data-off-text="NÃO" data-on-color="success">
+                        <input type="hidden" name="reprovVisualizarDetalhe" ng-value="vm.Formulario.reprovVisualizarDetalhe">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Obriga Narrativa</label>
+
+                        <input name="reprovObrigaNarrativa_input" type="checkbox" fluig-switch data-on-text="SIM" data-off-text="NÃO"
+                            data-on-color="success" ng-model="vm.Formulario.reprovObrigaNarrativa">
+                        <input type="hidden" name="reprovObrigaNarrativa" ng-value="vm.Formulario.reprovObrigaNarrativa">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

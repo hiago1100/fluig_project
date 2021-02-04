@@ -1,0 +1,154 @@
+function beforeTaskSave(colleagueId,nextSequenceId,userList){
+	
+	var tarefa = getValue("WKNumState");
+	var proximaTarefa = getValue("WKNextState");
+	
+	//log.info("*** beforeTaskSave - TAREFA: " + tarefa);
+	if(tarefa == 8){ //Tarefa Inicial
+		//log.info(">>> beforeTaskSave <<<");
+		
+		var papel = hAPI.getCardValue("papelComercial");
+		
+		//log.info("*** beforeTaskSave papel: " + papel);
+		
+		//Monta as constraints para consulta
+	    var c1 = DatasetFactory.createConstraint("workflowColleagueRolePK.roleId", papel, papel, ConstraintType.MUST);
+	     
+	    //Busca o dataset
+	    var dataset = DatasetFactory.getDataset("workflowColleagueRole", null, [c1], null);
+	    //log.info("*** beforeTaskSave dataset: " + dataset.rowsCount);
+	    
+	    hAPI.setCardValue("papelComercial", dataset.getValue(0, "workflowColleagueRolePK.colleagueId"));
+		
+		//log.info("*** beforeTaskSave usuario: " + hAPI.getCardValue("papelComercial"));
+		
+	}
+	if(tarefa == 58 && proximaTarefa == 59){ //Tarefa Final
+		
+		//log.info("*** beforeTaskSave - VALIDAR ENVIO DE EMAIL");
+		
+		var valorMulta = parseFloat(hAPI.getCardValue("valTotalDeMultas").replace(".","").replace(",","."));
+		//log.info("*** beforeTaskSave - valor Multas: " + valorMulta);
+		
+		var dsParametro = DatasetBuilder.newDataset();
+		dsParametro.addColumn("valor");
+		dsParametro.addColumn("papel");
+		
+		var dsUsuarios = DatasetBuilder.newDataset();
+		dsUsuarios.addColumn("usuario");
+		
+		var datasetParam = DatasetFactory.getDataset("GestaoDeMultasParametro", null, null, null);
+	    //log.info("*** createDataset dataset: " + datasetParam.rowsCount);
+	    
+	    dsParametro.addRow([datasetParam.getValue(0, "valor"),
+	                        datasetParam.getValue(0, "codPapel")]);
+	    
+	    var valorParam = parseFloat(datasetParam.getValue(0, "valor").replace(".","").replace(",","."));
+	    var papelParam = datasetParam.getValue(0, "codPapel");
+		
+	    //log.info("*** beforeTaskSave - valor Param : " + valorParam);
+	    //log.info("*** beforeTaskSave - valor Papel : " + papelParam);
+	    
+		var c1 = DatasetFactory.createConstraint("workflowColleagueRolePK.roleId", papelParam, papelParam, ConstraintType.MUST);
+	     
+	    var datasetPapel = DatasetFactory.getDataset("workflowColleagueRole", null, [c1], null);
+	    //log.info("*** beforeTaskSave dataset: " + datasetPapel.rowsCount);
+	    
+	    var usuarios = new Array(),
+	    eMail = new Array();
+	    
+	    for(var i = 0; i < datasetPapel.rowsCount; i++){
+	    	//log.info("*** beforeTaskSave datasetPapel " + i + ": " + datasetPapel.getValue(i, "workflowColleagueRolePK.colleagueId"));
+	    	usuarios[i] = datasetPapel.getValue(i, "workflowColleagueRolePK.colleagueId");
+	    }
+	    
+	    for(var k = 0; k < usuarios.length; k++){
+	    	var c2 = DatasetFactory.createConstraint("colleaguePK.colleagueId", usuarios[k], usuarios[k], ConstraintType.MUST);
+	    	var colaborador  = DatasetFactory.getDataset("colleague", null, [c2], null);
+	    	
+	    	//log.info("*** beforeTaskSave colaborador " + k + ": " + colaborador.getValue(0, "mail"));
+	    	
+	    	eMail[k] = colaborador.getValue(0, "mail");
+	    }
+		
+		if(valorMulta >= valorParam){
+	    	//log.info("*** beforeTaskSave - INICIO ENVIO DE EMAIL");
+	    	
+	    	var index = getChildrenIndex("motivoMulta");	    	
+	    	var motivos = "";
+	    	
+	    	//log.info("*** index        : " + index);
+	    	//log.info("*** index.length : " + index.length);
+	    	
+	    	for(var l = 0; l < index.length; l++){
+	    		//log.info("*** index[l]: " + index[l]);
+	    		//log.info("*** l       : " + l);
+	    		//log.info("*** motivo index[l]: " + index[l] + " - " + hAPI.getCardValue("motivoMulta___" + index[l]));
+	    		//log.info("*** motivo l       : " + l + " - " + hAPI.getCardValue("motivoMulta___" + index[l]));
+	    		//log.info("*** valor  index[l]: " + index[l] + " - " + hAPI.getCardValue("valMultaRS___" + index[l]));
+	    		//log.info("*** valor  l       : " + l + " - " + hAPI.getCardValue("valMultaRS___" + index[l]));
+	    		
+	    		motivos += hAPI.getCardValue("motivoMulta___" + index[l]) + " - " + hAPI.getCardValue("valMultaRS___" + index[l]) + " <br> ";
+	    		//log.info("*** +++ motivo : " + motivos);
+	    	}
+	    	
+	    	//log.info("*** motivo FIM : " + motivos);
+	    	
+	    	for(var k = 0; k < usuarios.length; k++){
+	    		//log.info("*** beforeTaskSave - ENVIANDO EMAIL PARA: " + usuarios[k] + " - " + eMail[k]);
+	    		
+	    		try{
+		    		var fnEmail = loadLivTNU(["com.totvsNacoesUnidas.fluig.js.ds.CustomEmail"]);
+			    	fnEmail.mail.sendCustomEmail({
+			    		companyId: getValue("WKCompany"),
+		                subject: "Notificação de Nova Multa Justificada",
+		                from: "fluig@aurora.com.br",
+		                to: eMail[k],
+		                templateId: "GestaoDeMultas_notificaGerencia",
+		                templateDialect: "pt_BR",
+		                templateHtml: "GestaoDeMultas_notificaGerencia.html",
+		                dados: {
+		                	"nroPedido": hAPI.getCardValue("nroPedido"),
+		                	"nomeCliente": hAPI.getCardValue("nomeCliente"),
+		                	"emissao": hAPI.getCardValue("emissao"),
+		                	"valorMulta": hAPI.getCardValue("valTotalDeMultas"),
+		                	"motivos": motivos,
+		                	"linkFluig": "http://testefluig.aurora.com.br:8280/portal/p/AUR/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=" + getValue("WKNumProces")
+		                }
+			    	});	
+			    	
+			    	//log.info("*** beforeTaskSave - EMAIL ENVIADO COM SUCESSO!");
+			    	
+		    	} catch(e){
+		    		log.error("*** beforeTaskSave - ERRO AO ENVIAR EMAIL! " + e);
+		    	}
+	    	}
+	    }
+	}
+}
+
+function fnBuscaValor(campo){
+	var aux = hAPI.getCardValue(campo);
+	if(aux == null){
+		return "";
+	}	
+	return aux;
+}
+
+function getChildrenIndex(fieldName) {
+	 
+	var dados = hAPI.getCardData(getValue("WKNumProces"));
+	var entries = dados.entrySet().iterator();
+	var index = [];
+
+	while (entries.hasNext()) {
+		var e = entries.next();
+		if (e.getKey().startsWith(fieldName + "___")) {
+			index.push(e.getKey().split("___")[1]);
+		}
+	}
+	return index;
+}
+
+//loadLivTNU - v1.0 - All rights reserverd
+function loadLivTNU(e){var t={};if(e==null){return t}var n=function(e,t){for(var n=0;n<e.length;n++){if(e[n]==t)return true}return false};var r=DatasetFactory.getDataset("tnuCustomJS",null,null,null);for(var i=0;i<r.rowsCount;i++){var s=r.getValue(i,"liv");if(n(e,s)){var o=r.getValue(i,"src");var u=r.getValue(i,"name");try{var a=new Function("liv","return "+o);t[u]=a(t)}catch(f){log.error("*** Erro ao compilar livraria "+s+":"+f)}}}return t}

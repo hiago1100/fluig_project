@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>87</string>
+	<key>AMApplicationVersion</key>
+	<string>1.0.4</string>
+	<key>AMDocumentVersion</key>
+	<string>1</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.path</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>iPhoto</string>
+						<key>Resource</key>
+						<string>com.apple.iPhoto</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>4.0.2</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Ask for Photos.action</string>
+				<key>ActionIconName</key>
+				<string>iPhoto</string>
+				<key>ActionName</key>
+				<string>Ask for Photos</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>allowMultipleSelection</key>
+					<true/>
+					<key>prompt</key>
+					<string></string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>iPhoto</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.AskForPhotos</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>Photos</string>
+				</array>
+				<key>Class Name</key>
+				<string>AskForPhotosAction</string>
+				<key>InputUUID</key>
+				<string>191CCFCE-9453-4D19-BBFA-0FA54521B404</string>
+				<key>Keywords</key>
+				<array/>
+				<key>OutputUUID</key>
+				<string>7F0332AA-7761-410B-873F-2E7E6103BE46</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>B558676E-1FDC-44C6-BD76-57788AC4B1DB</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>iPhoto</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<true/>
+						<key>name</key>
+						<string>allowMultipleSelection</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>prompt</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Ask for Photos.action/Contents/Resources/English.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>851.000000:41.333313</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+						<string>com.apple.applescript.alias-object.image</string>
+						<string>com.apple.applescript.url-object</string>
+						<string>com.apple.applescript.text-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Entourage</string>
+						<key>Resource</key>
+						<string>com.microsoft.entourage</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Create New Entourage Mail Message.action</string>
+				<key>ActionName</key>
+				<string>Create New Entourage Mail Message</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>account</key>
+					<string>Default Account</string>
+					<key>bcc</key>
+					<string></string>
+					<key>cc</key>
+					<string></string>
+					<key>messageBody</key>
+					<string></string>
+					<key>priority</key>
+					<integer>2</integer>
+					<key>subject</key>
+					<string></string>
+					<key>to</key>
+					<string></string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Create_New_Entourage_Mail_Message</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>3EA2A1C2-EA0F-4C58-A0AE-2107C888ACE3</string>
+				<key>Keywords</key>
+				<array>
+					<string>build</string>
+					<string>create</string>
+					<string>email</string>
+					<string>generate</string>
+					<string>make</string>
+					<string>mail</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>16E30514-895B-4D39-865B-183FAB4CD82D</string>
+				<key>ShowWhenRun</key>
+				<true/>
+				<key>UUID</key>
+				<string>35F9EF20-44B1-466E-9E38-C733A67722CD</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>bcc</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string>Default Account</string>
+						<key>name</key>
+						<string>account</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<integer>2</integer>
+						<key>name</key>
+						<string>priority</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>cc</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>subject</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+					<key>5</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>messageBody</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>5</string>
+					</dict>
+					<key>6</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>to</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>6</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Create New Entourage Mail Message.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>1131.000000:788.000000</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Entourage</string>
+						<key>Resource</key>
+						<string>com.microsoft.entourage</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Send Outgoing Entourage Mail Messages.action</string>
+				<key>ActionName</key>
+				<string>Send Outgoing Entourage Mail Messages</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>from</key>
+					<string>Account that created message</string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Send_Outgoing_Entourage_Mail_Messages</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>EE1CD9AE-25A7-46A9-A732-31DDCBA8321F</string>
+				<key>Keywords</key>
+				<array>
+					<string>mail</string>
+					<string>email</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>873EF69A-8B77-4F9A-9835-C7573E05FB28</string>
+				<key>UUID</key>
+				<string>9D835351-F91A-4D1E-8D7B-0A1F98CAA76C</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>Account that created message</string>
+						<key>name</key>
+						<string>from</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Send Outgoing Entourage Mail Messages.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>571.000000:648.000000</string>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>29CD1FDB-9001-46CC-942C-B63956AF2E91</key>
+		<dict>
+			<key>from</key>
+			<string>35F9EF20-44B1-466E-9E38-C733A67722CD - 16E30514-895B-4D39-865B-183FAB4CD82D</string>
+			<key>to</key>
+			<string>9D835351-F91A-4D1E-8D7B-0A1F98CAA76C - EE1CD9AE-25A7-46A9-A732-31DDCBA8321F</string>
+		</dict>
+		<key>FE646406-8B1F-4C66-8FED-7584CF87D9AB</key>
+		<dict>
+			<key>from</key>
+			<string>B558676E-1FDC-44C6-BD76-57788AC4B1DB - 7F0332AA-7761-410B-873F-2E7E6103BE46</string>
+			<key>to</key>
+			<string>35F9EF20-44B1-466E-9E38-C733A67722CD - 3EA2A1C2-EA0F-4C58-A0AE-2107C888ACE3</string>
+		</dict>
+	</dict>
+	<key>state</key>
+	<dict>
+		<key>actionsSplitView</key>
+		<real>175</real>
+		<key>layoutFrame</key>
+		<string>{{0, 0}, {539, 772}}</string>
+		<key>layoutScrollPosition</key>
+		<string>{{0, 0}, {539, 772}}</string>
+		<key>mainSplitView</key>
+		<real>373</real>
+		<key>minorSplitView</key>
+		<real>630</real>
+		<key>windowFrame</key>
+		<string>{{221, 214}, {942, 900}}</string>
+	</dict>
+</dict>
+</plist>

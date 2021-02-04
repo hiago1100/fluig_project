@@ -1,0 +1,1148 @@
+<html>
+<head>
+	 <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js" charset="utf-8"></script>
+	<link type="text/css" rel="stylesheet" href="css/style.css"/>
+	<script type="text/javascript" src="js/jquery.mask.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/jquery.maskMoney.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/enableFields.js"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+	<form name="form" role="form">
+			
+		<div class="panel panel-primary" id="panel-etapa">
+			<div class="panel-body">
+			   <h1>
+			      <b>Etapa</b>
+			   </h1>
+			</div>
+		</div>
+
+		<ul class="nav nav-tabs">
+			<li class="active"><a data-toggle="tab" href="#dados-etapa">Dados da Etapa</a></li>
+			<li><a data-toggle="tab" href="#configuracao-ged">Configuração GED</a></li>
+			<li><a data-toggle="tab" href="#regras-etapa">Regras Etapa</a></li>
+			<li><a data-toggle="tab" href="#itens-etapa">Itens Etapa</a></li>
+			<li><a data-toggle="tab" href="#distribuicao-financeira">Distribuição financeira</a></li>
+			<li><a data-toggle="tab" href="#indicadores-etapa">Indicadores</a></li>
+			<li><a data-toggle="tab" href="#versoes-etapa">Versões</a></li>
+			<li><a data-toggle="tab" href="#termos-notas-faturas">Termos, notas e faturas</a></li>
+			<li><a data-toggle="tab" href="#gestao-riscos">Riscos</a></li>
+			<li><a data-toggle="tab" href="#historico-situacao">Histórico de situação</a></li>
+		</ul>
+		
+		<div class="tab-content">
+			<div id="dados-etapa" class="tab-pane fade in active">
+				<div class="form-group row">
+					<div class="col-md-3">
+						<input type="hidden" id="lista_ds_codigos_fase" name="lista_ds_codigos_fase" value="" />
+						<label for="zoom_fase">Fase</label>
+						<input type="zoom" 
+							class="form-control" 
+							id="zoom_fase"
+							name="zoom_fase"
+							data-zoom="{
+								'displayKey':'ds_nome',
+								'datasetId':'geral_fases',
+								'maximumSelectionLength':'99',									
+								'fields':[
+									{
+										'field':'ds_codigo',
+										'label':'Código', 
+										'standard':'true'
+									},																	
+									{
+										'field':'ds_nome',
+										'label':'Descrição', 
+										'standard':'true'
+									}
+								]
+							}" 
+						/>
+					</div>
+					<div class="col-md-3">
+						<input type="hidden" name="cd_contrato" id="cd_contrato"/>
+						<label class="control-label required" for="zoom_contrato">Contrato</label>
+						<input type="zoom" 
+							class="form-control" 
+							id="zoom_contrato"
+							name="zoom_contrato"
+							data-zoom="{
+								'displayKey':'nm_contrato',
+								'datasetId':'geral_cadastro_contratos',									
+								'fields':[
+									{
+										'field':'cd_contrato',
+										'label':'Código', 
+										'standard':'true'
+									},																	
+									{
+										'field':'nm_contrato',
+										'label':'Descrição', 
+										'standard':'true'
+									}
+								]
+							}" 
+						/>
+					</div>
+					<div class="col-md-3">
+						<input type="hidden" name="sigla_secao" id="sigla_secao"/>
+						<label class="control-label required" for="zoom_secao">Seção</label>
+						<input type="zoom" 
+							class="form-control" 
+							id="zoom_secao"
+							name="zoom_secao"
+							data-zoom="{
+								'displayKey':'txt_sigla',
+								'datasetId':'geral_cadastro_secao',									
+								'fields':[
+									{
+										'field':'txt_sigla',
+										'label':'Sigla', 
+										'standard':'true'
+									},																	
+									{
+										'field':'txt_nome',
+										'label':'Descrição', 
+										'standard':'true'
+									}
+								]
+							}" 
+						/>
+					</div>
+					<div class="col-md-3">	
+						<label for="cd_etapa">Código</label>	
+						<input type="text" class="form-control" name="cd_etapa" id="cd_etapa" readonly>
+					</div>
+				</div>
+				 
+				<div class="form-group row">
+					<div class="col-md-6">	
+						<label class="control-label required" for="nm_etapa">Nome</label>	
+						<input type="text" class="form-control" name="nm_etapa" id="nm_etapa">
+					</div>
+					<div class="col-md-3">
+						<input type="hidden" name="matricula_fiscal" id="matricula_fiscal">
+						<label class="control-label required" for="zoom_fiscal">Fiscal</label>
+						<input type="zoom" 
+							class="form-control"
+							id="zoom_fiscal"
+							name="zoom_fiscal"
+							data-zoom="{
+								'displayKey':'nome',
+								'datasetId':'geral_usuarios_fiscais',									
+								'fields':[
+									{
+										'field':'matricula',
+										'label':'Matrícula', 
+										'standard':'true'
+									},																	
+									{
+										'field':'nome',
+										'label':'Nome', 
+										'standard':'true'
+									}
+								]
+							}" 
+						/>
+					</div>
+					<div class="col-md-3">	
+						<label class="control-label required" for="cd_identificador">Identificador</label>	
+						<input type="text" class="form-control identificador5" name="cd_identificador" id="cd_identificador">
+					</div>
+					
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-md-3">	
+						<input type="hidden" name="ds_sigla_tipo_etapa" id="ds_sigla_tipo_etapa">
+						<label class="control-label required" for="zoom_tipo_etapa">Tipo Etapa</label>
+						<input type="zoom" 
+							class="form-control"
+							id="zoom_tipo_etapa"
+							name="zoom_tipo_etapa"
+							data-zoom="{
+								'displayKey':'ds_nome',
+								'datasetId':'geral_cadastro_tipo_etapa',									
+								'fields':[
+									{
+										'field':'ds_sigla',
+										'label':'Sigla', 
+										'standard':'false'
+									},
+									{
+										'field':'ds_nome',
+										'label':'Descrição', 
+										'standard':'true'
+									}									
+								]
+							}" 
+						/>
+					</div>					
+					<div class="col-md-3">	
+						<label class="control-label required" for="natureza">Natureza</label>	
+						<select class="form-control" name="natureza" id="natureza">
+							<option></option>
+							<option value="programada">Programada</option>
+							<option value="sobdemanda">Sob demanda</option>
+							<option value="recorrente">Recorrente</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<input type="hidden" name="cd_natureza_tributaria" id="cd_natureza_tributaria" />
+						<label class="control-label required" for="zoom_natureza_tributaria">Natureza Tributária</label>						
+						<input type="zoom" 
+							class="form-control" 
+							id="zoom_natureza_tributaria"
+							name="zoom_natureza_tributaria"
+							data-zoom="{
+								'displayKey':'ds_sigla',
+								'datasetId':'geral_cadastro_natureza',									
+								'fields':[
+									{
+										'field':'ds_sigla',
+										'label':'Sigla', 
+										'standard':'true'
+									},
+									{
+										'field':'ds_natureza',
+										'label':'Descrição', 
+										'standard':'true'
+									}																
+									
+								]
+							}" 
+						/>
+					</div>
+					<div class="col-md-3">	
+						<label class="control-label required" for="metodo_aceitacao">Método de Aceitação</label>	
+						<select class="form-control" name="metodo_aceitacao" id="metodo_aceitacao">
+							<option></option>
+							<option value="teste_aceitacao">Teste de Aceitação</option>
+							<option value="aceitacao_simplificada">Aceitação Simplificada</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-md-9">
+						<label class="control-label required" for="ds_descricao">Descrição</label>			
+						<textarea class="form-control" name="ds_descricao" id="ds_descricao"></textarea>
+					</div>
+				</div>
+							
+				<div class="form-group row">
+					<div class="col-md-3">
+						<label class="control-label required" for="dt_apresentacao">Data Apresentação</label>			
+						<input type="text" class="form-control input-date" name="dt_apresentacao" id="dt_apresentacao">
+					</div>
+					<div class="col-md-3">
+						<label class="control-label required" for="dt_apresentacao_realizado">Data Apresentação Realizado</label>			
+						<input type="text" class="form-control input-date" name="dt_apresentacao_realizado" id="dt_apresentacao_realizado">
+					</div>
+					<div class="col-md-3">
+						<label for="dt_inicio_execucao">Data Início Execução</label>			
+						<input type="text" class="form-control" name="dt_inicio_execucao" id="dt_inicio_execucao" readonly>
+					</div>
+					<div class="col-md-3">
+						<label for="dt_cadastro_etapa">Data Cadastro Etapa</label>			
+						<input type="text" class="form-control" name="dt_cadastro_etapa" id="dt_cadastro_etapa" readonly>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-md-3">	
+							<label for="considera_valor_caput">Considerar valor do caput da etapa?</label>	
+							<select class="form-control" name="considera_valor_caput" id="considera_valor_caput">
+							<option value="sim" selected>Sim</option>
+							<option value="nao">Não</option>
+						</select>
+					</div>
+				
+					<div class="col-md-3">
+						<label class="control-label required" for="vl_etapa">Valor Etapa</label>	
+						<input type="text" class="form-control money" name="vl_etapa" id="vl_etapa">
+					</div>
+					
+					<div class="col-md-3">	
+							<label for="sel_processo_patrimonio">Patrimônio valida etapa? (Registro NFE)</label>	
+							<select class="form-control" name="sel_processo_patrimonio" id="sel_processo_patrimonio">
+							<option value="nao" selected>Não</option>
+							<option value="sim">Sim</option>
+						</select>
+					</div>
+					
+					<div class="col-md-3">	
+							<label for="situacao_fisica">Situação Física</label>	
+							<select class="form-control" name="situacao_fisica" id="situacao_fisica">
+							<option value="planejada">Planejada</option>
+							<option value="emExecucao">Em execução</option>
+							<option value="emAceitacao">Em aceitação</option>
+							<option value="recebida">Recebida</option>
+							<option value="cancelada">Cancelada</option>
+						</select>
+					</div>					
+					
+				</div>
+						
+				<div class="form-group row">
+					<div class="col-md-9">
+						<label for="justificativa">Justificativa</label>			
+						<textarea class="form-control" name="justificativa" id="justificativa"></textarea>
+					</div>
+				</div>
+			</div>
+
+			<div id="configuracao-ged" class="tab-pane fade">
+				<div class="form-group row">
+					<div class="col-md-6">
+						<label>Pasta Raiz da Etapa</label>
+						<input type="hidden" name="id_pasta" id="id_pasta"/>
+						<input type="zoom" 
+							class="form-control" 
+							id="zoom_pasta"
+							name="zoom_pasta" 
+							data-zoom="{
+								'displayKey':'ds_pasta',
+								'datasetId':'geral_pastas',									
+								'fields':[
+									{
+										'field':'id_pasta',
+										'label':'Código',
+										'standard':false
+									},
+									{
+										'field':'ds_pasta',
+										'label':'Pasta',
+										'standard':true
+									}
+								]
+							}
+						"/>
+					</div>
+					
+					<div class="col-md-1">
+                        <label class="control-label" for="link_pasta_raiz">Link</label>
+                        <div class="input-group">
+                            <a href="#" id="link_raiz" class="fluigicon fluigicon-export fs-no-text-underline" target="_blank"></a>
+                            <input type="hidden" class="form-control" name="hidden_link_raiz" id="hidden_link_raiz" readonly />
+                        </div>
+                    </div>
+					
+				</div>
+			</div>
+
+			<div id="regras-etapa" class="tab-pane fade">
+				<div class="form-group row">
+					<div class="col-md-12">
+						<button class="btn btn-primary" id="adicionarRegra">Adicionar Regra</button>
+					</div>
+					<div class="col-md-12">
+					   <div class="table-responsive">
+						  <table border="0" class="table table-striped table-bordered table-eb" tablename="table_regras" id="table_regras" nodeletebutton="false" noaddbutton="true">
+								 <thead>
+									<tr>
+									   	<td></td>
+									   	<td></td>
+									</tr>
+								 </thead>
+								 <tbody>
+									<tr>
+									   	<td>
+											<div class="form-group row">
+												<div class="col-md-3">
+													<label for="cd_regra">Código</label>
+													<input type="text" class="form-control" name="cd_regra" id="cd_regra"/>
+												</div>
+												<div class="col-md-2">
+													<label for="origem_regra">Origem</label>
+													<select class="form-control" name="origem_regra">
+														<option></option>
+														<option value="etapa">Etapa</option>
+														<option value="obrigacao">Obrigação</option>
+													</select>
+												</div>
+												<div class="col-md-3">
+													<label for="obrigacao_regra">Obrigação Regra</label>
+													<input type="text" class="form-control" name="obrigacao_regra" id="obrigacao_regra"/>
+												</div>
+												<div class="col-md-4">
+													<label for="nome_regra">Nome Regra</label>
+													<input type="text" class="form-control" name="nome_regra" id="nome_regra"/>
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-md-4">
+													<label for="txt_descricao">Descrição</label>
+													<textarea class="form-control" name="txt_descricao" id="txt_descricao"></textarea>
+												</div>
+												<div class="col-md-4">
+													<label for="txt_explicacao">Explicação</label>
+													<textarea class="form-control" name="txt_explicacao" id="txt_explicacao"></textarea>
+												</div>
+												<div class="col-md-2">
+													<label for="aceite_documental">Aceite Documental?</label>
+													<div class="radio">		
+														<label>			
+															<input name="aceite_documental" id="aceite_documental_sim" value="sim" type="radio">			
+															<span>Sim</span>		
+														</label>
+													</div>
+													<div class="radio">		
+														<label>			
+															<input name="aceite_documental" id="aceite_documental_nao" value="nao" type="radio">			
+															<span>Não</span>		
+														</label>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<label for="ativo">Ativo?</label>
+													<div class="radio">		
+														<label>			
+															<input name="ativo" id="ativo_sim" value="sim" type="radio">			
+															<span>Sim</span>		
+														</label>
+													</div>
+													<div class="radio">		
+														<label>			
+															<input name="ativo" id="ativo_nao" value="nao" type="radio">			
+															<span>Não</span>		
+														</label>
+													</div>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<div class="col-md-3">
+													<label for="quando_verificar">Quando verificar?</label>
+													<select class="form-control" name="quando_verificar">
+														<option></option>
+														<option value="diario">Todos os dias</option>
+														<option value="semanal">Semanal</option>
+														<option value="mensal">Mensal</option>
+														<option value="Anual">Anual</option>
+														<option value="data_especifica">Data Específica</option>
+													</select>
+												</div>
+												<div class="col-md-3">
+													<label for="antecedencia_notificacao">Antecedência para notificação</label>
+													<select class="form-control" name="antecedencia_notificacao" id="antecedencia_notificacao">
+														<option></option>
+														<option value="dias">Dias</option>
+														<option value="semanas">Semanas</option>
+													</select>
+												</div>
+												<div class="col-md-4">
+													<label for="como_verificar">Como verificar?</label>
+													<textarea class="form-control" name="como_verificar" id="como_verificar"></textarea>
+												</div>
+												<div class="col-md-2">
+													<label for="arquivo">Arquivo</label>
+													<input type="text" class="form-control" name="arquivo" id="arquivo"/>
+												</div>
+											</div>
+
+											<div class="form-group row">
+												<div class="col-md-3">
+													<label for="periodicidade">Periodicidade</label>
+													<input type="text" class="form-control" name="periodicidade" id="periodicidade"/>
+												</div>
+												<div class="col-md-3">
+													<label for="estagio_verificacao">Estágio de verificação</label>
+													<select class="form-control" name="estagio_verificacao" id="estagio_verificacao">
+														<option></option>
+														<option value="aceitacao">Aceitação</option>
+														<option value="medicao">Medição</option>
+													</select>
+												</div>
+												<div class="col-md-2">
+													<label for="aceita_fat">Conformidade</label>
+													<div class="radio">		
+														<label>			
+															<input name="conformidade" id="nao_verificada" value="nao_verificada" type="radio" checked>			
+															<span>Não verificada</span>		
+														</label>
+													</div>
+													<div class="radio">		
+														<label>			
+															<input name="conformidade" id="conforme" value="conforme" type="radio">			
+															<span>Conforme</span>		
+														</label>
+													</div>
+													<div class="radio">		
+														<label>			
+															<input name="conformidade" id="nao_conforme" value="nao_conforme" type="radio">			
+															<span>Não Conforme</span>		
+														</label>
+													</div>
+												</div>
+												<div class="col-md-2">
+													<label for="aceita_fat">Aceita FAT?</label>
+													<div class="radio">		
+														<label>			
+															<input name="aceita_fat" id="aceita_fat_sim" value="sim" type="radio" checked>			
+															<span>Sim</span>		
+														</label>
+													</div>
+													<div class="radio">		
+														<label>			
+															<input name="aceita_fat" id="aceita_fat_nao" value="nao" type="radio">			
+															<span>Não</span>		
+														</label>
+													</div>
+												</div>
+											</div>
+									 	</td>
+									</tr>
+								 </tbody>
+						  </table>
+					   </div>
+					</div>
+				</div>
+			</div>
+
+			<div id="itens-etapa" class="tab-pane fade">
+				<div class="form-group row">
+					<div class="col-md-12">
+						<button class="btn btn-primary" id="adicionarItem">Adicionar Item</button>
+					</div>
+					<div class="col-md-12">
+						<table class="table table-striped table-hover table-eb" id="main_table_item_etapa">
+							<thead>
+								<tr>
+									<th class="col-md-1"></th>
+									<th class="col-md-11"></th>
+								</tr>
+							</thead>
+							<tbody></tbody>                			
+						</table>
+					</div>
+				</div>
+
+				<!-- 
+					Pai x Filho Item (Filho)
+				-->
+				<div class="row fs-display-none">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table border="0" class="table table-striped table-bordered" tablename="table_item_etapa" id="table_item_etapa" nodeletebutton="true" noaddbutton="true">
+								<thead>
+									<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</thead>
+								<tbody id="tbody_table_item_etapa">
+									<tr>
+										<td>
+											<input type="text" name="filho_table_item_etapa" id="filho_table_item_etapa"/>
+											<i class="fluigicon fluigicon-trash fluigicon-md trash-etapa" onclick="Javascript:fnWdkRemoveChild(this)"></i>
+										</td>
+										<td>
+											<input type="hidden" name="uuid" id="uuid"/>
+											<input type="hidden" name="cd_om_item" id="cd_om_item" />
+											<input type="text" name="cd_item" id="cd_item" />
+											<input type="text" name="id_item" id="id_item" />
+											<input type="text" name="nm_item" id="nm_item" />
+											<textarea name="descricao_item" id="descricao_item"></textarea>
+											<input type="text" class="money" name="valor_total_item" id="valor_total_item" />
+											<input type="zoom" class="form-control" name="zoom_om_item" id="zoom_om_item" data-zoom="{
+												'displayKey':'txt_nome',
+												'datasetId':'geral_cadastro_om',									
+												'fields':[
+													{
+														'field':'txt_codigo',
+														'label':'Código',
+														'standard':true
+													},{
+														'field':'txt_nome',
+														'label':'Nome',
+														'visible':'false'
+												}]}" 
+											/>
+											<input type="zoom" class="form-control" name="local_recebidor_item" id="local_recebidor_item" data-zoom="{
+												'displayKey':'ds_localidade',
+												'datasetId':'geral_cadastro_localidade',									
+												'fields':[
+													{
+														'field':'ds_codigo',
+														'label':'Código',
+														'visible':'false'
+													},{
+														'field':'ds_localidade',
+														'label':'Localidade',
+														'standard':'true'
+												}]}" 
+											/>
+											<input type="text" name="latitude_item" id="latitude_item" />
+											<input type="text" name="longitude_item" id="longitude_item" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- 
+					Pai x Filho Componente do Item (Neto)
+				-->
+				<div class="row fs-display-none">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table border="0" class="table table-striped table-bordered table-eb" tablename="table_componente_item" id="table_componente_item" nodeletebutton="true" noaddbutton="true" >
+								<thead>
+									<tr>
+										<td></td>
+										<td></td>
+									</tr>
+								</thead>
+								<tbody id="tbody_table_componente_item">
+									<tr>
+										<td>
+											<input type="text" name="neto_table_componente_item" id="neto_table_componente_item"/>
+											<i class="fluigicon fluigicon-trash fluigicon-md trash-componente_item" onclick="Javascript:fnWdkRemoveChild(this)"></i>
+										</td>
+										<td>
+											<input type="hidden" name="uuid_item" id="uuid_item"/>
+											<input type="text" name="cd_componente_item" id="cd_componente_item" />
+											<input type="text" name="sequencial_componente" id="sequencial_componente" />
+											<input type="text" name="cd_componente" id="cd_componente" />
+											<input type="text" name="nm_curto_componente" id="nm_curto_componente" />
+											<input type="text" name="quantidade_componente" id="quantidade_componente" />
+											<input type="text" name="vl_componente" id="vl_componente" />
+											<textarea name="descricao_componente" id="descricao_componente"></textarea>
+											<input type="text" name="modelo_componente" id="modelo_componente" />
+											<input type="text" name="especificacao_componente" id="especificacao_componente" />
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="distribuicao-financeira" class="tab-pane fade">
+				
+				<div class="panel panel-default" id="panel-ciclo-etapa">				
+					<div class="panel-heading ">
+						<h3 class="panel-title">
+							<b>Valores calculados conforme ciclo de vida da etapa</b>
+						</h3>
+					</div>
+					<div class="panel-body">
+				
+						<div class="form-group row">
+							
+							<div class="col-md-3">
+								<label for="vl_aprovado_etapa">Valor aprovado etapa</label>	
+								<input type="text" class="form-control money" name="vl_aprovado_etapa" id="vl_aprovado_etapa" mask="#.###.##0,00" placeholder="0.000.000,00" readonly />
+							</div>
+							<div class="col-md-3">
+								<label for="vl_reservado">Valor reservado</label>	
+								<input type="text" class="form-control money" name="vl_reservado" id="vl_reservado" mask="#.###.##0,00" placeholder="0.000.000,00" readonly />
+							</div>
+							
+							<div class="col-md-3">
+								<label for="vl_utilizado">Valor utilizado</label>	
+								<input type="text" class="form-control money" name="vl_utilizado" id="vl_utilizado" mask="#.###.##0,00" placeholder="0.000.000,00" readonly />
+							</div>
+							
+							<div class="col-md-3">
+								<label for="vl_liquidacao">Valor em liquidação</label>	
+								<input type="text" class="form-control money" name="vl_liquidacao" id="vl_liquidacao" mask="#.###.##0,00" placeholder="0.000.000,00" readonly />
+							</div>
+							
+						</div>
+						
+						<div class="form-group row">
+													
+							<div class="col-md-3">
+								<label for="vl_liquidado">Valor liquidado</label>	
+								<input type="text" class="form-control money" name="vl_liquidado" id="vl_liquidado" mask="#.###.##0,00" placeholder="0.000.000,00" readonly />
+							</div>
+							
+							<div class="col-md-3">
+								<label for="vl_pago">Valor pago</label>	
+								<input type="text" class="form-control money" name="vl_pago" id="vl_pago" mask="#.###.##0,00" placeholder="0.000.000,00" readonly />
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel panel-default" id="panel-calculo-retencoes">				
+					<div class="panel-heading ">
+						<h3 class="panel-title">
+							<b>Cálculo das retenções previstas conforme natureza tributária da etapa</b>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="form-group row">
+					
+						<div class="col-md-12">
+							<div class="">
+								<table border="0" class="table table-striped table-eb" tablename="tb_imposto_retido" 
+									nodeletebutton="true" noaddbutton="true" customFnDelete="">
+									<thead>
+										<tr >
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</thead>
+									<tbody id="tbody_indicador">
+										<tr>
+											<td >
+												<div class="col-md-2" style="width: 100%;">
+													<label for="ds_imposto" >Imposto</label>
+													<input type="text" class="form-control" name="ds_imposto" id="ds_imposto" readonly />
+												</div>
+											</td>
+											<td>
+												<div class="col-md-2" style="width: 100%;">
+													<label for="vl_aliquota" >Alíquota</label>
+													<input type="text" class="form-control percent-mask" name="vl_aliquota" id="vl_aliquota" mask="#.###.##0,00"  readonly />
+												</div>
+											</td>
+											<td>
+												<div class="col-md-2" style="width: 100%;">
+													<label for="vl_valor_retido" >Valor</label>
+													<input type="text" class="form-control money" name="vl_valor_retido" id="vl_valor_retido" mask="#.###.##0,00" readonly />
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>					
+					</div>
+				</div>
+				
+			</div>
+			
+			<div id="indicadores-etapa" class="tab-pane fade">
+					
+				<div class="form-group row">
+					
+					<div class="col-md-12">
+						<div class="">
+							<button type="button" class="btn btn-primary" name="btnAdicionarIndicador"
+							id="btnAdicionarIndicador"  onclick="addIndicador();">Adicionar Indicador</button>
+						</div>
+						<div class="">
+							<table border="0" class="table table-striped table-eb" tablename="tb_indicador" 
+								nodeletebutton="true" noaddbutton="true" customFnDelete="">
+								<thead>
+									<tr >
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</thead>
+								<tbody id="tbody_indicador">
+									<tr>
+										<td>
+											<div class="col-xs-12 fs-no-padding-right div_lixeira_indicador">
+												<button type="button" class="btn">
+													<i class="fluigicon fluigicon-trash icon-md"  onclick="deleteIndicador(this)"></i>
+												</button>
+											</div>
+										</td>
+										<td >
+											<div class="col-md-2" style="width: 100%;">
+												<label for="ds_indicador" class="required">Indicador</label>
+												<input type="text" class="form-control" name="ds_indicador" id="ds_indicador"  />
+											</div>
+										</td>
+										<td>
+											<div class="col-md-2" style="width: 100%;">
+												<label for="ds_valor" class="required">Valor</label>
+												<input type="text" class="form-control" name="ds_valor" id="ds_valor"  />
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="versoes-etapa" class="tab-pane fade">
+				<div class="form-group row">
+                    <div class="col-md-12">	
+                        <button type="button" class="btn btn-primary no-view" id="btn_corrigir_versao">Corrigir</button>
+                   		&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn no-view" id="btn_versionar_versao">Versionar</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-danger no-view" id="btn_cancelar_versao">Cancelar Etapa</button>
+                        &nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn no-view" id="btn_solicitar_aprovacao_versao" style="float:right">Solicitar Aprovação de Versão</button>
+                    </div>
+                </div>
+                <div id="version-fields" style="display:none">
+	                 <div class="form-group row">	                 	
+	                     <div class="col-md-3">
+	                         <label class="control-label" for="versao_etapa">Vers&atilde;o</label>
+	                         <input type="text" class="form-control" name="versao_etapa" id="versao_etapa" readonly/>
+	                         <input type="hidden" id="acao_versao_etapa" name="acao_versao_etapa" />
+	                         <input type="hidden" id="controle_acao" name="controle_acao" />	                         
+	                     </div>
+	                     <div class="col-md-3">
+	                 		 <label class="control-label" for="nm_usuario_versao">Usu&aacute;rio</label>				
+	                         <input type="text" class="form-control" id="nm_usuario_versao" name="nm_usuario_versao" readonly/>
+	                         <input type="hidden" id="cd_usuario_versao" name="cd_usuario_versao" />
+	                 	 </div>
+	                 	 <div class="col-md-3">	
+	                         <button type="button" style="margin-top:25px" class="btn btn-primary no-view" id="btn_iniciar_acao_versao">Iniciar A&ccedil;&atilde;o</button>
+	                         &nbsp;&nbsp;&nbsp;
+	                         <button type="button" style="margin-top:25px" class="btn btn-primary no-view" id="btn_cancelar_acao_versao">Cancelar A&ccedil;&atilde;o</button>
+	                     </div>	                            
+	                 </div>
+	                 <div class="form-group row">
+	                 	<div class="col-md-12">
+	                         <label class="control-label required" for="ds_versao_etapa">Descritivo</label>
+	                         <textarea type="text" class="form-control" name="ds_versao_etapa" id="ds_versao_etapa" rows="5"></textarea>
+	                     </div>
+	                 </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-bordered table-eb" tablename="table_versoes" id="table_versoes" noaddbutton="true" nodeletebutton="true" >
+                            <thead>
+                                <tr>
+                                    <td class="col-md-12"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="form-group row">                                            
+					                        <div class="col-md-3">
+					                              <label class="control-label" for="tb_versao_etapa">Vers&atilde;o</label>
+					                              <input type="text" class="form-control" name="tb_versao_etapa" id="tb_versao_etapa" readonly/>
+					                              <input type="hidden" id="tb_acao_versao_etapa" name="tb_acao_versao_etapa" />
+					                              <input type="hidden" id="controle_aprovacao" name="controle_aprovacao" />
+					                        </div>		
+					                        <div class="col-md-2">
+					                  		   	  <label class="control-label" for="tb_dt_versao">Data</label>				
+					                              <input type="text" class="form-control" mask="00/00/0000" maxlength="10" id="tb_dt_versao" name="tb_dt_versao" readonly/>	
+					                      	</div>
+					                      	<div class="col-md-4">
+					                      		  <label class="control-label" for="tb_nm_usuario_versao">Usu&aacute;rio</label>				
+					                              <input type="text" class="form-control" id="tb_nm_usuario_versao" name="tb_nm_usuario_versao" readonly/>
+					                              <input type="hidden" id="tb_cd_usuario_versao" name="tb_cd_usuario_versao" />
+					                      	</div>
+					                      	<div class="col-md-3">	
+					                              <label class="control-label" for="situacao_versao">Situa&ccedil;&atilde;o da Vers&atilde;o</label>				
+					                              <input type="text" class="form-control" id="situacao_versao" name="situacao_versao" readonly/>
+					                        </div>				                          
+                                        </div>
+                                        <div class="form-group row">
+                                          	<div class="col-md-12">
+					                              <label class="control-label" for="tb_ds_versao_etapa">Descritivo</label>
+					                              <textarea type="text" class="form-control" name="tb_ds_versao_etapa" id="tb_ds_versao_etapa" rows="5" readonly></textarea>
+					                         </div>                                                	
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                           
+                </div>
+			</div>
+			
+			<div id="termos-notas-faturas" class="tab-pane fade">
+				<div class="form-group row">
+					
+					
+				</div>
+			</div>
+
+			<div id="gestao-riscos" class="tab-pane fade">
+				<div class="form-group row">
+					<div class="col-md-12">
+						<button class="btn btn-primary" id="adicionarRisco">Adicionar Risco</button>
+					</div>
+					<div class="col-md-12">
+					   <div class="table-responsive">
+						  <table border="0" class="table table-striped table-bordered table-eb" tablename="table_riscos" id="table_riscos" nodeletebutton="false" noaddbutton="true">
+								 <thead>
+									<tr>
+									   	<td></td>
+									</tr>
+								 </thead>
+								 <tbody>
+									<tr>
+									   	<td>
+											<div class="form-group row">
+												<input type="hidden" class="form-control" name="cd_risco" id="cd_risco"/>
+												<div class="col-md-3">
+													<label class="control-label" for="zoom_categoria_risco">Categoria</label>
+													<input type="hidden" class="form-control" name="cd_categoria_risco" id="cd_categoria_risco"/>
+													<input type="zoom" class="form-control" id="zoom_categoria_risco" name="zoom_categoria_risco"
+														data-zoom="{
+															'displayKey':'ds_categoria_risco',
+															'datasetId':'geral_cadastro_categoria_risco',									
+															'fields':[
+																{
+																	'field':'ds_codigo',
+																	'label':'Código', 
+																	'visible':'false'
+																},																	
+																{
+																	'field':'ds_categoria_risco',
+																	'label':'Categoria', 
+																	'standard':'true'
+																}
+															]
+														}" 
+													/>
+												</div>
+												<div class="col-md-2">
+													<label class="control-label" for="existe_risco">Existe?</label>
+													<div class="input-group">
+														<div class="switch switch-success switch-labels">
+															<input id="existe_risco" name="existe_risco" type="checkbox" data-on-color="success" data-on-text="SIM"	data-off-color="danger" data-off-text="NÃO">
+														</div>
+													</div>
+												</div>
+												<div class="col-md-7">
+													<label class="control-label required"for="descricao_risco">Descrição do Risco?</label>
+													<textarea class="form-control" name="descricao_risco" id="descricao_risco"></textarea>
+												</div>											
+											</div>
+											<div class="form-group row">
+												<div class="col-md-3">
+													<label class="control-label required" for="probabilidade_risco">Probabilidade</label>
+													<select class="form-control" name="probabilidade_risco" id="probabilidade_risco">
+														<option value="">---selecione---</option>
+														<option value="0.10">Muito baixa</option>
+														<option value="0.30">Baixa</option>
+														<option value="0.50">Média</option>
+														<option value="0.70">Alta</option>
+														<option value="0.90">Muito alta</option>
+													</select>
+												</div>
+												<div class="col-md-3">
+													<label class="control-label required"for="impacto_risco">Impacto</label>
+													<select class="form-control" name="impacto_risco" id="impacto_risco">
+														<option value="">---selecione---</option>
+														<option value="0.05">Muito baixo</option>
+														<option value="0.10">Baixo</option>
+														<option value="0.20">Médio</option>
+														<option value="0.40">Alta</option>
+														<option value="0.80">Muito alto</option>
+													</select>
+												</div>
+												<div class="col-md-3">
+													<label class="control-label required" for="severidade_risco">Severidade</label>
+													<input type="text" class="form-control" name="severidade_risco" id="severidade_risco" value="" readonly/>
+												</div>
+												<div class="col-md-3">
+													<label class="control-label" for="tratativa_risco">Tratativa</label>
+													<select class="form-control" name="tratativa_risco"  id="tratativa_risco">
+														<option value="">---selecione---</option>
+														<option value="mitigar">Mitigar</option>
+														<option value="transferir">Transferir</option>
+														<option value="evitar">Evitar</option>
+														<option value="aceitar">Aceitar</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="col-md-6">
+													<label class="control-label"for="tratamento_risco">Tratamento do Risco</label>
+													<textarea class="form-control" name="tratamento_risco" id="tratamento_risco"></textarea>
+												</div>
+												<div class="col-md-3">
+													<label for="dt_vigencia_risco">Data Vigência</label>			
+													<input type="text" class="form-control input-date" name="dt_vigencia_risco" id="dt_vigencia_risco" mask="99/99/9999">
+												</div>
+												<div class="col-md-3">
+													<label class="control-label required" for="situacao_risco">Situação</label>
+													<select class="form-control" name="situacao_risco" id="situacao_risco">
+														<option value="" selected></option>
+														<option value="aberto">Aberto</option>
+														<option value="fechado_com_impacto">Fechado com Impacto</option>
+														<option value="fechado_sem_impacto">Fechado sem Impacto</option>
+														<option value="cancelado">Cancelado</option>
+													</select>
+												</div>
+											</div>									
+									 	</td>
+									</tr>
+								 </tbody>
+						  </table>
+					   </div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="historico-situacao" class="tab-pane fade">
+				<div class="form-group row">
+					
+					
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+</body>
+</html>
+
+<script type="text/template" id="tpl_table_item_etapa">
+	<tr uuid="{{uuid}}">
+		<td class="fs-v-align-middle fs-txt-center bpm-mobile-trash-column">
+			<span class="fluig-style-guide fs-display-block fs-md-space">
+				<i class="fluigicon fluigicon-trash fluigicon-md fs-cursor-pointer remove-child" indice="{{index}}"></i>
+			</span>
+		</td>
+		<td class="col-md-11">
+			<input type="hidden" name="uuid_Filho_{{index}}" id="uuid_Filho_{{index}}" value="{{uuid}}" />
+			<div class="row">
+				<div class="col-md-3">
+					<label for="cd_item_Filho_{{index}}">Código item</label>
+					<input type="text" class="form-control" name="cd_item_Filho_{{index}}" id="cd_item_Filho_{{index}}" />
+				</div>
+				<div class="col-md-1">
+					<label for="id_item_Filho_{{index}}">ID item</label>
+					<input type="text" class="form-control" name="id_item_Filho_{{index}}" id="id_item_Filho_{{index}}" />
+				</div>
+				<div class="col-md-4">
+					<label for="nm_item_Filho_{{index}}">Nome item</label>
+					<input type="text" class="form-control" name="nm_item_Filho_{{index}}" id="nm_item_Filho_{{index}}" />
+				</div>
+				<div class="col-md-4">
+					<label for="descricao_item_Filho_{{index}}">Descrição item</label>
+					<textarea name="descricao_item_Filho_{{index}}" id="descricao_item_Filho_{{index}}" class="form-control"></textarea>
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-md-4">
+					<input type="hidden" name="cd_om_item_Filho_{{index}}" id="cd_om_item_Filho_{{index}}" />
+					<label for="zoom_om_item_Filho_{{index}}" class="required">OM item</label>
+					<input type="zoom" class="form-control" name="zoom_om_item_Filho_{{index}}" id="zoom_om_item_Filho_{{index}}" data-zoom="{
+						'displayKey':'txt_nome',
+						'datasetId':'geral_cadastro_om',									
+						'fields':[
+							{
+								'field':'txt_codigo',
+								'label':'Código',
+								'standard':true
+							},{
+								'field':'txt_nome',
+								'label':'Nome',
+								'standard':true
+						}]}" 
+					/>
+				</div>
+				<div class="col-md-2">
+					<label for="valor_total_item_Filho_{{index}}" class="required">Valor total item</label>
+					<input type="text" class="form-control money" name="valor_total_item_Filho_{{index}}" id="valor_total_item_Filho_{{index}}" readonly>
+				</div>
+				<div class="col-md-2">
+					<label for="local_recebidor_item_Filho_{{index}}" class="required">Local recebedor </label>
+					<input type="zoom" class="form-control" name="local_recebidor_item_Filho_{{index}}" id="local_recebidor_item_Filho_{{index}}" data-zoom="{
+						'displayKey':'ds_localidade',
+						'datasetId':'geral_cadastro_localidade',
+						'maximumSelectionLength':'10',
+						'fields':[
+							{
+								'field':'ds_codigo',
+								'label':'Código',
+								'visible':'false'
+							},{
+								'field':'ds_localidade',
+								'label':'Localidade',
+								'standard':'true'
+						}]}" 
+					/>
+				</div>
+				<div class="col-md-2">
+					<label for="latitude_item_Filho_{{index}}" class="required">Latitude</label>
+					<input type="text" class="form-control" name="latitude_item_Filho_{{index}}" id="latitude_item_Filho_{{index}}">
+				</div>
+				<div class="col-md-2">
+					<label for="longitude_item_Filho_{{index}}" class="required">Latitude</label>
+					<input type="text" class="form-control" name="longitude_item_Filho_{{index}}" id="longitude_item_Filho_{{index}}">
+				</div>
+				<div class="col-md-2">
+					<button class="btn btn-primary add-grandchild fs-xl-margin-top" indice="{{index}}">Adicionar componente</button>
+				</div>
+			</div>
+
+		</td>
+	</tr>
+</script>
+
+<script type="text/template" id="tpl_table_componente_item">
+	<tr class="info" uuid={{uuid}}>
+		<td class="fs-v-align-middle fs-txt-center">
+			<i class="fluigicon fluigicon-trash fluigicon-sm fs-cursor-pointer remove-grandchild" indice="{{index}}"></i>
+		</td>
+		<td>
+			<div class="row">
+								
+				<input type="hidden" name="uuid_item_Neto_{{index}}" id="uuid_item_Neto_{{index}}" value="{{uuid}}" />
+				<div class="col-md-2">
+					<label for="sequencial_componente_Neto_{{index}}" class="required">Sequencial</label>
+					<input type="text" class="form-control" name="sequencial_componente_Neto_{{index}}" id="sequencial_componente_Neto_{{index}}">
+				</div>
+
+				<div class="col-md-2">
+					<label for="cd_componente_Neto_{{index}}" class="required">Código componente</label>
+					<input type="text" class="form-control" name="cd_componente_Neto_{{index}}" id="cd_componente_Neto_{{index}}">
+				</div>
+
+				<div class="col-md-4">
+					<label for="nm_curto_componente_Neto_{{index}}" class="required">Nome curto</label>
+					<input type="text" class="form-control" name="nm_curto_componente_Neto_{{index}}" id="nm_curto_componente_Neto_{{index}}">
+				</div>
+
+				<div class="col-md-4">
+					<label for="descricao_componente_Neto_{{index}}">Descrição componente</label>
+					<textarea name="descricao_componente_Neto_{{index}}" id="descricao_componente_Neto_{{index}}" class="form-control"></textarea>
+				</div>
+
+			</div>
+
+			<div class="row">
+				
+				<div class="col-md-2">
+					<label for="quantidade_componente_Neto_{{index}}" class="required">Quantidade componente</label>
+					<input type="text" class="form-control" name="quantidade_componente_Neto_{{index}}" id="quantidade_componente_Neto_{{index}}" onchange="calculaValorItem({{index}})">
+				</div>
+
+				<div class="col-md-2">
+					<label for="vl_componente_Neto_{{index}}" class="required">Valor componente</label>
+					<input type="text" class="form-control money" name="vl_componente_Neto_{{index}}" id="vl_componente_Neto_{{index}}" onchange="calculaValorItem({{index}})">
+				</div>
+
+				<div class="col-md-3">
+					<label for="modelo_componente_Neto_{{index}}" class="required">Modelo componente</label>
+					<input type="text" class="form-control" name="modelo_componente_Neto_{{index}}" id="modelo_componente_Neto_{{index}}">
+				</div>
+
+				<div class="col-md-3">
+					<label for="especificacao_componente_Neto_{{index}}" class="required">Especificação componente</label>
+					<input type="text" class="form-control" name="especificacao_componente_Neto_{{index}}" id="especificacao_componente_Neto_{{index}}">
+				</div>
+
+			</div>
+
+		</td>
+	</tr>
+</script>

@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Requisição de Estoque</h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <label> Estabelecimento: </label>
+                <p>{{documento.requisicaoCodEstab}} - {{documento.requisicaoEstab}}</p>
+            </div>
+            <div class="col-sm-6">
+                <label> Centro de Custo: </label>
+                <p>{{documento.requisicaoCodCcustoRequisitante}} {{documento.requisicaoCcustoRequisitante || 'Não informado'}}</p>
+            </div>
+            <div class="col-sm-6">
+                <label> Requisitante: </label>
+                <p>{{documento.requisicaoRequisitante}}</p>
+            </div>
+            <div class="col-sm-6">
+                <label> Data da Requisição: </label>
+                <p>{{documento.requisicaoData | date}}</p>
+            </div>
+        </div>
+    </div>
+</div>

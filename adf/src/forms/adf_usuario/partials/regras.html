@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Regras</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Responsável pela lotação</label>
+                        <div class="col-sm-3">
+                            <input type="checkbox" name="respLotacaoCc_input" ng-model="vm.Formulario.respLotacaoCc" fluig-switch data-on-text="SIM" data-off-text="NÃO"
+                                data-on-color="success">
+                            <input type="hidden" name="respLotacaoCc" ng-value="vm.Formulario.respLotacaoCc">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Utiliza Lotação do Documento Origem</label>
+                        <div class="col-sm-3">
+                            <input type="checkbox" name="utilizaLotDocOrigem_input" ng-model="vm.Formulario.utilizaLotDocOrigem" fluig-switch data-on-text="SIM"
+                                data-off-text="NÃO" data-on-color="success">
+                            <input type="hidden" name="utilizaLotDocOrigem" ng-value="vm.Formulario.utilizaLotDocOrigem">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Usuário Aprovador</label>
+                        <div class="col-sm-3">
+                            <input type="checkbox" name="aprovador_input" ng-model="vm.Formulario.aprovador" fluig-switch data-on-text="SIM" data-off-text="NÃO"
+                                data-on-color="success">
+                            <input type="hidden" name="aprovador" ng-value="vm.Formulario.aprovador">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Usuário Mestre</label>
+                        <div class="col-sm-3">
+                            <input type="checkbox" name="mestre_input" ng-model="vm.Formulario.mestre" fluig-switch data-on-text="SIM" data-off-text="NÃO"
+                                data-on-color="success">
+                            <input type="hidden" name="mestre" ng-value="vm.Formulario.mestre">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-6">
+
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Aprovação Automática</label>
+                        <div class="col-sm-3">
+                            <input type="checkbox" name="aprovacaoAutomatica_input" ng-model="vm.Formulario.aprovacaoAutomatica" fluig-switch data-on-text="SIM"
+                                data-off-text="NÃO" data-on-color="success">
+                            <input type="hidden" name="aprovacaoAutomatica" ng-value="vm.Formulario.aprovacaoAutomatica">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Libera Verba</label>
+                        <div class="col-sm-3">
+                            <input type="checkbox" name="liberaVerba_input" ng-model="vm.Formulario.liberaVerba" fluig-switch data-on-text="SIM" data-off-text="NÃO"
+                                data-on-color="success">
+                            <input type="hidden" name="liberaVerba" ng-value="vm.Formulario.liberaVerba">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-6 control-label">Aprovação Automática Aprovador</label>
+                        <div class="col-sm-3">
+                            <input type="checkbox" name="aprovAutomaticaAprovador_input" ng-model="vm.Formulario.aprovacaoAutomaticaAprovador" fluig-switch
+                                data-on-text="SIM" data-off-text="NÃO" data-on-color="success">
+                            <input type="hidden" name="aprovacaoAutomaticaAprovador" ng-value="vm.Formulario.aprovacaoAutomaticaAprovador">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

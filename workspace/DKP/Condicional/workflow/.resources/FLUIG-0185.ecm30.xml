@@ -1,0 +1,3140 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>FLUIG-0185</processId>
+    </processDefinitionPK>
+    <processDescription>Avaliação do Período de Experiência</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Recursos Humanos.Consultoria de RH</categoryId>
+    <managerEngineAllocationId></managerEngineAllocationId>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Avaliação do Período de Experiência</processId>
+      <version>18</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>99</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>true</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>288000</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>105</positionX>
+      <positionY>87</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </processStatePK>
+      <stateName>Avaliação do Gestor</stateName>
+      <stateDescription>Avaliação do Gestor</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>28800</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;cpChapaGestor&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>70</positionX>
+      <positionY>236</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Parecer da Consultoria de RH</stateName>
+      <stateDescription>Parecer da Consultoria de RH</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>28800</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;cpChapaConsultor&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>384</positionX>
+      <positionY>63</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </processStatePK>
+      <stateName>2ª Avaliação do Gestor</stateName>
+      <stateDescription>2ª Avaliação do Gestor</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>28800</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;cpChapaGestor&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>830</positionX>
+      <positionY>370</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>6</sequence>
+      </processStatePK>
+      <stateName>2ª Avaliação - Parecer da Consultoria RH</stateName>
+      <stateDescription>2ª Avaliação - Parecer da Consultoria RH</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>28800</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;cpChapaConsultor&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>830</positionX>
+      <positionY>70</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>25</sequence>
+      </processStatePK>
+      <stateName>Tarefa automática - Aguardando 2º Avaliação – Prazo 45 dias</stateName>
+      <stateDescription>Tarefa automática - Aguardando 2º Avaliação – Prazo 45 dias</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>3600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Usuário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;adm&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>540</positionX>
+      <positionY>218</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>true</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>43</sequence>
+      </processStatePK>
+      <stateName>Avaliação Gestor transferência</stateName>
+      <stateDescription>Avaliação Gestor transferência</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;cpChapaGestor&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>220</positionX>
+      <positionY>230</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>50</sequence>
+      </processStatePK>
+      <stateName>2ª Avaliação do Gestor transferência</stateName>
+      <stateDescription>2ª Avaliação do Gestor transferência</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;cpChapaGestorSubstSeg&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>660</positionX>
+      <positionY>230</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>10</sequence>
+      </processStatePK>
+      <stateName>Aprovaçao</stateName>
+      <stateDescription>Aprovaçao</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>407</positionX>
+      <positionY>220</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>17</sequence>
+      </processStatePK>
+      <stateName>Aprovaçao</stateName>
+      <stateDescription>Aprovaçao</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>1050</positionX>
+      <positionY>220</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>41</sequence>
+      </processStatePK>
+      <stateName>Transferência</stateName>
+      <stateDescription>Transferência</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>242</positionX>
+      <positionY>110</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>47</sequence>
+      </processStatePK>
+      <stateName>Transferência</stateName>
+      <stateDescription>Transferência</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>853</positionX>
+      <positionY>220</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>30</sequence>
+      </processStatePK>
+      <stateName>Fim com cancelamento de processo</stateName>
+      <stateDescription>Fim com cancelamento de processo</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>true</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>420</positionX>
+      <positionY>370</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>65</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>38</sequence>
+      </processStatePK>
+      <stateName>Terminação imediata de processo</stateName>
+      <stateDescription>Terminação imediata de processo</stateDescription>
+      <instruction>Esta atividade indica que o processo terminado e que não ocorrerá nenhum tipo de pós processamento.</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>190</positionX>
+      <positionY>40</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>68</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>39</sequence>
+      </processStatePK>
+      <stateName>Terminação imediata de processo</stateName>
+      <stateDescription>Terminação imediata de processo</stateDescription>
+      <instruction>Esta atividade indica que o processo terminado e que não ocorrerá nenhum tipo de pós processamento.</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>1230</positionX>
+      <positionY>118</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>68</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>40</sequence>
+      </processStatePK>
+      <stateName>Terminação imediata de processo</stateName>
+      <stateDescription>Terminação imediata de processo</stateDescription>
+      <instruction>Esta atividade indica que o processo terminado e que não ocorrerá nenhum tipo de pós processamento.</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>500</positionX>
+      <positionY>360</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>68</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>18</version>
+        <sequence>10</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cpEvidenciaConsultoria&apos;) == &apos;1&apos; || hAPI.getCardValue(&apos;cpEvidenciaConsultoria&apos;) == &apos;3&apos; </condition>
+      <destinationSequenceId>40</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>18</version>
+        <sequence>10</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cpEvidenciaConsultoria&apos;) == &apos;2&apos; || hAPI.getCardValue(&apos;cpEvidenciaConsultoria&apos;) == &apos;5&apos;</condition>
+      <destinationSequenceId>25</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>18</version>
+        <sequence>10</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cpEvidenciaConsultoria&apos;) == &apos;6&apos;</condition>
+      <destinationSequenceId>30</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>4</expressionOrder>
+        <version>18</version>
+        <sequence>10</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cpEvidenciaConsultoria&apos;) == &apos;4&apos; &amp;&amp;
+hAPI.getCardValue(&apos;cbTransferirGestor&apos;) == &apos;nao&apos;</condition>
+      <destinationSequenceId>3</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>5</expressionOrder>
+        <version>18</version>
+        <sequence>10</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cpEvidenciaConsultoria&apos;) == &apos;4&apos; &amp;&amp; 
+hAPI.getCardValue(&apos;cbTransferirGestor&apos;) == &apos;sim&apos;</condition>
+      <destinationSequenceId>43</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>18</version>
+        <sequence>17</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cpEvidenciaAvaliacao&apos;) == &apos;3&apos;</condition>
+      <destinationSequenceId>5</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>18</version>
+        <sequence>17</sequence>
+      </conditionProcessStatePK>
+      <condition>true</condition>
+      <destinationSequenceId>39</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>18</version>
+        <sequence>17</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cbTransferirGestorSeg&apos;) == &apos;sim&apos; &amp;&amp; hAPI.getCardValue(&apos;cpEvidenciaAvaliacao&apos;) == &apos;3&apos;</condition>
+      <destinationSequenceId>50</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>18</version>
+        <sequence>41</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cbTransferirGestor&apos;) == &apos;sim&apos;</condition>
+      <destinationSequenceId>43</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>18</version>
+        <sequence>41</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cbTransferirGestor&apos;) == &apos;nao&apos;</condition>
+      <destinationSequenceId>4</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>18</version>
+        <sequence>47</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cbTransferirGestorSeg&apos;) == &apos;nao&apos;</condition>
+      <destinationSequenceId>6</destinationSequenceId>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>18</version>
+        <sequence>47</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&apos;cbTransferirGestorSeg&apos;) == &apos;sim&apos;</condition>
+      <destinationSequenceId>50</destinationSequenceId>
+    </ConditionProcessState>
+  </list>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>11</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>10</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>15</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>10</initialStateSequence>
+      <finalStateSequence>3</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>18</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>6</initialStateSequence>
+      <finalStateSequence>17</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>20</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>17</initialStateSequence>
+      <finalStateSequence>39</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>21</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>17</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>26</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>10</initialStateSequence>
+      <finalStateSequence>25</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>27</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>25</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+      <expression></expression>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>28</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>25</initialStateSequence>
+      <finalStateSequence>5</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>29</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>3</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>31</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>10</initialStateSequence>
+      <finalStateSequence>30</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>35</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>10</initialStateSequence>
+      <finalStateSequence>40</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>37</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>38</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>42</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>3</initialStateSequence>
+      <finalStateSequence>41</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>44</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>41</initialStateSequence>
+      <finalStateSequence>43</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>45</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>41</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>46</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>43</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>48</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>5</initialStateSequence>
+      <finalStateSequence>47</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>49</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>47</initialStateSequence>
+      <finalStateSequence>6</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>51</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>47</initialStateSequence>
+      <finalStateSequence>50</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>52</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>50</initialStateSequence>
+      <finalStateSequence>6</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>55</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>17</initialStateSequence>
+      <finalStateSequence>50</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>56</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>10</initialStateSequence>
+      <finalStateSequence>43</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessCreate</eventId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessCreate(processId) 
+{
+	log.warn(&apos;[DEBUGANDO] FLUIG-0185 - afterProcessCreate&apos;);
+	
+    var numSolicitacao = getValue(&quot;WKNumProces&quot;),
+    
+        hoje = new Date(),
+        d = hoje.getDate() &lt; 10 ? &apos;0&apos; + hoje.getDate() : hoje.getDate(),
+        m = hoje.getMonth() &lt; 10 ? &apos;0&apos; + hoje.getMonth() : hoje.getMonth(),
+        dtAbertura = d + &apos;/&apos; + m + &apos;/&apos; + hoje.getFullYear();
+    
+    hAPI.setCardValue(&quot;cpNumeroSolicitacao&quot;, numSolicitacao);
+    hAPI.setCardValue(&quot;cpDataAbertura&quot;, dtAbertura);
+    
+	//identificador 
+	var Colaborador = hAPI.getCardValue(&quot;cpColaboradorInfo&quot;);
+	var DtAdmissao = hAPI.getCardValue(&quot;cpDataAdmissaoInfo&quot;);
+	var Departamento = hAPI.getCardValue(&quot;cpObraDepartamentoInfo&quot;);
+
+	var Ident = Colaborador + &quot;-&quot; + Departamento + &quot;-&quot; + DtAdmissao;
+	hAPI.setCardValue(&apos;cpIdentificador&apos;, Ident);
+	
+	//CENTRAL DE TAREFAS
+	addCentralTarefasInfo(getValue(&quot;WKDef&quot;),getValue(&quot;WKNumProces&quot;));  
+}
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskCreate</eventId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskCreate(colleagueId) {
+    
+	log.warn(&apos;[DEBUGANDO] FLUIG-0185 - afterTaskCreate - INICIO&apos;);
+	
+    var proxAtividade = getValue(&apos;WKNextState&apos;);
+	var numProcesso = getValue(&quot;WKNumProces&quot;);
+	var numEmpresa = getValue(&quot;WKCompany&quot;);
+	
+	//addCentralTarefasInfo(getValue(&quot;WKDef&quot;),getValue(&quot;WKNumProces&quot;));  
+    
+	if (proxAtividade == &apos;25&apos;) 
+	{
+		var DataAdmissao = hAPI.getCardValue(&apos;cpDataAdmissaoInfo&apos;);
+		
+		var arrayPrazoConclusao = DataAdmissao.split(&quot;/&quot;);
+        var dia = arrayPrazoConclusao[0]; 
+        var mes = arrayPrazoConclusao[1]; // Posição 1 do array é o mês (Subtraímos 1 porque na data do Javascript o mês vai de 0 a 11)
+        var ano = arrayPrazoConclusao[2];
+        
+        var dataDoPrazo = new Date();
+        dataDoPrazo.setDate(parseFloat(dia)+parseFloat(45));
+        dataDoPrazo.setMonth(mes);
+        dataDoPrazo.setFullYear(ano);
+		
+		// Seta o prazo para as 18:00
+		hAPI.setDueDate(numProcesso, hAPI.getActualThread(numEmpresa,
+				numProcesso, proxAtividade), colleagueId, dataDoPrazo, 64800);
+
+	}
+	
+	log.warn(&apos;[DEBUGANDO] FLUIG-0185 - afterTaskCreate - FIM&apos;);
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>CentralTarefas</eventId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>//VERSÃO: 1.3.2&#xd;
+//MUDANÇA NO LABEL DO RESUMO DO COMBO DE TIPO DE SOLICITAÇÃO DO FORMULARIO FLUIG-0128&#xd;
+function addCentralTarefasInfo(processo, numProcess)&#xd;
+{&#xd;
+	try&#xd;
+	{&#xd;
+		Central(numProcess);&#xd;
+		Anexos(numProcess);&#xd;
+		Resumo(processo, numProcess);&#xd;
+	}&#xd;
+	catch(err)&#xd;
+	{&#xd;
+		var message = &quot;ERRO AO INSERIR AS INFORMAÇÕES ADICIONAIS DA CENTRAL DE TAREFAS - DESCRIÇÃO DO ERRO: &quot; + err.message;&#xd;
+		&#xd;
+		log.error(&quot;-----------------------------------------------------------------&quot;);&#xd;
+		log.error(message);&#xd;
+		log.error(&quot;-----------------------------------------------------------------&quot;);&#xd;
+		&#xd;
+		throw message;&#xd;
+	}&#xd;
+	&#xd;
+}&#xd;
+&#xd;
+function Central(numProcess) &#xd;
+{&#xd;
+	var attachments = hAPI.listAttachments();&#xd;
+&#xd;
+	for (var i = 0; i &lt; attachments.size(); i++) {&#xd;
+		var attachment = attachments.get(i);&#xd;
+		DatasetFactory.getDataset(&quot;DS_FLUIG_0156&quot;, [numProcess], null, null);&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function Anexos(numProcess) {&#xd;
+	var attachments = hAPI.listAttachments();&#xd;
+&#xd;
+	for (var i = 0; i &lt; attachments.size(); i++) {&#xd;
+		var attachment = attachments.get(i);&#xd;
+		DatasetFactory.getDataset(&quot;DS_FLUIG_0114&quot;, [numProcess, attachment.getDocumentDescription(), attachment.documentId], null, null);&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function Resumo(processo, numProcess) {&#xd;
+	&#xd;
+	log.warn(&quot;ADICIONANDO OS MAPEAMENTOS PARA A CENTRAL DE TAREFAS - PROCESSO: &quot; + processo + &quot; - NUMERO PROCESSO: &quot; + numProcess);&#xd;
+	&#xd;
+	var resumo = &quot;&quot;;&#xd;
+	var mapa = mapeamento(processo);&#xd;
+&#xd;
+	mapa.forEach(function(campos) {&#xd;
+		if (campos.tipo == 10) //combobox&#xd;
+		{&#xd;
+			if (resumo == &quot;&quot;) {&#xd;
+				resumo = campos.label + &quot;: &quot; + valoresDescricao(campos.campo, hAPI.getCardValue(campos.campo), processo);&#xd;
+			} else {&#xd;
+				resumo = resumo + &quot;; &quot; + campos.label + &quot;: &quot; + valoresDescricao(campos.campo, hAPI.getCardValue(campos.campo), processo);&#xd;
+			}&#xd;
+		} else if (campos.tipo == 5) //pai e filho &#xd;
+			{&#xd;
+			if (resumo == &quot;&quot;) {&#xd;
+				resumo = valoresPaiFilho(campos.campo, processo,campos.label);&#xd;
+			} else {&#xd;
+				resumo = resumo + &quot;; &quot; + valoresPaiFilho(campos.campo, processo,campos.label);&#xd;
+			}&#xd;
+		} &#xd;
+		else if (campos.tipo == 20) //customizado &#xd;
+			{&#xd;
+			if (resumo == &quot;&quot;) {&#xd;
+				resumo = campos.label + &quot;: &quot; + valoresCustomizados(campos.campo, hAPI.getCardValue(campos.campo), processo);&#xd;
+			} else {&#xd;
+				resumo = resumo + &quot;; &quot; + campos.label + &quot;: &quot; + valoresCustomizados(campos.campo, hAPI.getCardValue(campos.campo), processo);&#xd;
+			}&#xd;
+		} &#xd;
+		else &#xd;
+		{&#xd;
+			if (resumo == &quot;&quot;) // normal &#xd;
+				{&#xd;
+				resumo = campos.label + &quot;: &quot; + hAPI.getCardValue(campos.campo);&#xd;
+			} else {&#xd;
+				resumo = resumo + &quot;; &quot; + campos.label + &quot;: &quot; + hAPI.getCardValue(campos.campo);&#xd;
+			}&#xd;
+		}&#xd;
+&#xd;
+	});&#xd;
+&#xd;
+	DatasetFactory.getDataset(&quot;DS_FLUIG_0113&quot;, [numProcess, resumo], null, null);&#xd;
+}&#xd;
+&#xd;
+function mapeamento(processo) {&#xd;
+	var dsReturn = DatasetFactory.getDataset(&quot;DS_FLUIG_0115&quot;, [processo], null, null);&#xd;
+&#xd;
+	if (dsReturn.values.length != 0) {&#xd;
+		return dsReturn.values.map(function(mapeamento) {&#xd;
+			return {&#xd;
+				label: mapeamento[0],&#xd;
+				campo: mapeamento[1],&#xd;
+				tipo: mapeamento[2],&#xd;
+			};&#xd;
+		});&#xd;
+&#xd;
+	}&#xd;
+&#xd;
+}&#xd;
+&#xd;
+function valoresCustomizados(campo, valor, processo) {&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0130&#xd;
+	if (processo == &quot;FLUIG-0130&quot;) {&#xd;
+		if (campo == &quot;cpHorarioDesejadoHora&quot;) {&#xd;
+			return hAPI.getCardValue(&quot;cpHorarioDesejadoHora&quot;) + &quot;:&quot; + hAPI.getCardValue(&quot;cpHorarioDesejadoMinuto&quot;);&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0179&#xd;
+	if (processo == &quot;FLUIG-0179&quot;) {&#xd;
+		if (campo == &quot;cpCentroDeCusto&quot;) &#xd;
+		{&#xd;
+			if(hAPI.getCardValue(&quot;cpTipo&quot;) == 2)&#xd;
+			{&#xd;
+				return hAPI.getCardValue(&quot;cpCentroDeCustoSemVarios&quot;)&#xd;
+			}&#xd;
+			else&#xd;
+			{&#xd;
+				return hAPI.getCardValue(&quot;cpCentroDeCusto&quot;)&#xd;
+			}&#xd;
+		}&#xd;
+		if (campo == &quot;cpResponsavel&quot;) &#xd;
+		{&#xd;
+			if(hAPI.getCardValue(&quot;cpTipo&quot;) == 2) &#xd;
+			{&#xd;
+				return hAPI.getCardValue(&quot;cpSecaoLinhaRespSemVarios&quot;)&#xd;
+			}&#xd;
+			else&#xd;
+			{&#xd;
+				return hAPI.getCardValue(&quot;cpSecaoLinhaResp&quot;);&#xd;
+			}&#xd;
+			&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+function ResumoPaiFilho(label,campo,quantidade)&#xd;
+{&#xd;
+	var resumo = &apos;&apos;;&#xd;
+	&#xd;
+	for (i = 1; i &lt;= quantidade; i++) &#xd;
+	{&#xd;
+		if (resumo == &quot;&quot;) &#xd;
+		{&#xd;
+			resumo = &quot;[&quot; +i+ &quot;] &quot; +label + &quot;: &quot; + hAPI.getCardValue(campo + &quot;___&quot; + i);&#xd;
+		} else &#xd;
+		{&#xd;
+			resumo = resumo + &quot;; [&quot; +i+ &quot;] &quot; + label + &quot;: &quot; + hAPI.getCardValue(campo + &quot;___&quot; + i);&#xd;
+		}&#xd;
+	}	&#xd;
+	return resumo;&#xd;
+}&#xd;
+&#xd;
+function valoresPaiFilho(campo, processo, label) {&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0104&#xd;
+	if (processo == &quot;FLUIG-0104&quot;) {&#xd;
+		&#xd;
+		if (campo == &quot;itmNomeCargo&quot;) &#xd;
+		{&#xd;
+			return ResumoPaiFilho(label,campo,hAPI.getCardValue(&quot;cpQuantidadeColaboradores&quot;));&#xd;
+		}&#xd;
+		if (campo == &quot;itmQuantidade&quot;) &#xd;
+		{&#xd;
+			return ResumoPaiFilho(label,campo,hAPI.getCardValue(&quot;cpQuantidadeColaboradores&quot;));&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0130&#xd;
+	if (processo == &quot;FLUIG-0130&quot;) &#xd;
+	{&#xd;
+		if (campo == &quot;cpOrigem&quot;) &#xd;
+		{&#xd;
+			return ResumoPaiFilho(label,campo,hAPI.getCardValue(&quot;cpQuantidadeTotal&quot;));&#xd;
+		}&#xd;
+		&#xd;
+		if (campo == &quot;cpDestino&quot;) &#xd;
+		{&#xd;
+			return ResumoPaiFilho(label,campo,hAPI.getCardValue(&quot;cpQuantidadeTotal&quot;));&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0169&#xd;
+	if (processo == &quot;FLUIG-0169&quot;) {&#xd;
+&#xd;
+		if (campo == &quot;cpNomeColigada&quot;) &#xd;
+		{&#xd;
+			return ResumoPaiFilho(label,campo,hAPI.getCardValue(&quot;cpQuantidadeObras&quot;));&#xd;
+		}&#xd;
+		&#xd;
+		if (campo == &quot;cpNomeObraUAU&quot;) &#xd;
+		{&#xd;
+			return ResumoPaiFilho(label,campo,hAPI.getCardValue(&quot;cpQuantidadeObras&quot;));&#xd;
+		}&#xd;
+		&#xd;
+	}&#xd;
+	&#xd;
+	&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0170&#xd;
+	if (processo == &quot;FLUIG-0170&quot;) {&#xd;
+		if (campo == &quot;cpObra&quot;) &#xd;
+		{&#xd;
+			return ResumoPaiFilho(label,campo,hAPI.getCardValue(&quot;cpQuantidadeObras&quot;));&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0173&#xd;
+	if (processo == &quot;FLUIG-0173&quot;) {&#xd;
+		if (campo == &quot;cpNomeColaborador&quot;) &#xd;
+		{&#xd;
+			return ResumoPaiFilho(label,campo,hAPI.getCardValue(&quot;cpQuantidadeObras&quot;));&#xd;
+		}&#xd;
+	}&#xd;
+}&#xd;
+&#xd;
+//mapeamento dos valores de itens nao text - proxima atualização colocar isso dinamicamente&#xd;
+function valoresDescricao(campo, valor, processo) {&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0100&#xd;
+	if (processo == &apos;FLUIG-0100&apos;) {&#xd;
+		if (campo == &quot;cpTipoExcecao&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Admissão (Fora da Política de Remuneração)&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Admissão (Fora do prazo)&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Férias&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Rescisão&quot;;&#xd;
+			}&#xd;
+			if (valor == 5) {&#xd;
+				return &quot;Movimentação de Pessoal&quot;;&#xd;
+			}&#xd;
+			if (valor == 6) {&#xd;
+				return &quot;Hora Extra&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0104&#xd;
+	if (processo == &quot;FLUIG-0104&quot;) {&#xd;
+		&#xd;
+		if (campo == &quot;cpTipoMaoObra&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Produção&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Encarregado de Produção&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Administrativo&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Estratégico&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+&#xd;
+		if (campo == &quot;cpMotivoAdmissaoProd&quot;) &#xd;
+		{&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Aumento de Quadro&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Efetivação&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Substituição de demissão&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Substituição de Férias&quot;;&#xd;
+			}&#xd;
+			if (valor == 5) {&#xd;
+				return &quot;Substituição de Licença Maternidade&quot;;&#xd;
+			}&#xd;
+			if (valor == 6) {&#xd;
+				return &quot;Substituição de Acidente de trabalho ou doença&quot;;&#xd;
+			}&#xd;
+			if (valor == 7) {&#xd;
+				return &quot;Substituição de Transferência / Promoção&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0105&#xd;
+	if (processo == &quot;FLUIG-0105&quot;) {&#xd;
+		if (campo == &quot;cpTransferencia&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Sim&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Não&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+&#xd;
+		if (campo == &quot;cpTipoMovimentacao&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Promoção&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Progressão&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Enquadramento&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Reclassificação&quot;;&#xd;
+			}&#xd;
+			if (valor == 5) {&#xd;
+				return &quot;Sem alteração salarial&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0106&#xd;
+	if (processo == &quot;FLUIG-0106&quot;) {&#xd;
+		if (campo == &quot;cpTipoBeneficio&quot;) {&#xd;
+			if (valor == &quot;ConvenioOdontologico&quot;) {&#xd;
+				return &quot;Convênio Odontológico&quot;;&#xd;
+			}&#xd;
+			if (valor == &quot;ConvenioFarmacia&quot;) {&#xd;
+				return &quot;Convênio Farmácia&quot;;&#xd;
+			}&#xd;
+			if (valor == &quot;SeguroDeVida&quot;) {&#xd;
+				return &quot;Seguro de Vida&quot;;&#xd;
+			}&#xd;
+			if (valor == &quot;PlanoDeSaude&quot;) {&#xd;
+				return &quot;Plano de Saúde&quot;;&#xd;
+			}&#xd;
+			if (valor == &quot;CartaoAlimentacao&quot;) {&#xd;
+				return &quot;Cartão Alimentação e Refeição&quot;;&#xd;
+			}&#xd;
+			if (valor == &quot;ValeTransporte&quot;) {&#xd;
+				return &quot;Vale Transporte&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+&#xd;
+		if (campo == &quot;cpTipoSolicitacao&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Solicitação de Continuidade de Convênio Odontológico&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Solicitação de Convênio Odontológico&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Solicitação de 2ª via do cartão do Convênio Odontológico&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Solicitação de alteração/atualização de Convênio Odontológico&quot;;&#xd;
+			}&#xd;
+			if (valor == 5) {&#xd;
+				return &quot;Solicitação de exclusão de Convênio Odontológico&quot;;&#xd;
+			}&#xd;
+			if (valor == 6) {&#xd;
+				return &quot;Solicitação de cartão Convênio Farmácia&quot;;&#xd;
+			}&#xd;
+			if (valor == 7) {&#xd;
+				return &quot;Solicitação de 2ª via do cartão Convênio Farmácia&quot;;&#xd;
+			}&#xd;
+			if (valor == 8) {&#xd;
+				return &quot;Solicitação de exclusão de Cartão Convênio Farmácia&quot;;&#xd;
+			}&#xd;
+			if (valor == 9) {&#xd;
+				return &quot;Solicitação de Processo Indenizatório&quot;;&#xd;
+			}&#xd;
+			if (valor == 10) {&#xd;
+				return &quot;Solicitação de Cesta de Natalidade&quot;;&#xd;
+			}&#xd;
+			if (valor == 11) {&#xd;
+				return &quot;Solicitação de Certificado da Apólice&quot;;&#xd;
+			}&#xd;
+			if (valor == 12) {&#xd;
+				return &quot;Solicitação de Plano de Saúde&quot;;&#xd;
+			}&#xd;
+			if (valor == 13) {&#xd;
+				return &quot;Solicitação de 2ª via do cartão Plano de Saúde&quot;;&#xd;
+			}&#xd;
+			if (valor == 14) {&#xd;
+				return &quot;Solicitação de reembolso de Plano de Saúde&quot;;&#xd;
+			}&#xd;
+			if (valor == 15) {&#xd;
+				return &quot;Solicitação de exclusão de Plano de Saúde&quot;;&#xd;
+			}&#xd;
+			if (valor == 16) {&#xd;
+				return &quot;Solicitação de alteração/atualização de dados cadastrais de Plano de Saúde&quot;;&#xd;
+			}&#xd;
+			if (valor == 17) {&#xd;
+				return &quot;Solicitação de Continuidade de Plano de Saúde (demitidos)&quot;;&#xd;
+			}&#xd;
+			if (valor == 35) {&#xd;
+				return &quot;Solicitação de extrato de coparticipação&quot;;&#xd;
+			}&#xd;
+			if (valor == 18) {&#xd;
+				return &quot;Solicitação mensal de Ticket Alimentação ou Cesta Básica&quot;;&#xd;
+			}&#xd;
+			if (valor == 19) {&#xd;
+				return &quot;Solicitação de Pedido Complementar&quot;;&#xd;
+			}&#xd;
+			if (valor == 20) {&#xd;
+				return &quot;Solicitação de alteração de Cartão Alimentação ou Refeição&quot;;&#xd;
+			}&#xd;
+			if (valor == 21) {&#xd;
+				return &quot;Crédito mensal não disponibilizado / valor incorreto&quot;;&#xd;
+			}&#xd;
+			if (valor == 22) {&#xd;
+				return &quot;Solicitação de Cartão Alimentação/refeição Provisório&quot;;&#xd;
+			}&#xd;
+			if (valor == 23) {&#xd;
+				return &quot;Solicitação de 2ª Via Cartão Alimentação/Refeição&quot;;&#xd;
+			}&#xd;
+			if (valor == 24) {&#xd;
+				return &quot;Solicitação de saldo de Vale Transporte&quot;;&#xd;
+			}&#xd;
+			if (valor == 25) {&#xd;
+				return &quot;Solicitação de relatório de carga de Vale transporte&quot;;&#xd;
+			}&#xd;
+			if (valor == 26) {&#xd;
+				return &quot;Solicitação de exclusão de Vale Transporte&quot;;&#xd;
+			}&#xd;
+			if (valor == 27) {&#xd;
+				return &quot;Informações para pedido mensal de Vale Transporte&quot;;&#xd;
+			}&#xd;
+			if (valor == 28) {&#xd;
+				return &quot;Solicitação de Vale Transporte Complementar&quot;;&#xd;
+			}&#xd;
+			if (valor == 29) {&#xd;
+				return &quot;Solicitação de Vale Transporte (após admissão)&quot;;&#xd;
+			}&#xd;
+			if (valor == 30) {&#xd;
+				return &quot;Solicitação de 2ª via/bloqueio do cartão de Vale Transporte&quot;;&#xd;
+			}&#xd;
+			if (valor == 31) {&#xd;
+				return &quot;Solicitação de alteração/atualização de tarifa de Vale Transporte&quot;;&#xd;
+			}&#xd;
+			if (valor == 32) {&#xd;
+				return &quot;Solicitação de Vale Transporte Admitidos (regional MG)&quot;;&#xd;
+			}&#xd;
+			if (valor == 34) {&#xd;
+				return &quot;Crédito mensal não disponibilizado / valor incorreto&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0107&#xd;
+	if (processo == &quot;FLUIG-0107&quot;) {&#xd;
+		if (campo == &quot;cpFinalidade&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Pagamento&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Cobrança&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Financiamento&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Outros&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+		if (campo == &quot;cpTipoSolicitacao&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Abertura de conta bancária (Obra já existente no UAU)&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Criação de nova Empresa / Obra / Etapa / Conta Bancária&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+		if (campo == &quot;cpTipoConta&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Abertura de Conta Bancária de gaveta&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Abertura de Conta Bancária&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0109&#xd;
+	if (processo == &quot;FLUIG-0109&quot;) {&#xd;
+		if (campo == &quot;cpHaveraAbono&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Sim&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Não&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0110&#xd;
+	if (processo == &quot;FLUIG-0110&quot;) {&#xd;
+		if (campo == &quot;cpMinutosLocais&quot; || campo == &quot;cpMinutosLongaDistancia&quot; || campo == &quot;cpRoamingInternacional&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Sim&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Não&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0112&#xd;
+	if (processo == &quot;FLUIG-0112&quot;) {&#xd;
+		if (campo == &quot;cpPerfilTelefonia&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;CONSELHEIRO&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;CONSULTOR REGIONAL / ENGENHARIA STAFF&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;COORDENADOR LOCAL&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;COORDENADOR VIAJANTE&quot;;&#xd;
+			}&#xd;
+			if (valor == 5) {&#xd;
+				return &quot;DIRETOR&quot;;&#xd;
+			}&#xd;
+			if (valor == 6) {&#xd;
+				return &quot;ENCARREGADO&quot;;&#xd;
+			}&#xd;
+			if (valor == 7) {&#xd;
+				return &quot;ESTAGIARIO DE CAMPO&quot;;&#xd;
+			}&#xd;
+			if (valor == 8) {&#xd;
+				return &quot;ENGENHEIRO DE OBRA&quot;;&#xd;
+			}&#xd;
+			if (valor == 9) {&#xd;
+				return &quot;GERENTE GERAL DE OBRA / VIAJANTE&quot;;&#xd;
+			}&#xd;
+			if (valor == 10) {&#xd;
+				return &quot;GERENTE SEDE&quot;;&#xd;
+			}&#xd;
+			if (valor == 11) {&#xd;
+				return &quot;GESTOR ADMINISTRATIVO DE OBRA&quot;;&#xd;
+			}&#xd;
+			if (valor == 12) {&#xd;
+				return &quot;GESTOR DE ALMOXARIFADO&quot;;&#xd;
+			}&#xd;
+			if (valor == 13) {&#xd;
+				return &quot;GESTOR DE ASSISTENCIA TECNICA&quot;;&#xd;
+			}&#xd;
+			if (valor == 14) {&#xd;
+				return &quot;GESTOR DE ASSISTENCIA TECNICA VIAJANTE&quot;;&#xd;
+			}&#xd;
+			if (valor == 15) {&#xd;
+				return &quot;GESTOR DE OBRA&quot;;&#xd;
+			}&#xd;
+			if (valor == 16) {&#xd;
+				return &quot;MEDICO DO TRABALHO&quot;;&#xd;
+			}&#xd;
+			if (valor == 17) {&#xd;
+				return &quot;MESTRE DE OBRA&quot;;&#xd;
+			}&#xd;
+			if (valor == 18) {&#xd;
+				return &quot;MOTOBOY - PRESIDENCIA&quot;;&#xd;
+			}&#xd;
+			if (valor == 19) {&#xd;
+				return &quot;MOTORISTA&quot;;&#xd;
+			}&#xd;
+			if (valor == 20) {&#xd;
+				return &quot;MOTORISTA - PRESIDECIA&quot;;&#xd;
+			}&#xd;
+			if (valor == 21) {&#xd;
+				return &quot;PILOTO - PRESIDENCIA&quot;;&#xd;
+			}&#xd;
+			if (valor == 22) {&#xd;
+				return &quot;PORTARIA - VIGIA DE OBRA&quot;;&#xd;
+			}&#xd;
+			if (valor == 23) {&#xd;
+				return &quot;PRESIDENTE&quot;;&#xd;
+			}&#xd;
+			if (valor == 24) {&#xd;
+				return &quot;SECRETARIA EXECUTIVA&quot;;&#xd;
+			}&#xd;
+			if (valor == 25) {&#xd;
+				return &quot;SUPERINTENDENTE&quot;;&#xd;
+			}&#xd;
+			if (valor == 26) {&#xd;
+				return &quot;SUPERINTENDENTE DE ENGENHARIA&quot;;&#xd;
+			}&#xd;
+			if (valor == 27) {&#xd;
+				return &quot;SUPERVISOR&quot;;&#xd;
+			}&#xd;
+			if (valor == 28) {&#xd;
+				return &quot;TECNICO&quot;;&#xd;
+			}&#xd;
+			if (valor == 29) {&#xd;
+				return &quot;TELEFONE DA AREA&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0113&#xd;
+	if (processo == &quot;FLUIG-0113&quot;) {&#xd;
+		if (campo == &quot;cpTipoAfastamento&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Licença maternidade&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Afastamento por motivo de doença&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Afastamento por acidente de trabalho&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Aposentadoria por invalidez&quot;;&#xd;
+			}&#xd;
+			if (valor == 5) {&#xd;
+				return &quot;Licença sem vencimentos&quot;;&#xd;
+			}&#xd;
+			if (valor == 6) {&#xd;
+				return &quot;Outros&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0114&#xd;
+	if (processo == &quot;FLUIG-0114&quot;) {&#xd;
+		if (campo == &quot;cpTipoAviso&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Trabalhado&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Indenizado&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Não se aplica&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0115&#xd;
+	if (processo == &quot;FLUIG-0115&quot;) {&#xd;
+		if (campo == &quot;cpTipoMudanca&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Todos os Colaboradores de uma Empresa ou Seção&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Adicionar colaboradores separadamente&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Próprio colaborador&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0118&#xd;
+	if (processo == &quot;FLUIG-0118&quot;) {&#xd;
+		if (campo == &quot;cpStandObra&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Stand&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Obra&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Escritório&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+		if (campo == &quot;cpComInternet&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Sim&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Não&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0120&#xd;
+	if (processo == &quot;FLUIG-0120&quot;) {&#xd;
+		if (campo == &quot;cpTipoChamado&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Solicitação/Alteraçao de Acesso ou Perfil&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Criação de lista de Distribuição&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Criação de Caixa Compartilhada&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Criação de Pasta&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0122&#xd;
+	if (processo == &quot;FLUIG-0122&quot;) {&#xd;
+		if (campo == &quot;cpAreaDepartamento&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Admissão / Cadastro&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Benefícios&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Férias&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Folha de Pagamento&quot;;&#xd;
+			}&#xd;
+			if (valor == 5) {&#xd;
+				return &quot;PJ&quot;;&#xd;
+			}&#xd;
+			if (valor == 6) {&#xd;
+				return &quot;Ponto Eletrônico&quot;;&#xd;
+			}&#xd;
+			if (valor == 7) {&#xd;
+				return &quot;Relações Trabalhistas&quot;;&#xd;
+			}&#xd;
+			if (valor == 8) {&#xd;
+				return &quot;Rescisão&quot;;&#xd;
+			}&#xd;
+			if (valor == 9) {&#xd;
+				return &quot;Infraestrutura&quot;;&#xd;
+			}&#xd;
+			if (valor == 10) {&#xd;
+				return &quot;Viagem&quot;;&#xd;
+			}&#xd;
+			if (valor == 11) {&#xd;
+				return &quot;Adorno&quot;;&#xd;
+			}&#xd;
+			if (valor == 12) {&#xd;
+				return &quot;Despesas Diretoria&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0125&#xd;
+	if (processo == &quot;FLUIG-0125&quot;) {&#xd;
+		if (campo == &quot;cpTipoViajante&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Próprio Colaborador&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Outro Colaborador&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Terceiro&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Dependente&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0126&#xd;
+	if (processo == &quot;FLUIG-0126&quot;) {&#xd;
+		if (campo == &quot;cpTipo&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Cancelamento de Linha&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Mudança de endereço&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0127&#xd;
+	if (processo == &quot;FLUIG-0127&quot;) {&#xd;
+		if (campo == &quot;cpTipoSolicitacao&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Repasse de Aparelho&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Devolução de Aparelho&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0128&#xd;
+	if (processo == &quot;FLUIG-0128&quot;) {&#xd;
+		if (campo == &quot;cpTipoSolicitacao&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Corte de adiantamento&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Descontos danos causados em folha&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Folha complementar&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Prêmio de produção&quot;;&#xd;
+			}&#xd;
+			if (valor == 5) {&#xd;
+				return &quot;Reenvio de pagamento&quot;;&#xd;
+			}&#xd;
+			if (valor == 6) {&#xd;
+				return &quot;Solicitação GPS&quot;;&#xd;
+			}&#xd;
+			if (valor == 7) {&#xd;
+				return &quot;Tratamento de folha&quot;;&#xd;
+			}&#xd;
+			if (valor == 8) {&#xd;
+				return &quot;Comissão&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0131&#xd;
+	if (processo == &quot;FLUIG-0131&quot;) {&#xd;
+		if (campo == &quot;cpTipoAjuste&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Admissão&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Férias&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Rescisão&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Movimentação de Pessoal&quot;;&#xd;
+			}&#xd;
+			if (valor == 5) {&#xd;
+				return &quot;Tratamento de Folha de Pagamento&quot;;&#xd;
+			}&#xd;
+			if (valor == 6) {&#xd;
+				return &quot;Rescisão Complementar&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0134&#xd;
+	if (processo == &quot;FLUIG-0134&quot;) {&#xd;
+		if (campo == &quot;cpNovoPerfil&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Consultor Local&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Consultor Regional/Engenharia Staff&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Coordenador Local&quot;;&#xd;
+			}&#xd;
+			if (valor == 4) {&#xd;
+				return &quot;Coordenador Viajante&quot;;&#xd;
+			}&#xd;
+			if (valor == 5) {&#xd;
+				return &quot;Diretor&quot;;&#xd;
+			}&#xd;
+			if (valor == 6) {&#xd;
+				return &quot;Encarregado&quot;;&#xd;
+			}&#xd;
+			if (valor == 7) {&#xd;
+				return &quot;Estagiário de Campo&quot;;&#xd;
+			}&#xd;
+			if (valor == 8) {&#xd;
+				return &quot;Gerente Geral de Obra/Viajante&quot;;&#xd;
+			}&#xd;
+			if (valor == 9) {&#xd;
+				return &quot;Gerente Sede&quot;;&#xd;
+			}&#xd;
+			if (valor == 10) {&#xd;
+				return &quot;Gestor Administrativo de Obra&quot;;&#xd;
+			}&#xd;
+			if (valor == 11) {&#xd;
+				return &quot;Gestor de Almoxarifado&quot;;&#xd;
+			}&#xd;
+			if (valor == 12) {&#xd;
+				return &quot;Gestor de Assistência Técnica&quot;;&#xd;
+			}&#xd;
+			if (valor == 13) {&#xd;
+				return &quot;Gestor de Assistência Técnica Viajante&quot;;&#xd;
+			}&#xd;
+			if (valor == 14) {&#xd;
+				return &quot;Gestor de Obra&quot;;&#xd;
+			}&#xd;
+			if (valor == 15) {&#xd;
+				return &quot;Médico do Trabalho&quot;;&#xd;
+			}&#xd;
+			if (valor == 16) {&#xd;
+				return &quot;Mestre de Obra&quot;;&#xd;
+			}&#xd;
+			if (valor == 17) {&#xd;
+				return &quot;Motoboy - Presidência&quot;;&#xd;
+			}&#xd;
+			if (valor == 18) {&#xd;
+				return &quot;Motorista&quot;;&#xd;
+			}&#xd;
+			if (valor == 19) {&#xd;
+				return &quot;Motorista - Presidência&quot;;&#xd;
+			}&#xd;
+			if (valor == 20) {&#xd;
+				return &quot;Piloto - Presidência&quot;;&#xd;
+			}&#xd;
+			if (valor == 21) {&#xd;
+				return &quot;Portaria - Vigia de Obra&quot;;&#xd;
+			}&#xd;
+			if (valor == 22) {&#xd;
+				return &quot;Presidênte&quot;;&#xd;
+			}&#xd;
+			if (valor == 23) {&#xd;
+				return &quot;Secretaria Executiva&quot;;&#xd;
+			}&#xd;
+			if (valor == 24) {&#xd;
+				return &quot;Superintendente&quot;;&#xd;
+			}&#xd;
+			if (valor == 25) {&#xd;
+				return &quot;Superintendente de Engenharia&quot;;&#xd;
+			}&#xd;
+			if (valor == 26) {&#xd;
+				return &quot;Supervisor&quot;;&#xd;
+			}&#xd;
+			if (valor == 27) {&#xd;
+				return &quot;Técnico&quot;;&#xd;
+			}&#xd;
+			if (valor == 28) {&#xd;
+				return &quot;Telefone da Área&quot;;&#xd;
+			}&#xd;
+			if (valor == 29) {&#xd;
+				return &quot;Conselheiro&quot;;&#xd;
+			}&#xd;
+			if (valor == 30) {&#xd;
+				return &quot;Engenheiro de Obra&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0135&#xd;
+	if (processo == &quot;FLUIG-0135&quot;) {&#xd;
+		if (campo == &quot;cpTipo&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Aparelho com problema&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Perda/Roubo&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0136&#xd;
+	if (processo == &quot;FLUIG-0136&quot;) {&#xd;
+		if (campo == &quot;cpTipo&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Alteração de férias&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Cancelamento de férias&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0138&#xd;
+	if (processo == &quot;FLUIG-0138&quot;) {&#xd;
+		if (campo == &quot;cpMotivo&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Perda/Roubo&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Desgaste Natural&quot;;&#xd;
+			}&#xd;
+			if (valor == 3) {&#xd;
+				return &quot;Quebra/Danificação&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+		if (campo == &quot;cpSolicitaCordao&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Sim&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Não&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0141&#xd;
+	if (processo == &quot;FLUIG-0141&quot;) {&#xd;
+&#xd;
+		var isPJ = hAPI.getCardValue(&quot;cpFornecedor&quot;) == 2;&#xd;
+		var isPF = hAPI.getCardValue(&quot;cpFornecedor&quot;) == 1;&#xd;
+&#xd;
+		if (campo == &quot;cpFornecedor&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Pessoa Física&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Pessoa Jurídica&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+		if (campo == &quot;cpNome&quot;) {&#xd;
+			if (isPJ) {&#xd;
+				return hAPI.getCardValue(&quot;cpRazaoSocial&quot;);&#xd;
+			}&#xd;
+			if (isPF) {&#xd;
+				return hAPI.getCardValue(&quot;cpNome&quot;);&#xd;
+			}&#xd;
+		}&#xd;
+		if (campo == &quot;cpCPF&quot;) {&#xd;
+			if (isPJ) {&#xd;
+				return hAPI.getCardValue(&quot;cpCNPJ&quot;);&#xd;
+			}&#xd;
+			if (isPF) {&#xd;
+				return hAPI.getCardValue(&quot;cpCPF&quot;);&#xd;
+			}&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0142&#xd;
+	if (processo == &quot;FLUIG-0142&quot;) {&#xd;
+		if (campo == &quot;cpTipoSolicitacao&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+                return &quot;Alteração de cadastro&quot;;&#xd;
+            }&#xd;
+            if (valor == 2) {&#xd;
+                return &quot;Alteração de dados bancários&quot;;&#xd;
+            }&#xd;
+            if (valor == 3) {&#xd;
+                return &quot;Aditivo de estágio&quot;;&#xd;
+            }&#xd;
+            if (valor == 4) {&#xd;
+                return &quot;Informe de aposentadoria&quot;;&#xd;
+            }&#xd;
+            if (valor == 5) {&#xd;
+                return &quot;Mensalidade Sindical&quot;;&#xd;
+            }&#xd;
+            if (valor == 6) {&#xd;
+                return &quot;Salário Família&quot;;&#xd;
+            }&#xd;
+            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0143&#xd;
+	if (processo == &quot;FLUIG-0143&quot;) {&#xd;
+		if (campo == &quot;cpTipoSolicitacao&quot;) {&#xd;
+			 if (valor == 1) {&#xd;
+	                return &quot;Alteração&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Inclusão&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0148&#xd;
+	if (processo == &quot;FLUIG-0148&quot;) {&#xd;
+		if (campo == &quot;cpTipoFolha&quot;) {&#xd;
+			   if (valor == 1) {&#xd;
+	                return &quot;Adiantamento&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Folha Mensal&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+		&#xd;
+		if (campo == &quot;cpMesReferencia&quot;) {&#xd;
+			 if (valor == 1) {&#xd;
+	                return &quot;Janeiro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Fevereiro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 3) {&#xd;
+	                return &quot;Março&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 4) {&#xd;
+	                return &quot;Abril&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 5) {&#xd;
+	                return &quot;Maio&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 6) {&#xd;
+	                return &quot;Junho&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 7) {&#xd;
+	                return &quot;Julho&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 8) {&#xd;
+	                return &quot;Agosto&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 9) {&#xd;
+	                return &quot;Setembro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 10) {&#xd;
+	                return &quot;Outubro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 11) {&#xd;
+	                return &quot;Novembro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 12) {&#xd;
+	                return &quot;Dezembro&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0149&#xd;
+	if (processo == &quot;FLUIG-0149&quot;) {&#xd;
+		if (campo == &quot;cpTipoAfastamento&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+                return &quot;Licença maternidade&quot;;&#xd;
+            }&#xd;
+            if (valor == 2) {&#xd;
+                return &quot;Afastamento po motivo de doença&quot;;&#xd;
+            }&#xd;
+            if (valor == 3) {&#xd;
+                return &quot;Afastamento por acidente de trabalho&quot;;&#xd;
+            }&#xd;
+            if (valor == 4) {&#xd;
+                return &quot;Aposentadoria por invalidez&quot;;&#xd;
+            }&#xd;
+            if (valor == 5) {&#xd;
+                return &quot;Licença sem vencimentos&quot;;&#xd;
+            }&#xd;
+            if (valor == 6) {&#xd;
+                return &quot;Outros&quot;;&#xd;
+            }&#xd;
+            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0150&#xd;
+	if (processo == &quot;FLUIG-0150&quot;) {&#xd;
+		if (campo == &quot;cpTipoManutencao&quot;) {&#xd;
+			 if (valor == 1) {&#xd;
+	                return &quot;Elétrica&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Manutenção Predial&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 3) {&#xd;
+	                return &quot;Máquina de café&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 4) {&#xd;
+	                return &quot;Purificador de água&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 5) {&#xd;
+	                return &quot;Material Gráfico&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 6) {&#xd;
+	                return &quot;Ar condicionado&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 7) {&#xd;
+	                return &quot;Outros&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0151&#xd;
+	if (processo == &quot;FLUIG-0151&quot;) {&#xd;
+		if (campo == &quot;cpTipoDeclaracao&quot;) {&#xd;
+			   if (valor == 1) {&#xd;
+	                return &quot;Comprovação de vínculo empregatício&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Atestado pra Faculdade(Perda de Atividades)&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 3) {&#xd;
+	                return &quot;Comprovação de mais de um vínculo&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0160&#xd;
+	if (processo == &quot;FLUIG-0160&quot;) {&#xd;
+		if (campo == &quot;cpTipoSolicitacao&quot;) {&#xd;
+			 if (valor == 1) {&#xd;
+	                return &quot;Repasse de Mini Modem&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Devolução de Mini Modem&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0161&#xd;
+	if (processo == &quot;FLUIG-0161&quot;) {&#xd;
+		if (campo == &quot;cpTipoMudanca&quot;) {&#xd;
+			  if (valor == 1) {&#xd;
+	                return &quot;Emergencial&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Programada&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 3) {&#xd;
+	                return &quot;Imediata&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+		if (campo == &quot;cpLocalidadesAfetadas&quot;) {&#xd;
+			if (valor == &quot;Escritorios_Regionais&quot;) {&#xd;
+                return &quot;Escritórios Regionais&quot;;&#xd;
+            }&#xd;
+            return valor;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0165&#xd;
+	if (processo == &quot;FLUIG-0165&quot;) {&#xd;
+		if (campo == &quot;cpModeloAparelho&quot;) {&#xd;
+			 if (valor == 1) {&#xd;
+	                return &quot;C201&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;208&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 3) {&#xd;
+	                return &quot;Lumia 520&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 4) {&#xd;
+	                return &quot;Outros&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 5) {&#xd;
+	                return &quot;Moto G&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 6) {&#xd;
+	                return &quot;Moto E&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 7) {&#xd;
+	                return &quot;Outros&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 8) {&#xd;
+	                return &quot;Iphone 4&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 9) {&#xd;
+	                return &quot;Iphone 5&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 10) {&#xd;
+	                return &quot; Iphone 6&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 11) {&#xd;
+	                return &quot;Outros&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0168&#xd;
+	if (processo == &quot;FLUIG-0168&quot;) {&#xd;
+		if (campo == &quot;cpMesReferencia&quot;) {&#xd;
+			  if (valor == 1) {&#xd;
+	                return &quot;Janeiro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Fevereiro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 3) {&#xd;
+	                return &quot;Março&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 4) {&#xd;
+	                return &quot;Abril&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 5) {&#xd;
+	                return &quot;Maio&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 6) {&#xd;
+	                return &quot;Junho&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 7) {&#xd;
+	                return &quot;Julho&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 8) {&#xd;
+	                return &quot;Agosto&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 9) {&#xd;
+	                return &quot;Setembro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 10) {&#xd;
+	                return &quot;Outubro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 11) {&#xd;
+	                return &quot;Novembro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 12) {&#xd;
+	                return &quot;Dezembro&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0170&#xd;
+	if (processo == &quot;FLUIG-0170&quot;) {&#xd;
+		if (campo == &quot;cpMesReferencia&quot;) {&#xd;
+			 if (valor == 1) {&#xd;
+	                return &quot;Janeiro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Fevereiro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 3) {&#xd;
+	                return &quot;Março&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 4) {&#xd;
+	                return &quot;Abril&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 5) {&#xd;
+	                return &quot;Maio&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 6) {&#xd;
+	                return &quot;Junho&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 7) {&#xd;
+	                return &quot;Julho&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 8) {&#xd;
+	                return &quot;Agosto&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 9) {&#xd;
+	                return &quot;Setembro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 10) {&#xd;
+	                return &quot;Outubro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 11) {&#xd;
+	                return &quot;Novembro&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 12) {&#xd;
+	                return &quot;Dezembro&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0171&#xd;
+	if (processo.trim() == &quot;FLUIG-0171&quot;) {&#xd;
+		if (campo == &quot;cpTipoSolicitante&quot;) {&#xd;
+			  if (valor == 1) {&#xd;
+	                return &quot;Colaborador&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Terceiro&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0174&#xd;
+	if (processo == &quot;FLUIG-0174&quot;) {&#xd;
+		if (campo == &quot;cpTipoSolicitacao&quot;) {&#xd;
+			  if (valor == 1) {&#xd;
+	                return &quot;Criação de Acesso&quot;;&#xd;
+	            }&#xd;
+	            if (valor == 2) {&#xd;
+	                return &quot;Alteração de Acesso&quot;;&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0176&#xd;
+	if (processo == &quot;FLUIG-0176&quot;) {&#xd;
+		if (campo == &quot;cpCriacaoUsuarioLabore&quot;) {&#xd;
+		    if (valor == 1) {&#xd;
+                return &quot;Sim&quot;;&#xd;
+            }&#xd;
+            if (valor == 2) {&#xd;
+                return &quot;Não&quot;;&#xd;
+            }&#xd;
+            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0179&#xd;
+	if (processo == &quot;FLUIG-0179&quot;) &#xd;
+	{&#xd;
+		&#xd;
+		if (campo == &quot;cpTipo&quot;) {&#xd;
+			if (valor == 1) {&#xd;
+				return &quot;Instalação de ramal&quot;;&#xd;
+			}&#xd;
+			if (valor == 2) {&#xd;
+				return &quot;Configuração de ramal&quot;;&#xd;
+			}&#xd;
+			return &quot;&quot;;&#xd;
+		}&#xd;
+		&#xd;
+	&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0189&#xd;
+	if (processo == &quot;FLUIG-0189&quot;) {&#xd;
+		if (campo == &quot;cpPublico&quot;) {&#xd;
+			  if (valor == 1){return &quot;Sede&quot;;}&#xd;
+	            if (valor == 2){return &quot;Todo Brasil&quot;;}&#xd;
+	            if (valor == 3){&#xd;
+	               //ver a questao dos estados&#xd;
+	            }&#xd;
+	            return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0190&#xd;
+	if (processo == &quot;FLUIG-0190&quot;) {&#xd;
+		if (campo == &quot;cpAreaResponsavel&quot;) {&#xd;
+			 if (valor == 1) {&#xd;
+                 return &quot;Admissão&quot;;&#xd;
+             }&#xd;
+             if (valor == 2) {&#xd;
+                 return &quot;Benefícios&quot;;&#xd;
+             }&#xd;
+             if (valor == 3) {&#xd;
+                 return &quot;Férias&quot;;&#xd;
+             }&#xd;
+             if (valor == 4) {&#xd;
+                 return &quot;Ponto&quot;;&#xd;
+             }&#xd;
+             if (valor == 5) {&#xd;
+                 return &quot;Rescisão&quot;;&#xd;
+             }&#xd;
+             return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0192&#xd;
+	if (processo == &quot;FLUIG-0192&quot;) {&#xd;
+		if (campo == &quot;cpTipoCargo&quot;) {&#xd;
+			 if (valor == 1) {&#xd;
+                 return &quot;Gerencial&quot;;&#xd;
+             }&#xd;
+             if (valor == 2) {&#xd;
+                 return &quot;Técnico/Administrativo&quot;;&#xd;
+             }&#xd;
+             if (valor == 3) {&#xd;
+                 return &quot;Obras&quot;;&#xd;
+             }&#xd;
+             return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0196&#xd;
+	if (processo == &quot;FLUIG-0196&quot;) {&#xd;
+		if (campo == &quot;cpTipoSolicitacao&quot;) {&#xd;
+			 if (valor == 1) {&#xd;
+                 return &quot;Cria&amp;ccedil;&amp;atilde;o de Acesso&quot;;&#xd;
+             }&#xd;
+             if (valor == 2) {&#xd;
+                 return &quot;Altera&amp;ccedil;&amp;atilde;o de Acesso&quot;;&#xd;
+             }&#xd;
+             &#xd;
+             return &quot;&quot;;&#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+	//-----------------------------------------------&#xd;
+	//FLUIG-0197&#xd;
+	if (processo == &quot;FLUIG-0197&quot;) {&#xd;
+		if (campo == &quot;cpTipoSolicitacao&quot;) {&#xd;
+			 if (valor == 1) {&#xd;
+                 return &quot;Balan&amp;ccedil;o&quot;;&#xd;
+             }if (valor == 2) {&#xd;
+                 return &quot;Balancete&quot;;&#xd;
+             }if (valor == 3) {&#xd;
+                 return &quot;Declara&amp;ccedil;&amp;atilde;o de Faturamento&quot;;&#xd;
+             } if (valor == 4) {&#xd;
+                 return &quot;Sped ECD / ECF (C&amp;oacute;pia)&quot;;&#xd;
+             }&#xd;
+             &#xd;
+             return &quot;&quot;;&#xd;
+             &#xd;
+		}&#xd;
+	}&#xd;
+&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list>
+    <AdvancedProcessProperties>
+      <advancedProcessPropertiesPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <propertyId>NumeroManual</propertyId>
+        <version>18</version>
+      </advancedProcessPropertiesPK>
+      <propertieValue>538937</propertieValue>
+    </AdvancedProcessProperties>
+  </list>
+  <list>
+    <SwimLane>
+      <color>82b0b7</color>
+      <height>166</height>
+      <width>1311</width>
+      <positionX>0</positionX>
+      <positionY>35</positionY>
+      <stateName>SwimLane</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>adc9ac</color>
+      <height>253</height>
+      <width>1311</width>
+      <positionX>0</positionX>
+      <positionY>198</positionY>
+      <stateName>SwimLane</stateName>
+      <type>2</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list>
+    <ProcessComponGraf>
+      <componType>1</componType>
+      <positionX>280</positionX>
+      <positionY>370</positionY>
+      <processComponGrafPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <componGrafSequence>32</componGrafSequence>
+      </processComponGrafPK>
+      <stateName>Cancelamento</stateName>
+    </ProcessComponGraf>
+  </list>
+  <list>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>1</version>
+        <linkSequence>33</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>32</initialStateSequence>
+      <finalStateSequence>30</finalStateSequence>
+    </ProcessLinkAssoc>
+  </list>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>15</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>340</positionX>
+      <positionY>346</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>15</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>193</positionX>
+      <positionY>346</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>18</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>940</positionX>
+      <positionY>108</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>18</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>1076</positionX>
+      <positionY>108</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>20</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1249</positionX>
+      <positionY>267</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>21</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1079</positionX>
+      <positionY>401</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>27</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>593</positionX>
+      <positionY>383</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>28</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>592</positionX>
+      <positionY>401</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>42</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>126</positionX>
+      <positionY>158</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>45</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>281</positionX>
+      <positionY>100</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>52</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>712</positionX>
+      <positionY>108</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>55</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>1074</positionX>
+      <positionY>354</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <linkSequence>55</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>713</positionX>
+      <positionY>354</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list>
+    <ExtendedPropertyField>
+      <extendedPropertyFieldPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0185</processId>
+        <version>18</version>
+        <stateSequence>0</stateSequence>
+        <propertyName>NumeroManual</propertyName>
+      </extendedPropertyFieldPK>
+      <propertyType>0</propertyType>
+      <propertyDescription>NumeroManual</propertyDescription>
+      <propertyValue>538937</propertyValue>
+      <isDefaultProperty>false</isDefaultProperty>
+    </ExtendedPropertyField>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

@@ -1,0 +1,206 @@
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://style.fluig.com/css/fluig-style-guide.min.css">
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="View.js" charset="utf-8"></script>
+    <style type="text/css">
+        select[readonly] {
+            background: #eee;
+            /*Simular campo inativo*/
+            pointer-events: none;
+            touch-action: none;
+        }
+
+        .labelField {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form">
+            <input type="hidden" name="codSolicitanteViagem" id="codSolicitanteViagem" > 
+            <div id="divSolicitante" class="panel panel-primary" data-atividade="999">
+                <div class="panel-heading active">
+                    <div class="panel-title collapse-icon up active" data-toggle="collapse"
+                        data-target="#solicitanteDiv">
+                        <h4>
+                            Dados do Solicitante
+                        </h4>
+                    </div>
+                </div>
+                <div id="solicitanteDiv" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="labelField"><b>Num. Solicitação</b></label>
+                                        <input type="text" class="form-control" readonly="readonly"
+                                            name="cpNumSolicitacao" id="cpNumSolicitacao" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="labelField"><b> Solicitante</b></label>
+                                        <input type="text" class="form-control" readonly="readonly"
+                                            name="cpSolicitanteNome" id="cpSolicitanteNome" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="labelField"><b>Data solicitação</b></label>
+                                        <input type="text" class="form-control" readonly="readonly"
+                                            name="cpDataAbertura" id="cpDataAbertura" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="inicioSolicitacao" class="panel panel-primary" data-atividade="999">
+                <div class="panel-heading active">
+                    <div id="inicioSolicitaDiv" class="panel-title collapse-icon up active" data-toggle="collapse"
+                        data-target="#inicioSolicita">
+                        <h4>
+                            Dados da viagem para cancelamento
+                        </h4>
+                    </div>
+                </div>
+                <div id="inicioSolicita" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="">
+                                        <label class="labelField"><b><span style="color: orange;">*</span>No.
+                                                Solicitação viagem</b></label>
+                                        <input type="zoom" class="form-control inputVendas" name="numSolicitacao_viagem"
+                                            id="numSolicitacao_viagem" data-zoom="{
+													'displayKey': 'processInstanceId',
+                                                    'datasetId':'workflowProcess',                                                 
+													'fields':[
+														{
+														'field':'processInstanceId',
+														'label':'N. Solicitação',                                                          
+														'standard':'true'
+														},{
+                                                          'field':'requesterId',
+                                                          'label':'Process'
+
+                                                        }
+													]
+													}" />
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="">
+                                        <label class="labelField"><b><span
+                                                    style="color: orange;">*</span>Observação</b></label>
+                                        <textarea obrigatorio class="form-control inputVendas solicitante" rows="3"
+                                            cols="600" name="txtSolicitante" id="txtSolicitante" parecer
+                                            placeholder="Digite uma observação"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- separa abas -->
+
+            <div id="inicioSolicitacao" class="panel panel-primary" data-atividade="999">
+                <div class="panel-heading active">
+                    <div id="inicioSolicitaDiv" class="panel-title collapse-icon up active" data-toggle="collapse"
+                        data-target="#inicioSolicita">
+                        <h4>
+                            Analisar Cancelamento de Viagem
+                        </h4>
+                    </div>
+                </div>
+                <div id="inicioSolicita" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField"><b>Aprovador</b></label>
+                                    <input type="text" class="form-control" name="nomeAprovador" id="nomeAprovador"
+                                        readonly>
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField"><b>Data Hora</b></label>
+                                    <input type="text" class="form-control" name="dataHoraAprova" id="dataHoraAprova"
+                                        readonly>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+
+                                <div class="form-group">
+                                    <label class="labelField"><b><span
+                                                style="color: orange;">*</span>Decisão</b></label><br>
+                                    <input type="radio" class="" name="aprovacao" id="sim" value="sim">
+                                    <label for="sim"> Sim </label><br>
+                                    <input type="radio" class="" name="aprovacao" id="nao" value="nao">
+                                    <label for="nao"> Não </label><br>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <div class="">
+                                        <label class="labelField"><b><span
+                                                    style="color: orange;">*</span>Observação</b></label>
+                                        <textarea obrigatorio class="form-control inputVendas solicitante" rows="3"
+                                            cols="600" name="txtAprovador" id="txtAprovador" parecer
+                                            placeholder="Digite uma observação"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+    </form>
+    </div>
+</body>
+
+</html>

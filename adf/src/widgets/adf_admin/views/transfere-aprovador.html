@@ -1,0 +1,135 @@
+<form name="form" class="row" novalidate>
+    <div class="col-sm-4">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="label-control">Origem</label>
+                                        <input name="usuarioOrigem" required fluig-error="form.usuarioOrigem.$dirty && form.usuarioOrigem.$error" placeholder="Selecione o aprovador Origem" class="form-control" ng-model="vm.usuarioOrigem" fluig-autocomplete values="vm.Usuarios" display-key="colleagueName">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="label-control">Destino</label>
+                                        <input name="usuarioDestino" required fluig-error="form.usuarioDestino.$dirty && form.usuarioDestino.$error" placeholder="Selecione o aprovador Destino" class="form-control" ng-model="vm.usuarioDestino" fluig-autocomplete values="vm.Usuarios" display-key="colleagueName">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading fs-cursor-pointer" ng-click="estabelecimentosCollapsed = !estabelecimentosCollapsed">
+                            <h4 class="panel-title">
+                                <a class="collapse-icon" ng-class="{'up': estabelecimentosCollapsed}">Estabelecimentos</a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse collapse" ng-class="{'in': estabelecimentosCollapsed}">
+
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <input class="form-control" fluig-autocomplete ng-model="vm.filtroEstabelecimento" ng-change="vm.selectEstabelecimento()" values="vm.Estabelecimentos" display-key="displaykey">
+                                </div>
+
+                                <i ng-if="vm.Filtros.Estabelecimentos.length == 0">Todos os estabelecimentos</i>
+
+                                <li class="list-group-item fs-cursor-pointer" ng-repeat="estab in vm.Filtros.Estabelecimentos">
+                                    <span class="fs-text-lg" ng-click="vm.removeEstab(estab)" style="float: right"><i class="fa fa-trash"></i></span> {{estab.displaykey}}
+                                </li>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading fs-cursor-pointer" ng-click="tiposDocumentosCollapsed = !tiposDocumentosCollapsed">
+                            <h4 class="panel-title">
+                                <a class="collapse-icon" ng-class="{'up': tiposDocumentosCollapsed}">Tipos de Documentos</a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse collapse" ng-class="{'in': tiposDocumentosCollapsed}">
+
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <input class="form-control" fluig-autocomplete ng-model="vm.filtroTipoDocumento" ng-change="vm.selectTipoDocumento()" values="vm.TiposDocumento" display-key="displaykey">
+                                </div>
+
+                                <i ng-if="vm.Filtros.TiposDocumento.length == 0">Todos os tipos de documento</i>
+
+                                <li class="list-group-item fs-cursor-pointer" ng-repeat="tipoDocumento in vm.Filtros.TiposDocumento">
+                                    <span class="fs-text-lg" ng-click="vm.removeTipoDocumento(tipoDocumento)" style="float: right"><i class="fa fa-trash"></i></span> {{tipoDocumento.displaykey}}
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading fs-cursor-pointer" ng-click="lotacoesCollapsed = !lotacoesCollapsed">
+                            <h4 class="panel-title">
+                                <a class="collapse-icon" ng-class="{'up': lotacoesCollapsed}">Lotações</a>
+                            </h4>
+                        </div>
+                        <div class="panel-collapse collapse" ng-class="{'in': lotacoesCollapsed}">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <input class="form-control" fluig-autocomplete ng-model="vm.filtroLotacao" ng-change="vm.selectLotacao()" values="vm.Lotacoes" display-key="displaykey">
+                                </div>
+
+                                <i ng-if="vm.Filtros.Lotacoes.length == 0">Todas as lotações</i>
+
+                                <li class="list-group-item fs-cursor-pointer" ng-repeat="lotacao in vm.Filtros.Lotacoes">
+                                    <span class="fs-text-lg" ng-click="vm.removeLotacao(lotacao)" style="float: right"><i class="fa fa-trash"></i></span> {{lotacao.displaykey}}
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <button type="submit" ng-disabled="vm.loading" class="btn btn-success btn-lg fs-full-width" ng-click="vm.transfereAprovadores(form)">Transferir Aprovadores</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Resultado</h3>
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-condensed table-striped">
+                    <thead>
+                        <tr>
+                            <th>Cadastro</th>
+                            <!-- <th>Registros</th>
+                            <th>Processados</th> -->
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="cadastro in vm.cadastrosAprovadores">
+                            <td>{{cadastro.title}}</td>
+                            <!-- <td>{{cadastro.registros}}</td>
+                            <td>{{cadastro.processados}}</td> -->
+                            <td>
+                                <div class="progress" ng-if="cadastro.registros > 0">
+                                    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="{{(cadastro.processados / cadastro.registros) * 100}}" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (cadastro.processados / cadastro.registros) * 100 +'%'}">
+                                        <span>{{cadastro.processados}} de {{cadastro.registros}}</span>
+                                    </div>
+                                </div>
+                                <i ng-if="cadastro.registros === 0">Sem registros para transferir</i>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>

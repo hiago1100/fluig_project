@@ -1,0 +1,13 @@
+jQuery.ready(function() {
+
+$('#botaoparavc').on('click', function() {
+  $('#botaoempresa').addClass('hidden');
+  //or
+  alert("cliquei");
+  $('#menu-to-show').removeClass('hidden');
+});
+
+
+
+
+});

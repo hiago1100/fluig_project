@@ -1,0 +1,385 @@
+<html ng-app="RDVApp">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" media="print">
+    <link rel="stylesheet" type="text/css" href="/MFK/resources/css/MFK.min.css">
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="/MFK/resources/js/MFK.min.js"></script>
+    <script type="text/javascript" src="vendor.min.js"></script>
+    <script type="text/javascript" src="custom.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+</head>
+
+<body ng-controller="RDVController" id="controller">
+    <div class="fluig-style-guide">
+        <div class="container mcassab">
+            <div id="content">
+                <div fluig-header="Reembolso de Despesas" class="hidden-xs"></div>
+                <form name="form" role="form" class="animate" style="display:none">
+                    <!--Parâmetros enviados pelo Fluig--><textarea name="Params" hidden id="Params" ng-bind="Params | json:0"></textarea>
+                    <!--Coleções de dados armazenados no Fluig--><textarea name="Geral" hidden id="Geral" ng-bind="Formulario.Geral | json:0"></textarea><textarea name="DespesaIds" hidden id="DespesaIds" ng-bind="Formulario.DespesaIds | json:0"></textarea><textarea name="Despesas" hidden id="Despesas" ng-bind="Formulario.Despesas | json:0"></textarea>
+                    <table tablename="Despesas" style="display:none" noaddbutton="true" nodeletebutton="true">
+                        <thead>
+                            <tr>
+                                <td>Despesa</td>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td><textarea name="despesa" hidden id="despesa"></textarea></td>
+                        </tr>
+                    </table><textarea name="Ccustos" hidden id="Ccustos" ng-bind="Formulario.Ccustos | json:0"></textarea><textarea name="Integracao" hidden id="Integracao" ng-bind="Formulario.Integracao | json:0"></textarea>
+                    <!--Descrição a ser utilizada pelo Fluig na listagem do registro--><input name="descricao" type="hidden" ng-value="Formulario.Geral.viajante.colleagueName">
+                    <!--Códigos utilizados em buscas--><input name="idViajante" type="hidden" ng-value="Formulario.Geral.viajante.colleagueId"> <input name="idSolicitante" type="hidden" ng-value="Formulario.Geral.solicitante.colleagueId">
+                    <!--Códigos utilizados na definição de responsávels--><input name="gestorCcustoViajante" type="hidden" ng-value="Formulario.Geral.gestorCcustoViajante">
+                    <div ng-if="Params.digitacao && Params.edit">
+                        <div class="row animate">
+                            <div class="panel panel-default">
+                                <div class="panel-heading hidden-print">
+                                    <h4>Solicitação</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-4 col-print-4">
+                                        <div class="form-group"><label class="control-label">Solicitante:</label>
+                                            <p class="form-control" disabled="disabled">{{Formulario.Geral.solicitante.colleagueName}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-print-4">
+                                        <div class="form-group"><label class="control-label">Viajante:</label><input name="Geral_viajante_input" type="text" class="form-control" fluig-autocomplete values="Usuarios" display-key="colleagueName" ng-change="selecionaViajante()" result-fields="resultFieldsUsuario" ng-model="Formulario.Geral.viajante" ng-disabled="!Params.edit || !Params.digitacao || !Params.etapa=='inicio'"></div>
+                                    </div>
+                                    <div class="col-sm-4 col-print-4" ng-if="Formulario.Geral.viajante.colleagueId">
+                                        <div class="form-group"><label>Estabelecimento</label><input name="Geral_estabelecimento_input" type="text" class="form-control" fluig-autocomplete values="Estabelecimentos" display-key="displayKey" ng-model="Formulario.Geral.estabelecimento" ng-disabled="!Params.edit || !Params.digitacao || !Params.etapa=='inicio'"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row animate" ng-show="!Formulario.Geral.viajante.colaborador">
+                            <div class="alert alert-danger" role="alert"><span class="fluigicon fluigicon-md fluigicon-exclamation-sign"></span> Não foram encontrados os dados do viajante. Entre em contato com a área de Tecnologia.</div>
+                        </div>
+                        <div class="row animate" ng-show="!Formulario.Geral.viajante.colaborador.cdn_fornecedor || Formulario.Geral.viajante.colaborador.cdn_fornecedor==0">
+                            <div class="alert alert-danger" role="alert"><span class="fluigicon fluigicon-md fluigicon-exclamation-sign"></span> Fornecedor não informado para o viajante.</div>
+                        </div>
+                    </div>
+                    <div ng-if="!Params.digitacao">
+                        <div class="row animate" ng-if="Formulario.Geral.viajante.colaborador">
+                            <div class="panel panel-default">
+                                <div class="panel-heading hidden-print">
+                                    <h4>Solicitação</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="col-sm-4 col-print-4">
+                                        <div class="form-group"><label class="control-label">Solicitante:</label>
+                                            <p>{{Formulario.Geral.solicitante.colleagueName}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-print-4">
+                                        <div class="form-group"><label class="control-label">Viajante:</label>
+                                            <p>{{Formulario.Geral.viajante.colleagueName}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-print-4">
+                                        <div class="form-group"><label>Estabelecimento</label>
+                                            <p>{{Formulario.Geral.estabelecimento.displayKey}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="Params.digitacao && Params.edit">
+                        <div class="hidden-print">
+                            <div class="row animate" ng-if="!Despesas">
+                                <div class="alert alert-danger" role="alert"><span class="fluigicon fluigicon-md fluigicon-exclamation-sign"></span> Despesas não cadastradas ou usuário sem acesso. Entre em contato com a área de Tecnologia.</div>
+                            </div>
+                            <div class="row animate" ng-if="(Despesas && Formulario.Geral.estabelecimento.cod_estab && Formulario.Geral.viajante.colaborador.cdn_fornecedor)">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4>Despesas</h4>
+                                    </div>
+                                    <div class="panel-body"><button ng-if="Params.edit" id="btnAddDespesa" type="button" class="btn btn-lg btn-default" ng-click="adicionaDespesa()">Incluir Despesa</button>
+                                        <h2 class="fs-float-right" ng-show="Formulario.Geral.valorTotal">Valor Total: {{Formulario.Geral.valorTotal | currency}}</h2>
+                                        <table class="table table-condensed table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tr ng-repeat="despesa in Formulario.Despesas" ng-if="!despesa.status || despesa.status=='R'" ng-class="{'success':despesa.status=='A', 'danger':despesa.status=='R'}">
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-sm-10">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group"><label>Despesa</label><input name="despesa_item_input" fluig-autocomplete values="Despesas" class="form-control" ng-model="despesa.item" ng-disabled="!Params.edit || despesa.status=='A' || !despesa.editing" ng-change="despesa.qtde=despesa.item.qtdePadrao;despesa.valor=despesa.item.valorPadrao;atualizaTotalDespesa(despesa)" display-key="descricao" id="despesaItem" fluig-error="form.despesa_item_input.$error" required ></div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group"><label>Centro de Custo</label><input name="despesa_ccusto_input" fluig-autocomplete values="Ccustos" class="form-control" ng-model="despesa.ccusto" ng-disabled="!Params.edit || despesa.status=='A' || !despesa.editing" display-key="displayKey"></div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group"><label>Data</label><input name="despesa_data_input" show-disabled="true" class="form-control" ng-model="despesa.data" fluig-date-mask ng-disabled="!Params.edit || despesa.status=='A' || !despesa.editing" max-date="Formulario.today"></div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group"><label>Quantidade</label><input name="despesa_qtde_input" class="form-control" ng-model="despesa.qtde" ng-change="atualizaTotalDespesa(despesa)" fluig-number-mask ng-disabled="!Params.edit || !despesa.item.alteraQtde || despesa.status=='A' || !despesa.editing"></div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group"><label>Valor</label><input name="despesa_valor_input" class="form-control" ng-model="despesa.valor" ng-change="atualizaTotalDespesa(despesa)" fluig-money-mask ng-disabled="!Params.edit || !despesa.item.alteraValor || despesa.status=='A' || !despesa.editing" fluig-error="form.despesa_valor_input.$error" required ></div>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="form-group"><label>Subtotal</label>
+                                                                    <p class="form-control" disabled="disabled">{{despesa.valorTotal | currency}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12">
+                                                                <div class="form-group"><label>Observações</label><input name="despesa_obs_input" class="form-control" ng-disabled="!Params.edit || despesa.status=='A' || !despesa.editing" ng-model="despesa.obs" maxlength="140" fluig-error="form.despesa_obs_input.$error" required></div>
+                                                            </div>
+                                                            <div class="col-sm-12" ng-if="despesa.motivoReprovacao">
+                                                                <div class="form-group"><label>Motivo Reprovacao</label>
+                                                                    <p>{{despesa.motivoReprovacao}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-12 animate" ng-if="despesa.item.valorLimite > 0 && despesa.valorTotal > despesa.item.valorLimite">
+                                                                <div class="alert alert-danger" role="alert"><span class="fluigicon fluigicon-md fluigicon-exclamation-sign"></span> Valor maior que o limite de {{despesa.item.valorLimite | currency}}</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 fs-txt-center fs-md-space">
+                                                            <div class="btn-group"><button class="btn btn-lg btn-default" type="button" ng-if="Params.edit" ng-click="removeDespesa($index)"><span class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span></button> <button class="btn btn-lg btn-default" ng-if="Params.edit" ng-click="saveEditDespesa(despesa)"><span class="fluigicon fluigicon-md fluigicon-fileedit fs-cursor-pointer" ng-class="{'fluigicon-fileedit':!despesa.editing,'fluigicon-verified':despesa.editing}"></span></button></div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="Params.aprovacao && Params.edit">
+                        <div class="row animate hidden-print" ng-show="Formulario.Geral.estabelecimento.cod_estab">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4>Totais</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-group col-sm-4"><label class="control-label">Total a Aprovar</label>
+                                        <h4>{{Formulario.totalAprovar | currency}}</h4>
+                                    </div>
+                                    <div class="form-group col-sm-4 has-success"><label class="control-label">Total Aprovado</label>
+                                        <h4>{{Formulario.totalAprovado | currency}}</h4>
+                                    </div>
+                                    <div class="form-group col-sm-4 has-error"><label class="control-label">Total Reprovado</label>
+                                        <h4>{{Formulario.totalReprovado | currency}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" ng-repeat="ccusto in Formulario.Ccustos" ng-if="aprovadorResponsavel(ccusto)">
+                                <div class="panel-heading clearfix">
+                                    <h4 class="fs-float-left">Centro de Custo: {{ccusto.displayKey}}<br>Total: {{ccusto.valorTotal | currency}}<br>Aprovador: {{ccusto.aprovador.colleagueName}}</h4>
+                                    <div class="fs-float-right btn-group"><label ng-disabled="!Params.edit" class="btn btn-lg" ng-click="statusGeral(ccusto, 'A');calculaTotalAprovador()"><span class="fluigicon fluigicon-verified"></span></label><label ng-disabled="!Params.edit" class="btn btn-lg" ng-click="statusGeral(ccusto, 'R');calculaTotalAprovador()"><span class="fluigicon fluigicon-remove"></span></label></div>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-condensed table-striped" noaddbutton="true">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tr ng-repeat="despesa in Formulario.Despesas | filter:ccusto.cod_ccusto:ccusto.cod_ccusto" ng-class="{'success':despesa.status=='A', 'danger':despesa.status=='R'}">
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-sm-10">
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group"><label>Despesa</label>
+                                                                <p>{{despesa.item.descricao}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="form-group"><label>Data</label>
+                                                                <p>{{despesa.data | date:short}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="form-group"><label>Quantidade</label>
+                                                                <p>{{despesa.qtde | number:2}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="form-group"><label>Valor</label>
+                                                                <p>{{despesa.valor | currency}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <div class="form-group"><label>Subtotal</label>
+                                                                <p>{{despesa.valorTotal | currency}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12" ng-if="despesa.obs">
+                                                            <div class="form-group"><label>Observações</label>
+                                                                <p>{{despesa.obs}}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12" ng-show="despesa.status=='R'">
+                                                            <div class="form-group"><label>Motivo da Reprovação</label><input name="despesa_motivoReprovacao_input" class="form-control" ng-model="despesa.motivoReprovacao" ng-disabled="!Params.edit"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-2 fs-txt-center fs-md-space">
+                                                        <div ng-if="!despesa.done" class="btn-group"><label ng-disabled="!Params.edit" class="btn btn-lg" ng-class="{'btn-success':despesa.status=='A','btn-default':despesa.status!='A'}" ng-click="despesa.status='A';calculaTotalAprovador()"><span class="fluigicon fluigicon-md fluigicon-verified"></span></label><label ng-disabled="!Params.edit" class="btn btn-lg" ng-class="{'btn-danger':despesa.status=='R','btn-default':despesa.status!='R'}" ng-click="despesa.status='R';calculaTotalAprovador()"><span class="fluigicon fluigicon-md fluigicon-remove"></span></label></div>
+                                                        <div ng-if="despesa.done"><i>Aprovada</i></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!--<h2>Total do Centro de Custo: {{ccusto.valorTotal | currency}}</h2>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="Params.relatorio || !Params.edit" id="relatorioDespesas">
+                        <div class="row animate visible-print" ng-if="!Params.relatorio">
+                            <div class="col-md-12">
+                                <h2>Solicitação: {{Params.numProcess}}</h2>
+                                <h3>O relatório será liberado para impressão após a aprovação.</h3>
+                            </div>
+                        </div>
+                        <div class="row animate" ng-class="{'hidden-print' : !Formulario.Integracao}">
+                            <div class="panel panel-default">
+                                <div class="panel-heading hidden-print">
+                                    <h4>Despesas</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-condensed table-striped" noaddbutton="true">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <div class="hidden-xs">
+                                                        <div class="col-sm-3 col-print-3">Centro de Custo</div>
+                                                        <div class="col-sm-2 col-print-2">Despesa</div>
+                                                        <div class="col-sm-2 col-print-2">Data</div>
+                                                        <div class="col-sm-1 col-print-1">Qtde</div>
+                                                        <div class="col-sm-2 col-print-2">Valor</div>
+                                                        <div class="col-sm-2 col-print-2">Total</div>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tr ng-repeat="despesa in Formulario.Despesas">
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-sm-3 col-print-3"><label class="visible-xs">Centro de Custo</label>
+                                                        <p>{{despesa.ccusto.displayKey}}</p>
+                                                    </div>
+                                                    <div class="col-sm-2 col-print-2"><label class="visible-xs">Despesa</label>
+                                                        <p>{{despesa.item.descricao}}</p>
+                                                    </div>
+                                                    <div class="col-sm-2 col-print-2"><label class="visible-xs">Data</label>
+                                                        <p>{{despesa.data | date:short}}</p>
+                                                    </div>
+                                                    <div class="col-sm-1 col-print-1"><label class="visible-xs">Qtde</label>
+                                                        <p>{{despesa.qtde | number:2}}</p>
+                                                    </div>
+                                                    <div class="col-sm-2 col-print-2"><label class="visible-xs">Valor</label>
+                                                        <p>{{despesa.valor | currency}}</p>
+                                                    </div>
+                                                    <div class="col-sm-2 col-print-2"><label class="visible-xs">Total</label>
+                                                        <p>{{despesa.valorTotal | currency}}</p>
+                                                    </div>
+                                                    <div class="col-sm-12 col-print-12" ng-if="despesa.obs"><label class="visible-xs">Observações</label>
+                                                        <p>{{despesa.obs}}</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <h2 ng-show="Formulario.Geral.valorTotal">Valor Total: {{Formulario.Geral.valorTotal | currency}}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-if="Params.integracao">
+                        <div class="row animate">
+                            <div class="panel panel-danger" ng-if="Formulario.Integracao.ttErro">
+                                <div class="panel-heading">
+                                    <h4>Erros de Integração</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-condensed table-striped" noaddbutton="true">
+                                        <thead>
+                                            <tr>
+                                                <th>Erro</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="erro in Formulario.Integracao.ttErro">
+                                                <td>{{erro.mensagem}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="panel panel-default" ng-if="Formulario.Integracao.ttTitulo">
+                                <div class="panel-heading hidden-print">
+                                    <h4>Título Gerado</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-condensed table-striped" noaddbutton="true">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <div class="hidden-xs">
+                                                        <div class="col-sm-1 col-print-1">Título</div>
+                                                        <div class="col-sm-1 col-print-1">Parcela</div>
+                                                        <div class="col-sm-2 col-print-2">Estabelecimento</div>
+                                                        <div class="col-sm-2 col-print-2">Espécie</div>
+                                                        <div class="col-sm-2 col-print-2">Série</div>
+                                                        <div class="col-sm-2 col-print-2">Fornecedor</div>
+                                                        <div class="col-sm-2 col-print-2">Vencimento</div>
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="titulo in Formulario.Integracao.ttTitulo">
+                                                <td>
+                                                    <div class="col-sm-1 col-print-1"><label class="visible-xs">Título</label>
+                                                        <p>{{titulo.titulo}}</p>
+                                                    </div>
+                                                    <div class="col-sm-1 col-print-1"><label class="visible-xs">Parcela</label>
+                                                        <p>{{titulo.parcela}}</p>
+                                                    </div>
+                                                    <div class="col-sm-2 col-print-2"><label class="visible-xs">Estabelecimento</label>
+                                                        <p>{{titulo.estabelecimento}}</p>
+                                                    </div>
+                                                    <div class="col-sm-2 col-print-2"><label class="visible-xs">Espécie</label>
+                                                        <p>{{titulo.especie}}</p>
+                                                    </div>
+                                                    <div class="col-sm-2 col-print-2"><label class="visible-xs">Série</label>
+                                                        <p>{{titulo.serie}}</p>
+                                                    </div>
+                                                    <div class="col-sm-2 col-print-2"><label class="visible-xs">Fornecedor</label>
+                                                        <p>{{titulo.fornecedor}}</p>
+                                                    </div>
+                                                    <div class="col-sm-2 col-print-2"><label class="visible-xs">Vencimento</label>
+                                                        <p>{{titulo.vencimento}}</p>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--<div class="row hidden-print">
+				<button class="btn btn-lg btn-default" ng-click="imprime()"> <span class="fluigicon fluigicon-print"></span> Imprimir </button>
+			</div>--></div>
+    </div>
+</body>
+
+</html>

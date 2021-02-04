@@ -1,0 +1,51 @@
+<div class="panel panel-default" ng-if="item.Requisicoes.length>0">
+    <div class="panel-heading fs-cursor-pointer" ng-click="item.requisicoesCollapsed=!item.requisicoesCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': item.requisicoesCollapsed}">
+                Requisições
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': item.requisicoesCollapsed}">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead class="hidden-xs">
+                            <tr>
+                                <th>
+                                    <div class="col-sm-2">Número</div>
+                                    <div class="col-sm-2">Depósito</div>
+                                    <div class="col-sm-4">Localização</div>
+                                    <div class="col-sm-4">Centro de Custo</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="requisicao in item.Requisicoes">
+                                <td>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Número</label>
+                                        <p>{{requisicao.requisicaoNumero}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Depósito</label>
+                                        <p>{{requisicao.requisicaoDeposito}}</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="visible-xs-block">Localização</label>
+                                        <p>{{requisicao.requisicaoLocalizacao || 'Não informada'}}</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label class="visible-xs-block">Centro de Custo</label>
+                                        <p>{{requisicao.requisicaoCodCCusto}} {{requisicao.requisicaoCCusto || 'Não informado'}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

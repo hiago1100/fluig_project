@@ -1,0 +1,80 @@
+<html>
+	<header>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	</header>
+	<body>	
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+			<p><center><h3>Formulário de Notificação de Queixa Técnica</h3></center></p>
+			<fieldset class="panel panel-default" id="fieldsetSolicitante">
+				<div class="panel-heading">
+					<span class="fluigicon fluigicon-user fluigicon-md icone-span"></span>	
+					
+				<b><center>Dados Notificante</center></b>
+					<hr>
+				</div>
+				<ol>
+					<p>Unidade: <b>${RAZAO_SOCIAL}</b></p>
+					<p>CNPJ: <b>${CNPJ_FILIAL}</b></p>
+					<p>Endereço: <b>${ENDERECO}</b></p>
+					<p>Complemento: <b>${COMPLEMENTO}</b></p>
+					<p>Bairro: <b>${BAIRRO}</b></p>
+					<p>Cidade: <b>${CIDADE}</b></p>
+					<p>Estado: <b>${ESTADO}</b></p>
+					<p>Responsável: <b>${RESPONSAVEL}</b></p>
+					<p>Conselho Profissional/Nº/UF: <b>${CONSELHOPROFISSIONAL}</b> - <b>${UF}</b> </p>				
+				</ol>
+			</fieldset>
+			
+			<fieldset class="panel panel-default" id="fieldsetSolicitante">
+				<div class="panel-heading">
+					<span class="fluigicon fluigicon-user fluigicon-md icone-span"></span>	
+				<b><center>Dados Desvio de Qualidade</center></b>
+					<hr>
+				</div>
+				<ol>
+					<p>Nº Notificação Notivisa: <b>${NOTIVISA}</b></p>
+					<p>Cód. Protheus: <b>${CODPRODUTO}</b></p>
+					<p>Produto: <b>${PRODUTO}</b></p>
+					<p>Tipo de produto: <b>${TIPOPRODUTO}</b></p>
+					<p>Princípio Ativo: <b>${PRINCIPIOATIVO}</b></p>
+					<p>Forma Farmacêutica: <b>${FORMAFARMACEUTICA}</b></p>
+					<p>Fabricante: <b>${FABRICANTE}</b></p>
+					<p>Lote: <b>${LOTE}</b></p>
+					<p>Validade: <b>${VALIDADE}</b></p>
+					<p>Fornecedor: <b>${FORNECEDOR}</b></p>
+					<p>Nota Fiscal: <b>${NF}</b></p>
+					<p>Nº Selo Rastreabilidade (se Oncoprod): <b>${RASTREABILIDADE}</b></p>
+					<div class="row">
+						<label>Descrição detalhada do desvio de qualidade:</label>
+						<div class="col-md-12 form-group">
+							<fieldset class="panel panel-default" id="fieldsetSolicitante">
+								<b>${DESCRICAODESVIO}</b>
+							</fieldset>
+						</div>
+					</div>
+					<p>Há evidência fotográfica? <b>${EVIDENCIA}</b></p>
+					<p>Quantidade que apresentou o desvio de qualidade:	<b>${QUANTIDADEDESVIO}</b></p>
+					<p>Produto em quarentena?	<b>${QUARENTENA}</b></p>
+					<p>Consta no estoque virtual ou foi lançado como perda?	<b>${CONSTAESTOQUEOUPERDA}</b> </p>
+					<p>Deseja devolver outras unidades do mesmo lote? Quantas?	<b>${DEVOLVERUNIDADE}</b> - <b>${QUANTAS}</b></p>
+					<p>O produto foi administrado em paciente?	<b>${EMPACIENTE}</b></p>
+					<p>Foi possível identificar impacto na saúde do mesmo? <b>${IMPACTOPACIENTE}</b></p>
+					<div class="row">
+						<label>Descrição de impacto:</label>
+						<div class="col-md-12 form-group">
+							<fieldset class="panel panel-default" id="fieldsetSolicitante">
+								<b>${DESCRICAOIMPACTO}</b>
+							</fieldset>
+						</div>
+					</div>
+				</ol>
+			</fieldset>
+			</form>
+		</div>
+		<p>Atenciosamente,</p>
+
+		<img src="https://www.grupooncoclinicas.com/wp-content/themes/portal-oncoclinicas/images/grupo-oncoclinicas.svg">
+	</body>
+</html>

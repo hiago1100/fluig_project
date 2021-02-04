@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Referências</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-offset-2 col-sm-8">
+                <table class="table table-condensed table-striped" tablename="referencias" noaddbutton="true" nodeletebutton="true">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th class="col-sm-4">Código</th>
+                            <th class="col-sm-8">Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span ng-if="vm.Params.edit" ng-click="vm.removeReferencia($event)" class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+                            </td>
+                            <td ng-child="vm.Formulario.referenciaCodigo" id="referenciaCodigo">
+                                <input type="text" class="form-control" name="referenciaCodigo" ng-model="vm.Formulario.referenciaCodigo" ng-value="vm.Formulario.referenciaCodigo">
+                            </td>
+                            <td ng-child="vm.Formulario.referenciaDescricao" id="referenciaDescricao">
+                                <input type="text" class="form-control" name="referenciaDescricao" ng-model="vm.Formulario.referenciaDescricao" ng-value="vm.Formulario.referenciaDescricao">
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <button ng-if="vm.Params.edit" type="button" class="btn btn-lg btn-default" ng-click="vm.adicionaReferencia()">Incluir Referência</button>
+            </div>
+        </div>
+    </div>
+</div>

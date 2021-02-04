@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Marraf" />
+    <meta name="description" content="Marraf">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Preloader CSS -->
+
+    <!--<link rel="stylesheet" href="src/materialize/css/materialize.min.css" media="screen,projection">-->
+    <link rel="stylesheet" href="src/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Marraf</title>
+</head>
+
+<body>
+    <!-- Banner topo -->
+    <header class="banner_topo">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-4" id="logo-topo"><img src="img/home/logotipo.png"></div>
+                <div class="masthead hidden-xs col-sm-10 col-md-10 col-lg-6" id="dados-topo">
+                    <div id="fone-topo"><img src="img/home/Icon_phone.png"><a href="tel:1131110080"> 11 3111.0080</a>
+                    </div>
+                    <div id="contato-topo"><img src="img/home/Icon_contato.png"><a href="mailto:contato@marraf.com.br"> contato@marraf.com.br</a>
+                    </div>
+                    <div id="usuario-topo"><img src="img/home/Icone_pessoa.png"></div>
+                    <div id="seta-topo"><img src="img/home/Seta.png"></div>
+                    <!-- Button trigger modal -->
+                    <div id="login-topo" class="foco" data-toggle="modal" data-target=".bs-example-modal-lg"><a href="#">Login</a></div>
+
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <iframe src='https://webapp.moshe.com.br/#areasegurado?corretora=32201M&logo=off' style="width: 100%; height: 400px; border: 0; margin: 0; padding: 0"
+                                    id="area-segurado"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Fim Banner topo -->
+
+    <!-- start: Menu Bar (NAV) -->
+    <div class="navbar navbar-default " id="menu-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav" style="text-indent: 34px; margin-left: -15px;">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li><a href="sobre.html">A Marraf</a>
+                    </li>
+                    <li><a href="servicos.html">Serviços</a>
+                    </li>
+                    <li class="active"><a href="seguradoras.html">Seguradora</a>
+                    </li>
+                    <li><a href="index.html#link-cert-dig">Certificado Digital</a>
+                    </li>
+                    <li><a href="noticias.html">Notícias</a>
+                    </li>
+                    <li><a href="index.html#contato">Contato</a>
+                    </li>
+                    <li><a href="perguntas-frequentes.html">Perguntas Frequentes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end: Menu Bar (NAV) -->
+
+    <!-- Seguradora Menu Principal -->
+    <section id="sectionPrincipalDiv" class="servicos-princial col-xs-12 col-sm-12 col-md-12 col-lg-12" style="height: 1000px">
+        <div class="container">
+            <div class="row">
+                <div class="serv-text-top ">
+                    <h2>Área de seguros</h2>
+                    <img src="img/servicos/Rectangle-2.png">
+                </div>
+                <div id="img-botao">
+                    <img src="img/seguradora/seguro.png">
+                </div>
+                <!-- Botões para área da seguradora -->
+                <div class="btn-group area-seguros-group" id="bt-seguro" style="width: 100%">
+                    <button class="btn btn-lg dropdown-toggle col-xs-12 col-sm-12 col-md-12 col-lg-12 " type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Selecione uma opção <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <li onclick="ativatab(this.id);" id="segurosAllianz" class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12 liHeader">Allianz</li>
+                        <li onclick="ativatab(this.id);" class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12 liHeader">Porto Seguro</li>
+                        <li onclick="ativatab(this.id);" class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12 liHeader">Mapfre</li>
+                        <li onclick="ativatab(this.id);" class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12 liHeader">Bradesco Seguros</li>
+                    </ul>
+                </div>
+                <!-- Fim Botão para você -->
+            </div>
+        </div>
+        <br>
+        <br>
+    </section>
+    <!-- Fim Seguradora Menu Principal -->
+
+    <!-- Seguradora área ALLIANZ -->
+    <section style="display:none;" id="segurosAllianzDiv" class="servicos-princial col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="container">
+            <div class="row">
+                <div class="serv-text-top ">
+                    <h2>Área de Seguros</h2>
+                    <img src="img/servicos/Rectangle-2.png">
+                </div>
+                <div id="img-botao">
+                    <img src="img/seguradora/seguro.png">
+                </div>
+                <!-- Botão Seguradoras -->
+                <div class="btn-group area-seguros-group" id="bt-seguro" style="width: 100%">
+                    <button class="btn btn-lg dropdown-toggle col-xs-12 col-sm-12 col-md-12 col-lg-12 " type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Allianz <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Porto Seguro</li>
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Mapfre</li>
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Bradesco Seguros</li>
+                    </ul>
+                </div>
+                <!-- Fim Botão seguradoras -->
+            </div>
+        </div>
+
+        <!-- Seguradora Allianz e ID conteudo dinamico -->
+        <div id="cont-allianz" class="container conteudo-servico">
+            <div class="seguradora-logo col-xs-12 col-sm-12 col-md-12 col-lg-8 text-center">
+                <img src="img/seguradora/allianz.png" class="img-responsive center-block img-center">
+            </div>
+            <div class="clearfix visible-xs-block visible-sm-block visible-md-block"></div>
+            <div class="seguradora-format col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+                <p><strong> ALLIANZ AUTO </strong> Acidente; pane do veículo; pedido de guincho e</p>
+                <p>outros serviços </p>
+                <p><strong>0800 130 700</strong></p>
+                <p><strong>00 55 11 4331 5126</strong>(países do Mercosul)</p>
+                <br>
+                <p><strong>ALLIANZ RESIDÊNCIA, CONDOMÍNIO E</strong></p>
+                <p><strong>EMPRESA </strong></p>
+                <p>Chaveiro; segurança; eletricista; entre outros. 0800 177 178</p>
+                <p><strong>ALLIANZ VIDA</strong> Assistência Funeral Ampliada; Viagem;</p>
+                <p>Segunda Opinião Médica Internacional; entre</p>
+                <p>outros.</p>
+                <p><strong>0800 551 640</strong></p>
+                <br>
+                <p><strong>Contatos Allianz </strong></p>
+                <br>
+                <p><strong>Linha Direta ALLIANZ SEGUROS</strong></p>
+                <p>Abertura e informações de sinistros;</p>
+                <p>orientações sobre contrato de</p>
+                <p>seguros/produtos</p>
+                <p><strong>4090-1110</strong> (Capitais e Regiões Metropolitanas) </p>
+                <p><strong>0800 777 7243</strong> (demais regiões)</p>
+                <p>2ª à 6ª, das 8h00 às 20h00 e sábado das 8h00</p>
+                <p>às 14h00.</p>
+                <br>
+                <p><strong>Linha Direta ALLIANZ SAÚDE</strong></p>
+                <p>Serviços aos segurados; rede referenciada;</p>
+                <p>reembolsos; coberturas e outros serviços que</p>
+                <p>necessitem de identificação do cliente.</p>
+                <p><strong>4001-5060</strong></p>
+                <p>(Capitais e Regiões Metropolitanas)</p>
+                <p><strong>0800 701 8148</strong></p>
+                <p>(localidades não atendidas pelo 4001-5060).</p>
+                <br>
+                <p>DISPONÍVEL 24H</p>
+                <br>
+                <a href="www.allianz.com.br"><strong><span class="anular-link">www.allianz.com.br</span></strong></a>
+            </div>
+        </div>
+        <!-- Fim Seguradora Allianz -->
+        <br>
+        <br>
+    </section>
+    <!-- Fim Seguradora área ALLIANZ -->
+
+    <!-- Seguradora área PORTO -->
+    <section id="segurosPortoDiv" class="servicos-princial col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="container">
+            <div class="row">
+                <div class="serv-text-top ">
+                    <h2>Área de Seguros</h2>
+                    <img src="img/servicos/Rectangle-2.png">
+                </div>
+                <div id="img-botao">
+                    <img src="img/seguradora/seguro.png">
+                </div>
+                <!-- Botão Seguradoras -->
+                <div class="btn-group area-seguros-group" id="bt-seguro" style="width: 100%">
+                    <button class="btn btn-lg dropdown-toggle col-xs-12 col-sm-12 col-md-12 col-lg-12 " type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Porto Seguro <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Mapfre</li>
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Bradesco Seguros</li>
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Allianz</li>
+                    </ul>
+                </div>
+                <!-- Fim Botão seguradoras -->
+            </div>
+        </div>
+
+        <!-- Seguradora Porto e ID conteudo dinamico -->
+        <div id="cont-porto" class="container conteudo-servico">
+            <div class="seguradora-logo col-xs-12 col-sm-12 col-md-12 col-lg-8 text-center">
+                <img src="img/seguradora/porto.png" class="img-responsive center-block img-center">
+            </div>
+            <div class="clearfix visible-xs-block visible-sm-block visible-md-block"></div>
+            <div class="seguradora-format-porto col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+                <p><strong>Seguro automóvel e moto</strong></p>
+                <p><strong>(11) 333-PORTO</strong> - (O mesmo que 333-76786) Grande São Paulo e Grande Rio.</p>
+                <p><strong>4004-PORTO</strong> - (O mesmo que 4004-76786) Capitais e Grandes Centros</p>
+                <p><strong>0800-727-0800</strong> -(Demais localidades)</p>
+                <p><strong>+55 (11) 3366-3189 </strong>(Atendimento Mercosul)</p>
+                <br>
+                <p><strong>Para empresas</strong></p>
+                <p>Escolas, Academias, Estética e Beleza, Clínicas e Consultórios, Pet Shop e Clínicas Veterinárias, Hotéis e</p> 
+                <p>Pousadas, Bares e Restaurantes, Concessionárias.</p>
+                <p><strong>(11) 3366-3110 </strong>- (Grande São Paulo)</p>
+                <p><strong>0800-727-8118</strong>- (Demais localidades)</p>
+                <br>
+                <p><strong>Vida</strong></p>
+                <p>Assistência Funeral Ampliada; Viagem;</p>
+                <p>Segunda Opinião Médica Internacional; entre outros.</p>
+                <p><strong>0800 551 640</strong></p>
+                <br>
+                <p><strong>Residencial</strong></p>
+                <p>Seguros Residência Habitual e Veraneio,</p>
+                <p>Residencial Simplificado,</p>
+                <p>Condomínio e Apartamento.</p>
+                <p><strong>(11) 3366-3110</strong> - (Grande São Paulo)</p>
+                <p><strong>0800 777 7243</strong> - (Demais localidades)</p>
+                <br>
+                <p><strong>Odontológico</strong></p>
+                <p><strong>3366-3003</strong>- (Grande São Paulo)</p>
+                <p><strong>3003-9393</strong>- (Capitais e regiões metropolitanas)</p>
+                <p><strong>0800-727-2800</strong>- (Demais localidades)</p>
+                <br>
+                <p><strong>Previdência</strong></p>
+                <p><strong>(11) 3366-3377</strong>- (Grande São Paulo)</p>
+                <p><strong>0800-727-9393</strong>- (Demais localidades)</p>
+                <br>
+
+                <a href="www.portoseguro.com.br"><strong><span class="anular-link">www.portoseguro.com.br</span></strong></a>
+            </div>
+        </div>
+        <br>
+        <br>
+    </section>
+    <!-- Fim Seguradora PORTO -->
+
+    <!-- Seguradora área MAPFRE -->
+    <section id="segurosMapfreDiv" class="servicos-princial col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="container">
+            <div class="row">
+                <div class="serv-text-top ">
+                    <h2>Área de Seguros</h2>
+                    <img src="img/servicos/Rectangle-2.png">
+                </div>
+                <div id="img-botao">
+                    <img src="img/seguradora/seguro.png">
+                </div>
+                <!-- Botão Seguradoras -->
+                <div class="btn-group area-seguros-group" id="bt-seguro" style="width: 100%">
+                    <button class="btn btn-lg dropdown-toggle col-xs-12 col-sm-12 col-md-12 col-lg-12 " type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Mapfre <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Bradesco Seguros</li>
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Porto Seguro</li>
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Allianz</li>
+                    </ul>
+                </div>
+                <!-- Fim Botão seguradoras -->
+            </div>
+        </div>
+
+        <!-- Seguradora MAPFRE e ID conteudo dinamico -->
+        <div id="cont-Mapfre" class="container conteudo-servico">
+            <div class="seguradora-logo col-xs-12 col-sm-12 col-md-12 col-lg-8 text-center">
+                <img src="img/seguradora/mapfre.png" class="img-responsive center-block img-center">
+            </div>
+            <div class="clearfix visible-xs-block visible-sm-block visible-md-block"></div>
+            <div class="seguradora-format-mapfre col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+                <p><strong>Clientes Mapfre Automóvel, Residencial, Condomínio, Empresarial e outros</strong></p>
+                <p>SAC 24 horas - <strong>0800 775 4545</strong></p>
+                <p>SAC 24 horas para deficientes auditivos e de fala - <strong>0800 775 5045</strong></p>
+                <p>Comunicação de sinistro e assistência 24 horas - <strong>0800 705 0101</strong></p>
+                <br>
+                <p><strong>Clientes Mapfre Vida e Previdência (exceto Vida S.A)</strong></p>
+                <p>SAC 24 horas - <strong>0800 112 8000</strong></p>
+                <p>Assistência 24 horas - <strong>0800 775 7196</strong></p>
+                <p>Comunicação de sinistro (das 8h às 22h) - <strong>0800 709 8432</strong></p>
+                <p>SAC 24 horas Vida Seguradora - <strong>0800 884 8844</strong></p>
+                <p>SAC 24 horas para deficientes auditivos e de fala - <strong>0800 775 5045</strong></p>
+                <br>
+                <p><strong>Clientes Mapfre Saúde</strong></p>
+                <p>SAC 24 horas<strong></strong></p>
+                <p>Caixa Postal: 1044 <strong></strong></p>
+                <p>CEP: 06326-970 <strong></strong></p>
+                <p>Carapicuíba - SP <strong></strong></p>
+                <p>Telefone: <strong>0800 4MAPFRE </strong>(0800 117 2833) </p>
+                <p>Deficientes Auditivos: <strong>0800 888 8124 24 </strong></p>
+                <p>E-mail: <a href="mailto: atendimento@mapfresaude.com.br"><strong>atendimento@mapfresaude.com.br</strong></a></p>
+                <br>
+                <p><strong>Rastreadores - Automóveis</strong></p>
+                <p><strong>Ituran</strong></p>
+                <p><strong>Telefone:</strong> (11) 3616-9086/0300-774-2004</p>
+                <p><strong>Horário de atendimento: </strong>Acionamento de sinistro central 24 horas e demais serviços de segunda a sexta das</p>
+                <p>08:00hrs às 18:00 e aos sábados das 08:00hrs às 15:00hrs.</p>
+                <p><strong>Site: </strong><a href="mailto:www.ituran.com.br"><strong>www.ituran.com.br</strong></a></p>
+                <br>
+                <p><strong>Sat Company</strong></p>
+                <p><strong>Telefone: </strong> (11) 2271-0000/0800-8888-909</p>
+                <p><strong>Horário de atendimento: </strong>Acionamento de sinistro central 24 horas e demais serviços de segunda a sexta das </p>
+                <p>08:00hrs às 20:00 e aos sábados das 08:00hrs às 14:00hrs.</p>
+                <p>Endereço: Rua: Arcipreste Andrade, 630 - Ipiranga, São Paulo - SP 04268-020 </p>
+                <p><strong>Site: </strong> <a href="mailto:www.satcompany.com.br"><strong>www.satcompany.com.br</strong></a> </p>
+                <br>
+                <a href="mailto:www.mapfre.com.br"><strong><span class="anular-link">www.mapfre.com.br</span></strong></a>
+            </div>
+        </div>
+     
+        <br>
+        <br>
+    </section>
+    <!-- Fim Seguradora área MAPFREE -->
+
+    <!-- Seguradora área BRADESCO -->
+    <section id="segurosBradescoDiv" class="servicos-princial col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="container">
+            <div class="row">
+                <div class="serv-text-top ">
+                    <h2>Área de Seguros</h2>
+                    <img src="img/servicos/Rectangle-2.png">
+                </div>
+                <div id="img-botao">
+                    <img src="img/seguradora/seguro.png">
+                </div>
+                <!-- Botão Seguradoras -->
+                <div class="btn-group area-seguros-group" id="bt-seguro" style="width: 100%">
+                    <button class="btn btn-lg dropdown-toggle col-xs-12 col-sm-12 col-md-12 col-lg-12 " type="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    Bradesco seguros <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Porto Seguro</li>
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Allianz</li>
+                        <li class="sub btn col-xs-12 col-sm-12 col-md-12 col-lg-12">Mapfre</li>
+                    </ul>
+                </div>
+                <!-- Fim Botão seguradoras -->
+            </div>
+        </div>
+
+        <!-- Seguradora Brqadesco e ID conteudo dinamico -->
+        <div id="cont-allianz" class="container conteudo-servico">
+            <div class="seguradora-logo col-xs-12 col-sm-12 col-md-12 col-lg-8 text-center">
+                <img src="img/seguradora/bradesco.png" class="img-responsive center-block img-center">
+            </div>
+            <div class="clearfix visible-xs-block visible-sm-block visible-md-block"></div>
+            <div class="seguradora-format-bradesco col-xs-12 col-sm-12 col-md-12 col-lg-4 ">
+                <p><strong>Auto e Residencial</strong></p>
+                <p><strong>Central de relacionamento</strong></p>
+                <p>Capitais e Regiões Metropolitanas - 4004 2757</p>
+                <p>Demais Regiões - 0800 7012 757</p>
+                <p>Atendimento das 07h40 às 20h20</p>
+                <br>
+                <p><strong>SAC</strong></p>
+                <p>Reclamações, cancelamentos e informações gerais - 0800 727 9966</p>
+                <p>Deficiência Auditiva/Fala* - 0800 701 2762</p>
+                <br>
+                <p><strong>Ouvidoria</strong></p>
+                <p>Atendimento das 08h às 18h, de 2ª a 6ª, exceto feriados - 0800 701 7000</p>
+                <p>Deficiência Auditiva/Fala* - 0800 701 7877</p>
+                <br>
+                <p>(*) Para este serviço é necessário aparelho especial, com teclado alfanumérico e visor.</p>
+                <br>
+                <p><strong>Previdência</strong></p>
+                <p><strong>Central de relacionamento</strong></p>
+                <p>Capitais e Regiões Metropolitanas - 4002 0022</p>
+                <p>Demais Regiões - 0800 570 0022</p>
+                <p><strong>Consultas, informações e serviços transacionais</strong></p>
+                <p>Atendimento de Segunda a Sexta, das 07h30 às 19h30, exceto feriados</p>
+                <p><strong>Solicitação de Resgate</strong></p>
+                <p>Atendimento de Segunda a Sexta, das 08h00 às 17h00 (dias úteis)</p>
+                <br>
+                <p><strong>SAC</strong></p>
+                <p>Reclamações, cancelamentos e informações gerais - 0800 721 1144</p>
+                <p>Deficiência Auditiva/Fala* - 0800 722 0099</p>
+                <p>Atendimento 24 horas, 7 dias por semana</p>
+                <br>
+                <p><strong>Ouvidoria</strong></p>
+                <p>Atendimento das 08h às 18h, de 2ª a 6ª feira, exceto feriados - 0800 701 7000</p>
+                <p>Deficiência Auditiva/Fala* - 0800 701 7877</p>
+                <br>
+                <p>(*) Para este serviço é necessário aparelho especial, com teclado alfanumérico e visor.</p>
+                <br>
+                <p><strong>Saúde</strong></p>
+                <p><strong>Central de relacionamento</strong></p>
+                <p>Capitais e Regiões Metropolitanas4004 2700</p>
+                <p>Demais Regiões0800 701 2700</p>
+                <p>Atendimento 24 horas, 7 dias por semana.</p>
+                <p>Consultas, informações e serviços transacionais.</p>
+                <p><strong>SAC</strong></p>
+                <p>Reclamações, cancelamentos e informações gerais - 0800 727 9966</p>
+                <p>Deficiência Auditiva/Fala* - 0800 701 2708</p>
+                <p><strong>Ouvidoria</strong></p>
+                <p>Atendimento das 08h às 18h, de 2ª a 6ª feira, exceto feriados - 0800 701 7000</p>
+                <p>Deficiência Auditiva/Fala* - 0800 701 7877</p>
+                <br>
+                <p>(*) Para este serviço é necessário aparelho especial, com teclado alfanumérico e visor.</p>
+                <br>
+                <p><strong>Serviço de Atendimento a Referenciados</strong></p>
+                <p>Capitais e Regiões Metropolitanas - 4004 4580</p>
+                <p>Demais Regiões - 0800 701 2744</p>
+            </div>
+        </div>
+        <!-- Fim Seguradora Allianz -->
+        <br>
+        <br>
+    </section>
+    <!-- Fim Seguradora área BRADESCO -->
+
+    <!-- Titulo Form -->
+    <section class="titulo-form col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 75px;" id="contato">
+        <div class="container">
+            <div class="row">
+                <div class="texto-form-topo col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="row">
+                        <div class="precisa">
+                            <p>Precisa de algo?</p>
+                        </div>
+                        <div class="fale">
+                            <p> Fale com a gente</p>
+                        </div>
+                        <img src="img/home/Rectangle 2.png" alt="text_retangulo_icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FIm Titulo Form -->
+
+    <!-- start: Inicio Form e Rede social -->
+    <section class="rede_social" style="margin-bottom: 68px;">
+        <div class="container">
+            <div class="row">
+                <!-- Inicio Form -->
+                <div class="form-format col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="row">
+                        <form>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label class="marraf-input-label" for="nome">Nome</label>
+                                <input type="text" class="marraf-input l-width-100" id="nome">
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label class="marraf-input-label" for="email">Email</label>
+                                <input type="email" class="marraf-input l-width-100" id="exampleInputPassword1">
+                            </div>
+
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label class="marraf-input-label" for="telefone">Telefone</label>
+                                <input type="text" class="marraf-input l-width-100" id="telefone">
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label class="marraf-input-label" for="assunto">Assunto</label>
+                                <input type="text" class="marraf-input l-width-100" id="assunto">
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label class="marraf-input-label" for="mensagem">Mensagem</label>
+                                <textarea class="form-control marraf-text-area" rows="6" name="mensagem"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-warning col-xs-12 col-sm-12 col-md-12 col-lg-12">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- Fim Form -->
+
+                <div class="rede-social col-xs-12 col-sm-4 col-md-4 col-lg-4 col-md-offset-2" >
+                    <div class="pin-top">
+                        <div class="row">
+                            <div class="pin" style="margin-bottom: 10px; margin-left: 10px;">
+                                <img class="img-responsive" src="img/home/Pin.png" alt="pin" style="float: left;">
+                                <p style="margin: 0px 39px -2px;font-size: 14px;font-family: Roboto-Regular;color: #004693;">Rua São Paulo, 325 - Jardim Planalto</p>
+                                <p style="margin: 0px 39px -2px;font-size: 14px;font-family: Roboto-Regular;color: #004693;">Arujá - SP - CEP 07400-000</p>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="phone-top">
+                        <div class="row">
+                            <div class="phone" style="margin-bottom: 10px; margin-left: 10px;">
+                                <img class="img-responsive" src="img/home/Icon_phone.png" alt="fone" style="float: left;">
+                                <p style="padding-top: 2px; margin: 0px 39px -2px;font-size: 14px;font-family: Roboto-Regular;color: #004693;">11 <strong>3111-0080</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contato-top">
+                        <div class="row">
+                            <div class="contato" style="margin-bottom: 10px; margin-top: 10px; margin-left: 10px;">
+                                <img class="img-responsive" src="img/home/Icon_contato.png" alt="contato" style="float: left;">
+                                <p style="margin: 0px 39px -2px;font-size: 14px;font-family: Roboto-Bold;color: #004693;">marraf@marraf.com.br</p>
+                                <a href="trabalhe-conosco.html" style="margin: 0px 39px 0px 12px;font-size: 14px;font-family: Roboto-Bold;color: #004693;">Trabalhe conosco</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="whats-top">
+                        <div class="row">
+                            <div class="whats" style="margin-bottom: 10px; margin-left: 10px;">
+                                <img class="img-responsive" src="img/home/whats.png" alt="whats" style="float: left;">
+                                
+                                <p style="margin: 0px 39px -2px;font-size: 14px;font-family: Roboto-Regular;color: #004693;">11 <strong>95328.7419</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="atendimento-top">
+                        <div class="row">
+                            <div class="atendimento" style="margin-bottom: 10px; margin-left: 10px;">
+                                <img class="img-responsive" style="margin-bottom: 15px;" style="float: left;">
+                                <p style="margin: 0px 39px -2px;font-size: 14px;font-family: Roboto-Medium;color: #004693;">Atendimento Seg. à Sex. 8:30h às 18:00h</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fb-page" data-href="https://www.facebook.com/marrafcorretora/" data-tabs="timeline" data-width="333" data-height="130"
+                        data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/marrafcorretora/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/marrafcorretora/">Marraf Corretora de Seguros</a></blockquote>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end: Form e Rede Social -->
+    <br>
+
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var uluru = {
+                lat: -23.397892,
+                lng: -46.316785
+            };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6RIgda0nonj5Omy_OKh7MwIntikDNTpE&callback=initMap">
+    </script>
+    <footer>
+        <div class="rodape">
+            <p class="container">2017 © Marraf Corretora de Seguros - Todos os direitos reservados</p>
+        </div>
+    </footer>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="src/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script>
+        function ativatab(id) {
+            id = '#' + id;
+            id = id + 'Div';
+            $(".servicos-princial").css('display', 'none');
+            $(id).css('display', 'block');
+
+        }
+
+        function voltaMenu(id) {
+
+            id = '#' + id;
+            id = id + 'Div';
+            $("#sectionPrincipalDiv").css('display', 'block');
+            $(id).css('display', 'none');
+
+        }
+
+
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.9";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.sev_check').each(function () {
+                $(this).addClass('unselected');
+            });
+            $('.sev_check').on('click', function () {
+                $(this).toggleClass('unselected');
+                $(this).toggleClass('selected');
+                $('.sev_check').not(this).prop('checked', false);
+                $('.sev_check').not(this).removeClass('selected');
+                $('.sev_check').not(this).addClass('unselected');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

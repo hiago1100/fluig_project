@@ -1,0 +1,69 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+</head>
+<body>
+<div class="fluig-style-guide">
+	<form name="form" role="form">
+		<div class="panel panel-default	">
+			<div class="tab-content">
+				<!-- Definição de campos -->
+				<div class="tab-pane fade in active" id="configuracoes">
+
+					<div class="row" id="cabecalho"><!-- Início da Row -->
+						<!-- Logo Burguer King -->
+						<div class="col-md-2 col-sm-2 col-xs-2" id="id_logo_bking">
+						</div><!-- Fim do Logo Burguer King -->
+
+						<!-- Título do Formulário -->
+						<div class="col-md-8 col-sm-8 col-xs-8 title" id="id_titulo_pagina">
+							<h1><b>Sub-grupos de Operadores de Transportadoras</b></h1>
+						</div><!-- Título do Formulário -->
+
+						<div class="col-md-2 col-sm-2 col-xs-2"><!-- Centraliza Título --></div>
+					</div><!-- Fim da Row -->
+
+					<hr> <!-- LINHA -->
+
+					<div class="row">
+						<div class="col-md-6">
+							<label for="subgrupo">Sub-grupo <span class="no-print">*</span></label>
+							<div class="form-group">
+
+								<input type="text" name="subgrupo" id="subgrupo" data-toggle="tooltip" title="Nome do Sub-Grupo" class=" form-control" maxlength="" placeholder="Nome do Sub-Grupo" />
+							</div>
+							<div class="alert">
+                                    <span class="tooltiptext" id="id_subgrupo_erro">
+                                        <output id="id_subgrupo_erro_text"></output>
+                                    </span>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<label for="uf">UF <span class="no-print">*</span></label>
+							<div class="form-group">
+
+								<input type="text" class="form-control" name="uf" id="uf" data-toggle="tooltip" title="UF do Sub-Grupo" placeholder="UF do Sub-Grupo">
+							</div>
+							<div class="alert">
+                                    <span class="tooltiptext" id="id_uf_erro">
+                                        <output id="id_uf_erro_text"></output>
+                                    </span>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<div class="panel panel-default" ng-if="item.Cotacoes.length>0">
+    <div class="panel-heading fs-cursor-pointer" ng-click="item.cotacoesCollapsed=!item.cotacoesCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': item.cotacoesCollapsed}">
+                Cotações
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': item.cotacoesCollapsed}">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <canvas id="bar" class="chart chart-bar" chart-options="chartOptions" chart-data="item.cotacoesData" chart-labels="item.cotacoesLabels" chart-series="item.cotacoesSeries">
+                    </canvas>
+                </div>
+                <div class="col-md-7">
+                    <table class="table table-striped">
+                        <thead class="hidden-xs">
+                            <tr>
+                                <th>
+                                    <div class="col-sm-6">Fornecedor</div>
+                                    <div class="col-sm-3">Valor Unitário</div>
+                                    <div class="col-sm-3">Impostos</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="cotacao in item.Cotacoes">
+                                <td>
+                                    <div class="col-sm-6">
+                                        <label class="visible-xs-block">Fornecedor</label>
+                                        <p>{{cotacao.cotacaoFornecedor}}</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Valor Unitário</label>
+                                        <p>{{cotacao.cotacaoValor | currency:cotacao.cotacaoMoeda}}</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Valor Unitário</label>
+                                        <p>{{cotacao.cotacaoImpostos | currency:cotacao.cotacaoMoeda}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

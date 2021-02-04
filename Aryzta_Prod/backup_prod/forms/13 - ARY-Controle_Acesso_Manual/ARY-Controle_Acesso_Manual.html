@@ -1,0 +1,511 @@
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+  <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+  <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+  <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+  
+  <script type="text/javascript" src="../vcXMLRPC.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="select2.min.css">
+  <script type="text/javascript" src="select2.min.js"></script>
+  <script type="text/javascript" src="main.js" charset="utf-8"></script>
+
+  <!-- Css y Scripts Arq -->   
+  <link rel="stylesheet" type="text/css" href="/arq-marvin-v1/ui/arq-marvin-ui.min.css">
+  <script src="/arq-marvin-v1/ui/arq-marvin-ui.min.js"></script>
+
+  <style>
+    .form-group{
+      float: left;
+      width: 100%;
+    }
+    .select2-container{
+      width: 370px !important;
+    }
+    *[readonly="readonly"], *[disabled="disabled"],
+    .select2-container--disabled li span {
+      color: #000 !important;
+    }
+    .select2-container ul li,
+    .select2-container ul span,
+    .select2-container--default .select2-selection--multiple .select2-selection__choice > span{
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice{
+      background-color:#777;
+      border: solid 1px #5e5e5e;
+      color:white;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice.conflict{
+      background-color:#a00e0e;
+    }
+    .conflict{
+      background-color:#a00e0e;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice > span{
+      color:white;
+    }
+    .fluig-style-guide .bootstrap-tagsinput .tag .tag-text{
+      font-weight:100;
+    }
+    .fluig-style-guide .tab-content {
+        float: left;
+        width: 100%;
+        border: solid 1px #ddd;
+        border-top: none;
+    }
+    .fluigicon-trash {
+        display: none !important;
+    }
+
+   .Bcolor{
+      background-color: #FFFACD ;
+      height: 80px;
+    }
+    
+  .mostraMod{
+    align-contet : center;
+  }
+
+  #menu2 .tab-content {
+    color : white;
+    background-color: #428bca;
+    padding : 5px 15px;
+  }
+
+  #menu2 .tab-content {
+  color : white;
+  background-color: #E0FFFF;
+  padding : 5px 15px;
+}
+
+  </style>  
+  
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form" id="form">
+
+<input class="hide" type="text" name="cont_aprovador" id="cont_aprovador" />
+<input type="text" class="hide" name="recebeCod" id="recebeCod" >
+<input type="text" name="cont" id="cont" class="hide" value="0"> 
+<input type="text" name="incluirOk" class="hide" id="incluirOk" value="">
+
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row text-center">
+    <h2 style="margin-bottom:15px;">Controle de Acessos</h2>
+  </div>
+  <input type="text" class="hide" name="temConflito" id="temConflito" />
+  <br></br>
+  <div id="menu" class="row-fluid">
+    <ul class="nav nav-tabs nav-justified">
+      <li id="li1" class="active"><a href="#tab1" data-toggle="tab">Controle Acessos</a></li>
+      <li id="li2"><a href="#tab2" data-toggle="tab">Gestor Usu&aacute;rio</a></li>
+      <li id="li3"><a href="#tab3" data-toggle="tab">Gestor Grupo</a></li>
+      <!-- <li id="li4"><a href="#tab4" data-toggle="tab">Gestor da Informa&ccedil;&atilde;o</a></li> -->
+      <li id="li5"><a href="#tab5" data-toggle="tab">Gestor S.I</a></li>
+    </ul>
+  </div>
+  
+  <div class='tab-content'>
+    <div class="tab-pane active" id="tab1">
+
+      <div class="form-group">
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="matriculaSolicitante" class="control-label">Solicitante</label>
+            <input type="text" class="form-control matriculaSolicitante hide" name="matriculaSolicitante" id="matriculaSolicitante">
+            <input type="text" class="form-control nomeSolicitante" name="nomeSolicitante" id="nomeSolicitante" readonly>                 
+          </div>    
+        </div>
+
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <label for="dataSolic" class="control-label">Data</label>
+            <input type="text" class="form-control dataSolic" name="dataSolic" id="dataSolic" readonly>                 
+          </div>    
+        </div>
+        
+        <div class="label-field">
+          <div class="label-field">
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
+              <label for="horaSolic" class="control-label">Hora</label>
+              <input type="text" class="form-control horaSolic" name="horaSolic" id="horaSolic" readonly>                 
+            </div>    
+          </div>  
+        </div>              
+      </div>   
+
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+        <label>Bloquear</label> 
+              <input type="checkbox" name="bloquear" id="bloquear"> 
+          </div>
+        </div>
+      <div class="clearfix"></div>
+      
+     <div class="form-group"></div> 
+
+    
+
+      <div class="clearfix"></div>
+    <div class="form-group selecioneHid">
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="codUsuario" class="control-label">Usu&aacute;rio</label>
+            <input type="zoom" class="form-control codUsuario" name="codUsuario" id="codUsuario"
+              data-zoom="{
+                'displayKey':'nome_usuario',                
+                'datasetId':'ARY-sql2dataset-usuarios',                               
+                'fields':[
+                  {
+                    'field':'cod_usuario',
+                    'label':'Codigo'
+                  },{
+                    'field':'nome_usuario',
+                    'label':'Nome do Usuario',
+                    'filterValues': 'nome_usuario',                                                           
+                    'standard':'true'
+                  }
+                ]
+              }"
+            />                 
+          </div>    
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="nomeUsuario" class="control-label">&nbsp;</label>
+          <input type="text" class="form-control nomeUsuario" name="nomeUsuario" id="nomeUsuario" readonly>  
+           <input type="text" class="form-control hide" name="idUsuario" id="idUsuario">                 
+        </div> 
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="gestorUsuario" class="control-label">Gestor</label>
+          <input type="text" class="form-control gestorUsuario" name="gestorUsuario" id="gestorUsuario" readonly>
+          <input type="text" class="hide" name="codGest" id="codGest">                          
+        </div>                 
+      </div>
+
+      <!-- TESTE VALIDACAO GRUPO -->
+                       
+      <div class="clearfix"></div>
+
+      <div class="form-group selecioneHid">
+        <table align="left" class="table table-hover" id="tabela_programas2" tablename="tabela_programas2" style="width: 100%;margin-right: 30%" noaddbutton="true">
+          <thead>
+            <tr>
+              <th class="col-sm-3">Grupo</th>
+              <th class="col-sm-4">Descrição</th>
+              <th class="col-sm-1">Manter</th>
+              <th class="col-sm-4">Gestor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="concat" id="concat">
+              <td class="col-sm-3">
+                <input class="form-control" type="text" name="nomedoseugrupo" id="nomedoseugrupo" readonly />
+              </td>
+              <td class="col-sm-4">
+                <input type="text" name="descGrupoUser" id="descGrupoUser" class="form-control" readonly >
+              </td>
+              <td class="col-sm-1">
+                <input type="checkbox" name="manter" id="manter" checked="" class="form-control" />
+              </td>
+              <td class="col-sm-4">
+                <input class="form-control" type="text" name="nomeGestdoGrupo" id="nomeGestdoGrupo" readonly />
+                <input class="hidden" type="text" name="gestorHide" id="gestorHide" readonly />
+              </td>
+            </tr>
+          </tbody>
+        </table> 
+
+
+
+        <div class="col-md-4 ">
+            <label for="addGrupo" class="control-label">Grupo inclusão</label>
+            <input type="zoom" class="form-control addGrupo" name="addGrupo" id="addGrupo"
+              data-zoom="{
+                'displayKey': 'cod_grupo',
+                'datasetId':'ARY-sql2dataset-usuario-grupos',
+                'fields':[
+                  {
+                    'field':'cod_grupo',
+                    'label':'Grupo',                                                         
+                    'standard':'true'
+                  },{
+                   'field':'desc_grupo',
+                   'filterValues': 'desc_grupo',  
+                   'label':'Desc. Grupo' 
+                  }
+                ]
+              }"   
+            />                    
+          </div>
+          <div class="label-field">
+            <div class="col-md-4"> 
+                <label for="addGrupoUser" class="control-label">&nbsp;</label>
+                <button class="btn btn-success" name="addGrupoUser" id="addGrupoUser" style="margin-top: 7%" >Incluir Grupo</button>
+            </div>
+          </div> 
+      </div>
+
+      <div class="form-group selecioneHid" style="display:none;">
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="grupos" class="control-label">Grupo</label>
+            <input type="text" class="hide codGrupoGest" name="codGrupoGest" id="codGrupoGest" readonly>
+            <input type="zoom" class="form-control grupos" name="grupos" id="grupos"
+              data-zoom="{
+                'displayKey': 'cod_grupo',
+                'datasetId':'ARY-sql2dataset-usuario-grupos',
+                'fields':[
+                  {
+                    'field':'cod_grupo',
+                    'label':'Grupo',                                                          
+                    'standard':'true'
+                  }
+                ]
+              }"  
+            />
+            <input type="text" name="codgrupoparam" id="codgrupoparam" class="hide">                    
+          </div>    
+        </div>      
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="descGrupo" class="control-label">&nbsp;</label>
+          <input type="text" class="form-control descGrupo" name="descGrupo" id="descGrupo" readonly>                         
+        </div> 
+        
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="nomeGestGrupo" class="control-label">Gestor</label>
+          <input type="text" class="form-control nomeGestGrupo" name="nomeGestGrupo" id="nomeGestGrupo" readonly>
+        </div> 
+           
+        </div> 
+      </div>
+      
+          <ul class="nav nav-tabs nav-justified"">
+        <li  class="active"><a data-toggle="pill" href="#menu1">Programas com Conflitos</a></li>
+        <li><a data-toggle="pill" href="#home">Programas</a></li>
+      </ul>
+
+      <input type="text" class="hide" name="codProgramaCopiaAux" id="codProgramaCopiaAux" />
+            <input type="text" class="hide" name="nomeProgramaCopiaAux" id="nomeProgramaCopiaAux" />
+            <input type="text" class="hide" name="descProgramaCopiaAux" id="descProgramaCopiaAux" />
+            <input type="text" class="hide" name="descgrupoCopiaAux" id="descgrupoCopiaAux" />
+
+      <div class="tab-content" id="content" style="width:100%; height:800px; overflow-y:scroll;">
+        <div id="home" class="tab-pane fade">
+          <div class="form-group selecioneHid" style="width:100%; height:800px; overflow-y:scroll;">
+            <table class="table table-hover" id="tabela_programas" tablename="tabela_programas" style="width: 100%;" noaddbutton="true">
+              <thead>
+                <tr>
+                  <th class="col-sm-2"><label>Grupo</th>
+                  <th class="col-sm-2"><label>M&oacute;dulo</label></th>
+                  <th class="col-sm-2"><label>Estrutura</label></th>
+                  <th class="col-sm-2"><label>Cod. Programa</label></th>
+                  <th class="col-sm-2"><label>Nome</label></th>
+                  <th class="col-sm-2"><label>OBS</label></th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-sm-2">
+                      <input class="form-control" type="text" name="codGrupo" id="codGrupo" readonly />
+                      <input class="hide" type="text" name="status" id="status" readonly />
+                  </td>
+
+                  <td class="col-sm-2"><input class="form-control" type="text" name="codModulo" id="codModulo" readonly /></td>
+                   <td class="col-sm-2"><input class="form-control" type="text" name="descRotina" id="descRotina" readonly /></td>
+                  <td class="col-sm-2"><input class="form-control" type="text" name="codPrograma" id="codPrograma" readonly /></td>
+                  <td class="col-sm-2"><input class="form-control" type="text" name="nomePrograma" id="nomePrograma" readonly /></td>
+                  <td class="col-sm-2"><input class="form-control" type="text" name="obsPrograma" id="obsPrograma" readonly /></td>
+                </tr>
+              </tbody>
+            </table>             
+          </div>
+        </div>
+        <div id="menu1" class="tab-pane fade in active">
+          <table class="table table-striped" id="tabela_conflitos" tablename="tabela_conflitos" style="width: 100%;" noaddbutton="true">
+            <thead>
+              <tr>
+                <th class="col-sm-2"><label>Programa Conflito</label></th>
+                <th class="col-sm-2"><label>Grupo</label></th>                
+                <th class="col-sm-2"><label>Programa conflitante</label></th>
+                <th class="col-sm-2"><label>Grupo conflitante</label></th>
+                <th class="col-sm-3"><label>Descri&ccedil;&atilde;o Conflito</label></th>
+                <th class="col-sm-1"><label>Risco</label></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-sm-2">
+                    <input class="form-control" type="text" name="appConflitoC" id="appConflitoC" readonly />
+                </td>
+
+                <td><input class="form-control" type="text" name="codConflitoC" id="codConflitoC" readonly /></td>
+                
+                <td><input class="form-control" type="text" name="descConflitoC" id="descConflitoC" readonly /></td> 
+
+                <td><input class="form-control" type="text" name="grupoConfito" id="grupoConfito" readonly /></td>                
+
+
+                <td>
+                  <input class="form-control hide" type="text" name="appMainC" id="appMainC" readonly />
+                
+                <!--  <input class="form-control" type="text" name="descMainC" id="descMainC" readonly /> -->
+
+                  <textarea rows="3" class="form-control" name="descMainC" id="descMainC" readonly ></textarea>
+                </td>
+                
+                <td>
+                    <input class="form-control hide" type="text" name="appMainObsC" id="appMainObsC" readonly />
+                    <input class="form-control " type="text" name="farol" id="farol" readonly />
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+     </div> 
+
+
+
+
+
+    <!-- Fim da div tab-pane aba1 -->
+
+    <div class="tab-pane" id="tab2">
+    <br>
+      <div class="form-group">
+        <input type="text" class="hide" name="aba2Index" id="aba2Index">
+      </div>
+      <div class="form-group">
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default pull-right" id="btnNovo">Nova Observa&ccedil;&atilde;o</button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-condensed" id="tabelaAba2" tablename="tabelaAba2" noaddbutton="true" nodeletebutton="true">
+          <thead>
+            <tr>
+              <th width="100%"><label for="aba2Obs">Observa&ccedil;&atilde;o</label></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="limpaTR">
+              <td width="1000%">
+                <div class="label-field">
+                  <input type="text" class="form-control aba2Obs"  name="aba2Obs" id="aba2Obs" >
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> <!-- Fim da div tab-pane aba2 -->
+
+    <div class="tab-pane" id="tab3">
+
+      <br>
+
+      <div class="form-group">
+        <input type="text" class="hide" name="aba3Index" id="aba3Index">
+      </div>
+      <div class="form-group">
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default pull-right" id="btnNovo3">Nova Observa&ccedil;&atilde;o</button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-condensed" id="tabelaAba3" tablename="tabelaAba3" noaddbutton="true" nodeletebutton="true">
+          <thead>
+            <tr>
+              <th width="100%"><label for="aba3Obs">Observa&ccedil;&atilde;o</label></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="limpaTR">
+              <td width="100%">
+                <div class="label-field">
+                  <input type="text" class="form-control aba3Obs"  name="aba3Obs" id="aba3Obs" >
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> <!-- Fim da div tab-pane aba3 -->
+
+    <!--
+    <div class="tab-pane" id="tab4">
+      <br>
+
+      <div class="form-group">
+        <input type="text" class="hide" name="aba4Index" id="aba4Index">
+      </div>
+      <div class="form-group">
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default pull-right" id="btnNovo4">Nova Observa&ccedil;&atilde;o</button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-condensed" id="tabelaAba4" tablename="tabelaAba4" noaddbutton="true" nodeletebutton="true">
+          <thead>
+            <tr>
+              <th width="100%"><label for="aba4Obs">Observa&ccedil;&atilde;o</label></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="limpaTR">
+              <td width="100%">
+                <div class="label-field">
+                  <input type="text" class="form-control aba4Obs"  name="aba4Obs" id="aba4Obs" >
+                </div>
+              </td>             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>  Fim da div tab-pane aba4 -->  
+
+    <div class="tab-pane" id="tab5">
+      <br>
+
+      <div class="form-group">
+        <input type="text" class="hide" name="aba5Index" id="aba5Index">
+      </div>
+      <div class="form-group">
+        <div class="col-md-12">
+          <button type="button" class="btn btn-default pull-right" id="btnNovo5">Nova Observa&ccedil;&atilde;o</button>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-bordered table-condensed" id="tabelaAba5" tablename="tabelaAba5" noaddbutton="true" nodeletebutton="true">
+          <thead>
+            <tr>
+              <th width="100%"><label for="aba5Obs">Observa&ccedil;&atilde;o</label></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="limpaTR">
+              <td width="100%">
+                <div class="label-field">
+                  <input type="text" class="form-control aba5Obs"  name="aba5Obs" id="aba5Obs" >
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> <!-- Fim da div tab-pane aba5 -->
+  </div> <!-- Fim da div tab-content-->
+
+</form>
+</div>
+</body>
+</html>

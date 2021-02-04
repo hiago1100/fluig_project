@@ -1,0 +1,7 @@
+<div ng-show="documento">
+    <div style='height:inherit' ng-include='template' onload='start()'></div>
+</div>
+
+<div ng-if="erro" class="alert alert-danger animate" role="alert">
+    {{erro}}
+</div>

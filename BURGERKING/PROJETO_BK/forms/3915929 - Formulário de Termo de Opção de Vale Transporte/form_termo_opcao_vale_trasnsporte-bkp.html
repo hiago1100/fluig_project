@@ -1,0 +1,668 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="_css/fluig-style-guide.min.css" />
+    <link type="text/css" rel="stylesheet" href="_css/fluig-style-guide-docs.min.css" />
+    <link type="text/css" rel="stylesheet" href="_css/fluig-style-guide-flat.min.css" />
+    <link type="text/css" rel="stylesheet" href="http://oncoclinicastst.fluig.com/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+
+
+    <link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+    <link type="text/css" rel="stylesheet" href="_css/main.css" />
+
+    <script type="text/javascript">
+      var beforeSendValidate = (current, next) => {
+        if(!confirm("Tem certeza que imprimiu o formulário? (necessário para envio na próxima etapa")) {
+          return false;
+        }
+      }
+    </script>
+
+</head>
+<body onload="initiator()">
+<div class="sheet fluig-style-guide">
+
+    <div id="secaoFormulario">
+        <form name="name_form" id="id_form" role="form">
+            <div class="panel panel-default	">
+                <div class="tab-content">
+                    <!-- Definição de campos -->
+                    <div class="tab-pane fade in active" id="configuracoes">
+
+                        <div class="row" id="cabecalho"><!-- Início da Row -->
+                            <!-- Logo Burguer King -->
+                            <div class="col-md-2 col-sm-2 col-xs-2" id="id_logo_bking">
+                                <img src="_img/BK_logo.png" id="id_logo_bking" data-toggle="tooltip" title="Logo Burger King" />
+                            </div><!-- Fim do Logo Burguer King -->
+
+                            <!-- Título do Formulário -->
+                            <div class="col-md-8 col-sm-8 col-xs-8 title" id="id_titulo_pagina">
+                                <h1><b>TERMO DE OPÇÃO VALE TRANSPORTE (VT)</b></h1>
+                            </div><!-- Título do Formulário -->
+
+                            <div class="col-md-2 col-sm-2 col-xs-2"><!-- Centraliza Título --></div>
+                        </div><!-- Fim da Row -->
+
+                        <hr> <!-- LINHA -->
+
+                        <div class="no-print">
+
+                            <div class="row no-print"><!-- Início da Row -->
+                                <!-- Campo Tipo de Ação -->
+                                <div class="col-md-12 col-sm-12 col-xs-12" id="id_radio_button">
+                                    <div class="input-group" id="id_btn-group">
+                                        <label class="radio-inline">
+                                            <input type="radio" class="tipoCad" name="acao" id="cadastro" value="cadastro" data-toggle="tooltip" title="Cadastrar Vale Transporte" onclick="escondeDiv()"> Cadastro
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" class="tipoCad" name="acao" id="renovacao" value="renovacao" data-toggle="tooltip" title="Renovar Vale Transporte" onclick="escondeDiv()"> Renovação
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" class="tipoCad" name="acao" id="exclusao" value="exclusao" data-toggle="tooltip" title="Excluir Vale Transporte" onclick="escondeDiv()"> Exclusão
+                                        </label>
+                                    </div>
+
+                                    <!--
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-acao" id="id_acao_cadastro" data-toggle="tooltip" title="Cadastrar Vale Transporte" data-value="cadastro">CADASTRO</button>
+                                        <button type="button" class="btn btn-default btn-acao" id="id_acao_renovacao" data-toggle="tooltip" title="Renovar Vale Transporte" data-value="renovacao">RENOVAÇÃO</button>
+                                        <button type="button" class="btn btn-default btn-acao" id="id_acao_exclusao" data-toggle="tooltip" title="Excluir Vale Transporte" data-value="exlusao">EXCLUSÃO</button>
+                                    </div>
+                                    -->
+
+                                </div><!-- Fim do campo Tipo de Ação -->
+                            </div><!-- Fim da Row -->
+                        </div>
+
+                        <div class="row no-print">
+                            <div class="col-md-12 col-sm-12 col-xs-12" >
+                                <div class="form-group" >
+
+                                    <!--
+                                    <select name="funcionario1" id="funcionario1" dataset="colleague" datasetkey="colleagueId" datasetvalue="colleagueName"></select>
+                                    -->
+
+                                    <label>Funcionário cadastrado</label>
+                                    <input type="zoom"
+                                           id="funcionario"
+                                           name="funcionario"
+                                           data-zoom="{
+                                                'displayKey': 'colleagueName',
+                                                'datasetId': 'colleague',
+                                                'placeholder': 'Busque pelo CPF do colaborador',
+                                                'filterValues':'active,true',
+                                                'fields': [
+                                                    {
+                                                        'field':'colleagueId',
+                                                        'label':'ID'
+                                                    },
+                                                    {
+                                                        'field':'colleagueName',
+                                                        'label':'Nome',
+                                                        'standard':'true'
+                                                    }
+                                                ]
+                                            }"
+                                    />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="no-print"> <!-- LINHA -->
+
+                        <div class="row row-space"><!-- Início Row -->
+                            <!-- Campo Nome Completo -->
+                            <div class="col-md-5 col-sm-5 col-xs-5" id="div_nome_completo">
+                                <label for="id_nome">NOME DO COLABORADOR <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" name="nome" id="id_nome" data-toggle="tooltip" title="Nome completo" class="valida-char form-control" maxlength="" placeholder="Nome Completo" onkeypress="only_char(event)" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_nome_erro">
+                                        <output id="id_nome_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Nome Completo -->
+
+                            <!-- Campo Matrícula -->
+                            <div class="col-md-3 col-sm-3 col-xs-3" id="div_num_matricula">
+                                <label for="id_matricula">MATRÍCULA <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" name="matricula" id="id_matricula" data-toggle="tooltip" title="Nº de matrícula" class="valida-num form-control" maxlength="13" placeholder="xx.xxxxxxxx-x" onkeypress="only_num(event)" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_matricula_erro">
+                                        <output id="id_matricula_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Matrícula -->
+
+                            <!-- Campo Data de Admissão -->
+                            <div class="col-md-4 col-sm-4 col-xs-4" id="div_data_admissao">
+                                <label for="id_admissao">ADMISSÃO <span class="no-print">*</span></label>
+                                <div class="form-group">
+                                    <input type="date" name="data_admissao" id="id_admissao" data-toggle="tooltip" title="Data de admissão" class="valida-num form-control" maxlength="" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_admissao_erro">
+                                        <output id="id_admissao_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Data de Admissão -->
+                        </div><!-- Fim Row -->
+
+                        <div class="row row-space-2"><!-- Início Row -->
+                            <!-- Campo Local de Trabalho -->
+                            <div class="col-md-7 col-sm-7 col-xs-7" id="div_local_trabalho">
+                                <label for="id_local_trabalho">LOCAL DE TRABALHO (NOME RESTAURANTE) <span class="no-print">*</span></label>
+                                <div class="form-group">
+                                    <select type="text" name="local_trabalho" id="id_local_trabalho" class="valida-char form-control" title="Endereço do restaurante" required>
+                                        <option value="teste">BKN</option>
+                                    </select>
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_local_trabalho_erro">
+                                        <output id="id_local_trabalho_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Local de Trabalho -->
+
+                            <!-- Campo Cargo -->
+                            <div class="col-md-5 col-sm-5 col-xs-5" id="div_cargo_funcionario">
+                                <div class="form-group">
+                                    <label for="id_cargo">CARGO <span class="no-print">*</span></label>
+                                    <div class="form-group">
+                                        <select type="text" name="cargo" id="id_cargo" class="valida-char form-control" title="Cargo do funcionário" dataset="cad_cargos_juridico" datasetkey="NomedoCargos" datasetvalue="NomedoCargos" required>
+                                            <option value="">------</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_cargo_erro">
+                                        <output id="id_cargo_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Cargo -->
+                        </div><!-- Fim Row -->
+
+                        <div class="row row-space"><!-- Início Row -->
+                            <!-- Campo Registro Geral -->
+                            <div class="col-md-4 col-xs-4" id="div_registro_geral">
+                                <label for="id_rg">RG <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" data-toggle="tooltip" title="Nº do RG" class="valida-num form-control" name="rg" id="id_rg" maxlength="12" placeholder="xx.xxx.xxx-x" onkeydown="aplica_mascara( this, mascara_rg )" onkeypress="only_num(event)" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_rg_erro">
+                                        <output id="id_rg_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Registro Geral -->
+
+                            <!-- Campo Cadastro de Pessoa Física -->
+                            <div class="col-md-4 col-xs-4" id="div_cod_cpf">
+                                <label for="id_cpf">CPF <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" data-toggle="tooltip" title="Nº do CPF" class="valida-num form-control" name="cpf" id="id_cpf" maxlength="14" placeholder="xxx.xxx.xxx-xx" onkeydown="aplica_mascara( this, mascara_cpf )" onkeypress="only_num(event)" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_cpf_erro">
+                                        <output id="id_cpf_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Cadastro de Pessoa Física -->
+
+                            <!-- Campo Data de Nascimento -->
+                            <div class="col-md-4 col-xs-4" id="div_data_nascimento">
+                                <label for="id_nascimento">DATA DE NASCIMENTO <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="date" data-toggle="tooltip" title="Data de nascimento" class="valida-num form-control" name="data_nascimento" id="id_nascimento" maxlength="" placeholder="" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_nascimento_erro">
+                                        <output id="id_nascimento_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Data de Admissão -->
+                        </div><!-- Fim Row -->
+
+                        <div class="row row-space"><!-- Início Row -->
+
+                            <!-- Campo Código de Endereço Postal -->
+                            <div class="col-md-3 col-xs-4" id="div_num_cep">
+                                <label for="id_cep">CEP <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" data-toggle="tooltip" title="Nº do CEP" class="valida-num form-control" name="cep" id="id_cep" maxlength="9" placeholder="xxxxx-xxx" onkeydown="aplica_mascara( this, mascara_cep )" onkeypress="only_num(event)" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_cep_erro">
+                                        <output id="id_cep_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Código de Endereço Postal -->
+
+                        </div>
+
+                        <div class="row row-space">
+
+                            <!-- Campo Endereço Residencial -->
+                            <div class="col-md-6 col-xs-8" id="div_endereço_residencial">
+                                <label for="id_residencia">ENDEREÇO RESIDENCIAL <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" data-toggle="tooltip" title="Endereço residencial" class="valida-char form-control" name="logradouro" id="id_residencia" maxlength="" placeholder="Rua, Avenida, Praça..." required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_residencia_erro">
+                                        <output id="id_residencia_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Endereço Residencial -->
+
+                            <!-- Campo Número -->
+                            <div class="col-md-3 col-xs-4" id="div_numero">
+                                <label for="id_numero">NÚMERO <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" data-toggle="tooltip" title="Endereço residencial" class="valida-char form-control" name="numero" id="id_numero" maxlength="" placeholder="nº" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_numero_erro">
+                                        <output id="id_numero_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Número -->
+
+
+                        </div><!-- Fim Row -->
+
+                        <div class="row"><!-- Início Row -->
+
+                            <!-- Campo Bairro -->
+                            <div class="col-md-3 col-xs-7" id="div_nome_bairro">
+                                <label for="id_bairro">BAIRRO <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" data-toggle="tooltip" title="Nome do bairro" class="valida-char form-control" name="bairro" id="id_bairro" maxlength="" placeholder="Nome do Bairro" onkeypress="only_char(event)" required />
+                                </div>
+                                <div class="alert">
+                                        <span class="tooltiptext" id="id_bairro_erro">
+                                        <output id="id_bairro_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do Bairro -->
+
+
+                            <!-- Campo Município -->
+                            <div class="col-md-3 col-xs-3" id="div_nome_municipio">
+                                <label for="id_municipio">MUNICÍPIO <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" data-toggle="tooltip" title="Nome do município" class="valida-char form-control" name="municipio" id="id_municipio" maxlength="" placeholder="Nome do Município" onkeypress="only_char(event)" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_municipio_erro">
+                                        <output id="id_municipio_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Município -->
+
+                            <!-- Campo Estado -->
+                            <div class="col-md-3 col-xs-2" id="div_nome_estado">
+                                <label for="id_estado">ESTADO <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="text" data-toggle="tooltip" title="Nome do estado" class="valida-char form-control" name="estado" id="id_estado" maxlength="" placeholder="Nome do Estado" onkeypress="only_char(event)" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_estado_erro">
+                                        <output id="id_estado_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Estado -->
+
+
+                        </div><!-- Fim Row -->
+
+                        <div class="row">
+                            <!-- Campo Telefone -->
+                            <div class="col-md-3 col-xs-3" id="div_tel_contato">
+                                <label for="id_telefone">Tel. CONTATO <span class="no-print">*</span></label>
+                                <div class="form-group">
+
+                                    <input type="tel" data-toggle="tooltip" title="Telefone de contato" class="valida-num form-control" name="telefone" id="id_telefone" maxlength="15" placeholder="(xx) xxxxx-xxxx" onkeydown="aplica_mascara( this, mascara_tel )" onkeypress="only_num(event)" required />
+                                </div>
+                                <div class="alert">
+                                    <span class="tooltiptext" id="id_telefone_erro">
+                                        <output id="id_telefone_erro_text"></output>
+                                    </span>
+                                </div>
+                            </div><!-- Fim do campo Telefone -->
+                        </div>
+
+                        <hr> <!-- LINHA -->
+                      <div class="hideDelete">  
+                        <div class="row"><!-- Início Row -->
+                            <!-- Título do Tranporte para Treinamento -->
+                            <div class="col-md-12 title">
+                                <h1><b>VALE TRANSPORTE - TREINAMENTO</b></h1>
+                            </div><!-- Título do Transporte para Treinamento -->
+                        </div><!-- Fim Row -->
+
+                        <div class="row row-space"><!-- Início Row -->
+                            <!-- Campo Local de Treinamento -->
+                            <div class="col-md-5 col-sm-5 col-xs-5" id="div_local_treinamento">
+                                <label for="id_local_treinamento">LOCAL TREINAMENTO </label>
+                                <div class="input-group">
+                                    <div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+                                    <select type="text" class="form-control" name="local_treinamento" id="id_local_treinamento"  title="Endereço do treinamento">
+                                        <option value="">------</option>
+                                        <option value="avenida">Av...</option>
+                                        <option value="rua">Rua...</option>
+                                        <option value="praca">Praça...</option>
+                                    </select>
+                                </div>
+                            </div><!-- Fim do Campo Local de Trabalho -->
+
+                            <!-- Campo Início do Treinamento -->
+                            <div class="col-md-3 col-sm-3 col-xs-3" id="div_ini_tren">
+                                <div id="id_label_tren">
+                                    <label for="id_ini_tren">PERÍODO TREINAMENTO </label>
+                                </div>
+                                <div class="form-group">
+
+                                    <input type="date" data-toggle="tooltip" title="Início do treinamento" class="form-control" name="inicio_treinamento" id="id_ini_tren" maxlength="" placeholder="">
+                                </div>
+                            </div><!-- Fim do Campo Início do Treinamento -->
+
+                            <!-- Conectivo A -->
+                            <div class="col-md-1 col-sm-1 col-xs-1" id="div_a_tren">
+                                <label for="id_a_tren"></label>
+                                <div class="">
+                                    <p id="id_a_tren">A</p>
+                                </div>
+                            </div><!-- Fim do Conectivo A -->
+
+                            <!-- Campo Término do Treinamento -->
+                            <div class="col-md-3 col-sm-3 col-xs-3" id="div_fim_tren">
+                                <label for="id_fim_tren">&nbsp; </label>
+                                <div class="form-group">
+
+                                    <input type="date" data-toggle="tooltip" title="Término do treinamnto" class="form-control" name="fim_treinamento" id="id_fim_tren" maxlength="" placeholder="">
+                                </div>
+                            </div><!-- Fim do Campo Término do Treinamento -->
+                        </div><!-- Fim Row -->
+
+
+                        <div class="row">
+                            <form>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td colspan="3"> TRANSPORTES </td><td colspan="3"> QUANTIDADES </td>
+                                    </tr>
+                                    <tr>
+                                        <td> OPERADORA </td><td> CÓD. FORN. </td><td> VALOR (R$) </td><td> IDA </td><td> VOLTA </td><td> TOTAL (R$) </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-xs-5 fit_input td_1_tren">
+                                            <input type="text" id="id_oper_1_tren" class="unlock line_1_tren" name="name_oper_1_tren" onkeypress="only_char(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_1_tren active">
+                                            <input type="text" id="id_forn_1_tren" class="unlock line_1_tren" name="name_forn_1_tren" maxlength="11" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_1_tren active">
+                                            <input type="number" id="id_valor_1_tren" class="unlock line_1_tren" name="name_valor_1_tren" min="0" step="0.05" onchange="calc_vale(this)" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_1_tren">
+                                            <input type="number" id="id_ida_1_tren" class="unlock line_1_tren" name="name_ida_1_tren" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_1_tren">
+                                            <input type="number" id="id_volta_1_tren" class="unlock line_1_tren" name="name_volta_1_tren" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_1_tren active">
+                                            <input type="text" id="id_total_1_tren" class="unlock line_1_tren" name="name_total_1_tren" readonly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-xs-5 fit_input td_2_tren">
+                                            <input type="text" id="id_oper_2_tren" class="unlock line_2_tren" name="name_oper_2_tren" onkeypress="only_char(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_2_tren active">
+                                            <input type="text" id="id_forn_2_tren" class="unlock line_2_tren" name="name_forn_2_tren" maxlength="11" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_2_tren active">
+                                            <input type="number" id="id_valor_2_tren" class="unlock line_2_tren" name="name_valor_2_tren" min="0" step="0.05" onchange="calc_vale(this)" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_2_tren">
+                                            <input type="number" id="id_ida_2_tren" class="unlock line_2_tren" name="name_ida_2_tren" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_2_tren">
+                                            <input type="number" id="id_volta_2_tren" class="unlock line_2_tren" name="name_volta_2_tren" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_2_tren active">
+                                            <input type="text" id="id_total_2_tren" class="unlock line_2_tren" name="name_total_2_tren" readonly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-xs-5 fit_input td_3_tren">
+                                            <input type="text" id="id_oper_3_tren" class="unlock line_3_tren" name="name_oper_3_tren" onkeypress="only_char(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_3_tren active">
+                                            <input type="text" id="id_forn_3_tren" class="unlock line_3_tren" name="name_forn_3_tren" maxlength="11" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_3_tren active">
+                                            <input type="number" id="id_valor_3_tren" class="unlock line_3_tren" name="name_valor_3_tren" min="0" step="0.05" onchange="calc_vale(this)" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_3_tren">
+                                            <input type="number" id="id_ida_3_tren" class="unlock line_3_tren" name="name_ida_3_tren" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_3_tren">
+                                            <input type="number" id="id_volta_3_tren" class="unlock line_3_tren" name="name_volta_3_tren" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_3_tren active">
+                                            <input type="text" id="id_total_3_tren" class="unlock line_3_tren" name="name_total_3_tren" readonly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-xs-5 fit_input td_4_tren">
+                                            <input type="text" id="id_oper_4_tren" class="line_4_tren" name="name_oper_4_tren" onkeypress="only_char(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_4_tren active">
+                                            <input type="text" id="id_forn_4_tren" class="line_4_tren" name="name_forn_4_tren" maxlength="11" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_4_tren active">
+                                            <input type="number" id="id_valor_4_tren" class="line_4_tren" name="name_valor_4_tren" min="0" step="0.05" onchange="calc_vale(this)" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_4_tren">
+                                            <input type="number" id="id_ida_4_tren" class="line_4_tren" name="name_ida_4_tren" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_4_tren">
+                                            <input type="number" id="id_volta_4_tren" class="line_4_tren" name="name_volta_4_tren" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_4_tren active">
+                                            <input type="text" id="id_total_4_tren" class="line_4_tren" name="name_total_4_tren" readonly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" id="total_VT"> TOTAL DE VALE TRANPORTE DIÁRIO </td>
+                                        <td class="col-xs-2 fit_input active">
+                                            <input type="text" id="id_total_dia_tren" name="name_total_dia_tren" readonly />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                        
+
+                        <div class="row" id="id_tab_trabalho">
+                            <!-- Título do Transporte para Local do Trabalho -->
+                            <div class="form_group ">
+                                <div class="col-md-12 title">
+                                    <h1 id="h1_space"><b>VALE TRANSPORTE - LOCAL DE TRABALHO</b></h1>
+                                </div>
+                            </div><!-- Título do Transporte para Local do Trabalho -->
+                        </div>
+
+                        <div class="row"><!-- Início Row -->
+                            <form>
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td colspan="3"> TRANSPORTES </td><td colspan="3"> QUANTIDADES </td>
+                                    </tr>
+                                    <tr>
+                                        <td> OPERADORA </td><td> CÓD. FORN. </td><td> VALOR (R$) </td><td> IDA </td><td> VOLTA </td><td> TOTAL (R$) </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-xs-5 fit_input td_1_trab">
+                                            <input type="text" id="id_oper_1_trab" class="unlock line_1_trab" name="name_oper_1_trab" onkeypress="only_char(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_1_trab active">
+                                            <input type="text" id="id_forn_1_trab" class="unlock line_1_trab" name="name_forn_1_trab" maxlength="11" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_1_trab active">
+                                            <input type="number" id="id_valor_1_trab" class="unlock line_1_trab" name="name_valor_1_trab" min="0" step="0.05" onchange="calc_vale(this)" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_1_trab">
+                                            <input type="number" id="id_ida_1_trab" class="unlock line_1_trab" name="name_ida_1_trab" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_1_trab">
+                                            <input type="number" id="id_volta_1_trab" class="unlock line_1_trab" name="name_volta_1_trab" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_1_trab active">
+                                            <input type="text" id="id_total_1_trab" class="line_1_trab" name="name_total_1_trab" readonly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-xs-5 fit_input td_2_trab">
+                                            <input type="text" id="id_oper_2_trab" class="unlock line_2_trab" name="name_oper_2_trab" onkeypress="only_char(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_2_trab active">
+                                            <input type="text" id="id_forn_2_trab" class="unlock line_2_trab" name="name_forn_2_trab" maxlength="11" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_2_trab active">
+                                            <input type="number" id="id_valor_2_trab" class="unlock line_2_trab" name="name_valor_2_trab" min="0" step="0.05" onchange="calc_vale(this)" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_2_trab">
+                                            <input type="number" id="id_ida_2_trab" class="unlock line_2_trab" name="name_ida_2_trab" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_2_trab">
+                                            <input type="number" id="id_volta_2_trab" class="unlock line_2_trab" name="name_volta_2_trab" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_2_trab active">
+                                            <input type="text" id="id_total_2_trab" class=" line_2_trab" name="name_total_2_trab" readonly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-xs-5 fit_input td_3_trab">
+                                            <input type="text" id="id_oper_3_trab" class="unlock line_3_trab" name="name_oper_3_trab" onkeypress="only_char(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_3_trab active">
+                                            <input type="text" id="id_forn_3_trab" class="unlock line_3_trab" name="name_forn_3_trab" maxlength="11" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_3_trab active">
+                                            <input type="number" id="id_valor_3_trab" class="unlock line_3_trab" name="name_valor_3_trab" min="0" step="0.05"  onchange="calc_vale(this)" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_3_trab">
+                                            <input type="number" id="id_ida_3_trab" class="unlock line_3_trab" name="name_ida_3_trab" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_3_trab">
+                                            <input type="number" id="id_volta_3_trab" class="unlock line_3_trab" name="name_volta_3_trab" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_3_trab active">
+                                            <input type="text" id="id_total_3_trab" class="line_3_trab" name="name_total_3_trab" readonly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-xs-5 fit_input td_4_trab">
+                                            <input type="text" id="id_oper_4_trab" class="line_4_trab" name="name_oper_4_trab" onkeypress="only_char(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_4_trab active">
+                                            <input type="text" id="id_forn_4_trab" class="line_4_trab" name="name_forn_4_trab" maxlength="11" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_4_trab active">
+                                            <input type="number" id="id_valor_4_trab" class="line_4_trab" name="name_valor_4_trab" min="0" step="0.05" onchange="calc_vale(this)" onkeypress="only_num(event)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_4_trab">
+                                            <input type="number" id="id_ida_4_trab" class="line_4_trab" name="name_ida_4_trab" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-1 fit_input td_4_trab">
+                                            <input type="number" id="id_volta_4_trab" class="line_4_trab" name="name_volta_4_trab" min="0" max="4" onchange="calc_vale(this)" onkeypress="only_0_4(event, this)" />
+                                        </td>
+                                        <td class="col-xs-2 fit_input td_4_trab active">
+                                            <input type="text" id="id_total_4_trab" class="line_4_trab" name="name_total_4_trab" readonly />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5" id="total_VT"> TOTAL DE VALE TRANPORTE DIÁRIO </td>
+                                        <td class="col-xs-2 fit_input active">
+                                            <input type="text" name="name_total_dia_trabalho" id="id_total_dia_trab" readonly />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                        </div>
+
+
+                        <div class="row no-print"><!-- Início Row -->
+                            <div id="id_grupo_print">
+                                <div class="col-md-2" id="id_grupo_print_center">
+                                    <div id="editor"></div>
+                                    <input type="submit" name="name_print" id="id_print" class="btn btn-default btn-lg btn-block" value="IMPRIMIR PDF" onclick="valida_impressao(event, this)" />
+                                </div>
+                            </div>
+                        </div><!-- Fim Row -->
+
+                        <!--div class="row"><-- Início Row --
+                            <div class="col-md-2">
+                                <div id="editor"></div>
+                                <input type="submit" name="name_print" id="id_print" class="btn btn-default btn-lg btn-block" value="IMPRIMIR PDF" onclick=""/>
+                            </div>--
+                        </div><-- Fim Row -->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="secaoAprovacao">
+        <form name="name_form" role="form">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Aprovar?
+                            </div>
+                            <div class="panel-body">
+                                <div class="radio">
+                                    <label><input type="radio" name="aprovado" value="1" /> Sim</label>
+                                </div>
+                                <div class="radio">
+                                    <label><input type="radio" name="aprovado" value="0" /> Não</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript" charset="utf-8" src="_script/main.js"></script>
+
+</html>

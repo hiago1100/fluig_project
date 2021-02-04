@@ -1,0 +1,48 @@
+<div class="panel panel-default" ng-if="documento.Pagamentos.length>0">
+    <div class="panel-heading fs-cursor-pointer" ng-click="pagamentosCollapsed=!pagamentosCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': pagamentosCollapsed}">
+                Pagamentos
+            </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse animated" ng-class="{'in': pagamentosCollapsed}">
+        <div class="panel-body">
+            <i ng-if="!documento.Pagamentos || documento.Pagamentos.length<=0">Pagamentos não informados</i>
+            <div class="row" ng-if="documento.Pagamentos.length>0">
+                
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead class="hidden-xs">
+                            <tr>
+                                <th>
+                                    <div class="col-sm-3">Data Pagamento</div>
+                                    <div class="col-sm-3">Percentual</div>
+                                    <div class="col-sm-6">Comentários</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="pagamento in documento.Pagamentos">
+                                <td>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Data Pagamento</label>
+                                        <p>{{pagamento.dataPagamento | date}}</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Percentual</label>
+                                        <p>{{pagamento.percentual | percentage}}</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="visible-xs-block">Comentários</label>
+                                        <p>{{pagamento.comentarios || 'Não informado'}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

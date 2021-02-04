@@ -1,0 +1,2270 @@
+<!DOCTYPE> 
+<html>
+<head>
+  <title>Resumo Caixa</title>
+  <link type="text/css" rel="stylesheet" media="all" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script type="text/javascript" src="http://viaindicadores.fluig.com:8280/webdesk/vcXMLRPC.js"></script>
+
+
+
+
+  <script type="text/javascript">
+
+
+    function consultaRegistros(tipo){
+
+      
+
+      dataAtual2 = new Date();
+      mesAtual2  = dataAtual2.getMonth();
+
+      if (tipo == "onLoad") {
+
+        var mes   = mesAtual2;
+        var mes1  = mesAtual2;
+        var mes2  = mesAtual2;
+        var mes3  = mesAtual2;
+        var mes4  = mesAtual2;
+        var mes5  = mesAtual2;
+
+
+      } else {
+        var mes  = $("#mesSelecionado").val();
+        var mes1 = $("#mesSelecionado1").val();
+        var mes2 = $("#mesSelecionado2").val();
+        var mes3 = $("#mesSelecionado3").val();
+        var mes4 = $("#mesSelecionado4").val();
+        var mes5 = $("#mesSelecionado5").val();
+      } 
+
+
+      if (mesAtual2 == $(".janeiro").val()) {
+
+       $(".janeiro").attr("selected","selected"); 
+
+     }
+     if (mesAtual2 == $(".fevereiro").val()) {
+
+       $(".fevereiro").attr("selected","selected"); 
+
+     }
+     if (mesAtual2 == $(".março").val()) {
+
+       $(".março").attr("selected","selected"); 
+
+     }
+     if (mesAtual2 == $(".abril").val()) {
+
+       $(".abril").attr("selected","selected"); 
+
+     }
+     if (mesAtual2 == $(".maio").val()) {
+
+       $(".maio").attr("selected","selected"); 
+
+     }
+     if (mesAtual2 == $(".junho").val()) {
+
+       $(".junho").attr("selected","selected"); 
+
+     } if (mesAtual2 == $(".julho").val()) {
+
+       $(".julho").attr("selected","selected"); 
+
+     }if (mesAtual2 == $(".agosto").val()) {
+
+       $(".agosto").attr("selected","selected"); 
+
+     }if (mesAtual2 == $(".setembro").val()) {
+
+       $(".setembro").attr("selected","selected"); 
+
+     }if (mesAtual2 == $(".outubro").val()) {
+
+       $(".outubro").attr("selected","selected"); 
+
+     }if (mesAtual2 == $(".novembro").val()) {
+
+       $(".novembro").attr("selected","selected"); 
+
+     }if (mesAtual2 == $(".dezembro").val()) {
+
+       $(".dezembro").attr("selected","selected"); 
+
+     }
+
+     // var constraints   = null ;
+
+     var fields = null;
+     var sortingFields = new Array("dataLancamento"); 
+
+     var lojaAux;
+     var dataLancamentoAux;
+     var documentoAux;
+     var solicitacaoAux;
+
+     var valorAnoAnt = 0;
+     var valorAnoAnt1 = 0;
+     var valorAnoAnt2 = 0;
+     var valorAnoAnt3 = 0;
+     var valorAnoAnt4 = 0;
+     var valorAnoAnt5 = 0;
+
+     var textoAux = "";
+     var textoAux1 = "";
+     var textoAux2 = "";
+     var textoAux3 = "";
+     var textoAux4 = "";
+     var textoAux5 = "";
+
+     var contador = 0;
+     var vlTotalEntAux;
+     var vlTotalSaiAux;
+
+     var vlTotalEntBerrini = 0;
+     var vlTotalSaiBerrini = 0;
+     var vlTotalBerrini = 0;
+     var vlTotalEnBerriniAnt = 0;
+     var vlTotalSaiBerriniAnt = 0;
+     var vlTotalBerriniAnt = 0;
+     var vlTotalEnBerriniAtual = 0;
+     var vlTotalSaiBerriniAtual = 0;
+     var vlTotalBerriniAtual = 0;
+
+     var vlTotalEnMorumbi = 0;
+     var vlTotalSaiMorumbi = 0;
+     var vlTotalMorumbi = 0;
+     var vlTotalEnMorumbiAnt = 0;
+     var vlTotalsaiMorumbiAnt = 0;
+     var vlTotalMorumbiAnt = 0;
+     var vlTotalEnMorumbiAtual = 0;
+     var vlTotalSaiMorumbiAtual = 0;
+     var vlTotalMorumbiAtual = 0;
+
+     var vlTotalEntPaulista = 0;
+     var vlTotalSaiPaulista = 0;
+     var vlTotalPaulista = 0;
+     var vlTotalEnPaulistaAnt = 0;
+     var vlTotalSaiPaulistaAnt = 0;
+     var vlTotalPaulistaAnt = 0;
+     var vlTotalEnPaulistaAtual = 0;
+     var vlTotalSaiPaulistaAtual = 0;
+     var vlTotalPaulistaAtual = 0;
+
+     var vlTotalEnBonno = 0;
+     var vlTotalSaiBonno = 0;
+     var vlTotalBonno = 0;
+     var vlTotalGeralBonno =0;
+     var vlTotalEnBonnoAnt = 0;
+     var vlTotalSaiBonnoAnt = 0;
+     var vlTotalBonnoAnt = 0;
+     var vlTotalEnBonnoAtual = 0;
+     var vlTotalSaiBonnoAtual = 0;
+     var vlTotalBonnoAtual = 0;
+
+     var vlTotalEnRecord = 0;
+     var vlTotalSaiRecord = 0;
+     var vlTotalRecord = 0;
+     var vlTotalEnRecordAnt = 0;
+     var vlTotalSaiRecordAnt = 0;
+     var vlTotalRecordAnt = 0;
+     var vlTotalEnRecordAtual = 0;
+     var vlTotalSaiRecordAtual = 0;
+     var vlTotalRecordAtual = 0;
+
+
+     var vlTotalEnPenha = 0;
+     var vlTotalSaiPenha = 0;
+     var vlTotalPenha = 0;
+     var vlTotalEnPenhaAnt = 0;
+     var vlTotalSaiPenhaAnt = 0;
+     var vlTotalPenhaAnt = 0;
+     var vlTotalEnPenhaAtual = 0;
+     var vlTotalSaiPenhaAtual = 0;
+     var vlTotalPenhaAtual = 0;
+     var recorrenteBerrini = 0;
+     var recorrentePaulista = 0;
+     var recorrenteBonno = 0;
+     var recorrentePenha = 0;
+     var recorrenteRecord = 0;
+     var recorrenteMorumbi = 0;
+
+     var totalLiquido = 0;
+
+
+
+      var e = document.getElementById("anoSolicita");
+      var itemSelecionado = e.options[e.selectedIndex].text;
+
+      var e1 = document.getElementById("anoSolicita1");
+      var itemSelecionado1 = e1.options[e1.selectedIndex].text;
+
+      var e2 = document.getElementById("anoSolicita2");
+      var itemSelecionado2 = e2.options[e2.selectedIndex].text;
+
+      var e3 = document.getElementById("anoSolicita3");
+      var itemSelecionado3 = e3.options[e3.selectedIndex].text;
+
+      var e4 = document.getElementById("anoSolicita4");
+      var itemSelecionado4 = e4.options[e4.selectedIndex].text;     
+
+      var e5 = document.getElementById("anoSolicita5");
+      var itemSelecionado5 = e5.options[e5.selectedIndex].text;
+
+
+     //Busca o dataset
+
+
+  var c1 = DatasetFactory.createConstraint("metadata#active",true,true, ConstraintType.MUST);
+    var constraints   = new Array(c1);
+
+
+     try {
+
+// testeGrillBackup
+//GHCaixa_Interno_novo "verdadeiro"
+//caixainterno_testes
+
+  
+var dataset = DatasetFactory.getDataset("GHCaixa_Interno_novo", fields, constraints, sortingFields);
+
+
+for(i = 0; i < dataset.values.length; i++) {
+
+  
+
+  
+ var row = dataset.values[i];
+
+ documentoAux = row["documento"];
+ dataLancamentoAux = row["dataLancamento"];  
+
+ emitenteAux = row["emitente"];
+ lojaAux = row["loja"];
+ tipoAux = row["tipo"];
+ entradaAux = row["entrada"];
+ saidaAux = row["saida"];
+ solicitacaoAux = row["numSolicitacao"];
+ tipoEntradaAux = row["tipoEntrada"];
+ var valorMovto = row["vlTotal"];
+
+
+
+ if(tipoAux ==  "entrada" || tipoAux == "ENT") {
+   vlTotalEntAux = row["vlTotal"];
+   vlTotalSaiAux = 0;
+
+ }else if(tipoAux ==  "saida" || tipoAux == "SAI"){
+   vlTotalSaiAux = row["vlTotal"];
+   vlTotalEntAux = 0;
+
+ }
+
+
+ vlTotalEntAux = vlTotalEntAux + "";
+ vlTotalSaiAux = vlTotalSaiAux + "";
+ vlTotalEntAux = vlTotalEntAux.replace(",",".");
+ vlTotalSaiAux = vlTotalSaiAux.replace(",",".");
+ vlTotalEntAux = parseFloat(vlTotalEntAux);
+ vlTotalSaiAux = parseFloat(vlTotalSaiAux);
+
+ dataAtual = new Date();
+ mesAtual = dataAtual.getMonth();
+
+
+
+
+ switch (lojaAux){
+   case "Berrini":
+   case "WZ Berrini":
+
+
+
+   if (dataLancamentoAux != null) {
+     var dataSplit = dataLancamentoAux.split("/"); 
+
+     var mesLancamento =  dataSplit[1] - 1;
+
+
+     if (mesAtual == mesLancamento) {
+       vlTotalEntBerrini = vlTotalEntBerrini + vlTotalEntAux;
+       vlTotalSaiBerrini = vlTotalSaiBerrini + vlTotalSaiAux; 
+       vlTotalBerrini    = vlTotalEntBerrini - vlTotalSaiBerrini;
+     }
+
+
+     if (mesLancamento < mes) {                
+      vlTotalEnBerriniAnt  = vlTotalEnBerriniAnt  +  vlTotalEntAux;
+      vlTotalSaiBerriniAnt = vlTotalSaiBerriniAnt +  vlTotalSaiAux;  
+      vlTotalBerriniAnt    = vlTotalEnBerriniAnt  -  vlTotalSaiBerriniAnt;           
+
+    }
+
+     //  if (dataSplit[1] == "12" && dataSplit[2] == "2016") {
+
+     //   vlTotalEntBerrini = vlTotalEntBerrini + vlTotalEntAux;
+     //   vlTotalSaiBerrini = vlTotalSaiBerrini + vlTotalSaiAux; 
+     //   valorAnoAnt       = vlTotalEntBerrini - vlTotalSaiBerrini;
+
+     //   resultadoFinal = 0; 
+     //   resultadoFinal =   vlTotalBerriniAnt + vlTotalBerriniAtual;
+
+     // alert(resultadoFinal);
+
+     //  }
+
+
+
+    if (mes == mesLancamento) {
+
+      vlTotalEnBerriniAtual  = vlTotalEnBerriniAtual  +  vlTotalEntAux;
+      vlTotalSaiBerriniAtual = vlTotalSaiBerriniAtual +  vlTotalSaiAux;  
+      vlTotalBerriniAtual    = vlTotalEnBerriniAtual  -  vlTotalSaiBerriniAtual;
+    } 
+
+
+    if (mes == mesLancamento && dataSplit[2] == itemSelecionado) {  
+
+      linkSoclicitacao = '<a href="http://viaindicadores.fluig.com:8280/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID='+solicitacaoAux+'" target="_blank">'+solicitacaoAux+'</a>';
+
+      textoAux += "<tr>";
+
+      textoAux += "<td class=\"td\" align=\"center\">";      
+      textoAux += "<font>"+dataLancamentoAux+"</font></td>";
+
+      textoAux += "<td class=\"td\" align=\"center\">";      
+      textoAux += "<font>"+linkSoclicitacao+"</font></td>";
+
+      textoAux += "<td class=\"td\">";      
+      textoAux += "<font>"+emitenteAux+"</font></td>";
+
+      if (tipoAux == "entrada"){
+
+       textoAux += "<td class=\"td\" align=\"center\">";  
+
+       textoAux += "<font>"+entradaAux+"</font></td>"; 
+
+
+     } else if (tipoAux == "saida"){
+
+       textoAux += "<td class=\"td\" align=\"center\">";  
+
+       textoAux += "<font>"+saidaAux+"</font></td>"; 
+
+     }else if ( tipoAux =="ENT" || tipoAux == "SAI") {
+
+      textoAux += "<td class=\"td\" align=\"center\">";  
+
+      textoAux += "<font>"+tipoEntradaAux+"</font></td>"; 
+
+
+    }
+
+    textoAux += "<td class=\"td\" align=\"center\">";      
+    textoAux += "<font>"+documentoAux+"</font></td>";                    
+
+    if (tipoAux == "entrada" || tipoAux == "saida") {
+
+     textoAux += "<td class=\"td\" align=\"center\">";      
+     textoAux += "<font>"+tipoAux+"</font></td>"; 
+   } else if (tipoAux == "ENT") {
+
+     textoAux += "<td class=\"td\" align=\"center\">";      
+     textoAux += "<font>entrada</font></td>";
+
+   } else if (tipoAux == "SAI") {
+
+     textoAux += "<td class=\"td\" align=\"center\">";      
+     textoAux += "<font>saida</font></td>";
+
+   }
+
+   textoAux += "<td class=\"td\" align=\"center\">";;
+   if(tipoAux ==  "entrada" || tipoAux == "ENT") {
+     textoAux += "<font style=\"color:green;\">";
+   }else{
+
+     textoAux += "<font style=\"color:red;\">";
+   } 
+   textoAux += "" +valorMovto+ "";   
+
+   textoAux += "<font\>";
+
+
+ }  }
+
+ recorrenteBerrini  = vlTotalBerriniAnt + vlTotalBerriniAtual;
+ 
+
+
+
+
+ break; 
+
+
+
+ case "Paulista":
+ case "WM Paulista":
+
+
+ if (dataLancamentoAux != null) {
+   var dataSplit = dataLancamentoAux.split("/"); 
+
+   var mesLancamento =  dataSplit[1] - 1;
+
+
+
+   if (mesAtual == mesLancamento) {  
+
+     vlTotalEntPaulista = vlTotalEntPaulista + vlTotalEntAux;
+     vlTotalSaiPaulista = vlTotalSaiPaulista + vlTotalSaiAux; 
+     vlTotalPaulista    = vlTotalEntPaulista - vlTotalSaiPaulista;
+   }
+
+   if (mesLancamento < mes1){
+
+     vlTotalEnPaulistaAnt  = vlTotalEnPaulistaAnt  +  vlTotalEntAux;
+     vlTotalSaiPaulistaAnt = vlTotalSaiPaulistaAnt +  vlTotalSaiAux;  
+     vlTotalPaulistaAnt    = vlTotalEnPaulistaAnt  -  vlTotalSaiPaulistaAnt;                              
+   }
+
+   if (dataSplit[1] == "12" && dataSplit[2] == "2016") {
+     vlTotalEnPaulistaAtual  = vlTotalEnPaulistaAtual  +  vlTotalEntAux;
+     vlTotalSaiPaulistaAtual = vlTotalSaiPaulistaAtual +  vlTotalSaiAux;  
+     valorAnoAnt1   = vlTotalEnPaulistaAtual  -  vlTotalSaiPaulistaAtual;
+   }
+
+   if (mes1 == mesLancamento) {
+
+
+     vlTotalEnPaulistaAtual  = vlTotalEnPaulistaAtual  +  vlTotalEntAux;
+     vlTotalSaiPaulistaAtual = vlTotalSaiPaulistaAtual +  vlTotalSaiAux;  
+     vlTotalPaulistaAtual    = vlTotalEnPaulistaAtual  -  vlTotalSaiPaulistaAtual;
+   }
+
+
+
+
+   if (mes1 == mesLancamento && dataSplit[2] == itemSelecionado1) {    
+
+
+
+
+     linkSoclicitacao = '<a href="http://viaindicadores.fluig.com:8280/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID='+solicitacaoAux+'" target="_blank">'+solicitacaoAux+'</a>';
+
+     textoAux1 += "<tr>";
+
+     textoAux1 += "<td class=\"td\" align=\"center\">";      
+     textoAux1 += "<font>"+dataLancamentoAux+"</font></td>";
+
+     textoAux1 += "<td class=\"td\" align=\"center\">";      
+     textoAux1 += "<font>"+linkSoclicitacao+"</font></td>";
+
+     textoAux1 += "<td class=\"td\">";      
+     textoAux1 += "<font>"+emitenteAux+"</font></td>";
+
+     if (tipoAux == "entrada"){
+
+       textoAux1 += "<td class=\"td\" align=\"center\">";  
+
+       textoAux1 += "<font>"+entradaAux+"</font></td>"; 
+
+
+     } else if (tipoAux == "saida"){
+
+       textoAux1 += "<td class=\"td\" align=\"center\">";  
+
+       textoAux1 += "<font>"+saidaAux+"</font></td>"; 
+
+     }else if ( tipoAux =="ENT" || tipoAux == "SAI") {
+
+      textoAux1 += "<td class=\"td\" align=\"center\">";  
+
+      textoAux1 += "<font>"+tipoEntradaAux+"</font></td>"; 
+
+
+    }
+
+    textoAux1 += "<td class=\"td\" align=\"center\">";      
+    textoAux1 += "<font>"+documentoAux+"</font></td>";                    
+
+    if (tipoAux == "entrada" || tipoAux == "saida") {
+
+     textoAux1 += "<td class=\"td\" align=\"center\">";      
+     textoAux1 += "<font>"+tipoAux+"</font></td>"; 
+   } else if (tipoAux == "ENT") {
+
+     textoAux1 += "<td class=\"td\" align=\"center\">";      
+     textoAux1 += "<font>entrada</font></td>";
+
+   } else if (tipoAux == "SAI") {
+
+     textoAux1 += "<td class=\"td\" align=\"center\">";      
+     textoAux1 += "<font>saida</font></td>";
+
+   }
+
+   textoAux1 += "<td class=\"td\" align=\"center\">";;
+   if(tipoAux ==  "entrada" || tipoAux == "ENT") {
+     textoAux1 += "<font style=\"color:green;\">";
+   }else{
+
+     textoAux1 += "<font style=\"color:red;\">";
+   } 
+   textoAux1 += "" +valorMovto+ "";   
+
+   textoAux1 += "<font\>";
+
+
+ }  } 
+
+ recorrentePaulista  = valorAnoAnt1 + vlTotalPaulistaAnt + vlTotalPaulistaAtual;
+ break; 
+
+ case "Bonno":
+ case "WJ Bonno Corifeu":
+
+
+ if (dataLancamentoAux != null) {
+   var dataSplit = dataLancamentoAux.split("/"); 
+
+   var mesLancamento =  dataSplit[1] - 1;
+
+   if (mesAtual == mesLancamento) {  
+
+    vlTotalEnBonno = vlTotalEnBonno + vlTotalEntAux;
+    vlTotalSaiBonno = vlTotalSaiBonno + vlTotalSaiAux; 
+    vlTotalBonno    = vlTotalEnBonno - vlTotalSaiBonno;
+  }
+
+  if (mesLancamento < mes2){
+
+   vlTotalEnBonnoAnt  = vlTotalEnBonnoAnt  +  vlTotalEntAux;
+   vlTotalSaiBonnoAnt = vlTotalSaiBonnoAnt +  vlTotalSaiAux;  
+   vlTotalBonnoAnt    = vlTotalEnBonnoAnt  -  vlTotalSaiBonnoAnt;                              
+ }
+
+    if (dataSplit[1] == "12" && dataSplit[2] == "2016") {
+
+   vlTotalEnBonnoAtual  = vlTotalEnBonnoAtual  +  vlTotalEntAux;
+   vlTotalSaiBonnoAtual = vlTotalSaiBonnoAtual +  vlTotalSaiAux;  
+   valorAnoAnt2    = vlTotalEnBonnoAtual  -  vlTotalSaiBonnoAtual;
+  }
+
+
+ if (mes2 == mesLancamento) {
+
+
+   vlTotalEnBonnoAtual  = vlTotalEnBonnoAtual  +  vlTotalEntAux;
+   vlTotalSaiBonnoAtual = vlTotalSaiBonnoAtual +  vlTotalSaiAux;  
+   vlTotalBonnoAtual    = vlTotalEnBonnoAtual  -  vlTotalSaiBonnoAtual;
+ }
+
+
+
+
+ if (mes2 == mesLancamento && dataSplit[2] == itemSelecionado2) {  
+
+
+
+
+   linkSoclicitacao = '<a href="http://viaindicadores.fluig.com:8280/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID='+solicitacaoAux+'" target="_blank">'+solicitacaoAux+'</a>';
+
+   textoAux2 += "<tr>";
+
+   textoAux2 += "<td class=\"td\" align=\"center\">";      
+   textoAux2 += "<font>"+dataLancamentoAux+"</font></td>";
+
+   textoAux2 += "<td class=\"td\" align=\"center\">";      
+   textoAux2 += "<font>"+linkSoclicitacao+"</font></td>";
+
+   textoAux2 += "<td class=\"td\">";      
+   textoAux2 += "<font>"+emitenteAux+"</font></td>";
+
+   if (tipoAux == "entrada"){
+
+     textoAux2 += "<td class=\"td\" align=\"center\">";  
+
+     textoAux2 += "<font>"+entradaAux+"</font></td>"; 
+
+
+   } else if (tipoAux == "saida"){
+
+     textoAux2 += "<td class=\"td\" align=\"center\">";  
+
+     textoAux2 += "<font>"+saidaAux+"</font></td>"; 
+
+   }else if ( tipoAux =="ENT" || tipoAux == "SAI") {
+
+    textoAux2 += "<td class=\"td\" align=\"center\">";  
+
+    textoAux2 += "<font>"+tipoEntradaAux+"</font></td>"; 
+
+
+  }
+
+  textoAux2 += "<td class=\"td\" align=\"center\">";      
+  textoAux2 += "<font>"+documentoAux+"</font></td>";                    
+
+  if (tipoAux == "entrada" || tipoAux == "saida") {
+
+   textoAux2 += "<td class=\"td\" align=\"center\">";      
+   textoAux2 += "<font>"+tipoAux+"</font></td>"; 
+ } else if (tipoAux == "ENT") {
+
+   textoAux2 += "<td class=\"td\" align=\"center\">";      
+   textoAux2 += "<font>entrada</font></td>";
+
+ } else if (tipoAux == "SAI") {
+
+   textoAux2 += "<td class=\"td\" align=\"center\">";      
+   textoAux2 += "<font>saida</font></td>";
+
+ }
+
+ textoAux2 += "<td class=\"td\" align=\"center\">";;
+ if(tipoAux ==  "entrada" || tipoAux == "ENT") {
+   textoAux2 += "<font style=\"color:green;\">";
+ }else{
+
+   textoAux2 += "<font style=\"color:red;\">";
+ } 
+ textoAux2 += "" +valorMovto+ "";   
+
+ textoAux2 += "<font\>";
+
+
+}  } 
+
+recorrenteBonno = valorAnoAnt2 + vlTotalBonnoAnt + vlTotalBonnoAtual;
+
+break; 
+
+
+case "Record":
+case "WR Record":
+
+
+if (dataLancamentoAux != null) {
+ var dataSplit = dataLancamentoAux.split("/"); 
+
+ var mesLancamento =  dataSplit[1] - 1;
+
+
+
+ if (mesAtual == mesLancamento) {
+
+  vlTotalEnRecord  = vlTotalEnRecord  +  vlTotalEntAux;
+  vlTotalSaiRecord = vlTotalSaiRecord +  vlTotalSaiAux;  
+  vlTotalRecord    = vlTotalEnRecord  -  vlTotalSaiRecord;
+}
+
+if (mesLancamento < mes3){
+
+ vlTotalEnRecordAnt  = vlTotalEnRecordAnt  +  vlTotalEntAux;
+ vlTotalSaiRecordAnt = vlTotalSaiRecordAnt +  vlTotalSaiAux;  
+ vlTotalRecordAnt    = vlTotalEnRecordAnt  -  vlTotalSaiRecordAnt;                              
+}
+
+
+       if (dataSplit[1] == "12" && dataSplit[2] == "2016") {
+
+ vlTotalEnRecordAtual  = vlTotalEnRecordAtual  +  vlTotalEntAux;
+ vlTotalSaiRecordAtual = vlTotalSaiRecordAtual +  vlTotalSaiAux;  
+ valorAnoAnt3    = vlTotalEnRecordAtual  -  vlTotalSaiRecordAtual;
+
+       } 
+
+if (mes3 == mesLancamento) {
+
+
+ vlTotalEnRecordAtual  = vlTotalEnRecordAtual  +  vlTotalEntAux;
+ vlTotalSaiRecordAtual = vlTotalSaiRecordAtual +  vlTotalSaiAux;  
+ vlTotalRecordAtual    = vlTotalEnRecordAtual  -  vlTotalSaiRecordAtual;
+}
+
+
+
+
+if (mes3 == mesLancamento && dataSplit[2] == itemSelecionado3) {    
+
+
+
+
+
+
+  linkSoclicitacao = '<a href="http://viaindicadores.fluig.com:8280/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID='+solicitacaoAux+'" target="_blank">'+solicitacaoAux+'</a>';
+
+  textoAux3 += "<tr>";
+
+  textoAux3 += "<td class=\"td\" align=\"center\">";      
+  textoAux3 += "<font>"+dataLancamentoAux+"</font></td>";
+
+  textoAux3 += "<td class=\"td\" align=\"center\">";      
+  textoAux3 += "<font>"+linkSoclicitacao+"</font></td>";
+
+  textoAux3 += "<td class=\"td\">";      
+  textoAux3 += "<font>"+emitenteAux+"</font></td>";
+
+  if (tipoAux == "entrada"){
+
+   textoAux3 += "<td class=\"td\" align=\"center\">";  
+
+   textoAux3 += "<font>"+entradaAux+"</font></td>"; 
+
+
+ } else if (tipoAux == "saida"){
+
+   textoAux3 += "<td class=\"td\" align=\"center\">";  
+
+   textoAux3 += "<font>"+saidaAux+"</font></td>"; 
+
+ }else if ( tipoAux =="ENT" || tipoAux == "SAI") {
+
+  textoAux3 += "<td class=\"td\" align=\"center\">";  
+
+  textoAux3 += "<font>"+tipoEntradaAux+"</font></td>"; 
+
+
+}
+
+textoAux3 += "<td class=\"td\" align=\"center\">";      
+textoAux3 += "<font>"+documentoAux+"</font></td>";                    
+
+if (tipoAux == "entrada" || tipoAux == "saida") {
+
+ textoAux3 += "<td class=\"td\" align=\"center\">";      
+ textoAux3 += "<font>"+tipoAux+"</font></td>"; 
+} else if (tipoAux == "ENT") {
+
+ textoAux3 += "<td class=\"td\" align=\"center\">";      
+ textoAux3 += "<font>entrada</font></td>";
+
+} else if (tipoAux == "SAI") {
+
+ textoAux3 += "<td class=\"td\" align=\"center\">";      
+ textoAux3 += "<font>saida</font></td>";
+
+}
+
+textoAux3 += "<td class=\"td\" align=\"center\">";;
+if(tipoAux ==  "entrada" || tipoAux == "ENT") {
+ textoAux3 += "<font style=\"color:green;\">";
+}else{
+
+ textoAux3 += "<font style=\"color:red;\">";
+} 
+textoAux3 += "" +valorMovto+ "";   
+
+textoAux3 += "<font\>";
+
+
+}  }
+
+recorrenteRecord = valorAnoAnt3 + vlTotalRecordAnt + vlTotalRecordAtual;
+
+break; 
+
+case "Penha":
+case "WP Penha":
+
+
+if (dataLancamentoAux != null) {
+ var dataSplit = dataLancamentoAux.split("/"); 
+
+ var mesLancamento =  dataSplit[1] - 1;
+
+// Saldo do mês atual.
+if (mesAtual == mesLancamento) {
+  vlTotalEnPenha  = vlTotalEnPenha  +  vlTotalEntAux;
+  vlTotalSaiPenha = vlTotalSaiPenha +  vlTotalSaiAux;  
+  vlTotalPenha    = vlTotalEnPenha  -  vlTotalSaiPenha;
+}
+
+if (mesLancamento < mes4){
+
+  vlTotalEnPenhaAnt  = vlTotalEnPenhaAnt  +  vlTotalEntAux;
+  vlTotalSaiPenhaAnt = vlTotalSaiPenhaAnt +  vlTotalSaiAux;  
+  vlTotalPenhaAnt    = vlTotalEnPenhaAnt  -  vlTotalSaiPenhaAnt;                              
+}
+
+
+if (dataSplit[1] == "12" && dataSplit[2] == "2016") {
+  vlTotalEnPenhaAtual  = vlTotalEnPenhaAtual  +  vlTotalEntAux;
+  vlTotalSaiPenhaAtual = vlTotalSaiPenhaAtual +  vlTotalSaiAux;  
+  valorAnoAnt4    = vlTotalEnPenhaAtual  -  vlTotalSaiPenhaAtual;
+
+}
+
+
+if (mes4 == mesLancamento) {
+
+
+  vlTotalEnPenhaAtual  = vlTotalEnPenhaAtual  +  vlTotalEntAux;
+  vlTotalSaiPenhaAtual = vlTotalSaiPenhaAtual +  vlTotalSaiAux;  
+  vlTotalPenhaAtual    = vlTotalEnPenhaAtual  -  vlTotalSaiPenhaAtual;
+}
+
+
+
+
+
+
+
+if (mes4 == mesLancamento && dataSplit[2] == itemSelecionado4) {  
+
+
+
+
+
+
+  linkSoclicitacao = '<a href="http://viaindicadores.fluig.com:8280/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID='+solicitacaoAux+'" target="_blank">'+solicitacaoAux+'</a>';
+
+  textoAux4 += "<tr>";
+
+  textoAux4 += "<td class=\"td\" align=\"center\">";      
+  textoAux4 += "<font>"+dataLancamentoAux+"</font></td>";
+
+  textoAux4 += "<td class=\"td\" align=\"center\">";      
+  textoAux4 += "<font>"+linkSoclicitacao+"</font></td>";
+
+  textoAux4 += "<td class=\"td\">";      
+  textoAux4 += "<font>"+emitenteAux+"</font></td>";
+
+  if (tipoAux == "entrada"){
+
+   textoAux4 += "<td class=\"td\" align=\"center\">";  
+
+   textoAux4 += "<font>"+entradaAux+"</font></td>"; 
+
+
+ } else if (tipoAux == "saida"){
+
+   textoAux4 += "<td class=\"td\" align=\"center\">";  
+
+   textoAux4 += "<font>"+saidaAux+"</font></td>"; 
+
+ }else if ( tipoAux =="ENT" || tipoAux == "SAI") {
+
+  textoAux4 += "<td class=\"td\" align=\"center\">";  
+
+  textoAux4 += "<font>"+tipoEntradaAux+"</font></td>"; 
+
+
+}
+
+textoAux4 += "<td class=\"td\" align=\"center\">";      
+textoAux4 += "<font>"+documentoAux+"</font></td>";                    
+
+if (tipoAux == "entrada" || tipoAux == "saida") {
+
+ textoAux4 += "<td class=\"td\" align=\"center\">";      
+ textoAux4 += "<font>"+tipoAux+"</font></td>"; 
+} else if (tipoAux == "ENT") {
+
+ textoAux4 += "<td class=\"td\" align=\"center\">";      
+ textoAux4 += "<font>entrada</font></td>";
+
+} else if (tipoAux == "SAI") {
+
+ textoAux4 += "<td class=\"td\" align=\"center\">";      
+ textoAux4 += "<font>saida</font></td>";
+
+}
+
+textoAux4 += "<td class=\"td\" align=\"center\">";;
+if(tipoAux ==  "entrada" || tipoAux == "ENT") {
+ textoAux4 += "<font style=\"color:green;\">";
+}else{
+
+ textoAux4 += "<font style=\"color:red;\">";
+} 
+textoAux4 += "" +valorMovto+ "";   
+
+textoAux4 += "<font\>";
+
+
+}  }
+
+recorrentePenha = valorAnoAnt4 + vlTotalPenhaAnt + vlTotalPenhaAtual;
+
+break;     
+
+  // IMPLANTAÇÃO MORUMBI
+
+  case "WJ Bonno Morumbi":
+
+
+  if (dataLancamentoAux != null) {
+   var dataSplit = dataLancamentoAux.split("/"); 
+
+   var mesLancamento =  dataSplit[1] - 1;
+
+// Saldo do mês atual.
+if (mesAtual == mesLancamento) {
+  vlTotalEnMorumbi  = vlTotalEnMorumbi  +  vlTotalEntAux;
+  vlTotalSaiMorumbi = vlTotalSaiMorumbi +  vlTotalSaiAux;  
+  vlTotalMorumbi    = vlTotalEnMorumbi  -  vlTotalSaiMorumbi;
+}
+
+if (mesLancamento < mes5){
+
+  vlTotalEnMorumbiAnt  = vlTotalEnMorumbiAnt  +  vlTotalEntAux;
+  vlTotalsaiMorumbiAnt = vlTotalsaiMorumbiAnt +  vlTotalSaiAux;  
+  vlTotalMorumbiAnt    = vlTotalEnMorumbiAnt  -  vlTotalsaiMorumbiAnt;                              
+}
+
+
+
+if (dataSplit[1] == "12" && dataSplit[2] == "2016") {
+
+  vlTotalEnMorumbiAtual  = vlTotalEnMorumbiAtual  +  vlTotalEntAux;
+  vlTotalSaiMorumbiAtual = vlTotalSaiMorumbiAtual +  vlTotalSaiAux;  
+  valorAnoAnt5    =        vlTotalEnMorumbiAtual  -  vlTotalSaiMorumbiAtual;
+
+}
+
+
+if (mes5 == mesLancamento) {
+
+
+  vlTotalEnMorumbiAtual  = vlTotalEnMorumbiAtual  +  vlTotalEntAux;
+  vlTotalSaiMorumbiAtual = vlTotalSaiMorumbiAtual +  vlTotalSaiAux;  
+  vlTotalMorumbiAtual    = vlTotalEnMorumbiAtual  -  vlTotalSaiMorumbiAtual;
+}
+
+
+
+
+
+
+
+if (mes5 == mesLancamento && dataSplit[2] == itemSelecionado5) {  
+
+
+
+
+
+
+
+  linkSoclicitacao = '<a href="http://viaindicadores.fluig.com:8280/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID='+solicitacaoAux+'" target="_blank">'+solicitacaoAux+'</a>';
+
+  textoAux5 += "<tr>";
+
+  textoAux5 += "<td class=\"td\" align=\"center\">";      
+  textoAux5 += "<font>"+dataLancamentoAux+"</font></td>";
+
+  textoAux5 += "<td class=\"td\" align=\"center\">";      
+  textoAux5 += "<font>"+linkSoclicitacao+"</font></td>";
+
+  textoAux5 += "<td class=\"td\">";      
+  textoAux5 += "<font>"+emitenteAux+"</font></td>";
+
+  if (tipoAux == "entrada"){
+
+   textoAux5 += "<td class=\"td\" align=\"center\">";  
+
+   textoAux5 += "<font>"+entradaAux+"</font></td>"; 
+
+
+ } else if (tipoAux == "saida"){
+
+   textoAux5 += "<td class=\"td\" align=\"center\">";  
+
+   textoAux5 += "<font>"+saidaAux+"</font></td>"; 
+
+ }else if ( tipoAux =="ENT" || tipoAux == "SAI") {
+
+  textoAux5 += "<td class=\"td\" align=\"center\">";  
+
+  textoAux5 += "<font>"+tipoEntradaAux+"</font></td>"; 
+
+
+}
+
+textoAux5 += "<td class=\"td\" align=\"center\">";      
+textoAux5 += "<font>"+documentoAux+"</font></td>";                    
+
+if (tipoAux == "entrada" || tipoAux == "saida") {
+
+ textoAux5 += "<td class=\"td\" align=\"center\">";      
+ textoAux5 += "<font>"+tipoAux+"</font></td>"; 
+} else if (tipoAux == "ENT") {
+
+ textoAux5 += "<td class=\"td\" align=\"center\">";      
+ textoAux5 += "<font>entrada</font></td>";
+
+} else if (tipoAux == "SAI") {
+
+ textoAux5 += "<td class=\"td\" align=\"center\">";      
+ textoAux5 += "<font>saida</font></td>";
+
+}
+
+textoAux5 += "<td class=\"td\" align=\"center\">";;
+if(tipoAux ==  "entrada" || tipoAux == "ENT") {
+ textoAux5 += "<font style=\"color:green;\">";
+}else{
+
+ textoAux5 += "<font style=\"color:red;\">";
+} 
+textoAux5 += "" +valorMovto+ "";   
+
+textoAux5 += "<font\>";
+
+
+}  } 
+recorrenteMorumbi = valorAnoAnt5 + vlTotalMorumbiAnt + vlTotalMorumbiAtual;
+
+
+default:
+break;
+
+}
+
+
+
+
+}
+} catch(erro) {
+  alert(erro);
+} 
+
+
+
+
+
+
+$("#tableResumo").html(textoAux);
+$("#tableResumo1").html(textoAux1);
+$("#tableResumo2").html(textoAux2);
+$("#tableResumo3").html(textoAux3);
+$("#tableResumo4").html(textoAux4);
+$("#tableResumo5").html(textoAux5);
+
+
+$("#totalMes").html("Total:  R$" + recorrenteBerrini.toFixed(2) );
+$("#totalMes1").html("Total: R$" + recorrentePaulista.toFixed(2) );
+$("#totalMes2").html("Total: R$" + recorrenteBonno.toFixed(2) );
+$("#totalMes3").html("Total: R$" + recorrenteRecord.toFixed(2) );
+$("#totalMes4").html("Total: R$" + recorrentePenha.toFixed(2) );
+$("#totalMes5").html("Total: R$" + recorrenteMorumbi.toFixed(2) );
+
+
+if (tipo == "onLoad") {  
+
+
+  if(recorrenteBerrini >= 0){
+    $("#vlTotalBerrini").attr("style", "color:green");
+    $("#totalMes").attr("style", "color:green;margin-right:90px");
+  }else{
+    $("#vlTotalBerrini").attr("style", "color:red");
+    $("#totalMes").attr("style", "color:red;margin-right:90px");
+  }
+
+  if(recorrentePaulista >= 0){
+    $("#vlTotalPaulista").attr("style", "color:green");
+    $("#totalMes1").attr("style", "color:green;margin-right:90px");
+  }else{
+    $("#vlTotalPaulista").attr("style", "color:red");
+    $("#totalMes1").attr("style", "color:red;margin-right:90px");
+  }
+  if(recorrenteBonno >= 0){
+    $("#vlTotalBonno").attr("style", "color:green");
+    $("#totalMes2").attr("style", "color:green;margin-right:90px");
+  }else{
+    $("#vlTotalBonno").attr("style", "color:red");
+    $("#totalMes2").attr("style", "color:red;margin-right:90px");
+  }
+  if(recorrenteRecord >= 0){
+    $("#vlTotalRecord").attr("style", "color:green");
+    $("#totalMes3").attr("style", "color:green;margin-right:90px");
+  }else{
+    $("#vlTotalRecord").attr("style", "color:red");
+    $("#totalMes3").attr("style", "color:red;margin-right:90px");
+  }
+  if(recorrentePenha >= 0){
+
+    $("#vlTotalPenha").attr("style", "color:green");
+    $("#totalMes4").attr("style", "color:green;margin-right:90px");
+  }else{
+    $("#vlTotalPenha").attr("style", "color:red");
+    $("#totalMes4").attr("style", "color:red;margin-right:90px");
+  }
+
+  if(recorrenteMorumbi >= 0){
+    $("#vlTotalMorumbi").attr("style", "color:green");
+    $("#totalMes5").attr("style", "color:green;margin-right:90px");
+  }else{
+    $("#vlTotalMorumbi").attr("style", "color:red");
+    $("#totalMes5").attr("style", "color:red;margin-right:90px");
+  }
+
+
+  $("#vlTotalBerrini").html("<div class=\"panel panel-default\"> <div class=\"panel-heading\" align=\"center\">Berrini </div> R$ " + recorrenteBerrini.toFixed(2) + "</div>" );
+
+  $("#vlTotalPaulista").html("<div class=\"panel panel-default\"><div class=\"panel-heading\" align=\"center\">Paulista </div> R$ " + recorrentePaulista.toFixed(2) + "</div>");
+  $("#vlTotalBonno").html("<div class=\"panel panel-default\"> <div class=\"panel-heading\" align=\"center\">Bonno Corifeu </div> R$ " +recorrenteBonno.toFixed(2) + "</div> " );
+  $("#vlTotalRecord").html("<div class=\"panel panel-default\"> <div class=\"panel-heading\" align=\"center\">Record </div> R$ " + recorrenteRecord.toFixed(2) + "</div>") ;
+  $("#vlTotalPenha").html("<div class=\"panel panel-default\"> <div class=\"panel-heading\" align=\"center\">Penha </div> R$ " +recorrentePenha.toFixed(2) + "</div>");
+  $("#vlTotalMorumbi").html("<div class=\"panel panel-default\"> <div class=\"panel-heading\" align=\"center\">Bonno Morumbi </div> R$ " +recorrenteMorumbi.toFixed(2) + "</div>");
+
+}             
+
+
+$("#AtualBerrini").html("Anterior: R$ " + vlTotalBerriniAnt.toFixed(2));
+$("#AtualPaulista").html("Anterior: R$ " + vlTotalPaulistaAnt.toFixed(2));
+$("#AtualBonno").html("Anterior: R$ " + vlTotalBonnoAnt.toFixed(2));
+$("#AtualRecord").html("Anterior: R$ " + vlTotalRecordAnt.toFixed(2));
+$("#AtualPenha").html("Anterior: R$ " + vlTotalPenhaAnt.toFixed(2));
+$("#AtualMorumbi").html("Anterior: R$ " + vlTotalMorumbiAnt.toFixed(2));
+$("#AtualPaulista").html("Anterior: R$ " + vlTotalPaulistaAnt.toFixed(2));  
+
+
+
+} 
+
+function permissao(){
+
+ 
+
+  var logadoCaixa = "${pageRender.user.userCode}";
+
+  var constrait1 = DatasetFactory.createConstraint("usuario", logadoCaixa, logadoCaixa, ConstraintType.SHOULD);
+  var constraints   = new Array(constrait1);
+  var fields = null;
+  var sortingFields = null;  
+  var CaixaBerrini;
+
+  try {
+
+    var dataset = DatasetFactory.getDataset("GH_Permissionamento", fields, constraints, sortingFields);
+
+    for(i = 0; i < dataset.values.length; i++) {
+
+
+      var row = dataset.values[i];
+
+
+      CaixaBerrini = row["Berrini"];
+      CaixaPaulista = row["Paulista"];
+      CaixaBonno = row["Bonno"];
+      CaixaRecord = row["Record"];
+      CaixaPenha = row["Penha"];
+      CaixaMorumbi = row['Morumbi'];
+
+
+      if (CaixaBerrini == "True") {
+        $(".berrini").css('display','inline-block');
+      }
+
+      if (CaixaPaulista == "True") {
+        $(".paulista").css('display','inline-block');
+      }
+
+      if (CaixaBonno == "True") {
+        $(".bonno").css('display','inline-block');
+      }
+
+      if (CaixaRecord == "True") {
+        $(".record").css('display','inline-block');
+      }
+
+      if (CaixaPenha == "True") {
+
+        $(".penha").css('display','inline-block');
+      }
+
+      if (CaixaMorumbi == "True") {
+
+        $(".morumbi").css('display','inline-block');
+      } 
+
+
+
+    }
+
+  } catch(erro) {
+    alert(erro);
+  } 
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+<style type="text/css">
+
+  #scrolly {
+
+    height:200px;
+    overflow:auto;
+    overflow-y:hidden;
+    margin:0 auto;
+    white-space:nowrap;
+
+  }
+
+
+  .modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    overflow: auto;
+  }
+
+
+
+  @media print {
+
+    html,  
+    body * {
+      visibility: hidden;
+    }
+
+    a[href]:after {
+      content: none !important;
+    }
+
+    .modalDialog, .modalDialog * {
+      visibility: visible;
+    }
+
+    .modalDialog1, .modalDialog1 * {
+      visibility: visible;
+    }
+
+    .modalDialog2, .modalDialog2 * {
+      visibility: visible;
+    }
+
+
+    .modalDialog3, .modalDialog3 * {
+      visibility: visible;
+    }
+
+    .modalDialog4, .modalDialog4 * {
+      visibility: visible;
+    }
+
+    .modalDialog5, .modalDialog5 * {
+      visibility: visible;
+    }
+
+    .modalDialog > div {
+      width: 95%;
+      top: 10% ;
+      position: relative;
+      margin: 10% auto;
+      border-radius: 10px;
+      padding: -1px 5px 13px 20px;   
+
+    }
+
+
+    .modalDialog1 > div {
+      width: 95%;
+      position: relative;
+      margin: 10% auto;
+      border-radius: 10px;
+      padding: -1px 5px 13px 20px;   
+
+    }
+
+
+    .modalDialog2 > div {
+      width: 95%;
+      position: relative;
+      margin: 10% auto;
+      border-radius: 10px;
+      padding: -1px 5px 13px 20px;   
+
+    }
+
+    .modalDialog3 > div {
+      width: 95%;
+      position: relative;
+      margin: 10% auto;
+      border-radius: 10px;
+      padding: -1px 5px 13px 20px;   
+
+    }
+
+    .modalDialog4 > div {
+      width: 95%;
+      position: relative;
+      margin: 10% auto;
+      border-radius: 10px;
+      padding: -1px 5px 13px 20px;   
+
+    }
+
+    .modalDialog5 > div {
+      width: 95%;
+      position: relative;
+      margin: 10% auto;
+      border-radius: 10px;
+      padding: -1px 5px 13px 20px;   
+
+    }
+
+  }
+
+
+  .modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+  }
+
+
+  .close {  
+    background: #c0c0c0;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    margin-top: 5%;
+    text-align: center;
+    top: -25px;
+    width: 24px;
+    right: 98px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+  }
+  .close:hover {
+    background: #808080;
+
+  }
+
+
+  .modalDialog1 {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    overflow: auto;
+  }
+  .modalDialog1:target {
+    opacity:1;
+    pointer-events: auto;
+  }
+
+  .close1 {
+    background: #c0c0c0;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    margin-top: 5%;
+    text-align: center;
+    top: -25px;
+    width: 24px;
+    right: 98px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+  }
+  .close1:hover {
+    background: #808080;
+
+  }
+
+
+
+  .modalDialog2 {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    overflow: auto;
+  }
+  .modalDialog2:target {
+    opacity:1;
+    pointer-events: auto;
+  }
+
+  .close2 {
+    background: #c0c0c0;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    margin-top: 5%;
+    text-align: center;
+    top: -25px;
+    width: 24px;
+    right: 98px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+  }
+  .close2:hover {
+    background: #808080;
+
+  }
+
+
+  .modalDialog3 {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    overflow: auto;
+  }
+  .modalDialog3:target {
+    opacity:1;
+    pointer-events: auto;
+  }
+
+  .close3 {
+    background: #c0c0c0;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    margin-top: 5%;
+    text-align: center;
+    top: -25px;
+    width: 24px;
+    right: 98px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+  }
+  .close3:hover {
+    background: #808080;
+
+  }
+
+
+  .modalDialog4 {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    overflow: auto;
+  }
+  .modalDialog4:target {
+    opacity:1;
+    pointer-events: auto;
+  }
+
+  .close4 {
+    background: #c0c0c0;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    margin-top: 5%;
+    text-align: center;
+    top: -25px;
+    width: 24px;
+    right: 98px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+  }
+  .close4:hover {
+    background: #808080;
+
+  }
+
+
+  .modalDialog5 {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    overflow: auto;
+  }
+  .modalDialog5:target {
+    opacity:1;
+    pointer-events: auto;
+  }
+
+  .close5 {
+    background: #c0c0c0;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    margin-top: 5%;
+    text-align: center;
+    top: -25px;
+    width: 24px;
+    right: 98px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+  }
+  .close5:hover {
+    background: #808080;
+
+  }
+
+
+
+  #modalTable{
+
+    border: 1px #A9A9A9;
+
+    border-radius:20px;
+
+  }
+
+
+
+
+
+
+
+  #testeDiv {
+
+    width: 90%;
+    height: 90%;  
+  }
+
+
+
+  div[class=wcm_title_widget] {
+
+    display:none;
+
+  }
+
+  .berrini {
+    display: none;
+    /*visibility: hidden;*/
+  } 
+
+  .paulista {
+    display: none;
+    /*visibility: hidden;*/
+  }
+
+  .bonno {
+    display: none;
+    /*visibility: hidden;*/
+  }
+
+  .record {
+    display: none;
+    /*visibility: hidden;*/
+  }
+
+  .penha {
+    display: none;
+    /*visibility: hidden;*/
+  }
+
+  .morumbi {
+    display: none;
+  }
+
+  #td{
+
+    width:30%;
+  }
+
+
+</style>
+</head>
+
+
+
+
+
+<body>
+
+  <input type="hidden" name="sessao" id="sessao" value="" />
+
+
+  <div class="fluig-style-guide">
+    <div class="panel panel-default">
+      <div class="panel-heading" align="center">
+        <h4 align="center">Resumo Caixa <span class="fluigicon fluigicon-money-circle fluigicon-md"></span> </h4>
+
+      </div>
+      <div id="scrolly" class="media-heading" style="width: 70%;height: 50%;">
+        <table  width="100%" >
+
+
+          <br>
+          <tr align="center">     
+            <td id="td" class="berrini" align="center" >
+
+              <a style="text-decoration: none;" href="#openModal"><strong>       
+                <span align="center" id="vlTotalBerrini"></span></strong></a>
+
+              </td>
+
+
+              <td id="td" class="paulista" align="center">
+
+                <a style="text-decoration: none;" href="#openModal1"><strong>      
+                  <span align="center" id="vlTotalPaulista" ></span></strong></a>
+
+                </td>
+
+
+                <td id="td" class="bonno" align="center">
+
+                  <a style="text-decoration: none;" href="#openModal2"><strong>            
+                    <span align="center" id="vlTotalBonno" ></span></strong></a>
+
+                  </td>
+
+
+                  <td id="td" class="record" align="center">
+                    <a style="text-decoration: none;" href="#openModal3"><strong>      
+                      <span align="center" id="vlTotalRecord"></span></strong></a>
+                    </td>
+
+
+                    <td class="penha" id="td" align="center"> 
+                      <a style="text-decoration: none;" href="#openModal4"><strong>      
+                        <span align="center" id="vlTotalPenha"></span></strong></a>
+                      </td>
+
+
+                      <td class="morumbi" id="td" align="center"> 
+                        <a style="text-decoration: none;" href="#openModal5"><strong>      
+                          <span align="center" id="vlTotalMorumbi"></span></strong></a>
+                        </td>      
+
+
+                      </tr>
+
+
+
+
+                    </table> 
+                  </div>
+                </div>
+              </div>
+
+              <!-- APENAS MODAL (MODAL 1) -->
+
+
+
+
+              <div id="openModal" class="modalDialog">
+                <div> <a href="#close" title="Close" class="close">X</a>
+
+                  <div class="fluig-style-guide">  
+                    <!-- Tamanho da modal -->
+                    <div id="testeDiv">
+                      <!-- Tamanho da modal -->
+
+
+                      <div class="panel panel-default" style="margin-top:65px; margin-left:40px;margin-right:-35px;">
+                        <div class="panel-heading" align="center" >
+                          <h3 align="center">Resumo Caixa</h3>
+
+                          <span class="glyphicon glyphicon-calendar
+                          " style="margin-left: 30px"></span>
+                          <select name="anoSolicita" id="anoSolicita">
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="">2017</option>
+                          </select>
+                          <select id="mesSelecionado" class="form-control2" onchange="consultaRegistros('modal')">
+                            <option class="janeiro" value="0">Janeiro</option>
+                            <option class="fevereiro" value="1">Fevereiro</option>
+                            <option class="março" value="2">Março</option>
+                            <option class="abril" value="3">Abril</option>
+                            <option class="maio" value="4">Maio</option>
+                            <option class="junho" value="5">Junho</option>
+                            <option class="julho" value="6">Julho</option>
+                            <option class="agosto" value="7">Agosto</option>
+                            <option class="setembro" value="8">Setembro</option>
+                            <option class="outubro" value="9">Outubro</option>
+                            <option class="novembro" value="10">Novembro</option>
+                            <option class="dezembro" value="11">Dezembro</option>
+                          </select> 
+
+                          <input type="button" name="imprimir" value="Imprimir" onclick="window.print();">
+                        </div>
+
+                        <table id="modalTable" class="table" width="90%" >
+                          <br>
+
+
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Data   
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Solicitação 
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Emitente  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Resumo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Documento 
+                          </td>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Tipo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Movimentação  
+                          </td>   
+                          <td align="center" id="AtualBerrini" style="background-color: #DCDCDC;">
+                            Atual:
+                            <!-- <input class="form-control" type="text" id="vlAtual" style="widtd: 100%;;" readonly>  -->
+                          </td>
+
+
+                          <tbody id="tableResumo">
+
+
+
+
+                          </tbody>
+
+
+                        </table>
+                        <div align="right"  >
+                          <span style="margin-right:130px" id="totalMes"></span>
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- MODAL 2 -->
+              <div id="openModal1" class="modalDialog1">
+                <div> <a href="#close1" title="Close1" class="close1">X</a>
+
+
+
+                  <div class="fluig-style-guide">  
+                    <!-- Tamanho da modal -->
+                    <div id="testeDiv">
+                      <!-- Tamanho da modal -->
+
+
+                      <div class="panel panel-default" style="margin-top: 65px; margin-left:40px;margin-right:-35px;">
+                        <div class="panel-heading" align="center" >
+                          <h3 align="center">Resumo Caixa</h3>
+
+                          <span class="glyphicon glyphicon-calendar
+                          " style="margin-left: 30px"></span>
+                          <select name="anoSolicita1" id="anoSolicita1">
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="">2017</option>
+                          </select>
+                          <select id="mesSelecionado1" class="form-control2" onchange="consultaRegistros('modal')">
+                            <option class="janeiro" value="0">Janeiro</option>
+                            <option class="fevereiro" value="1">Fevereiro</option>
+                            <option class="março" value="2">Março</option>
+                            <option class="abril" value="3">Abril</option>
+                            <option class="maio" value="4">Maio</option>
+                            <option class="junho" value="5">Junho</option>
+                            <option class="julho" value="6">Julho</option>
+                            <option class="agosto" value="7">Agosto</option>
+                            <option class="setembro" value="8">Setembro</option>
+                            <option class="outubro" value="9">Outubro</option>
+                            <option class="novembro" value="10">Novembro</option>
+                            <option class="dezembro" value="11">Dezembro</option>
+                          </select>
+                          <input type="button" name="imprimir" value="Imprimir" onclick="window.print();"> 
+                        </div>
+                        <table class="table" id="modalTable" width="90%" align="center" border="1" >
+                          <br>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Data   
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Solicitação 
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Emitente  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Resumo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Documento 
+                          </td>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Tipo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Movimentação  
+                          </td> 
+                          <td align="center" id="AtualPaulista" style="background-color: #DCDCDC;">Atual: </td>
+                          <tbody id="tableResumo1" >
+
+
+                          </tbody>
+
+
+                        </table>
+                        <div align="right" >
+                          <span  id="totalMes1" style="margin-right:130px"></span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- MODAL 3 -->
+
+              <div id="openModal2" class="modalDialog2">
+                <div> <a href="#close2" title="Close2" class="close2">X</a>
+
+
+                  <div class="fluig-style-guide">  
+                    <!-- Tamanho da modal -->
+                    <div id="testeDiv">
+                      <!-- Tamanho da modal -->
+
+
+                      <div class="panel panel-default" style="margin-top: 65px; margin-left:40px;margin-right:-35px;">
+                        <div class="panel-heading" align="center" >
+                          <h3 align="center">Resumo Caixa</h3>
+
+                          <span class="glyphicon glyphicon-calendar
+                          " style="margin-left: 30px"></span>
+                          <select name="anoSolicita2" id="anoSolicita2">
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="">2017</option>
+                          </select>
+                          <select id="mesSelecionado2" class="form-control2" onchange="consultaRegistros('modal')">
+                            <option class="janeiro" value="0">Janeiro</option>
+                            <option class="fevereiro" value="1">Fevereiro</option>
+                            <option class="março" value="2">Março</option>
+                            <option class="abril" value="3">Abril</option>
+                            <option class="maio" value="4">Maio</option>
+                            <option class="junho" value="5">Junho</option>
+                            <option class="julho" value="6">Julho</option>
+                            <option class="agosto" value="7">Agosto</option>
+                            <option class="setembro" value="8">Setembro</option>
+                            <option class="outubro" value="9">Outubro</option>
+                            <option class="novembro" value="10">Novembro</option>
+                            <option class="dezembro" value="11">Dezembro</option>
+                          </select> 
+                          <input type="button" name="imprimir" value="Imprimir" onclick="window.print();">
+                        </div>
+                        <table class="table" id="modalTable" width="90%" align="center" border="1" >
+                          <br>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Data   
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Solicitação 
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Emitente  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Resumo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Documento 
+                          </td>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Tipo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Movimentação  
+                          </td>   
+                          <td align="center" id="AtualBonno" style="background-color: #DCDCDC;">
+                            Atual:
+                            <!-- <input class="form-control" type="text" id="vlAtual" style="width: 100%;;" readonly>  -->
+                          </td>
+                          <tbody id="tableResumo2">
+
+
+                          </tbody>
+
+
+                        </table>
+                        <div align="right" >
+                          <span  id="totalMes2" style="margin-right:120px;"></span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MODAL 4 -->
+
+              <div id="openModal3" class="modalDialog3">
+                <div> <a href="#close3" title="Close3" class="close3">X</a>
+
+
+                  <div class="fluig-style-guide">  
+                    <!-- Tamanho da modal -->
+                    <div id="testeDiv">
+                      <!-- Tamanho da modal -->
+
+
+                      <div class="panel panel-default" style="margin-top: 65px; margin-left:40px;margin-right:-35px;">
+                        <div class="panel-heading" align="center" >
+                          <h3 align="center">Resumo Caixa</h3>
+
+                          <span class="glyphicon glyphicon-calendar
+                          " style="margin-left: 30px"></span>
+                          <select name="anoSolicita3" id="anoSolicita3">
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="">2017</option>
+                          </select>
+                          <select id="mesSelecionado3" class="form-control2" onchange="consultaRegistros('modal')">
+                            <option class="janeiro" value="0">Janeiro</option>
+                            <option class="fevereiro" value="1">Fevereiro</option>
+                            <option class="março" value="2">Março</option>
+                            <option class="abril" value="3">Abril</option>
+                            <option class="maio" value="4">Maio</option>
+                            <option class="junho" value="5">Junho</option>
+                            <option class="julho" value="6">Julho</option>
+                            <option class="agosto" value="7">Agosto</option>
+                            <option class="setembro" value="8">Setembro</option>
+                            <option class="outubro" value="9">Outubro</option>
+                            <option class="novembro" value="10">Novembro</option>
+                            <option class="dezembro" value="11">Dezembro</option>
+                          </select> 
+                          <input type="button" name="imprimir" value="Imprimir" onclick="window.print();">
+                        </div>
+                        <table class="table" id="modalTable" width="90%" align="center" border="1" >
+                          <br>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Data   
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Solicitação 
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Emitente  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Resumo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Documento 
+                          </td>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Tipo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Movimentação  
+                          </td>   
+                          <td align="center" id="AtualRecord" style="background-color: #DCDCDC;">
+                            Atual:
+                            <!-- <input class="form-control" type="text" id="vlAtual" style="width: 100%;;" readonly>  -->
+                          </td>
+                          <tbody id="tableResumo3">
+
+
+                          </tbody>
+
+
+                        </table>
+                        <div align="right" >
+                          <span style="margin-right:130px;" id="totalMes3"></span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- MODAL 5 -->
+
+              <div id="openModal4" class="modalDialog4">
+                <div> <a href="#close4" title="Close4" class="close4">X</a>
+
+
+                  <div class="fluig-style-guide">  
+                    <!-- Tamanho da modal -->
+                    <div id="testeDiv">
+                      <!-- Tamanho da modal -->
+
+
+                      <div class="panel panel-default" style="margin-top: 65px; margin-left:40px;margin-right:-35px;">
+                        <div class="panel-heading" align="center" >
+                          <h3 align="center">Resumo Caixa</h3>
+
+                          <span class="glyphicon glyphicon-calendar
+                          " style="margin-left: 30px"></span>
+                          <select name="anoSolicita4" id="anoSolicita4">
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="">2017</option>
+                          </select>
+                          <select id="mesSelecionado4" class="form-control2" onchange="consultaRegistros('modal')">
+                            <option class="janeiro" value="0">Janeiro</option>
+                            <option class="fevereiro" value="1">Fevereiro</option>
+                            <option class="março" value="2">Março</option>
+                            <option class="abril" value="3">Abril</option>
+                            <option class="maio" value="4">Maio</option>
+                            <option class="junho" value="5">Junho</option>
+                            <option class="julho" value="6">Julho</option>
+                            <option class="agosto" value="7">Agosto</option>
+                            <option class="setembro" value="8">Setembro</option>
+                            <option class="outubro" value="9">Outubro</option>
+                            <option class="novembro" value="10">Novembro</option>
+                            <option class="dezembro" value="11">Dezembro</option>
+                          </select> 
+                          <input type="button" name="imprimir" value="Imprimir" onclick="window.print();">
+                        </div>
+                        <table class="table" id="modalTable" width="90%" align="center" border="1" >
+                          <br>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Data   
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Solicitação 
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Emitente  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Resumo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Documento 
+                          </td>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Tipo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Movimentação  
+                          </td>  
+                          <td align="center" id="AtualPenha" style="background-color: #DCDCDC;">
+                            Atual:
+                            <!-- <input class="form-control" type="text" id="vlAtual" style="width: 100%;;" readonly>  -->
+                          </td>
+                          <tbody id="tableResumo4">
+
+
+                          </tbody>
+
+
+                        </table>
+                        <div align="right" >
+                          <span style="margin-right:130px;" id="totalMes4"></span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>               
+
+
+              <!-- MODAL 6 -->
+
+              <div id="openModal5" class="modalDialog5">
+                <div> <a href="#close5" title="Close5" class="close5">X</a>
+
+
+                  <div class="fluig-style-guide">  
+                    <!-- Tamanho da modal -->
+                    <div id="testeDiv">
+                      <!-- Tamanho da modal -->
+
+
+                      <div class="panel panel-default" style="margin-top: 65px; margin-left:40px;margin-right:-35px;">
+                        <div class="panel-heading" align="center">
+                          <h3 align="center">Resumo Caixa</h3>
+
+                          <span class="glyphicon glyphicon-calendar
+                          " style="margin-left: 30px"></span>
+                          <select name="anoSolicita5" id="anoSolicita5">
+                            <option value="2016">2016</option>
+                            <option value="2017" selected="">2017</option>
+                          </select>
+                          <select id="mesSelecionado5" class="form-control2" onchange="consultaRegistros('modal')">
+                            <option class="janeiro" value="0">Janeiro</option>
+                            <option class="fevereiro" value="1">Fevereiro</option>
+                            <option class="março" value="2">Março</option>
+                            <option class="abril" value="3">Abril</option>
+                            <option class="maio" value="4">Maio</option>
+                            <option class="junho" value="5">Junho</option>
+                            <option class="julho" value="6">Julho</option>
+                            <option class="agosto" value="7">Agosto</option>
+                            <option class="setembro" value="8">Setembro</option>
+                            <option class="outubro" value="9">Outubro</option>
+                            <option class="novembro" value="10">Novembro</option>
+                            <option class="dezembro" value="11">Dezembro</option>
+                          </select> 
+
+                          <input type="button" name="imprimir" value="Imprimir" onclick="window.print();">
+
+                        </div>
+
+                        <table class="table" id="modalTable" width="90%" align="center" border="1" >
+                          <br>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Data   
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Solicitação 
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Emitente  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Resumo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Documento 
+                          </td>
+
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Tipo  
+                          </td>
+                          <td align="center" style="background-color: #DCDCDC;"  >
+                            Movimentação  
+                          </td>   
+                          <td  id="AtualMorumbi" align="center" style="background-color: #DCDCDC;">
+                            Atual:
+                            <!-- <input class="form-control" type="text" id="vlAtual" style="widtd: 100%;;" readonly>  -->
+                          </td>
+                          <tbody align="center" id="tableResumo5">
+
+
+                          </tbody>
+
+
+                        </table>
+                        <div align="right" >
+                          <span style="margin-right:130px;"  id="totalMes5"></span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>     
+            </body>
+
+
+            <script type="text/javascript">
+
+
+
+           
+  consultaRegistros("onLoad");
+  permissao();
+
+
+            </script>
+
+            </html>
+

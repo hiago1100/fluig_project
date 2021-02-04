@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Níveis</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-offset-2 col-sm-8">
+                <table class="table table-condensed table-striped" tablename="niveis" noaddbutton="true" nodeletebutton="true">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="col-sm-9">Nível</th>
+                            <th class="col-sm-3">Tempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span ng-if="vm.Params.edit" ng-click="vm.removeNivel($event)" class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+                            </td>
+                            <td ng-child="vm.Formulario.nivel" id="nivel">
+                                <input type="text" class="form-control" name="nivel_input" ng-child-tags='{"fluig-autocomplete":""}' values="vm.NiveisEmergenciais"
+                                    ng-model="vm.Formulario.nivel" display-key="displaykey">
+                                <textarea hidden ng-value="vm.Formulario.nivel | json:0"  ng-bind="vm.Formulario.nivel | json:0" name="nivel"></textarea>
+                            </td>
+                            <td ng-child="vm.Formulario.tempo" id="tempo">
+                                <input type="text" class="form-control" name="tempo" ng-child-tags='{"fluig-time-mask":"short", "fluig-error":"form.tempo.$error"}'
+                                    ng-model="vm.Formulario.tempo" ng-value="vm.Formulario.tempo">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button ng-if="vm.Params.edit" type="button" class="btn btn-lg btn-default" ng-click="vm.adicionaNivel()">Incluir Nível</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="panel panel-default" ng-if="documento.Aditivos.length>0">
+    <div class="panel-heading fs-cursor-pointer" ng-click="aditivosCollapsed = !aditivosCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': aditivosCollapsed}">
+                Aditivos
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': aditivosCollapsed}">
+        <div class="panel-body">
+            <div ng-repeat="aditivo in documento.Aditivos">
+                <blockquote>
+                    <p>{{aditivo.aditivoSeq}} - {{aditivo.aditivoDescricao}}</p>
+                </blockquote>
+                <p>{{aditivo.aditivoNarrativa}}</p>
+            </div>
+        </div>
+    </div>
+</div>

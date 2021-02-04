@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-sm-4">
+        <label>Número</label>
+        <p>{{documento.pedidoNumero || 'Não informado'}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Data</label>
+        <p>{{documento.pedidoDataPedido | date}}</p>
+    </div>
+
+    <div class="col-sm-4">
+        <label>Valor</label>
+        <p>{{documento.pedidoValor | currency:documento.pedidoMoeda}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <label>Fornecedor</label>
+        <p>{{documento.pedidoFornecedor || 'Não informado'}}</p>
+    </div>
+
+    <div class="col-sm-6">
+        <label>Comprador</label>
+        <p>{{documento.pedidoComprador || 'Não informado'}}</p>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="hidden-xs">
+                    <tr>
+                        <th>
+                            <div class="col-sm-6">Item</div>
+                            <div class="col-sm-3">Qtde</div>
+                            <div class="col-sm-3">V.Un.</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in documento.Itens" ng-if="$index < 2">
+                        <td>
+                            <div class="col-sm-6">
+                                <p><b class="visible-xs-inline">Item:</b> {{item.itemDescricao}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b class="visible-xs-inline">Qtde:</b> {{item.itemQtdRequisitada | number}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b class="visible-xs-inline">V.Un.:</b> {{item.itemValor | currency:item.itemMoeda}}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-if="documento.Itens.length > 2">
+                        <td colspan="3">{{documento.Itens.length - 2}} mais...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

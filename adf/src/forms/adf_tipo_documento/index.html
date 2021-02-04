@@ -1,0 +1,41 @@
+<html ng-app="AdfApp">
+
+<head>
+	<!-- partial:../partials/head.html -->
+	<!-- partial -->
+	<title>Tipo de Documento</title>
+</head>
+
+<body ng-controller="AdfController as vm">
+	<div class="fluig-style-guide ng-cloak">
+		<div class="container">
+			<form name="form" role="form" class="form form-horizontal">
+				<div class="row">
+					<div ng-if="vm.Params.edit && vm.Errors.length <= 0" class="alert alert-info animate" role="alert">
+						Informe os dados do tipo de documento
+					</div>
+				</div>
+				<!-- partial:../partials/alerts.html -->
+				<!-- partial -->
+				<!-- partial:partials/angularMap.html -->
+				<!-- partial -->
+				<div class="row">
+					<div role="tabpanel" ng-init="vm.currentTab=1">
+						<!-- partial:partials/nav.html -->
+						<!-- partial -->
+						<div class="tab-content">
+							<!-- partial:partials/geral.html -->
+							<!-- partial -->
+							<!-- partial:partials/status.html -->
+							<!-- partial -->
+							<!-- partial:partials/avancado.html -->
+							<!-- partial -->
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

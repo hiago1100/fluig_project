@@ -1,0 +1,201 @@
+<div ng-show="vm.Processos.length > 0" class="menu-doctos hidden-xs hidden-sm">
+    <div class="fs-float-left">
+        <div class="btn-group" role="group">
+            <div class="btn-group" role="group">
+                <a class="btn btn-default fs-no-border" ng-click="vm.statusGeral('A');vm.Control.tab=1">
+                    <span class="fa fa-check fs-cursor-pointer"></span>
+                    <span class="hidden-sm hidden-xs">Aprovar Tudo</span>
+                </a>
+            </div>
+            <div class="btn-group" role="group">
+                <a class="btn btn-default fs-no-border" ng-click="vm.statusGeral('R');vm.Control.tab=1">
+                    <span class="fa fa-ban fs-cursor-pointer"></span>
+                    <span class="hidden-sm hidden-xs">Reprovar Tudo</span>
+                </a>
+            </div>
+            <div class="btn-group" role="group">
+                <a class="btn btn-default fs-no-border" ng-click="vm.statusGeral();vm.Control.tab=1">
+                    <span class="fa fa-circle-o fs-cursor-pointer"></span>
+                    <span class="hidden-sm hidden-xs">Desmarcar Tudo</span>
+                </a>
+            </div>
+            <div class="btn-group" role="group">
+                <a class="btn btn-default fs-no-border" ng-click="vm.load();vm.Control.tab=1">
+                    <span class="fa fa-refresh fs-cursor-pointer"></span>
+                    <span class="hidden-sm hidden-xs">Atualizar</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="text-right" ng-if="!vm.mobile">
+        <div class="btn-group" role="group">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn fs-no-border" ng-class="{'btn-primary' : vm.listaGerencial=='list', 'btn-default': vm.listaGerencial=='box'}" ng-click="vm.listaGerencial='list';vm.saveUserPreferences('listaGerencial')">
+                    <span class="fluigicon fluigicon-list fs-cursor-pointer"></span>
+                </button>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn fs-no-border" ng-class="{'btn-primary' : vm.listaGerencial=='box', 'btn-default': vm.listaGerencial=='list'}" ng-click="vm.listaGerencial='box';vm.saveUserPreferences('listaGerencial')">
+                    <span class="fluigicon fluigicon-box fs-cursor-pointer"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix hidden-xs hidden-sm" style="height:40px"></div>
+
+<div ng-if="vm.existemDocumentosProximoPrazo" class="alert alert-warning animate" role="alert">
+    <span class="fluigicon fluigicon-md fluigicon-exclamation-sign"></span> Atenção! Existem documentos próximos do prazo de aprovação, destacados em amarelo.
+</div>
+
+<div ng-if="vm.listaGerencial=='list' && !vm.mobile">
+    <div class="panel panel-default" ng-repeat="tipoDocto in vm.Filtros.TiposDocumento " ng-show="tipoDocto.qtd > 0">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left">{{tipoDocto.tipoDocto}}</h3>
+            <div class="btn-group pull-right" role="group" style="min-width: 130px">
+                <div class="btn-group" role="group">
+                    <a class="btn fs-no-border" ng-click="vm.alteraStatusTipoDocumento(tipoDocto, 'A')">
+                        <span class="fa fa-check fs-text-lg fs-cursor-pointer"></span>
+                    </a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a class="btn fs-no-border" ng-click="vm.alteraStatusTipoDocumento(tipoDocto, 'R')">
+                        <span class="fa fa-ban fs-text-lg fs-cursor-pointer"></span>
+                    </a>
+                </div>
+                <div class="btn-group" role="group">
+                    <a class="btn fs-no-border" ng-click="vm.alteraStatusTipoDocumento(tipoDocto, '')">
+                        <span class="fa fa-circle-o fs-text-lg fs-cursor-pointer"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Processo</th>
+                            <th ng-repeat="campo in tipoDocto.camposLista">{{campo.campoListaDescricao}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="processo in vm.Processos | filter:{codTipoDocto:tipoDocto.codTipoDocto}:true | orderBy:dynamicOrder" ng-show="!processo.hide" id="card{{processo.processInstanceId}}" ng-class="{'danger': processo.status=='R', 'success': processo.status=='A', 'warning':processo.proximoPrazo}" data-toggle="tooltip" data-placement="top" title="Prazo: {{processo.dateExpires | date}}">
+
+                            <td>
+
+                                <div ng-show="!processo.loading" class="btn-group" role="group" style="min-width: 130px">
+                                    <div class="btn-group" role="group">
+                                        <a class="btn fs-no-border" ng-class="{'btn-success' : processo.status=='A', 'btn-default': processo.status!='A'}" ng-click="vm.alteraStatus(processo, 'A')">
+                                            <span class="fa fa-check fs-text-lg fs-cursor-pointer"></span>
+
+                                        </a>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn fs-no-border" ng-class="{'btn-danger' : processo.status=='R', 'btn-default': processo.status!='R'}" ng-click="vm.alteraStatus(processo, 'R')">
+                                            <span class="fa fa-ban fs-text-lg fs-cursor-pointer"></span>
+                                        </a>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn fs-no-border btn-default" ng-click="vm.modalDetalhe(processo)">
+                                            <span class="fa fa-search fs-text-lg fs-cursor-pointer"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="progress fs-no-margin" ng-show="processo.loading">
+                                    <div class="progress-bar-gif" role="progressbar" style="width: 100%;"></div>
+                                </div>
+                            </td>
+
+                            <td>
+                                {{processo.processInstanceId}}
+                            </td>
+                            <td ng-if="!processo.result" ng-repeat="campo in tipoDocto.camposLista">
+                                {{processo.doctoTemplate[campo.campoListaCodigo] | useFilter:campo.campoListaTipoType}}
+                            </td>
+                            <td ng-if="processo.result" colspan="{{tipoDocto.camposLista.length}}">
+                                <span ng-if="processo.result.message">
+                                    {{processo.result.message}}
+                                    <button ng-if="!processo.done" type="button" class="btn fs-no-border btn-primary" ng-click="vm.closeResult(processo)">OK</button>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="masonry" ng-if="vm.listaGerencial=='box' || vm.mobile">
+
+    <div class="tile" ng-repeat="processo in vm.Processos | orderBy:dynamicOrder" ng-show="!processo.hide">
+        <div class="panel documento adf" ng-class="{'panel-danger': processo.status=='R', 'panel-success': processo.status=='A', 'panel-default': !processo.status && !processo.proximoPrazo, 'panel-warning':!processo.status && processo.proximoPrazo}" id="card{{processo.processInstanceId}}">
+
+            <div class="panel-heading fs-no-padding fs-no-border" ng-class="processo.result.status">
+                <div ng-if="!processo.result">
+
+                    <div class="fs-sm-space fs-text-lg">
+                        {{processo.tipoDocto}}
+                    </div>
+                    <div class="btn-group btn-group-justified" role="group" ng-show="!processo.loading">
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-lg fs-no-border" ng-class="{'btn-success' : processo.status=='A', 'btn-primary': processo.status!='A'}" ng-click="vm.alteraStatus(processo, 'A')">
+                                <span class="fa fa-check fs-text-lg fs-cursor-pointer"></span>
+                            </a>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-lg fs-no-border" ng-class="{'btn-danger' : processo.status=='R', 'btn-primary': processo.status!='R'}" ng-click="vm.alteraStatus(processo, 'R')">
+                                <span class="fa fa-ban fs-text-lg fs-cursor-pointer"></span>
+                            </a>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-lg fs-no-border btn-primary" ng-click="vm.modalDetalhe(processo)">
+                                <span class="fa fa-search fs-text-lg fs-cursor-pointer"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="progress fs-no-margin" ng-show="processo.loading">
+                        <div class="progress-bar-gif" role="progressbar" style="width: 100%;"></div>
+                    </div>
+
+                </div>
+                <div ng-if="processo.result">
+                    <div class="fs-sm-space fs-text-lg" ng-if="processo.result.message">
+                        {{processo.result.message}}
+                    </div>
+                    <div ng-if="!processo.done">
+                        <div class="btn-group btn-group-justified" role="group">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-lg fs-no-border btn-primary" ng-click="vm.closeResult(processo)">
+                                    <span class="fs-text-lg fs-cursor-pointer"> OK </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <adf-documento docto-template="processo.doctoTemplate" tipo-documento="processo.TipoDocumento" cod-docto-template="processo.codDoctoTemplate" type="resumo"></adf-documento>
+            </div>
+
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="text-left col-xs-6 col-sm-6">Processo {{processo.processInstanceId}}</div>
+                    <div class="text-right col-xs-6 col-sm-6">{{processo.estab}}</div>
+                </div>
+                <div class="row">
+                    <div class="text-left col-xs-6 col-sm-6" ng-show="processo.dataRef">{{processo.labelDataRef || 'Data Ref'}}: {{processo.dataRef | date}}</div>
+                    <div class="text-right col-xs-6 col-sm-6">{{processo.dateExpires}}
+                        <span ng-if="processo.expired" class="fa fa-exclamation-triangle" style="color: #f1c40f"></span>
+                        <span ng-if="!processo.expired" class="fa fa-check" style="color: #2ecc71"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

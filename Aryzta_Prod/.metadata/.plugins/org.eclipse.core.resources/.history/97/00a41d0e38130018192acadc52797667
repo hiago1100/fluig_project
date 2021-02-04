@@ -1,0 +1,12 @@
+function beforeStateEntry(sequenceId){
+	
+if (sequenceId == 5){	
+
+	var formData = new java.util.HashMap();	
+	var users = new java.util.ArrayList();
+
+	formData.put("dataRevisao", hAPI.getCardValue('dataRevisao'));
+
+	hAPI.startProcess("Aryzta_Controle_Acessos", 4, "dfaria", "Solicitação iniciada automaticamente", true, formData, false);		
+ }
+}

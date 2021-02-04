@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Requisição Vaga form</title>
+    <link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script type="text/javascript" src="aprovacao.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="../vcXMLRPC.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .tabletitle{
+      width:70%;
+      }
+      .img-title-viaPortal{
+        width: 8%;
+        margin: 0 0 -4% 5%;
+        border-radius:30px;
+      }
+      .title-viaPortal{
+        text-align: center;
+        font-size: 2.5em;
+        color:#696969;
+        font-weight: bold;
+      }
+      .headerlabel{
+        font-weight:bold;
+        color:#696969; 
+        line-height:30px;
+      }
+      .NuSolicit{
+        width:40%;
+        font-size:15px;
+        font-weight:bold; 
+        margin-bottom:5px;  
+        float:left;
+      }
+      .DatSolicit{
+        width:110px; 
+        font-size:15px;
+        font-weight:bold; 
+        margin-bottom:5px;  
+        float:right;
+      }
+      .usernamLabel{float:left; }
+      .Usernam{
+        width:70%;
+        font-size:15px;
+        font-weight:bold; 
+        margin-bottom:5px;  
+        float:left;
+      }
+      .hr-botitle{
+        width: 60%;
+      }
+      .viaportaltab2{
+        width: 40%;
+        margin: 0 30%;
+      }
+      .viaportaltab2 tr td{text-align:right;}
+      .viaportaltab2 tr td:nth-child(2){text-align: left;}
+      .Cargo{
+        width: 80%;
+        margin: 2.5% 0 2.5% 5%;
+      }
+      .Vagas{
+        width: 20%;
+        margin: 2.5% 0 2.5% 5%;
+      }
+      .h2Recursos{
+        font-size: 1.3em;
+        color:#696969;
+        font-weight: bold;
+      }
+      .viaportaltab2 tr td .Recursos{margin-left:5%;}
+      .ObsTitle{text-align: center;}
+      #Obs{width: 100%; resize: none;}
+
+      .viaportaltab3{
+        width: 40%;
+        margin: 2% 30% 0 30%;
+        text-align: right;
+        display: table;
+      }
+      .UsernamResp{
+        width: 50%;
+        margin: 2.5% 5% 0 5%;
+        color: rgba(0, 0, 0, .5);
+        border: solid 2px rgba(0, 0, 0, .01);
+        background-color: rgba(0, 0, 0, .008);
+      }
+      .HoraResp{
+        color: rgba(0, 0, 255, .3);
+        border: solid 2px rgba(0, 0, 0, .01);
+        background-color: rgba(0, 0, 0, .008);
+        width: 140px;
+        margin: 2.5% 0 2.5% 6%;
+      }
+      .respArea{
+        resize: none;
+        width: 95%;
+        margin: 1.5% 0 5% 5%;
+      }
+      .btnrespContainer{
+        margin-left: 45%;
+        display: inline-block;
+      }
+      footer div{
+        width: 100%;
+        height: 50px;
+      }
+      .TDUnidade{ display: none;}
+
+/*_____________Mobile Configs__________________*/
+      @media screen and (max-width: 800px){
+        .tabletitle{
+          width:90%;
+        }
+
+
+        .title-viaPortal{
+          margin-bottom:5%;
+        }
+        .img-title-viaPortal{
+          width: 12%;
+        }
+        .NuSolicit{
+          width:70%;
+        }
+        .hr-botitle{
+          width: 100%;
+        }
+        .viaportaltab2{
+          width:100%;
+          margin: 0 0;
+        }
+        .viaportaltab2 tr td:nth-child(1){
+          width:40%;
+        }
+        .Cargo{
+          width: 80%;
+        }
+        .Vagas{
+          width: 25%;
+          margin: 2.5% 0 2.5% 5%;
+        }
+        #Obs{
+          width:90%;
+          margin: 0 5%;
+        }
+        .viaportaltab3{
+          width:80%;
+          margin:10% 0 0 12%;
+        }
+        .viaportaltab3 tr td:nth-child(1){
+          width:1%;
+        }
+        .respArea{
+          width: 90%;
+        }
+        .btnrespContainer{
+          margin-left:35%;
+        }
+      }
+
+
+    </style>
+  </head>
+  <body onload="init();">
+    <form>
+    <input type="hidden" name="Computadorhidden" id="Computadorhidden">
+    <input type="hidden" name="Emailhidden" id="Emailhidden">
+    <input type="hidden" name="ViaPortalhidden" id="ViaPortalhidden">
+    <input type="hidden" name="Datasulhidden" id="Datasulhidden">
+    <input type="hidden" name="DrySystemhidden" id="DrySystemhidden">
+    <input type="hidden" name="NomUserResptrick" id="NomUserResptrick">
+    <input type="hidden" id="ResponsavelDptohidden" name="ResponsavelDptohidden">
+    <input type="hidden" id="ResponsavelUnidadHidden" name="ResponsavelUnidadHidden">
+    <input type="hidden" id="ResponsavelEmpresaHidden" name="ResponsavelEmpresaHidden">
+    <input type="hidden" id="userMatrichidden" name="userMatrichidden">
+    <input type="hidden" name="datasetEmpr" id="datasetEmpr">
+    <input type="hidden" name="datasetUnid" id="datasetUnid">
+    <input type="hidden" name="numAtividade" id="numAtividade" value="112">
+
+  <table class="tabletitle" align="center" style="width:70%">
+        <tr>
+          <img src="logo.png" alt="Logo" id="logo" class="img-title-viaPortal">
+          <h1 class="title-viaPortal">Requisição Vaga</h1>
+        </tr>
+        <tr>
+          <td>
+            <label for="numSolicitacao" class="headerlabel" style="float:left;">Nº Solicitação &nbsp</label>
+            <input type="text" class="form-control input-sm NuSolicit" id="numSolicitacao" name="numSolicitacao" value="0" readonly />
+          </td>
+          <td style="text-align:right;">
+            <label for="dataSolicitacao" class="headerlabel">Data Solicitacao &nbsp</label>
+            <input type="text" class="form-control input-sm DatSolicit" id="dataSolicitacao" name="dataSolicitacao" value="" readonly/>
+          </td>
+        </tr>
+        <tr>
+          <td><br><label class="headerlabel usernamLabel">Solicitante &nbsp</label>
+          <input class="form-control input-sm Usernam" type="text" id="NomUser" name="NomUser" readonly></td>
+        </tr>
+
+   
+
+      </table>
+
+
+      
+      <hr class="hr-botitle">
+      <hr class="hr-botitle"> 
+
+         <ul class="nav nav-tabs ">
+            <li class="liHeader active" id="Solicitacao"
+                onclick="ativatab(this.id);"><a>Solicitação</a>
+            </li>
+            <li class="liHeader" id="dadosAdmi" onclick="ativatab(this.id);">
+                <a id="abaSuperior">Dados Admissão</a>
+            </li>
+            <li class="liHeader" id="SupImed" onclick="ativatab(this.id);">
+                <a id="abaSuperior">Superior Imediato</a>
+            </li>
+            <li class="liHeader" id="Unidade" onclick="ativatab(this.id);">
+                <a id="abaUnidade">Unidade</a>
+            </li>
+            <li class="liHeader" id="Empresa" onclick="ativatab(this.id);">
+                <a id="abaEmpresa">Empresa</a>
+            </li>
+
+              </ul>
+
+   <div class="Containerzao" id="SolicitacaoDiv">                 
+       <table class="viaportaltab2" align="center">     
+         <br>
+         <tr>
+          <td><label>Empresa</label></td>
+          <td><select  style="margin-left: 11px;" class="form-control " name="Empr" id="Empr" dataset="EmpresaFilter" datasetkey="Empresa" datasetvalue="Empresa" onchange="initEmpr(); setUnidade(); setRespEmpr();"> </select></td>
+        </tr>
+        <tr>
+          <td class="TDUnidade"><label>Unidade</label></td>
+          <td class="TDUnidade"> <select  style="margin-left: 11px;margin-top:5px" class="form-control  " name="Unid" id="Unid" onchange="setRespUnid(); initUnid();"> </select></td>
+        </tr>
+
+
+        <tr>
+          <td><label>Cargo</label></td>
+          <td><input class="form-control  Cargo" type="text" id="Cargo" name="Cargo"></td>
+        </tr>
+        <tr>
+          <td><label>Vagas</label></td>
+          <td><input class="form-control  Vagas" type="number" id="Vagas" name="Vagas"></td>
+        </tr>
+        <tr>
+          <td><h2 class="h2Recursos">Recursos</h2></td>
+        </tr>
+        <tr>
+          <td><label>Computador</label></td>
+          <td><input type="checkbox" class="Recursos" name="Computador" id="Computador" onclick="checkboxx(this.id);"></td>
+        </tr>
+        <tr>
+          <td><label>Email</label></td>
+          <td><input type="checkbox" class="Recursos" name="Email" id="Email" onclick="checkboxx(this.id);"></td>
+        </tr>
+        <tr>
+          <td><label>ViaPortal</label></td>
+          <td><input type="checkbox" class="Recursos" name="ViaPortal" id="ViaPortal" onclick="checkboxx(this.id);"></td>
+        </tr>
+        <tr>
+          <td><label>Datasul</label></td>
+          <td><input type="checkbox" class="Recursos" name="Datasul" id="Datasul" onclick="checkboxx(this.id);"></td>
+        </tr>
+        <tr>
+          <td><label>DrySystem</label></td>
+          <td><input type="checkbox" class="Recursos" name="DrySystem" id="DrySystem" onclick="checkboxx(this.id);"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><h4 class="ObsTitle">Observações</h4></td>
+        </tr>
+        <tr>
+          <td colspan="2"><textarea name="Obs" id="Obs" rows="10"></textarea></td>
+        </tr>
+      </table>
+      <table class="viaportaltab3" tablename="respoCham" id="respoCham" noaddbutton=true; nodeletebutton=true;>
+        <thead>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tr>
+          <td>.</td>
+          <td>
+            <input class="form-control input-sm UsernamResp" type="text" id="NomUserResp" name="NomUserResp" readonly> 
+            <input type="text"  class="HoraResp" id="HoraResp" name="HoraResp" readonly>
+            <textarea onfocus="getIDUserResp(this.id)" onblur="getID(this.id); ObsResponse(this.id);" class="form-control input-sm respArea" type="text" rows="10" id="areaResp" name="areaResp"></textarea>
+          </td>
+        </tr>
+      </table>
+      <div class="btnrespContainer" id="btnrespContainer" name="btnrespContainer"><button class="btn btn-default" id="btnResposta" onclick="respbtn()">Observação adicional</button></div>
+   
+   </div>
+  
+
+    <div class="Containerzao" id="dadosAdmiDiv">
+          <table class="TabUnidade" align="center">
+            
+              <br>
+                <tr>
+                    <td><label>Nome Completo</label></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text"
+                        class="form-control input-md NomeCandidato" id="NomeCanditado"
+                        name="NomeCanditado"></td>
+                </tr>
+                
+
+          </table>    
+
+    </div>
+
+
+
+
+
+     <div class="Containerzao" id="SupImedDiv">
+            <table class="TablUnidade" align="center">
+                <br>
+                <tr>
+                    <td><label>Nome Aprovador</label></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text"
+                        class="form-control input-md NomeAprovadores" id="NomeSupImed"
+                        name="NomeSupImed" readonly></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h2 class="txtCenter">Resposta Superior
+                            Imediato</h2>
+                        <span class="glyphicon glyphicon-question-sign"
+                        data-toggle="tooltip"
+                        title=" Aprovar: Enviará o processo para 'Aprovação Unidade'.&#013Reprovar: Voltará o processo para o solicitante para correção."></td>
+                </tr>
+                <tr>
+                    <td><label>Aprovar</label></td>
+                    <td><input type="radio" class="RespDiretRadio"
+                        name="RespSupImed" id="RespSupImedS" value="Aprovado" onclick="pintaAba()"></td>
+                </tr>
+                <tr>
+                    <td><label>Reprovar</label></td>
+                    <td><input type="radio" class="RespDiretRadio"
+                        name="RespSupImed" id="RespSupImedN" value="Reprovado" onclick="pintaAba()"></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h4 class="txtCenter">Observação</h4></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><textarea name="SupImedObs" id="SupImedObs"
+                            class="form-control input-sm DiretObs" rows="10" readonly></textarea></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="Containerzao" id="UnidadeDiv">
+            <table class="TablUnidade" align="center">
+                <br>
+                <tr>
+                    <td><label>Nome Aprovador</label></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text"
+                        class="form-control input-md NomeAprovadores" id="NomeUnidade"
+                        name="NomeUnidade" readonly></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h2 class="txtCenter">Resposta Unidade</h2>
+                        <span class="glyphicon glyphicon-question-sign"
+                        data-toggle="tooltip"
+                        title=" Aprovar: Enviará o processo para 'Entregar comprovantes ao Financeiro'.&#013Reprovar: Finalizará o processo.&#013Rejeitar: Voltara para o 'Superior imediato' para correção"></td>
+                </tr>
+                <tr>
+                    <td><label>Aprovar</label></td>
+                    <td><input type="radio" class="RespDiretRadio"
+                        name="RespUnidade" id="RespUnidadeS" value="Aprovado" onclick="pintaAba()"></td>
+                </tr>
+                <tr>
+                    <td><label>Reprovar</label></td>
+                    <td><input type="radio" class="RespDiretRadio"
+                        name="RespUnidade" id="RespUnidadeN" value="Reprovado" onclick="pintaAba()"></td>
+                </tr>
+                <tr>
+                    <td><label>Rejeitar</label></td>
+                    <td><input type="radio" class="RespDiretRadio"
+                        name="RespUnidade" id="RespUnidadeSN" value="Rejeitado" onclick="pintaAba()"></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h4 class="txtCenter">Observação</h4></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><textarea name="DireObs" id="DireObs"
+                            class="form-control input-sm DiretObs" rows="10" readonly></textarea></td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="Containerzao" id="EmpresaDiv">
+            <table class="TablUnidade" align="center">
+                <br>
+                <tr>
+                    <td><label>Nome Aprovador</label></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text"
+                        class="form-control input-md NomeAprovadores" id="NomeEmpresa"
+                        name="NomeEmpresa" readonly></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h2 class="txtCenter">Resposta Empresa</h2>
+                        <span class="glyphicon glyphicon-question-sign"
+                        data-toggle="tooltip"
+                        title=" Aprovar: Enviará o processo para 'Entregar comprovantes ao Financeiro'.&#013Reprovar: Finalizará o processo.&#013Rejeitar: Voltara para o 'Superior imediato' para correção"></td>
+                </tr>
+                <tr>
+                    <td><label>Aprovar</label></td>
+                    <td><input type="radio" class="RespDiretRadio"
+                        name="RespEmpresa" id="RespEmpresaS" value="Aprovado" onclick="pintaAba()"></td>
+                </tr>
+                <tr>
+                    <td><label>Reprovar</label></td>
+                    <td><input type="radio" class="RespDiretRadio"
+                        name="RespEmpresa" id="RespEmpresaN" value="Reprovado" onclick="pintaAba()"></td>
+                </tr>
+                <tr>
+                    <td><label>Rejeitar</label></td>
+                    <td><input type="radio" class="RespDiretRadio"
+                        name="RespEmpresa" id="RespEmpresaSN" value="Rejeitado" onclick="pintaAba()"></td>
+                </tr>
+                <tr>
+                    <td> </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h4 class="txtCenter">Observação</h4></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><textarea name="EmprObs" id="EmprObs"
+                            class="form-control input-sm DiretObs" rows="10" readonly></textarea></td>
+                </tr>
+            </table>
+        </div>
+
+
+
+      <footer><div></div></footer>
+    </form>
+    <script>
+
+
+        function ativatab(id) {
+            $(".liHeader").removeClass("active");
+            id = '#' + id;
+            $(id).addClass("active");
+            id = id + 'Div';
+            $(".Containerzao").css('display', 'none');
+            $(id).css('display', 'block');
+        }
+
+
+
+    function pintaAba(){
+      var checado = $("#RespSupImedS").is(":checked");
+      var checado1 = $("#RespSupImedN").is(":checked");
+      
+      if (checado) {
+        $("#abaSuperior").css('background-color','#98FB98');
+       }else if (checado1){
+        $("#abaSuperior").css('background-color','#FFDAB9');
+      }
+
+      var checado2 = $("#RespUnidadeS").is(":checked");
+      var checado3 = $("#RespUnidadeN").is(":checked");
+      var checado4 = $("#RespUnidadeSN").is(":checked");
+      
+      if (checado2) {
+        $("#abaUnidade").css('background-color','#98FB98');
+       }else if (checado3 || checado4){
+        $("#abaUnidade").css('background-color','#FFDAB9');
+      }      
+
+      var checado5 = $("#RespEmpresaS").is(":checked");
+      var checado6 = $("#RespEmpresaN").is(":checked");
+      var checado7 = $("#RespEmpresaSN").is(":checked");
+      
+      if (checado5) {
+        $("#abaEmpresa").css('background-color','#98FB98');
+       }else if (checado6 || checado7){
+        $("#abaEmpresa").css('background-color','#FFDAB9');
+      }      
+
+    }
+
+
+
+
+
+
+
+
+        
+        
+
+
+
+        function init(){            
+            if ($("#numAtividade").val() == 0){
+              ativatab('Solicitacao');
+             }else if ($("#numAtividade").val() == 112){
+              ativatab('SupImed');
+              $("#abaSuperior").css('background-color','#FFFACD');
+             }else if ($("#numAtividade").val() == 113){
+              ativatab('Unidade');
+              $("#abaUnidade").css('background-color','#FFFACD');              
+             }else if ($("#numAtividade").val() == 114){
+              ativatab('Empresa');
+              $("#abaEmpresa").css('background-color','#FFFACD');
+
+             }  
+        }
+
+    if($("#numAtividade").val() == 0 || $("#numAtividade").val() == 115){
+   setRespDpto();
+  }
+    
+      
+      if( $("#dataSolicitacao").val()  == "") {
+        var dataAtual = new Date();
+        $("#dataSolicitacao").val(dataAtual.toLocaleDateString());
+      }
+
+      function checkboxx(idElemento){
+        var idElemento = "#" + idElemento;
+        if ($(idElemento).is(":checked")){
+          idElemento = idElemento + "hidden";
+          $(idElemento).val("checked");
+        } else {
+          idElemento = idElemento + "hidden";
+          $(idElemento).val("");
+        }
+      }
+
+      function getIDUserResp(idElemento){
+        idElemento = idElemento.replace(/[^0-9]/g,'');
+        if ($("#NomUserResp___" + idElemento).val() == "" || $("#NomUserResp___" + idElemento).val() == null){
+          var UserRespTrick = $("#NomUserResptrick").val();
+          $("#NomUserResp___" + idElemento).val(UserRespTrick);
+        }
+      }
+
+      function getID(idElemento){
+        idElemento = idElemento.replace(/[^0-9]/g,'');
+        if ($("#HoraResp___" + idElemento).val() == "" || $("#HoraResp___" + idElemento).val() == null){
+          var dataResp = new Date();
+          $("#HoraResp___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+        }
+      }
+
+      function ObsResponse(idElemento){
+        idElemento = idElemento.replace(/[^0-9]/g,'');
+        //var obsval = $("#areaResp___" + idElemento).val();
+        $("#ObstxtArea").val($("#areaResp___" + idElemento).val()) ;
+      }
+
+      function respbtn(){
+        wdkAddChild('respoCham');   
+      }
+    </script>
+  </body>
+</html>

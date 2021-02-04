@@ -1,0 +1,22 @@
+function beforeTaskSave(colleagueId,nextSequenceId,userList){   
+ var cod_gestorAux = hAPI.getCardValue('cont_aprovador');
+ var cont = parseInt(hAPI.getCardValue('cont'));    
+ var codGest =  cod_gestorAux.split(",");     
+
+
+ //log.info("***" + codGest[0]);
+ 
+  if(nextSequenceId == 32 ){  
+
+      try {
+        hAPI.setCardValue('recebeCod', codGest[0]);
+      //  hAPI.setCardValue('cont', cont + 1);
+
+      } catch(error) { 
+        log.info("##### ERRO" + error)
+
+      }
+    }
+  
+    
+}

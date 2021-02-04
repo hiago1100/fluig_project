@@ -1,0 +1,147 @@
+*{
+    outline: none !important;
+}
+.message{
+    margin-top: 10px;
+}
+.panel-heading {
+    border-color: #58595b !important;
+    background-color: #58595b !important;
+}
+.btn-primary:hover, .active>.btn-primary {
+    color:#555 !important;
+    background-color: #f0e241 !important;
+    border-color: #f0e241 !important;
+}
+label{
+	font-weight: 400 !important;
+}
+#myTabs li {
+	width: calc(99% / 6);
+}
+#myTabs li a{
+    font-size: inherit;
+}
+#Bonification-type li{
+    width: calc(98% / 3);
+}
+.m-t-10 {
+	margin-top:10px;
+}
+.m-b-10{
+	margin-bottom:10px;
+}
+.m-b-20{
+    margin-bottom:20px;
+}
+.table {
+	white-space: nowrap;
+}
+#btBonification, #btDemandMin, #btDemandMax, #btReports, #btNFS{
+    margin-top: 25px;
+}
+.fluig-style-guide .pagination{
+    margin: 0px 0 20px !important;
+}
+hr{
+    float: left;
+    width: 100%;
+}
+#fixed-middle{
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top:-50px;
+    margin-left:-50px;
+    z-index: 100;
+}
+#mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    z-index: 99;
+    background: rgba(0,0,0,0.5);
+}
+.color-white > *{
+    color: white;
+}
+#awards:not(.active){
+    display: none;
+}
+#demand-min:not(.active){
+    display: none;
+}
+#demand-max:not(.active){
+    display: none;
+}
+.table td{
+    text-align: center;
+}
+.select2-container .select2-selection--single{
+    height: 33px !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow,
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    height: 31px !important;
+}
+span.select2.select2-container.select2-container--default{
+    width: 100% !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height: 31px !important;
+}
+
+table.table-consolided{
+    margin-bottom: 20px;
+}
+
+table.table-consolided, table.table-consolided tr, table.table-consolided tr th, table.table-consolided tr td {
+    border: solid 1px; border-collapse: collapse;
+}
+
+table.table-consolided thead tr th{
+    background: #58595b; color: #f0dc50; font-weight: bold; text-align: center; text-shadow: none;
+}
+
+table[id^='tableBruto_'] tr th, table[id^='tableBruto_'] tr td{
+    text-align: center
+}
+table.table-consolided tr.total td:first-child{
+    text-align: right;
+}
+
+table.table-consolided tbody tr td[colspan='9'], table.table-consolided tbody tr td[colspan='10']{
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-right: 10px;
+}
+
+
+table[id^='table1Parc_'] tr th:nth-child(9), table[id^='table1Parc_'] tr th:nth-child(10), table[id^='table1Parc_'] tr th:last-child,
+table[id^='table1Parc_'] tr td:nth-child(9), table[id^='table1Parc_'] tr td:nth-child(10), table[id^='table1Parc_'] tr td:last-child,
+table[id^='table2Parc_'] tr th:nth-child(10), table[id^='table2Parc_'] tr th:nth-child(11), table[id^='table2Parc_'] tr th:nth-child(12), table[id^='table2Parc_'] tr th:nth-child(13), table[id^='table2Parc_'] tr th:last-child,
+table[id^='table2Parc_'] tr td:nth-child(10), table[id^='table2Parc_'] tr td:nth-child(11), table[id^='table2Parc_'] tr td:nth-child(12), table[id^='table2Parc_'] tr td:nth-child(13), table[id^='table2Parc_'] tr td:last-child,
+table[id^='tableParcU_'] tr th:nth-child(10), table[id^='tableParcU_'] tr th:nth-child(11), table[id^='tableParcU_'] tr th:nth-child(12), table[id^='tableParcU_'] tr th:nth-child(13), table[id^='tableParcU_'] tr th:last-child,
+table[id^='tableParcU_'] tr td:nth-child(10), table[id^='tableParcU_'] tr td:nth-child(11), table[id^='tableParcU_'] tr td:nth-child(12), table[id^='tableParcU_'] tr td:nth-child(13), table[id^='tableParcU_'] tr td:last-child,
+table[id^='tableDist_'] tr th:last-child,
+table[id^='tableDist_'] tr td:last-child{
+    white-space: nowrap;
+}
+
+div[id^='BlocoConsolidado_'] h1{
+    font-size: 1em;
+}
+
+.panel-title > a,
+.panel-title > a:hover{
+    color: #58595b !important;
+    text-decoration: none !important;
+}
+
+.panel {
+     border-color: transparent !important; 
+}

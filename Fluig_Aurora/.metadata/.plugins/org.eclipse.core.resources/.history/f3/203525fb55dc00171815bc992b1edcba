@@ -1,0 +1,5212 @@
+var ultimaLinha = 0;
+var ultimaLinhaProg = 0;
+var ultimaLinhaConf = 0;
+var UltimaLinhaConcat = 0;
+var myLoading2  = FLUIGC.loading(window);
+var carregaProg = FLUIGC.loading("#home");
+var carregaConf = FLUIGC.loading("#menu1");
+
+var controle = [];
+var ARYForms = {
+		params: {},
+		initForm: function(params) {    
+			this.params = params;
+			var $this = this;   
+			$(function () {
+				if (params.formMode == "ADD" || params.formMode == "MOD") { 
+					$this.onEdit(params);
+				} else {
+					$this.onView(params);
+				}
+			});
+		},
+		onView: function(params) { //Visualização do formulário sem a possibilidade de edição (consulta)
+
+		},
+		onEdit: function(params) {  //Edição do formulário;
+
+			// $("#zoomCliente").attr('disabled',true).change();
+
+			var linhasDesc = $("#tabelaNF tbody tr:not(:first-child)").length;			
+			$("#linhasDesc").val(linhasDesc);
+
+
+
+
+
+			var autoIncremento = 0 ;
+			coresDiferenca();
+
+			$("#aprovacaoSupDir").val("");
+			$("#aprovacaoDif").val("");
+			$("#statusAlcada").val("");
+			$("#comparaDesc").val("");
+
+			$('select :selected').each(function(){
+				$(this).parent().data('default', this);
+			});
+
+			$(document).on('change', '.select', function(){
+				var context = $(this);
+				console.log(context.is('[readonly]'))
+
+				if(context.is('[readonly]'))
+					$(context.data('default')).prop('selected', true);
+			});
+
+			$(document).on('keyup', '.quantidade', function(){
+
+				var context = $(this);
+
+				var linha = context.attr('id').split('___')[1];
+
+
+				if (context.val() == "" || context.val() == "0") {
+
+					context.val("1");
+
+				} else if (parseInt(context.val()) > parseInt($("#quantidadeAux___"+linha).val())) {
+
+					context.val($("#quantidadeAux___"+linha).val());
+
+				} 
+
+			});
+
+
+			var recebeDevolucao = $("#devolucaoVenda").val();
+			$("#recebeDevolucao").val(recebeDevolucao);
+
+			carregaTolerancia();
+
+			$(document).on('change', '.quantidade', function(){  
+
+				var context = $(this);
+
+				var valorX = context.val();
+
+				var linha = context.attr('id').split('___')[1];
+
+				if (context.val() == "" || context.val() == "0") {
+
+					context.val("1");
+
+				} else if (parseInt(context.val()) > parseInt($("#quantidadeAux___"+linha).val())) {
+
+					context.val($("#quantidadeAux___"+linha).val());
+
+				} 
+
+				var contexoStr = context.val().replace(",",".");
+				console.log("contexoStr AQUI OOOO : "+ contexoStr);
+
+				var unitarioStr1 = $("#pesokgUnit___"+linha).val().replace(',','.');
+				var unitarioStr2 = $("#bcicmsUnit___"+linha).val().replace(',','.');
+				var unitarioStr3 = $("#valorIpiUnit___"+linha).val().replace(',','.');
+				var unitarioStr4 = $("#valoricmsUnit___"+linha).val().replace(',','.');
+				var unitarioStr5 = $("#valorstUnit___"+linha).val().replace(',','.');
+				var unitarioStr6 = $("#valorbcstUnit___"+linha).val().replace(',','.');
+
+				console.log("unitarioStr5 AQUI OOOO : "+ unitarioStr5);
+
+				var unitarioStr7 = $("#totalMercadoriaUnitTeste___"+linha).val().replace(",",".");
+
+				console.log(" context.val() : "+ context.val());
+				console.log(" totalitemUnit___ : "+ $("#totalitemUnit___"+linha).val().replace(',','.'));
+
+				var valorTotal1 = parseFloat(context.val().replace(",",".")) * parseFloat($("#totalitemUnit___"+linha).val().replace(',','.'));
+				console.log(" totalitemUnit___ : "+ $("#totalitemUnit___"+linha).val().replace(',','.'));
+				console.log(" valorTotal1 : "+ valorTotal1.toFixed(2));
+
+				var valorTotal2 = parseFloat(contexoStr) * parseFloat(unitarioStr1);
+				var valorTotal3 = parseFloat(contexoStr) * parseFloat(unitarioStr2);
+				var valorTotal4 = parseFloat(contexoStr) * parseFloat(unitarioStr3);
+				var valorTotal5 = parseFloat(contexoStr) * parseFloat(unitarioStr4);
+				var valorTotal6 = parseFloat(contexoStr) * parseFloat(unitarioStr5);
+				var valorTotal7 = parseFloat(contexoStr) * parseFloat(unitarioStr6);
+				var valorTotal8 = parseFloat(contexoStr) * parseFloat(unitarioStr7);
+
+				$("#totalitem___"+linha).val(valorTotal1.toFixed(2).toString().replace('.',','));
+				$("#pesokg___"+linha).val(valorTotal2.toFixed(2).toString().replace('.',','));
+				$("#bcicms___"+linha).val(valorTotal3.toFixed(2).toString().replace('.',','));	
+				$("#valorIpi___"+linha).val(valorTotal4.toFixed(2).toString().replace('.',','));	
+				$("#valoricms___"+linha).val(valorTotal5.toFixed(2).toString().replace('.',','));			
+				$("#valorst___"+linha).val(valorTotal6.toFixed(2).toString().replace('.',','));
+				$("#valorbcst___"+linha).val(valorTotal7.toFixed(2).toString().replace('.',','));
+				$("#totalMercadoria___"+linha).val(valorTotal8.toFixed(2).toString().replace('.',','));		
+
+//				$("#totalMercadoria___"+linha+"',#totalitem___"+linha+"',#bcicms___"+linha+"',#valorIpi___"+linha+"',#valorst___"+linha).maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."}); 
+
+				calculaValorTotalSub();
+
+				var difNfd  = 0.00 ;			
+				var difIcms = 0.00 ;   
+				var difIpi  = 0.00 ;
+				var difSt   = 0.00 ;	
+				var difMerc = 0.00 ;	
+
+				var teste1  = $('#TotalGetalNFD').val().replace(",",".");
+				var teste11 = $('#TotalDescGetalNFD').val().replace(",",".");
+
+				var teste2  = $('#TotalGetalIcms').val().replace(",",".");
+				console.log("valor do icms NFD", teste2);
+				var teste22 = $('#TotalDescGetalIcms').val().replace(",",".");
+				console.log("valor do icms descritivo", teste22);
+
+				var teste3  = $('#TotalGetalIpi').val().replace(",",".");
+
+				var teste33 = $('#TotalDescGetalIpi').val().replace(",",".");
+
+				var teste4  = $('#TotalGetalSt').val().replace(",",".");
+				var teste44 = $('#TotalDescGetalSt').val().replace(",",".");
+
+				var teste5  = $('#TotalGetalMerc').val().replace(",",".");
+				var teste55 = $('#TotalDescGetalMerc').val().replace(",",".");
+
+				difNfd  =	parseFloat(teste1)  - parseFloat(teste11);		
+				difIcms =   parseFloat(teste2)  - parseFloat(teste22); 
+				difIpi  =	parseFloat(teste3)  - parseFloat(teste33);
+				difSt   =	parseFloat(teste4)  - parseFloat(teste44);
+				difMerc =	parseFloat(teste5)  - parseFloat(teste55);
+
+				$('#TotalDifGetalNFD').val(difNfd.toFixed(2).toString().replace('.',','));
+				$('#TotalDifGetalIcms').val(difIcms.toFixed(2).toString().replace('.',','));   
+				$('#TotalDifGetalIpi').val(difIpi.toFixed(2).toString().replace('.',','));
+				$('#TotalDifGetalSt').val(difSt.toFixed(2).toString().replace('.',','));
+				$('#TotalDifGetalMerc').val(difMerc.toFixed(2).toString().replace('.',','));
+
+				// QUANTIDADE CHANGE
+
+				var toleraMerc   = $("#toleraMerc").val() ; 
+				var porcMerc     = $("#porcMerc").val() ;
+
+				var toleraTotal  = $("#toleraTotal").val() ;
+				var porcTotal    = $("#porcTotal").val() ;
+
+				var toleraImp    = $("#toleraImp").val() ;
+				var porcImp      = $("#porcImp").val() ;
+
+				// fim cabeçalho
+				// ***** INICIO DOS CALCULOS SOB TOLERANCIA 
+				//imposto ICMS
+
+				var icms_calcImp = parseFloat($('#TotalGetalIcms').val());
+
+				console.log("VALOR CAMPO IMPOSTO ICMS", icms_calcImp);
+
+				var result_icmsImp = (parseFloat(porcImp) * icms_calcImp) /100;
+
+				console.log("VALOR RESULTADO PERC ICMS", result_icmsImp);
+
+				var result_icmsVlr = parseFloat($('#TotalGetalIcms').val()) + parseFloat(toleraImp);
+
+				console.log("RESULTADO VALOR ICMS", result_icmsVlr);
+
+				if (parseFloat(difIcms) <= 0){
+
+					$('#TotalDifGetalIcms').css('background-color','#87CEEB');
+					$("#controle1").val("ok");
+					$("#corGeralIcms").val("azul");
+
+
+				} else if ((parseFloat(difIcms) < parseFloat(result_icmsImp)) && (parseFloat(difIcms) > 0 )|| (parseFloat(difIcms) < parseFloat(result_icmsVlr)) && (parseFloat(difIcms) > 0)){
+
+					$('#TotalDifGetalIcms').css('background-color','#F0E68C');
+					$("#controle1").val("ok");
+					$("#corGeralIcms").val("amarelo");
+
+				}  else if ((parseFloat(difIcms) > parseFloat(result_icmsImp)) || (parseFloat(result_icmsVlr) > parseFloat(difIcms))) {
+
+					$('#TotalDifGetalIcms').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralIcms").val("vermelho");
+
+				}
+
+//				imposto IPI
+
+				var ipi_calcImp = parseFloat($('#TotalGetalIpi').val());
+
+				var result_ipiImp = (porcImp * ipi_calcImp) /100;
+
+				var result_ipiVlr = parseFloat($('#TotalGetalIpi').val()) + toleraImp;
+
+
+				if (parseFloat(difIpi) <= 0){
+
+					$('#TotalDifGetalIpi').css('background-color','#87CEEB');
+					$("#controle2").val("ok");
+					$("#corGeralIpi").val("azul");			
+
+				} else if ((parseFloat(difIpi) > parseFloat(result_ipiImp)) || (parseFloat(difIpi) > result_ipiVlr)) {
+					$('#TotalDifGetalIpi').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralIpi").val("vermelho");			
+
+				} else if ((parseFloat(difIpi) < parseFloat(result_ipiImp)) && (parseFloat(difIpi) > 0) || (parseFloat(difIpi) < parseFloat(result_ipiImp)) && (parseFloat(difIpi) > 0)){
+
+					$('#TotalDifGetalIpi').css('background-color','#F0E68C');
+					$("#controle2").val("ok");
+					$("#corGeralIpi").val("amarelo");			
+
+				}  
+
+//				imposto ST
+
+				var st_calcImp = parseFloat($('#TotalGetalSt').val());
+
+				var result_StImp = (porcImp * st_calcImp) /100;
+
+				var result_StVlr = parseFloat($('#TotalGetalSt').val()) + toleraImp;
+
+
+				if (parseFloat(difSt) <= 0 ){
+
+					$('#TotalDifGetalSt').css('background-color','#87CEEB');
+					$("#controle3").val("ok");
+					$("#corGeralSt").val("azul");			
+
+				}else if ((parseFloat(difSt) > parseFloat(result_StImp)) || (parseFloat(difSt) > result_StVlr)) {
+
+					$('#TotalDifGetalSt').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralSt").val("vermelho");			
+
+				} else if ((parseFloat(difSt) < parseFloat(result_StImp)) && (parseFloat(difSt) < 0) || (parseFloat(difSt) < result_StVlr) && (parseFloat(difSt) < 0)){
+
+					$('#TotalDifGetalSt').css('background-color','#F0E68C');
+					$("#controle3").val("ok");
+					$("#corGeralSt").val("amarelo");
+				} 
+
+//				valor total Merc
+
+				var vlMerc_calcImp = parseFloat($('#TotalGetalMerc').val());
+				console.log("TOTAL GETA MERC : "+ $('#TotalGetalMerc').val());
+
+				var result_VlMercImp = (porcMerc * vlMerc_calcImp) /100;
+
+				var result_VlMercVlr = parseFloat($('#TotalGetalMerc').val()) + parseFloat(toleraMerc);
+				console.log("TOTAL result_VlMercVlr  : "+ result_VlMercVlr);
+
+
+
+				if (parseFloat(difMerc) <= 0) {
+
+					$('#TotalDifGetalMerc').css('background-color','#87CEEB');
+					$("#controle4").val("ok");
+					$("#corGeralMerc").val("azul");
+
+				}else if ((parseFloat(difMerc) > parseFloat(result_VlMercImp)) || (parseFloat(difMerc) > result_VlMercVlr)) {
+
+					$('#TotalDifGetalMerc').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralMerc").val("vermelho");
+
+
+				} else if ((parseFloat(difMerc) < parseFloat(result_VlMercImp)) && (parseFloat(difMerc) > 0) || (parseFloat(difMerc) < result_VlMercVlr)) {
+
+					$('#TotalDifGetalMerc').css('background-color','#F0E68C');
+					$("#controle4").val("ok");
+					$("#corGeralMerc").val("amarelo");
+
+				}  
+
+//				valor TOTAL TOTAL
+
+				var vlTotal_calcImp = parseFloat($('#TotalGetalNFD').val());
+				console.log("VALOR TOAL NFD "+ vlTotal_calcImp);
+				var result_VlTotalImp = (porcTotal * vlTotal_calcImp) /100;
+
+				var result_VlTotalVlr = parseFloat($('#TotalGetalMerc').val()) + parseFloat(toleraTotal);
+
+				if (parseFloat(difNfd) <= 0){
+
+					$('#TotalDifGetalNFD').css('background-color','#87CEEB');
+					$("#controle5").val("ok");
+					$("#corGeralTotal").val("azul");
+
+				}else if ((parseFloat(difNfd) > parseFloat(result_VlTotalImp)) || (parseFloat(difNfd) > result_VlTotalVlr)) {
+
+					$('#TotalDifGetalNFD').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralTotal").val("vermelho");
+
+
+
+				} else if ((parseFloat(difNfd) < parseFloat(result_VlTotalImp)) && (parseFloat(difNfd) > 0) || (parseFloat(difNfd) < result_VlTotalVlr)){
+
+					$('#TotalDifGetalNFD').css('background-color','#F0E68C');
+					$("#controle5").val("ok");
+					$("#corGeralTotal").val("amarelo");
+				} 
+
+			});
+
+//			CALCULO DE CAMPO (*)
+
+			aprovacoesAba();
+
+			$("input[name='bloqueiaPesq']").change(function(e){               
+
+				if ($(this).val() === 'bloqueiaItem') {
+
+					$("#numeroNF,#serieNF,#estabNF,#mensagemRetorno").attr("readonly","readonly").val("");
+
+					$("#codItem2").attr('disabled','disabled').val("").change();
+
+					$("#codItem").removeAttr('disabled');
+
+					$("#familia,#item").removeAttr("disabled");
+
+					$('#pesquisaNF').attr('disabled', 'disabled');
+
+				} else if ($(this).val() === 'bloqueiaFamilia') {
+
+					$("#numeroNF,#serieNF").removeAttr("readonly");
+
+					$("#serieNF").val("1");
+
+					$("#codItem2").removeAttr('disabled');
+
+					$("#descItem").val("").change();
+					$("#familia,#item,#codItem").attr('disabled','disabled').val("").change();					
+
+					$('#pesquisaNF').removeAttr('disabled', 'disabled');
+
+				}   
+
+			});
+
+			$("input[name='comparar']").change(function(e){               
+				if ($(this).val() === 'sim') {
+					$("#obsCompara").attr('readonly','readonly');
+					$("#comparaDesc").val("sim");
+				} else if ($(this).val() === 'nao') {
+					$("#versao").val("2");
+					$("#obsCompara").removeAttr('readonly');
+					$("#comparaDesc").val("nao");
+				}     
+			});
+
+
+			$("input[name='comparar']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#comparaAprov").val("sim");
+					$("#aprovaVerifica6").val("sim");
+
+					$("#aprovAba3.active a,#aprovAba3 a").removeClass("btn-danger");
+					$("#aprovAba3.active a,#aprovAba3 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#comparaAprov").val("nao");
+					$("#aprovaVerifica6").val("nao");
+
+					$("#aprovAba3.active a,#aprovAba3 a").addClass("btn-danger");
+					$("#aprovAba3.active a,#aprovAba3 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+			$("input[name='aprova']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#aprovacaoSupDir").val("sim");
+					$("#aprovaVerifica1").val("sim");
+
+					$("#li1.active a,#li1 a").removeClass("btn-danger");
+					$("#li1.active a,#li1 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoSupDir").val("nao");
+					$("#aprovaVerifica1").val("nao");
+
+					$("#li1.active a,#li1 a").addClass("btn-danger");
+					$("#li1.active a,#li1 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+			function aprovacoesAba(){
+
+				var aprova1 = $("#aprovaVerifica1").val();
+				var aprova2 = $("#aprovaVerifica2").val();
+				var aprova3 = $("#aprovaVerifica3").val();
+				var aprova4 = $("#aprovaVerifica4").val();
+				var aprova5 = $("#aprovaVerifica5").val();				
+				var aprova6 = $("#aprovaVerifica6").val();
+
+				if (aprova1 == "sim") {
+
+					$("#li1.active a,#li1 a").removeClass("btn-danger");
+					$("#li1.active a,#li1 a").addClass("btn-sucess");
+
+				} else if (aprova1 == "nao") {
+
+					$("#li1.active a,#li1 a").addClass("btn-danger");
+					$("#li1.active a,#li1 a").removeClass("btn-sucess");	
+
+				}
+
+				if (aprova2 == "sim") {
+
+					$("#li2.active a,#li2 a").removeClass("btn-danger");
+					$("#li2.active a,#li2 a").addClass("btn-sucess");
+
+				} else if (aprova2 == "nao") {
+
+					$("#li2.active a,#li2 a").addClass("btn-danger");
+					$("#li2.active a,#li2 a").removeClass("btn-sucess");	
+
+				}
+
+				if (aprova3 == "sim") {
+
+					$("#li3.active a,#li3 a").removeClass("btn-danger");
+					$("#li3.active a,#li3 a").addClass("btn-sucess");
+
+				} else if (aprova3 == "nao") {
+
+					$("#li3.active a,#li3 a").addClass("btn-danger");
+					$("#li3.active a,#li3 a").removeClass("btn-sucess");	
+
+				}
+
+
+				if (aprova4 == "sim") {
+
+					$("#li4.active a,#li4 a").removeClass("btn-danger");
+					$("#li4.active a,#li4 a").addClass("btn-sucess");
+
+				} else if (aprova4 == "nao") {
+
+					$("#li4.active a,#li4 a").addClass("btn-danger");
+					$("#li4.active a,#li4 a").removeClass("btn-sucess");	
+
+				}
+
+				if (aprova5 == "sim") {
+
+					$("#aprovAba5.active a,#aprovAba5 a").removeClass("btn-danger");
+					$("#aprovAba5.active a,#aprovAba5 a").addClass("btn-sucess");
+
+				} else if (aprova5 == "nao") {
+
+					$("#aprovAba5.active a,#aprovAba5 a").addClass("btn-danger");
+					$("#aprovAba5.active a,#aprovAba5 a").removeClass("btn-sucess");	
+
+				}
+
+				if (aprova6 == "sim") {
+
+					$("#aprovAba3.active a,#aprovAba3 a").removeClass("btn-danger");
+					$("#aprovAba3.active a,#aprovAba3 a").addClass("btn-sucess");
+
+				} else if (aprova6 == "nao") {
+
+					$("#aprovAba3.active a,#aprovAba3 a").addClass("btn-danger");
+					$("#aprovAba3.active a,#aprovAba3 a").removeClass("btn-sucess");	
+
+				}
+			}
+
+			$("input[name='aprovaRegional']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#aprovacaoSupDir").val("sim");
+					$("#aprovaVerifica2").val("sim");
+
+					$("#li2.active a,#li2 a").removeClass("btn-danger");
+					$("#li2.active a,#li2 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoSupDir").val("nao");
+					$("#aprovaVerifica2").val("nao");
+
+					$("#li2.active a,#li2 a").addClass("btn-danger");
+					$("#li2.active a,#li2 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+			$("input[name='aprovaDiretor']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#aprovacaoSupDir").val("sim");
+					$("#aprovaVerifica3").val("sim");
+
+					$("#li3.active a,#li3 a").removeClass("btn-danger");
+					$("#li3.active a,#li3 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoSupDir").val("nao");
+					$("#aprovaVerifica3").val("nao");
+
+					$("#li3.active a,#li3 a").addClass("btn-danger");
+					$("#li3.active a,#li3 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+			$("input[name='aprovaPresidente']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#aprovacaoSupDir").val("sim");
+					$("#aprovaVerifica4").val("sim");
+
+					$("#li4.active a,#li4 a").removeClass("btn-danger");
+					$("#li4.active a,#li4 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoSupDir").val("nao");
+					$("#aprovaVerifica4").val("nao");		
+
+					$("#li4.active a,#li4 a").addClass("btn-danger");
+					$("#li4.active a,#li4 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+
+			$("input[name='aprovaDif']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#aprovacaoDif").val("sim");
+					$("#aprovaVerifica5").val("sim"); 		
+
+					$("#aprovAba5.active a,#aprovAba5 a").removeClass("btn-danger");
+					$("#aprovAba5.active a,#aprovAba5 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoDif").val("nao");
+					$("#aprovaVerifica5").val("nao");
+
+
+					$("#aprovAba5.active a,#aprovAba5 a").addClass("btn-danger");
+					$("#aprovAba5.active a,#aprovAba5 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+
+			$("input[name='logistica']").change(function(e){
+
+				if($(this).val() === 'retirar'){
+					$("#Dest_Ret").val("retirar");
+
+				} else if ($(this).val() === 'destruir'){
+
+					$("#Dest_Ret").val("destruir");			
+				}
+
+			});
+
+
+			var WKNumState = params.WKNumState;
+
+			$("#numeroAtividade").val(WKNumState);
+
+			var verificador = $("#verificaSuper").val();
+
+			if ( verificador == "SIM") {
+
+				$("#zoomRep").removeClass("hide");
+				$("#campoZoomCli").removeClass("hide");
+
+			}
+
+			// FIM MASCARA
+
+			if (WKNumState != 0 || WKNumState != 4) {
+
+				$("#campoZoomCli").removeClass("hide");
+
+			}
+
+			if (WKNumState != 0) {
+
+				$(".nomeCliente").removeClass('hide');	
+			}
+
+
+			if (WKNumState == 4) {
+
+				$("#respoChamDesc .bpm-mobile-trash-column").css("display", "none"); // esconde todas as lixeiras de todas as tabelas
+				$("#zoomCliente").attr('readonly','readonly');
+				$("#devolucaoVenda").attr('readonly', 'readonly');
+				$("#nfdEmitida").attr('readonly', 'readonly');
+				$("#zoomCliente").attr('readonly','readonly');
+
+				setTimeout(function(){
+
+					var verificador  = $("#verificaSuper").val();
+					var cod_emitente = $("#cod_emitenteTwo").val();
+					var it_codigo    = $("#it_codigoTt").val();
+					var venda        = $("#devolucaoVenda").val();
+					var dataSolic    = $("#dataSolic").val();
+					var dataConvert  = dataSolic.replace("/","");
+					var dataConvert2 = dataConvert.replace("/","");
+					var nr_nota_fis  = $("#numeroNF").val();
+					var serieNF      = $("#serieNF").val();
+
+					console.log("PARAMETROS");
+					console.log("CODIGO EMITENTE = ", cod_emitente);
+					console.log("CODIGO ITEM = ",it_codigo);
+					console.log("VENDA ? ",venda);
+					console.log("DATA SOL = ",dataConvert2);
+					console.log("NUMERO NOTA FISCAL =",nr_nota_fis);
+					console.log("SERIE NF =",serieNF);
+
+					reloadZoomFilterValues("codItem", "cod_emitente," + cod_emitente + ",it_codigo," + it_codigo + ",venda," + venda + ",dt_descritivo," + dataConvert2);
+
+				},1000);
+
+			}
+
+
+
+
+			if(WKNumState == 0 || WKNumState == 4) {
+			
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".comparar").attr('disabled',true);
+				$(".logistica").attr('disabled',true)
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');								
+				$(".btnResp6").css('display','none');
+				var cod_solicitante = $("#matriculaSolicitante").val();
+				console.log("codigo do representante =", cod_solicitante);
+				carregaRepresentante(cod_solicitante); 
+
+				$(document).on("change","#nfdEmitida",function(){
+					var jaEmitida = $("#nfdEmitida").val();
+					if (jaEmitida == "sim") {
+						$("#versao").val("2");
+					}else if (jaEmitida == "nao"){
+						$("#versao").val("1");
+					}	
+				});
+
+//				INICIO
+
+				$('#pesquisaNF').click(function(){
+
+					var notaFiscal    = $("#numeroNF").val();
+					var serieNF       = $("#serieNF").val();
+					var cod_emitente  = $("#cod_emitenteTwo").val();
+					var vendaSn       =	$("#devolucaoVenda").val();
+					var dataSolic    = $("#dataSolic").val();
+					var dataConvert  = dataSolic.replace("/","");
+					var dataConvert2 = dataConvert.replace("/","");    
+					console.log("1", notaFiscal);
+					console.log("2", serieNF);
+					console.log("3", cod_emitente);
+					console.log("4", vendaSn);
+					console.log("5", dataSolic);
+					console.log("6", dataConvert2);
+					var dados = {
+							"name": "nfs_cliente",
+							"fields":null,
+							"constraints":[
+								{
+									"_field":"nr_nota_fis",
+									"_initialValue": notaFiscal,
+									"_finalValue": notaFiscal,
+									"_type":1
+								},{
+									"_field":"serie",
+									"_initialValue": serieNF,
+									"_finalValue": serieNF,
+									"_type":1
+								},{
+									"_field":"cod_emitente",
+									"_initialValue": cod_emitente,
+									"_finalValue": cod_emitente,
+									"_type":1
+								},{
+									"_field":"venda",
+									"_initialValue": vendaSn,
+									"_finalValue": vendaSn,
+									"_type":1
+								},{
+									"_field":"dt_descritivo",
+									"_initialValue": dataConvert2,
+									"_finalValue": dataConvert2,
+									"_type":1
+								}
+
+								]
+					};
+					$.ajax({
+						method: "POST",
+						url: "/api/public/ecm/dataset/datasets/",
+						data: JSON.stringify(dados),
+						contentType: "application/json", 
+						async: false,
+						error: function(x, e) {
+							if (x.status == 500) {
+								alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+							}
+						},
+						beforeSend: function(){
+
+						},
+						success:function(model) {
+
+							$.each(model.content.values, function(index, value){
+								var mensagemRetorno = value.mensagem;
+								var codEstab        = value.cod_estabel;
+
+
+								console.log("Mensagem Baione",mensagemRetorno);
+								console.log("Cod estabelecimento", codEstab);
+
+
+								reloadZoomFilterValues("codItem2", "cod_emitente," + cod_emitente + ",venda," + vendaSn + ",dt_descritivo," + dataConvert2 + ",nr_nota_fis," + notaFiscal + ",serie," + serieNF + ",cod_estab," + codEstab );
+
+								$("#mensagemRetorno").val(mensagemRetorno);
+								$("#estabNF").val(codEstab);
+
+							});
+							return model;
+						}
+					});
+				});		
+			}
+
+
+			if(WKNumState == 5) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".comparar").attr('disabled',true);
+				$(".logistica").attr('disabled',true)
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');								
+				$(".btnResp6").css('display','none');	
+				$(".btnResp1").css('display','none');
+
+				var minhaLinha1 = wdkAddChild('respoCham');
+				$("#minhaLinha1").val(minhaLinha1);
+				var totalNf = $("#TotalDescGetalNFD").val();
+				var aprovador = $("#aprovador1").val();
+				carregaAlcada(aprovador);
+				console.log("passar para alcada ",aprovador);
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+			}
+
+			if(WKNumState == 12) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprova").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".comparar").attr('disabled',true);
+				$(".logistica").attr('disabled',true)
+				$("button[class^='btnResp']:not(.btnResp2)").addClass('hide');
+				$(".btnResp1").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');								
+				$(".btnResp6").css('display','none');
+				$(".btnResp2").css('display','none');
+				var minhaLinha = wdkAddChild('respRegional'); 
+				console.log("numero de linhas ", minhaLinha);
+				$("#minhaLinha").val(minhaLinha);
+				var aprovador = $("#aprovador2").val();
+				carregaAlcada(aprovador);
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+			}
+
+
+			if(WKNumState == 13) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".comparar").attr('disabled',true);
+				$(".logistica").attr('disabled',true)
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');								
+				$(".btnResp6").css('display','none');	
+				$(".btnResp3").css('display','none');
+				var minhaLinha = wdkAddChild('respDiretor');
+				$("#minhaLinha2").val(minhaLinha);
+				var aprovador = $("#aprovador3").val();
+				carregaAlcada(aprovador);
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+			}
+
+
+			if(WKNumState == 15) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".comparar").attr('disabled',true);
+				$(".logistica").attr('disabled',true)
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp5").css('display','none');								
+				$(".btnResp6").css('display','none');	
+				$(".btnResp4").css('display','none');
+				var minhaLinha = wdkAddChild('respPresidente');
+				$("#minhaLinha3").val(minhaLinha);
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+			}
+
+			if(WKNumState == 42) {
+
+				setTimeout(function(){
+					var cnpjPassa = $("#cnpjCli").val().replace(/[^0-9]/g, "");
+					var dt_ini_pesq_nfd  = $("#dataSolic").val();
+					var dt_ini_pesq_nfd1 = dt_ini_pesq_nfd.replace("/","");
+					var data_pesquisa    = dt_ini_pesq_nfd1.replace("/","");
+					console.log("CNPJ PARA COMPARAR DESC",cnpjPassa);
+					console.log("DATA PARA COMPARAR DESC",data_pesquisa);
+					reloadZoomFilterValues("numeroNotas", "cnpj," + cnpjPassa + ",dt_ini_pesq_nfd," + data_pesquisa);
+
+				},1000);
+
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');
+				$(".btnResp6").css('display','none');			
+				$(".logistica").attr('disabled',true)
+
+				bloqueiaCampo1();
+
+				// some com todas as lixeiras exceto a da tabela #respoChamDesc
+				$("#respoChamDesc tbody tr td.bpm-mobile-trash-column").css("display","table-cell");
+
+				atualizaRep();
+				$("#menu1").addClass('hide');
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});
+
+				$("#botaoEsconde").css('display','none');		
+			}
+
+			if(WKNumState == 44) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');
+				$(".comparar").attr('disabled',true);
+				$(".btnResp6").css('display','none');			
+				$(".logistica").attr('disabled',true)
+
+				$("#botaoEsconde").css('display','none');
+
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});		
+			}
+
+
+			if(WKNumState == 50) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');
+				$(".comparar").attr('disabled',true);
+				$(".btnResp6").css('display','none');			
+				$(".logistica").attr('disabled',true)
+
+
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+
+				$("#botaoEsconde").css('display','none');
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});        
+			}
+
+
+			if(WKNumState == 59) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');
+				$(".comparar").attr('disabled',true);
+				$(".btnResp6").css('display','none');			
+
+
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+
+				$("#botaoEsconde").css('display','none');
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});        
+			}
+
+
+			if(WKNumState == 68) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				//$(".btnResp5").css('display','none');
+				$(".comparar").attr('disabled',true);
+				$(".btnResp6").css('display','none');	  
+				$(".btnResp5").css('display','none');
+
+				var minhaLinha = wdkAddChild('respoChamDif');	
+				$("#minhaLinha4").val(minhaLinha);
+
+
+				$(".logistica").attr('disabled',true)
+
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+
+				$("#botaoEsconde").css('display','none');
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});        
+			}
+
+			if (WKNumState == 63) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$("#controlaDestruicao").removeClass('hide');
+
+				$(".dataRetirada").removeAttr('readonly');
+
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+
+				$(".comparar").attr('disabled',true);
+				$(".btnResp6").css('display','none');			
+				$(".logistica").attr('disabled',true)
+
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+
+				$("#botaoEsconde").css('display','none');
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});
+			}
+
+			
+
+
+			$(document).on("change","#devolucaoVenda",function(){
+
+				$(".nomeCliente").removeClass('hide');						
+
+
+				var verificador = $("#verificaSuper").val();
+
+				if ( verificador == "SIM") {
+
+					$("#zoomRep").removeClass("hide");
+
+				}
+
+				console.log("REPRESENTANTE CODIGO = ", cod_solicitante );
+
+				var arr = [] ;
+				var dados = {
+						"name": "return_Subst",
+						"fields":null,
+						"constraints":[
+							{
+								"_field":"CD_MATRICULA",
+								"_initialValue": cod_solicitante,
+								"_finalValue": cod_solicitante,
+								"_type":1
+							}
+							]
+				};
+				$.ajax({
+					method: "POST",
+					url: "/api/public/ecm/dataset/datasets/",
+					data: JSON.stringify(dados),
+					contentType: "application/json", 
+					async: false,
+					error: function(x, e) {
+						if (x.status == 500) {
+							alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+						}
+					},
+					beforeSend: function(){
+
+					},
+					success:function(model) {
+
+						$.each(model.content.values, function(index, value){
+
+							var substituto = value.CD_MATRICULA;
+							var cod_mtr_fluig = value.COD_SUBSTTO;
+							$("#cod_mtr_fluig").val(cod_mtr_fluig);
+							var cod_mtr_fluigAux = $("#cod_mtr_fluig").val();
+
+							if (cod_mtr_fluigAux == cod_solicitante) {			
+
+
+
+
+								console.log("Trouxe o substituto",substituto);
+
+								arr.push(substituto);  
+								var contador = arr.length;
+
+							}
+						});
+
+
+						$("#testeSubstituto").val(arr);
+
+						var testeSubs = $("#testeSubstituto").val();
+						var testeSubsOficial = testeSubs.replaceAll(",","|");
+
+
+
+
+//						var testeSubs = "rodrigo.baione|luciano.claudino";
+						console.log("teste solicitante =", cod_solicitante);
+
+						console.log("teste Substituto =", testeSubsOficial);
+
+						reloadZoomFilterValues("representanteZoom", "matr_fluig," + cod_solicitante + ',matr_fluig_subst,' + testeSubsOficial);	
+
+						reloadZoomFilterValues("zoomCliente", "matr_fluig," + cod_solicitante);	
+//						ctrl f
+						console.log("SEGUNDO RELOAD ",cod_solicitante );
+
+					}
+				});
+
+			});	
+
+		}   
+}; //fim do Edit
+
+function carregaTela(cod_solicitante){
+
+
+}
+function atualizaRep(){
+
+	var super_control = $("#supervisor").val();
+
+	if(super_control == "SIM"){
+		$("#zoomRep").removeClass("hide");
+	}
+}
+
+
+
+function setSelectedZoomItem(selectedItem) {
+	if(selectedItem.inputId == "zoomCliente"){
+
+		var cod_cliente = selectedItem["cod_emitente"];
+		var Nome_abrev  = selectedItem["nome_abrev"];
+		var cidade      = selectedItem["cidade"];
+		var endereco    = selectedItem["endereco"];
+		var estado      = selectedItem["estado"];
+		var bairro      = selectedItem["bairro"];
+		var cnpj        = selectedItem["cnpj"];
+		var cep         = selectedItem["cep"];
+		var nome        = selectedItem["nome"];
+
+		var newCnpj =  cnpj.replace(".","");
+		var newCnpj1 =  newCnpj.replace(".","");
+		var newCnpj2 =  newCnpj1.replace(".","");	
+		var newCnpj3 =  newCnpj2.replace("/","");	
+		var passaCnpj =  newCnpj3.replace("-","");						
+
+		$("#codCliente").val(cod_cliente);
+		$("#nomeAbrev").val(Nome_abrev);
+		$("#cidade").val(cidade);
+		$("#enderecoCli").val(endereco);
+		$("#estado").val(estado);
+		$("#bairro").val(bairro);
+		$("#cnpjCli").val(cnpj);
+		$("#cep").val(cep);
+		$("#cod_emitenteTwo").val(cod_cliente);
+		$("#nomeCliente").val(nome);
+
+
+	} else if(selectedItem.inputId == "transportadoraCli"){ 
+
+		var cnpjTransp  = selectedItem["cnpj_transp"];
+		var razaoSocial = selectedItem["nome_transp"];
+		var telefone 	= selectedItem["tel_transp"];
+		$("#telCli").val(telefone);		
+		$("#cnpjTransp").val(cnpjTransp);
+		$("#nomeTransp").val(razaoSocial);
+		console.info(cnpjTransp);
+
+
+	} else if( selectedItem.inputId == "representanteZoom"){
+
+		var cod_rep = selectedItem["matr_fluig_repres"];
+		var nomeSuper = selectedItem["nome_super"];
+		var nomeRegiao = selectedItem["nome_regiao"];
+
+		var aprovadorRep1  = selectedItem["aprov1"];
+		var aprovadorRep2  = selectedItem["aprov2"];
+		var aprovadorRep3  = selectedItem["aprov3"];
+
+		console.log("TESTE APROVA REPRE1", aprovadorRep1);
+		console.log("TESTE APROVA REPRE2", aprovadorRep2);
+		console.log("TESTE APROVA REPRE3", aprovadorRep3);		
+
+		$("#aprovador1").val(aprovadorRep1);
+		$("#aprovador2").val(aprovadorRep2);
+		$("#aprovador3").val(aprovadorRep3);		
+
+		$("#supervisor").val(nomeSuper);
+		$("#regional").val(nomeRegiao);
+
+		reloadZoomFilterValues("zoomCliente", "matr_fluig," + cod_rep);	
+//		comeco do ajax
+		var testeSubs = $("#testeSubstituto").val();
+		var testeSubsOficial = testeSubs.replace(",","|");
+//		var testeSubs = "rodrigo.baione|luciano.claudino";
+		console.log(testeSubsOficial);								
+
+	} else if (selectedItem.inputId == "familia"){
+
+		var cod_familia = selectedItem["fm_cod_com"];	
+		reloadZoomFilterValues("item", "fm_cod_com," + cod_familia);	
+
+
+	} else if(selectedItem.inputId == "item"){
+
+		var cod_item    = selectedItem["it_codigo"];
+		var desc_item   = selectedItem["desc_item"];
+		$("#descItem").val(desc_item);
+		$("#it_codigoTt").val(cod_item);
+
+		var verificador  = $("#verificaSuper").val();
+		var cod_emitente = $("#cod_emitenteTwo").val();
+		var it_codigo    = $("#it_codigoTt").val();
+		var venda        = $("#devolucaoVenda").val();
+		var dataSolic    = $("#dataSolic").val();
+		var dataConvert  = dataSolic.replace("/","");
+		var dataConvert2 = dataConvert.replace("/","");
+		var nr_nota_fis  = $("#numeroNF").val();
+		var serieNF      = $("#serieNF").val();
+
+		console.log("PARAMETROS");
+		console.log("CODIGO EMITENTE = ", cod_emitente);
+		console.log("CODIGO ITEM = ",it_codigo);
+		console.log("VENDA ? ",venda);
+		console.log("DATA SOL = ",dataConvert2);
+		console.log("NUMERO NOTA FISCAL =",nr_nota_fis);
+		console.log("SERIE NF =",serieNF);
+
+		reloadZoomFilterValues("codItem", "cod_emitente," + cod_emitente + ",it_codigo," + it_codigo + ",venda," + venda + ",dt_descritivo," + dataConvert2);
+
+	}else if (selectedItem.inputId == "codItem" || selectedItem.inputId == "codItem2"){
+
+		var it_codigo   = selectedItem["it_codigo"];
+		var cod_refer   = selectedItem["cod_refer"];
+		var descr_item  = selectedItem["descr_item"];
+		var unidade     = selectedItem["unidade"];
+		var ean         = selectedItem["ean"];
+		var dun         = selectedItem["dun"];
+		var qt_faturada = selectedItem["qt_faturada"];
+		var saldo_nf    = selectedItem["saldo_nf"]; 
+		var nr_nota_fis = selectedItem["nr_nota_fis"]; 
+		var dt_emis_nf  = selectedItem["dt_emis_nf"];
+		var nr_tabpre   = selectedItem["nr_tabpre"]; 
+		var preco_bru   = selectedItem["preco_bru"];
+		var desconto    = selectedItem["desconto"];
+		var preco_liq   = selectedItem["preco_liq"];
+		var aliq_ipi    = selectedItem["aliq_ipi"];
+		var vl_ipi      = selectedItem["vl_ipi"];
+		var vl_ipi2      = selectedItem["vl_ipi"];		
+		var aliq_icms   = selectedItem["aliq_icms"];
+		var base_icms   = selectedItem["base_icms"];
+		var base_icms2   = selectedItem["base_icms"];		
+		var vl_icms     = selectedItem["vl_icms"];
+		var vl_icms2     = selectedItem["vl_icms"];		
+		var vl_mercad   = selectedItem["vl_mercad"];
+		var vl_mercad2   = selectedItem["vl_mercad"];		
+		var base_st     = selectedItem["base_st"];
+		var base_st2     = selectedItem["base_st"];		
+		var vl_st       = selectedItem["vl_st"];
+		var vl_st2       = selectedItem["vl_st"];
+		var vl_tot_it   = selectedItem["vl_tot_it"];
+		var vl_tot_it2   = selectedItem["vl_tot_it"];
+		var peso_liq    = selectedItem["peso_liq"];
+		var peso_liq2    = selectedItem["peso_liq"];		
+		var nat_oper    = selectedItem["nat_oper"];
+		var nf_venda    = selectedItem["nf_venda"];
+
+		console.log("VALOR ICMS UNITARIO", vl_icms);
+
+//		preco_liqAux = preco_liqAux.toFixed(2);
+
+		var saldoAux = saldo_nf;
+		console.log(" AQUI saldoAux "+saldoAux); 
+
+		peso_liq  = parseFloat(saldoAux) * parseFloat(peso_liq.replace(',','.')); //unitario ok
+		base_icms = parseFloat(saldoAux) * parseFloat(base_icms.replace(',','.')); // unitario ok
+		vl_ipi    = parseFloat(saldoAux) * parseFloat(vl_ipi.replace(',','.'));       // unitario ok
+		vl_icms   = parseFloat(saldoAux) * parseFloat(vl_icms.replace(',','.'));      // unitario ok
+		vl_tot_it = parseFloat(saldoAux) * parseFloat(vl_tot_it.replace(',','.'));  // unitario ok
+		base_st   = parseFloat(saldoAux) * parseFloat(base_st.replace(',','.')); 		// unitario OK
+		vl_st     = parseFloat(saldoAux) * parseFloat(vl_st.replace(',','.'));			// unitario OK 
+		vl_mercad = parseFloat(saldoAux) * parseFloat(vl_mercad.replace(',','.'));	// unitario OK
+
+
+//		peso_liq = parseFloat(saldoAux) * parseFloat(peso_liq.replace(',','.'));
+
+		var setaLinha = wdkAddChild('tabelaNF');
+
+		var linhasDesc = $("#tabelaNF tr").length -2;			
+		$("#linhasDesc").val(linhasDesc);
+
+//		valores unitarios
+
+		$("#totalitemUnit___"+setaLinha).val(vl_tot_it2);
+		$("#pesokgUnit___"+setaLinha).val(peso_liq2);
+		$("#bcicmsUnit___"+setaLinha).val(base_icms2)
+		$("#valorIpiUnit___"+setaLinha).val(vl_ipi2);
+		$("#valoricmsUnit___"+setaLinha).val(vl_icms2);
+		$("#valorbcstUnit___"+setaLinha).val(base_st2);
+		$("#valorstUnit___"+setaLinha).val(vl_st2);
+		$("#totalMercadoriaUnit___"+setaLinha).val(vl_mercad2);
+
+		$("#totalMercadoriaUnitTeste___"+setaLinha).val($("#totalMercadoriaUnit___"+setaLinha).val())
+
+
+
+//		Valores unitarios FINAL
+
+
+		$("#cod_item___"+setaLinha).val(it_codigo);
+		$("#referencia___"+setaLinha).val(cod_refer);
+		$("#descricaoItem___"+setaLinha).val(descr_item);
+		$("#unidade___"+setaLinha).val(unidade);
+		$("#nfsaida___"+setaLinha).val(nr_nota_fis);
+		$("#emissao___"+setaLinha).val(dt_emis_nf);
+		$("#natop___"+setaLinha).val(nat_oper);
+		$("#venda___"+setaLinha).val(nf_venda);
+		$("#eantT___"+setaLinha).val(ean);
+		$("#dunTt___"+setaLinha).val(dun);
+		$("#pesokg___"+setaLinha).val(peso_liq.toFixed(2).replace('.',','));
+
+		$("#quantidade___"+setaLinha).val(saldo_nf);
+		$("#quantidadeAux___" +setaLinha).val(saldo_nf);
+
+		$("#ispreco___"+setaLinha).val(nr_tabpre);
+		$("#precobruto___"+setaLinha).val(preco_bru.replace('.',','));
+		$("#desconto___"+setaLinha).val(desconto.replace('.',','));
+		$("#precoliquido___"+setaLinha).val(preco_liq.replace('.',','));
+		$("#ipi___"+setaLinha).val(aliq_ipi.replace('.',','));
+		$("#icms___"+setaLinha).val(aliq_icms);
+		$("#valorIpi___"+setaLinha).val(vl_ipi.toFixed(2).replace('.',','));
+		$("#bcicms___"+setaLinha).val(base_icms.toFixed(2).replace('.',','));
+		$("#valoricms___"+setaLinha).val(vl_icms.toFixed(2).replace('.',','));
+		$("#totalMercadoria___"+setaLinha).val(vl_mercad.toFixed(2).replace('.',','));
+		$("#valorbcst___"+setaLinha).val(base_st.toFixed(2).replace('.',','));
+		$("#valorst___"+setaLinha).val(vl_st.toFixed(2).replace('.',','));
+		$("#totalitem___"+setaLinha).val(vl_tot_it.toFixed(2).replace('.',','));
+
+
+
+		var totalDesc 	= 0.00;
+		var totalIcms 	= 0.00;
+		var totalIpi  	= 0.00;
+		var totalSt   	= 0.00;
+		var totalMerc 	= 0.00;
+		var totalBcIcms = 0.00;
+		var totalBcSt   = 0.00;
+		var totalPreco  = 0.00;
+
+
+
+		$('input[id^="totalitem___"]').each(function(){
+
+			console.log("context SEM REPLACE "+ $(this).val());
+
+			var context = $(this).val().replace(',','.');
+			console.log("context com REPLACE "+ context);
+
+			totalDesc = parseFloat(totalDesc) + parseFloat(context);
+
+
+		});
+
+
+		$('input[id^="valoricms___"]').each(function(){
+			var context = $(this);
+
+			totalIcms = parseFloat(totalIcms) + parseFloat(context.val().replace(',','.'));
+
+
+
+		});	
+
+		$('input[id^="valorIpi___"]').each(function(){
+			var context = $(this);
+
+			totalIpi = parseFloat(totalIpi) + parseFloat(context.val().replace(',','.'));
+
+
+		});	
+
+		$('input[id^="valorst___"]').each(function(){
+			var context = $(this);
+
+			totalSt = parseFloat(totalSt) + parseFloat(context.val().replace(',','.'));
+
+
+		});	
+
+		$('input[id^="totalMercadoria___"]').each(function(){
+			var context = $(this);
+
+			totalMerc = parseFloat(totalMerc) + parseFloat(context.val().replace(',','.'));
+
+		});	
+
+
+		$('input[id^="bcicms___"]').each(function(){
+			var context = $(this);
+
+			totalBcIcms = parseFloat(totalBcIcms) + parseFloat(context.val().replace(',','.'));
+
+		});	
+
+		$('input[id^="valorbcst___"]').each(function(){
+			var context = $(this);
+
+			totalBcSt = parseFloat(totalBcSt) + parseFloat(context.val().replace(',','.'));
+
+		});			
+
+
+		$('input[id^="pesokg___"]').each(function(){
+			var context = $(this);
+
+			totalPreco = parseFloat(totalPreco) + parseFloat(context.val().replace(',','.'));
+
+		});
+
+
+
+		$('#TotalDescGetalNFD').val(totalDesc.toFixed(2).replace('.',','));
+		$('#TotalDescGetalIcms').val(totalIcms.toFixed(2).replace('.',','));   
+		$('#TotalDescGetalIpi').val(totalIpi.toFixed(2).replace('.',','));
+		$('#TotalDescGetalSt').val(totalSt.toFixed(2).replace('.',','));
+		$('#TotalDescGetalMerc').val(totalMerc.toFixed(2).replace('.',','));
+
+		$('#TotalDescGetalNFDSol').val($('#TotalDescGetalNFD').val());
+		$('#TotalDescGetalIcmsSol').val($('#TotalDescGetalIcms').val());   
+		$('#TotalDescGetalIpiSol').val($('#TotalDescGetalIpi').val());
+		$('#TotalDescGetalStSol').val($('#TotalDescGetalSt').val());
+		$('#TotalDescGetalMercSol').val($('#TotalDescGetalMerc').val());
+
+
+
+
+//		NOVOS CAMPOS
+
+		$("#TotalDescritivoBcIcms").val(totalBcIcms.toFixed(2).replace('.',','));
+		$("#TotalDescritivoBcSt").val(totalBcSt.toFixed(2).replace('.',','));
+		$("#TotalDescritivoPeso").val(totalPreco.toFixed(2).replace('.',','));
+//		AQUI É A PARTE DOS ITENS  /\ 
+
+
+		$("#coditem,#coditem2").val("").change();
+
+	} else if (selectedItem.inputId == "numeroNotas"){
+
+
+
+
+		var PROT_CHAVE_ACESSO	= selectedItem["PROT_CHAVE_ACESSO"];
+		var NRO_SERIE_NFE	    = selectedItem["NRO_SERIE_NFE"];
+		var NRO_NFE	            = selectedItem["NRO_NFE"];
+		var DAT_EMISSAO	        = selectedItem["DAT_EMISSAO"];
+		var VLR_BC_ICMS	        = selectedItem["VLR_BC_ICMS"];
+		var VLR_TOTAL_ICMS	    = selectedItem["VLR_TOTAL_ICMS"];
+		var VLR_BC_ICMS_ST	    = selectedItem["VLR_BC_ICMS_ST"];
+		var VLR_TOTAL_ICMS_ST	= selectedItem["VLR_TOTAL_ICMS_ST"];
+		var VLR_TOTAL_IPI	    = selectedItem["VLR_TOTAL_IPI"];
+		var VLR_TOTAL_PRODUTO	= selectedItem["VLR_TOTAL_PRODUTO"];
+		var VLR_TOTAL_NFE	    = selectedItem["VLR_TOTAL_NFE"];
+
+		var setaLinhaCompara = wdkAddChild('respoChamDesc'); 
+
+		var linhasComp = $("#respoChamDesc tr").length -2;			
+		$("#linhasCompara").val(linhasComp);		
+
+
+
+
+		$("#chaveNfd___"+setaLinhaCompara).val(PROT_CHAVE_ACESSO);
+		$("#serieNota___"+setaLinhaCompara).val(NRO_SERIE_NFE);
+		$("#dataEmissao___"+setaLinhaCompara).val(DAT_EMISSAO);
+		$("#totalMercadoriaLog___"+setaLinhaCompara).val(VLR_TOTAL_PRODUTO.replace('.',','));
+		$("#totalIPI___"+setaLinhaCompara).val(VLR_TOTAL_IPI.replace('.',','));
+		$("#baseCms___"+setaLinhaCompara).val(VLR_BC_ICMS.replace('.',','));			
+		$("#totalCms___"+setaLinhaCompara).val(VLR_TOTAL_ICMS.replace('.',','));
+		$("#totalSt___"+setaLinhaCompara).val(VLR_TOTAL_ICMS_ST.replace('.',','));
+		$("#valorTotalNota___"+setaLinhaCompara).val(VLR_TOTAL_NFE.replace('.',','));			
+		$("#numeroNotaFis___"+setaLinhaCompara).val(NRO_NFE);
+		$("#baseCalcST___"+setaLinhaCompara).val(VLR_BC_ICMS_ST.replace('.',','));
+
+
+		var arrNF = [];
+		var arrSR = [];
+
+		$('input[id^="numeroNotaFis___"]').each(function(x){
+			var context = $(this);
+			var linha = context.attr('id').split("___")[1];
+
+
+			arrNF.push(context.val());  
+
+		});
+
+		$('input[id^="serieNota___"]').each(function(x){
+			var context = $(this);
+			var linha = context.attr('id').split("___")[1];
+
+
+			arrSR.push(context.val());  
+
+		});
+
+		$("#vetorNserie").val(arrSR);
+
+		$("#vetorNfiscal").val(arrNF);
+
+
+
+		var totalDesc = 0.00;
+		var totalIcms = 0.00;
+		var totalIpi  = 0.00;
+		var totalSt   = 0.00;
+		var totalMerc = 0.00;
+
+
+
+
+		$('input[id^="valorTotalNota___"]').each(function(){
+			var context = $(this);
+
+			totalDesc = totalDesc + parseFloat(context.val().replace(',','.'));
+
+
+		});
+
+
+		$('input[id^="totalCms___"]').each(function(){
+			var context = $(this);
+
+			totalIcms = totalIcms + parseFloat(context.val().replace(',','.'));
+
+
+		});	
+
+		$('input[id^="totalIPI___"]').each(function(){
+			var context = $(this);
+
+			totalIpi = parseFloat(totalIpi) + parseFloat(context.val().replace(',','.'));
+
+
+		});	
+
+		$('input[id^="totalSt___"]').each(function(){
+			var context = $(this);
+
+			totalSt = parseFloat(totalSt) + parseFloat(context.val().replace(',','.'));
+
+
+		});	
+
+		$('input[id^="totalMercadoriaLog___"]').each(function(){
+			var context = $(this);
+
+			totalMerc = parseFloat(totalMerc) + parseFloat(context.val().replace(',','.'));
+
+		});	
+
+		$('#TotalGetalNFD').val(totalDesc.toFixed(2).replace('.',','));
+		$('#TotalGetalIcms').val(totalIcms.toFixed(2).replace('.',','));   
+		$('#TotalGetalIpi').val(totalIpi.toFixed(2).replace('.',','));
+		$('#TotalGetalSt').val(totalSt.toFixed(2).replace('.',','));
+		$('#TotalGetalMerc').val(totalMerc.toFixed(2).replace('.',','));
+
+
+		var difNfd  = 0.00 ;			
+		var difIcms = 0.00 ;   
+		var difIpi  = 0.00 ;
+		var difSt   = 0.00 ;	
+		var difMerc = 0.00 ;	
+
+
+
+		difNfd  =	parseFloat($('#TotalGetalNFD').val().replace(",","."))  - parseFloat($('#TotalDescGetalNFD').val().replace(",","."));		
+		difIcms =   parseFloat($('#TotalGetalIcms').val().replace(",",".")) - parseFloat($('#TotalDescGetalIcms').val().replace(",",".")); 
+		difIpi  =	parseFloat($('#TotalGetalIpi').val().replace(",","."))  - parseFloat($('#TotalDescGetalIpi').val().replace(",","."));
+		difSt   =	parseFloat($('#TotalGetalSt').val().replace(",","."))   - parseFloat($('#TotalDescGetalSt').val().replace(",","."));
+		difMerc =	parseFloat($('#TotalGetalMerc').val().replace(",",".")) - parseFloat($('#TotalDescGetalMerc').val().replace(",","."));
+
+
+
+		$('#TotalDifGetalNFD').val(difNfd.toFixed(2).replace('.',','));
+		$('#TotalDifGetalIcms').val(difIcms.toFixed(2).replace('.',','));   
+		$('#TotalDifGetalIpi').val(difIpi.toFixed(2).replace('.',','));
+		$('#TotalDifGetalSt').val(difSt.toFixed(2).replace('.',','));
+		$('#TotalDifGetalMerc').val(difMerc.toFixed(2).replace('.',','));
+
+
+
+		// cabeçalho valores tolerancia
+
+
+
+
+		var ultimaLinha = 0;
+var ultimaLinhaProg = 0;
+var ultimaLinhaConf = 0;
+var UltimaLinhaConcat = 0;
+var myLoading2  = FLUIGC.loading(window);
+var carregaProg = FLUIGC.loading("#home");
+var carregaConf = FLUIGC.loading("#menu1");
+
+var controle = [];
+var ARYForms = {
+		params: {},
+		initForm: function(params) {    
+			this.params = params;
+			var $this = this;   
+			$(function () {
+				if (params.formMode == "ADD" || params.formMode == "MOD") { 
+					$this.onEdit(params);
+				} else {
+					$this.onView(params);
+				}
+			});
+		},
+		onView: function(params) { //Visualização do formulário sem a possibilidade de edição (consulta)
+
+		},
+		onEdit: function(params) {  //Edição do formulário;
+
+			// $("#zoomCliente").attr('disabled',true).change();
+
+			var linhasDesc = $("#tabelaNF tbody tr:not(:first-child)").length;			
+			$("#linhasDesc").val(linhasDesc);
+
+
+
+
+
+			var autoIncremento = 0 ;
+			coresDiferenca();
+
+			$("#aprovacaoSupDir").val("");
+			$("#aprovacaoDif").val("");
+			$("#statusAlcada").val("");
+			$("#comparaDesc").val("");
+
+			$('select :selected').each(function(){
+				$(this).parent().data('default', this);
+			});
+
+			$(document).on('change', '.select', function(){
+				var context = $(this);
+				console.log(context.is('[readonly]'))
+
+				if(context.is('[readonly]'))
+					$(context.data('default')).prop('selected', true);
+			});
+
+			$(document).on('keyup', '.quantidade', function(){
+
+				var context = $(this);
+
+				var linha = context.attr('id').split('___')[1];
+
+
+				if (context.val() == "" || context.val() == "0") {
+
+					context.val("1");
+
+				} else if (parseInt(context.val()) > parseInt($("#quantidadeAux___"+linha).val())) {
+
+					context.val($("#quantidadeAux___"+linha).val());
+
+				} 
+
+			});
+
+
+			var recebeDevolucao = $("#devolucaoVenda").val();
+			$("#recebeDevolucao").val(recebeDevolucao);
+
+			carregaTolerancia();
+
+			$(document).on('change', '.quantidade', function(){  
+
+				var context = $(this);
+
+				var valorX = context.val();
+
+				var linha = context.attr('id').split('___')[1];
+
+				if (context.val() == "" || context.val() == "0") {
+
+					context.val("1");
+
+				} else if (parseInt(context.val()) > parseInt($("#quantidadeAux___"+linha).val())) {
+
+					context.val($("#quantidadeAux___"+linha).val());
+
+				} 
+
+				var contexoStr = context.val().replace(",",".");
+				console.log("contexoStr AQUI OOOO : "+ contexoStr);
+
+				var unitarioStr1 = $("#pesokgUnit___"+linha).val().replace(',','.');
+				var unitarioStr2 = $("#bcicmsUnit___"+linha).val().replace(',','.');
+				var unitarioStr3 = $("#valorIpiUnit___"+linha).val().replace(',','.');
+				var unitarioStr4 = $("#valoricmsUnit___"+linha).val().replace(',','.');
+				var unitarioStr5 = $("#valorstUnit___"+linha).val().replace(',','.');
+				var unitarioStr6 = $("#valorbcstUnit___"+linha).val().replace(',','.');
+
+				console.log("unitarioStr5 AQUI OOOO : "+ unitarioStr5);
+
+				var unitarioStr7 = $("#totalMercadoriaUnitTeste___"+linha).val().replace(",",".");
+
+				console.log(" context.val() : "+ context.val());
+				console.log(" totalitemUnit___ : "+ $("#totalitemUnit___"+linha).val().replace(',','.'));
+
+				var valorTotal1 = parseFloat(context.val().replace(",",".")) * parseFloat($("#totalitemUnit___"+linha).val().replace(',','.'));
+				console.log(" totalitemUnit___ : "+ $("#totalitemUnit___"+linha).val().replace(',','.'));
+				console.log(" valorTotal1 : "+ valorTotal1.toFixed(2));
+
+				var valorTotal2 = parseFloat(contexoStr) * parseFloat(unitarioStr1);
+				var valorTotal3 = parseFloat(contexoStr) * parseFloat(unitarioStr2);
+				var valorTotal4 = parseFloat(contexoStr) * parseFloat(unitarioStr3);
+				var valorTotal5 = parseFloat(contexoStr) * parseFloat(unitarioStr4);
+				var valorTotal6 = parseFloat(contexoStr) * parseFloat(unitarioStr5);
+				var valorTotal7 = parseFloat(contexoStr) * parseFloat(unitarioStr6);
+				var valorTotal8 = parseFloat(contexoStr) * parseFloat(unitarioStr7);
+
+				$("#totalitem___"+linha).val(valorTotal1.toFixed(2).toString().replace('.',','));
+				$("#pesokg___"+linha).val(valorTotal2.toFixed(2).toString().replace('.',','));
+				$("#bcicms___"+linha).val(valorTotal3.toFixed(2).toString().replace('.',','));	
+				$("#valorIpi___"+linha).val(valorTotal4.toFixed(2).toString().replace('.',','));	
+				$("#valoricms___"+linha).val(valorTotal5.toFixed(2).toString().replace('.',','));			
+				$("#valorst___"+linha).val(valorTotal6.toFixed(2).toString().replace('.',','));
+				$("#valorbcst___"+linha).val(valorTotal7.toFixed(2).toString().replace('.',','));
+				$("#totalMercadoria___"+linha).val(valorTotal8.toFixed(2).toString().replace('.',','));		
+
+//				$("#totalMercadoria___"+linha+"',#totalitem___"+linha+"',#bcicms___"+linha+"',#valorIpi___"+linha+"',#valorst___"+linha).maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."}); 
+
+				calculaValorTotalSub();
+
+				var difNfd  = 0.00 ;			
+				var difIcms = 0.00 ;   
+				var difIpi  = 0.00 ;
+				var difSt   = 0.00 ;	
+				var difMerc = 0.00 ;	
+
+				var teste1  = $('#TotalGetalNFD').val().replace(",",".");
+				var teste11 = $('#TotalDescGetalNFD').val().replace(",",".");
+
+				var teste2  = $('#TotalGetalIcms').val().replace(",",".");
+				console.log("valor do icms NFD", teste2);
+				var teste22 = $('#TotalDescGetalIcms').val().replace(",",".");
+				console.log("valor do icms descritivo", teste22);
+
+				var teste3  = $('#TotalGetalIpi').val().replace(",",".");
+
+				var teste33 = $('#TotalDescGetalIpi').val().replace(",",".");
+
+				var teste4  = $('#TotalGetalSt').val().replace(",",".");
+				var teste44 = $('#TotalDescGetalSt').val().replace(",",".");
+
+				var teste5  = $('#TotalGetalMerc').val().replace(",",".");
+				var teste55 = $('#TotalDescGetalMerc').val().replace(",",".");
+
+				difNfd  =	parseFloat(teste1)  - parseFloat(teste11);		
+				difIcms =   parseFloat(teste2)  - parseFloat(teste22); 
+				difIpi  =	parseFloat(teste3)  - parseFloat(teste33);
+				difSt   =	parseFloat(teste4)  - parseFloat(teste44);
+				difMerc =	parseFloat(teste5)  - parseFloat(teste55);
+
+				$('#TotalDifGetalNFD').val(difNfd.toFixed(2).toString().replace('.',','));
+				$('#TotalDifGetalIcms').val(difIcms.toFixed(2).toString().replace('.',','));   
+				$('#TotalDifGetalIpi').val(difIpi.toFixed(2).toString().replace('.',','));
+				$('#TotalDifGetalSt').val(difSt.toFixed(2).toString().replace('.',','));
+				$('#TotalDifGetalMerc').val(difMerc.toFixed(2).toString().replace('.',','));
+
+				// QUANTIDADE CHANGE
+
+				var toleraMerc   = $("#toleraMerc").val() ; 
+				var porcMerc     = $("#porcMerc").val() ;
+
+				var toleraTotal  = $("#toleraTotal").val() ;
+				var porcTotal    = $("#porcTotal").val() ;
+
+				var toleraImp    = $("#toleraImp").val() ;
+				var porcImp      = $("#porcImp").val() ;
+
+				// fim cabeçalho
+				// ***** INICIO DOS CALCULOS SOB TOLERANCIA 
+				//imposto ICMS
+
+				var icms_calcImp = parseFloat($('#TotalGetalIcms').val());
+
+				console.log("VALOR CAMPO IMPOSTO ICMS", icms_calcImp);
+
+				var result_icmsImp = (parseFloat(porcImp) * icms_calcImp) /100;
+
+				console.log("VALOR RESULTADO PERC ICMS", result_icmsImp);
+
+				var result_icmsVlr = parseFloat($('#TotalGetalIcms').val()) + parseFloat(toleraImp);
+
+				console.log("RESULTADO VALOR ICMS", result_icmsVlr);
+
+				if (parseFloat(difIcms) <= 0){
+
+					$('#TotalDifGetalIcms').css('background-color','#87CEEB');
+					$("#controle1").val("ok");
+					$("#corGeralIcms").val("azul");
+
+
+				} else if ((parseFloat(difIcms) < parseFloat(result_icmsImp)) && (parseFloat(difIcms) > 0 )|| (parseFloat(difIcms) < parseFloat(result_icmsVlr)) && (parseFloat(difIcms) > 0)){
+
+					$('#TotalDifGetalIcms').css('background-color','#F0E68C');
+					$("#controle1").val("ok");
+					$("#corGeralIcms").val("amarelo");
+
+				}  else if ((parseFloat(difIcms) > parseFloat(result_icmsImp)) || (parseFloat(result_icmsVlr) > parseFloat(difIcms))) {
+
+					$('#TotalDifGetalIcms').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralIcms").val("vermelho");
+
+				}
+
+//				imposto IPI
+
+				var ipi_calcImp = parseFloat($('#TotalGetalIpi').val());
+
+				var result_ipiImp = (porcImp * ipi_calcImp) /100;
+
+				var result_ipiVlr = parseFloat($('#TotalGetalIpi').val()) + toleraImp;
+
+
+				if (parseFloat(difIpi) <= 0){
+
+					$('#TotalDifGetalIpi').css('background-color','#87CEEB');
+					$("#controle2").val("ok");
+					$("#corGeralIpi").val("azul");			
+
+				} else if ((parseFloat(difIpi) > parseFloat(result_ipiImp)) || (parseFloat(difIpi) > result_ipiVlr)) {
+					$('#TotalDifGetalIpi').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralIpi").val("vermelho");			
+
+				} else if ((parseFloat(difIpi) < parseFloat(result_ipiImp)) && (parseFloat(difIpi) > 0) || (parseFloat(difIpi) < parseFloat(result_ipiImp)) && (parseFloat(difIpi) > 0)){
+
+					$('#TotalDifGetalIpi').css('background-color','#F0E68C');
+					$("#controle2").val("ok");
+					$("#corGeralIpi").val("amarelo");			
+
+				}  
+
+//				imposto ST
+
+				var st_calcImp = parseFloat($('#TotalGetalSt').val());
+
+				var result_StImp = (porcImp * st_calcImp) /100;
+
+				var result_StVlr = parseFloat($('#TotalGetalSt').val()) + toleraImp;
+
+
+				if (parseFloat(difSt) <= 0 ){
+
+					$('#TotalDifGetalSt').css('background-color','#87CEEB');
+					$("#controle3").val("ok");
+					$("#corGeralSt").val("azul");			
+
+				}else if ((parseFloat(difSt) > parseFloat(result_StImp)) || (parseFloat(difSt) > result_StVlr)) {
+
+					$('#TotalDifGetalSt').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralSt").val("vermelho");			
+
+				} else if ((parseFloat(difSt) < parseFloat(result_StImp)) && (parseFloat(difSt) < 0) || (parseFloat(difSt) < result_StVlr) && (parseFloat(difSt) < 0)){
+
+					$('#TotalDifGetalSt').css('background-color','#F0E68C');
+					$("#controle3").val("ok");
+					$("#corGeralSt").val("amarelo");
+				} 
+
+//				valor total Merc
+
+				var vlMerc_calcImp = parseFloat($('#TotalGetalMerc').val());
+				console.log("TOTAL GETA MERC : "+ $('#TotalGetalMerc').val());
+
+				var result_VlMercImp = (porcMerc * vlMerc_calcImp) /100;
+
+				var result_VlMercVlr = parseFloat($('#TotalGetalMerc').val()) + parseFloat(toleraMerc);
+				console.log("TOTAL result_VlMercVlr  : "+ result_VlMercVlr);
+
+
+
+				if (parseFloat(difMerc) <= 0) {
+
+					$('#TotalDifGetalMerc').css('background-color','#87CEEB');
+					$("#controle4").val("ok");
+					$("#corGeralMerc").val("azul");
+
+				}else if ((parseFloat(difMerc) > parseFloat(result_VlMercImp)) || (parseFloat(difMerc) > result_VlMercVlr)) {
+
+					$('#TotalDifGetalMerc').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralMerc").val("vermelho");
+
+
+				} else if ((parseFloat(difMerc) < parseFloat(result_VlMercImp)) && (parseFloat(difMerc) > 0) || (parseFloat(difMerc) < result_VlMercVlr)) {
+
+					$('#TotalDifGetalMerc').css('background-color','#F0E68C');
+					$("#controle4").val("ok");
+					$("#corGeralMerc").val("amarelo");
+
+				}  
+
+//				valor TOTAL TOTAL
+
+				var vlTotal_calcImp = parseFloat($('#TotalGetalNFD').val());
+				console.log("VALOR TOAL NFD "+ vlTotal_calcImp);
+				var result_VlTotalImp = (porcTotal * vlTotal_calcImp) /100;
+
+				var result_VlTotalVlr = parseFloat($('#TotalGetalMerc').val()) + parseFloat(toleraTotal);
+
+				if (parseFloat(difNfd) <= 0){
+
+					$('#TotalDifGetalNFD').css('background-color','#87CEEB');
+					$("#controle5").val("ok");
+					$("#corGeralTotal").val("azul");
+
+				}else if ((parseFloat(difNfd) > parseFloat(result_VlTotalImp)) || (parseFloat(difNfd) > result_VlTotalVlr)) {
+
+					$('#TotalDifGetalNFD').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralTotal").val("vermelho");
+
+
+
+				} else if ((parseFloat(difNfd) < parseFloat(result_VlTotalImp)) && (parseFloat(difNfd) > 0) || (parseFloat(difNfd) < result_VlTotalVlr)){
+
+					$('#TotalDifGetalNFD').css('background-color','#F0E68C');
+					$("#controle5").val("ok");
+					$("#corGeralTotal").val("amarelo");
+				} 
+
+			});
+
+//			CALCULO DE CAMPO (*)
+
+			aprovacoesAba();
+
+			$("input[name='bloqueiaPesq']").change(function(e){               
+
+				if ($(this).val() === 'bloqueiaItem') {
+
+					$("#numeroNF,#serieNF,#estabNF,#mensagemRetorno").attr("readonly","readonly").val("");
+
+					$("#codItem2").attr('disabled','disabled').val("").change();
+
+					$("#codItem").removeAttr('disabled');
+
+					$("#familia,#item").removeAttr("disabled");
+
+					$('#pesquisaNF').attr('disabled', 'disabled');
+
+				} else if ($(this).val() === 'bloqueiaFamilia') {
+
+					$("#numeroNF,#serieNF").removeAttr("readonly");
+
+					$("#serieNF").val("1");
+
+					$("#codItem2").removeAttr('disabled');
+
+					$("#descItem").val("").change();
+					$("#familia,#item,#codItem").attr('disabled','disabled').val("").change();					
+
+					$('#pesquisaNF').removeAttr('disabled', 'disabled');
+
+				}   
+
+			});
+
+			$("input[name='comparar']").change(function(e){               
+				if ($(this).val() === 'sim') {
+					$("#obsCompara").attr('readonly','readonly');
+					$("#comparaDesc").val("sim");
+				} else if ($(this).val() === 'nao') {
+					$("#versao").val("2");
+					$("#obsCompara").removeAttr('readonly');
+					$("#comparaDesc").val("nao");
+				}     
+			});
+
+
+			$("input[name='comparar']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#comparaAprov").val("sim");
+					$("#aprovaVerifica6").val("sim");
+
+					$("#aprovAba3.active a,#aprovAba3 a").removeClass("btn-danger");
+					$("#aprovAba3.active a,#aprovAba3 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#comparaAprov").val("nao");
+					$("#aprovaVerifica6").val("nao");
+
+					$("#aprovAba3.active a,#aprovAba3 a").addClass("btn-danger");
+					$("#aprovAba3.active a,#aprovAba3 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+			$("input[name='aprova']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#aprovacaoSupDir").val("sim");
+					$("#aprovaVerifica1").val("sim");
+
+					$("#li1.active a,#li1 a").removeClass("btn-danger");
+					$("#li1.active a,#li1 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoSupDir").val("nao");
+					$("#aprovaVerifica1").val("nao");
+
+					$("#li1.active a,#li1 a").addClass("btn-danger");
+					$("#li1.active a,#li1 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+			function aprovacoesAba(){
+
+				var aprova1 = $("#aprovaVerifica1").val();
+				var aprova2 = $("#aprovaVerifica2").val();
+				var aprova3 = $("#aprovaVerifica3").val();
+				var aprova4 = $("#aprovaVerifica4").val();
+				var aprova5 = $("#aprovaVerifica5").val();				
+				var aprova6 = $("#aprovaVerifica6").val();
+
+				if (aprova1 == "sim") {
+
+					$("#li1.active a,#li1 a").removeClass("btn-danger");
+					$("#li1.active a,#li1 a").addClass("btn-sucess");
+
+				} else if (aprova1 == "nao") {
+
+					$("#li1.active a,#li1 a").addClass("btn-danger");
+					$("#li1.active a,#li1 a").removeClass("btn-sucess");	
+
+				}
+
+				if (aprova2 == "sim") {
+
+					$("#li2.active a,#li2 a").removeClass("btn-danger");
+					$("#li2.active a,#li2 a").addClass("btn-sucess");
+
+				} else if (aprova2 == "nao") {
+
+					$("#li2.active a,#li2 a").addClass("btn-danger");
+					$("#li2.active a,#li2 a").removeClass("btn-sucess");	
+
+				}
+
+				if (aprova3 == "sim") {
+
+					$("#li3.active a,#li3 a").removeClass("btn-danger");
+					$("#li3.active a,#li3 a").addClass("btn-sucess");
+
+				} else if (aprova3 == "nao") {
+
+					$("#li3.active a,#li3 a").addClass("btn-danger");
+					$("#li3.active a,#li3 a").removeClass("btn-sucess");	
+
+				}
+
+
+				if (aprova4 == "sim") {
+
+					$("#li4.active a,#li4 a").removeClass("btn-danger");
+					$("#li4.active a,#li4 a").addClass("btn-sucess");
+
+				} else if (aprova4 == "nao") {
+
+					$("#li4.active a,#li4 a").addClass("btn-danger");
+					$("#li4.active a,#li4 a").removeClass("btn-sucess");	
+
+				}
+
+				if (aprova5 == "sim") {
+
+					$("#aprovAba5.active a,#aprovAba5 a").removeClass("btn-danger");
+					$("#aprovAba5.active a,#aprovAba5 a").addClass("btn-sucess");
+
+				} else if (aprova5 == "nao") {
+
+					$("#aprovAba5.active a,#aprovAba5 a").addClass("btn-danger");
+					$("#aprovAba5.active a,#aprovAba5 a").removeClass("btn-sucess");	
+
+				}
+
+				if (aprova6 == "sim") {
+
+					$("#aprovAba3.active a,#aprovAba3 a").removeClass("btn-danger");
+					$("#aprovAba3.active a,#aprovAba3 a").addClass("btn-sucess");
+
+				} else if (aprova6 == "nao") {
+
+					$("#aprovAba3.active a,#aprovAba3 a").addClass("btn-danger");
+					$("#aprovAba3.active a,#aprovAba3 a").removeClass("btn-sucess");	
+
+				}
+			}
+
+			$("input[name='aprovaRegional']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#aprovacaoSupDir").val("sim");
+					$("#aprovaVerifica2").val("sim");
+
+					$("#li2.active a,#li2 a").removeClass("btn-danger");
+					$("#li2.active a,#li2 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoSupDir").val("nao");
+					$("#aprovaVerifica2").val("nao");
+
+					$("#li2.active a,#li2 a").addClass("btn-danger");
+					$("#li2.active a,#li2 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+			$("input[name='aprovaDiretor']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#aprovacaoSupDir").val("sim");
+					$("#aprovaVerifica3").val("sim");
+
+					$("#li3.active a,#li3 a").removeClass("btn-danger");
+					$("#li3.active a,#li3 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoSupDir").val("nao");
+					$("#aprovaVerifica3").val("nao");
+
+					$("#li3.active a,#li3 a").addClass("btn-danger");
+					$("#li3.active a,#li3 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+			$("input[name='aprovaPresidente']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#aprovacaoSupDir").val("sim");
+					$("#aprovaVerifica4").val("sim");
+
+					$("#li4.active a,#li4 a").removeClass("btn-danger");
+					$("#li4.active a,#li4 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoSupDir").val("nao");
+					$("#aprovaVerifica4").val("nao");		
+
+					$("#li4.active a,#li4 a").addClass("btn-danger");
+					$("#li4.active a,#li4 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+
+			$("input[name='aprovaDif']").change(function(e){ 
+
+				if ($(this).val() === 'sim') {	
+
+					$("#aprovacaoDif").val("sim");
+					$("#aprovaVerifica5").val("sim"); 		
+
+					$("#aprovAba5.active a,#aprovAba5 a").removeClass("btn-danger");
+					$("#aprovAba5.active a,#aprovAba5 a").addClass("btn-sucess");
+
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoDif").val("nao");
+					$("#aprovaVerifica5").val("nao");
+
+
+					$("#aprovAba5.active a,#aprovAba5 a").addClass("btn-danger");
+					$("#aprovAba5.active a,#aprovAba5 a").removeClass("btn-sucess");
+
+				} 
+			});
+
+
+			$("input[name='logistica']").change(function(e){
+
+				if($(this).val() === 'retirar'){
+					$("#Dest_Ret").val("retirar");
+
+				} else if ($(this).val() === 'destruir'){
+
+					$("#Dest_Ret").val("destruir");			
+				}
+
+			});
+
+
+			var WKNumState = params.WKNumState;
+
+			$("#numeroAtividade").val(WKNumState);
+
+			var verificador = $("#verificaSuper").val();
+
+			if ( verificador == "SIM") {
+
+				$("#zoomRep").removeClass("hide");
+				$("#campoZoomCli").removeClass("hide");
+
+			}
+
+			// FIM MASCARA
+
+			if (WKNumState != 0 || WKNumState != 4) {
+
+				$("#campoZoomCli").removeClass("hide");
+
+			}
+
+			if (WKNumState != 0) {
+
+				$(".nomeCliente").removeClass('hide');	
+			}
+
+
+			if (WKNumState == 4) {
+
+				$("#respoChamDesc .bpm-mobile-trash-column").css("display", "none"); // esconde todas as lixeiras de todas as tabelas
+				$("#zoomCliente").attr('readonly','readonly');
+				$("#devolucaoVenda").attr('readonly', 'readonly');
+				$("#nfdEmitida").attr('readonly', 'readonly');
+				$("#zoomCliente").attr('readonly','readonly');
+
+				setTimeout(function(){
+
+					var verificador  = $("#verificaSuper").val();
+					var cod_emitente = $("#cod_emitenteTwo").val();
+					var it_codigo    = $("#it_codigoTt").val();
+					var venda        = $("#devolucaoVenda").val();
+					var dataSolic    = $("#dataSolic").val();
+					var dataConvert  = dataSolic.replace("/","");
+					var dataConvert2 = dataConvert.replace("/","");
+					var nr_nota_fis  = $("#numeroNF").val();
+					var serieNF      = $("#serieNF").val();
+
+					console.log("PARAMETROS");
+					console.log("CODIGO EMITENTE = ", cod_emitente);
+					console.log("CODIGO ITEM = ",it_codigo);
+					console.log("VENDA ? ",venda);
+					console.log("DATA SOL = ",dataConvert2);
+					console.log("NUMERO NOTA FISCAL =",nr_nota_fis);
+					console.log("SERIE NF =",serieNF);
+
+					reloadZoomFilterValues("codItem", "cod_emitente," + cod_emitente + ",it_codigo," + it_codigo + ",venda," + venda + ",dt_descritivo," + dataConvert2);
+
+				},1000);
+
+			}
+
+
+
+
+			if(WKNumState == 0 || WKNumState == 4) {
+			
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".comparar").attr('disabled',true);
+				$(".logistica").attr('disabled',true)
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');								
+				$(".btnResp6").css('display','none');
+				var cod_solicitante = $("#matriculaSolicitante").val();
+				console.log("codigo do representante =", cod_solicitante);
+				carregaRepresentante(cod_solicitante); 
+
+				$(document).on("change","#nfdEmitida",function(){
+					var jaEmitida = $("#nfdEmitida").val();
+					if (jaEmitida == "sim") {
+						$("#versao").val("2");
+					}else if (jaEmitida == "nao"){
+						$("#versao").val("1");
+					}	
+				});
+
+//				INICIO
+
+				$('#pesquisaNF').click(function(){
+
+					var notaFiscal    = $("#numeroNF").val();
+					var serieNF       = $("#serieNF").val();
+					var cod_emitente  = $("#cod_emitenteTwo").val();
+					var vendaSn       =	$("#devolucaoVenda").val();
+					var dataSolic    = $("#dataSolic").val();
+					var dataConvert  = dataSolic.replace("/","");
+					var dataConvert2 = dataConvert.replace("/","");    
+					console.log("1", notaFiscal);
+					console.log("2", serieNF);
+					console.log("3", cod_emitente);
+					console.log("4", vendaSn);
+					console.log("5", dataSolic);
+					console.log("6", dataConvert2);
+					var dados = {
+							"name": "nfs_cliente",
+							"fields":null,
+							"constraints":[
+								{
+									"_field":"nr_nota_fis",
+									"_initialValue": notaFiscal,
+									"_finalValue": notaFiscal,
+									"_type":1
+								},{
+									"_field":"serie",
+									"_initialValue": serieNF,
+									"_finalValue": serieNF,
+									"_type":1
+								},{
+									"_field":"cod_emitente",
+									"_initialValue": cod_emitente,
+									"_finalValue": cod_emitente,
+									"_type":1
+								},{
+									"_field":"venda",
+									"_initialValue": vendaSn,
+									"_finalValue": vendaSn,
+									"_type":1
+								},{
+									"_field":"dt_descritivo",
+									"_initialValue": dataConvert2,
+									"_finalValue": dataConvert2,
+									"_type":1
+								}
+
+								]
+					};
+					$.ajax({
+						method: "POST",
+						url: "/api/public/ecm/dataset/datasets/",
+						data: JSON.stringify(dados),
+						contentType: "application/json", 
+						async: false,
+						error: function(x, e) {
+							if (x.status == 500) {
+								alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+							}
+						},
+						beforeSend: function(){
+
+						},
+						success:function(model) {
+
+							$.each(model.content.values, function(index, value){
+								var mensagemRetorno = value.mensagem;
+								var codEstab        = value.cod_estabel;
+
+
+								console.log("Mensagem Baione",mensagemRetorno);
+								console.log("Cod estabelecimento", codEstab);
+
+
+								reloadZoomFilterValues("codItem2", "cod_emitente," + cod_emitente + ",venda," + vendaSn + ",dt_descritivo," + dataConvert2 + ",nr_nota_fis," + notaFiscal + ",serie," + serieNF + ",cod_estab," + codEstab );
+
+								$("#mensagemRetorno").val(mensagemRetorno);
+								$("#estabNF").val(codEstab);
+
+							});
+							return model;
+						}
+					});
+				});		
+			}
+
+
+			if(WKNumState == 5) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".comparar").attr('disabled',true);
+				$(".logistica").attr('disabled',true)
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');								
+				$(".btnResp6").css('display','none');	
+				$(".btnResp1").css('display','none');
+
+				var minhaLinha1 = wdkAddChild('respoCham');
+				$("#minhaLinha1").val(minhaLinha1);
+				var totalNf = $("#TotalDescGetalNFD").val();
+				var aprovador = $("#aprovador1").val();
+				carregaAlcada(aprovador);
+				console.log("passar para alcada ",aprovador);
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+			}
+
+			if(WKNumState == 12) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprova").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".comparar").attr('disabled',true);
+				$(".logistica").attr('disabled',true)
+				$("button[class^='btnResp']:not(.btnResp2)").addClass('hide');
+				$(".btnResp1").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');								
+				$(".btnResp6").css('display','none');
+				$(".btnResp2").css('display','none');
+				var minhaLinha = wdkAddChild('respRegional'); 
+				console.log("numero de linhas ", minhaLinha);
+				$("#minhaLinha").val(minhaLinha);
+				var aprovador = $("#aprovador2").val();
+				carregaAlcada(aprovador);
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+			}
+
+
+			if(WKNumState == 13) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".comparar").attr('disabled',true);
+				$(".logistica").attr('disabled',true)
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');								
+				$(".btnResp6").css('display','none');	
+				$(".btnResp3").css('display','none');
+				var minhaLinha = wdkAddChild('respDiretor');
+				$("#minhaLinha2").val(minhaLinha);
+				var aprovador = $("#aprovador3").val();
+				carregaAlcada(aprovador);
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+			}
+
+
+			if(WKNumState == 15) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".comparar").attr('disabled',true);
+				$(".logistica").attr('disabled',true)
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp5").css('display','none');								
+				$(".btnResp6").css('display','none');	
+				$(".btnResp4").css('display','none');
+				var minhaLinha = wdkAddChild('respPresidente');
+				$("#minhaLinha3").val(minhaLinha);
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+			}
+
+			if(WKNumState == 42) {
+
+				setTimeout(function(){
+					var cnpjPassa = $("#cnpjCli").val().replace(/[^0-9]/g, "");
+					var dt_ini_pesq_nfd  = $("#dataSolic").val();
+					var dt_ini_pesq_nfd1 = dt_ini_pesq_nfd.replace("/","");
+					var data_pesquisa    = dt_ini_pesq_nfd1.replace("/","");
+					console.log("CNPJ PARA COMPARAR DESC",cnpjPassa);
+					console.log("DATA PARA COMPARAR DESC",data_pesquisa);
+					reloadZoomFilterValues("numeroNotas", "cnpj," + cnpjPassa + ",dt_ini_pesq_nfd," + data_pesquisa);
+
+				},1000);
+
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');
+				$(".btnResp6").css('display','none');			
+				$(".logistica").attr('disabled',true)
+
+				bloqueiaCampo1();
+
+				// some com todas as lixeiras exceto a da tabela #respoChamDesc
+				$("#respoChamDesc tbody tr td.bpm-mobile-trash-column").css("display","table-cell");
+
+				atualizaRep();
+				$("#menu1").addClass('hide');
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});
+
+				$("#botaoEsconde").css('display','none');		
+			}
+
+			if(WKNumState == 44) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');
+				$(".comparar").attr('disabled',true);
+				$(".btnResp6").css('display','none');			
+				$(".logistica").attr('disabled',true)
+
+				$("#botaoEsconde").css('display','none');
+
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});		
+			}
+
+
+			if(WKNumState == 50) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');
+				$(".comparar").attr('disabled',true);
+				$(".btnResp6").css('display','none');			
+				$(".logistica").attr('disabled',true)
+
+
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+
+				$("#botaoEsconde").css('display','none');
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});        
+			}
+
+
+			if(WKNumState == 59) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				$(".btnResp5").css('display','none');
+				$(".comparar").attr('disabled',true);
+				$(".btnResp6").css('display','none');			
+
+
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+
+				$("#botaoEsconde").css('display','none');
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});        
+			}
+
+
+			if(WKNumState == 68) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+				//$(".btnResp5").css('display','none');
+				$(".comparar").attr('disabled',true);
+				$(".btnResp6").css('display','none');	  
+				$(".btnResp5").css('display','none');
+
+				var minhaLinha = wdkAddChild('respoChamDif');	
+				$("#minhaLinha4").val(minhaLinha);
+
+
+				$(".logistica").attr('disabled',true)
+
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+
+				$("#botaoEsconde").css('display','none');
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});        
+			}
+
+			if (WKNumState == 63) {
+
+				$(".numeroNotas").attr('readonly','readonly');
+
+				$(".aprova").attr('disabled',true);
+				$(".aprovaRegional").attr('disabled',true);
+				$(".aprovaDiretor").attr('disabled',true);
+				$(".aprovaPresidente").attr('disabled',true);
+				$(".aprovaDif").attr('disabled',true);
+				$("#controlaDestruicao").removeClass('hide');
+
+				$(".dataRetirada").removeAttr('readonly');
+
+				$(".btnResp1").css('display','none');
+				$(".btnResp2").css('display','none');
+				$(".btnResp3").css('display','none');
+				$(".btnResp4").css('display','none');
+
+				$(".comparar").attr('disabled',true);
+				$(".btnResp6").css('display','none');			
+				$(".logistica").attr('disabled',true)
+
+				bloqueiaCampo1();
+				atualizaRep();
+				$("#menu1").addClass('hide');
+
+
+				$("#botaoEsconde").css('display','none');
+				$("input[name='aprova']").each(function(i) {
+					$(this).attr('disabled', 'disabled');
+				});
+			}
+
+			
+
+
+			$(document).on("change","#devolucaoVenda",function(){
+
+				$(".nomeCliente").removeClass('hide');						
+
+
+				var verificador = $("#verificaSuper").val();
+
+				if ( verificador == "SIM") {
+
+					$("#zoomRep").removeClass("hide");
+
+				}
+
+				console.log("REPRESENTANTE CODIGO = ", cod_solicitante );
+
+				var arr = [] ;
+				var dados = {
+						"name": "return_Subst",
+						"fields":null,
+						"constraints":[
+							{
+								"_field":"CD_MATRICULA",
+								"_initialValue": cod_solicitante,
+								"_finalValue": cod_solicitante,
+								"_type":1
+							}
+							]
+				};
+				$.ajax({
+					method: "POST",
+					url: "/api/public/ecm/dataset/datasets/",
+					data: JSON.stringify(dados),
+					contentType: "application/json", 
+					async: false,
+					error: function(x, e) {
+						if (x.status == 500) {
+							alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+						}
+					},
+					beforeSend: function(){
+
+					},
+					success:function(model) {
+
+						$.each(model.content.values, function(index, value){
+
+							var substituto = value.CD_MATRICULA;
+							var cod_mtr_fluig = value.COD_SUBSTTO;
+							$("#cod_mtr_fluig").val(cod_mtr_fluig);
+							var cod_mtr_fluigAux = $("#cod_mtr_fluig").val();
+
+							if (cod_mtr_fluigAux == cod_solicitante) {			
+
+
+
+
+								console.log("Trouxe o substituto",substituto);
+
+								arr.push(substituto);  
+								var contador = arr.length;
+
+							}
+						});
+
+
+						$("#testeSubstituto").val(arr);
+
+						var testeSubs = $("#testeSubstituto").val();
+						var testeSubsOficial = testeSubs.replaceAll(",","|");
+
+
+
+
+//						var testeSubs = "rodrigo.baione|luciano.claudino";
+						console.log("teste solicitante =", cod_solicitante);
+
+						console.log("teste Substituto =", testeSubsOficial);
+
+						reloadZoomFilterValues("representanteZoom", "matr_fluig," + cod_solicitante + ',matr_fluig_subst,' + testeSubsOficial);	
+
+						reloadZoomFilterValues("zoomCliente", "matr_fluig," + cod_solicitante);	
+//						ctrl f
+						console.log("SEGUNDO RELOAD ",cod_solicitante );
+
+					}
+				});
+
+			});	
+
+		}   
+}; //fim do Edit
+
+function carregaTela(cod_solicitante){
+
+
+}
+function atualizaRep(){
+
+	var super_control = $("#supervisor").val();
+
+	if(super_control == "SIM"){
+		$("#zoomRep").removeClass("hide");
+	}
+}
+
+
+
+function setSelectedZoomItem(selectedItem) {
+	if(selectedItem.inputId == "zoomCliente"){
+
+		var cod_cliente = selectedItem["cod_emitente"];
+		var Nome_abrev  = selectedItem["nome_abrev"];
+		var cidade      = selectedItem["cidade"];
+		var endereco    = selectedItem["endereco"];
+		var estado      = selectedItem["estado"];
+		var bairro      = selectedItem["bairro"];
+		var cnpj        = selectedItem["cnpj"];
+		var cep         = selectedItem["cep"];
+		var nome        = selectedItem["nome"];
+
+		var newCnpj =  cnpj.replace(".","");
+		var newCnpj1 =  newCnpj.replace(".","");
+		var newCnpj2 =  newCnpj1.replace(".","");	
+		var newCnpj3 =  newCnpj2.replace("/","");	
+		var passaCnpj =  newCnpj3.replace("-","");						
+
+		$("#codCliente").val(cod_cliente);
+		$("#nomeAbrev").val(Nome_abrev);
+		$("#cidade").val(cidade);
+		$("#enderecoCli").val(endereco);
+		$("#estado").val(estado);
+		$("#bairro").val(bairro);
+		$("#cnpjCli").val(cnpj);
+		$("#cep").val(cep);
+		$("#cod_emitenteTwo").val(cod_cliente);
+		$("#nomeCliente").val(nome);
+
+
+	} else if(selectedItem.inputId == "transportadoraCli"){ 
+
+		var cnpjTransp  = selectedItem["cnpj_transp"];
+		var razaoSocial = selectedItem["nome_transp"];
+		var telefone 	= selectedItem["tel_transp"];
+		$("#telCli").val(telefone);		
+		$("#cnpjTransp").val(cnpjTransp);
+		$("#nomeTransp").val(razaoSocial);
+		console.info(cnpjTransp);
+
+
+	} else if( selectedItem.inputId == "representanteZoom"){
+
+		var cod_rep = selectedItem["matr_fluig_repres"];
+		var nomeSuper = selectedItem["nome_super"];
+		var nomeRegiao = selectedItem["nome_regiao"];
+
+		var aprovadorRep1  = selectedItem["aprov1"];
+		var aprovadorRep2  = selectedItem["aprov2"];
+		var aprovadorRep3  = selectedItem["aprov3"];
+
+		console.log("TESTE APROVA REPRE1", aprovadorRep1);
+		console.log("TESTE APROVA REPRE2", aprovadorRep2);
+		console.log("TESTE APROVA REPRE3", aprovadorRep3);		
+
+		$("#aprovador1").val(aprovadorRep1);
+		$("#aprovador2").val(aprovadorRep2);
+		$("#aprovador3").val(aprovadorRep3);		
+
+		$("#supervisor").val(nomeSuper);
+		$("#regional").val(nomeRegiao);
+
+		reloadZoomFilterValues("zoomCliente", "matr_fluig," + cod_rep);	
+//		comeco do ajax
+		var testeSubs = $("#testeSubstituto").val();
+		var testeSubsOficial = testeSubs.replace(",","|");
+//		var testeSubs = "rodrigo.baione|luciano.claudino";
+		console.log(testeSubsOficial);								
+
+	} else if (selectedItem.inputId == "familia"){
+
+		var cod_familia = selectedItem["fm_cod_com"];	
+		reloadZoomFilterValues("item", "fm_cod_com," + cod_familia);	
+
+
+	} else if(selectedItem.inputId == "item"){
+
+		var cod_item    = selectedItem["it_codigo"];
+		var desc_item   = selectedItem["desc_item"];
+		$("#descItem").val(desc_item);
+		$("#it_codigoTt").val(cod_item);
+
+		var verificador  = $("#verificaSuper").val();
+		var cod_emitente = $("#cod_emitenteTwo").val();
+		var it_codigo    = $("#it_codigoTt").val();
+		var venda        = $("#devolucaoVenda").val();
+		var dataSolic    = $("#dataSolic").val();
+		var dataConvert  = dataSolic.replace("/","");
+		var dataConvert2 = dataConvert.replace("/","");
+		var nr_nota_fis  = $("#numeroNF").val();
+		var serieNF      = $("#serieNF").val();
+
+		console.log("PARAMETROS");
+		console.log("CODIGO EMITENTE = ", cod_emitente);
+		console.log("CODIGO ITEM = ",it_codigo);
+		console.log("VENDA ? ",venda);
+		console.log("DATA SOL = ",dataConvert2);
+		console.log("NUMERO NOTA FISCAL =",nr_nota_fis);
+		console.log("SERIE NF =",serieNF);
+
+		reloadZoomFilterValues("codItem", "cod_emitente," + cod_emitente + ",it_codigo," + it_codigo + ",venda," + venda + ",dt_descritivo," + dataConvert2);
+
+	}else if (selectedItem.inputId == "codItem" || selectedItem.inputId == "codItem2"){
+
+		var it_codigo   = selectedItem["it_codigo"];
+		var cod_refer   = selectedItem["cod_refer"];
+		var descr_item  = selectedItem["descr_item"];
+		var unidade     = selectedItem["unidade"];
+		var ean         = selectedItem["ean"];
+		var dun         = selectedItem["dun"];
+		var qt_faturada = selectedItem["qt_faturada"];
+		var saldo_nf    = selectedItem["saldo_nf"]; 
+		var nr_nota_fis = selectedItem["nr_nota_fis"]; 
+		var dt_emis_nf  = selectedItem["dt_emis_nf"];
+		var nr_tabpre   = selectedItem["nr_tabpre"]; 
+		var preco_bru   = selectedItem["preco_bru"];
+		var desconto    = selectedItem["desconto"];
+		var preco_liq   = selectedItem["preco_liq"];
+		var aliq_ipi    = selectedItem["aliq_ipi"];
+		var vl_ipi      = selectedItem["vl_ipi"];
+		var vl_ipi2      = selectedItem["vl_ipi"];		
+		var aliq_icms   = selectedItem["aliq_icms"];
+		var base_icms   = selectedItem["base_icms"];
+		var base_icms2   = selectedItem["base_icms"];		
+		var vl_icms     = selectedItem["vl_icms"];
+		var vl_icms2     = selectedItem["vl_icms"];		
+		var vl_mercad   = selectedItem["vl_mercad"];
+		var vl_mercad2   = selectedItem["vl_mercad"];		
+		var base_st     = selectedItem["base_st"];
+		var base_st2     = selectedItem["base_st"];		
+		var vl_st       = selectedItem["vl_st"];
+		var vl_st2       = selectedItem["vl_st"];
+		var vl_tot_it   = selectedItem["vl_tot_it"];
+		var vl_tot_it2   = selectedItem["vl_tot_it"];
+		var peso_liq    = selectedItem["peso_liq"];
+		var peso_liq2    = selectedItem["peso_liq"];		
+		var nat_oper    = selectedItem["nat_oper"];
+		var nf_venda    = selectedItem["nf_venda"];
+
+		console.log("VALOR ICMS UNITARIO", vl_icms);
+
+//		preco_liqAux = preco_liqAux.toFixed(2);
+
+		var saldoAux = saldo_nf;
+		console.log(" AQUI saldoAux "+saldoAux); 
+
+		peso_liq  = parseFloat(saldoAux) * parseFloat(peso_liq.replace(',','.')); //unitario ok
+		base_icms = parseFloat(saldoAux) * parseFloat(base_icms.replace(',','.')); // unitario ok
+		vl_ipi    = parseFloat(saldoAux) * parseFloat(vl_ipi.replace(',','.'));       // unitario ok
+		vl_icms   = parseFloat(saldoAux) * parseFloat(vl_icms.replace(',','.'));      // unitario ok
+		vl_tot_it = parseFloat(saldoAux) * parseFloat(vl_tot_it.replace(',','.'));  // unitario ok
+		base_st   = parseFloat(saldoAux) * parseFloat(base_st.replace(',','.')); 		// unitario OK
+		vl_st     = parseFloat(saldoAux) * parseFloat(vl_st.replace(',','.'));			// unitario OK 
+		vl_mercad = parseFloat(saldoAux) * parseFloat(vl_mercad.replace(',','.'));	// unitario OK
+
+
+//		peso_liq = parseFloat(saldoAux) * parseFloat(peso_liq.replace(',','.'));
+
+		var setaLinha = wdkAddChild('tabelaNF');
+
+		var linhasDesc = $("#tabelaNF tr").length -2;			
+		$("#linhasDesc").val(linhasDesc);
+
+//		valores unitarios
+
+		$("#totalitemUnit___"+setaLinha).val(vl_tot_it2);
+		$("#pesokgUnit___"+setaLinha).val(peso_liq2);
+		$("#bcicmsUnit___"+setaLinha).val(base_icms2)
+		$("#valorIpiUnit___"+setaLinha).val(vl_ipi2);
+		$("#valoricmsUnit___"+setaLinha).val(vl_icms2);
+		$("#valorbcstUnit___"+setaLinha).val(base_st2);
+		$("#valorstUnit___"+setaLinha).val(vl_st2);
+		$("#totalMercadoriaUnit___"+setaLinha).val(vl_mercad2);
+
+		$("#totalMercadoriaUnitTeste___"+setaLinha).val($("#totalMercadoriaUnit___"+setaLinha).val())
+
+
+
+//		Valores unitarios FINAL
+
+
+		$("#cod_item___"+setaLinha).val(it_codigo);
+		$("#referencia___"+setaLinha).val(cod_refer);
+		$("#descricaoItem___"+setaLinha).val(descr_item);
+		$("#unidade___"+setaLinha).val(unidade);
+		$("#nfsaida___"+setaLinha).val(nr_nota_fis);
+		$("#emissao___"+setaLinha).val(dt_emis_nf);
+		$("#natop___"+setaLinha).val(nat_oper);
+		$("#venda___"+setaLinha).val(nf_venda);
+		$("#eantT___"+setaLinha).val(ean);
+		$("#dunTt___"+setaLinha).val(dun);
+		$("#pesokg___"+setaLinha).val(peso_liq.toFixed(2).replace('.',','));
+
+		$("#quantidade___"+setaLinha).val(saldo_nf);
+		$("#quantidadeAux___" +setaLinha).val(saldo_nf);
+
+		$("#ispreco___"+setaLinha).val(nr_tabpre);
+		$("#precobruto___"+setaLinha).val(preco_bru.replace('.',','));
+		$("#desconto___"+setaLinha).val(desconto.replace('.',','));
+		$("#precoliquido___"+setaLinha).val(preco_liq.replace('.',','));
+		$("#ipi___"+setaLinha).val(aliq_ipi.replace('.',','));
+		$("#icms___"+setaLinha).val(aliq_icms);
+		$("#valorIpi___"+setaLinha).val(vl_ipi.toFixed(2).replace('.',','));
+		$("#bcicms___"+setaLinha).val(base_icms.toFixed(2).replace('.',','));
+		$("#valoricms___"+setaLinha).val(vl_icms.toFixed(2).replace('.',','));
+		$("#totalMercadoria___"+setaLinha).val(vl_mercad.toFixed(2).replace('.',','));
+		$("#valorbcst___"+setaLinha).val(base_st.toFixed(2).replace('.',','));
+		$("#valorst___"+setaLinha).val(vl_st.toFixed(2).replace('.',','));
+		$("#totalitem___"+setaLinha).val(vl_tot_it.toFixed(2).replace('.',','));
+
+
+
+		var totalDesc 	= 0.00;
+		var totalIcms 	= 0.00;
+		var totalIpi  	= 0.00;
+		var totalSt   	= 0.00;
+		var totalMerc 	= 0.00;
+		var totalBcIcms = 0.00;
+		var totalBcSt   = 0.00;
+		var totalPreco  = 0.00;
+
+
+
+		$('input[id^="totalitem___"]').each(function(){
+
+			console.log("context SEM REPLACE "+ $(this).val());
+
+			var context = $(this).val().replace(',','.');
+			console.log("context com REPLACE "+ context);
+
+			totalDesc = parseFloat(totalDesc) + parseFloat(context);
+
+
+		});
+
+
+		$('input[id^="valoricms___"]').each(function(){
+			var context = $(this);
+
+			totalIcms = parseFloat(totalIcms) + parseFloat(context.val().replace(',','.'));
+
+
+
+		});	
+
+		$('input[id^="valorIpi___"]').each(function(){
+			var context = $(this);
+
+			totalIpi = parseFloat(totalIpi) + parseFloat(context.val().replace(',','.'));
+
+
+		});	
+
+		$('input[id^="valorst___"]').each(function(){
+			var context = $(this);
+
+			totalSt = parseFloat(totalSt) + parseFloat(context.val().replace(',','.'));
+
+
+		});	
+
+		$('input[id^="totalMercadoria___"]').each(function(){
+			var context = $(this);
+
+			totalMerc = parseFloat(totalMerc) + parseFloat(context.val().replace(',','.'));
+
+		});	
+
+
+		$('input[id^="bcicms___"]').each(function(){
+			var context = $(this);
+
+			totalBcIcms = parseFloat(totalBcIcms) + parseFloat(context.val().replace(',','.'));
+
+		});	
+
+		$('input[id^="valorbcst___"]').each(function(){
+			var context = $(this);
+
+			totalBcSt = parseFloat(totalBcSt) + parseFloat(context.val().replace(',','.'));
+
+		});			
+
+
+		$('input[id^="pesokg___"]').each(function(){
+			var context = $(this);
+
+			totalPreco = parseFloat(totalPreco) + parseFloat(context.val().replace(',','.'));
+
+		});
+
+
+
+		$('#TotalDescGetalNFD').val(totalDesc.toFixed(2).replace('.',','));
+		$('#TotalDescGetalIcms').val(totalIcms.toFixed(2).replace('.',','));   
+		$('#TotalDescGetalIpi').val(totalIpi.toFixed(2).replace('.',','));
+		$('#TotalDescGetalSt').val(totalSt.toFixed(2).replace('.',','));
+		$('#TotalDescGetalMerc').val(totalMerc.toFixed(2).replace('.',','));
+
+		$('#TotalDescGetalNFDSol').val($('#TotalDescGetalNFD').val());
+		$('#TotalDescGetalIcmsSol').val($('#TotalDescGetalIcms').val());   
+		$('#TotalDescGetalIpiSol').val($('#TotalDescGetalIpi').val());
+		$('#TotalDescGetalStSol').val($('#TotalDescGetalSt').val());
+		$('#TotalDescGetalMercSol').val($('#TotalDescGetalMerc').val());
+
+
+
+
+//		NOVOS CAMPOS
+
+		$("#TotalDescritivoBcIcms").val(totalBcIcms.toFixed(2).replace('.',','));
+		$("#TotalDescritivoBcSt").val(totalBcSt.toFixed(2).replace('.',','));
+		$("#TotalDescritivoPeso").val(totalPreco.toFixed(2).replace('.',','));
+//		AQUI É A PARTE DOS ITENS  /\ 
+
+
+		$("#coditem,#coditem2").val("").change();
+
+	} else if (selectedItem.inputId == "numeroNotas"){
+
+
+
+
+		var PROT_CHAVE_ACESSO	= selectedItem["PROT_CHAVE_ACESSO"];
+		var NRO_SERIE_NFE	    = selectedItem["NRO_SERIE_NFE"];
+		var NRO_NFE	            = selectedItem["NRO_NFE"];
+		var DAT_EMISSAO	        = selectedItem["DAT_EMISSAO"];
+		var VLR_BC_ICMS	        = selectedItem["VLR_BC_ICMS"];
+		var VLR_TOTAL_ICMS	    = selectedItem["VLR_TOTAL_ICMS"];
+		var VLR_BC_ICMS_ST	    = selectedItem["VLR_BC_ICMS_ST"];
+		var VLR_TOTAL_ICMS_ST	= selectedItem["VLR_TOTAL_ICMS_ST"];
+		var VLR_TOTAL_IPI	    = selectedItem["VLR_TOTAL_IPI"];
+		var VLR_TOTAL_PRODUTO	= selectedItem["VLR_TOTAL_PRODUTO"];
+		var VLR_TOTAL_NFE	    = selectedItem["VLR_TOTAL_NFE"];
+
+		var setaLinhaCompara = wdkAddChild('respoChamDesc'); 
+
+		var linhasComp = $("#respoChamDesc tr").length -2;			
+		$("#linhasCompara").val(linhasComp);		
+
+
+
+
+		$("#chaveNfd___"+setaLinhaCompara).val(PROT_CHAVE_ACESSO);
+		$("#serieNota___"+setaLinhaCompara).val(NRO_SERIE_NFE);
+		$("#dataEmissao___"+setaLinhaCompara).val(DAT_EMISSAO);
+		$("#totalMercadoriaLog___"+setaLinhaCompara).val(VLR_TOTAL_PRODUTO.replace('.',','));
+		$("#totalIPI___"+setaLinhaCompara).val(VLR_TOTAL_IPI.replace('.',','));
+		$("#baseCms___"+setaLinhaCompara).val(VLR_BC_ICMS.replace('.',','));			
+		$("#totalCms___"+setaLinhaCompara).val(VLR_TOTAL_ICMS.replace('.',','));
+		$("#totalSt___"+setaLinhaCompara).val(VLR_TOTAL_ICMS_ST.replace('.',','));
+		$("#valorTotalNota___"+setaLinhaCompara).val(VLR_TOTAL_NFE.replace('.',','));			
+		$("#numeroNotaFis___"+setaLinhaCompara).val(NRO_NFE);
+		$("#baseCalcST___"+setaLinhaCompara).val(VLR_BC_ICMS_ST.replace('.',','));
+
+
+		var arrNF = [];
+		var arrSR = [];
+
+		$('input[id^="numeroNotaFis___"]').each(function(x){
+			var context = $(this);
+			var linha = context.attr('id').split("___")[1];
+
+
+			arrNF.push(context.val());  
+
+		});
+
+		$('input[id^="serieNota___"]').each(function(x){
+			var context = $(this);
+			var linha = context.attr('id').split("___")[1];
+
+
+			arrSR.push(context.val());  
+
+		});
+
+		$("#vetorNserie").val(arrSR);
+
+		$("#vetorNfiscal").val(arrNF);
+
+
+
+		var totalDesc = 0.00;
+		var totalIcms = 0.00;
+		var totalIpi  = 0.00;
+		var totalSt   = 0.00;
+		var totalMerc = 0.00;
+
+
+
+
+		$('input[id^="valorTotalNota___"]').each(function(){
+			var context = $(this);
+
+			totalDesc = totalDesc + parseFloat(context.val().replace(',','.'));
+
+
+		});
+
+
+		$('input[id^="totalCms___"]').each(function(){
+			var context = $(this);
+
+			totalIcms = totalIcms + parseFloat(context.val().replace(',','.'));
+
+
+		});	
+
+		$('input[id^="totalIPI___"]').each(function(){
+			var context = $(this);
+
+			totalIpi = parseFloat(totalIpi) + parseFloat(context.val().replace(',','.'));
+
+
+		});	
+
+		$('input[id^="totalSt___"]').each(function(){
+			var context = $(this);
+
+			totalSt = parseFloat(totalSt) + parseFloat(context.val().replace(',','.'));
+
+
+		});	
+
+		$('input[id^="totalMercadoriaLog___"]').each(function(){
+			var context = $(this);
+
+			totalMerc = parseFloat(totalMerc) + parseFloat(context.val().replace(',','.'));
+
+		});	
+
+		$('#TotalGetalNFD').val(totalDesc.toFixed(2).replace('.',','));
+		$('#TotalGetalIcms').val(totalIcms.toFixed(2).replace('.',','));   
+		$('#TotalGetalIpi').val(totalIpi.toFixed(2).replace('.',','));
+		$('#TotalGetalSt').val(totalSt.toFixed(2).replace('.',','));
+		$('#TotalGetalMerc').val(totalMerc.toFixed(2).replace('.',','));
+
+
+		var difNfd  = 0.00 ;			
+		var difIcms = 0.00 ;   
+		var difIpi  = 0.00 ;
+		var difSt   = 0.00 ;	
+		var difMerc = 0.00 ;	
+
+
+
+		difNfd  =	parseFloat($('#TotalGetalNFD').val().replace(",","."))  - parseFloat($('#TotalDescGetalNFD').val().replace(",","."));		
+		difIcms =   parseFloat($('#TotalGetalIcms').val().replace(",",".")) - parseFloat($('#TotalDescGetalIcms').val().replace(",",".")); 
+		difIpi  =	parseFloat($('#TotalGetalIpi').val().replace(",","."))  - parseFloat($('#TotalDescGetalIpi').val().replace(",","."));
+		difSt   =	parseFloat($('#TotalGetalSt').val().replace(",","."))   - parseFloat($('#TotalDescGetalSt').val().replace(",","."));
+		difMerc =	parseFloat($('#TotalGetalMerc').val().replace(",",".")) - parseFloat($('#TotalDescGetalMerc').val().replace(",","."));
+
+
+
+		$('#TotalDifGetalNFD').val(difNfd.toFixed(2).replace('.',','));
+		$('#TotalDifGetalIcms').val(difIcms.toFixed(2).replace('.',','));   
+		$('#TotalDifGetalIpi').val(difIpi.toFixed(2).replace('.',','));
+		$('#TotalDifGetalSt').val(difSt.toFixed(2).replace('.',','));
+		$('#TotalDifGetalMerc').val(difMerc.toFixed(2).replace('.',','));
+
+
+
+		// cabeçalho valores tolerancia
+
+				var difNfd  = 0.00 ;			
+				var difIcms = 0.00 ;   
+				var difIpi  = 0.00 ;
+				var difSt   = 0.00 ;	
+				var difMerc = 0.00 ;	
+
+				var teste1  = $('#TotalGetalNFD').val().replace(",",".");
+				var teste11 = $('#TotalDescGetalNFD').val().replace(",",".");
+
+				var teste2  = $('#TotalGetalIcms').val().replace(",",".");
+				console.log("valor do icms NFD", teste2);
+				var teste22 = $('#TotalDescGetalIcms').val().replace(",",".");
+				console.log("valor do icms descritivo", teste22);
+
+				var teste3  = $('#TotalGetalIpi').val().replace(",",".");
+
+				var teste33 = $('#TotalDescGetalIpi').val().replace(",",".");
+
+				var teste4  = $('#TotalGetalSt').val().replace(",",".");
+				var teste44 = $('#TotalDescGetalSt').val().replace(",",".");
+
+				var teste5  = $('#TotalGetalMerc').val().replace(",",".");
+				var teste55 = $('#TotalDescGetalMerc').val().replace(",",".");
+
+				difNfd  =	parseFloat(teste1)  - parseFloat(teste11);		
+				difIcms =   parseFloat(teste2)  - parseFloat(teste22); 
+				difIpi  =	parseFloat(teste3)  - parseFloat(teste33);
+				difSt   =	parseFloat(teste4)  - parseFloat(teste44);
+				difMerc =	parseFloat(teste5)  - parseFloat(teste55);
+
+				$('#TotalDifGetalNFD').val(difNfd.toFixed(2).toString().replace('.',','));
+				$('#TotalDifGetalIcms').val(difIcms.toFixed(2).toString().replace('.',','));   
+				$('#TotalDifGetalIpi').val(difIpi.toFixed(2).toString().replace('.',','));
+				$('#TotalDifGetalSt').val(difSt.toFixed(2).toString().replace('.',','));
+				$('#TotalDifGetalMerc').val(difMerc.toFixed(2).toString().replace('.',','));
+
+				// QUANTIDADE CHANGE
+
+				var toleraMerc   = $("#toleraMerc").val() ; 
+				var porcMerc     = $("#porcMerc").val() ;
+
+				var toleraTotal  = $("#toleraTotal").val() ;
+				var porcTotal    = $("#porcTotal").val() ;
+
+				var toleraImp    = $("#toleraImp").val() ;
+				var porcImp      = $("#porcImp").val() ;
+
+				// fim cabeçalho
+				// ***** INICIO DOS CALCULOS SOB TOLERANCIA 
+				//imposto ICMS
+
+				var icms_calcImp = parseFloat($('#TotalGetalIcms').val());
+
+				console.log("VALOR CAMPO IMPOSTO ICMS", icms_calcImp);
+
+				var result_icmsImp = (parseFloat(porcImp) * icms_calcImp) /100;
+
+				console.log("VALOR RESULTADO PERC ICMS", result_icmsImp);
+
+				var result_icmsVlr = parseFloat($('#TotalGetalIcms').val()) + parseFloat(toleraImp);
+
+				console.log("RESULTADO VALOR ICMS", result_icmsVlr);
+
+				if (parseFloat(difIcms) <= 0){
+
+					$('#TotalDifGetalIcms').css('background-color','#87CEEB');
+					$("#controle1").val("ok");
+					$("#corGeralIcms").val("azul");
+
+
+				} else if ((parseFloat(difIcms) < parseFloat(result_icmsImp)) && (parseFloat(difIcms) > 0 )|| (parseFloat(difIcms) < parseFloat(result_icmsVlr)) && (parseFloat(difIcms) > 0)){
+
+					$('#TotalDifGetalIcms').css('background-color','#F0E68C');
+					$("#controle1").val("ok");
+					$("#corGeralIcms").val("amarelo");
+
+				}  else if ((parseFloat(difIcms) > parseFloat(result_icmsImp)) || (parseFloat(result_icmsVlr) > parseFloat(difIcms))) {
+
+					$('#TotalDifGetalIcms').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralIcms").val("vermelho");
+
+				}
+
+//				imposto IPI
+
+				var ipi_calcImp = parseFloat($('#TotalGetalIpi').val());
+
+				var result_ipiImp = (porcImp * ipi_calcImp) /100;
+
+				var result_ipiVlr = parseFloat($('#TotalGetalIpi').val()) + toleraImp;
+
+
+				if (parseFloat(difIpi) <= 0){
+
+					$('#TotalDifGetalIpi').css('background-color','#87CEEB');
+					$("#controle2").val("ok");
+					$("#corGeralIpi").val("azul");			
+
+				} else if ((parseFloat(difIpi) > parseFloat(result_ipiImp)) || (parseFloat(difIpi) > result_ipiVlr)) {
+					$('#TotalDifGetalIpi').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralIpi").val("vermelho");			
+
+				} else if ((parseFloat(difIpi) < parseFloat(result_ipiImp)) && (parseFloat(difIpi) > 0) || (parseFloat(difIpi) < parseFloat(result_ipiImp)) && (parseFloat(difIpi) > 0)){
+
+					$('#TotalDifGetalIpi').css('background-color','#F0E68C');
+					$("#controle2").val("ok");
+					$("#corGeralIpi").val("amarelo");			
+
+				}  
+
+//				imposto ST
+
+				var st_calcImp = parseFloat($('#TotalGetalSt').val());
+
+				var result_StImp = (porcImp * st_calcImp) /100;
+
+				var result_StVlr = parseFloat($('#TotalGetalSt').val()) + toleraImp;
+
+
+				if (parseFloat(difSt) <= 0 ){
+
+					$('#TotalDifGetalSt').css('background-color','#87CEEB');
+					$("#controle3").val("ok");
+					$("#corGeralSt").val("azul");			
+
+				}else if ((parseFloat(difSt) > parseFloat(result_StImp)) || (parseFloat(difSt) > result_StVlr)) {
+
+					$('#TotalDifGetalSt').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralSt").val("vermelho");			
+
+				} else if ((parseFloat(difSt) < parseFloat(result_StImp)) && (parseFloat(difSt) < 0) || (parseFloat(difSt) < result_StVlr) && (parseFloat(difSt) < 0)){
+
+					$('#TotalDifGetalSt').css('background-color','#F0E68C');
+					$("#controle3").val("ok");
+					$("#corGeralSt").val("amarelo");
+				} 
+
+//				valor total Merc
+
+				var vlMerc_calcImp = parseFloat($('#TotalGetalMerc').val());
+				console.log("TOTAL GETA MERC : "+ $('#TotalGetalMerc').val());
+
+				var result_VlMercImp = (porcMerc * vlMerc_calcImp) /100;
+
+				var result_VlMercVlr = parseFloat($('#TotalGetalMerc').val()) + parseFloat(toleraMerc);
+				console.log("TOTAL result_VlMercVlr  : "+ result_VlMercVlr);
+
+
+
+				if (parseFloat(difMerc) <= 0) {
+
+					$('#TotalDifGetalMerc').css('background-color','#87CEEB');
+					$("#controle4").val("ok");
+					$("#corGeralMerc").val("azul");
+
+				}else if ((parseFloat(difMerc) > parseFloat(result_VlMercImp)) || (parseFloat(difMerc) > result_VlMercVlr)) {
+
+					$('#TotalDifGetalMerc').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralMerc").val("vermelho");
+
+
+				} else if ((parseFloat(difMerc) < parseFloat(result_VlMercImp)) && (parseFloat(difMerc) > 0) || (parseFloat(difMerc) < result_VlMercVlr)) {
+
+					$('#TotalDifGetalMerc').css('background-color','#F0E68C');
+					$("#controle4").val("ok");
+					$("#corGeralMerc").val("amarelo");
+
+				}  
+
+//				valor TOTAL TOTAL
+
+				var vlTotal_calcImp = parseFloat($('#TotalGetalNFD').val());
+				console.log("VALOR TOAL NFD "+ vlTotal_calcImp);
+				var result_VlTotalImp = (porcTotal * vlTotal_calcImp) /100;
+
+				var result_VlTotalVlr = parseFloat($('#TotalGetalMerc').val()) + parseFloat(toleraTotal);
+
+				if (parseFloat(difNfd) <= 0){
+
+					$('#TotalDifGetalNFD').css('background-color','#87CEEB');
+					$("#controle5").val("ok");
+					$("#corGeralTotal").val("azul");
+
+				}else if ((parseFloat(difNfd) > parseFloat(result_VlTotalImp)) || (parseFloat(difNfd) > result_VlTotalVlr)) {
+
+					$('#TotalDifGetalNFD').css('background-color','#E9967A');
+					$("#possuiDif").val("sim");
+					$("#corGeralTotal").val("vermelho");
+
+
+
+				} else if ((parseFloat(difNfd) < parseFloat(result_VlTotalImp)) && (parseFloat(difNfd) > 0) || (parseFloat(difNfd) < result_VlTotalVlr)){
+
+					$('#TotalDifGetalNFD').css('background-color','#F0E68C');
+					$("#controle5").val("ok");
+					$("#corGeralTotal").val("amarelo");
+	
+
+	} else if (selectedItem.inputId.match(/motivo___/g)){
+
+		console.log(selectedItem);
+
+		var linha = selectedItem.inputId.split("___")[1];
+
+		console.log("minha linha =",linha);
+
+		var motivoAux = selectedItem["desc_motivo"];
+
+		$("#motivoAux___"+linha).val(motivoAux);
+
+
+	}
+
+
+}
+
+
+function carregaRepresentante(cod_solicitante){
+
+	console.log("Antes de entrar no dataset");	
+
+	var cod_solicitante = $("#matriculaSolicitante").val();
+
+	if (cod_solicitante != ""){ 
+		console.log(cod_solicitante);
+
+		var dados = {
+				"name": "repres_Solicitante",
+				"fields":null,
+				"constraints":[
+					{
+						"_field":"matr_fluig",
+						"_initialValue": cod_solicitante,
+						"_finalValue": cod_solicitante,
+						"_type":1
+					}
+					]
+		};
+		$.ajax({
+			method: "POST",
+			url: "/api/public/ecm/dataset/datasets/",
+			data: JSON.stringify(dados),
+			contentType: "application/json", 
+			async: false,
+			error: function(x, e) {
+				if (x.status == 500) {
+					alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+				}
+			},
+			beforeSend: function(){
+
+			},
+			success:function(model) {
+
+				$.each(model.content.values, function(index, value){
+					var nomeRegiao  = value.nome_ab_reg;
+					var nomeSuper   = value.nome_super;
+					var hideSuper   = value.supervisor;
+					var aprovador1  = value.aprov1;
+					var aprovador2  = value.aprov2;
+					var aprovador3  = value.aprov3;
+					var dataRetorna = value.dt_ini_pesq_nfd;	
+
+					$("#testeData").val("Pesquisa a partir de : " + dataRetorna);				
+
+					//	console.log("Aprovador 1 = ", aprovador1);
+					//	console.log("Aprovador 2 = ", aprovador2);					
+					//	console.log("Aprovador 3 = ", aprovador3);
+
+
+
+					$("#dataRetorna").val(dataRetorna);
+
+
+					$("#supervisor").val(nomeSuper);
+					$("#regional").val(nomeRegiao);
+
+					if(hideSuper == "SIM"){
+						$("#verificaSuper").val("SIM");
+						console.log("supervisor? : ", hideSuper);
+						// $("#aprovador1").val(aprovador1);
+						// $("#aprovador2").val(aprovador2);
+						// $("#aprovador3").val(aprovador3);
+
+
+					} else if (hideSuper == "NÃO"){
+						$("#verificaSuper").val("NÃO");
+						console.log("supervisor? : ", hideSuper);
+
+						$("#aprovador1").val(aprovador1);
+						$("#aprovador2").val(aprovador2);
+						$("#aprovador3").val(aprovador3);
+
+
+					}
+
+					console.log("Depois de entrar no dataset");	
+
+				});
+				return model;
+			}
+		});
+	}
+}
+
+
+//COMECA AQUI TOLERANCIA
+
+
+function carregaTolerancia(){
+
+	console.log("Antes de entrar no dataset");	
+
+
+	var dados = {
+			"name": "tolerancias_desc_dev",
+			"fields":null,
+			"constraints":[
+				{
+					"_field":"desc_dev_tolera_vl_merc",
+					"_initialValue": null,
+					"_finalValue": null,
+					"_type":1
+				}
+				]
+	};
+	$.ajax({
+		method: "POST",
+		url: "/api/public/ecm/dataset/datasets/",
+		data: JSON.stringify(dados),
+		contentType: "application/json", 
+		async: false,
+		error: function(x, e) {
+			if (x.status == 500) {
+				alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+			}
+		},
+		beforeSend: function(){
+
+		},
+		success:function(model) {
+
+			$.each(model.content.values, function(index, value){
+
+				var toleraMerc  = value.desc_dev_tolera_vl_merc;
+				var porcMerc   = value.desc_dev_tolera_vl_merc_perc;
+				var toleraTotal   = value.desc_dev_tolera_vl_tot;
+				var porcTotal  = value.desc_dev_tolera_vl_tot_perc;
+				var toleraImp  = value.desc_dev_tolera_vl_imp;
+				var porcImp    = value.desc_dev_tolera_vl_imp_perc;
+
+				console.log("Aprovador 1 = ", toleraMerc);
+				console.log("Aprovador 2 = ", porcMerc);					
+				console.log("Aprovador 3 = ", toleraTotal);
+				console.log("Aprovador 1 = ", porcTotal);
+				console.log("Aprovador 2 = ", toleraImp);					
+				console.log("Aprovador 3 = ", porcImp);
+
+				$("#toleraMerc").val(toleraMerc);
+				$("#porcMerc").val(porcMerc);
+				$("#toleraTotal").val(toleraTotal);
+				$("#porcTotal").val(porcTotal);
+				$("#toleraImp").val(toleraImp);
+				$("#porcImp").val(porcImp);
+
+			});
+			return model;
+		}
+	});
+
+}
+
+//ACABA AQUI TOLERANCIA
+
+function carregaAlcada(aprovador){
+
+
+	console.log("Antes de entrar no dataset ALCADAS ");	
+
+	var dados = {
+			"name": "alcada_aprov",
+			"fields":null,
+			"constraints":[
+				{
+					"_field":"matr_fluig",
+					"_initialValue": aprovador,
+					"_finalValue": aprovador,
+					"_type":1
+				},{
+					"_field":"id_fluxo",
+					"_initialValue": "DEV",
+					"_finalValue": "DEV",
+					"_type":1
+				}
+				]
+	};
+
+	$.ajax({
+		method: "POST",
+		url: "/api/public/ecm/dataset/datasets/",
+		data: JSON.stringify(dados),
+		contentType: "application/json", 
+		async: false,
+		error: function(x, e) {
+			if (x.status == 500) {
+				alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+			}
+		},
+		beforeSend: function(){
+
+		},
+		success:function(model) {
+
+			$.each(model.content.values, function(index, value){
+
+				var alcada_repAux  = value.vl_alcada;
+				var valorNfd    =  $("#TotalDescGetalNFD").val();
+
+				console.log("ALCADA  = " + alcada_repAux);
+
+				console.log("Valor da NFD = ", valorNfd);
+
+				if (parseFloat(valorNfd) >= parseFloat(alcada_repAux)) {
+
+					$("#statusAlcada").val("proximo");
+					console.log("Proximo");
+
+
+				} else if (parseFloat(valorNfd) <= parseFloat(alcada_repAux)){
+
+					$("#statusAlcada").val("pula");
+					console.log("Pula");
+
+				}
+
+				console.log("PASSOU SEM NADA");
+
+//				$("#alcadaRep").val(alcada_rep);
+			});
+
+			return model;
+		}
+	});
+
+}
+
+//ACABA AQUI ALÇADA 
+
+
+function concatenaDesc(){
+	var arr = [] ;
+	var arr1 = [] ;
+	var arr2 = [] ;
+	var teste = "";
+	$('input[id^="descProgAuxTwo___"]').each(function(x){
+		var context = $(this);
+		var linha = context.attr('id').split("___")[1];
+		var aspa = "'";
+		arr.push(aspa+$("#nomeProgAuxTwo___"+linha).val()+aspa);  
+		var contador = arr.length;
+
+	});
+
+	$('input[id^="descProgAuxTwo___"]').each(function(x){
+		var context = $(this);
+		var linha = context.attr('id').split("___")[1];
+
+		if($("#codGestorModuloTwo___"+linha).val() != ""){
+			arr1.push($("#codGestorModuloTwo___"+linha).val());  
+			var contador = arr1.length;
+
+		} 
+
+	});
+
+	$('input[id^="descProgAuxTwo___"]').each(function(x){
+		var context = $(this);
+		var linha = context.attr('id').split("___")[1];
+
+		if($("#codGestorModuloTwo___"+linha).val() == ""){
+
+			teste = "sim";
+
+		}
+
+	});
+
+	$("#semGestor").val(teste);
+	$("#cont_aprovador").val(arr1);
+
+	return arr;
+}
+
+$('input[id^="descProgAuxTwo___"]').each(function(x){
+	var context = $(this);
+	var linha = context.attr('id').split("___")[1];
+
+	if($("#codGestorModuloTwo___"+linha).val() == ""){
+		teste = "sim";
+	}
+});
+
+function carregaScroll() {
+	setaUltimaLinha();
+}
+
+function calculaValorTotalSub(){
+
+	var totalDesc =   0.00;
+	var totalIcms =   0.00;
+	var totalIpi  =   0.00;
+	var totalSt   =   0.00;
+	var totalMerc =   0.00;
+
+//	var resultado;
+
+	$('input[id^="valorTotalNota___"]').each(function(){
+
+		var context = $(this);
+
+		console.log(totalDesc, context.val());
+
+		totalDesc   = parseFloat(totalDesc) + parseFloat(context.val().replace(",",".")); //Valor total do campo
+//		console.log(" ANTES DA CONTA totalDesc ", totalDesc1.toFixed(2), "-" , context.val());       
+//		console.log(" DEPOIS DA CONTA totalDesc1 ", totalDesc1.toFixed(2), "-" , context.val());
+
+	});
+
+	$('input[id^="totalCms___"]').each(function(){
+		var context = $(this);
+
+		totalIcms = parseFloat(totalIcms) + parseFloat(context.val().replace(',','.'));
+
+
+	});	
+
+	$('input[id^="totalIPI___"]').each(function(){
+		var context = $(this);
+
+		totalIpi = parseFloat(totalIpi) + parseFloat(context.val().replace(',','.'));
+
+
+	});	
+
+	$('input[id^="totalSt___"]').each(function(){
+		var context = $(this);
+
+		totalSt = parseFloat(totalSt) + parseFloat(context.val().replace(',','.'));
+
+
+	});	
+
+	$('input[id^="totalMercadoriaLog___"]').each(function(){
+		var context = $(this);
+
+		totalMerc = parseFloat(totalMerc) + parseFloat(context.val().replace(',','.'));
+
+	});	
+
+	$('#TotalGetalNFD').val(totalDesc.toFixed(2).replace(".",","));			
+	$('#TotalGetalIcms').val(totalIcms.toFixed(2).replace(".",","));   
+	$('#TotalGetalIpi').val(totalIpi.toFixed(2).replace(".",","));
+	$('#TotalGetalSt').val(totalSt.toFixed(2).replace(".",","));
+	$('#TotalGetalMerc').val(totalMerc.toFixed(2).replace(".",","));
+
+	var totalDesc 	= 0.00;
+	var totalIcms 	= 0.00;
+	var totalIpi  	= 0.00;
+	var totalSt   	= 0.00;
+	var totalMerc 	= 0.00;
+	var totalBcIcms = 0.00;
+	var totalBcSt 	= 0.00;	
+	var totalPreco 	= 0.00;
+
+	var difNfd  = 0.00 ;			
+	var difIcms = 0.00 ;   
+	var difIpi  = 0.00 ;
+	var difSt   = 0.00 ;	
+	var difMerc = 0.00 ;	
+
+
+	$('input[id^="totalitem___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+
+		totalDesc = parseFloat(totalDesc) + parseFloat(context);
+
+		//totalDesc = totalDesc.toFixed(2).toString().replace('.',',');
+	});
+
+	$('input[id^="valoricms___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+
+		totalIcms = parseFloat(totalIcms) + parseFloat(context);
+
+
+	});	
+
+	$('input[id^="valorIpi___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");		
+		totalIpi = parseFloat(totalIpi) + parseFloat(context);
+	});	
+
+	$('input[id^="valorst___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+
+		totalSt = parseFloat(totalSt) + parseFloat(context);
+
+	});	
+
+	$('input[id^="bcicms___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+		totalBcIcms = parseFloat(totalBcIcms) + parseFloat(context);
+
+	});	
+
+	$('input[id^="valorbcst___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+		totalBcSt = parseFloat(totalBcSt) + parseFloat(context);
+
+	});			
+
+
+	$('input[id^="pesokg___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+
+		totalPreco = parseFloat(totalPreco) + parseFloat(context);
+
+	});
+
+
+
+	$('input[id^="totalMercadoria___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+
+		totalMerc = parseFloat(totalMerc) + parseFloat(context);
+
+
+		var TotalgetNFD = $('#TotalGetalNFD').val().replace(",",".");
+		var totalDescNFD = $('#TotalDescGetalNFD').val().replace(",",".");
+		difNfd  =	parseFloat(TotalgetNFD)  + parseFloat(totalDescNFD);	
+
+		console.log("Total NFD AQUI : "+ difNfd + "/ VALOR DO CAMPO TOTALGETALNFD "+TotalgetNFD + "valor do outro campo "+ totalDescNFD);
+
+
+
+		difIcms =   parseFloat($('#TotalGetalIcms').val()) + parseFloat($('#TotalDescGetalIcms').val()); 
+		difIpi  =	parseFloat($('#TotalGetalIpi').val())  + parseFloat($('#TotalDescGetalIpi').val());
+		difSt   =	parseFloat($('#TotalGetalSt').val())   + parseFloat($('#TotalDescGetalSt').val());
+		difMerc =	parseFloat($('#TotalGetalMerc').val()) + parseFloat($('#TotalDescGetalMerc').val());
+		console.log("AQUI TOTAL MERC : "+ difMerc );
+
+	});	
+
+	$('#TotalDescGetalNFD').val(totalDesc.toFixed(2).toString().replace('.',','));
+	$('#TotalDescGetalIcms').val(totalIcms.toFixed(2).toString().replace('.',','));   
+	$('#TotalDescGetalIpi').val(totalIpi.toFixed(2).toString().replace('.',','));
+	$('#TotalDescGetalSt').val(totalSt.toFixed(2).toString().replace('.',','));
+	$('#TotalDescGetalMerc').val(totalMerc.toFixed(2).toString().replace('.',','));
+
+	$('#TotalDescGetalNFDSol').val($('#TotalDescGetalNFD').val());
+	$('#TotalDescGetalIcmsSol').val($('#TotalDescGetalIcms').val());   
+	$('#TotalDescGetalIpiSol').val($('#TotalDescGetalIpi').val());
+	$('#TotalDescGetalStSol').val($('#TotalDescGetalSt').val());
+	$('#TotalDescGetalMercSol').val($('#TotalDescGetalMerc').val());
+
+
+
+	// NOVOS CAMPOS
+
+	$("#TotalDescritivoBcIcms").val(totalBcIcms.toFixed(2).toString().replace('.',','));
+	$("#TotalDescritivoBcSt").val(totalBcSt.toFixed(2).toString().replace('.',','));
+	$("#TotalDescritivoPeso").val(totalPreco.toFixed(2).toString().replace('.',','));
+
+
+//apagar valor comparativo
+
+		var difNfd  = 0.00 ;			
+		var difIcms = 0.00 ;   
+		var difIpi  = 0.00 ;
+		var difSt   = 0.00 ;	
+		var difMerc = 0.00 ;	
+
+
+
+		difNfd  =	parseFloat($('#TotalGetalNFD').val().replace(",","."))  - parseFloat($('#TotalDescGetalNFD').val().replace(",","."));		
+		difIcms =   parseFloat($('#TotalGetalIcms').val().replace(",",".")) - parseFloat($('#TotalDescGetalIcms').val().replace(",",".")); 
+		difIpi  =	parseFloat($('#TotalGetalIpi').val().replace(",","."))  - parseFloat($('#TotalDescGetalIpi').val().replace(",","."));
+		difSt   =	parseFloat($('#TotalGetalSt').val().replace(",","."))   - parseFloat($('#TotalDescGetalSt').val().replace(",","."));
+		difMerc =	parseFloat($('#TotalGetalMerc').val().replace(",",".")) - parseFloat($('#TotalDescGetalMerc').val().replace(",","."));
+
+
+
+		$('#TotalDifGetalNFD').val(difNfd.toFixed(2).replace('.',','));
+		$('#TotalDifGetalIcms').val(difIcms.toFixed(2).replace('.',','));   
+		$('#TotalDifGetalIpi').val(difIpi.toFixed(2).replace('.',','));
+		$('#TotalDifGetalSt').val(difSt.toFixed(2).replace('.',','));
+		$('#TotalDifGetalMerc').val(difMerc.toFixed(2).replace('.',','));
+
+
+
+
+
+
+}
+
+function fnCustomDelete(oElement){
+	fnWdkRemoveChild(oElement);	
+//	Chamada a funcao padrao, NAO RETIRAR
+	calculaValorTotalSub();
+
+
+	var linhasDesc = $("#tabelaNF tbody tr:not(:first-child)").length;			
+	$("#linhasDesc").val(linhasDesc);
+
+	var linhasComp = $("#respoChamDesc tbody tr:not(:first-child)").length;			
+	$("#linhasCompara").val(linhasComp);
+
+
+}
+
+function getIDUserResp(idElemento){
+
+	idElemento = idElemento.replace(/[^0-9]/g,'');
+	var aprova1  =  $("#aprovacaoSupDir").val();
+
+	if ($("#NomUserPadrao___" + idElemento).val() == "" || $("#NomUserPadrao___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserPadrao___" + idElemento).val(UserRespTrick);
+
+	}
+
+	if ($("#NomUserRegional___" + idElemento).val() == "" || $("#NomUserRegional___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserRegional___" + idElemento).val(UserRespTrick);
+
+	}
+
+	if ($("#NomUserDiretor___" + idElemento).val() == "" || $("#NomUserDiretor___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserDiretor___" + idElemento).val(UserRespTrick);
+
+	}
+
+	if ($("#NomUserPresidente___" + idElemento).val() == "" || $("#NomUserPresidente___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserPresidente___" + idElemento).val(UserRespTrick);
+
+	}
+
+	if ($("#NomUserDif___" + idElemento).val() == "" || $("#NomUserDif___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserDif___" + idElemento).val(UserRespTrick);
+	}
+}
+
+function getID(idElemento){
+	idElemento = idElemento.replace(/[^0-9]/g,'');
+	if ($("#HoraRespPadrao___" + idElemento).val() == "" || $("#HoraRespPadrao___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespPadrao___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}
+
+	if ($("#HoraRespRegional___" + idElemento).val() == "" || $("#HoraRespRegional___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespRegional___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}
+
+	if ($("#HoraRespDiretor___" + idElemento).val() == "" || $("#HoraRespDiretor___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespDiretor___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}
+
+	if ($("#HoraRespPresidente___" + idElemento).val() == "" || $("#HoraRespPresidente___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespPresidente___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}	
+
+
+	if ($("#HoraRespDif___" + idElemento).val() == "" || $("#HoraRespDif___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespDif___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}
+}
+
+
+function respostaAprova(){
+
+	wdkAddChild('respoCham');
+	$("#botaoEsconde").css('display','none');
+
+}   
+
+function respostaDiferenca(){
+	wdkAddChild('respoChamDif'); 
+}
+
+function respostaAprova1(){
+	wdkAddChild('respRegional'); 
+}
+
+function respostaAprova2(){
+	wdkAddChild('respDiretor'); 
+}
+
+function respostaAprova3(){
+	wdkAddChild('respPresidente'); 
+}
+
+function tableDesc(){
+
+}
+
+function setaUltimaLinha(){
+	$('input[id^="codItem___"]').each(function(){
+		var context = $(this);
+		ultimaLinha = parseInt(context.attr('id').split('___')[1]);    
+
+	});
+}
+
+function ReadInputArea(){
+	$('.respArea').each(function(i){
+		if ($(this).val() !="" || $(this).val() == null){
+			$(this).attr('readonly', true);
+		}
+	});
+}
+
+function bloqueiaCampo1(){
+
+//	Exemplo function modelar
+//	function bloqueiaCampo1(val1,val2){
+//	bloqueiaCampo1("#nfdEmitida","disabled");
+//	fim exemplo
+
+	// lixos das tabelas PaixFilho
+	$("table .bpm-mobile-trash-column").css("display", "none"); // esconde todas as lixeiras de todas as tabelas
+
+	$("#devolucaoVenda").attr('readonly', 'readonly');
+	$("#nfdEmitida").attr('readonly', 'readonly');
+	$("#codItem").addClass('hide');
+	$("#representanteZoom").attr('readonly','readonly');
+	$("#zoomCliente").attr('readonly','readonly');
+	$("#email").attr('readonly','readonly');
+	$("#numeroNF").attr('readonly','readonly');
+	$("#serieNF").attr('readonly','readonly');
+	$("#familia").attr('readonly','readonly');
+	$("#item").attr('readonly','readonly');
+	$("#pesquisaNF").addClass('hide');
+	$(".quantidade").attr('readonly','readonly');
+	$(".motivo").attr('readonly','readonly');
+
+}
+
+function autoComplete(){
+
+	var valor = $("#numeroNF").val();
+
+	var tamanho = valor.length;
+
+	if (tamanho == 6 ) {
+
+		$("#numeroNF").val("0" + valor);
+
+	}else if (tamanho == 5){
+
+		$("#numeroNF").val("00" + valor);
+
+	}else if (tamanho == 4) {
+
+		$("#numeroNF").val("000" + valor);
+
+	}else if (tamanho == 3) {
+
+		$("#numeroNF").val("0000" + valor);
+
+	}else if (tamanho == 2) {
+
+		$("#numeroNF").val("00000" + valor);
+
+	}else if (tamanho == 1) {
+
+		$("#numeroNF").val("000000" + valor);
+
+	}
+
+}
+
+
+function removedZoomItem(removedItem,setaLinha) {
+	console.log(removedItem)
+	if (removedItem.inputId == 'zoomCliente'){
+		$('#codCliente').val('');
+		//Colar o restante aqui
+
+		$("#codCliente").val('');
+		$("#nomeAbrev").val('');
+		$("#cidade").val('');
+		$("#enderecoCli").val('');
+		$("#estado").val('');
+		$("#bairro").val('');
+		$("#cnpjCli").val('');
+		$("#cep").val('');
+		$("#cod_emitenteTwo").val('');
+		$("#nomeCliente").val('');
+
+	} else if( removedItem.inputId == "representanteZoom"){
+
+		$("#supervisor").val('');
+		$("#regional").val('');
+
+
+	} else if (removedItem.inputId == "item") {
+
+		$("#descItem").val('');
+		$("#descItem").val("");
+
+		$("#coditem").val("").change();
+
+	} else if (removedItem.inputId.match(/motivo___/g)){
+
+
+		var linha = removedItem.inputId.split("___")[1];
+
+
+		$("#motivoAux___"+linha).val("");
+
+	} else if (removedItem.inputId == "familia") {
+
+		$("#item").val("").change();
+		$("#descItem").val("");
+
+		$("#coditem").val("").change(); 
+	} else if (removedItem.inputId == "transportadoraCli") {
+
+
+		$("#cnpjTransp").val("");
+		$("#telCli").val("");		
+
+	} 
+
+}
+
+function coresDiferenca(){
+
+	var cor  = $("#corGeralIcms").val();
+	var cor1 = $("#corGeralIpi").val();
+	var cor2 = $("#corGeralSt").val();
+	var cor3 = $("#corGeralMerc").val();
+	var cor4 = $("#corGeralTotal").val();
+
+
+	if (cor == "azul") {
+
+		$('#TotalDifGetalIcms').css('background-color','#87CEEB');
+
+	}else if (cor == "amarelo") {
+
+		$('#TotalDifGetalIcms').css('background-color','#F0E68C');
+	}else if (cor == "vermelho") {
+
+		$('#TotalDifGetalIcms').css('background-color','#E9967A');
+
+	}
+
+	//  2
+
+	if (cor1 == "azul") {
+		$('#TotalDifGetalIpi').css('background-color','#87CEEB');
+
+	}else if (cor1 == "amarelo") {
+		$('#TotalDifGetalIpi').css('background-color','#F0E68C');
+
+	}else if (cor1 == "vermelho") {
+		$('#TotalDifGetalIpi').css('background-color','#E9967A');	
+
+	}
+
+	// 3
+
+
+	if (cor2 == "azul") {
+		$('#TotalDifGetalSt').css('background-color','#87CEEB');
+	}else if (cor2 == "amarelo") {
+		$('#TotalDifGetalSt').css('background-color','#F0E68C');
+	}else if (cor2 == "vermelho") {
+		$('#TotalDifGetalSt').css('background-color','#E9967A');		
+	}
+
+	// 4
+
+
+	if (cor3 == "azul") {
+		$('#TotalDifGetalMerc').css('background-color','#87CEEB');
+
+	}else if (cor3 == "amarelo") {
+
+		$('#TotalDifGetalMerc').css('background-color','#F0E68C');
+	}else if (cor3 == "vermelho") {
+
+		$('#TotalDifGetalMerc').css('background-color','#E9967A');
+	}
+
+	// 5
+
+	if (cor4 == "azul") {
+		$('#TotalDifGetalNFD').css('background-color','#87CEEB');
+
+	}else if (cor4 == "amarelo") {
+
+		$('#TotalDifGetalNFD').css('background-color','#F0E68C');
+	}else if (cor4 == "vermelho") {
+		$('#TotalDifGetalNFD').css('background-color','#E9967A');	
+
+	}
+
+
+
+
+
+
+
+
+
+
+	} else if (selectedItem.inputId.match(/motivo___/g)){
+
+		console.log(selectedItem);
+
+		var linha = selectedItem.inputId.split("___")[1];
+
+		console.log("minha linha =",linha);
+
+		var motivoAux = selectedItem["desc_motivo"];
+
+		$("#motivoAux___"+linha).val(motivoAux);
+
+
+	}
+
+
+}
+
+
+function carregaRepresentante(cod_solicitante){
+
+	console.log("Antes de entrar no dataset");	
+
+	var cod_solicitante = $("#matriculaSolicitante").val();
+
+	if (cod_solicitante != ""){ 
+		console.log(cod_solicitante);
+
+		var dados = {
+				"name": "repres_Solicitante",
+				"fields":null,
+				"constraints":[
+					{
+						"_field":"matr_fluig",
+						"_initialValue": cod_solicitante,
+						"_finalValue": cod_solicitante,
+						"_type":1
+					}
+					]
+		};
+		$.ajax({
+			method: "POST",
+			url: "/api/public/ecm/dataset/datasets/",
+			data: JSON.stringify(dados),
+			contentType: "application/json", 
+			async: false,
+			error: function(x, e) {
+				if (x.status == 500) {
+					alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+				}
+			},
+			beforeSend: function(){
+
+			},
+			success:function(model) {
+
+				$.each(model.content.values, function(index, value){
+					var nomeRegiao  = value.nome_ab_reg;
+					var nomeSuper   = value.nome_super;
+					var hideSuper   = value.supervisor;
+					var aprovador1  = value.aprov1;
+					var aprovador2  = value.aprov2;
+					var aprovador3  = value.aprov3;
+					var dataRetorna = value.dt_ini_pesq_nfd;	
+
+					$("#testeData").val("Pesquisa a partir de : " + dataRetorna);				
+
+					//	console.log("Aprovador 1 = ", aprovador1);
+					//	console.log("Aprovador 2 = ", aprovador2);					
+					//	console.log("Aprovador 3 = ", aprovador3);
+
+
+
+					$("#dataRetorna").val(dataRetorna);
+
+
+					$("#supervisor").val(nomeSuper);
+					$("#regional").val(nomeRegiao);
+
+					if(hideSuper == "SIM"){
+						$("#verificaSuper").val("SIM");
+						console.log("supervisor? : ", hideSuper);
+						// $("#aprovador1").val(aprovador1);
+						// $("#aprovador2").val(aprovador2);
+						// $("#aprovador3").val(aprovador3);
+
+
+					} else if (hideSuper == "NÃO"){
+						$("#verificaSuper").val("NÃO");
+						console.log("supervisor? : ", hideSuper);
+
+						$("#aprovador1").val(aprovador1);
+						$("#aprovador2").val(aprovador2);
+						$("#aprovador3").val(aprovador3);
+
+
+					}
+
+					console.log("Depois de entrar no dataset");	
+
+				});
+				return model;
+			}
+		});
+	}
+}
+
+
+//COMECA AQUI TOLERANCIA
+
+
+function carregaTolerancia(){
+
+	console.log("Antes de entrar no dataset");	
+
+
+	var dados = {
+			"name": "tolerancias_desc_dev",
+			"fields":null,
+			"constraints":[
+				{
+					"_field":"desc_dev_tolera_vl_merc",
+					"_initialValue": null,
+					"_finalValue": null,
+					"_type":1
+				}
+				]
+	};
+	$.ajax({
+		method: "POST",
+		url: "/api/public/ecm/dataset/datasets/",
+		data: JSON.stringify(dados),
+		contentType: "application/json", 
+		async: false,
+		error: function(x, e) {
+			if (x.status == 500) {
+				alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+			}
+		},
+		beforeSend: function(){
+
+		},
+		success:function(model) {
+
+			$.each(model.content.values, function(index, value){
+
+				var toleraMerc  = value.desc_dev_tolera_vl_merc;
+				var porcMerc   = value.desc_dev_tolera_vl_merc_perc;
+				var toleraTotal   = value.desc_dev_tolera_vl_tot;
+				var porcTotal  = value.desc_dev_tolera_vl_tot_perc;
+				var toleraImp  = value.desc_dev_tolera_vl_imp;
+				var porcImp    = value.desc_dev_tolera_vl_imp_perc;
+
+				console.log("Aprovador 1 = ", toleraMerc);
+				console.log("Aprovador 2 = ", porcMerc);					
+				console.log("Aprovador 3 = ", toleraTotal);
+				console.log("Aprovador 1 = ", porcTotal);
+				console.log("Aprovador 2 = ", toleraImp);					
+				console.log("Aprovador 3 = ", porcImp);
+
+				$("#toleraMerc").val(toleraMerc);
+				$("#porcMerc").val(porcMerc);
+				$("#toleraTotal").val(toleraTotal);
+				$("#porcTotal").val(porcTotal);
+				$("#toleraImp").val(toleraImp);
+				$("#porcImp").val(porcImp);
+
+			});
+			return model;
+		}
+	});
+
+}
+
+//ACABA AQUI TOLERANCIA
+
+function carregaAlcada(aprovador){
+
+
+	console.log("Antes de entrar no dataset ALCADAS ");	
+
+	var dados = {
+			"name": "alcada_aprov",
+			"fields":null,
+			"constraints":[
+				{
+					"_field":"matr_fluig",
+					"_initialValue": aprovador,
+					"_finalValue": aprovador,
+					"_type":1
+				},{
+					"_field":"id_fluxo",
+					"_initialValue": "DEV",
+					"_finalValue": "DEV",
+					"_type":1
+				}
+				]
+	};
+
+	$.ajax({
+		method: "POST",
+		url: "/api/public/ecm/dataset/datasets/",
+		data: JSON.stringify(dados),
+		contentType: "application/json", 
+		async: false,
+		error: function(x, e) {
+			if (x.status == 500) {
+				alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+			}
+		},
+		beforeSend: function(){
+
+		},
+		success:function(model) {
+
+			$.each(model.content.values, function(index, value){
+
+				var alcada_repAux  = value.vl_alcada;
+				var valorNfd    =  $("#TotalDescGetalNFD").val();
+
+				console.log("ALCADA  = " + alcada_repAux);
+
+				console.log("Valor da NFD = ", valorNfd);
+
+				if (parseFloat(valorNfd) >= parseFloat(alcada_repAux)) {
+
+					$("#statusAlcada").val("proximo");
+					console.log("Proximo");
+
+
+				} else if (parseFloat(valorNfd) <= parseFloat(alcada_repAux)){
+
+					$("#statusAlcada").val("pula");
+					console.log("Pula");
+
+				}
+
+				console.log("PASSOU SEM NADA");
+
+//				$("#alcadaRep").val(alcada_rep);
+			});
+
+			return model;
+		}
+	});
+
+}
+
+//ACABA AQUI ALÇADA 
+
+
+function concatenaDesc(){
+	var arr = [] ;
+	var arr1 = [] ;
+	var arr2 = [] ;
+	var teste = "";
+	$('input[id^="descProgAuxTwo___"]').each(function(x){
+		var context = $(this);
+		var linha = context.attr('id').split("___")[1];
+		var aspa = "'";
+		arr.push(aspa+$("#nomeProgAuxTwo___"+linha).val()+aspa);  
+		var contador = arr.length;
+
+	});
+
+	$('input[id^="descProgAuxTwo___"]').each(function(x){
+		var context = $(this);
+		var linha = context.attr('id').split("___")[1];
+
+		if($("#codGestorModuloTwo___"+linha).val() != ""){
+			arr1.push($("#codGestorModuloTwo___"+linha).val());  
+			var contador = arr1.length;
+
+		} 
+
+	});
+
+	$('input[id^="descProgAuxTwo___"]').each(function(x){
+		var context = $(this);
+		var linha = context.attr('id').split("___")[1];
+
+		if($("#codGestorModuloTwo___"+linha).val() == ""){
+
+			teste = "sim";
+
+		}
+
+	});
+
+	$("#semGestor").val(teste);
+	$("#cont_aprovador").val(arr1);
+
+	return arr;
+}
+
+$('input[id^="descProgAuxTwo___"]').each(function(x){
+	var context = $(this);
+	var linha = context.attr('id').split("___")[1];
+
+	if($("#codGestorModuloTwo___"+linha).val() == ""){
+		teste = "sim";
+	}
+});
+
+function carregaScroll() {
+	setaUltimaLinha();
+}
+
+function calculaValorTotalSub(){
+
+	var totalDesc =   0.00;
+	var totalIcms =   0.00;
+	var totalIpi  =   0.00;
+	var totalSt   =   0.00;
+	var totalMerc =   0.00;
+
+//	var resultado;
+
+	$('input[id^="valorTotalNota___"]').each(function(){
+
+		var context = $(this);
+
+		console.log(totalDesc, context.val());
+
+		totalDesc   = parseFloat(totalDesc) + parseFloat(context.val().replace(",",".")); //Valor total do campo
+//		console.log(" ANTES DA CONTA totalDesc ", totalDesc1.toFixed(2), "-" , context.val());       
+//		console.log(" DEPOIS DA CONTA totalDesc1 ", totalDesc1.toFixed(2), "-" , context.val());
+
+	});
+
+	$('input[id^="totalCms___"]').each(function(){
+		var context = $(this);
+
+		totalIcms = parseFloat(totalIcms) + parseFloat(context.val().replace(',','.'));
+
+
+	});	
+
+	$('input[id^="totalIPI___"]').each(function(){
+		var context = $(this);
+
+		totalIpi = parseFloat(totalIpi) + parseFloat(context.val().replace(',','.'));
+
+
+	});	
+
+	$('input[id^="totalSt___"]').each(function(){
+		var context = $(this);
+
+		totalSt = parseFloat(totalSt) + parseFloat(context.val().replace(',','.'));
+
+
+	});	
+
+	$('input[id^="totalMercadoriaLog___"]').each(function(){
+		var context = $(this);
+
+		totalMerc = parseFloat(totalMerc) + parseFloat(context.val().replace(',','.'));
+
+	});	
+
+	$('#TotalGetalNFD').val(totalDesc.toFixed(2).replace(".",","));			
+	$('#TotalGetalIcms').val(totalIcms.toFixed(2).replace(".",","));   
+	$('#TotalGetalIpi').val(totalIpi.toFixed(2).replace(".",","));
+	$('#TotalGetalSt').val(totalSt.toFixed(2).replace(".",","));
+	$('#TotalGetalMerc').val(totalMerc.toFixed(2).replace(".",","));
+
+	var totalDesc 	= 0.00;
+	var totalIcms 	= 0.00;
+	var totalIpi  	= 0.00;
+	var totalSt   	= 0.00;
+	var totalMerc 	= 0.00;
+	var totalBcIcms = 0.00;
+	var totalBcSt 	= 0.00;	
+	var totalPreco 	= 0.00;
+
+	var difNfd  = 0.00 ;			
+	var difIcms = 0.00 ;   
+	var difIpi  = 0.00 ;
+	var difSt   = 0.00 ;	
+	var difMerc = 0.00 ;	
+
+
+	$('input[id^="totalitem___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+
+		totalDesc = parseFloat(totalDesc) + parseFloat(context);
+
+		//totalDesc = totalDesc.toFixed(2).toString().replace('.',',');
+	});
+
+	$('input[id^="valoricms___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+
+		totalIcms = parseFloat(totalIcms) + parseFloat(context);
+
+
+	});	
+
+	$('input[id^="valorIpi___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");		
+		totalIpi = parseFloat(totalIpi) + parseFloat(context);
+	});	
+
+	$('input[id^="valorst___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+
+		totalSt = parseFloat(totalSt) + parseFloat(context);
+
+	});	
+
+	$('input[id^="bcicms___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+		totalBcIcms = parseFloat(totalBcIcms) + parseFloat(context);
+
+	});	
+
+	$('input[id^="valorbcst___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+		totalBcSt = parseFloat(totalBcSt) + parseFloat(context);
+
+	});			
+
+
+	$('input[id^="pesokg___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+
+		totalPreco = parseFloat(totalPreco) + parseFloat(context);
+
+	});
+
+
+
+	$('input[id^="totalMercadoria___"]').each(function(){
+		var context = $(this).val();
+		context = context.replace(",",".");
+
+		totalMerc = parseFloat(totalMerc) + parseFloat(context);
+
+
+		var TotalgetNFD = $('#TotalGetalNFD').val().replace(",",".");
+		var totalDescNFD = $('#TotalDescGetalNFD').val().replace(",",".");
+		difNfd  =	parseFloat(TotalgetNFD)  + parseFloat(totalDescNFD);	
+
+		console.log("Total NFD AQUI : "+ difNfd + "/ VALOR DO CAMPO TOTALGETALNFD "+TotalgetNFD + "valor do outro campo "+ totalDescNFD);
+
+
+
+		difIcms =   parseFloat($('#TotalGetalIcms').val()) + parseFloat($('#TotalDescGetalIcms').val()); 
+		difIpi  =	parseFloat($('#TotalGetalIpi').val())  + parseFloat($('#TotalDescGetalIpi').val());
+		difSt   =	parseFloat($('#TotalGetalSt').val())   + parseFloat($('#TotalDescGetalSt').val());
+		difMerc =	parseFloat($('#TotalGetalMerc').val()) + parseFloat($('#TotalDescGetalMerc').val());
+		console.log("AQUI TOTAL MERC : "+ difMerc );
+
+	});	
+
+	$('#TotalDescGetalNFD').val(totalDesc.toFixed(2).toString().replace('.',','));
+	$('#TotalDescGetalIcms').val(totalIcms.toFixed(2).toString().replace('.',','));   
+	$('#TotalDescGetalIpi').val(totalIpi.toFixed(2).toString().replace('.',','));
+	$('#TotalDescGetalSt').val(totalSt.toFixed(2).toString().replace('.',','));
+	$('#TotalDescGetalMerc').val(totalMerc.toFixed(2).toString().replace('.',','));
+
+	$('#TotalDescGetalNFDSol').val($('#TotalDescGetalNFD').val());
+	$('#TotalDescGetalIcmsSol').val($('#TotalDescGetalIcms').val());   
+	$('#TotalDescGetalIpiSol').val($('#TotalDescGetalIpi').val());
+	$('#TotalDescGetalStSol').val($('#TotalDescGetalSt').val());
+	$('#TotalDescGetalMercSol').val($('#TotalDescGetalMerc').val());
+
+
+
+	// NOVOS CAMPOS
+
+	$("#TotalDescritivoBcIcms").val(totalBcIcms.toFixed(2).toString().replace('.',','));
+	$("#TotalDescritivoBcSt").val(totalBcSt.toFixed(2).toString().replace('.',','));
+	$("#TotalDescritivoPeso").val(totalPreco.toFixed(2).toString().replace('.',','));
+
+
+//apagar valor comparativo
+
+		var difNfd  = 0.00 ;			
+		var difIcms = 0.00 ;   
+		var difIpi  = 0.00 ;
+		var difSt   = 0.00 ;	
+		var difMerc = 0.00 ;	
+
+
+
+		difNfd  =	parseFloat($('#TotalGetalNFD').val().replace(",","."))  - parseFloat($('#TotalDescGetalNFD').val().replace(",","."));		
+		difIcms =   parseFloat($('#TotalGetalIcms').val().replace(",",".")) - parseFloat($('#TotalDescGetalIcms').val().replace(",",".")); 
+		difIpi  =	parseFloat($('#TotalGetalIpi').val().replace(",","."))  - parseFloat($('#TotalDescGetalIpi').val().replace(",","."));
+		difSt   =	parseFloat($('#TotalGetalSt').val().replace(",","."))   - parseFloat($('#TotalDescGetalSt').val().replace(",","."));
+		difMerc =	parseFloat($('#TotalGetalMerc').val().replace(",",".")) - parseFloat($('#TotalDescGetalMerc').val().replace(",","."));
+
+
+
+		$('#TotalDifGetalNFD').val(difNfd.toFixed(2).replace('.',','));
+		$('#TotalDifGetalIcms').val(difIcms.toFixed(2).replace('.',','));   
+		$('#TotalDifGetalIpi').val(difIpi.toFixed(2).replace('.',','));
+		$('#TotalDifGetalSt').val(difSt.toFixed(2).replace('.',','));
+		$('#TotalDifGetalMerc').val(difMerc.toFixed(2).replace('.',','));
+
+
+
+
+
+
+}
+
+function fnCustomDelete(oElement){
+	fnWdkRemoveChild(oElement);	
+//	Chamada a funcao padrao, NAO RETIRAR
+	calculaValorTotalSub();
+
+
+	var linhasDesc = $("#tabelaNF tbody tr:not(:first-child)").length;			
+	$("#linhasDesc").val(linhasDesc);
+
+	var linhasComp = $("#respoChamDesc tbody tr:not(:first-child)").length;			
+	$("#linhasCompara").val(linhasComp);
+
+
+}
+
+function getIDUserResp(idElemento){
+
+	idElemento = idElemento.replace(/[^0-9]/g,'');
+	var aprova1  =  $("#aprovacaoSupDir").val();
+
+	if ($("#NomUserPadrao___" + idElemento).val() == "" || $("#NomUserPadrao___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserPadrao___" + idElemento).val(UserRespTrick);
+
+	}
+
+	if ($("#NomUserRegional___" + idElemento).val() == "" || $("#NomUserRegional___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserRegional___" + idElemento).val(UserRespTrick);
+
+	}
+
+	if ($("#NomUserDiretor___" + idElemento).val() == "" || $("#NomUserDiretor___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserDiretor___" + idElemento).val(UserRespTrick);
+
+	}
+
+	if ($("#NomUserPresidente___" + idElemento).val() == "" || $("#NomUserPresidente___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserPresidente___" + idElemento).val(UserRespTrick);
+
+	}
+
+	if ($("#NomUserDif___" + idElemento).val() == "" || $("#NomUserDif___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserDif___" + idElemento).val(UserRespTrick);
+	}
+}
+
+function getID(idElemento){
+	idElemento = idElemento.replace(/[^0-9]/g,'');
+	if ($("#HoraRespPadrao___" + idElemento).val() == "" || $("#HoraRespPadrao___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespPadrao___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}
+
+	if ($("#HoraRespRegional___" + idElemento).val() == "" || $("#HoraRespRegional___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespRegional___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}
+
+	if ($("#HoraRespDiretor___" + idElemento).val() == "" || $("#HoraRespDiretor___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespDiretor___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}
+
+	if ($("#HoraRespPresidente___" + idElemento).val() == "" || $("#HoraRespPresidente___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespPresidente___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}	
+
+
+	if ($("#HoraRespDif___" + idElemento).val() == "" || $("#HoraRespDif___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespDif___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}
+}
+
+
+function respostaAprova(){
+
+	wdkAddChild('respoCham');
+	$("#botaoEsconde").css('display','none');
+
+}   
+
+function respostaDiferenca(){
+	wdkAddChild('respoChamDif'); 
+}
+
+function respostaAprova1(){
+	wdkAddChild('respRegional'); 
+}
+
+function respostaAprova2(){
+	wdkAddChild('respDiretor'); 
+}
+
+function respostaAprova3(){
+	wdkAddChild('respPresidente'); 
+}
+
+function tableDesc(){
+
+}
+
+function setaUltimaLinha(){
+	$('input[id^="codItem___"]').each(function(){
+		var context = $(this);
+		ultimaLinha = parseInt(context.attr('id').split('___')[1]);    
+
+	});
+}
+
+function ReadInputArea(){
+	$('.respArea').each(function(i){
+		if ($(this).val() !="" || $(this).val() == null){
+			$(this).attr('readonly', true);
+		}
+	});
+}
+
+function bloqueiaCampo1(){
+
+//	Exemplo function modelar
+//	function bloqueiaCampo1(val1,val2){
+//	bloqueiaCampo1("#nfdEmitida","disabled");
+//	fim exemplo
+
+	// lixos das tabelas PaixFilho
+	$("table .bpm-mobile-trash-column").css("display", "none"); // esconde todas as lixeiras de todas as tabelas
+
+	$("#devolucaoVenda").attr('readonly', 'readonly');
+	$("#nfdEmitida").attr('readonly', 'readonly');
+	$("#codItem").addClass('hide');
+	$("#representanteZoom").attr('readonly','readonly');
+	$("#zoomCliente").attr('readonly','readonly');
+	$("#email").attr('readonly','readonly');
+	$("#numeroNF").attr('readonly','readonly');
+	$("#serieNF").attr('readonly','readonly');
+	$("#familia").attr('readonly','readonly');
+	$("#item").attr('readonly','readonly');
+	$("#pesquisaNF").addClass('hide');
+	$(".quantidade").attr('readonly','readonly');
+	$(".motivo").attr('readonly','readonly');
+
+}
+
+function autoComplete(){
+
+	var valor = $("#numeroNF").val();
+
+	var tamanho = valor.length;
+
+	if (tamanho == 6 ) {
+
+		$("#numeroNF").val("0" + valor);
+
+	}else if (tamanho == 5){
+
+		$("#numeroNF").val("00" + valor);
+
+	}else if (tamanho == 4) {
+
+		$("#numeroNF").val("000" + valor);
+
+	}else if (tamanho == 3) {
+
+		$("#numeroNF").val("0000" + valor);
+
+	}else if (tamanho == 2) {
+
+		$("#numeroNF").val("00000" + valor);
+
+	}else if (tamanho == 1) {
+
+		$("#numeroNF").val("000000" + valor);
+
+	}
+
+}
+
+
+function removedZoomItem(removedItem,setaLinha) {
+	console.log(removedItem)
+	if (removedItem.inputId == 'zoomCliente'){
+		$('#codCliente').val('');
+		//Colar o restante aqui
+
+		$("#codCliente").val('');
+		$("#nomeAbrev").val('');
+		$("#cidade").val('');
+		$("#enderecoCli").val('');
+		$("#estado").val('');
+		$("#bairro").val('');
+		$("#cnpjCli").val('');
+		$("#cep").val('');
+		$("#cod_emitenteTwo").val('');
+		$("#nomeCliente").val('');
+
+	} else if( removedItem.inputId == "representanteZoom"){
+
+		$("#supervisor").val('');
+		$("#regional").val('');
+
+
+	} else if (removedItem.inputId == "item") {
+
+		$("#descItem").val('');
+		$("#descItem").val("");
+
+		$("#coditem").val("").change();
+
+	} else if (removedItem.inputId.match(/motivo___/g)){
+
+
+		var linha = removedItem.inputId.split("___")[1];
+
+
+		$("#motivoAux___"+linha).val("");
+
+	} else if (removedItem.inputId == "familia") {
+
+		$("#item").val("").change();
+		$("#descItem").val("");
+
+		$("#coditem").val("").change(); 
+	} else if (removedItem.inputId == "transportadoraCli") {
+
+
+		$("#cnpjTransp").val("");
+		$("#telCli").val("");		
+
+	} 
+
+}
+
+function coresDiferenca(){
+
+	var cor  = $("#corGeralIcms").val();
+	var cor1 = $("#corGeralIpi").val();
+	var cor2 = $("#corGeralSt").val();
+	var cor3 = $("#corGeralMerc").val();
+	var cor4 = $("#corGeralTotal").val();
+
+
+	if (cor == "azul") {
+
+		$('#TotalDifGetalIcms').css('background-color','#87CEEB');
+
+	}else if (cor == "amarelo") {
+
+		$('#TotalDifGetalIcms').css('background-color','#F0E68C');
+	}else if (cor == "vermelho") {
+
+		$('#TotalDifGetalIcms').css('background-color','#E9967A');
+
+	}
+
+	//  2
+
+	if (cor1 == "azul") {
+		$('#TotalDifGetalIpi').css('background-color','#87CEEB');
+
+	}else if (cor1 == "amarelo") {
+		$('#TotalDifGetalIpi').css('background-color','#F0E68C');
+
+	}else if (cor1 == "vermelho") {
+		$('#TotalDifGetalIpi').css('background-color','#E9967A');	
+
+	}
+
+	// 3
+
+
+	if (cor2 == "azul") {
+		$('#TotalDifGetalSt').css('background-color','#87CEEB');
+	}else if (cor2 == "amarelo") {
+		$('#TotalDifGetalSt').css('background-color','#F0E68C');
+	}else if (cor2 == "vermelho") {
+		$('#TotalDifGetalSt').css('background-color','#E9967A');		
+	}
+
+	// 4
+
+
+	if (cor3 == "azul") {
+		$('#TotalDifGetalMerc').css('background-color','#87CEEB');
+
+	}else if (cor3 == "amarelo") {
+
+		$('#TotalDifGetalMerc').css('background-color','#F0E68C');
+	}else if (cor3 == "vermelho") {
+
+		$('#TotalDifGetalMerc').css('background-color','#E9967A');
+	}
+
+	// 5
+
+	if (cor4 == "azul") {
+		$('#TotalDifGetalNFD').css('background-color','#87CEEB');
+
+	}else if (cor4 == "amarelo") {
+
+		$('#TotalDifGetalNFD').css('background-color','#F0E68C');
+	}else if (cor4 == "vermelho") {
+		$('#TotalDifGetalNFD').css('background-color','#E9967A');	
+
+	}
+
+
+}
+
+

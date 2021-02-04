@@ -1,0 +1,327 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		<script type="text/javascript" src="scripts.js"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.rawgit.com/plentz/jquery-maskmoney/master/dist/jquery.maskMoney.min.js"></script>
+		
+
+
+		
+		<style rel="stylesheet" type="text/css">
+			b {
+				color: red;
+			}
+		</style>
+
+
+	</head>
+	<body>
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div style="text-align: center;" id="divSessentaDias" name="divSessentaDias">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-danger">Atenção:<br>
+						Existe(m) titulo(s) pendente de compensação.
+						</li>			
+					</ul>					
+				</div>
+				<div style="text-align: center;" id="divSeteDias" name="divSeteDias">
+					<ul class="list-group">
+						<li class="list-group-item list-group-item-danger">Atenção:<br>
+						A data da necessidade é inferior a 7 dias úteis.
+						</li>			
+					</ul>	
+				</div>
+				<!--<div class="panel panel-info" id="divAprovacao">
+		    		<div class="panel-heading">
+		    			<h4 class="panel-title">Aprovador</h4>
+		    		</div>
+		    		<div class="panel-body">
+						<div class="row">
+							<div class="switch switch-success">
+							    <input class="switch-input" type="checkbox" id="aprovar" name="aprovar" />
+							    <label class="switch-button" for="aprovar">Aprovar?</label>
+							</div>
+						</div>
+					</div>
+				</div>-->
+				<div class="panel panel-info">
+		    		<div class="panel-heading">
+		    			<h4 class="panel-title">Pedido de adiantamento - Solicitação</h4>
+		    		</div>
+		    		<div class="panel-body">
+		    			<!-- CAMPOS PARA PROCESSAMENTO -->
+		    			<input type="hidden" name="numeroSolicitacao" Id="numeroSolicitacao" class="form-control">
+		    			<input type="hidden" name="codFornecedor" Id="codFornecedor" class="form-control">
+		    			<input type="hidden" name="loja" Id="loja" class="form-control">
+		    			<input type="hidden" name="codCC" Id="codCC" class="form-control">
+		    			<input type="hidden" name="codNatureza" Id="codNatureza" class="form-control">
+		    			<input type="hidden" name="matAprovador" Id="matAprovador" class="form-control">
+		    			<input type="hidden" name="nivel" Id="nivel" class="form-control">
+		    			<input type="hidden" name="seqProcesso" Id="seqProcesso" class="form-control">
+		    			<input type="hidden" name="valorTratado" Id="valorTratado" class="form-control">
+						<input type="hidden" name="prefixo" Id="prefixo" class="form-control">
+						<input type="hidden" name="tipoTitulo" Id="tipoTitulo" class="form-control">
+						<input type="hidden" name="cpValidSete" Id="cpValidSete" class="form-control">
+						<input type="hidden" name="cpValidSessenta" Id="cpValidSessenta" class="form-control">
+						<input type="hidden" name="dtFiltroEmissao" Id="dtFiltroEmissao" class="form-control">
+						<input type="hidden" name="dtFiltroNecessidade" Id="dtFiltroNecessidade" class="form-control">
+						<input type="hidden" name="status" Id="status" class="form-control">
+						<input type="hidden" name="cpValidSeteApp" Id="cpValidSeteApp" class="form-control">
+						<input type="hidden" name="cpValidSessentaApp" Id="cpValidSessentaApp" class="form-control">
+						<input type="hidden" name="matPrimeiroAprov" Id="matPrimeiroAprov" class="form-control">
+						<input type="hidden" name="origem" Id="origem" class="form-control" value="">
+						<input type="hidden" name="hawb" Id="hawb" class="form-control">
+						<input type="hidden" name="passouFunc" Id="passouFunc" class="form-control" value="">
+		    			<div class="row">
+			    			<div class="form-group col-md-4">
+					    		<Label for="Solicitante">Solicitante</Label>
+								<input type="text" name="Solicitante" Id="Solicitante" class="form-control" readonly>
+							</div>
+							<div class="form-group col-md-4">
+					    		<Label for="fornecedor">Fornecedor<b>*</b></Label>
+					    		<input
+								    type="zoom"
+								    id = "fornecedor"
+								    name="fornecedor"
+								    data-zoom="{
+								        'displayKey':'DESCRICAO',
+								        'datasetId':'ds_fornecedor_qr',
+								        'maximumSelectionLength':'1',
+								        'placeholder':'',
+								        'fields':[
+											{
+											    'field':'CODIGO',
+											    'label':'Código'
+											},
+											{
+											    'field':'LOJA',
+											    'label':'Loja'
+											},
+								            {
+								               'field':'DESCRICAO',
+								               'label':'Descrição'
+								            }							            					            					            
+								        ]
+								     }"					   
+								/>
+							</div>
+							<div class="form-group col-md-2">
+					    		<Label for="valor">Tipo Moeda<b>*</b></Label>
+								<select name="slc_moeda" class="form-control" id="slc_moeda">
+									<option value="">Selecione</option>
+									<option value="1">Real</option>
+									<option value="2">Dólar</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2 divReal">
+					    		<Label for="valor">Valor R$<b>*</b></Label>
+								<input type="text" name="valor" Id="valor" class="form-control" mask="#00.000.000.000.000,00">
+							</div>
+							<div class="form-group col-md-2 divDolar ">
+					    		<Label for="valor">Valor US$<b>*</b></Label>
+								<input type="text" name="valorDolar" Id="valorDolar" class="form-control" mask="#00.000.000.000.000,00">
+							</div>							
+						</div>
+						<div class="row">
+		    				<div class="form-group col-md-4">
+			    				<label for="dataSolicitacao">Data da solicitação</label>
+								<input type="date" name="dataSolicitacao" id="dataSolicitacao" class="form-control" readonly>
+		    				</div>
+		    				<div class="form-group col-md-4">
+			    				<label for="dataNecessidade">Data da Necessidade<b>*</b></label>
+								<input type="date" name="dataNecessidade" id="dataNecessidade" class="form-control">
+		    				</div>
+		    				<div class="form-group col-md-4">
+			    				<label for="tipoPagamento">Banco/boleto<b>*</b></label><br>
+								<input
+								    type="zoom"
+								    id = "tipoPagamento"
+								    name="tipoPagamento"
+								    data-zoom="{
+								        'displayKey':'Tipo',
+								        'datasetId':'ds_tipoPagamento',
+								        'maximumSelectionLength':'1',
+								        'placeholder':'',
+								        'fields':[
+											{
+											    'field':'Tipo',
+											    'label':' ',
+								                'standard':'true'
+											}							            					            					            
+								        ]
+								     }"					   
+								/>
+			    				<!--<select type="button" class="btn btn-default" data-tipo_graph id="tipoPagamento" name="tipoPagamento">
+			    				  <option value="boleto">Boleto</option>
+			    				  <option value="banco">Banco</option>
+			    				</select>-->
+		    				</div>
+				    	</div>
+				    	<div class="row" id="divBanco">
+							<div class="form-group col-md-4">
+		    					<Label for="idbanco">Banco<b>*</b></Label>
+								<input type="text" name="idbanco" Id="idbanco" class="form-control" readonly>
+					    		<!--<input
+								    type="zoom"
+								    id = "idbanco"
+								    name="idbanco"
+								    data-zoom="{
+								        'displayKey':'A2_BANCO',
+								        'datasetId':'ds_banco_qr',
+								        'maximumSelectionLength':'1',
+								        'placeholder':'',
+								        'fields':[
+											{
+											    'field':'A2_BANCO',
+											    'label':'Banco',
+								                'standard':'true'
+											},
+								            {
+								               'field':'A2_AGENCIA',
+								               'label':'Agencia'
+								            },
+								            {
+								               'field':'A2_NUMCON',
+								               'label':'Conta'
+								            }							            					            					            
+								        ]
+								     }"					   
+								/>-->
+	    					</div>
+	    					<div class="form-group col-md-4">
+	    						<Label for="agencia">Agencia</Label>
+								<input type="text" name="agencia" Id="agencia" class="form-control" readonly>
+							</div>
+							<div class="form-group col-md-4">
+	    						<Label for="conta">Conta</Label>
+								<input type="text" name="conta" Id="conta" class="form-control" readonly>
+							</div>
+						</div>
+				    	<div class="row">
+	    					<div class="form-group col-md-4">
+		    					<Label for="centrocusto">Centro de custo<b>*</b></Label>
+					    		<input
+								    type="zoom"
+								    id = "centrocusto"
+								    name="centrocusto"
+								    data-zoom="{
+								        'displayKey':'CTT_DESC01',
+								        'datasetId':'ds_centroCusto_qr',
+								        'maximumSelectionLength':'1',
+								        'placeholder':'',
+								        'fields':[
+											{
+											    'field':'CTT_CUSTO',
+											    'label':'Código'
+											},
+								            {
+								               'field':'CTT_DESC01',
+								               'label':'Descrição',
+								               'standard':'true'
+								            }							            					            					            
+								        ]
+								     }"					   
+								/>
+	    					</div>
+	    					<div class="form-group col-md-4">
+		    					<Label for="natureza">Natureza<b>*</b></Label>
+								<input
+								    type="zoom"
+								    id = "natureza"
+								    name="natureza"
+								    data-zoom="{
+								        'displayKey':'ED_DESCRIC',
+								        'datasetId':'ds_natureza',
+								        'maximumSelectionLength':'1',
+								        'placeholder':'',
+								        'fields':[
+											{
+											    'field':'ED_CODIGO',
+											    'label':'Código'
+											},
+								            {
+								               'field':'ED_DESCRIC',
+								               'label':'Descrição',
+								               'standard':'true'
+								            }							            					            					            
+								        ]
+								     }"					   
+								/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<Label for="motivo">Motivo<b>*</b></Label>
+								<textarea rows="4" name="motivo" id="motivo" class="form-control"></textarea> 
+							</div>
+	    			    </div>
+		    		</div>
+		    	</div>
+		    	<div class="panel panel-info" id="divOrigemBanco">
+		    		<div class="panel-heading">
+		    			<h4 class="panel-title">Pedido de adiantamento - Banco de origem</h4>
+		    		</div>
+		    		<div class="panel-body">
+		    			<div class="row">
+							<div class="form-group col-md-4">
+		    					<Label for="idbancoOrigem">Banco<b>*</b></Label>
+					    		<input
+								    type="zoom"
+								    id = "idbancoOrigem"
+								    name="idbancoOrigem"
+								    data-zoom="{
+								        'displayKey':'A6_COD',
+								        'datasetId':'ds_bancoOrig_qr',
+								        'maximumSelectionLength':'1',
+								        'placeholder':'',
+								        'fields':[
+											{
+											    'field':'A6_COD',
+											    'label':'Banco',
+								                'standard':'true'
+											},
+								            {
+								               'field':'A6_AGENCIA',
+								               'label':'Agencia'
+								            },
+								            {
+								               'field':'A6_NUMCON',
+								               'label':'Conta'
+								            }							            					            					            
+								        ]
+								     }"					   
+								/>
+	    					</div>
+	    					<div class="form-group col-md-4">
+	    						<Label for="agenciaOrigem">Agencia</Label>
+								<input type="text" name="agenciaOrigem" Id="agenciaOrigem" class="form-control" readonly>
+							</div>
+							<div class="form-group col-md-4">
+	    						<Label for="contaOrigem">Conta</Label>
+								<input type="text" name="contaOrigem" Id="contaOrigem" class="form-control" readonly>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+
+	<script>
+		if($("#slc_moeda").val() == "1"){
+				$(".divDolar").addClass('hide');
+				$(".divReal").removeClass('hide');		
+			}else if($("#slc_moeda").val() == "2"){
+				$(".divDolar").removeClass('hide');
+				$(".divReal").addClass('hide');		
+		}
+	</script>
+</html>

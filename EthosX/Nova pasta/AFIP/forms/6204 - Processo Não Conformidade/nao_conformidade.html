@@ -1,0 +1,966 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="main.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form" autocomplete="off">
+	<input type="hidden" name="fimVerificaImplementacao" id="fimVerificaImplementacao" />
+	<input type="hidden" name="fimVerificaEficacia" id="fimVerificaEficacia" />
+	<input type="hidden" name="atividade" id="atividade" />
+	<input type="hidden" name="cont" id="cont" value="1" />
+	
+	<div class="panel panel-primary" id="painelTitulo">
+		<div class="panel-body">
+		<h2><b>Não Conformidade</b></h2>
+		</div>
+	</div>
+	<div class="panel panel-primary" id="painelIncluir">
+		<div class="panel-heading"><span class="fluigicon fluigicon-user fluigicon-md"></span> Incluir não conformidade</div>
+		<div class="panel-body">
+			<div class="row hide">
+				<div  class="form-group col-lg-4 col-sm-4 inicio">
+					<label for="numeroFluig">Número fluig</label>
+					<input type="text" name="numeroFluig" id="numeroFluig" class="form-control" readonly/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-2 col-sm-2 inicio">
+					<label for="numeroNc">Número NC</label>
+					<input type="text" name="numeroNc" id="numeroNc" class="form-control" readonly/>
+				</div>
+				
+				<div class="form-group col-lg-2 col-sm-2 inicio">
+					<label for="numeroNc">Data da ocorrência</label>
+					<input type="hidden" name="anoOcorrencia" id="anoOcorrencia" />
+					<input type="hidden" name="dataEncPrevisto" />
+					<input type="text" name="dataOcorrencia" id="dataOcorrencia" class="form-control fluig-date"/>
+				</div>
+				
+				<div class="form-group col-lg-2 col-sm-2 inicio">
+					<label for="numeroNc">Data de registro</label>
+					<input type="text" name="dataRegistro" id="dataRegistro" class="form-control"  readonly/>
+				</div>
+				
+				<div class="form-group col-lg-3 col-sm-3 inicio">
+					<label for="situacao">Situação</label>
+					<input type="hidden" name="codSituacao" id="codSituacao" />
+					<input type="text" name="situacao" id="situacao" class="form-control"/>
+				</div>
+				<div class="form-group col-lg-3 col-sm-3 inicio">
+					<label for="status">Status</label>
+					
+					<input type="text" name="status" id="status" class="form-control " />
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-lg-6 col-sm-6 inicio">
+					<label for="situacao">Origem da não conformidade</label>
+					<input type="hidden" name="codOrigem" id="codOrigem" />
+					<input type="zoom" name="origem" id="origem" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsOrigem',
+							'displayKey' : 'descricao',
+							'placeholder': 'Escolha a origem',
+							'fields' : [
+							
+								{
+									'field' : 'codigo',
+									'label' : 'codigo'
+								},
+								{
+									'field': 'descricao',
+									'label': 'Descrição'
+								}
+							]
+						}"/>
+				</div>
+				<div class="form-group col-lg-6 col-sm-6 inicio">
+					<label for="situacao">Processo</label>
+					<input type="hidden" name="codProcesso" id="codProcesso" />
+					<input type="zoom" name="processo" id="processo" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsProcesso',
+							'displayKey' : 'descricao',
+							'placeholder': 'Escolha o processo',
+							'fields' : [
+							
+								{
+									'field' : 'codigo',
+									'label' : 'codigo'
+								},
+								{
+									'field': 'descricao',
+									'label': 'Descrição'
+								}
+							]
+						}"/>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-lg-6 col-sm-6 selecioneQualidade">
+					<label for="departamentoOrigem">Departamento origem</label>
+					<input type="hidden" name="codDepartamentoOrigem" id="codDepartamentoOrigem" />
+					<input type="zoom" name="departamentoOrigem" id="departamentoOrigem" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsOrigemDestino',
+							'displayKey' : 'descricao',
+							'placeholder': 'Escolha o Departamento',
+							'fields' : [
+							
+								{
+									'field' : 'codigo',
+									'label' : 'codigo'
+								},
+								{
+									'field': 'descricao',
+									'label': 'Descrição'
+								}
+							]
+						}"/>
+				</div>
+				<div class="form-group col-lg-6 col-sm-6 selecioneQualidade">
+					<label for="departamentoDestino">Departamento destino</label>
+					<input type="hidden" name="codDepartamentoDestino" id="codDepartamentoDestino"/>
+					<input type="zoom" name="departamentoDestino" id="departamentoDestino" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsOrigemDestino',
+							'displayKey' : 'descricao',
+							'placeholder': 'Escolha o Departamento',
+							'fields' : [
+							
+								{
+									'field' : 'codigo',
+									'label' : 'codigo'
+								},
+								{
+									'field': 'descricao',
+									'label': 'Descrição'
+								}
+							]
+						}"/>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-lg-6 col-sm-6 selecioneQualidade">
+					<label for="responsavelAbertura">Responsável pela abertura</label>
+					<input type="hidden" name="filRespAbertura" id="filRespAbertura"/>
+					<input type="hidden" name="matRespAbertura" id="matRespAbertura"/>
+					<input type="hidden" name="deptoRespAbertura" />
+					<input type="text" name="responsavelAbertura" id="responsavelAbertura" class="form-control" readonly/>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-lg-4 col-sm-4">
+					<label for="classificacaoNaoConformidade">Classificação da Não Conformidade</label>
+					<input type="hidden" name="codClassificacaoNConformidade" id="codClassificacaoNConformidade" />
+					<input type="zoom" name="classificacaoNaoConformidade" id="classificacaoNaoConformidade" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsClassificacaoNaoConformidade',
+							'displayKey' : 'descricao',
+							'fields' : [
+							
+								{
+									'field' : 'codigo',
+									'label' : 'codigo'
+								},
+								{
+									'field': 'descricao',
+									'label': 'Descrição'
+								}
+							]
+						}"/>
+				</div>
+				<div class="form-group col-lg-2 col-sm-2">
+					<label for="eventoAdverso">Evento adverso</label>
+					<input type="hidden" name="codEventoAdverso" id="codEventoAdverso" />
+					<input type="zoom" name="eventoAdverso" id="eventoAdverso" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsEvento',
+							'displayKey' : 'descricao',
+							'fields' : [
+							
+								{
+									'field' : 'codigo',
+									'label' : 'codigo'
+								},
+								{
+									'field': 'descricao',
+									'label': 'Descrição'
+								}
+							]
+						}"/>
+				</div>
+				
+				<div class="form-group col-lg-6 col-sm-6">
+					<label for="classificacaoEvento">Classificação do evento</label>
+					<input type="hidden" name="codClassificacaoEvento" id="codClassificacaoEvento" />
+					<input type="zoom" name="classificacaoEvento" id="classificacaoEvento" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsClassificacaoEvento',
+							'displayKey' : 'descricao',
+							'fields' : [
+							
+								{
+									'field' : 'codigo',
+									'label' : 'codigo'
+								},
+								{
+									'field': 'descricao',
+									'label': 'Descrição'
+								}
+							]
+						}"/>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="form-group col-lg-3 col-sm-3">
+					<label for="gerenciamentoRisco">Gerenciamento de risco</label>
+					<input type="hidden" name="codGerenciamentoRisco" id="codGerenciamentoRisco" />
+					<input type="zoom" name="gerenciamentoRisco" id="gerenciamentoRisco" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsGerenciamentoRisco',
+							'displayKey' : 'descricao',
+							'fields' : [
+							
+								{
+									'field' : 'codigo',
+									'label' : 'codigo'
+								},
+								{
+									'field': 'descricao',
+									'label': 'Descrição'
+								}
+							]
+						}"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-12">
+					<label for="descricaoEventoRisco">Descrição evento/risco</label>
+					<textarea id="descricaoEventoRisco" name="descricaoEventoRisco" class="form-control" maxlength="2000" rows="5"></textarea>
+					<input type="hidden" name="descricaoEventoRiscoRes" id="descricaoEventoRiscoRes" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-12">
+					<label for="motivoNaoConformidade">Motivo da Não conformidade</label>
+					<input type="hidden" name="codMotivoNaoConformidade" id="codMotivoNaoConformidade" />
+					<input type="zoom" name="motivoNaoConformidade" id="motivoNaoConformidade" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsEfeito',
+							'displayKey' : 'descricao',
+							'fields' : [
+							
+								{
+									'field' : 'codigo',
+									'label' : 'codigo'
+								},
+								{
+									'field': 'descricao',
+									'label': 'Descrição'
+								}
+							]
+						}"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-6 col-sm-6 validaNaoConformidade">
+					<label for="situacao">Dano ao paciente?</label>
+					<input type="hidden" name="codDanoPaciente" id="codDanoPaciente" />
+					<input type="zoom" name="danoPaciente" id="danoPaciente" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsDanoPaciente',
+							'displayKey' : 'descricao',
+							'fields' : [
+							
+								{
+									'field' : 'codigo',
+									'label' : 'codigo'
+								},
+								{
+									'field': 'descricao',
+									'label': 'Descrição'
+								}
+							]
+						}"/>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="form-group col-lg-12 col-sm-12 validaNaoConformidade">
+					<label for="acaoImediata">Ação imediata</label>
+					<textarea id="acaoImediata" name="acaoImediata" class="form-control" rows="5"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary" id="painelSelecionarQualidade">
+		<div class="panel-heading"><span class="fluigicon fluigicon-user fluigicon-md"></span> Selecionar Analista</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="form-group col-lg-4 col-sm-4">
+					<label>Aprovado? </label>
+					<div class="radio">
+						<label> <input name="validarSelecionarQualidade" id="validarSelecionarQualidade" value="Sim" type="radio"> <span
+							class="">Sim</span>
+						</label>
+					</div>
+					<div class="radio">
+						<label> <input name="validarSelecionarQualidade" id="validarSelecionarQualidadeNao" value="Nao" type="radio"> <span
+							class="">Não</span>
+						</label>
+					</div>
+				</div>
+				
+				<div id="divCriticaSelecionarQualidade" class="form-group col-lg-6 col-sm-6 hide" style="float:right">
+					<label for="critica"> Crítica</label>
+					<textarea id="criticaSelecionarQualidade" name="criticaSelecionarQualidade" class="form-control"></textarea>
+				</div>
+				<div id="divSelecionarAnalista" class="form-group col-lg-6 col-sm-6 hide" style="float:right">
+					<label for="critica"> Selecionar analista</label>
+					<input type="hidden" name="filAnalista" id="filAnalista" />
+					<input type="hidden" name="matAnalista" id="matAnalista" />
+					<input type="hidden" name="idAnalista" id="idAnalista" />
+					<input type="zoom" name="analista" id="analista" class="form-control"
+						data-zoom="{
+							'datasetId' : 'nc_dsAnalistaQualidade',
+							'displayKey' : 'Nome',
+							'fields' : [
+
+								{
+									'field' : 'Codigo',
+									'label' : 'Codigo'
+								},							
+								{
+									'field' : 'Nome',
+									'label' : 'Nome'
+								},
+								{
+									'field': 'Email',
+									'label': 'E-mail'
+								}
+							]
+						}"/>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- Validar não conformidade -->
+	<div class="panel panel-primary" id="painelValidarNaoConformidade">
+		<div class="panel-heading"> <span class="fluigicon fluigicon-user fluigicon-md"></span> Validar não conformidade</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="form-group col-lg-4 col-sm-6 validaNaoConformidade">
+					<label for="confirmacaoNaoConformidade">Não conformidade ok?</label>
+					<div class="radio">
+						<label> <input name="confirmacaoNaoConformidade" id="confirmacaoNaoConformidade" value="Sim" type="radio"> <span
+							class="">Sim</span>
+						</label>
+					</div>
+					<div class="radio">
+						<label> <input name="confirmacaoNaoConformidade" id="confirmacaoNaoConformidadeNao" value="Nao" type="radio"> <span
+							class="">Não</span>
+						</label>
+					</div>
+					
+				</div>
+				
+				<div id="divCritica" class="form-group col-lg-6 col-sm-6 hide" style="float:right">
+					<label for="critica"> Crítica</label>
+					<textarea id="critica" name="critica" class="form-control"></textarea>
+				</div>
+				<div id="divResponsavelResposta" class="form-group col-lg-6 col-sm-6 hide" style="float:right">
+						<label for="responsavelResposta">Responsável pela resposta</label>
+						<input type="hidden" name="matResponsavelResposta" id="matResponsavelResposta" />
+						<input type="hidden" name="filResponsavelResposta" id="filResponsavelResposta" />
+						<input type="hidden" name="idResponsavelResposta" id="idResponsavelResposta" />
+						<input type="zoom" name="responsavelResposta" id="responsavelResposta" class="form-control"
+									data-zoom="{
+										'datasetId' : 'colleague',
+										'displayKey' : 'colleagueName',
+										'fields' : [
+										
+											{
+												'field' : 'colleagueId',
+												'label' : 'Matrícula'
+											},
+											{
+												'field': 'colleagueName',
+												'label': 'Nome',
+												'search': 'true'
+											}
+										]
+									}"/>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	<!-- Area responsável valida -->
+	<div class="panel panel-primary" id="painelAreaResponsavelValida">
+		<div class="panel-heading"> <span class="fluigicon fluigicon-user fluigicon-md"></span>Responder não conformidade</div>
+		<div class="panel-body">
+			<input type="hidden" name="numeroPA" id="numeroPA" />
+			<div class="row">
+				<div class="form-group col-lg-4 col-sm-6 confNaoConformidade">
+					<label for="conferenciaNaoConformidade">Não conformidade procede?</label>
+					<div class="radio">
+						<label> <input name="conferenciaNaoConformidade" id="conferenciaNaoConformidade" value="Sim" type="radio"> <span
+							class="">Sim</span>
+						</label>
+					</div>
+					<div class="radio">
+						<label> <input name="conferenciaNaoConformidade" id="conferenciaNaoConformidadeNao" value="Nao" type="radio"> <span
+							class="">Não</span>
+						</label>
+					</div>
+					
+				</div>
+			</div>
+			<div class="row" id="naoProcede">
+				<div class="form-group col-lg-12">
+					<label for="justificativaNaoProcede">Justificativa do Não Procede</label>
+					<textarea id="justificativaNaoProcede" name="justificativaNaoProcede" class="form-control"></textarea>
+				</div>
+			</div>
+			<div id="procede">
+				<div class="row">
+					<div class="form-group col-lg-12">
+						<label for="descricaoCausaEvento"> Descrição da causa do evento</label>
+						<textarea id="descricaoCausaEvento" name="descricaoCausaEvento" class="form-control" maxlength="2000"></textarea>
+					</div>
+				</div>
+		
+				<div class="row">
+					<h3 class="page-header">Cadastro de plano de ação</h3>
+						<div class="divTable">
+							<table class="table table-striped table-bordered" id="tablePlanoAcao" >
+								<thead>
+									<tr>
+										<th id="colunaAcaoCorretiva">Ação corretiva<span style='color:red'>*</span></th>
+										<th width="250px">Responsável<span style='color:red'>*</span></th>
+										<th width="150px">Prazo</th>
+										<th id="colunaAcao" class="hide" width="150px">Ação implementada<span style='color:red'>*</span></th>
+										<th id="colunaValidacao" class="hide" width="150px">Validação</th>
+										<th id="colunaObsValidacao" class="hide">Observação</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<input type="text" id="acaoCorretiva1" class="form-control" name="acaoCorretiva1" maxlength="50"/>
+										</td>
+										<td >
+											<input type="hidden" name="filResponsavelPlacoAcao1" id="filResponsavelPlacoAcao1" />
+											<input type="hidden" name="matResponsavelPlacoAcao1" id="matResponsavelPlacoAcao1" />
+											<input type="hidden" name="idResponsavelPlacoAcao1" id="idResponsavelPlacoAcao1" />
+											<input type="zoom" name="responsavelPlacoAcao1" id="responsavelPlacoAcao1" class="form-control"
+											data-zoom="{
+												'datasetId' : 'nc_dsUsuarioQualidade',
+												'displayKey' : 'colleagueName',
+												'filterValues' : 'active,true',
+												'fields' : [
+												
+													{
+														'field' : 'colleagueId',
+														'label' : 'Matrícula'
+													},
+													{
+														'field': 'colleagueName',
+														'label': 'Nome'
+													}
+												]
+											}"/>
+										</td>
+										<td><input type="text" id="prazo1" class="form-control" name="prazo1" /><input type="hidden" name="dtExecucao1" /></td>
+										<td class="hide"><select name="acaoImplementada1" id="acaoImplementada1" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Finalizado">Finalizado</option>
+										</select></td>
+										<td class="hide"><select name="validacaoAcao1" id="validacaoAcao1" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Validado">Validado</option>
+											<option value="Alterar">Alterar</option>
+										</select></td>
+										<td class="hide"><input type="text" id="obsValidacao1" class="form-control" name="obsValidacao1" /></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="text" id="acaoCorretiva2" class="form-control" name="acaoCorretiva2"  maxlength="50"/>
+										</td>
+										<td >
+											<input type="hidden" name="filResponsavelPlacoAcao2" id="filResponsavelPlacoAcao2" />
+											<input type="hidden" name="matResponsavelPlacoAcao2" id="matResponsavelPlacoAcao2" />
+											<input type="hidden" name="idResponsavelPlacoAcao2" id="idResponsavelPlacoAcao2" />
+											<input type="zoom" name="responsavelPlacoAcao2" id="responsavelPlacoAcao2" class="form-control"
+											data-zoom="{
+												'datasetId' : 'nc_dsUsuarioQualidade',
+												'displayKey' : 'colleagueName',
+												'filterValues' : 'active,true',
+												'fields' : [
+												
+													{
+														'field' : 'colleagueId',
+														'label' : 'Matrícula'
+													},
+													{
+														'field': 'colleagueName',
+														'label': 'Nome'
+													}
+												]
+											}"/>
+										</td>
+										<td><input type="text" id="prazo2" class="form-control" name="prazo2" /><input type="hidden" name="dtExecucao2" /></td>
+										<td class="hide"><select name="acaoImplementada2" id="acaoImplementada2" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Finalizado">Finalizado</option>
+										</select></td>
+										<td class="hide"><select name="validacaoAcao2" id="validacaoAcao2" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Validado">Validado</option>
+											<option value="Alterar">Alterar</option>
+										</select></td>
+										<td class="hide"><input type="text" id="obsValidacao2" class="form-control" name="obsValidacao2" /></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="text" id="acaoCorretiva3" class="form-control" name="acaoCorretiva3" maxlength="50"/>
+										</td>
+										<td >
+											<input type="hidden" name="filResponsavelPlacoAcao3" id="filResponsavelPlacoAcao3" />
+											<input type="hidden" name="matResponsavelPlacoAcao3" id="matResponsavelPlacoAcao3" />
+											<input type="hidden" name="idResponsavelPlacoAcao3" id="idResponsavelPlacoAcao3" />
+											<input type="zoom" name="responsavelPlacoAcao3" id="responsavelPlacoAcao3" class="form-control"
+											data-zoom="{
+												'datasetId' : 'nc_dsUsuarioQualidade',
+												'displayKey' : 'colleagueName',
+												'filterValues' : 'active,true',
+												'fields' : [
+												
+													{
+														'field' : 'colleagueId',
+														'label' : 'Matrícula'
+													},
+													{
+														'field': 'colleagueName',
+														'label': 'Nome'
+													}
+												]
+											}"/>
+										</td>
+										<td><input type="text" id="prazo3" class="form-control" name="prazo3" /><input type="hidden" name="dtExecucao3" /></td>
+										<td class="hide"><select name="acaoImplementada3" id="acaoImplementada3" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Finalizado">Finalizado</option>
+										</select></td>
+										<td class="hide"><select name="validacaoAcao3" id="validacaoAcao3" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Validado">Validado</option>
+											<option value="Alterar">Alterar</option>
+										</select></td>
+										<td class="hide"><input type="text" id="obsValidacao3" class="form-control" name="obsValidacao3" /></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="text" id="acaoCorretiva4" class="form-control" name="acaoCorretiva4" maxlength="50"/>
+										</td>
+										<td >
+											<input type="hidden" name="filResponsavelPlacoAcao4" id="filResponsavelPlacoAcao4" />
+											<input type="hidden" name="matResponsavelPlacoAcao4" id="matResponsavelPlacoAcao4" />
+											<input type="hidden" name="idResponsavelPlacoAcao4" id="idResponsavelPlacoAcao4" />
+											<input type="zoom" name="responsavelPlacoAcao4" id="responsavelPlacoAcao4" class="form-control"
+											data-zoom="{
+												'datasetId' : 'nc_dsUsuarioQualidade',
+												'displayKey' : 'colleagueName',
+												'filterValues' : 'active,true',
+												'fields' : [
+												
+													{
+														'field' : 'colleagueId',
+														'label' : 'Matrícula'
+													},
+													{
+														'field': 'colleagueName',
+														'label': 'Nome'
+													}
+												]
+											}"/>
+										</td>
+										<td><input type="text" id="prazo4" class="form-control" name="prazo4" /><input type="hidden" name="dtExecucao4" /></td>
+										<td class="hide"><select name="acaoImplementada4" id="acaoImplementada4" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Finalizado">Finalizado</option>
+										</select></td>
+										<td class="hide"><select name="validacaoAcao4" id="validacaoAcao4" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Validado">Validado</option>
+											<option value="Alterar">Alterar</option>
+										</select></td>
+										<td class="hide"><input type="text" id="obsValidacao4" class="form-control" name="obsValidacao4" /></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="text" id="acaoCorretiva5" class="form-control" name="acaoCorretiva5" maxlength="50"/>
+										</td>
+										<td >
+											<input type="hidden" name="filResponsavelPlacoAcao5" id="filResponsavelPlacoAcao5" />
+											<input type="hidden" name="matResponsavelPlacoAcao5" id="matResponsavelPlacoAcao5" />
+											<input type="hidden" name="idResponsavelPlacoAcao5" id="idResponsavelPlacoAcao5" />
+											<input type="zoom" name="responsavelPlacoAcao5" id="responsavelPlacoAcao5" class="form-control"
+											data-zoom="{
+												'datasetId' : 'nc_dsUsuarioQualidade',
+												'displayKey' : 'colleagueName',
+												'filterValues' : 'active,true',
+												'fields' : [
+												
+													{
+														'field' : 'colleagueId',
+														'label' : 'Matrícula'
+													},
+													{
+														'field': 'colleagueName',
+														'label': 'Nome'
+													}
+												]
+											}"/>
+										</td>
+										<td><input type="text" id="prazo5" class="form-control" name="prazo5" /><input type="hidden" name="dtExecucao5" /></td>
+										<td class="hide"><select name="acaoImplementada5" id="acaoImplementada5" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Finalizado">Finalizado</option>
+										</select></td>
+										<td class="hide"><select name="validacaoAcao5" id="validacaoAcao5" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Validado">Validado</option>
+											<option value="Alterar">Alterar</option>
+										</select></td>
+										<td class="hide"><input type="text" id="obsValidacao5" class="form-control" name="obsValidacao5" /></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="text" id="acaoCorretiva6" class="form-control" name="acaoCorretiva6" maxlength="50"/>
+										</td>
+										<td >
+											<input type="hidden" name="filResponsavelPlacoAcao6" id="filResponsavelPlacoAcao6" />
+											<input type="hidden" name="matResponsavelPlacoAcao6" id="matResponsavelPlacoAcao6" />
+											<input type="hidden" name="idResponsavelPlacoAcao6" id="idResponsavelPlacoAcao6" />
+											<input type="zoom" name="responsavelPlacoAcao6" id="responsavelPlacoAcao6" class="form-control"
+											data-zoom="{
+												'datasetId' : 'nc_dsUsuarioQualidade',
+												'displayKey' : 'colleagueName',
+												'filterValues' : 'active,true',
+												'fields' : [
+												
+													{
+														'field' : 'colleagueId',
+														'label' : 'Matrícula'
+													},
+													{
+														'field': 'colleagueName',
+														'label': 'Nome'
+													}
+												]
+											}"/>
+										</td>
+										<td><input type="text" id="prazo6" class="form-control" name="prazo6" /><input type="hidden" name="dtExecucao6" /></td>
+										<td class="hide"><select name="acaoImplementada6" id="acaoImplementada6" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Finalizado">Finalizado</option>
+										</select></td>
+										<td class="hide"><select name="validacaoAcao6" id="validacaoAcao6" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Validado">Validado</option>
+											<option value="Alterar">Alterar</option>
+										</select></td>
+										<td class="hide"><input type="text" id="obsValidacao6" class="form-control" name="obsValidacao6" /></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="text" id="acaoCorretiva7" class="form-control" name="acaoCorretiva7" maxlength="50"/>
+										</td>
+										<td >
+											<input type="hidden" name="filResponsavelPlacoAcao7" id="filResponsavelPlacoAcao7" />
+											<input type="hidden" name="matResponsavelPlacoAcao7" id="matResponsavelPlacoAcao7" />
+											<input type="hidden" name="idResponsavelPlacoAcao7" id="idResponsavelPlacoAcao7" />
+											<input type="zoom" name="responsavelPlacoAcao7" id="responsavelPlacoAcao7" class="form-control"
+											data-zoom="{
+												'datasetId' : 'nc_dsUsuarioQualidade',
+												'displayKey' : 'colleagueName',
+												'filterValues' : 'active,true',
+												'fields' : [
+												
+													{
+														'field' : 'colleagueId',
+														'label' : 'Matrícula'
+													},
+													{
+														'field': 'colleagueName',
+														'label': 'Nome'
+													}
+												]
+											}"/>
+										</td>
+										<td><input type="text" id="prazo7" class="form-control" name="prazo7" /><input type="hidden" name="dtExecucao7" /></td>
+										<td class="hide"><select name="acaoImplementada7" id="acaoImplementada7" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Finalizado">Finalizado</option>
+										</select></td>
+										<td class="hide"><select name="validacaoAcao7" id="validacaoAcao7" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Validado">Validado</option>
+											<option value="Alterar">Alterar</option>
+										</select></td>
+										<td class="hide"><input type="text" id="obsValidacao7" class="form-control" name="obsValidacao7" /></td>
+									</tr>
+									<tr>
+										<td>
+											<input type="text" id="acaoCorretiva8" class="form-control" name="acaoCorretiva8" maxlength="50"/>
+										</td>
+										<td >
+											<input type="hidden" name="filResponsavelPlacoAcao8" id="filResponsavelPlacoAcao8" />
+											<input type="hidden" name="matResponsavelPlacoAcao8" id="matResponsavelPlacoAcao8" />
+											<input type="hidden" name="idResponsavelPlacoAcao8" id="idResponsavelPlacoAcao8" />
+											<input type="zoom" name="responsavelPlacoAcao8" id="responsavelPlacoAcao8" class="form-control"
+											data-zoom="{
+												'datasetId' : 'nc_dsUsuarioQualidade',
+												'displayKey' : 'colleagueName',
+												'filterValues' : 'active,true',
+												'fields' : [
+												
+													{
+														'field' : 'colleagueId',
+														'label' : 'Matrícula'
+													},
+													{
+														'field': 'colleagueName',
+														'label': 'Nome'
+													}
+												]
+											}"/>
+										</td>
+										<td><input type="text" id="prazo8" class="form-control" name="prazo8" /><input type="hidden" name="dtExecucao8" /></td>
+										<td class="hide"><select name="acaoImplementada8" id="acaoImplementada8" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Finalizado">Finalizado</option>
+										</select></td>
+										<td class="hide"><select name="validacaoAcao8" id="validacaoAcao8" class="form-control ">
+											<option value="">Selecione</option>
+											<option value="Validado">Validado</option>
+											<option value="Alterar">Alterar</option>
+										</select></td>
+										<td class="hide"><input type="text" id="obsValidacao8" class="form-control" name="obsValidacao8" /></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>	
+	
+	<!-- Validar não procede -->
+	<div class="panel panel-primary" id="painelValidaNaoProcede">
+		<div class="panel-heading"> <span class="fluigicon fluigicon-user fluigicon-md"></span> Validar não procede</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="form-group col-lg-4 col-sm-4">
+					<label for="confirmacaoNaoProcede">Confirma Não procede?</label>
+					<div class="radio">
+						<label> <input name="confirmacaoNaoProcede" id="confirmacaoNaoProcede" value="Sim" type="radio"> <span
+							class="">Sim</span>
+						</label>
+					</div>
+					<div class="radio">
+						<label> <input name="confirmacaoNaoProcede" id="confirmacaoNaoProcedeNao" value="Nao" type="radio"> <span
+							class="">Não</span>
+						</label>
+					</div>
+					<div class="radio">
+						<label> <input name="confirmacaoNaoProcede" id="confirmacaoNaoProcedeAltera" value="Altera" type="radio"> <span
+							class="">Altera responsável</span>
+						</label>
+					</div>
+				</div>
+				
+				<div id="divAnaliseQualidade" class="form-group col-lg-6 col-sm-6 hide" style="float:right">
+					<label for="analiseQualidade"> Análise da Qualidade</label>
+					<textarea id="analiseQualidade" name="analiseQualidade" class="form-control"></textarea>
+				</div>
+				
+				<div id="divNovoResponsavelResposta" class="form-group col-lg-6 col-sm-6" style="float:right;display:none">
+						<label for="novoResponsavelResposta">Responsável pela resposta</label>
+						<input type="hidden" name="idNovoResponsavelResposta" id="idNovoResponsavelResposta" />
+						<input type="zoom" name="novoResponsavelResposta" id="novoResponsavelResposta" class="form-control"
+									data-zoom="{
+										'datasetId' : 'colleague',
+										'displayKey' : 'colleagueName',
+										'fields' : [
+										
+											{
+												'field' : 'colleagueId',
+												'label' : 'Matrícula'
+											},
+											{
+												'field': 'colleagueName',
+												'label': 'Nome',
+												'search': 'true'
+											}
+										]
+									}"/>
+				</div>
+			</div>
+			<div class="row">
+				<div id="divDataEncerramento" class="form-group col-lg-4 col-sm-4 hide">
+					<label for="dataEncerramento">Data de Encerramento</label>
+					<input type="text" name="dataEncerramento" id="dataEncerramento" class="form-control fluig-date" readonly/>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>	
+	
+	<!-- Valida baixa da ação -->
+	<div class="panel panel-primary" id="painelValidaBaixaAcao">
+		<div class="panel-heading" style="display:flex"> 
+			<span class="fluigicon fluigicon-user fluigicon-md" style="float:left"></span>
+			<p style="float:left; margin:0">Validar baixa de ação</p>
+		</div>
+		<div class="panel-body">
+			<div class="row" style="width:100%">
+			<h3 class="page-header">Verificação da implementação da ação corretiva</h3>
+				<table class="table table-striped table-bordered"  id="tableAcaoCorretiva" >
+					<thead>
+						<tr>
+							<th>Comentários</th>
+							<th>Responsável</th>
+							<th>Prazo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<input type="text" id="comentarioAcaoCorretiva" class="form-control" name="comentarioAcaoCorretiva"/>
+							</td>
+							<td><input type="text" name="responsavelAcaoCorretiva" id="responsavelAcaoCorretiva" class="form-control" readonly/>
+							</td>
+							<td><input type="text" id="prazoAcaoCorretiva" class="form-control fluig-date" name="prazoAcaoCorretiva" readonly/></td>
+							
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-4 col-sm-4">
+					<label for="confirmacaoNaoProcede">Ação implementada?</label>
+					<div class="radio">
+						<label> <input name="confirmacaoAcaoCorretiva" id="confirmacaoAcaoCorretiva" value="Sim" type="radio"> <span
+							class="">Sim</span>
+						</label>
+					</div>
+					<div class="radio">
+						<label> <input name="confirmacaoAcaoCorretiva" id="confirmacaoAcaoCorretivaNao" value="Nao" type="radio"> <span
+							class="">Não</span>
+						</label>
+					</div>
+				</div>
+				
+				<div id="divCriticaAcaoCorretiva" class="form-group col-lg-6 col-sm-6 hide" style="float:right">
+					<label for="criticaAcaoCorretiva"> Crítica</label>
+					<textarea id="criticaAcaoCorretiva" name="criticaAcaoCorretiva" class="form-control"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	
+	<div class="panel panel-primary" id="panelValidaEficacia">
+		<div class="panel-heading"><span class="fluigicon fluigicon-user fluigicon-md"></span> Validar eficácia</div>
+		<div class="panel-body">
+			<div class="row" style="width:100%">
+			<h3 class="page-header">Verificação da eficácia da ação corretiva</h3>
+			<table class="table table-striped table-bordered" id="tableEficacia"  >
+				<thead>
+					<tr>
+						<th>Comentários</th>
+						<th>Responsável</th>
+						<th>Prazo</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<input type="text" id="comentarioEficacia" class="form-control" name="comentarioEficacia"/>
+						</td>
+						<td><input type="text" name="responsavelEficacia" id="responsavelEficacia" class="form-control" readonly/>
+						</td>
+						<td><input type="text" id="prazoEficacia" class="form-control fluig-date" name="prazoEficacia" readonly/></td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+		
+		<div class="row">
+			<div class="form-group col-lg-4 col-sm-4">
+				<label for="confirmacaoEficacia">Ação eficaz?<span style='color:red'>*</span></label>
+				<div class="radio">
+					<label> <input name="confirmacaoEficacia" id="confirmacaoEficacia" value="Sim" type="radio"> <span
+						class="">Sim</span>
+					</label>
+				</div>
+				<div class="radio">
+					<label> <input name="confirmacaoEficacia" id="confirmacaoEficaciaNao" value="Nao" type="radio"> <span
+						class="">Não</span>
+					</label>
+				</div>
+			</div>
+			
+			<div id="divCriticaEficacia" class="form-group col-lg-6 col-sm-6 hide" style="float:right">
+				<label for="criticaEficacia"> Crítica</label>
+				<textarea id="criticaEficacia" name="criticaEficacia" class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div id="divDataEncerramentoEficacia" class="form-group col-lg-4 col-sm-4 hide">
+				<label for="dataEncerramentoEficacia">Data de Encerramento</label>
+				<input type="text" name="dataEncerramentoEficacia" id="dataEncerramentoEficacia" class="form-control fluig-date" readonly/>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="panel panel-default" id="divOrientacao">
+	    <div class="panel-body">
+	        <b>Para prosseguir com a solicitação, clique no botão <u>Enviar</u> posicionado no canto superior direito</b>
+	    </div>
+	</div>
+	
+</form>
+</div>
+<script src="/webdesk/vcXMLRPC.js"></script>
+<script src="customDisplayFields.js"></script>
+<script src="customEnableFields.js"></script>
+<script src="customValidateForm.js"></script>
+<script src="moment.js"></script>
+<script src="init.js"></script>
+<script src="zoom.js"></script>
+<script src="paiFilho.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

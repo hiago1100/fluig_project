@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Família</label>
+                <div class="col-sm-5">
+                    <input type="text" name="familia_input" class="form-control" fluig-autocomplete values="vm.Familias" display-key="displaykey"
+                        ng-model="vm.Formulario.familia" ng-change="vm.consultaDuplicado()" ng-readonly="vm.Params.formMode != 'ADD'">
+                    <textarea hidden name="familia" ng-value="vm.Formulario.familia | json:0" ng-bind="vm.Formulario.familia | json:0"></textarea>
+                    <input type="hidden" name="codFamilia" ng-value="vm.Formulario.familia.codigo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Tipo de Documento</label>
+                <div class="col-sm-5">
+                    <input type="text" name="tipoDocumento_input" class="form-control" fluig-autocomplete values="vm.TiposDocumento" display-key="displaykey"
+                        ng-model="vm.Formulario.tipoDocumento" ng-change="vm.consultaDuplicado()" ng-readonly="vm.Params.formMode != 'ADD'">
+                    <textarea hidden name="tipoDocumento" ng-value="vm.Formulario.tipoDocumento | json:0" ng-bind="vm.Formulario.tipoDocumento | json:0"></textarea>
+                    <input type="hidden" name="codTipoDocto" ng-value="vm.Formulario.tipoDocumento.codigo">
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>

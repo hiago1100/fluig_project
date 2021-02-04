@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Permissões</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-12">
+                <table class="table table-condensed table-striped" tablename="permissoes" noaddbutton="true" nodeletebutton="true">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th class="col-sm-3">Tipo de Documento</th>
+                            <th class="col-sm-3">Valor Limite</th>
+                            <th class="col-sm-3">Data Inicial</th>
+                            <th class="col-sm-3">Data Final</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span ng-if="vm.Params.edit" ng-click="vm.removePermissao($event)" class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+                            </td>
+                            <td ng-child="vm.Formulario.permissaoTipoDocumento" id="permissaoTipoDocumento">
+                                <input type="text" class="form-control" name="permissaoTipoDocumento_input" ng-model="vm.Formulario.permissaoTipoDocumento" ng-child-tags='{"fluig-autocomplete":""}'
+                                    values="vm.TiposDocumento" display-key="displaykey">
+                                <textarea hidden ng-value="vm.Formulario.permissaoTipoDocumento | json:0" ng-bind="vm.Formulario.permissaoTipoDocumento | json:0" name="permissaoTipoDocumento"></textarea>
+                                <input type="hidden" name="permissaoCodTipoDocto" ng-value="vm.Formulario.permissaoTipoDocumento.codigo">
+                            </td>
+                            <td ng-child="vm.Formulario.permissaoValorLimite" id="permissaoValorLimite">
+                                <input type="text" class="form-control" name="permissaoValorLimite_input" ng-model="vm.Formulario.permissaoValorLimite" ng-child-tags='{"fluig-money-mask":""}'>
+                                <input type="hidden" name="permissaoValorLimite" ng-value="vm.Formulario.permissaoValorLimite">
+                            </td>
+                            <td ng-child="vm.Formulario.permissaoDataInicial" id="permissaoDataInicial">
+                                <input type="text" class="form-control" name="permissaoDataInicial_input" ng-model="vm.Formulario.permissaoDataInicial" ng-child-tags='{"fluig-date-mask":""}'>
+                                <input type="hidden" name="permissaoDataInicial" ng-value="vm.Formulario.permissaoDataInicial">
+                            </td>
+                            <td ng-child="vm.Formulario.permissaoDataFinal" id="permissaoDataFinal">
+                                <input type="text" class="form-control" name="permissaoDataFinal_input" ng-model="vm.Formulario.permissaoDataFinal" ng-child-tags='{"fluig-date-mask":""}'>
+                                <input type="hidden" name="permissaoDataFinal" ng-value="vm.Formulario.permissaoDataFinal">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button ng-if="vm.Params.edit" type="button" class="btn btn-lg btn-default" ng-click="vm.adicionaPermissao()">Incluir Permissão</button>
+            </div>
+        </div>
+    </div>
+</div>

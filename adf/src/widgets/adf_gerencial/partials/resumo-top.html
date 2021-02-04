@@ -1,0 +1,28 @@
+<div class="col-md-3">
+    <div class="fs-txt-center" ng-show="vm.Processos.length > 0">
+        <canvas id="pie" class="chart chart-pie" chart-options="vm.Grafico.options" chart-colors="vm.Grafico.colors" chart-data="vm.Grafico.data" chart-labels="vm.Grafico.labels" height="100" width="100">
+        </canvas>
+    </div>
+</div>
+<div class="col-md-3 fs-txt-center">
+    <div class="card">
+        <h4>APROVADO 
+            <!-- <span class="fluigicon fluigicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="Valor Total Aprovado Hoje"></span> -->
+        </h4>
+        <h2>{{vm.Total.aprovado | currency}} </h2>
+    </div>
+</div>
+<div class="col-md-3 fs-txt-center">
+    <div class="card">
+        <h4>REPROVADO 
+            <!-- <span class="fluigicon fluigicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="Valor Total Reprovado Hoje"></span> -->
+        </h4>
+        <h2>{{vm.Total.reprovado | currency}} </h2>
+    </div>
+</div>
+<div class="col-md-3 fs-txt-center">
+    <div class="card">
+        <h4>PENDENTE</h4>
+        <h2>{{vm.Total.pendente | currency}}</h2>
+    </div>
+</div>

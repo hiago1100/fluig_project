@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>jQeury.steps Demos</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/main.css">
+<script type="text/javascript" src="../vcXMLRPC.js"></script>
+<link rel="stylesheet" href="css/jquery.steps.css">
+<script type="text/javascript" src="aprovacao.js"></script>
+<link type="text/css" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+<script src="/portal/resources/js/jquery/jquery.js"></script>
+<script src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script src="build/jquery.steps.js"></script>
+
+<script src="jquery.maskMoney.min.js"></script>
+ 
+ <script src="build/jquery.steps.js"></script>
+
+<style type="text/css">
+.stepImg img {
+  cursor: pointer;
+  position: relative;
+}
+
+.stepImg img:hover {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
+
+* {
+  margin: 0;
+  border: none;
+}
+
+body {
+  font-family: 'verdana', sans-serif;
+}
+
+
+
+.tabChild {
+  border-bottom: 1px solid #c0c0c0;
+  padding: 0.5%;
+}
+
+#cabChild {
+  border: 1px solid #c0c0c0;
+  padding: 0;
+  background-color: #808080;
+  color: #FFF;
+}
+
+.nav-header>ul, ol, li {
+  float: left;
+  list-style: none;
+  display: inline;
+  padding-left: 57px;
+}
+
+.nav-header-li {
+  width: 150px;
+  background-color: #9dc8e2;
+  border-radius: 5%;
+  align-content: center;
+  border-right: 2px solid #FFF;
+  align-content: center;
+  color: #fff;
+  font-style: bold;
+}
+
+.modalDialog {
+  height: 100%;
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+  top: -9]5px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  opacity: 0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.modalDialog:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modalDialog>div {
+  width: 85%;
+  height: 50%;
+  position: relative;
+  margin: 10% auto;
+  border-radius: 10px;
+  padding: -1px 5px 13px 20px;
+}
+
+.close {
+  background: #c0c0c0;
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  text-align: center;
+  top: -18px;
+  width: 24px;
+  right: -12px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -moz-box-shadow: 1px 1px 3px #000;
+  -webkit-box-shadow: 1px 1px 3px #000;
+  box-shadow: 1px 1px 3px #000;
+
+
+}
+
+.close:hover {
+  background: #808080;
+}
+
+
+.ContainerFiscais {
+  display: none;
+}
+
+
+
+
+.teste{
+  
+background-image:url(add-button2.png);
+padding-right:19px;
+background-repeat: no-repeat;
+
+}
+
+
+.TDUnidade{ display: none;}
+
+</style>
+
+<script type="text/javascript">
+          
+
+
+          function mostraBoleto(id){
+
+                if(id == "tabBoletos"){
+                  $("#divNF").css('display','none');
+                  $("#divBoletos").css('display','block');
+                  $("#abaPrincipal").removeClass("active");
+                  $('#abaBoleto').toggleClass('active');
+                } else if (id == "tabPrincipal"){
+
+                    $("#divNF").css('display','block');
+                    $("#divBoletos").css('display','none');
+                    $("#abaBoleto").removeClass("active"); 
+                    $('#abaPrincipal').toggleClass('active');
+                } 
+
+            }
+
+            function trocaImg(id){
+            
+              
+        $("#opcaoMalote").val(id);
+
+            if(id == "nrFiscal"){ 
+              $(".ContainerFiscais").css('display','block');
+              $(".containerConsumo").css('display','none');             
+              $(".containerDocumentos").css('display','none');
+              $(".containerContrato").css('display','none');
+                
+                $("#nrFiscal").attr("src","FiscalVerde.png");
+                $("#contrato").attr("src","disableContrato.png");
+                $("#contas").attr("src","DisableContas.png");
+                $("#documento").attr("src","documentosDP.png");
+
+
+               
+            } else if (id == "contrato") {
+              $(".containerContrato").css('display','block');
+              $(".containerConsumo").css('display','none');
+              $(".ContainerFiscais").css('display','none');
+              $(".containerDocumentos").css('display','none');
+              
+                
+                $("#contrato").attr("src","ContratoVerde.png");
+                $("#nrFiscal").attr("src","disableFiscais.png");
+                $("#contas").attr("src","DisableContas.png");
+                $("#documento").attr("src","documentosDP.png");
+              }  else if (id == "contas") {
+              $(".containerConsumo").css('display','block');  
+              $(".ContainerFiscais").css('display','none');
+              $(".containerDocumentos").css('display','none');
+              $(".containerContrato").css('display','none');
+             
+              $("#contas").attr("src","contasConsumo.png");
+              $("#nrFiscal").attr("src","disableFiscais.png");
+              $("#contrato").attr("src","disableContrato.png");
+              $("#documento").attr("src","documentosDP.png");
+            } else if (id == "documento") {
+               $(".containerDocumentos").css('display','block');
+               $(".containerConsumo").css('display','none');  
+               $(".ContainerFiscais").css('display','none');
+               $(".containerContrato").css('display','none');
+             
+               $("#documento").attr("src","DisableDocumentos.png");
+               $("#contrato").attr("src","disableContrato.png");
+                 $("#contas").attr("src","DisableContas.png");
+                 $("#nrFiscal").attr("src","disableFiscais.png");
+            }
+           }
+
+         
+
+
+
+
+
+
+
+
+         
+            
+  
+  function idDinamicoBoleto(numeroLinha){
+    
+    return numeroLinha;
+
+
+  }           
+ 
+ function chamaModal(){
+   
+   var checado = $("#checkBol").is(":checked");
+   
+   if(checado == true){
+     Modal();
+   }
+   
+   
+ }
+
+ function enviaBoleto(confirmar){
+
+  
+var idDinamico = $("#idDinamico").val(); 
+  idDinamico++;
+
+  $("#totalParcela___" + idDinamico).val();
+  
+  var qtdParcelas    = $("#qtParcelas").val();
+  var vlrParcela     = $("#vlParcelaBoleto").val();
+  var dataVencimento = $("#dataVencimentoBol").val();
+  var documento      = $("#documentoBoleto").val();
+  var fornecedor     = $("#fornecedorBoleto").val();
+    
+
+
+  if (confirmar == "Confirmar") {
+     numeroLinha = teste('addchildren2');
+     
+    
+
+    $("#totalParcela___" + numeroLinha).val(qtdParcelas);
+    $("#valorDocumento___" + numeroLinha).val(vlrParcela);
+    $("#vencimentoParcela___" + numeroLinha).val(dataVencimento);
+    $("#nrDocumentoAba___" + numeroLinha).val(documento);
+    $("#fornecedorParcela___" + numeroLinha).val(fornecedor);
+
+    
+    alert("Dados inseridos para Aba Boletos \n Favor ir até aba Boletos para conferir ! ");
+
+   // $("#idDinamico").val(idDinamico);
+
+    $("#qtParcelas").val("");
+    $("#vlParcelaBoleto").val("");
+    $("#dataVencimentoBol").val("");
+    $("#documentoBoleto").val("");
+    $("#fornecedorBoleto").val("");
+
+    $("#enviar").css('display','none');
+  
+    
+  }
+
+
+  }
+
+  function validaBoleto(idElemento){
+
+        
+
+
+    idElemento = idElemento.replace(/[^0-9]/g,'');
+    var erro = false;
+
+
+    if ($("#nrDocumento___" + idElemento).val() == "" ) {
+      erro = true ;
+
+    }
+    if ($("#dataEmissao___" + idElemento).val() == "" ) {
+      erro = true ;
+      
+    }
+    if ($("#fornecedorNF___" + idElemento).val() == "" ) {
+      erro = true ;
+      
+    }
+    if ($("#dataRecebimento___" + idElemento).val() == "" ) {
+      erro = true ;
+      
+    }
+    if ($("#quemRecebe___" + idElemento).val() == "" ) {
+      erro = true ;
+      
+    }
+    if ($("#valorParcela___" + idElemento).val() == "" ) {
+      erro = true ;
+      
+    }     
+    if (!erro) {
+      
+
+        $("#abreModal___" + idElemento).attr("href","#openModal");
+        $("#imgModal___" + idElemento).attr("src","add-button2.png");
+
+        
+
+        $("#documentoBoleto ").val();
+        $("#fornecedorBoleto").val();
+
+
+    }
+
+  }
+
+     
+
+  function preencheModal(idLinha){
+
+
+    idLinha = idLinha.replace(/[^0-9]/g,'');
+
+
+    if($("#temBoleto___" + idLinha).is(":checked") == true){
+
+    
+
+      $(".ThBoleto").css('visibility','visible');
+      
+      $("#vlrBoleto___" + idLinha).css('display','block');
+      $("#nrParBol___" + idLinha).css('display','block');
+      $("#dtVencimento___" + idLinha).css('display','block'); 
+    } else {
+
+      $("#nrParBol___" + idLinha).css('display','none');
+      $("#dtVencimento___" + idLinha).css('display','none'); 
+      $("#vlrBoleto___" + idLinha).css('display','none');
+
+    }
+   
+       
+    
+
+     }
+
+  
+     function mascara(){
+
+    
+      $(document).ready(function(){
+       
+
+
+      $(".valorParcela").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."}); 
+      $(".vlrBoleto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."}); });
+
+    }
+
+  function carregaCheck(idLinha){
+
+    preencheModal(idLinha);
+
+    $("#temBoleto___" + idLinha).is(":checked");
+    
+  }
+
+
+
+             
+   function inicializar(){
+
+   	   setEmpUnid();	
+      var opcaoMalote = $("#opcaoMalote").val();
+      trocaImg(opcaoMalote);
+            
+      $(".temBoleto").each(function(y){  
+              
+       idLinha = $(this).attr('id');
+       idLinha = idLinha.replace(/[^0-9]/g,'');
+       
+       
+      preencheModal(idLinha);
+          
+  });
+           
+
+    
+   }          
+                       
+              
+        </script>
+</head>
+<body onload="inicializar()">
+
+  <form>
+    <input type="hidden" name="contador" id="contador" value=""></input> 
+    <input type="hidden" name="idDinamico" id="idDinamico" value="0"></input>
+    <input type="hidden" name="opcaoMalote" id="opcaoMalote">
+    <input type="hidden" name="opcaoUnidade" id="opcaoUnidade">
+    <input type="hidden" name="numAtividade" id="numAtividade" /> 
+
+    <input type="hidden" name="Computadorhidden" id="Computadorhidden">
+    <input type="hidden" name="Emailhidden" id="Emailhidden">
+    <input type="hidden" name="ViaPortalhidden" id="ViaPortalhidden">
+    <input type="hidden" name="Datasulhidden" id="Datasulhidden">
+    <input type="hidden" name="DrySystemhidden" id="DrySystemhidden">
+    <input type="hidden" name="NomUserResptrick" id="NomUserResptrick">
+    <input type="hidden" id="ResponsavelDptohidden" name="ResponsavelDptohidden">
+    <input type="hidden" id="ResponsavelUnidadHidden" name="ResponsavelUnidadHidden">
+    <input type="hidden" id="ResponsavelEmpresaHidden" name="ResponsavelEmpresaHidden">
+    <input type="hidden" id="userMatrichidden" name="userMatrichidden">
+    <input type="hidden" name="datasetEmpr" id="datasetEmpr">
+    <input type="hidden" name="datasetUnid" id="datasetUnid">
+    
+    <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+    <div class="content">
+
+      <header class="header">
+        <h2 align="center" class="header-title">Malote Eletrônico</h2>
+
+
+      </header>
+
+
+
+      <script>
+            
+
+            
+              var atividade = $("#numAtividade").val();
+         
+             if(atividade == "0"){
+                $(function ()
+                {
+                    var habilitaTodos;
+                    if(1 == 2){
+                        habilitaTodos = true;
+                    }else{
+                        habilitaTodos = false; 
+                    }
+
+
+                    $("#wizard").steps({
+                        enableAllSteps: habilitaTodos,
+                        headerTag: "h2",
+                        bodyTag: "section",
+                        transitionEffect: "slideLeft",
+
+
+                    });
+                });
+            } else if (atividade > "0"){
+
+                 $(function ()
+                {
+                    var habilitaTodos;
+                    if(1 == 1){
+                        habilitaTodos = true;
+                    }else{
+                        habilitaTodos = false; 
+                    }
+
+
+                    $("#wizard").steps({
+                        enableAllSteps: habilitaTodos,
+                        headerTag: "h2",
+                        bodyTag: "section",
+                        transitionEffect: "slideLeft",
+
+
+                    });
+                });
+
+            }
+
+            
+
+
+            </script>
+
+      
+
+
+
+
+
+      <div id="headerForm" style="padding-left:20px;padding-right:20px; padding-bottom:20px;">
+          
+      <BR/>
+          <table width="100%" align="center" border="0" cellpadding="0" cellspacing="1"  >
+            
+            <tr>
+              <td >
+                <label for="solicitante" style="float:left;font-weight">Solicitante:</label>
+                <input type="text" class="form-control input-sm" id="solicitante" name="solicitante" style="width:60%;font-size: 15px;font-weight:bold;margin-left: 115px;margin-bottom:10px;" value=""  readonly />
+                <label for="solicitante" style="float:left;font-weight">Nº Solicitação:</label><input type="text" class="form-control input-sm" id="numSolicitacao" name="numSolicitacao" style="width:40%;font-size: 15px;font-weight:bold;margin-left: 100px;margin-bottom:5px;" value="0"  readonly />         
+              </td>
+              
+              <td style="text-align:right;">
+                <label for="numSolicitacao" style="font-weight:bold;">Data Solicitacao:</label>
+                <input type="text" class="form-control input-sm" id="dataSolicitacao" name="dataSolicitacao" style="width:23%;float:right; font-size: 15px;font-weight:bold" value=""  readonly />
+                
+              </td>
+              </tr>
+          </table>
+        </div>
+
+
+
+      <div id="wizard">
+        <h2 align="center">O que você deseja enviar para a Via
+          Indicadores?</h2>
+
+
+        <section>
+
+
+          <div align="center" class="stepImg">
+            <table width="100%">
+              <tr>
+                <td><input type="hidden" name="imgFiscais" id="imgFiscais"
+                  value="imgFiscal"> <img onclick="trocaImg(this.id)"
+                  id="nrFiscal" width="270" src="disableFiscais.png"></td>
+
+                <td><input type="hidden" name="imgContrato"
+                  id="imgContrato"> <img onclick="trocaImg(this.id)"
+                  width="150" id="contrato" src="disableContrato.png"></td>
+                <td><img onclick="trocaImg(this.id)" width="245"
+                  id="contas" src="DisableContas.png"></td>
+              </tr>
+              <tr>
+                <td style="padding-top: 5%;">
+                <img style="padding-top: 12px;" onclick="trocaImg(this.id)" src="documentosDP.png" id="documento" width="235"></td>
+              </tr>
+
+            </table>
+          </div>
+        </section>
+
+        <h2>Escolha sua unidade.</h2>
+        <section>
+
+          <div align="center" class="stepImg">
+            <table width="100%">
+              <tr>
+          <td><label>Empresa</label></td>
+          <td><select  style="margin-left: 11px;" class="form-control " name="Empr" id="Empr" dataset="EmpresaFilter" datasetkey="Empresa" datasetvalue="Empresa" onchange="initEmpr(); setUnidade(); setRespEmpr();"> </select></td>
+       	
+        </tr>
+        
+
+        <tr>
+          <td class="TDUnidade"><label>Unidade</label></td>
+          <td class="TDUnidade"> <select  style="margin-left: 11px;margin-top:5px" class="form-control  " name="Unid" id="Unid" onchange="setRespUnid(); initUnid();"> </select></td>
+        </tr>
+            </table>
+          </div>
+
+        </section>
+
+
+        <h2>Preencha os dados.</h2>
+        <section>
+
+
+          <div class="containerContrato" style="display: none;">
+            
+              <table width="100%" border="1" noaddbutton="true"
+              addicon="addChild.png" tablename="contrato"
+              deleteicon="delete2.png" customFnDelete="fnCustomDelete(this)">
+              <tr>
+                <td><img
+                  onclick="addItem('contrato');" src="add-button2.png"
+                  style="cursor: pointer; padding-right: 20px;padding-top: 10px;"></td>
+              </tr>
+
+                <tr>
+                  <td>Documento:
+                  <input style="margin-top: 10px;" type="text" placeholder="Carteira de Trabalho, Holerite, ASO, etc..."  class="form-control" name="tipoCont" id="tipoCont"><br>
+                
+                  Descrição:
+                  <textarea name="descricaoCont" class="form-control" id="descricaoCont" cols="30" rows="2"></textarea><hr></td>
+                </tr>
+              </table>
+            
+
+          </div>    
+
+          
+          <div class="containerDocumentos" style="display: none;">
+            
+              <table width="100%" border="1" noaddbutton="true"
+              addicon="addChild.png" tablename="documentosDP"
+              deleteicon="delete2.png" customFnDelete="fnCustomDelete(this)">
+              <tr>
+                <td><img
+                  onclick="addItem('documentosDP');" src="add-button2.png"
+                  style="cursor: pointer; padding-right: 20px;padding-top: 10px;"></td>
+              </tr>
+
+                <tr>
+                  <td>Documento:
+                  <input style="margin-top: 10px;" type="text" placeholder="Contrato de Aluguél, Manutenção, Serviços, etc..."  class="form-control" name="tipoDoc" id="tipoDoc"><br>
+                
+                  Descrição:
+                  <textarea name="descricaoDoc" class="form-control" id="descricaoDoc" cols="30" rows="2"></textarea><hr></td>
+                </tr>
+              </table>
+            
+
+          </div>  
+  
+
+          <div class="containerConsumo" style="display: none;">
+
+            <table width="100%" border="1" noaddbutton="true"
+              addicon="addChild.png" tablename="contasConsumo"
+              deleteicon="delete2.png" customFnDelete="fnCustomDelete(this)">
+
+              <tr align="CENTER">
+
+                <td style="padding-bottom: 10px;"><img
+                  onclick="addItem('contasConsumo');" src="add-button2.png"
+                  style="cursor: pointer; padding-right: 20px;padding-top: 10px;"></span>
+                <td id="cabChild" style="padding-bottom: 2px;">Nr. Docto</td>
+
+
+                <td id="cabChild" style="padding-bottom: 2px;">Dt Emissão</td>
+
+
+                <td id="cabChild" style="padding-bottom: 2px;">Fornecedor</td>
+
+
+                <td id="cabChild" style="padding-bottom: 2px;">Data
+                  Recebimento</td>
+
+
+                <td id="cabChild" style="padding-bottom: 2px;">Quem
+                  Recebeu?</td>
+
+
+                <td id="cabChild" style="padding-bottom: 2px;">Valor
+                  Documento</td>
+
+
+
+
+
+
+              </tr>
+
+
+
+              <tr align="center">
+
+                <!--    <td class="tabChild"  align="center" ><input type="button" onclick="fnWdkRemoveChild(this)" value="Remover" ></td>   -->
+
+                <td class="tabChild" align="center"
+                  style="padding-bottom: 30px;"></input></td>
+
+                <td class="tabChild" align="center"><input
+                  onblur="validaBoleto(this.id)" style="width:150px"
+                  class="form-control" id="nrDocumentoContas"
+                  name="nrDocumentoContas"></input></td>
+
+                <td class="tabChild" align="center"><input type="date"
+                  onblur="validaBoleto(this.id)" style="width:150px"
+                  class="form-control" id="dataEmissaoContas"
+                  name="dataEmissaoContas"></input></td>
+
+                <td class="tabChild" align="center"><input
+                  onblur="validaBoleto(this.id)" style="width:150px"
+                  class="form-control" id="fornecedorNFContas"
+                  name="fornecedorNFContas"></td>
+
+                <td class="tabChild" align="center"><input type="date"
+                  onblur="validaBoleto(this.id)" style="width:150px"
+                  class="form-control" id="dataRecebimentoContas"
+                  name="dataRecebimentoContas"></td>
+
+                <td class="tabChild" align="center"><input
+                  onblur="validaBoleto(this.id)" style="width:150px"
+                  class="form-control" id="quemRecebeContas"
+                  name="quemRecebeContas"></td>
+
+                <td class="tabChild" align="center"><input
+                  onblur="validaBoleto(this.id)" style="width:150px"
+                  class="form-control valorParcelaContas" onfocus="mascara()" id="valorParcelaContas"
+                  name="valorParcelaContas"></td>
+
+
+
+
+              </tr>
+
+
+            </table>
+
+
+          </div>
+
+
+
+
+          <!-- SEPARA CONTAINER -->
+
+
+          <div class="ContainerFiscais">
+
+
+
+     
+
+            <div id="divNF" class="divAba">
+              <table width="100%" border="1" addbuttonlabel="" addbuttonclass="teste"
+                addicon="addChild.png" tablename="addchildren" 
+                deleteicon="delete2.png" customFnDelete="fnCustomDelete(this)">
+
+                <tr align="CENTER">
+
+                  
+                  <td id="cabChild" style="padding-bottom: 2px;">Nr. Docto</td>
+
+
+                  <td id="cabChild" style="padding-bottom: 2px;">Dt Emissão</td>
+
+
+                  <td id="cabChild" style="padding-bottom: 2px;">Fornecedor</td>
+
+
+                  <td id="cabChild" style="padding-bottom: 2px;">Data
+                    Recebimento</td>
+
+
+                  <td id="cabChild" style="padding-bottom: 2px;">Quem
+                    Recebeu?</td>
+
+
+                  <td id="cabChild" style="padding-bottom: 2px;">Valor
+                    Documento</td>
+
+
+                  <td id="cabChild" style="padding-bottom: 2px;">Boleto?</td>
+
+
+                   <td id="cabChild" style="padding-bottom: 2px;visibility:hidden;" class="ThBoleto">Parcelas</td>
+
+
+                  <td id="cabChild" style="padding-bottom: 2px;visibility:hidden;" class="ThBoleto">1º vencimento</td>
+
+                  <td id="cabChild" style="padding-bottom: 2px;visibility:hidden;" class="ThBoleto">Valor Parcela</td>                            
+
+                </tr>
+
+
+
+                <tr align="center">
+
+           
+
+                  <td class="tabChild" align="center"><input
+                    onblur="validaBoleto(this.id)" style="width:100px"
+                    class="form-control" id="nrDocumento" name="nrDocumento"></input></td>
+
+                  <td class="tabChild" align="center"><input type="date"
+                    onblur="validaBoleto(this.id)" style="width:170px"
+                    class="form-control" id="dataEmissao" name="dataEmissao"></input></td>
+
+                  <td class="tabChild" align="center"><input
+                    onblur="validaBoleto(this.id)" style="width:100px"
+                    class="form-control" id="fornecedorNF" name="fornecedorNF"></td>
+
+                  <td class="tabChild" align="center"><input type="date"
+                    onblur="validaBoleto(this.id)" style="width:170px"
+                    class="form-control" id="dataRecebimento"
+                    name="dataRecebimento"></td>
+
+                  <td class="tabChild" align="center"><input
+                    onblur="validaBoleto(this.id)" style="width:100px"
+                    class="form-control" id="quemRecebe" name="quemRecebe"></td>
+
+                  <td class="tabChild" align="center"><input
+                    onblur="validaBoleto(this.id)" style="width:100px" type="text"
+                    class="form-control valorParcela" onfocus="mascara()" id="valorParcela" name="valorParcela"></td>
+      
+                                           <!-- começo da treta (Apagar comentário ) -->
+    
+
+                  <td class="tabChild" align="center"><input  onclick="preencheModal(this.id)" class="temBoleto" type="checkbox" name="temBoleto" id="temBoleto"></td>
+
+  <td class="tabChild" align="center"><input style="width:40px;display:none;" class="form-control" id="nrParBol" name="nrParBol"></td>
+
+  <td class="tabChild" align="center"><input type="date" style="width:170px;display:none;" class="form-control" id="dtVencimento" name="dtVencimento" class="dtVencimento"></td>
+
+  <td class="tabChild" align="center"><input type="text" style="width:100px;display:none;" class="form-control vlrBoleto" id="vlrBoleto" name="vlrBoleto"></td>
+
+
+                </tr>
+                                  
+                             
+
+              </table>  
+            </div>
+
+
+
+            <!-- INICIO MODAL BOLETOS ! -->
+
+           
+        </section>
+          
+          <h2>Agora, anexe os documentos.</h2>
+          <section>
+            
+          <div class="alert alert-warning" align="center">
+            <p>
+              <strong>Falta pouco !</strong>Agora clique no botão <img
+                src="anexo.png"> para nos enviar os documentos por anexo =) 
+            </p>
+          </div>
+
+          </section>
+                                                                        
+
+        <h2>Pronto!</h2>
+
+        <section>
+          <div class="alert alert-success" align="center">
+            <p>
+              <strong>Ótimo! </strong> Agora clique no botão <img
+                src="enviar.png"> no canto superior direito para nos enviar o Malote =)
+            </p>
+          </div>
+
+          <div align="center">
+            <table width="100%" align="center">
+                      <h4>Se quiser, conte algo para nos auxiliar.</h4>
+              <tr>
+                  <td><textarea
+                    style="width: 100%; border: 3px solid #00acc8" name="recado"
+                    id="recado" cols="150" rows="10"></textarea></td>
+              </tr>
+            </table>
+          </div>
+      </div>
+
+      </section>
+
+
+    </div>
+    </div>
+  </form>
+
+</body>
+<script>
+                        
+             if($("#numAtividade").val() == 0 || $("#numAtividade").val() == 18){
+   				setRespDpto();
+ 				}     
+            
+    
+                        function addItem(tablename) {
+                            
+                          return wdkAddChild(tablename);
+                             
+                                                          
+                        }
+
+                         function teste(NOMETABELA) {
+                                  
+                             
+
+                           numeroLinha = wdkAddChild(NOMETABELA);
+                          
+                           
+                             if (NOMETABELA == "addchildren2") {
+
+                                idDinamicoBoleto(numeroLinha);
+                             }
+
+                             return numeroLinha;
+
+                              
+                        }
+
+                        function fnCustomDelete(oElement){
+             
+                             // Chamada a funcao padrao, NAO RETIRAR
+                             fnWdkRemoveChild(oElement);   
+                         }
+
+                         function removeBoleto(oElement){
+             
+                             // Chamada a funcao padrao, NAO RETIRAR
+                             fnWdkRemoveChild(oElement);  
+                                                 
+                             }
+                         
+            if( $("#dataSolicitacao").val()  == "") {
+            var dataAtual = new Date();
+
+           // alert("meu alert" + new Date());
+          $("#dataSolicitacao").val(dataAtual.toLocaleDateString());  
+          $("#dataLancamento").val(dataAtual.toLocaleDateString());
+
+        }                                                                          
+                        </script>
+
+</html>
+<script
+  src="/ecm_resources/resources/assets/forms/wdkdetail.js?v=1.5.7-EP12"></script>
+<script>WdksetNewId('{"addchildren":0}');</script>

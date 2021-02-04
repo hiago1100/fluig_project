@@ -1,0 +1,334 @@
+function beforeStateEntry(sequenceId){
+
+
+
+  log.info("******beforeStateEntry " + new String(sequenceId));
+  
+  
+  if(sequenceId == 8){
+    
+    
+    var _numProc = getValue("WKNumProces");   
+    hAPI.setCardValue("numSolicitacao", _numProc);
+
+  log.info("*****************ENTROU NO INSERT");  
+    
+     var UnidadeAux = hAPI.getCardValue('UnidadeHidden');
+       cortou = UnidadeAux.split("#");
+  
+  
+     var empresaAux = hAPI.getCardValue("datasetEmpr");
+     var codigoUnidadeAux = hAPI.getCardValue("codestabHidden");
+     var lojaAux = cortou[0];
+     var solicitacaoAux = hAPI.getCardValue('numSolicitacao'); 
+     var dataSolicitacao =  hAPI.getCardValue("dataSolicitacao").split('/').reverse().join('-'); 
+     var dataFechamento = hAPI.getCardValue("dataFechamento");
+     var periodoAux = hAPI.getCardValue('periodo');
+     var operadorAux = hAPI.getCardValue('nomeOperador');
+     var numCaixaAux = hAPI.getCardValue('numCaixa');
+     var valorFisicoAux = hAPI.getCardValue('valTotConciliaLanctoFisico').replace(',', '.');
+     var valorSistemaAux = hAPI.getCardValue('valTotalSistema').replace(',', '.');
+     var statusAux = 0;
+    
+    
+    
+    var c1 = DatasetFactory.createConstraint("d1", empresaAux, empresaAux , ConstraintType.MUST);
+    var c2 = DatasetFactory.createConstraint("d2", codigoUnidadeAux, codigoUnidadeAux , ConstraintType.MUST);
+    var c3 = DatasetFactory.createConstraint("d3", lojaAux, lojaAux , ConstraintType.MUST);
+    var c4 = DatasetFactory.createConstraint("d4", parseInt(solicitacaoAux), parseInt(solicitacaoAux), ConstraintType.MUST);
+    var c5 = DatasetFactory.createConstraint("d5", dataSolicitacao, dataSolicitacao , ConstraintType.MUST);
+    var c6 = DatasetFactory.createConstraint("d6", dataFechamento, dataFechamento , ConstraintType.MUST);
+    var c7 = DatasetFactory.createConstraint("d7", periodoAux, periodoAux , ConstraintType.MUST);
+    var c8 = DatasetFactory.createConstraint("d8", operadorAux, operadorAux , ConstraintType.MUST);
+    var c9 = DatasetFactory.createConstraint("d9", numCaixaAux, numCaixaAux , ConstraintType.MUST);
+    var c10 = DatasetFactory.createConstraint("d10", valorFisicoAux, valorFisicoAux, ConstraintType.MUST);
+    var c11 = DatasetFactory.createConstraint("d11", valorSistemaAux, valorSistemaAux , ConstraintType.MUST);
+    var c12 = DatasetFactory.createConstraint("d12", statusAux, statusAux , ConstraintType.MUST);
+
+
+    var constraints = new Array(c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12);
+
+    var dataset = DatasetFactory.getDataset("dsFechamentoCaixaInsert", null, constraints, null);
+
+    log.info("******MAOEH " + "**Empresa**" + empresaAux + "**Codigo**" + codigoUnidadeAux + "**Loja**" + lojaAux + "**Solicitacao**" + solicitacaoAux + "**DataSolicita**" + dataSolicitacao + "**DataFechamento**" + dataFechamento + "**Periodo**" + periodoAux + "**Operador**" + operadorAux + "**Numero Caixa**" + numCaixaAux + "**Valor Fisico**" + parseFloat(valorFisicoAux) + "**Valor sistema**" + parseFloat(valorSistemaAux) + "**STATUS**" + statusAux);
+
+    
+    log.info("********TESTANDO O DADASET" + dataset);   
+      
+    
+      
+    
+  }
+  
+  
+  
+  
+  
+  if(sequenceId == 9 ){
+    
+  
+     var UnidadeAux = hAPI.getCardValue('UnidadeHidden');
+       cortou = UnidadeAux.split("#");
+       
+
+    var empresaAux = hAPI.getCardValue("datasetEmpr");
+     var codigoUnidadeAux = hAPI.getCardValue("codestabHidden");
+     var lojaAux = cortou[0];
+     var solicitacaoAux = hAPI.getCardValue('numSolicitacao'); 
+     var dataSolicitacao =  hAPI.getCardValue("dataSolicitacao"); 
+     var dataFechamento = hAPI.getCardValue("dataFechamento");
+     var periodoAux = hAPI.getCardValue('periodo');
+     var operadorAux = hAPI.getCardValue('nomeOperador');
+     var numCaixaAux = hAPI.getCardValue('numCaixa');
+     var valorFisicoAux = hAPI.getCardValue('valTotConciliaLanctoFisico');
+     var valorSistemaAux = hAPI.getCardValue('valTotalSistema');
+     var statusAux = 0;
+     var Where = hAPI.getCardValue('numSolicitacao');
+    
+     valorFisicoAux = valorFisicoAux.replace(",",".");
+     valorSistemaAux = valorSistemaAux.replace(",",".");  
+     
+     
+     var dataSolicitacaoAux = dataSolicitacao.split('/').reverse().join('-') + ' 00:00:00';
+     var dataFechamentoAux = dataFechamento + ' 00:00:00';
+    
+    
+    var c1 = DatasetFactory.createConstraint("d1", empresaAux, empresaAux , ConstraintType.MUST);
+    var c2 = DatasetFactory.createConstraint("d2", codigoUnidadeAux, codigoUnidadeAux , ConstraintType.MUST);
+    var c3 = DatasetFactory.createConstraint("d3", lojaAux, lojaAux , ConstraintType.MUST);
+    var c4 = DatasetFactory.createConstraint("d4", parseInt(solicitacaoAux), parseInt(solicitacaoAux), ConstraintType.MUST);
+    var c5 = DatasetFactory.createConstraint("d5", dataSolicitacaoAux, dataSolicitacaoAux , ConstraintType.MUST);
+    var c6 = DatasetFactory.createConstraint("d6", dataFechamentoAux, dataFechamentoAux , ConstraintType.MUST);
+    var c7 = DatasetFactory.createConstraint("d7", periodoAux, periodoAux , ConstraintType.MUST);
+    var c8 = DatasetFactory.createConstraint("d8", operadorAux, operadorAux , ConstraintType.MUST);
+    var c9 = DatasetFactory.createConstraint("d9", numCaixaAux, numCaixaAux , ConstraintType.MUST);
+    var c10 = DatasetFactory.createConstraint("d10", parseFloat(valorFisicoAux), parseFloat(valorFisicoAux) , ConstraintType.MUST);
+    var c11 = DatasetFactory.createConstraint("d11", parseFloat(valorSistemaAux), parseFloat(valorSistemaAux) , ConstraintType.MUST);
+    var c12 = DatasetFactory.createConstraint("d12", statusAux, statusAux , ConstraintType.MUST);
+    var c13 = DatasetFactory.createConstraint("d13", Where, Where, ConstraintType.MUST);
+
+    var constraints = new Array(c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13);
+
+    var dataset = DatasetFactory.getDataset("dsFechamentoCaixaUpdate", null, constraints, null);
+
+    log.info("******MAOEH " + "**Empresa**" + empresaAux + "**Codigo**" + codigoUnidadeAux + "**Loja**" + lojaAux + "**Solicitacao**" + solicitacaoAux + "**DataSolicita**" + dataSolicitacaoAux + "**DataFechamento**" + dataFechamentoAux + "**Periodo**" + periodoAux + "**Operador**" + operadorAux + "**Numero Caixa**" + numCaixaAux + "**Valor Fisico**" + parseFloat(valorFisicoAux) + "**Valor sistema**" + parseFloat(valorSistemaAux) + "**STATUS**" + statusAux);
+
+    
+    log.info("********TESTANDO O DADASET" + dataset);
+
+    
+    log.info("******EntrouNoSequenceId " + new String(sequenceId));
+    try {
+      log.info("******EntrouNoTry");
+      // Utiliza o ServiceManager para obter uma referencia ao servico.
+      var serviceProvider = ServiceManager.getService('TotvsProducao');
+      var serviceLocator = serviceProvider.instantiate('com.totvs.framework.ws.execbo.service.WebServiceExecBO');
+      var service = serviceLocator.getWebServiceExecBOPort();
+      
+      var params = new Array();
+      var numProces = getValue("WKNumProces");
+      var programa = "esp/apiFechamentoCaixa.p";
+      var procedure = "pi-fechamento-caixa";
+      
+      // Prepara os parametros da procedure a ser chamada no Progress
+      params[0]            = new Object();
+      params[0].dataType   = "character";
+      params[0].name       = "p-status";
+      params[0].type       = "output";
+      
+      params[1]            = new Object();
+      params[1].dataType   = "character";
+      params[1].name       = "p-mensagem";
+      params[1].type       = "output";
+
+      params[2]            = new Object();
+      params[2].dataType   = "character";
+      params[2].name       = "p-cod-estab";
+      params[2].type       = "input";
+      params[2].value      = new String(hAPI.getCardValue("codestabHidden"));
+ 
+      params[3]            = new Object();
+      params[3].dataType   = "character";
+      params[3].name       = "p-dt-fechamento";
+      params[3].type       = "input";
+      params[3].value      = new String(hAPI.getCardValue("dataFechamento"));
+
+      params[4]            = new Object();
+      params[4].dataType   = "character";
+      params[4].name       = "p-nome-solicitante";
+      params[4].type       = "input";
+      params[4].value      = new String(hAPI.getCardValue("nomeSolicitante"));
+
+      params[5]            = new Object();
+      params[5].dataType   = "character";
+      params[5].name       = "p-nome-operador";
+      params[5].type       = "input";
+      params[5].value      = new String(hAPI.getCardValue("nomeOperador"));
+
+      params[6]            = new Object();
+      params[6].dataType   = "character";
+      params[6].name       = "p-num-caixa";
+      params[6].type       = "input";
+      params[6].value      = new String(hAPI.getCardValue("numCaixa"));
+
+      params[7]            = new Object();
+      params[7].dataType   = "character";
+      params[7].name       = "p-periodo";
+      params[7].type       = "input";
+      params[7].value      = new String(hAPI.getCardValue("periodo"));
+
+      params[8]            = new Object();
+      params[8].dataType   = "character";
+      params[8].name       = "p-num-proces";
+      params[8].type       = "input";
+      params[8].value      = new String(hAPI.getCardValue("numSolicitacao"));
+
+      params[9]            = new Object();
+      params[9].dataType   = "character";
+      params[9].name       = "p-dt-solicitacao";
+      params[9].type       = "input";
+      params[9].value      = new String(hAPI.getCardValue("dataSolicitacao"));
+
+      params[10]            = new Object();
+      params[10].dataType   = "character";
+      params[10].name       = "p-teste-fluig";
+      params[10].type       = "input";
+      params[10].value      = new String('no');
+      
+      params[11]            = new Object();
+      params[11].dataType   = "temptable";
+      params[11].name     = "tt-dados-fluig";
+      params[11].type       = "input";
+      params[11].value      = new Object();
+      params[11].value.name = "tt-dados-fluig";
+      params[11].value.fields = new Array();
+      
+      params[11].value.fields[0] = new Object();
+      params[11].value.fields[0].name = "idRec";
+      params[11].value.fields[0].type = "character";
+      params[11].value.fields[0].label = "idRec";
+      
+      params[11].value.fields[1] = new Object();
+      params[11].value.fields[1].name = "descRec";
+      params[11].value.fields[1].type = "character";
+      params[11].value.fields[1].label = "descRec";
+      
+      params[11].value.fields[2] = new Object();
+      params[11].value.fields[2].name = "codEsp";
+      params[11].value.fields[2].type = "character";
+      params[11].value.fields[2].label = "codEsp";
+      
+      params[11].value.fields[3] = new Object();
+      params[11].value.fields[3].name = "valMovto";
+      params[11].value.fields[3].type = "character";
+      params[11].value.fields[3].label = "valMovto";
+      
+      params[11].value.records = new Array();
+      var loopings = hAPI.getCardValue('loopingIntegra');
+      log.info("******ComeçaROTACAAOOO");
+      var x = 0;
+      for (var i = 1; i < loopings; i++) {
+        params[11].value.records[x]       = new Object();
+        params[11].value.records[x].idRec     = new String(hAPI.getCardValue('idLancamentoFisico'+i));
+        params[11].value.records[x].descRec   = new String(hAPI.getCardValue('descReceitaFisico'+i));
+        params[11].value.records[x].codEsp    = new String(hAPI.getCardValue('espReceitaFisico'+i));
+        params[11].value.records[x].valMovto  = new String(hAPI.getCardValue('valLancamentoFisico'+i));
+        x++
+      }
+
+      log.info("******TerminaROTACAAOOO");
+
+      var jsonParams = JSON.stringify(params);
+      log.info("******jsonParams " + jsonParams);
+
+
+      // Faz login e recebe o token de autenticacao
+      // var token = service.userLogin(userEmail);
+      var token = service.userLogin("super");
+      log.info("******PassouDoSuper");
+      // Chama a procedure passando os parametros e o tok'en de autenticacao.
+      var resp = service.callProcedureWithToken(token, programa, procedure, jsonParams);
+      // Converte o resultado para um objeto
+      log.info("******CallProcedure " + resp);
+      
+      var respObj = JSON.parse(resp);
+      // Apresenta o resultado no log.
+      
+    
+      log.info("******vaiTentar");
+      hAPI.setCardValue("statusIntegracao", respObj[0].value );
+      hAPI.setCardValue("resultadoIntegracao", respObj[1].value );
+      log.info("******tentou");
+
+        }catch (error) {
+
+          log.info("******error-msg: " + error.message);
+      hAPI.setCardValue("statusIntegracao", "NOK");
+      hAPI.setCardValue("resultadoIntegracao", error.message);
+      
+      }
+  }
+  
+  
+  
+  if(sequenceId == 7){
+
+    log.info("*****************ENTROU NO FIM E GRAVOU");
+
+     var UnidadeAux = hAPI.getCardValue('UnidadeHidden');
+       cortou = UnidadeAux.split("#");
+
+      
+      
+    var empresaAux = hAPI.getCardValue("datasetEmpr");
+     var codigoUnidadeAux = hAPI.getCardValue("codestabHidden");
+     var lojaAux = cortou[0];
+     var solicitacaoAux = hAPI.getCardValue('numSolicitacao'); 
+     var dataSolicitacao =  hAPI.getCardValue("dataSolicitacao"); 
+     var dataFechamento = hAPI.getCardValue("dataFechamento");
+     var periodoAux = hAPI.getCardValue('periodo');
+     var operadorAux = hAPI.getCardValue('nomeOperador');
+     var numCaixaAux = hAPI.getCardValue('numCaixa');
+     var valorFisicoAux = hAPI.getCardValue('valTotConciliaLanctoFisico');
+     var valorSistemaAux = hAPI.getCardValue('valTotalSistema');
+     var statusAux = 2;
+     var Where = hAPI.getCardValue('numSolicitacao');
+    
+     valorFisicoAux = valorFisicoAux.replace(",",".");
+     valorSistemaAux = valorSistemaAux.replace(",",".");  
+     
+     
+     var dataSolicitacaoAux = dataSolicitacao.split('/').reverse().join('-');
+     var dataFechamentoAux = dataFechamento;
+    
+    
+    var c1 = DatasetFactory.createConstraint("d1", empresaAux, empresaAux , ConstraintType.MUST);
+    var c2 = DatasetFactory.createConstraint("d2", codigoUnidadeAux, codigoUnidadeAux , ConstraintType.MUST);
+    var c3 = DatasetFactory.createConstraint("d3", lojaAux, lojaAux , ConstraintType.MUST);
+    var c4 = DatasetFactory.createConstraint("d4", parseInt(solicitacaoAux), parseInt(solicitacaoAux), ConstraintType.MUST);
+    var c5 = DatasetFactory.createConstraint("d5", dataSolicitacaoAux, dataSolicitacaoAux , ConstraintType.MUST);
+    var c6 = DatasetFactory.createConstraint("d6", dataFechamentoAux, dataFechamentoAux , ConstraintType.MUST);
+    var c7 = DatasetFactory.createConstraint("d7", periodoAux, periodoAux , ConstraintType.MUST);
+    var c8 = DatasetFactory.createConstraint("d8", operadorAux, operadorAux , ConstraintType.MUST);
+    var c9 = DatasetFactory.createConstraint("d9", numCaixaAux, numCaixaAux , ConstraintType.MUST);
+    var c10 = DatasetFactory.createConstraint("d10", parseFloat(valorFisicoAux), parseFloat(valorFisicoAux) , ConstraintType.MUST);
+    var c11 = DatasetFactory.createConstraint("d11", parseFloat(valorSistemaAux), parseFloat(valorSistemaAux) , ConstraintType.MUST);
+    var c12 = DatasetFactory.createConstraint("d12", statusAux, statusAux , ConstraintType.MUST);
+    var c13 = DatasetFactory.createConstraint("d13", Where, Where, ConstraintType.MUST);
+
+    var constraints = new Array(c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13);
+
+    var dataset = DatasetFactory.getDataset("dsFechamentoCaixaUpdate", null, constraints, null);
+
+    log.info("******MAOEH " + "**Empresa**" + empresaAux + "**Codigo**" + codigoUnidadeAux + "**Loja**" + lojaAux + "**Solicitacao**" + solicitacaoAux + "**DataSolicita**" + dataSolicitacaoAux + "**DataFechamento**" + dataFechamentoAux + "**Periodo**" + periodoAux + "**Operador**" + operadorAux + "**Numero Caixa**" + numCaixaAux + "**Valor Fisico**" + parseFloat(valorFisicoAux) + "**Valor sistema**" + parseFloat(valorSistemaAux) + "**STATUS**" + statusAux);
+
+    
+    log.info("********TESTANDO O DADASET" + dataset);
+
+
+  }
+  
+  
+  
+  
+}

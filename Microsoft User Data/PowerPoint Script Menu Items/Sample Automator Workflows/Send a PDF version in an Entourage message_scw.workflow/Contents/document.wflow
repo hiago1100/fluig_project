@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>87</string>
+	<key>AMApplicationVersion</key>
+	<string>1.0.4</string>
+	<key>AMDocumentVersion</key>
+	<string>1</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.presentation.object</string>
+						<string>com.microsoft.powerpoint.slideshow.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.presentation.object</string>
+						<string>com.microsoft.powerpoint.slideshow.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft PowerPoint</string>
+						<key>Resource</key>
+						<string>com.microsoft.powerpoint</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Save PowerPoint Presentations.action</string>
+				<key>ActionName</key>
+				<string>Save PowerPoint Presentations</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>saveAs</key>
+					<string>Untitled</string>
+					<key>saveFormat</key>
+					<string>1</string>
+					<key>saveOption</key>
+					<integer>0</integer>
+					<key>saveWhere</key>
+					<string>~/Desktop</string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Save_PowerPoint_Presentations</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryPresentations</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>0E4A3D70-6EE3-4B5A-A519-0870A38AEDEB</string>
+				<key>Keywords</key>
+				<array>
+					<string>saving</string>
+					<string>save as</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>02200133-B964-47AF-8D56-17576249B4CE</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>14934D22-877F-4EC7-A575-1CB15ABE6448</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>saveOption</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string>~/Desktop</string>
+						<key>name</key>
+						<string>saveWhere</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<string>Untitled</string>
+						<key>name</key>
+						<string>saveAs</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string>1</string>
+						<key>name</key>
+						<string>saveFormat</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Save PowerPoint Presentations.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>1135.000000:-1262.333496</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.presentation.object</string>
+						<string>com.microsoft.powerpoint.slideshow.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft PowerPoint</string>
+						<key>Resource</key>
+						<string>com.microsoft.powerpoint</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Close PowerPoint Presentations.action</string>
+				<key>ActionName</key>
+				<string>Close PowerPoint Presentations</string>
+				<key>ActionParameters</key>
+				<dict/>
+				<key>Application</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Close_PowerPoint_Presentations</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryPresentations</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>28F7F1C0-5DEC-458B-9643-57DAB5ACAAE5</string>
+				<key>Keywords</key>
+				<array>
+					<string>end</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>13ABEB99-E0C2-42E6-8E96-5478AA2C1823</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>C82CC0B6-8697-482A-A493-8BF2566B449D</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
+				<key>nibPath</key>
+				<string>/Library/Automator/Close PowerPoint Presentations.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>575.000000:-1309.000000</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft PowerPoint</string>
+						<key>Resource</key>
+						<string>com.microsoft.powerpoint</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Convert Format of PowerPoint Presentations.action</string>
+				<key>ActionName</key>
+				<string>Convert Format of PowerPoint Presentations</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>saveFormat</key>
+					<integer>6</integer>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Convert_Format_of_PowerPoint_Presentations</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryPresentations</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>F875BC37-85C1-4EAD-939E-4F1D725CF8CC</string>
+				<key>Keywords</key>
+				<array>
+					<string>save</string>
+					<string>save as</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>F798E74D-FCE7-45D1-AB69-1B9C61D7CB03</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>8D595E97-45FE-43D0-A90D-2F75B9AABE6A</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>1</integer>
+						<key>name</key>
+						<string>saveFormat</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Convert Format of PowerPoint Presentations.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>855.000000:-1355.666504</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+						<string>com.apple.applescript.alias-object.image</string>
+						<string>com.apple.applescript.url-object</string>
+						<string>com.apple.applescript.text-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Entourage</string>
+						<key>Resource</key>
+						<string>com.microsoft.entourage</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Create New Entourage Mail Message.action</string>
+				<key>ActionName</key>
+				<string>Create New Entourage Mail Message</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>account</key>
+					<string>Default Account</string>
+					<key>bcc</key>
+					<string></string>
+					<key>cc</key>
+					<string></string>
+					<key>messageBody</key>
+					<string></string>
+					<key>priority</key>
+					<integer>2</integer>
+					<key>subject</key>
+					<string></string>
+					<key>to</key>
+					<string></string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Create_New_Entourage_Mail_Message</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>58D9C8CE-E91D-4043-9F33-79D3EA48FECF</string>
+				<key>Keywords</key>
+				<array>
+					<string>build</string>
+					<string>create</string>
+					<string>email</string>
+					<string>generate</string>
+					<string>make</string>
+					<string>mail</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>6449436C-CB18-4AC6-9CFE-06A578A9446A</string>
+				<key>ShowWhenRun</key>
+				<true/>
+				<key>UUID</key>
+				<string>EDCD9C36-2A1D-467F-8ED3-11319EA3C1DF</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>bcc</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string>Default Account</string>
+						<key>name</key>
+						<string>account</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<integer>2</integer>
+						<key>name</key>
+						<string>priority</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>cc</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>subject</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+					<key>5</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>messageBody</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>5</string>
+					</dict>
+					<key>6</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>to</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>6</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Create New Entourage Mail Message.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>1131.000000:229.000000</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Entourage</string>
+						<key>Resource</key>
+						<string>com.microsoft.entourage</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Send Outgoing Entourage Mail Messages.action</string>
+				<key>ActionName</key>
+				<string>Send Outgoing Entourage Mail Messages</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>from</key>
+					<string>Account that created message</string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Send_Outgoing_Entourage_Mail_Messages</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>64192481-95BF-4DFC-8D57-F8D8834E8CF6</string>
+				<key>Keywords</key>
+				<array>
+					<string>mail</string>
+					<string>email</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>880E70A4-E7C6-48EC-959E-D051DA3260AC</string>
+				<key>UUID</key>
+				<string>3D01B090-D64C-4956-BCBE-17840F1050FE</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>Account that created message</string>
+						<key>name</key>
+						<string>from</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Send Outgoing Entourage Mail Messages.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>571.000000:89.000000</string>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>4B3C1DA3-68E7-47B0-A0DF-53A7CC60BEBE</key>
+		<dict>
+			<key>from</key>
+			<string>14934D22-877F-4EC7-A575-1CB15ABE6448 - 02200133-B964-47AF-8D56-17576249B4CE</string>
+			<key>to</key>
+			<string>C82CC0B6-8697-482A-A493-8BF2566B449D - 28F7F1C0-5DEC-458B-9643-57DAB5ACAAE5</string>
+		</dict>
+		<key>AD59EDA8-F55D-42FA-9D47-4E335BE59CD9</key>
+		<dict>
+			<key>from</key>
+			<string>EDCD9C36-2A1D-467F-8ED3-11319EA3C1DF - 6449436C-CB18-4AC6-9CFE-06A578A9446A</string>
+			<key>to</key>
+			<string>3D01B090-D64C-4956-BCBE-17840F1050FE - 64192481-95BF-4DFC-8D57-F8D8834E8CF6</string>
+		</dict>
+		<key>C09871E6-E04C-4F39-BF1B-F61319F2C946</key>
+		<dict>
+			<key>from</key>
+			<string>C82CC0B6-8697-482A-A493-8BF2566B449D - 13ABEB99-E0C2-42E6-8E96-5478AA2C1823</string>
+			<key>to</key>
+			<string>8D595E97-45FE-43D0-A90D-2F75B9AABE6A - F875BC37-85C1-4EAD-939E-4F1D725CF8CC</string>
+		</dict>
+		<key>F58F98C7-DAAF-4A23-8CDE-9F2CD91E9A6D</key>
+		<dict>
+			<key>from</key>
+			<string>8D595E97-45FE-43D0-A90D-2F75B9AABE6A - F798E74D-FCE7-45D1-AB69-1B9C61D7CB03</string>
+			<key>to</key>
+			<string>EDCD9C36-2A1D-467F-8ED3-11319EA3C1DF - 58D9C8CE-E91D-4043-9F33-79D3EA48FECF</string>
+		</dict>
+	</dict>
+	<key>state</key>
+	<dict>
+		<key>actionsSplitView</key>
+		<real>175</real>
+		<key>layoutFrame</key>
+		<string>{{0, 0}, {539, 790}}</string>
+		<key>layoutScrollPosition</key>
+		<string>{{0, 0}, {539, 790}}</string>
+		<key>mainSplitView</key>
+		<real>391</real>
+		<key>minorSplitView</key>
+		<real>647</real>
+		<key>windowFrame</key>
+		<string>{{379, 206}, {960, 918}}</string>
+	</dict>
+</dict>
+</plist>

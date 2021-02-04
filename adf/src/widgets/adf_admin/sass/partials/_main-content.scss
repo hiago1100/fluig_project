@@ -1,0 +1,15 @@
+/* The main content */
+
+.main-content {
+  margin: 0 40px 40px 180px
+}
+
+
+@media (max-width: 900px) {
+
+  .main-content {
+    max-width: none;
+    padding: 40px 20px;
+    margin: 0 0 40px;
+  }
+}

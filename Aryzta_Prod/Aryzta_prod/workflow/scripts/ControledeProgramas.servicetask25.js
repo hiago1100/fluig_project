@@ -1,0 +1,162 @@
+function servicetask25(attempt, message) {
+
+    try {
+        var serviceProvider = ServiceManager.getService('WSEXECBO');
+        var serviceLocator = serviceProvider.instantiate('com.totvs.framework.ws.execbo.service.WebServiceExecBO');
+        var service = serviceLocator.getWebServiceExecBOPort();
+        var bloqueio = hAPI.getCardValue("bloquear");
+
+        var token = service.userLogin("super");
+        log.info('>>> servicetask17 token: ' + token);
+
+        var params = [] ;
+        var jsonParams;
+
+     
+
+        var params = [] ;
+        var jsonParams;
+
+ //else {
+
+            var param1 = [
+                'cod_usuario',
+                'cod_grp_usuar',
+                'cod_prog_dtsul',
+                'acao',
+                ];
+
+            var fields = createFields(param1);      
+
+            log.info('>>> indices Inicio ');
+            
+            
+            var indices = getChildrenIndexes('MANTER');
+            var records = [];
+
+            log.info('>>> indices: ' + indices);
+            var aux = 0;
+            
+            for (var i = 0; i < indices.length; i++) {
+                
+                log.info('@@@ idusuario: ' + hAPI.getCardValue('codGest'));
+                log.info('@@@ GrupoCod: ' + hAPI.getCardValue('codDoGrupo'));
+                log.info('@@@ Manter: ' + hAPI.getCardValue('manter___' + indices[i]));
+                log.info('@@@ Cod Programa: ' + hAPI.getCardValue('nomeProgAux___' + indices[i]));
+
+                records[i] = {};
+                records[i]['cod_usuario'] = '"' + hAPI.getCardValue('codGest') + '"';
+                records[i]['cod_grp_usuar'] = '"' + hAPI.getCardValue('codDoGrupo') + '"';
+                records[i]['cod_prog_dtsul'] = '"' + hAPI.getCardValue('nomeProgAux___'+indices[i]) + '"';
+                records[i]['acao'] = (hAPI.getCardValue('manter___'+indices[i]) == 'on') ? 'INC' : 'ESC' ;
+                   
+                aux = i;
+            }
+                      
+            log.info('@@@ indice disso aqui: ' + aux);            
+            var auxTwo = 0;
+            var indices = getChildrenIndexes('MANTERTWO');
+            for (var j = 0; j < indices.length; j++) {
+            	
+            	auxTwo = j;            	
+            	log.info('@@@ indice 2 disso aqui no for : ' + auxTwo);   
+                log.info('@@@ indice disso aqui no for: ' + aux);                
+                var auxSun = aux + auxTwo;
+                log.info('@@@ somador : ' + auxSun);                       
+                log.info('@@@ idusuario 2: ' + hAPI.getCardValue('codGest'));
+                log.info('@@@ GrupoCod 2: ' + hAPI.getCardValue('codDoGrupo'));
+                log.info('@@@ Manter 2 : ' + hAPI.getCardValue('manterTwo___' + indices[j]));
+                log.info('@@@ Cod Programa 2 : ' + hAPI.getCardValue('nomeProgAuxTwo___' + indices[j]));
+                
+                records[auxSun] = {};
+                records[auxSun]['cod_usuario'] = '"' + hAPI.getCardValue('codGest') + '"';
+                records[auxSun]['cod_grp_usuar'] = '"' + hAPI.getCardValue('codDoGrupo') + '"';
+                records[auxSun]['cod_prog_dtsul'] = '"' + hAPI.getCardValue('nomeProgAuxTwo___'+indices[j]) + '"';
+                records[auxSun]['acao'] = (hAPI.getCardValue('manterTwo___'+indices[j]) == 'on') ? 'INC' : 'ESC' ;
+
+          }
+         
+
+
+
+
+
+            var temptable = {
+                    'name': "ttProgramaGrupo", 
+                    'fields': fields,
+                    'records': records                
+            };
+
+            var retorno = {
+                    'dataType': 'character',
+                    'name': 'retorno',
+                    'value': '',
+                    'type': 'output'
+            };
+
+            var capa = {
+                    'name': 'ttGrupoUsuario',
+                    'type': 'input',
+                    'dataType': 'temptable',
+                    'value': temptable
+            };
+
+
+
+            params.push(capa, retorno);
+            
+            jsonParams = JSON.stringify(params).replace( /[\\]["]/g, '' );
+
+       // }
+
+
+//      var jsonParams = JSON.stringify(params).replace( /[\\]["]/g, '' );
+        
+            log.info('>>> Parametros da procedure: ' + jsonParams);
+            var resp = service.callProcedureWithToken(token, "esp/essec005b.p", "piProgramaGrupo", jsonParams);
+            log.info('### resp: ' + resp);
+        
+        
+            var respObj = JSON.parse(resp);    
+            log.info('' + respObj[0].value);
+
+    } catch(error) { 
+        log.error(error);
+        throw error;
+    }
+}
+
+function createFields(param){
+    var fields = [];
+
+    for(i in param) {
+        fields[i] = {};
+        fields[i]['name'] = param[i];
+        fields[i]['label'] = param[i];
+        fields[i]['type'] = 'character';
+    }
+
+    return fields;
+}
+
+function getChildrenIndexes(fieldName){
+
+    
+    log.info('@@@ NUMERO DO PROCESSO : ' + getValue("WKNumProces"));
+
+    var dados = hAPI.getCardData(getValue("WKNumProces"));
+    var entries = dados.entrySet().iterator();
+    var indexes = [];
+
+    while (entries.hasNext()) {
+        var e = entries.next();
+        log.info('>>> fieldName : ' + fieldName);
+        log.info('>>> e.getKey(): ' + e.getKey());
+        if (e.getKey().match(fieldName + "___")) {
+//          if (e.getKey().startWith(fieldName + "___")) {
+//          log.info('@@@ getChildrenIndexes indice: ' + e.getKey().split("___")[1]);
+            indexes.push(e.getKey().split("___")[1])
+        }
+    }
+    return indexes;
+};

@@ -1,0 +1,10 @@
+.hidden-element{
+    display: none;
+}
+
+.fluig-style-guide .form-control .disabled,
+.fluig-style-guide .form-control .readonly,
+.fluig-style-guide .form-control[disabled],
+.fluig-style-guide .form-control[readonly]{
+    color: #555 !important;
+}

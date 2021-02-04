@@ -1,0 +1,283 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="fluig-style-guide.custom.min.css" />
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/jquery.maskMoney.js"></script>
+    <script type="text/javascript" src="./js/jquery.maskedInput.js"></script>
+    <script type="text/javascript" src="./js/solicitacaoMedicaoContrato.js"></script>
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <!-- ImportaÃƒÂ§ÃƒÂ£o da pesquisa de satisfaÃ§Ã£o -->
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+<!-- <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+ -->
+
+    <style type="text/css">
+
+      .tdEspaco { display: table; float:left; margin-right:10px }
+      .tdEspacoTable {margin-right:1px }
+      .tdEspacoAux { display: table; float:left; margin-right:280px }
+
+      .modal-body {
+        max-height: calc(100vh - 110px) !important;
+        width: 100%;
+        height: 100vh;
+    }
+
+    span.select2-dropdown.select2-dropdown--below{
+      width: calc(100% - 79px) !important;
+      border: 1px solid rgb(0, 144, 255);
+      border-radius: 4px;
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
+    }
+    script + span.select2-container.fluig-container.select2-container--default.select2-container--open,
+script + div + span.select2-container.fluig-container.select2-container--default.select2-container--open,
+script + span + span.select2-container.fluig-container.select2-container--default.select2-container--open {
+    left: 40px !important;
+}
+
+
+
+</style>
+
+</head>
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form">
+            <div class="container" >
+                <div>
+                 <input type="hidden" name="cpAprova" id="cpAprova">
+                 <input type="hidden" name="htmlExtrato" id="htmlExtrato">
+                 <input type="hidden" name="htmlCabecalho" id="htmlCabecalho">
+                 <input type="hidden" name="cpDeposita" id="cpDeposita">
+                 <input type="hidden" name="cpValorTotalOculto" id="cpValorTotalOculto">
+                 
+             </div>
+             <br>
+
+
+
+             <div id="div_solicitante" name="div_solicitante" class="form-group col-md-12">
+             <div class="row">
+                <h3 align="left"><b>Fechamento de Caixa</b></h3> 
+                <hr>
+
+
+                <div class="col-md-4">
+                    <label for="cpNomeSolicitante">Responsável pelo Fechamento  </label>
+                    <input type="text" class="form-control" id="cpNomeSolicitante" name="cpNomeSolicitante" readonly="" >
+                </div>
+
+                <div class="col-md-4">
+                    <label ">Filial</label>
+                    <!--    teste para integração -->
+                    <table width="100%">
+                        <tr>
+                            <td class="col-md-12">
+                                <input type="zoom" name="cpFilial" class="form-control" id="cpFilial" 
+                                      data-zoom="{
+                                      'displayKey': 'filial',
+                                      'maximumSelectionLength':'1',
+                                      'datasetId':'cad_Filiais',
+                                      'placeholder':'Filiais',
+                                      'filterValues':'metadata_active,true',
+                                      'fields':[
+                                        {
+                                          'field':'filial',
+                                          'label':'Filial',
+                                          'size':'col-md-4'                                                         
+                                        },{
+                                          'field':'filial_protheus',
+                                          'label':'Codigo',
+                                          'size':'col-md-4'                                                        
+                                        },{
+                                          'field':'NomeGestor',
+                                          'label':'Gestor Unid.',
+                                          'size':'col-md-4'                                                         
+                                        },{
+                                          'field':'codGstFluig',
+                                          'label':'Cod. Gest',
+                                          'size':'col-md-4' 
+                                        }
+                                      ]
+                                    }" />  
+                                <input type="hidden" name="cpCodFiliais" id="cpCodFiliais">
+                                <input type="hidden" name="cpCodGstFluig" id="cpCodGstFluig">
+                            </td>
+                            <td>
+<!--                                 <span class="fluigicon fluigicon-search buttonCrud fluigicon-md zoomFilial" style="cursor: pointer;" onclick="setZooms()" name="zoomFilial" id="zoomFilial"></span> -->
+                            </td>
+                        </tr>
+                    </table>
+                </div>          
+
+                <div class="col-md-4">
+                    <label ">Gestor Unidade</label>
+                    <input type="text" name="cpNomeGestor" class="form-control" id="cpNomeGestor" readonly="">
+                </div>
+                </div>
+            </div>  
+            <br><br> 
+
+            <div class="form-group col-md-12">
+               <div class="row">
+                <h3 align="left"><b>Período</b></h3>
+                <hr>
+
+                <table width="100%">
+                    <tr>
+                        <td>
+                         <label>Dê:</label>
+                     </td>
+                     <td class="tdEspaco">
+                        <input type="text" name="dtPeriodoIni" id="dtPeriodoIni" class="form-control" readonly="">
+                    </td>
+                    <td >
+                        <label>Até:</label>
+                    </td>
+                    <td class="tdEspacoAux">
+                        <input type="text" name="dtPeriodoFim" id="dtPeriodoFim" class="form-control" readonly="">
+                    </td>
+                    <td>
+                        <label>Saldo Atual:</label>
+                    </td>
+                    <td class="tdEspaco">
+                        <input type="text" class="form-control" name="cpSaldoAtual" id="cpSaldoAtual" readonly="">
+                    </td>
+                    <td>
+                        <span id="abreExtrato" class="fluigicon fluigicon-search fluigicon-md" style="cursor: pointer;"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>    
+    </div>
+    <br><br>
+
+    <div class="form-group col-md-12">
+        <div>
+            <button type="button" onclick="addFilho()" class="btn btn-primary addChild">Adicionar Depósito</button>
+        </div>
+        <br><br>
+        <div class="form-group row">
+
+            <table tablename="tableDepositos" noaddbutton="true" deletebuttonlabel="X" customFnDelete="fnCustomDelete(this)">  
+                <thead>
+                    <tr>
+                        <th class="col-md-2">Data Depósito</th>
+                        <th class="col-md-2">Tipo</th>
+                        <th class="col-md-2">Banco</th>
+                        <th class="col-md-2">Agência</th>
+                        <th class="col-md-2">Conta</th>
+                        <th class="col-md-2">Valor</th>
+                    </tr>
+                </thead>   
+                <tbody>
+                    <tr>            
+                        <td class="auxiliar">
+                         &nbsp;
+                     </td>
+                     <td class="col-md-2">
+                        <input type="text" class="form-control bloqueio dtDeposito" name="dtDeposito" id="dtDeposito">
+                    </td>
+                    <td class="col-md-2" >
+                        <select name="seleTipoPgmt" id="seleTipoPgmt tipoBlock" readonly="readonly" class="form-control" style="background-color: #fff">
+                            <option value="">Selecione</option>
+                            <option value="dinheiro">DINHEIRO</option>
+                            <option value="cheque">CHEQUE</option>
+                        </select>
+                    </td>
+                    <td class="col-md-2" >
+                        <input type="text" class="form-control cpBanco bloqueio" name="cpBanco" id="cpBanco" placeholder="BANCO" onclick="setZooms()">
+
+
+
+                        <input type="hidden" name="cpCodigoBanco" id="cpCodigoBanco">
+                    </td>
+                    <td class="col-md-2" >
+                        <input type="text" class="form-control" name="cpAgencia" id="cpAgencia" readonly="">
+                    </td>
+                    <td class="col-md-2" >
+                        <input type="text" class="form-control" name="cpConta" id="cpConta" readonly="">
+                    </td>
+                    <td class="col-md-2">
+                        <input type="text" class="form-control cpValor bloqueio" name="cpValor" id="cpValor" placeholder="R$00,00" mask="#00.000.000.000.000,00" onblur="somaValores();" value="0">
+                    </td>
+                </tr>
+            </tbody>     
+        </table>
+        <br><br>
+
+        <div class="form-group row">
+            <div class="col-md-12">
+                <b>Novo Saldo</b>
+                <input class="form-control" type="text" name="cpTotalAtual" id="cpTotalAtual" readonly>
+            </div>
+
+        </div>
+
+        <div id="divAprovador" class="hide" align="center">
+            <div class="form-group row">    
+
+                <h3 align="left"><b>Aprovação</b></h3>
+                <hr> 
+                <button onclick="aprovador(this.id)" id="aprovado" class="btn-success btnAprovadores"><span id="likeAprova" class="hide"><i class="fluigicon fluigicon-thumbs-up"></i></span><span> Aprovar </span></button>
+                <button onclick="aprovador(this.id)" id="reprovado" class="btn-danger btnAprovadores"><span id="dislikeReprova" class="hide">  <i class="fluigicon 
+                    fluigicon-thumbs-down"></i></span><span> Reprovar </span></button>
+
+                </div>
+                <div class="form-group row">
+                    <label>Obs:</label>
+                    <textarea id="cpObsAprova" name="cpObsAprova" class="form-control" cols="5" rows="10"></textarea>
+                </div>
+                
+                
+            </div>
+
+            <div id="divConfirmaDep" class="hide" align="center">
+                <div class="form-group row">    
+
+                    <h3 align="left"><b>Confirmar Depósito</b></h3>
+                    <hr> 
+                    <button onclick="deposito(this.id)" id="depositado" class="btn-success btnAprovadores"><span id="likeDeposita" class="hide"><i class="fluigicon fluigicon-thumbs-up"></i></span><span> Efetuado </span></button>
+                    <button onclick="deposito(this.id)" id="nDeposita" class="btn-danger btnAprovadores"><span id="dislikeDeposita" class="hide">  <i class="fluigicon 
+                        fluigicon-thumbs-down"></i></span><span> Não efetuado </span></button>
+
+                    </div>
+                    <div class="form-group row">
+                        <label>Obs:</label>
+                        <textarea id="cpObsDeposito" name="cpObsDeposito" class="form-control" cols="5" rows="10"></textarea>
+                    </div>
+
+
+                </div>
+
+                <div class="form-group row hide" id="divIntegracao">
+                    <div class="col-md-12">
+                        <b>Resultado integração</b>
+                        <textarea name="statusIntegracao" id="statusIntegracao" cols="30" class="form-control" readonly="" rows="30"></textarea>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div><!-- Ultima Div -->
+
+
+
+</div>
+</div>
+</div><br><br>
+</form>
+
+</div>
+</body>
+</html>

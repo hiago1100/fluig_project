@@ -1,0 +1,822 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>FLUIG-0187</processId>
+    </processDefinitionPK>
+    <processDescription>Gerador de Avaliação do Período de Experiência</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Geradores</categoryId>
+    <managerEngineAllocationId></managerEngineAllocationId>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>DIRECIONAL</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>true</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>true</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Gerador de Avaliação do Período de Experiência</processId>
+      <version>4</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>100</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>true</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Inicio Timer </stateDescription>
+      <instruction>Atividade de inicio por mensagem. Aguardando envio do sinal </instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Usuário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;adm&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>140</positionX>
+      <positionY>250</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>12</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <sequence>8</sequence>
+      </processStatePK>
+      <stateName>Geração das avaliações</stateName>
+      <stateDescription>Geração das avaliações</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>340</positionX>
+      <positionY>231</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>82</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>1</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <sequence>9</sequence>
+      </processStatePK>
+      <stateName>Email Aviso - Falha</stateName>
+      <stateDescription>Email Aviso - Falha</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>340</positionX>
+      <positionY>120</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>84</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <sequence>16</sequence>
+      </processStatePK>
+      <stateName>Email Aviso - Sucesso</stateName>
+      <stateDescription>Email Aviso - Sucesso</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>340</positionX>
+      <positionY>360</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>84</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <sequence>14</sequence>
+      </processStatePK>
+      <stateName>Intermediário</stateName>
+      <stateDescription>Intermediário</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>410</positionX>
+      <positionY>231</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>43</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>8</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <sequence>6</sequence>
+      </processStatePK>
+      <stateName>Terminação imediata de processo</stateName>
+      <stateDescription>Terminação imediata de processo</stateDescription>
+      <instruction>Esta atividade indica que o processo terminado e que não ocorrerá nenhum tipo de pós processamento.</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>600</positionX>
+      <positionY>370</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>68</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <sequence>10</sequence>
+      </processStatePK>
+      <stateName>Final com erro</stateName>
+      <stateDescription>Final com erro</stateDescription>
+      <instruction>Esta atividade indica que o processo foi terminado com erro.</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>590</positionX>
+      <positionY>141</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>63</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list/>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <linkSequence>11</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>9</initialStateSequence>
+      <finalStateSequence>10</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <linkSequence>13</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>8</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <linkSequence>15</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>14</initialStateSequence>
+      <finalStateSequence>9</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <linkSequence>17</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>8</initialStateSequence>
+      <finalStateSequence>16</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <linkSequence>18</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>16</initialStateSequence>
+      <finalStateSequence>6</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterProcessCreate</eventId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterProcessCreate(a)&#xd;
+{&#xd;
+	hAPI.setCardValue(&quot;cpNumSolicitacao&quot;,getValue(&quot;WKNumProces&quot;)),&#xd;
+	hAPI.setCardValue(&quot;cpDtAbertura&quot;,dateObjToStr(new Date))&#xd;
+}&#xd;
+&#xd;
+function dateObjToStr(dtObj) {&#xd;
+&#xd;
+	var d = dtObj.getDate() &lt; 10 ? &apos;0&apos; + dtObj.getDate() : dtObj.getDate(),&#xd;
+	 m = dtObj.getMonth();&#xd;
+  			m = parseFloat(m)+parseFloat(1);&#xd;
+        m = m &lt; 10 ? &apos;0&apos; + m : m;&#xd;
+	return d + &apos;/&apos; + m + &apos;/&apos; + dtObj.getFullYear();&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>gerador</eventId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function gerarAvaliacoes(){&#xd;
+   &#xd;
+    log.warn(&apos;[DEBUGANDO] FLUIG-0187 - GERADOR DE AVALIAÇÃO DE PERIODO DE EXPERIENCIA&apos;);&#xd;
+    &#xd;
+    try {&#xd;
+      &#xd;
+      var listaColaboradores = getColaboradores();&#xd;
+    &#xd;
+       listaColaboradores.forEach(function(colaborador){&#xd;
+         logAvaliacaoCriada(colaborador, criaAvaliacao(colaborador));&#xd;
+       });&#xd;
+    } &#xd;
+    catch(err){&#xd;
+        return &quot;ERRO AO CRIAR A SOLICITAÇÃO NO PROCESSO FLUIG-0187 - ERRO: &quot; + err.message;&#xd;
+    } &#xd;
+}&#xd;
+&#xd;
+function logAvaliacaoCriada(colaborador, numeroProcesso){&#xd;
+   &#xd;
+   var childData = new java.util.HashMap();&#xd;
+    &#xd;
+    if(numeroProcesso == &apos;undefined&apos; || numeroProcesso == &apos;&apos; || numeroProcesso == &apos;0&apos; ){&#xd;
+      numeroProcesso = &apos;NÃO GERADA - COLABORADOR FORA DOS PARAMETROS&apos;&#xd;
+   }&#xd;
+    &#xd;
+    childData.put(&quot;cpMatricula&quot;, colaborador.chapa);&#xd;
+    childData.put(&quot;cpNome&quot;, colaborador.nome);&#xd;
+    childData.put(&quot;cpAdmissao&quot;, numeroProcesso);&#xd;
+    hAPI.addCardChild(&quot;solGeradas&quot;, childData);&#xd;
+}&#xd;
+&#xd;
+function criaAvaliacao(colaborador) {&#xd;
+   &#xd;
+   log.warn(&apos;[DEBUGANDO] FLUIG-0187 - CRIANDO A SOLICITAÇÃO PARA A CHAPA: &apos; + colaborador.chapa + &apos;, COLIGADA: &apos; + colaborador.coligada);&#xd;
+     &#xd;
+   var parametros = new java.util.HashMap();       &#xd;
+   var colaboradorInfo = getInfoColaborador(colaborador.chapa, colaborador.coligada);&#xd;
+   &#xd;
+   if(colaboradorInfo != &apos;&apos;){&#xd;
+      &#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - DADOS DO COLABORADOR&apos; + colaboradorInfo);&#xd;
+   &#xd;
+       parametros.put(&quot;cpColaboradorInfo&quot;, colaboradorInfo.nome); &#xd;
+       parametros.put(&quot;cpMatriculaInfo&quot;, colaboradorInfo.chapa.toString()); &#xd;
+       parametros.put(&quot;cpFuncaoInfo&quot;, colaboradorInfo.funcao);&#xd;
+       parametros.put(&quot;cpDataAdmissaoInfo&quot;, colaboradorInfo.dataAdmissao);&#xd;
+       parametros.put(&quot;cpObraDepartamentoInfo&quot;, colaboradorInfo.secao);&#xd;
+       parametros.put(&quot;cpEmpresaInfo&quot;, colaboradorInfo.empresa);&#xd;
+       parametros.put(&quot;cpGestorInfo&quot;, colaboradorInfo.nomeGestor);&#xd;
+       parametros.put(&quot;cpChapaConsultor&quot;, colaboradorInfo.chapaCons);&#xd;
+       &#xd;
+       if(colaboradorInfo.chapa == colaboradorInfo.chapaGestor){&#xd;
+          parametros.put(&quot;cpChapaGestor&quot;, colaboradorInfo.chapaDiretor);&#xd;
+       }else{&#xd;
+          parametros.put(&quot;cpChapaGestor&quot;, colaboradorInfo.chapaGestor);&#xd;
+       }&#xd;
+       &#xd;
+       var maoObra = getMaoObra(colaboradorInfo.coligada, colaboradorInfo.codFuncao);&#xd;
+      &#xd;
+       log.warn(&apos;[DEBUGANDO] FLUIG-0187 - CODIGO DA FUNÇÃO: &apos; + colaboradorInfo.codFuncao)&#xd;
+       log.warn(&apos;[DEBUGANDO] FLUIG-0187 - TIPO MAO DE OBRA: &apos; + maoObra.tipo)&#xd;
+            &#xd;
+       var tipoMaoObra = maoObra.tipo;&#xd;
+       var nomeFuncao = maoObra.nome;&#xd;
+       var blFuncaoEstrategicaOuAdministrativa = tipoMaoObra.startsWith(&apos;Estrat&apos;) || tipoMaoObra.startsWith(&apos;Adminis&apos;);&#xd;
+       var blFuncaoAutonomo = nomeFuncao.startsWith(&apos;AUTONOMO&apos;);&#xd;
+       var blFuncaoEstagiario = nomeFuncao.startsWith(&apos;ESTAGIARIO&apos;);&#xd;
+       var blFuncaoAprendiz = nomeFuncao.startsWith(&apos;APRENDIZ&apos;);&#xd;
+       &#xd;
+       log.warn(&apos;[DEBUGANDO] FLUIG-0187 - É MÃO DE OBRA ESTRATEGICA OU ADMINISTRATIVA? - &apos; + blFuncaoEstrategicaOuAdministrativa)&#xd;
+       log.warn(&apos;[DEBUGANDO] FLUIG-0187 - AUTONOMO? - &apos; + blFuncaoAutonomo)&#xd;
+       &#xd;
+       parametros.put(&quot;cpMaoObraInfo&quot;, maoObra.tipo);&#xd;
+       &#xd;
+       if(blFuncaoEstrategicaOuAdministrativa &amp;&amp; !blFuncaoAutonomo &amp;&amp; !blFuncaoEstagiario &amp;&amp; !blFuncaoAprendiz){&#xd;
+         log.warn(&apos;[DEBUGANDO] FLUIG-0187 -  INFORMAÇÕES DO GESTOR - CHAPA: &apos; + colaboradorInfo.chapaGestor)&#xd;
+         log.warn(&apos;[DEBUGANDO] FLUIG-0187 -  INFORMAÇÕES DA CONSULTORA - CHAPA: &apos; + colaboradorInfo.chapaCons + &apos;,COLIGADA: &apos; + colaboradorInfo.coligadaConsultora)&#xd;
+         &#xd;
+         var consultorInfo = getInfoColaborador(colaboradorInfo.chapaCons, colaboradorInfo.coligadaConsultora);&#xd;
+         &#xd;
+         log.warn(&apos;[DEBUGANDO] FLUIG-0187 - DADOS DA CONSULTORA: &apos; + consultorInfo);&#xd;
+         &#xd;
+         parametros.put(&quot;cpNomeSolicitante&quot;, consultorInfo.nome);&#xd;
+          parametros.put(&quot;cpFuncaoSolicitante&quot;, consultorInfo.funcao);&#xd;
+          parametros.put(&quot;cpEmpresaSolicitante&quot;, consultorInfo.empresa);&#xd;
+          parametros.put(&quot;cpDepartamentoObraSolicitante&quot;, consultorInfo.secao);&#xd;
+          parametros.put(&quot;cpEmailSolicitante&quot;, consultorInfo.email);&#xd;
+          parametros.put(&quot;cpEstadoSolicitante&quot;, consultorInfo.estado);&#xd;
+   &#xd;
+         log.warn(&apos;[DEBUGANDO] FLUIG-0187 - CAMPOS DO FORMULARIO FLUIG-0185&apos; + parametros);&#xd;
+         &#xd;
+           &#xd;
+           try {&#xd;
+            var avaliacaoGerada = hAPI.startProcess(&quot;FLUIG-0185&quot;, &apos;3&apos;, [colaboradorInfo.chapaGestor], &quot;&quot;, true, parametros, true);&#xd;
+           } &#xd;
+           catch(err) {&#xd;
+            return &apos;0&apos;;&#xd;
+           } &#xd;
+            &#xd;
+           log.warn(&apos;[DEBUGANDO] FLUIG-0187 -  NUMERO DO PROCESSO GERADO FLUIG-0185 - &apos; + avaliacaoGerada.get(&quot;iProcess&quot;))&#xd;
+           &#xd;
+           return avaliacaoGerada.get(&quot;iProcess&quot;);&#xd;
+      &#xd;
+       }&#xd;
+       else{&#xd;
+         return &apos;0&apos;;&#xd;
+       }&#xd;
+   }else{&#xd;
+      return &apos;0&apos;;&#xd;
+   }&#xd;
+}&#xd;
+&#xd;
+function getInfoColaborador(chapa, coligada){&#xd;
+&#xd;
+   &#xd;
+   log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR&apos;);&#xd;
+   &#xd;
+   var dsReturn = DatasetFactory.getDataset(&apos;DS_FLUIG_0003&apos;, [chapa, coligada], null, null);&#xd;
+   &#xd;
+   if (dsReturn.values.length != 0){&#xd;
+      var colaborador = dsReturn.values[0];&#xd;
+      &#xd;
+      &#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR coligada - &apos; + colaborador[0]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR chapa - &apos; + colaborador[1]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR funcao - &apos; + colaborador[2]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR dataAdmissao - &apos; + colaborador[9]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR secao - &apos; + colaborador[4]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR empresa - &apos; + colaborador[6]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR nomeGestor - &apos; + colaborador[17]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR chapaCons - &apos; + colaborador[24]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR chapaGestor - &apos; + colaborador[16]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR chapaDiretor - &apos; + colaborador[14]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR codFuncao - &apos; + colaborador[3]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR email - &apos; + colaborador[8]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR nome - &apos; + colaborador[27]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR estado - &apos; + colaborador[5]);&#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS DADOS DO COLABORADOR coligadaConsultora - &apos; + colaborador[69]);&#xd;
+      &#xd;
+      &#xd;
+      return {&#xd;
+         coligada: colaborador[0],&#xd;
+         chapa: colaborador[1],&#xd;
+         funcao: colaborador[2],&#xd;
+         dataAdmissao: colaborador[9],&#xd;
+         secao: colaborador[4],&#xd;
+         empresa: colaborador[6],&#xd;
+         nomeGestor: colaborador[17],&#xd;
+         chapaCons: colaborador[24],&#xd;
+         chapaGestor: colaborador[16],&#xd;
+         chapaDiretor: colaborador[14],&#xd;
+         codFuncao: colaborador[3],&#xd;
+         email: colaborador[8],&#xd;
+         nome: colaborador[27],&#xd;
+         estado: colaborador[5],&#xd;
+         coligadaConsultora: colaborador[69]&#xd;
+      }&#xd;
+   }else{&#xd;
+      log.warn( &quot;ERRO AO BUSCAR AS INFORMAÇÕES NO DATASET DS_FLUIG_0003 - NENHUM DADO RETORNADO - CHAPA: &quot; + chapa + &quot;, COLIGADA:&quot; + coligada);&#xd;
+      return &apos;&apos;;&#xd;
+   }&#xd;
+}&#xd;
+&#xd;
+function getMaoObra(coligada, funcao) {&#xd;
+   &#xd;
+   log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO MÃO DE OBRA COLABORADOR&apos;);&#xd;
+   &#xd;
+   var dsReturn = DatasetFactory.getDataset(&apos;DS_FLUIG_0022&apos;, [coligada, funcao], null, null);&#xd;
+   &#xd;
+   if (dsReturn.values.length != 0){&#xd;
+      var retorno = dsReturn.values[0];&#xd;
+      return {tipo: retorno[2], nome: retorno[1]}&#xd;
+   }else{&#xd;
+      throw &quot;ERRO AO BUSCAR AS INFORMAÇÕES NO DATASET DS_FLUIG_0022 - NENHUM DADO RETORNADO - FUNÇÃO: &quot; + funcao + &quot;, COLIGADA:&quot; + coligada;&#xd;
+   }&#xd;
+}&#xd;
+&#xd;
+function getColaboradores() {&#xd;
+   &#xd;
+   log.warn(&apos;[DEBUGANDO] FLUIG-0187 - BUSCANDO OS COLABORADORES QUE PODEM SER GERADAS AS AVALIAÇÕES&apos;);&#xd;
+   &#xd;
+   var dsReturn = DatasetFactory.getDataset(&apos;DS_FLUIG_0110&apos;, null, null, null);&#xd;
+    &#xd;
+    if (dsReturn.values.length != 0){&#xd;
+      &#xd;
+      log.warn(&apos;[DEBUGANDO] FLUIG-0187 - QUANTIDADE DE COLABORADORES: &apos; + dsReturn.values.length);&#xd;
+      &#xd;
+       return dsReturn.values.map(function(colaborador){&#xd;
+           return {&#xd;
+               chapa: colaborador[0],&#xd;
+               nome: colaborador[1],&#xd;
+               coligada: colaborador[2],&#xd;
+           };&#xd;
+       });&#xd;
+   }else{&#xd;
+      throw &quot;ERRO AO BUSCAR AS INFORMAÇÕES NO DATASET DS_FLUIG_0110 - NENHUM DADO RETORNADO&quot;&#xd;
+   }&#xd;
+}&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>servicetask8</eventId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function servicetask8(attempt, message) {
+	try 
+	{
+		gerarAvaliacoes();
+	} 
+	catch(error) 
+	{ 
+		throw error.message;
+	}
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>410</height>
+      <width>641</width>
+      <positionX>40</positionX>
+      <positionY>51</positionY>
+      <stateName>Avaliação do Período de Experiência</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>C0C0C0</color>
+      <height>410</height>
+      <width>611</width>
+      <positionX>70</positionX>
+      <positionY>51</positionY>
+      <stateName>Gerador</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list>
+    <ProcessStateTrigger>
+      <processStateTriggerPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>4</version>
+        <stateSequence>1</stateSequence>
+        <triggerSequence>0</triggerSequence>
+      </processStateTriggerPK>
+      <runType>2</runType>
+      <type>2</type>
+      <timeTrigger>10:13:53</timeTrigger>
+      <frequencia>01</frequencia>
+    </ProcessStateTrigger>
+    <ProcessStateTrigger>
+      <processStateTriggerPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>4</version>
+        <stateSequence>9</stateSequence>
+        <triggerSequence>1</triggerSequence>
+      </processStateTriggerPK>
+      <runType>1</runType>
+      <type>0</type>
+      <value>&lt;BpmnMessageData&gt;&lt;Type&gt;1&lt;/Type&gt;&lt;Receiver&gt;leandro.souza@direcional.com.br&lt;/Receiver&gt;&lt;Subject&gt;CSC DIRECIONAL - Falha em processo agendado&lt;/Subject&gt;&lt;Content&gt;Um erro ocorreu na geração de avaliações do processo FLUIG-0187&lt;/Content&gt;&lt;/BpmnMessageData&gt;</value>
+      <frequencia>01</frequencia>
+    </ProcessStateTrigger>
+    <ProcessStateTrigger>
+      <processStateTriggerPK>
+        <companyId>1</companyId>
+        <processId>FLUIG-0187</processId>
+        <version>4</version>
+        <stateSequence>16</stateSequence>
+        <triggerSequence>2</triggerSequence>
+      </processStateTriggerPK>
+      <runType>1</runType>
+      <type>0</type>
+      <value>&lt;BpmnMessageData&gt;&lt;Type&gt;1&lt;/Type&gt;&lt;Receiver&gt;leandro.souza@direcional.com.br&lt;/Receiver&gt;&lt;Subject&gt;CSC DIRECIONAL - Sucesso em processo agendado&lt;/Subject&gt;&lt;Content&gt;Ocorreu com sucesso a geração de avaliações do processo FLUIG-0187&lt;/Content&gt;&lt;/BpmnMessageData&gt;</value>
+      <frequencia>01</frequencia>
+    </ProcessStateTrigger>
+  </list>
+  <list/>
+  <list/>
+  <list>
+    <ProcessStateService>
+      <companyId>1</companyId>
+      <processId>FLUIG-0187</processId>
+      <version>1</version>
+      <sequence>8</sequence>
+      <attempts>3</attempts>
+      <sucessFullMessage>Avaliações geradas com sucesso</sucessFullMessage>
+      <serviceName>wsConsultaSQLRM</serviceName>
+      <frequency>1</frequency>
+      <frequencyType>0</frequencyType>
+    </ProcessStateService>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+</list>

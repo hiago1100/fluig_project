@@ -1,0 +1,415 @@
+function displayFields(form,customHTML){
+
+
+
+var activity = getValue('WKNumState');
+var atv      = form.getValue("ATIVIDADEATUAL");
+        //Ocultar Local de Estoque em todas as Etapas
+       
+        customHTML.append("<script type='text/javascript'>");
+        customHTML.append(" $(function(){ ");
+        customHTML.append(" $('div#LocalEstoque').hide(); ");
+        customHTML.append(" }); ");
+        customHTML.append("</script>");   
+
+	
+	var TipoProcesso = form.getValue('txtTipoProcesso');
+    var indiceA = form.getChildrenIndexes('dsItens');
+
+
+
+ 
+
+
+	if (activity == 4 || activity == 0) {     //ainda não salvo e incio
+				
+		var usuario = getValue('WKUser');
+
+
+        var c1 = DatasetFactory.createConstraint("colleaguePK.colleagueId", usuario, usuario, ConstraintType.MUST);
+    
+        var constraints   = new Array(c1);
+
+        var datasetUSER = DatasetFactory.getDataset("colleague", null, constraints, null);
+
+        var login = datasetUSER.getValue(0,"login");
+        
+
+		form.setValue('txtSolicitanteRM', usuario);
+		form.setValue('emailSolicitante', mail);
+		
+		
+        form.setValue('txtUsuarioRM', login);
+        form.setValue('txtValorFrete', '0,00');
+        form.setValue('txtValorDesconto', '0,00');
+        
+        
+        if (TipoProcesso == ""){
+            form.setValue('txtTipoProcesso', "1");
+            TipoProcesso = "1";
+        } else {
+
+            form.setValue("txtTP",TipoProcesso);
+
+        }
+        
+		var today = new Date();     
+		var year = today.getFullYear();     
+		var month = today.getMonth() + 1 < 10 ? '0' + (today.getMonth() + 1) : (today.getMonth() + 1);     
+		var day = today.getDate() < 10 ? '0' + today.getDate() : today.getDate();     
+		
+		form.setValue('txtData', day + '/' + month  + '/' + year);
+
+		
+        // executa os scripts de HIDE dos campos
+        customHTML.append("<script type='text/javascript'>");
+        customHTML.append(" $(function(){ ");
+        customHTML.append(" $('#pnlAprovacao').hide(); ");
+        customHTML.append(" $('#btnAprovar').hide(); ");
+        customHTML.append(" $('#btnReprovar').hide(); ");
+        customHTML.append(" $('#btnCopiarJustificativa').hide(); ");
+        customHTML.append(" $('div#DivComprador').hide(); "); 
+        customHTML.append(" $('div#DivCompras').hide(); ");  
+        
+        if (( TipoProcesso=="1" ) || ( TipoProcesso=="4" ) || ( TipoProcesso==null )){
+
+
+
+            customHTML.append(" $('#pnlContrato').hide(); ");
+            customHTML.append(" $('#pnlCompraDireta').hide(); ");
+            
+        } else if ( TipoProcesso == "2" ){
+
+    
+                customHTML.append(" $('#pnlCompraDireta').hide(); ");
+    
+                } else if ( TipoProcesso=="3" ){
+    
+                        customHTML.append(" $('#pnlContrato').hide(); ");
+    
+                        }
+        customHTML.append(" $('div#estoque').hide(); ");
+
+        
+        customHTML.append(" $('div#GestorCCu').hide(); ");
+        customHTML.append(" $('div#GestorFin').hide(); ");
+        customHTML.append(" $('div#GestorMan').hide(); ");
+        customHTML.append(" }); ");
+        customHTML.append("</script>");   
+           
+           
+
+        
+	} else if ( (activity == 5) || (activity == 46) || (activity ==69) ) { // analise do aprovador centro de custo
+
+      
+        // habilita só o campo que o Aprovador pode mexer
+        
+        form.setEnabled("txtColigada",false);
+        form.setEnabled("txtFilial",false);
+        form.setEnabled("txtRequisitante",false);
+        form.setEnabled("txtHistoricoMOV",false);
+        form.setEnabled("txtContrato",false);
+        form.setEnabled("txtParcela",false);
+        form.setEnabled("txtEmissaoCNT",false);
+        form.setEnabled("txtNumNF",false);
+        form.setEnabled("txtDataVencimento",false);
+        form.setEnabled("txtFornecedor",false);
+        form.setEnabled("comSerie",false);
+        form.setEnabled("txtCondPagamento",false);
+        form.setValue("txtTP",TipoProcesso);
+        form.setHideDeleteButton(true);
+        form.setEnabled("txtTP",false);
+        form.setEnabled("txtValorFrete",false);
+        form.setEnabled("txtValorDesconto",false);
+
+        customHTML.append("<script type='text/javascript'>");
+        customHTML.append(" $(function(){ ");
+        customHTML.append(" $('div#estoque').hide(); ");
+        customHTML.append(" $('div#DivComprador').hide(); ");
+        customHTML.append(" $('div#DivCompras').hide(); "); 
+
+        if (activity == 5) {
+
+             customHTML.append(" $('div#GestorFin').hide(); ");
+             customHTML.append(" $('div#GestorMan').hide(); ");
+        } else if (activity == 46) {
+
+                     customHTML.append(" $('div#GestorMan').hide(); ");
+                }
+
+        customHTML.append(" }); ");
+        customHTML.append("</script>");
+
+        var indice = form.getChildrenIndexes("dsItens");
+
+        if (indice.length != 0) {
+            for (var i = 0; i < indice.length; i++) {
+                   var iditem = "___"+indice[i];
+                   
+                    // Desabilitados
+
+                    form.setEnabled("txtcodigoPRD"+iditem,false);
+                    form.setEnabled("txtQtdSolicitada"+iditem,false);
+                    form.setEnabled("txtPrecoUnitario"+iditem,false);
+                    form.setEnabled("txtQtdSolicitada"+iditem,false);
+                    form.setEnabled("txtCodCCusto"+iditem,false);
+                    form.setEnabled("txtHistoricoITMMOV"+iditem,false);
+                    
+                  if (activity == 46) {   
+
+                    aprovado = form.getValue("comAprovado"+iditem);
+
+                    form.setEnabled("comAprovado"+iditem,false);
+                    form.setEnabled("txtJustificativa"+iditem,false);
+                    
+
+                     if (aprovado == "N") {
+
+                            form.setValue("comAprFinanceiro"+iditem,"N");
+                            form.setEnabled("comAprFinanceiro"+iditem,false);
+                            form.setEnabled("txtJustificativaFin"+iditem,false);
+
+                            }
+
+                           } else if (activity == 69) { 
+
+                                    form.setEnabled("comAprovado"+iditem,false);
+                                    form.setEnabled("txtJustificativa"+iditem,false);
+
+                                    form.setEnabled("comAprFinanceiro"+iditem,false);
+                                    form.setEnabled("txtJustificativaFin"+iditem,false);
+
+                                    var aprovado = form.getValue("comAprFinanceiro"+iditem);
+
+                                      if (aprovado == "N") {
+
+                                        form.setValue("comAprMantenedora"+iditem,"N");
+                                        form.setEnabled("comAprMantenedora"+iditem,false);
+                                        form.setEnabled("txtJustificativaMan"+iditem,false);
+
+                                        }
+                                         
+
+                                   }
+
+            }
+        }
+
+
+
+        //script para mostrar os painels e Div para o Aprovador
+		customHTML.append("<script type='text/javascript'>");
+        customHTML.append(" $(function(){ ");                  
+        customHTML.append(" $('#btnAdicionar').hide(); ");
+        customHTML.append(" $('#divCopiar').hide(); ");
+        customHTML.append(" $('.fluigicon fluigicon-trash fluigicon-md').hide();");
+
+       		if (( TipoProcesso=="1" ) || ( TipoProcesso=="4" )){
+
+        		customHTML.append(" $('#pnlContrato').hide(); ");
+        		customHTML.append(" $('#pnlCompraDireta').hide(); ");
+                
+        	} else if ( TipoProcesso == "2" ){
+        
+        			customHTML.append(" $('#pnlCompraDireta').hide(); ");
+        
+        			} else if ( TipoProcesso=="3" ){
+        
+        					customHTML.append(" $('#pnlContrato').hide(); ");
+        
+        					}
+           
+			customHTML.append(" }); ");
+            customHTML.append("</script>");
+
+            } else if (activity == 32){ // revisão do requisitante
+
+
+                log.info("*** CRM *** Atividade Atual "+activity);
+                log.info("*** CRM *** Atividade anterior "+atv);
+
+                customHTML.append("<script type='text/javascript'>");
+                customHTML.append(" $(function(){ ");
+                customHTML.append(" $('#btnAprovar').hide(); ");
+                customHTML.append(" $('#divCopiar').hide(); ");
+                customHTML.append(" $('#btnReprovar').hide(); ");
+                customHTML.append(" $('#btnCopiarJustificativa').hide(); ");
+                customHTML.append(" $('div#estoque').hide(); ");
+                    if (atv == 5){
+                customHTML.append(" $('div#GestorFin').hide(); ");
+                customHTML.append(" $('div#GestorMan').hide(); ");
+                    
+                    } else if (atv == 46){
+                                customHTML.append(" $('div#GestorMan').hide(); ");
+                            }   
+                customHTML.append(" $('div#DivComprador').hide(); ");
+                customHTML.append(" $('div#DivCompras').hide(); ");
+
+                    if (( TipoProcesso=="1" ) || ( TipoProcesso=="4" )){
+
+                customHTML.append(" $('#pnlContrato').hide(); ");
+                customHTML.append(" $('#pnlCompraDireta').hide(); ");
+                
+                     } else if ( TipoProcesso == "2" ){
+        
+                customHTML.append(" $('#pnlCompraDireta').hide(); ");
+        
+                    } else if ( TipoProcesso=="3" ){
+        
+                customHTML.append(" $('#pnlContrato').hide(); ");
+        
+                            }
+
+                customHTML.append(" }); ");
+                customHTML.append("</script>");  
+         
+
+                      var indice = form.getChildrenIndexes('dsItens');
+
+                      if (indice.length != 0) {
+                         for (var i = 0; i < indice.length; i++) {
+
+                              var iditem = "___"+indice[i];
+                                                            
+
+                                    // somente para Grupo para Compras
+                                 
+                                 if (atv == 5) {
+
+                                    form.setEnabled("comAprovado"+iditem,false);
+                                    form.setEnabled("txtJustificativa"+iditem,false);
+                                     var itemAprovado = form.getValue("comAprovado"+iditem);
+
+                                } else if (atv == 46) {
+                                    form.setEnabled("comAprovado"+iditem,false);
+                                    form.setEnabled("txtJustificativa"+iditem,false);
+                                    form.setEnabled("comAprFinanceiro"+iditem,false);
+                                    form.setEnabled("txtJustificativaFin"+iditem,false);
+                                     var itemAprovado = form.getValue("comAprFinanceiro"+iditem);
+                                } else if (atv == 96) {
+
+                                    form.setEnabled("comAprovado"+iditem,false);
+                                    form.setEnabled("txtJustificativa"+iditem,false);
+                                    form.setEnabled("comAprFinanceiro"+iditem,false);
+                                    form.setEnabled("txtJustificativaFin"+iditem,false);
+                                    form.setEnabled("comAprMantenedora"+iditem,false);
+                                    form.setEnabled("txtJustificativaMan"+iditem,false);
+                                     var itemAprovado = form.getValue("comAprMantenedora"+iditem);
+                                }
+                               
+
+                                if (itemAprovado != "R"){
+
+                                        form.setEnabled("txtcodigoPRD"+iditem,false);
+                                        form.setEnabled("txtQtdSolicitada"+iditem,false);
+                                        form.setEnabled("txtPrecoUnitario"+iditem,false);
+                                        form.setEnabled("txtQtdSolicitada"+iditem,false);
+                                        form.setEnabled("txtCodCCusto"+iditem,false);
+                                        form.setEnabled("txtHistoricoITMMOV"+iditem,false);
+                                }
+
+                  
+                            }
+                        }  
+
+                }else if (activity == 20){ // funções da etapa Analise Compras
+
+
+        // habilita só o campo que o Aprovador pode mexer
+                form.setEnabled("txtTP",false);
+                form.setEnabled("txtColigada",false);
+                form.setEnabled("txtRequisitante",false);
+                form.setEnabled("txtFilial",false);
+                form.setEnabled("txtHistoricoMOV",false);
+                form.setEnabled("txtValorFrete",false);
+                form.setEnabled("txtValorDesconto",false);
+                form.setHideDeleteButton(true);
+                
+
+                customHTML.append("<script type='text/javascript'>");
+                customHTML.append(" $(function(){ ");
+                customHTML.append(" $('#btnAprovar').hide(); ");
+                customHTML.append(" $('#btnAdicionar').hide(); ");
+                customHTML.append(" $('#btnReprovar').hide(); ");
+                customHTML.append(" $('#btnCopiarJustificativa').hide(); ");
+                customHTML.append(" $('div#GestorFin').hide(); ");                
+                customHTML.append(" $('div#divCopiar').hide(); ");
+                customHTML.append(" $('div#GestorMan').hide(); ");
+                customHTML.append(" $('div#estoque').hide(); ");
+                customHTML.append(" $('#pnlContrato').hide(); ");
+                customHTML.append(" $('#pnlCompraDireta').hide(); ");              
+                customHTML.append(" }); ");
+                customHTML.append("</script>");  
+
+                       var coligada = form.getValue('CODCOLIGADA');
+                       var filial   = form.getValue('CODFILIAL');
+                       var local    = form.getValue('CODLOC');   
+                       
+
+                        var indice = form.getChildrenIndexes('dsItens');
+
+                      if (indice.length != 0) {
+                         for (var i = 0; i < indice.length; i++) {
+
+                              var iditem = "___"+indice[i];
+
+                              var qtdCompra    = form.getValue('txtQtdCompra'+iditem);
+                              var itemAprovado = form.getValue("comAprovado"+iditem);
+
+                              if ((qtdCompra == "0") || (itemAprovado == "N")) {
+
+                                    form.setEnabled('txtComprador'+iditem,false);
+                                }
+                              
+                                form.setEnabled('txtcodigoPRD'+iditem,false);
+                                form.setEnabled('txtQtdSolicitada'+iditem,false);
+                                form.setEnabled('txtPrecoUnitario'+iditem,false);
+                                form.setEnabled('txtQtdSolicitada'+iditem,false);
+                                form.setEnabled('txtCodCCusto'+iditem,false);
+                                form.setEnabled('txtHistoricoITMMOV'+iditem,false);
+                                form.setEnabled('comAprovado'+iditem,false);
+                                form.setEnabled('txtJustificativa'+iditem,false);
+
+                               
+                            }
+                        }                       
+
+
+            }
+
+
+   form.setValue('ATIVIDADEATUAL',activity);
+
+   if ( form.getFormMode() == "VIEW" ) {
+
+    if ((TipoProcesso == "1") || (TipoProcesso == "4")) {
+
+        customHTML.append("<script type='text/javascript'>");
+        customHTML.append(" $(function(){ ");
+        customHTML.append(" $('#btnAprovar').hide(); ");
+        customHTML.append(" $('#btnAdicionar').hide(); ");
+        customHTML.append(" $('#btnReprovar').hide(); ");
+        customHTML.append(" $('#btnCopiarJustificativa').hide(); ");
+        customHTML.append(" $('#pnlContrato').hide(); ");
+        customHTML.append(" $('#pnlCompraDireta').hide(); ");
+        customHTML.append(" $('div#GestorFin').hide(); ");
+        customHTML.append(" $('div#GestorMan').hide(); ");
+        customHTML.append(" }); ");
+        customHTML.append("</script>");          
+
+        } else {
+
+        customHTML.append("<script type='text/javascript'>");
+        customHTML.append(" $(function(){ ");
+        customHTML.append(" $('#btnAprovar').hide(); ");
+        customHTML.append(" $('#btnAdicionar').hide(); ");
+        customHTML.append(" $('#btnReprovar').hide(); ");
+        customHTML.append(" $('#btnCopiarJustificativa').hide(); ");
+        customHTML.append(" }); ");
+        customHTML.append("</script>");          
+
+
+        }
+    }
+}

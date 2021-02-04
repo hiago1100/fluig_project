@@ -1,0 +1,54 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': item.ultRequisicoesCollapsed}">
+                Últimas Requisições
+            </a>
+        </h4>
+    </div>
+
+    <div class="panel-body">
+        <i ng-if="!item.UltRequisicoes || item.UltRequisicoes.length<=0">Sem Últimas Requisições</i>
+        <div class="row" ng-if="item.UltRequisicoes.length>0">
+            <div class="col-md-9">
+                <table class="table table-striped">
+                    <thead class="hidden-xs">
+                        <tr>
+                            <th>
+                                <div class="col-sm-4">Requisitante</div>
+                                <div class="col-sm-4">Data</div>
+                                <div class="col-sm-4">Qtde</div>
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="requisicao in item.UltRequisicoes">
+                            <td>
+                                <div class="col-sm-4">
+                                    <label class="visible-xs-block">Requisitante</label>
+                                    <p>{{requisicao.ultRequisicoesRequisitante}}</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="visible-xs-block">Data</label>
+                                    <p>{{requisicao.ultRequisicoesData | date}}</p>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label class="visible-xs-block">Qtde Requisitada</label>
+                                    <p>{{requisicao.ultRequisicoesQtdRequisitada | number:2}}</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-3">
+                <canvas id="doughnut" height="200" width="200" class="chart chart-doughnut" chart-options="chartOptions" chart-data="item.ultRequisicoesData" chart-labels="item.ultRequisicoesLabels">
+                </canvas>
+                <!--<canvas id="line" class="chart chart-line" chart-options="chartOptions" chart-series="item.ultRequisicoesSeries" chart-data="item.ultRequisicoesData" chart-labels="item.ultRequisicoesLabels">
+                </canvas>-->
+            </div>
+        </div>
+
+    </div>
+</div>

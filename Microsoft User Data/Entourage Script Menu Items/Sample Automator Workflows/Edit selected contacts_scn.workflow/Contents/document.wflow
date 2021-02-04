@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>87</string>
+	<key>AMApplicationVersion</key>
+	<string>1.0.4</string>
+	<key>AMDocumentVersion</key>
+	<string>1</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+						<string>com.microsoft.entourage.contact.object</string>
+						<string>com.microsoft.entourage.event.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Entourage</string>
+						<key>Resource</key>
+						<string>com.microsoft.entourage</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Get Selected Entourage Items.action</string>
+				<key>ActionName</key>
+				<string>Get Selected Entourage Items</string>
+				<key>ActionParameters</key>
+				<dict/>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Get_Selected_Entourage_Items</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>7C940298-3045-4914-BC72-5F56F4D44F11</string>
+				<key>Keywords</key>
+				<array>
+					<string>selection</string>
+					<string>pass</string>
+					<string>obtain</string>
+					<string>mail</string>
+					<string>email</string>
+					<string>contact</string>
+					<string>event</string>
+					<string>message</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>39859182-6C66-4011-BDDD-21E1C8D9AF27</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>F311A468-0042-40B9-898D-AACADE0EE742</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
+				<key>nibPath</key>
+				<string>/Library/Automator/Get Selected Entourage Items.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>1132.000000:556.666687</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.contact.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.contact.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Entourage</string>
+						<key>Resource</key>
+						<string>com.microsoft.entourage</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Set Entourage Contact Properties.action</string>
+				<key>ActionName</key>
+				<string>Set Entourage Contact Properties</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>appendValue</key>
+					<false/>
+					<key>theDateTemplate</key>
+					<date>2000-01-01T08:00:00Z</date>
+					<key>theDateValue</key>
+					<date>2007-11-20T14:08:47Z</date>
+					<key>theProperty</key>
+					<integer>0</integer>
+					<key>theValue</key>
+					<string></string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Set_Entourage_Contact_Properties</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>565E552E-DC6A-4A2A-AF54-3FCA24121E6D</string>
+				<key>Keywords</key>
+				<array>
+					<string>address book</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>B510997A-C316-409D-A46B-6E96DC724E75</string>
+				<key>ShowWhenRun</key>
+				<true/>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>990FD1CE-1417-4F77-9E5E-9EC4DB4D7C90</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>theProperty</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<date>2000-01-01T08:00:00Z</date>
+						<key>name</key>
+						<string>theDateTemplate</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>theValue</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<date>2000-01-01T08:00:00Z</date>
+						<key>name</key>
+						<string>theDateValue</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>appendValue</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Set Entourage Contact Properties.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>572.000000:510.000000</string>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>4305DDCA-71FD-4B4C-AB50-EA7EF6D7C81E</key>
+		<dict>
+			<key>from</key>
+			<string>F311A468-0042-40B9-898D-AACADE0EE742 - 39859182-6C66-4011-BDDD-21E1C8D9AF27</string>
+			<key>to</key>
+			<string>990FD1CE-1417-4F77-9E5E-9EC4DB4D7C90 - 565E552E-DC6A-4A2A-AF54-3FCA24121E6D</string>
+		</dict>
+	</dict>
+	<key>state</key>
+	<dict>
+		<key>actionsSplitView</key>
+		<real>175</real>
+		<key>layoutFrame</key>
+		<string>{{0, 0}, {536, 811}}</string>
+		<key>layoutScrollPosition</key>
+		<string>{{0, 0}, {536, 811}}</string>
+		<key>mainSplitView</key>
+		<real>426</real>
+		<key>minorSplitView</key>
+		<real>553</real>
+		<key>windowFrame</key>
+		<string>{{251, 202}, {992, 939}}</string>
+	</dict>
+</dict>
+</plist>

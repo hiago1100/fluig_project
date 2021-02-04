@@ -1,0 +1,801 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>i18n.translate("title.solicitacaoDePagamentoGuiasTaxasBoletos")</title>
+	<link type="text/css" rel="stylesheet" href="fluig-style-guide.custom.min.css" />
+	<!-- <link type="text/css" rel="stylesheet" href="http://style.fluig.com/css/fluig-style-guide.min.css"/> -->
+	<link type="text/css" rel="stylesheet" href="solicitacaoDePagamentoGuiasTaxasBoletos.css" media="screen" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" />
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="mustache.js"></script>
+	<script type="text/javascript" src="solicitacaoDePagamentoGuiasTaxasBoletos.js"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<!--<script type="text/javascript" src="http://style.fluig.com/js/fluig-style-guide.min.js" charset="utf-8"></script> -->
+   	<script type="text/javascript" src="util_dataSet_1-5-0.js"></script>
+	<script type="text/javascript" src="mascaraMonetaria.js"></script> 
+	 <script type="text/javascript" src="jquery.mask.min.js"></script>
+	<script type="text/javascript" src="jquery.maskMoney.js"></script>
+	<script type="text/javascript" src="jquery.csv.min.js"></script>
+	<script type="text/javascript" src="util_validate_cpf_1-0-0.js"></script>
+	<script type="text/javascript" src="util_validate_cnpj_1-0-0.js"></script>
+	<script type="text/javascript" src="LoadCSV.js"></script> 
+	<!-- Importação da pesquisa de satisfação -->
+	<script type="text/javascript" src="/widget_pesquisa_satisfacao/resources/js/initPesquisaDeSatisfacao.js"></script>
+	<script type="text/javascript" src="/widget_sla/resources/js/class/ScriptGetSla.js"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+			<form name="solicnotafiscal"  method="post" action="" enctype="multipart/form-data">
+				<!-- Campos Analytics  -->
+				<input type="hidden" id="analyticsTpSolicitacao" name="analyticsTpSolicitacao" value="" />
+				<input type="hidden" id="analyticsDtInicio" name="analyticsDtInicio" value="" />
+				<input type="hidden" id="analyticsHrInicio" name="analyticsHrInicio" value="" />
+				<input type="hidden" id="analyticsDtPrazo" name="analyticsDtPrazo" value="" />
+				<input type="hidden" id="analyticsHrPrazo" name="analyticsHrPrazo" value="" />
+				<input type="hidden" id="analyticsDtFim" name="analyticsDtFim" value="" />
+				<input type="hidden" id="analyticsHrFim" name="analyticsHrFim" value="" />
+				<input type="hidden" id="analyticsNmFilial" name="analyticsNmFilial" value="" />
+				<input type="hidden" id="analyticsNmResponsavelSLA" name="analyticsNmResponsavelSLA" value="" />
+				<input type="hidden" id="analyticsPrazoSLA" name="analyticsPrazoSLA" value="" />
+				<input type="hidden" id="analyticsMedidaPrazoSLA" name="analyticsMedidaPrazoSLA" value="" />
+				<input type="hidden" id="nrReprovacoes" name="nrReprovacoes" />
+				<input type="hidden" id="cdSolicitante" name="cdSolicitante" />
+				<input type="hidden" id="gestorResponsavel" name="gestorResponsavel" value="" />
+				<input type="hidden" id="compraExterior" name="compraExterior" value="" />
+				<input type="hidden" id="codSolicitacao" name="codSolicitacao" value="" />
+				<input type="hidden" id="viaWebService" name="viaWebService" value="false">
+				<input type="hidden" id="idContaGuiando" name="idContaGuiando" value="" />
+				<input type="hidden" id="matriculaResponsavel" name="matriculaResponsavel" value="" />
+				<!-- Campo utilizado para filtro de data de vencimento no pool -->
+				<input type="hidden" name="filtroDataVencimento" id="filtroDataVencimento">
+				<!-- Campo Identificador -->
+				<input type="hidden" name="campoIdentificador" value="" />
+		
+				<fieldset class="solucao">
+					<legend>i18n.translate("label.solucao")</legend>
+					<div class="row">	
+						<div class="col-md-8">
+							<label>
+								i18n.translate("label.aceite")
+								<em class="required">*</em>
+							</label>
+							<span id="rbAceiteSim">
+								<input type="radio" name="aceite" id="aceiteSim" value="S" />
+								i18n.translate("label.aceite.sim")
+							</span>
+							<span id="rbAceiteNao">
+								<input type="radio" name="aceite" id="aceiteSim" value="N" />
+								i18n.translate("label.aceite.nao")
+							</span>
+						</div>
+						<div class="col-md-4 divBtnPesquisa" id="divBtnPesquisa">
+							<button type="button" name="iniciarPesquisa" id="iniciarPesquisa" data-loading-text="Loading..." class="btn btn-primary">
+							Responder Pesquisa de Satisfação
+							</button>
+						</div>
+						<div class="col-md-12">
+							<div class="col-md-4">
+								<label id="aprovDataPrevistaSolici2" name="aprovDataPrevistaSolici2" for="aprovDataPrevistaSolici">
+									i18n.translate("label.aprovDataPrevista")
+								</label>
+								<input type="text" id="aprovDataPrevistaSolici" name="aprovDataPrevistaSolici" class="form-control dtDeVencPgtoGuiaTaxaBoletos" readonly="readonly"/>
+							</div>
+						</div>
+						<div class="col-md-12 complementoSolicitante">
+							<label>
+								i18n.translate("label.complemento.solicitante")
+								<em class="reqCompSolicitente required">*</em>
+							</label>
+							<input type="text" name="compSolicitante" class="form-control" />
+						</div>
+						<div class="col-md-12 complementoAnalista">
+							<label>
+								i18n.translate("label.complemento.analista")
+								<em class="reqRetorno required">*</em>
+							</label>
+							<textarea id="retorno" name="retorno" class="form-control" rows="6"></textarea>
+						</div>
+					</div>
+				</fieldset>
+	
+				<fieldset>
+					<legend>i18n.translate("fieldset.informacoes")</legend>
+					<div class="row">
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.solicitante")
+								<em class="required">*</em>
+							</label>
+							<input class="form-control" type="text" name="solicitante" />
+						</div>
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.data")
+								<em class="required">*</em>
+							</label>
+							<input  class="form-control" type="text" name="dataSolicitante" />
+						</div>
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.filial")
+								<em class="required">*</em>
+							</label>
+							<div class="input-group">
+								<input type="hidden" id="codigo" name="codigo" readonly="readonly" />
+								<input type="text"   id="filial" name="filial" readonly="readonly"  class="form-control"/>
+								<span class="btn btn-default fluigicon fluigicon-search fluigicon-xs buttonCrud input-group-addon" name="btZoomFilial" id="btZoomFilial" style="top: 0; bottom: 0;"></span>
+							    <input type="hidden" id="codigo_filial" name="codigo_filial"/>						
+						        <input type="hidden" id="filial_protheus" name="filial_protheus"/>
+		   	                    <input type="hidden" id="hiddenFilial" name="hiddenFilial"/>
+							</div>
+						</div>
+		
+						<div>
+							<div class="col-md-6">
+								<label>
+									i18n.translate("label.centroCusto")
+									<em class="required">*</em>
+								</label>
+								<input type="hidden" id="codigoCentroCustos" name="CTT_CUSTO" class="CTT_CUSTO" readonly="readonly" value="" />
+								<div class="input-group">
+									<input type="hidden" id="CTT_DESC01" name="CTT_DESC01" class="CTT_DESC01" value="" readonly="readonly" />
+									<input type="text" id="campoConcatenado" name="campoConcatenado" class="campoConcatenado form-control" value="" readonly="readonly" />
+									<span class="btn btn-default fluigicon fluigicon-search fluigicon-xs buttonCrud input-group-addon" name="CENTRO_CUSTO_FILIAL_V2" id="CTT_CUSTO_ZOOM" style="top: 0; bottom: 0;"></span>
+								</div>
+							</div>
+		
+							<div class="col-md-6">
+								<label>
+									<em class="required"></em>
+								</label>
+								<div class="pagamentoEmergencial">
+									<input name="pagamentoEmergencial" id="pagamentoEmergencial" type="checkbox" value="pagamentoEmergencial" />
+									<label>i18n.translate("label.pagamentoEmergencial")</label>
+								</div>
+								<input type="hidden" name="pagamentoEmergencialHidden" id="pagamentoEmergencialHidden" />
+							</div>
+						</div>
+					</div>	
+				</fieldset>
+				
+				<fieldset>
+					<legend>i18n.translate("label.infoTitulo")</legend>
+					<div class="row">
+						<div class="col-md-4 numeroDocumento">
+							<label>
+								i18n.translate("label.numDoc")
+								<em class="required">*</em>
+							</label>
+							<input type="text" id="numeroDocumento" name="numeroDocumento" class="form-control" readonly/>
+						</div>
+						<div class="col-md-4">
+							<label>
+								i18n.translate("label.tipoLancamento")
+								<em class="required">*</em>
+							</label>
+							<div class="input-group">
+								<input type="hidden" id="tblFilho" name="tblFilho" value="" />
+								<input type="hidden" id="codTipolancamento" name="codTipolancamento" value="" />
+								<input type="text" class="form-control" id="zoomTipolancamento" name="zoomTipolancamento" readonly="readonly" />
+								<span class="btn btn-default fluigicon fluigicon-search fluigicon-xs buttonCrud input-group-addon" name="btnZoomTipolancamento" id="btnZoomTipolancamento" style="top: 0; bottom: 0;"></span>
+							</div>
+						</div>
+						<div class="col-md-4 cbGeraDirf">
+							<label>
+								i18n.translate("label.geraDirf")
+								<em class="required">*</em>
+							</label>
+							<select class="form-control" name="cbGeraDirf" id="cbGeraDirf">
+						         <option value="">---</option>
+						       	 <option value="S">i18n.translate("label.aceite.sim")</option>
+						         <option value="N">i18n.translate("label.aceite.nao")</option>
+				     		</select>					
+						</div>
+						<div class="col-md-4 zoomCodRetencao">
+							<label>
+								i18n.translate("label.codRetencao")
+								<em class="required">*</em>
+							</label>
+								<input type="text" class="form-control" id="zoomCodRetencao" name="zoomCodRetencao" readonly="readonly" />
+						</div>
+						<div class="col-md-4">
+							<label>
+								i18n.translate("label.tipo")
+								<em class="required">*</em>
+							</label>
+							<input type="text" class="form-control" id="zoomTipo" name="zoomTipo" readonly="readonly" />
+						</div>
+						<div class="col-md-4 tipoTributo" readonly>
+							<label>
+								i18n.translate("label.tipoTributo")
+								<em class="required">*</em>
+							</label>
+							<input type="text" id="tipoTributo" name="tipoTributo" class="form-control" readonly />
+						</div>
+						<div class="col-md-4 tipoNatureza">
+							<label>
+								i18n.translate("label.natureza")
+								<em class="required">*</em>
+							</label>
+								<input type="text" class="form-control" id="zoomNatureza" name="zoomNatureza" readonly="readonly" />
+						</div>
+						<div class="col-md-4 codTributoGPS">
+							<label>
+								i18n.translate("label.codTributoGPS")
+								<em class="required">*</em>
+							</label>
+							<input type="text" id="codTributoGPS" name="codTributoGPS" class="form-control" readonly="readonly" />
+						</div>
+						<div class="col-md-4 dataApuracao">
+							<label>
+								i18n.translate("label.dataApuracao")
+								<em class="required">*</em>
+							</label>
+							<input type="text" id="dataApuracao" name="dataApuracao" class="form-control" readonly="readonly" />
+						</div>
+						<div class="col-md-4 cgcTributo">
+							<label>
+								i18n.translate("label.cgcTributo")
+								<em class="required">*</em>
+							</label>
+							<input type="text" id="cgcTributo" name="cgcTributo" class="form-control"/>
+						</div>
+						<div class="col-md-4">
+							<label>
+								i18n.translate("label.historico")
+								<em class="required">*</em>
+							</label>
+							<input type="text" id="historico" name="historico" class="form-control"/>
+						</div>
+						<div class="col-md-4 vlrOutEntidades">
+							<label>
+								i18n.translate("label.vlrOutEntidades")
+							</label>
+							<input type="text" id="vlrOutEntidades" name="vlrOutEntidades" class="form-control" value="0"/>
+						</div>
+						<div class="col-md-4 hidden" id="divMoeda" class="divMoeda">
+							<label for="compraInternacional" class="control-label">
+								i18n.translate("label.moeda")
+							</label>
+							<select class="form-control" id="sMoeda" name="sMoeda">
+								<option value="">---</option>
+								<option value="1">Real</option>
+								<option value="2">Dolar</option>
+								<option value="3">Euro</option>
+								<option value="4">UFIR</option>
+								<option value="5">IENE</option>
+							</select>
+						</div>
+						<div class="col-md-4 checkboxRateio">
+							<div class="input-group">
+								<input name="existeRateio" id="existeRateio" type="checkbox" class='marginLabel' value="true"/>
+								<label>Existe Rateio?</label>
+							</div>
+						</div>
+						<div class="col-md-4 divImportBeneficio">
+							<div class="input-group">
+								<div class="containerFile">
+									<input type="file" class="btn btn-primary btn-sm" id="btnImportCsv"   name="btnImportCsv" title="Importar CSV"  accept=".csv"/>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12 divPaiFilhoBeneficio" id="table-wrapper-beneficio">
+							<div class="table-responsive" id="table-scroll-beneficio">
+								<table tablename="tbBeneficios" customFnDelete='removeRowBeneficio(this)'  name="tbBeneficios" noaddbutton='true' id='tbBeneficios' class="table table-striped table-bordered">
+									<thead> 
+										<tr>
+											<td>
+												<label>i18n.translate("label.centroCusto")<em class="required">*</em></label>
+											</td>
+											<td>
+												<label>i18n.translate("label.valorMovimento")<em class="required">*</em></label>
+											</td>
+											<td>
+												<label>i18n.translate("label.percentualDistribuicao")<em class="required">*</em></label>
+											</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<div class="input-group">
+													<input type="hidden" id="codCentroCustoBeneficio" name="codCentroCustoBeneficio" class=""/>
+													<input type="text" id="centroCustoBeneficio" name="centroCustoBeneficio" class="campoConcatenado form-control" value="" readonly="readonly" />
+													<span class="btn btn-default fluigicon fluigicon-search fluigicon-xs buttonCrud input-group-addon" name="CENTRO_CUSTO_BENEFICIO" id="CENTRO_CUSTO_BENEFICIO" style="top: 0; bottom: 0;"></span>
+												</div>
+											</td>
+											<td>
+												<input type="text" id="valorBeneficio" name="valorBeneficio" class="form-control valorBeneficio"/>
+											</td>
+											<td>
+												<input type="text" id="percentualBeneficio" name="percentualBeneficio" class="form-control"/>
+											</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td>
+												
+											</td>
+											<td>
+												<label>Totais:</label>
+											</td>
+											<td>
+												<input type="text" id="somatorioValorBeneficio" name="somatorioValorBeneficio" class="form-control readonly" readonly/>
+											</td>
+											<td>
+												<input type="text" id="totalPercentual" name="totalPercentual" class="form-control readonly"readonly/>
+											</td>
+										</tr>
+									</tfoot>
+								</table>
+							
+							<!-- <input type="hidden" id="somatorioValorBeneficio" name="somatorioValorBeneficio" value="0.00"/> -->	
+							</div>
+					</div>
+				</fieldset>
+		
+				<fieldset class="fornecedor">
+					<legend>i18n.translate("label.dadosFornecedor")</legend>
+					<div class="row">
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.fornecedor")
+								<em class="required">*</em>
+							</label>
+							<div class="input-group">
+								<input type="hidden" id="fornecedorVinculado" name="fornecedorVinculado" value="false" />
+								<input type="hidden" id="lojaFornecedor" name="lojaFornecedor" value="" />
+								<input type="hidden" id="A2_COD" name="A2_COD" value="" />
+								<input type="text" class="form-control" id="FORNECEDOR_BANCO_DESC" name="FORNECEDOR_BANCO_DESC" readonly="readonly" />
+								<span class="btn btn-default fluigicon fluigicon-search fluigicon-xs buttonCrud input-group-addon" id="FORNECEDOR_ZOOM" name="FORNECEDOR_ZOOM" style="top: 0; bottom: 0;"></span>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.CPFCNPJ")
+								<em class="required">*</em>
+							</label>
+							<input class="form-control" type="text" id="cnpjFornecedor" name="cnpjFornecedor" readonly="readonly" />
+						</div>
+					</div>
+				</fieldset>
+	
+				<fieldset class="pgtoGuiaTaxaBoletos">
+					<legend>i18n.translate("label.infoDocumentoAnexo")</legend>
+					<div class="row">
+						<div class="row">
+							<div class="col-md-4" style="display:none">
+								<label>i18n.translate("label.numeroSolicLancamentoNf")</label>
+								<input class="form-control bs-docs-popover-scroll" type="hidden" name="numSolLancNfPgtoGuiaTxBoletos" mask="00000000000000000000000000000" maxlength="50" />
+								<span class="help-block">i18n.translate("label.obsNumeroSolicLancamentoNf")</span>
+							</div>
+							<div class="col-md-4" style="display:none">
+								<label>i18n.translate("label.NumerodaNota")</label>
+								<input class="form-control" type="hidden" name="numeronfPgtoGuiaTaxaBoletos" mask="00000000000000000000000000000" />
+							</div>
+							<div class="col-md-4">
+								<label>
+									i18n.translate("label.Valor")
+									<em class="required">*</em>
+								</label>
+								<input type="text" id="valorPgtoGuiaTaxaBoletos" name="valorPgtoGuiaTaxaBoletos" class="form-control valorPgtoGuiaTaxaBoletos" maxlength="18" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>
+									i18n.translate("label.dataDeVencimento")
+									<em class="required">*</em>
+								</label>
+								<input type="text" id="dtDeVencPgtoGuiaTaxaBoletos" name="dtDeVencPgtoGuiaTaxaBoletos" class="form-control dtDeVencPgtoGuiaTaxaBoletos" readonly="readonly" />
+							</div>
+							<div class="col-md-4 dataPagamento">
+								<label>
+									i18n.translate("label.dataDePagamento")
+									<em class="required">*</em>
+								</label>
+								<input type="text" id="dtDePgtoGuiaTaxaBoletos" name="dtDePgtoGuiaTaxaBoletos" class="form-control dtDeVencPgtoGuiaTaxaBoletos" readonly="readonly" />
+							</div>
+								
+							<div class="col-md-4 dataEmissao">
+								<label>
+									i18n.translate("label.dataDeEmissao")
+									<em class="required">*</em>
+								</label>
+								<input type="text" id="dataemissaoPgtoGuiaTaxaBoletos" name="dataemissaoPgtoGuiaTaxaBoletos" class="form-control dataemissaoPgtoGuiaTaxaBoletos" readonly="readonly" />
+							</div>
+						</div>
+						<input type="hidden" name="hiddenDataVencimento" />
+					</div>
+				</fieldset>
+	
+				<div class="aprovacaoGestor">
+					<fieldset>
+					<legend>i18n.translate("label.aprovadorGestor")</legend>
+						<div class="row">
+							<div class="col-md-6">
+								<label>
+									i18n.translate("label.nome")
+									<em class="required">*</em>
+								</label>
+								<input class="form-control" type="text" name="nomeAprovGestor" readonly="readonly" />
+							</div>
+							<div class="col-md-6">
+								<label>
+									i18n.translate("label.data")
+									<em class="required">*</em>
+								</label>
+								<input class="form-control" type="text" name="aprovDataGestor" readonly="readonly" />
+							</div>
+							<div class="col-md-12 margin-label">
+								<label>
+									i18n.translate("label.decisao")
+									<em class="required">*</em>
+								</label>
+								<input type="radio" name="decisaoGestor" value="Sim" />
+								i18n.translate("label.decisaoSim")
+								<input type="radio" name="decisaoGestor" value="Nao" />
+								i18n.translate("label.decisaoNao")
+							</div>
+							<div class="col-md-12 clear motivoGestor">
+								<label>
+									i18n.translate("label.motivo")
+								</label>
+								<textarea class="form-control" name="motivoAprovGestor" id="motivoAprovGestor"></textarea>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+				
+		
+				
+			<input type="hidden" class="form-control" name="proximoAprovador" id="proximoAprovador" readonly="readonly"/>
+			<input type="hidden" class="form-control" name="flagAprovacao" id="flagAprovacao" readonly="readonly"/>
+			<input type="hidden" class="form-control" name="nivelAtualAprovacao" id="nivelAtualAprovacao" readonly="readonly"/>
+			<input type="hidden" class="form-control" name="nivelMaximoAprovacao" id="nivelMaximoAprovacao" readonly="readonly"/>
+
+			<fieldset id="avaliacaoGestor1">
+				<legend>Avaliação do Gestor - 1ª Alçada</legend>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nomeAprovGestor1">Aprovador:</label>
+						<div class="form-group">
+							<input type="hidden" class="form-control" name="idAprovGestor1" id="idAprovGestor1" readonly="readonly"/>
+							<input type="text" class="form-control" name="nomeAprovGestor1" id="nomeAprovGestor1" readonly="readonly"/>
+						</div>
+					</div>
+			
+					<div class="col-md-6">
+						<label for="dataAprovGestor1">Data da Aprovação:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="dataAprovGestor1" id="dataAprovGestor1" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="decisaoGestor1">Decisão:</label>
+						<div class="input-group">
+							<input type="radio" name="decisaoGestor1" id="decisaoGestor1Apro" value="Sim">Aprovar
+							<input type="radio" name="decisaoGestor1" id="decisaoGestor1Repro" value="Nao"> Reprovar
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<label for="motivoAprovGestor1">Motivo:</label>
+						<div class="form-group">
+							<textarea class="form-control" name="motivoAprovGestor1" id="motivoAprovGestor1"></textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			
+			<fieldset id="avaliacaoGestor2">
+				<legend>Avaliação do Gestor - 2ª Alçada</legend>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nomeAprovGestor2">Aprovador:</label>
+						<div class="form-group">
+							<input type="hidden" class="form-control" name="idAprovGestor2" id="idAprovGestor2" readonly="readonly"/>
+							<input type="text" class="form-control" name="nomeAprovGestor2" id="nomeAprovGestor2" readonly="readonly"/>
+						</div>
+					</div>
+			
+					<div class="col-md-6">
+						<label for="dataAprovGestor2">Data da Aprovação:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="dataAprovGestor2" id="dataAprovGestor2" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="decisaoGestor2">Decisão:</label>
+						<div class="input-group">
+							<input type="radio" name="decisaoGestor2" id="decisaoGestor2Apro" value="Sim">Aprovar
+							<input type="radio" name="decisaoGestor2" id="decisaoGestor2Repro" value="Nao"> Reprovar
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<label for="motivoAprovGestor2">Motivo:</label>
+						<div class="form-group">
+							<textarea class="form-control" name="motivoAprovGestor2" id="motivoAprovGestor2"></textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			
+			<fieldset id="avaliacaoGestor3">
+				<legend>Avaliação do Gestor - 3ª Alçada</legend>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nomeAprovGestor3">Aprovador:</label>
+						<div class="form-group">
+							<input type="hidden" class="form-control" name="idAprovGestor3" id="idAprovGestor3" readonly="readonly"/>
+							<input type="text" class="form-control" name="nomeAprovGestor3" id="nomeAprovGestor3" readonly="readonly"/>
+						</div>
+					</div>
+			
+					<div class="col-md-6">
+						<label for="dataAprovGestor3">Data da Aprovação:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="dataAprovGestor3" id="dataAprovGestor3" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="decisaoGestor3">Decisão:</label>
+						<div class="input-group">
+							<input type="radio" name="decisaoGestor3" id="decisaoGestor3Apro" value="Sim">Aprovar
+							<input type="radio" name="decisaoGestor3" id="decisaoGestor3Repro" value="Nao"> Reprovar
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<label for="motivoAprovGestor3">Motivo:</label>
+						<div class="form-group">
+							<textarea class="form-control" name="motivoAprovGestor3" id="motivoAprovGestor3"></textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			
+			<fieldset id="avaliacaoGestor4">
+				<legend>Avaliação do Gestor - 4ª Alçada</legend>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nomeAprovGestor4">Aprovador:</label>
+						<div class="form-group">
+							<input type="hidden" class="form-control" name="idAprovGestor4" id="idAprovGestor4" readonly="readonly"/>
+							<input type="text" class="form-control" name="nomeAprovGestor4" id="nomeAprovGestor4" readonly="readonly"/>
+						</div>
+					</div>
+			
+					<div class="col-md-6">
+						<label for="dataAprovGestor4">Data da Aprovação:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="dataAprovGestor4" id="dataAprovGestor4" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="decisaoGestor4">Decisão:</label>
+						<div class="input-group">
+							<input type="radio" name="decisaoGestor4" id="decisaoGestor4Apro" value="Sim">Aprovar
+							<input type="radio" name="decisaoGestor4" id="decisaoGestor4Repro" value="Nao"> Reprovar
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<label for="motivoAprovGestor4">Motivo:</label>
+						<div class="form-group">
+							<textarea class="form-control" name="motivoAprovGestor4" id="motivoAprovGestor4"></textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			
+			<fieldset id="avaliacaoGestor5">
+				<legend>Avaliação do Gestor - 5ª Alçada</legend>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="nomeAprovGestor5">Aprovador:</label>
+						<div class="form-group">
+							<input type="hidden" class="form-control" name="idAprovGestor5" id="idAprovGestor5" readonly="readonly"/>
+							<input type="text" class="form-control" name="nomeAprovGestor5" id="nomeAprovGestor5" readonly="readonly"/>
+						</div>
+					</div>
+			
+					<div class="col-md-6">
+						<label for="dataAprovGestor5">Data da Aprovação:</label>
+						<div class="form-group">
+							<input type="text" class="form-control" name="dataAprovGestor5" id="dataAprovGestor5" readonly="readonly"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<label for="decisaoGestor5">Decisão:</label>
+						<div class="input-group">
+							<input type="radio" name="decisaoGestor5" id="decisaoGestor5Apro" value="Sim">Aprovar
+							<input type="radio" name="decisaoGestor5" id="decisaoGestor5Repro" value="Nao"> Reprovar
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+					<div class="col-md-12">
+						<label for="motivoAprovGestor5">Motivo:</label>
+						<div class="form-group">
+							<textarea class="form-control" name="motivoAprovGestor5" id="motivoAprovGestor5"></textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+				
+				
+				<div class="aprovacaoFiscal">
+					<fieldset>
+					<legend>i18n.translate("label.aprovadorFiscal")</legend>
+					<div class="row">
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.nome")
+								<em class="required">*</em>
+							</label>
+							<input class="form-control" type="text" name="nomeAprovFiscal" id="nomeAprovFiscal" readonly="readonly" />
+						</div>
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.data")
+								<em class="required">*</em>
+							</label>
+							<input class="form-control" type="text" name="aprovDataFiscal" id="aprovDataFiscal" readonly="readonly" />
+						</div>
+						<div class="col-md-12 margin-label">
+							<label>
+								i18n.translate("label.decisao")
+								<em class="required">*</em>
+							</label>
+							<input type="radio" name="decisaoFiscal" value="Sim" />
+							i18n.translate("label.decisaoSim")
+							<input type="radio" name="decisaoFiscal" value="Nao" />
+							i18n.translate("label.decisaoNao")
+						</div>
+						<div class="col-md-12 clear motivoFiscal">
+							<label>
+								i18n.translate("label.motivo")
+								<em class="required">*</em>
+							</label>
+							<textarea class="form-control" name="motivoAprovFiscal" id="motivoAprovFiscal" class="travaAprovadorFiscal"></textarea>
+						</div>
+						<input type="hidden" name="aprovacaoFiscal_Hidden" />
+					</div>
+					</fieldset>
+					<input type="hidden" name="ultimoAprovador_AtividadeId" />
+				</div>
+	
+				<div class="validacaoFiscal">
+					<fieldset>
+					<legend>i18n.translate("label.validacaoFiscal")</legend>
+					<div class="row">
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.nome")
+								<em class="required">*</em>
+							</label>
+							<input class="form-control" type="text" name="nomeValidacaoFiscal" id="nomeValidacaoFiscal" readonly="readonly" />
+						</div>
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.data")
+								<em class="required">*</em>
+							</label>
+							<input class="form-control" type="text" name="dataValidacaoFiscal" id="dataValidacaoFiscal" readonly="readonly" />
+						</div>
+						<div class="col-md-12 margin-label">
+							<label>
+								i18n.translate("label.decisao")
+								<em class="required">*</em>
+							</label>
+							<input type="radio" name="decisaoValidacaoFiscal" value="Sim" />
+							i18n.translate("label.decisaoSim")
+							<input type="radio" name="decisaoValidacaoFiscal" value="Nao" />
+							i18n.translate("label.decisaoNao")
+						</div>
+						<input type="hidden" name="ValidacaoFiscal_Hidden" />
+						<div class="col-md-12 clear motivoValidacaoFiscal">
+							<label>
+								i18n.translate("label.motivo")
+							</label>
+							<textarea class="form-control" name="motValidacaoFiscal"></textarea>
+						</div>
+					</div>
+					</fieldset>
+				</div>
+				<div>
+					<fieldset class="aprovacaoFinanc">
+					<legend>i18n.translate("label.aprovacaoFinanc")</legend>
+					<div class="row">
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.nome")
+								<em class="required">*</em>
+							</label>
+							<input class="form-control" type="text" name="nomeAprovacaoFinanc" id="nomeAprovacaoFinanc" readonly="readonly" />
+						</div>
+						<div class="col-md-6">
+							<label>
+								i18n.translate("label.data")
+								<em class="required">*</em>
+							</label>
+							<input class="form-control" type="text" name="dataAprovacaoFinanc" id="dataAprovacaoFinanc" readonly="readonly" />
+						</div>
+						<div class="col-md-12 margin-label">
+							<label>
+								i18n.translate("label.decisao")
+								<em class="required">*</em>
+							</label>
+							<input type="radio" name="decisaoAprovacaoFinanc" value="Sim" />
+							i18n.translate("label.decisaoSim")
+							<input type="radio" name="decisaoAprovacaoFinanc" value="Nao" />
+							i18n.translate("label.decisaoNao")
+						</div>
+						<input type="hidden" name="AprovacaoFinanc_Hidden" />
+						<div class="col-md-12 clear motivoAprovacaoFinanc">
+							<label>
+								i18n.translate("label.motivo")
+							</label>
+							<textarea class="form-control" name="motAprovacaoFinanc"></textarea>
+						</div>
+						<div class="row">
+						<div class="col-md-4">
+								<label>
+									i18n.translate("label.aprovDataPrevista")
+									<em class="required">*</em>
+								</label>
+								<input type="text" id="aprovDataPrevista" name="aprovDataPrevista" class="form-control" readonly/>
+							</div>							
+						</div>
+					</div>
+					</fieldset>
+				</div>
+				<div>
+					<input type="hidden" name="SLA43" />
+					<input type="hidden" name="SLA9" />
+					<input type="hidden" name="SLA12" />
+					<input type="hidden" name="SLA11" />
+					<input type="hidden" name="SLA13" />
+					<input type="hidden" name="SLA15" />
+					<input type="hidden" name="SLA16" />
+				</div>
+			</form>
+		</div>
+	</div><!-- fim Fluig-Style-Guide -->
+</body>
+</html>

@@ -1,0 +1,42 @@
+<div class="panel panel-default" ng-if="documento.Pedidos.length>0">
+    <div class="panel-heading fs-cursor-pointer" ng-click="pedidosCollapsed=!pedidosCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': pedidosCollapsed}">
+                Pedidos Relacionados
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': pedidosCollapsed}">
+        <div class="panel-body">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-info" ng-repeat="pedido in documento.Pedidos">
+                    <div class="panel-heading fs-cursor-pointer" ng-click="pedido.collapsed=!pedido.collapsed">
+                        <a class="collapse-icon" ng-class="{'up': pedido.collapsed}">
+                            <!--data-toggle="collapse" data-parent="#accordion" href="#collapsePedido{{pedido.pedidoSeq}}"-->
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <b>Número:</b> {{pedido.pedidoNumero || 'Não informado'}}
+                                </div>
+                                <div class="col-sm-6">
+                                    <b>Nota: </b> {{pedido.pedidoNumeroNota || 'Não informada' }}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapsePedido{{pedido.pedidoSeq}}" ng-class="{'in': pedido.collapsed}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion{{pedido.pedidoSeq}}">
+                                <div ng-if="pedido.pedidoCodDoctoTemplate && pedido.collapsed">
+                                    <adf-documento tipo-documento="DoctoPedido" cod-docto-template="pedido.pedidoCodDoctoTemplate" type="detalhe"></adf-documento>
+                                </div>
+                                <div ng-if="!pedido.pedidoCodDoctoTemplate">
+                                    <i>Detalhes do pedido não disponíveis</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

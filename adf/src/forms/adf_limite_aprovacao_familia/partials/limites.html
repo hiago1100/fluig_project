@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Limites</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-offset-1 col-sm-10">
+                <table class="table table-condensed table-striped" tablename="limites" noaddbutton="true" nodeletebutton="true">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th class="col-sm-8">Usuário</th>
+                            <th class="col-sm-4">Limite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span ng-if="vm.Params.edit" ng-click="vm.removeLimite($event)" class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+                            </td>
+                            <td ng-child="vm.Formulario.limiteUsuario" id="limiteUsuario">
+                                <input type="text" class="form-control" name="limiteUsuario_input" ng-model="vm.Formulario.limiteUsuario" ng-child-tags='{"fluig-autocomplete":""}'
+                                    values="vm.Usuarios" display-key="colleagueName">
+                                <textarea hidden ng-value="vm.Formulario.limiteUsuario | json:0" ng-bind="vm.Formulario.limiteUsuario | json:0" name="limiteUsuario"></textarea>
+                                <input type="hidden" name="limiteCodUsuario" ng-value="vm.Formulario.limiteUsuario.colleagueId">
+                            </td>
+                            <td ng-child="vm.Formulario.limiteValorLimite" id="limiteValorLimite">
+                                <input type="text" ng-child-tags='{"fluig-money-mask":""}' class="form-control" name="limiteValorLimite_input" ng-model="vm.Formulario.limiteValorLimite">
+                                <input type="hidden" class="form-control" name="limiteValorLimite" ng-value="vm.Formulario.limiteValorLimite">
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <button ng-if="vm.Params.edit" type="button" class="btn btn-lg btn-default" ng-click="vm.adicionaLimite()">Incluir Limite</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,168 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		 crossorigin="anonymous">
+		<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="jquery.mask.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	</head>
+
+	<body>
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+
+				<div class="panel panel-default" id="div_dadosSolicitacao">
+					<div class="panel-body">
+
+						<div class="col-md-12 title">
+							<img src="img\logo450x95.fw.png" class="imagen">&nbsp;
+							<h1>
+								<b><span class="fluigicon fluigicon-process fluigicon-md"></span>Solicitação de Compra</b>
+							</h1>
+							<br>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-4 col-xs-12">
+								<label>Solicitante:</label>
+								<input type="text" name="cpSolicitante" id="cpSolicitante" class="form-control" readonly="">
+								<input type="text" name="cpEmailSolicitante" id="cpEmailSolicitante" class="form-control" readonly="" style="display: none">
+							</div>
+
+							<div class="col-md-2 col-xs-12">
+								<label>Filial:</label>
+								<input type="text" class="form-control" id="cpFilial" name="cpFilial" class="form-control" readonly="" />
+							</div>
+
+							<div class="col-md-3 col-xs-12">
+								<label>Número Pedido:</label>
+								<input type="text" class="form-control" id="numPedido" name="numPedido" class="form-control" readonly="" />
+							</div>
+
+							<div class="col-md-3 col-xs-12">
+								<label>Cod.Fornecedor</label>
+								<input type="text" name="codFornecedor" id="codFornecedor" class="form-control" readonly="">
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-2 col-xs-12">
+								<label>Emissão</label>
+								<input type="text" name="cpEmissao" id="cpEmissao" class="form-control" readonly="">
+							</div>
+
+							<div class="col-md-2 col-xs-212">
+								<label>Loja:</label>
+								<input type="text" name="cpLoja" id="cpLoja" class="form-control" readonly="">
+							</div>
+						
+							<div class="col-md-2 col-xs-12">
+								<label>Centro de Custo</label>
+								<input type="text" name="cpCodCusto" id="cpCodCusto" class="form-control" readonly="" style="display: none">
+								<input type="text" name="cpNomeCusto" id="cpNomeCusto" class="form-control" readonly="">
+							</div>
+
+							<div class="col-md-4 col-xs-12">
+								<label>Razão Social:</label>
+								<input type="text" name="cpRazao" id="cpRazao" class="form-control" readonly="">
+								<input type="text" name="text" id="cpStatus" name="cpStatus" class="form-control" style="display: none">
+								<input type="text" name="inseriPedido" id="inseriPedido" style="display: none">
+								<input type="text" name="aprovadores" id="aprovadores" class="form-control" style="display: none">
+								<input type="text" name="diretor" id="diretor" style="display: none">
+							</div>
+
+							<div class="col-md-2 col-xs-12">
+								<label>Valor Total</label>
+								<div class="input-group">
+									<span class="input-group-addon">R$</span>
+									<input type="text" name="cpValor" id="cpValor" class="form-control" readonly="">
+								</div>
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-2" style="display: none;">
+								<label>N°/Solicitação Protheus</label>
+								<input type="text" name="cpNProtheus" id="cpNProtheus" class="form-control" readonly="">
+							</div>
+							<div class="col-md-2" style="display: none;">
+								<label>Data Necessidade</label>
+								<input type="text" name="cpDataNecessidade" id="cpDataNecessidade" class="form-control" readonly="">
+							</div>
+						</div>
+
+						<div class="form-group row ">
+							<div class="col-md-12 table-responsive" id="datatableProduto" name="datatableProduto">
+
+							</div>
+						</div>
+
+						<div class="col-md-12">
+							<hr style="width:100%;border:0;border-bottom:1px solid #cdcdcd;background:#fff;margin-top:5px!important;margin-bottom:10px!important;">
+						</div>
+
+						<!-- =============== Inicio Financeiro ============================================================================== -->
+
+						<!-- <div id="div_financeiro" name="div_financeiro">
+							<div class="col-md-12 ">
+								<div class="conteudo_pagina" style="text-align:center;">
+									<div class="labels_form" style="height:30px;width:100%;text-align:center;background-color:#dfe3e4;padding-top:6px;">
+										<B>FINANCEIRO</B>
+									</div>
+								</div>
+							</div>
+
+							<div class="row form-group"></div>
+							<div class="row form-group"></div>
+
+							<div class="form-field" data-type="checkbox" name="div_swtButtonFinanceiro" id="div_swtButtonFinanceiro">
+
+								<div class="form-input">
+									<input type="checkbox" class="filter-toggle" name="swtButtonFinanceiro" id="swtButtonFinanceiro" data-toggle="toggle" data-on="Valido"
+										 data-off="Invalido" data-width="180" data-size="large" data-onstyle="success" data-offstyle="danger" onchange="mostraJustificativaFinanceiro()">
+										<br>
+										<input type="text" name="aux_financeiro" id="aux_financeiro" style="display: none" value="reprovado">
+									</div>
+
+
+									<div class="col-md-3">
+										<label>Em:</label>
+										<input type="text" name="dtValida" id="dtValida" class="form-control" readonly="">
+									</div>
+									<div class="col-md-3 col-md-offset-1">
+										<label>Por:</label>
+										<input type="text" name="cpNomeFinanceiro" id="cpNomeFinanceiro" class="form-control" readonly="">
+									</div>
+
+									<div class="row form-group"></div>
+									<div class="row form-group"></div>
+
+									<div id="div_justificativaFinanceiro" name="div_justificativaFinanceiro">
+										<div class="form-group">
+											<div class="col-md-12">
+												<label>Hist&oacute;rico de justificativa</label>
+												<textarea class="form-control" rows="3" id="justificativaFinanceiro" name="justificativaFinanceiro" placeholder="Informar o motivo da não validação"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> -->
+
+						<!-- ============================== Fim financeiro =========================================== -->
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

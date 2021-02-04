@@ -1,0 +1,10 @@
+$primary-color: #8FD087;
+$second-color: lighten($primary-color, 10%);
+$text-color: #444;
+$data-color: darken($text-color, 10%);
+$panel-color: $primary-color;
+$card-document-color: #eee;
+$border-panel-color: $primary-color;
+$border-card-color: $text-color;
+
+@import 'partials/default';

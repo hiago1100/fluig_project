@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
+importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.com.datasul.technology.webdesk.search.controller);
+importPackage(Packages.java.util);
+importPackage(Packages.java.io);
+importPackage(Packages.java.text);
+var count = 0;
+var dataset = null;
+
+pw = new PrintWriter(new FileWriter("/opt/fluig/logs_relatorios/log.log", true), true);
+
+
+
+pw.println("INITIALIZE***********************************");]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="nr_ficha" id="32">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="wkCompany" id="201">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="tableName" id="202">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="metaVersion" id="203">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <script-data-source name="FLUIG_DATASET" id="30"/>
+        <script-data-source name="Data Source" id="71"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="PR004_consulta" id="31">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">cd_regra</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">nm_regra</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">descricao_regra</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">status_regra_conforme</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">observacao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">como_verificar</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">cd_regra</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nm_regra</property>
+                </structure>
+                <structure>
+                    <property name="columnName">descricao_regra</property>
+                </structure>
+                <structure>
+                    <property name="columnName">status_regra_conforme</property>
+                </structure>
+                <structure>
+                    <property name="columnName">observacao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">como_verificar</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">cd_regra</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">nm_regra</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">descricao_regra</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">status_regra_conforme</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">observacao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">como_verificar</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+    var c2 = new Array();
+    var c3 = new Array();
+     
+    var sortingFields = new Array();
+    var i = 0;     
+     pw.println("nr_ficha " + params["nr_ficha"]);
+    //Filtra somente pela matricula do colaborador informado
+    if(params["nr_ficha"].value != null &amp;&amp; params["nr_ficha"].value != "") {    
+        c1[i] = factory.createConstraint("TABLENAME", params["tableName"].value, params["tableName"].value, ConstraintType.MUST);
+        c2[i] = factory.createConstraint("METADATA#ID", params["nr_ficha"].value, params["nr_ficha"].value, ConstraintType.MUST);
+        c3[i] = factory.createConstraint("METADATA#VERSION", params["metaVersion"].value, params["metaVersion"].value, ConstraintType.MUST);
+    	var constraints = new Array(c1[i],c2[i],c3[i]);
+        i++;
+    }
+     
+     
+    //Dataset
+    dataset = factory.getDataset("birt_consulta_PR004_table_regras", null, constraints, sortingFields);
+     pw.println("SQL:" + dataset);
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (dataset != null) {
+pw.println("rowsCount" + dataset.rowsCount);
+    if (count <  dataset.rowsCount){
+        //monta o objeto da linha
+		row["cd_regra"] = dataset.getValue(count, "cd_regra");
+        row["nm_regra"] = dataset.getValue(count, "nm_regra");
+        row["descricao_regra"] = dataset.getValue(count, "descricao_regra");
+        row["status_regra_conforme"] = dataset.getValue(count, "status_regra_conforme");
+        row["observacao"] = dataset.getValue(count, "observacao");
+        row["como_verificar"] = dataset.getValue(count, "como_verificar");          
+
+        //Atualiza o contador 
+        count++;
+        return true;
+    }
+}
+return false;]]></method>
+        </script-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="4">
+            <property name="dataSet">PR004_consulta</property>
+            <column id="21"/>
+            <header>
+                <row id="5">
+                    <cell id="6">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <image id="27"/>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="7">
+                    <cell id="8">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <text id="22">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                            <property name="contentType">html</property>
+                            <text-property name="content"><![CDATA[MINISTÉRIO DA DEFESA
+]]></text-property>
+                        </text>
+                    </cell>
+                </row>
+                <row id="9">
+                    <cell id="10">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <text id="23">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[EXÉRCITO BRASILEIRO]]></text-property>
+                        </text>
+                    </cell>
+                </row>
+                <row id="11">
+                    <cell id="12">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <text id="24">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[DEPARTAMENTO DE CIÊNCIA E TECNOLOGIA]]></text-property>
+                        </text>
+                    </cell>
+                </row>
+                <row id="13">
+                    <cell id="14">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <text id="25">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[COMANDO DE COMUNICAÇÕES E GUERRA ELETRONICA DO EXÉRCITO]]></text-property>
+                        </text>
+                    </cell>
+                </row>
+                <row id="15">
+                    <cell id="16">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <text id="26">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[COMANDO MARECHAL CÂNDIDO MARIANO DA SILVA RONDON]]></text-property>
+                        </text>
+                    </cell>
+                </row>
+                <row id="17">
+                    <cell id="18">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="19">
+                    <cell id="20">
+                        <property name="borderBottomStyle">none</property>
+                        <property name="borderLeftStyle">none</property>
+                        <property name="borderRightStyle">none</property>
+                        <property name="borderTopStyle">none</property>
+                        <text id="28">
+                            <property name="fontWeight">bold</property>
+                            <property name="textAlign">center</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[TERMO CIRCUNSTANCIADO DA ETAPA Nº ]]></text-property>
+                        </text>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <table id="204">
+            <property name="dataSet">PR004_consulta</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">cd_regra</property>
+                    <text-property name="displayName">cd_regra</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cd_regra"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nm_regra</property>
+                    <text-property name="displayName">nm_regra</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nm_regra"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">descricao_regra</property>
+                    <text-property name="displayName">descricao_regra</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["descricao_regra"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">status_regra_conforme</property>
+                    <text-property name="displayName">status_regra_conforme</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["status_regra_conforme"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">observacao</property>
+                    <text-property name="displayName">observacao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["observacao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">como_verificar</property>
+                    <text-property name="displayName">como_verificar</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["como_verificar"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="238"/>
+            <column id="239"/>
+            <column id="240"/>
+            <column id="241"/>
+            <column id="242"/>
+            <column id="243"/>
+            <header>
+                <row id="205">
+                    <cell id="206">
+                        <label id="207">
+                            <text-property name="text">cd_regra</text-property>
+                        </label>
+                    </cell>
+                    <cell id="208">
+                        <label id="209">
+                            <text-property name="text">nm_regra</text-property>
+                        </label>
+                    </cell>
+                    <cell id="210">
+                        <label id="211">
+                            <text-property name="text">descricao_regra</text-property>
+                        </label>
+                    </cell>
+                    <cell id="212">
+                        <label id="213">
+                            <text-property name="text">status_regra_conforme</text-property>
+                        </label>
+                    </cell>
+                    <cell id="214">
+                        <label id="215">
+                            <text-property name="text">observacao</text-property>
+                        </label>
+                    </cell>
+                    <cell id="216">
+                        <label id="217">
+                            <text-property name="text">como_verificar</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="218">
+                    <cell id="219">
+                        <data id="220">
+                            <property name="resultSetColumn">cd_regra</property>
+                        </data>
+                    </cell>
+                    <cell id="221">
+                        <data id="222">
+                            <property name="resultSetColumn">nm_regra</property>
+                        </data>
+                    </cell>
+                    <cell id="223">
+                        <data id="224">
+                            <property name="resultSetColumn">descricao_regra</property>
+                        </data>
+                    </cell>
+                    <cell id="225">
+                        <data id="226">
+                            <property name="resultSetColumn">status_regra_conforme</property>
+                        </data>
+                    </cell>
+                    <cell id="227">
+                        <data id="228">
+                            <property name="resultSetColumn">observacao</property>
+                        </data>
+                    </cell>
+                    <cell id="229">
+                        <data id="230">
+                            <property name="resultSetColumn">como_verificar</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="231">
+                    <cell id="232"/>
+                    <cell id="233"/>
+                    <cell id="234"/>
+                    <cell id="235"/>
+                    <cell id="236"/>
+                    <cell id="237"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

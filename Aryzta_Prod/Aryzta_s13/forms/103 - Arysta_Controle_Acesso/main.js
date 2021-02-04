@@ -1,0 +1,770 @@
+var ultimaLinha = 0;
+var carregaProg = FLUIGC.loading("#progLoad");
+var carregaConf = FLUIGC.loading("#confLoad");
+var indexObs = 0;
+
+var controle = [];
+var ARYForms = {
+        params: {},
+        initForm: function(params) {    
+            this.params = params;
+            var $this = this;   
+            $(function () {
+                if (params.formMode == "ADD" || params.formMode == "MOD") { 
+                    $this.onEdit(params);
+                } else {
+                    $this.onView(params);
+                }
+            });
+        },
+        onView: function(params) { //Visualização do formulário sem a possibilidade de edição (consulta)
+
+
+$("divAprova").addClass("hide");            
+
+var dadoss2 = "";
+var indice = 0;
+var indiceGrupo = 0;
+var indiceScroll = 0;
+
+var  idUsuario = $("#idUsuario").text();
+
+var c4 = DatasetFactory.createConstraint('cod_usuario', idUsuario ,idUsuario ,ConstraintType.MUST);
+var dsGrupo = DatasetFactory.getDataset('ARY-sql2dataset-usuario-grupos', null, [c4],null);
+
+if(indiceScroll > 1){
+    indiceGrupo = indice / dsGrupo.values.length;  
+}
+
+for(var i=0;i<dsGrupo.values.length;i++){       
+
+var codGrupo = dsGrupo.values[i]['COD_GRUPO'];              
+
+var dados = {"name": "ARY-sql2dataset-programas","fields":null,"constraints":[
+        {"_field":"cod_grupo","_initialValue":codGrupo,"_finalValue": codGrupo,"_type":1},
+        {"_field":"indice","_initialValue":indiceGrupo,"_finalValue": indiceGrupo,"_type":1}
+        ]};
+
+$.ajax({
+    method: "POST",
+    url: "/api/public/ecm/dataset/datasets/",
+    data: JSON.stringify(dados),
+    contentType: "application/json", 
+    async: true,
+    error: function(x, e) {
+        if (x.status == 500) {
+            alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+        }
+    },
+    beforeSend: function(){
+
+        carregaConf.show();
+
+    },
+    success:function(model) {
+
+
+        $.each(model.content.values, function(index, value){
+
+            var moduloProgramas         =   value.DESCRIPTION_MODULO;
+            var codProgram              =   value.COD_PROGRAM; 
+            var descProgramas           =   value.DESCRIPTION_PROGRAM;
+            var obs_upc                 =   value.OBS_UPC; 
+
+            if (obs_upc == "" || obs_upc == null) {
+                obs_upc = "";
+
+            }
+            var descRotina              =   value.DESCRICAO_ROTINA;
+
+            dadoss2 += '<tr class="warning">';
+            dadoss2 += '<td class="col-sm-2">' + codGrupo +        '</td>';     
+            dadoss2 += '<td class="col-sm-2">' +  moduloProgramas+      '</td>';
+            dadoss2 += '<td class="col-sm-2">' +  descRotina+      '</td>';
+            dadoss2 += '<td class="col-sm-2"><b>' +  codProgram + '</b>' + " - " + descProgramas + '</td>';        
+            dadoss2 += '<td class="col-sm-2">' + obs_upc +         '</td>';     
+            dadoss2 += '</tr>';
+
+        });
+
+        $("#divProgramas").html(dadoss2);
+        carregaConf.hide();  
+
+     }
+
+});
+}
+
+
+//  FIM PROGRAMAS !
+
+
+   var dadoss3 = '';
+    var coduser = $("#idUsuario").text();
+
+    console.log(coduser);
+
+    var dados = {"name": "ARY-sql2dataset-programa-conflito-inclusao2","fields":null,"constraints":[
+        {"_field":"cod_usuario","_initialValue":coduser,"_finalValue": coduser,"_type":1}
+        ]};
+    $.ajax({
+        method: "POST",
+        url: "/api/public/ecm/dataset/datasets/",
+        data: JSON.stringify(dados),
+        contentType: "application/json", 
+        async: true,
+        error: function(x, e) {
+            if (x.status == 500) {
+                alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+            }
+        },
+        beforeSend: function(){
+
+            carregaConf.show();
+
+        },
+        success:function(model) {
+
+            $.each(model.content.values, function(index, value){
+
+                if(model.content.values.length == '0'){
+                    $(".semAcesso").show();
+                    $(".hideTabela").hide();
+                    $("#temConflito").val("nao");
+                }else{
+                    $(".semAcesso").hide();
+                    $(".hideTabela").show();
+                    $("#temConflito").val("sim");
+                }
+
+
+                var confAux          =   value.APPMAIN;
+                var grupoAux         =   value.APPCONFLITO; 
+                var progConfAux      =   value.DESCCONFLITO;
+                var grupoConfAux     =   value.COD_GRUPO; 
+                var descConfAux      =   value.GRUPO_CONFLITO;
+                var riscoAux         =   value.APPRISCO;  
+                var descGrupoConfl   =   value.DESC_GRUPO;
+
+                if (grupoConfAux == 'Grupo Em Alteracao'){
+
+                    var tabCodGrupo = $('#grupos').val();
+                    var tabDescGrupo = $('#descGrupo').val();
+
+                    console.log("DESC DO GRUPO TAL ------>",tabDescGrupo);
+
+                    grupoConfAux = tabCodGrupo.concat(' - ',tabDescGrupo);
+
+                    }
+
+                if (descConfAux == 'Grupo Em Alteracao'){
+
+                    var tabCodGrupo = $('#grupos').val();
+                    var tabDescGrupo = $('#descGrupo').val();
+
+                    descConfAux = tabCodGrupo.concat(' - ',tabDescGrupo);
+
+
+                }else {
+                    descConfAux = descConfAux.concat(' - ',descGrupoConfl);
+                    
+                }
+
+
+                dadoss3 += '<table width="100%" class="table">';
+                if(riscoAux == "alto"){
+                    dadoss3 += '<tr style="background-color:F2DEDE;">';
+                }
+                if(riscoAux == "medio"){
+                    dadoss3 += '<tr style="background-color:FCF8E3;">';
+                }
+                if(riscoAux == "baixo"){
+                    dadoss3 += '<tr style="background-color:DFF0D8">';
+                }
+
+                dadoss3 += '<td style="text-align: center;" class="col-sm-2">' + confAux +      '</td>';     
+                dadoss3 += '<td style="text-align: center;" class="col-sm-2">' + grupoConfAux  +'</td>';     
+                dadoss3 += '<td style="text-align: center;" class="col-sm-2">' + grupoAux +     '</td>';     
+                dadoss3 += '<td style="text-align: center;" class="col-sm-2">' + descConfAux +  '</td>';     
+                dadoss3 += '<td style="text-align: center;" class="col-sm-2">' + progConfAux +  '</td>';     
+                dadoss3 += '<td style="text-align: center;" class="col-sm-2">' + riscoAux +     '</td>';
+                dadoss3 += '</tr><br>';
+                dadoss3 += '</table>';
+                // console.log(dadoss3);
+            });
+
+            $(".testeColappse2").html(dadoss3);
+            
+            carregaConf.hide(); 
+
+        }
+    });
+
+
+
+
+
+        },
+        onEdit: function(params) {  //Edição do formulário
+            
+            
+            $(".aprova").prop("checked", false);
+            $("#aprovacaoProg").val('');
+
+
+
+            //$(':input').prop('disabled', true);
+            $('#tipoAcao').prop('disabled', false); 
+            $('.selecioneHid').addClass('hide');  
+
+            $('.revisa').removeClass('hide');
+            $('#copia').addClass('hide');
+            $('.selecioneHid').removeClass('hide');
+            $(".allProgramas").addClass('hide'); 
+
+            $(".semAcesso").hide();
+            $(".hideTabela").hide();
+
+            $('#mostraConf').click(function(){
+                context = $(this);
+                if (context.is(':checked')){
+                    displayConlitos(true);
+                } else {
+                    displayConlitos(false);
+                }
+            });
+
+            $('#addPrograma').click(function(){
+                var context = $('#allProgramas');
+                if (context.val() != ''){
+                    wdkAddChild('tabela_programas');
+
+                    var index = [];
+
+                    $('input[id^="codPrograma___"]').each(function(){
+                        index.push($(this).attr('id').split('___')[1]);
+                    });
+
+                    var linha = index[index.length - 1];
+
+                    $("#codPrograma___"+linha).val($('#codProgramaCopiaAux').val());
+                    $("#nomePrograma___"+linha).val($('#nomeProgramaCopiaAux').val());
+                    $("#descPrograma___"+linha).val($('#descProgramaCopiaAux').val());
+                    $('#codProgramaCopiaAux, #nomeProgramaCopiaAux, #descProgramaCopiaAux').val('');
+                    validaConflito();
+                }
+            });
+
+            $("#populaCombo").change(function(){
+                var context = $(this);
+
+                console.log('context', context.val());
+                $('input[id^="moduloPrograma___"]').each(function(){
+                    var context1 = $(this);
+                    context1.parent().parent('tr').removeClass('hide');
+                    if(context.val() != 'Todos'){
+                        if (context1.val() != context.val() )
+                            context1.parent().parent('tr').addClass('hide');
+                    }
+                });
+
+            });
+
+            $(".aba2Obs").attr('readonly','readonly');
+            $(".aba3Obs").attr('readonly','readonly');
+            //$(".aba4Obs").attr('readonly','readonly');
+            $(".aba5Obs").attr('readonly','readonly');
+
+            concatenaDesc();
+
+            var index2 = 0;
+            var index3 = 0;
+            var index5 = 0;
+            var WKNumState = params.WKNumState;
+
+            if (WKNumState != 9) {
+
+                $("#divAprova").addClass("hide");
+
+            }
+            
+            if(WKNumState != 0 || WKNumState != 5  ){
+                
+                    
+                $('.manterGrupo').prop('disabled', true);
+                $('#bloquear').prop('disabled', true);
+            }
+            
+
+            if(WKNumState == 0 || WKNumState == 5  ){
+                
+                console.log($("#tabela_conflitos tr").length);
+                $('.manterGrupo').prop('disabled', false);
+                $('#bloquear').prop('disabled', false);
+                
+
+                $(".aba2Obs").removeAttr('readonly');
+
+                var indiceScroll = 0;
+
+                carregaProgramas();
+                carregaConflitos();
+
+
+
+                $("#tabela_programas2 tbody tr").each(function(i,tr){
+                    $("#manterGrupo___"+i).prop("checked","checked");
+                });
+
+
+                var myLoading1 = FLUIGC.loading('#carregaTela');
+                // We can show the message of loading
+                myLoading1.show();
+
+
+                $('.mostraMod').hide();    
+
+                $(".chBloqueioDstv").click(function() {         
+                    var valor = $('input[name="chBloqueioDstv"]').is(':checked');   
+                    if (valor == true) {                    
+                        $(".chBloqueio").prop("checked",true);          
+                    } else {                    
+                        $(".chBloqueio").attr("checked",false);         
+                    }           
+                }); 
+
+                $('input[id^="chBloqueio___"]').click(function(){
+                    var context = $(this);
+                    if (!context.is(':checked')){                   
+                        context.parent().parent('tr').addClass('warning');
+                    }else{
+                        context.parent().parent('tr').removeClass('warning');
+                    }
+
+                });
+
+                // Controle de bloqueio de botão na aba 2 após incluir um filho
+                $('#btnNovo').removeAttr('disabled');
+                $('#btnNovo').click(function(){
+
+                    if($("#aba2Index").val() != '' || $("#aba2Index").val() != 0){
+                        $('#btnNovo').attr('disabled','disabled');
+                    }
+                });
+
+
+                $('#tabelaAba2').arqmasterdetail({
+                    buttonNewRow: "#btnNovo",
+                    onCustomizeRow: function($tr, index){
+
+                        index2++;
+                        $("#aba2Index").val(index2);
+                    }   
+                });
+
+                index2 = 0;
+                $("#aba2Index").val(index2);
+
+
+
+            } else{
+                $('.selecioneHid').removeClass('hide');
+                $('#form').find('input, button, select').prop('readonly', true);
+                //$('#form').find('input, textarea, button, select').prop('disabled', true);
+
+                $('input[id^="codConflito___"]').each(function(){
+                    var context = $(this);
+                    if (context.val() != '')
+                        context.parent().parent('tr').addClass('danger');
+                });
+
+                $('input[id^="chBloqueio___"]').each(function(){
+                    var context = $(this);
+                    if (!context.is(':checked'))
+                        context.parent().parent('tr').addClass('warning');
+                });
+            }     
+
+            // Tarefa Validar Grupo - Gestor Grupos
+            if (WKNumState == 9) {
+
+                carregaProgramas();
+                carregaConflitos();
+
+                $('.aba3Obs').removeAttr('readonly');
+                $('#btnNovo3').removeAttr('disabled');
+                $('.hideTabela').show();
+                
+                var index =0;
+                $("#tabela_conflitos tbody tr").each(function(i){
+                    index = index+1;
+                    var farol = $("#farol___"+ index).val();
+                    
+                    if(farol == "Médio"){
+                        
+                        $("#farol___"+index).parent().parent('tr').addClass('warning');
+                    }
+                    if(farol == "Alto"){
+                        $("#farol___"+index).parent().parent('tr').addClass('danger');
+                    }
+                    
+                    if(farol == "Baixo"){
+                        $("#farol___"+index).parent().parent('tr').addClass('success');
+                    }
+                });
+                
+                
+                
+                $('#btnNovo3').click(function(){
+                    if($("#aba3Index").val() != '' || $("#aba3Index").val() != 0){
+                        $('#btnNovo3').attr('disabled','disabled');
+                    }
+                });
+
+                $('#tabelaAba3').arqmasterdetail({
+                    buttonNewRow: "#btnNovo3",
+                    onCustomizeRow: function($tr, index){
+
+                        index3++;
+                        $("#aba3Index").val(index3);
+                    }   
+                });
+
+                index3 = 0;
+                $("#aba3Index").val(index3);
+
+            }
+
+            // Tarefa Validar acessos - SI
+            if (WKNumState == 37) {
+
+                carregaProgramas();
+                carregaConflitos();
+
+                $('.aba5Obs').removeAttr('readonly');
+                $('#btnNovo5').removeAttr('disabled');
+                $('.hideTabela').show();
+                $(".semAcesso").hide();
+                
+                
+                $('#btnNovo5').click(function(){
+
+                    if($("#aba5Index").val() != '' || $("#aba5Index").val() != 0){
+                        $('#btnNovo5').attr('disabled','disabled');
+                    }
+                });
+
+                $('#tabelaAba5').arqmasterdetail({
+                    buttonNewRow: "#btnNovo5",
+                    onCustomizeRow: function($tr, index){
+
+                        index5++;
+                        $("#aba5Index").val(index5);
+                    }   
+                });
+
+                index5 = 0;
+                $("#aba5Index").val(index5);
+
+                // $('.aba5Obs').removeAttr('disabled');
+            }
+
+            if(WKNumState == 36){
+
+                carregaProgramas();
+                carregaConflitos();
+                
+                $(".aba2Obs").attr('readonly','readonly');
+                $(".aba3Obs").attr('readonly','readonly');
+                //$(".aba4Obs").attr('readonly','readonly');
+                $(".aba5Obs").attr('readonly','readonly');
+                $('#hideTabela').show();
+            }
+
+
+$("#aprov").click(function(){
+
+    $("#aprov").attr('disabled','disabled');
+    $("#aprov").attr('style','border-style: groove; border-width: 3px; border-color: black; padding-botton:1px;');
+    $("input[name=aprova][value='sim']").prop("checked",true);
+    $("#reprov").removeAttr('disabled');
+    $("#aprovacaoProg").val("sim");
+    
+    $("#reprov").removeAttr('style');
+    // alert("Radio sim: "+$("input[name='aprova']:checked").val());
+});
+
+
+$("#reprov").click(function(){
+
+
+    $("#reprov").attr('disabled','disabled');
+    $("#reprov").attr('style','border-style: groove; border-width: 3px; border-color: black; padding-botton:1px;');
+    $("input[name=aprova][value='nao']").prop("checked",true);
+    $("#aprov").removeAttr('disabled');
+    $("#aprov").removeAttr('style');
+    $("#aprovacaoProg").val("nao");
+    // alert("Radio não: "+$("input[name='aprova']:checked").val());
+});
+
+  }                                
+};
+
+
+//INICIO CARREGA TABELA DE  PROGRMAS //
+function carregaProgramas(indiceScroll){
+
+    console.log("Entrou na function");
+
+var dadoss2 = "";
+var indice = 0;
+var indiceGrupo = 0;
+var indiceScroll = 0;
+
+var  idUsuario = $("#idUsuario").val();
+
+var c4 = DatasetFactory.createConstraint('cod_usuario', idUsuario ,idUsuario ,ConstraintType.MUST);
+var dsGrupo = DatasetFactory.getDataset('ARY-sql2dataset-usuario-grupos', null, [c4],null);
+
+if(indiceScroll > 1){
+    indiceGrupo = indice / dsGrupo.values.length;  
+}
+
+for(var i=0;i<dsGrupo.values.length;i++){       
+
+var codGrupo = dsGrupo.values[i]['COD_GRUPO'];              
+
+var dados = {"name": "ARY-sql2dataset-programas","fields":null,"constraints":[
+        {"_field":"cod_grupo","_initialValue":codGrupo,"_finalValue": codGrupo,"_type":1},
+        {"_field":"indice","_initialValue":indiceGrupo,"_finalValue": indiceGrupo,"_type":1}
+        ]};
+
+$.ajax({
+    method: "POST",
+    url: "/api/public/ecm/dataset/datasets/",
+    data: JSON.stringify(dados),
+    contentType: "application/json", 
+    async: true,
+    error: function(x, e) {
+        if (x.status == 500) {
+            alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+        }
+    },
+    beforeSend: function(){
+
+        carregaConf.show();
+
+    },
+    success:function(model) {
+
+
+        $.each(model.content.values, function(index, value){
+
+            var moduloProgramas         =   value.DESCRIPTION_MODULO;
+            var codProgram              =   value.COD_PROGRAM; 
+            var descProgramas           =   value.DESCRIPTION_PROGRAM;
+            var obs_upc                 =   value.OBS_UPC; 
+
+            if (obs_upc == "" || obs_upc == null) {
+                obs_upc = "";
+
+            }
+            var descRotina              =   value.DESCRICAO_ROTINA;
+
+            dadoss2 += '<tr class="warning">';
+            dadoss2 += '<td class="col-sm-2">' + codGrupo +        '</td>';     
+            dadoss2 += '<td class="col-sm-2">' +  moduloProgramas+      '</td>';
+            dadoss2 += '<td class="col-sm-2">' +  descRotina+      '</td>';
+            dadoss2 += '<td class="col-sm-2"><b>' +  codProgram + '</b>' + " - " + descProgramas + '</td>';        
+            dadoss2 += '<td class="col-sm-2">' + obs_upc +         '</td>';     
+            dadoss2 += '</tr>';
+
+        });
+
+        $("#divProgramas").html(dadoss2);
+        carregaConf.hide();  
+
+     }
+
+});
+}
+}
+//FIM CARREGA TABELA DE  PROGRMAS //
+
+
+
+function setaUltimaLinha(){
+    $('input[id^="codPrograma___"]').each(function(){
+        var context = $(this);
+        ultimaLinha = parseInt(context.attr('id').split('___')[1]);     
+    });
+
+}
+
+
+function concatenaDesc(){
+
+    var arr = [] ;
+
+    $('input[id^="grupoCod___"]').each(function(x){
+        var context = $(this);
+        var linha = context.attr('id').split("___")[1];
+        arr.push($("#gestorHide___" + linha).val());  
+
+        var contador = arr.length;
+
+    });
+
+    var novaArr =  arr.filter(function(teste, i) { 
+
+        return arr.indexOf(teste) == i ;
+
+    }); 
+
+    $("#cont_aprovador").val(novaArr);
+
+}
+
+
+function carregaConflitos(){
+
+
+    var dadoss2 = '';
+    var coduser = $("#idUsuario").val();
+
+    console.log(coduser);
+
+    var dados = {"name": "ARY-sql2dataset-programa-conflito-inclusao2","fields":null,"constraints":[
+        {"_field":"cod_usuario","_initialValue":coduser,"_finalValue": coduser,"_type":1}
+        ]};
+    $.ajax({
+        method: "POST",
+        url: "/api/public/ecm/dataset/datasets/",
+        data: JSON.stringify(dados),
+        contentType: "application/json", 
+        async: true,
+        error: function(x, e) {
+            if (x.status == 500) {
+                alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+            }
+        },
+        beforeSend: function(){
+
+            carregaConf.show();
+
+        },
+        success:function(model) {
+
+            $.each(model.content.values, function(index, value){
+
+                if(model.content.values.length == '0'){
+                    $(".semAcesso").show();
+                    $(".hideTabela").hide();
+                    $("#temConflito").val("nao");
+                }else{
+                    $(".semAcesso").hide();
+                    $(".hideTabela").show();
+                    $("#temConflito").val("sim");
+                }
+
+
+                var confAux          =   value.APPMAIN;
+                var grupoAux         =   value.APPCONFLITO; 
+                var progConfAux      =   value.DESCCONFLITO;
+                var grupoConfAux     =   value.COD_GRUPO; 
+                var descConfAux      =   value.GRUPO_CONFLITO;
+                var riscoAux         =   value.APPRISCO;  
+                var descGrupoConfl   =   value.DESC_GRUPO;
+
+                if (grupoConfAux == 'Grupo Em Alteracao'){
+
+                    var tabCodGrupo = $('#grupos').val();
+                    var tabDescGrupo = $('#descGrupo').val();
+
+                    console.log("DESC DO GRUPO TAL ------>",tabDescGrupo);
+
+                    grupoConfAux = tabCodGrupo.concat(' - ',tabDescGrupo);
+
+                    }
+
+                if (descConfAux == 'Grupo Em Alteracao'){
+
+                    var tabCodGrupo = $('#grupos').val();
+                    var tabDescGrupo = $('#descGrupo').val();
+
+                    descConfAux = tabCodGrupo.concat(' - ',tabDescGrupo);
+
+
+                }else {
+                    descConfAux = descConfAux.concat(' - ',descGrupoConfl);
+                    
+                }
+
+
+                dadoss2 += '<table width="100%" class="table">';
+                if(riscoAux == "alto"){
+                    dadoss2 += '<tr style="background-color:F2DEDE;">';
+                }
+                if(riscoAux == "medio"){
+                    dadoss2 += '<tr style="background-color:FCF8E3;">';
+                }
+                if(riscoAux == "baixo"){
+                    dadoss2 += '<tr style="background-color:DFF0D8">';
+                }
+
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + confAux +      '</td>';     
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + grupoConfAux  +'</td>';     
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + grupoAux +     '</td>';     
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + descConfAux +  '</td>';     
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + progConfAux +  '</td>';     
+                dadoss2 += '<td style="text-align: center;" class="col-sm-2">' + riscoAux +     '</td>';
+                dadoss2 += '</tr><br>';
+                dadoss2 += '</table>';
+                // console.log(dadoss2);
+            });
+
+            $(".testeColappse2").html(dadoss2);
+            
+            carregaConf.hide(); 
+
+        }
+    });
+}
+
+function getIDUserResp(idElemento){
+    idElemento = idElemento.replace(/[^0-9]/g,'');
+    if ($("#NomUserResp___" + idElemento).val() == "" || $("#NomUserResp___" + idElemento).val() == null){
+        var UserRespTrick = $("#NomUserResptrick").val();
+        $("#NomUserResp___" + idElemento).val(UserRespTrick);
+    }
+}
+
+
+
+function getID(idElemento){
+    idElemento = idElemento.replace(/[^0-9]/g,'');
+    if ($("#HoraResp___" + idElemento).val() == "" || $("#HoraResp___" + idElemento).val() == null){
+        var dataResp = new Date();
+        $("#HoraResp___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+    }
+}
+
+function respbtn(){
+
+    if( indexObs == 0 ){
+        wdkAddChild('respoCham');
+
+        indexObs++;
+        $("#obsIndex").val("1");
+    }
+
+}
+
+function ReadInputArea(){
+
+    $('.respArea').each(function(i){
+        if ($(this).val() != "" || $(this).val() == null){
+            $(this).attr('readonly', true);
+        }
+    });
+}

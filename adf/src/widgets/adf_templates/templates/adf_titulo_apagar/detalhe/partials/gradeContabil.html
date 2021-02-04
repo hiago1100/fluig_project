@@ -1,0 +1,58 @@
+<div class="panel panel-default" ng-if="documento.GradeContabil.length>0">
+    <div class="panel-heading fs-cursor-pointer" ng-click="titulosCollapsed=!titulosCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': titulosCollapsed}">
+                Grade Contábil
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': titulosCollapsed}">
+        <div class="panel-body">
+            <i ng-if="!documento.GradeContabil || documento.GradeContabil.length<=0">Grade Contábil não Informada</i>
+            <div class="row" ng-if="documento.GradeContabil.length>0">
+                <div class="col-md-9">
+                    <table class="table table-striped">
+                        <thead class="hidden-xs">
+                            <tr>
+                                <th>
+                                    <div class="col-sm-3">Conta Contábil</div>
+                                    <div class="col-sm-3">Descrição</div>
+                                    <div class="col-sm-3">Valor</div>
+                                    <div class="col-sm-3">Natureza</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="grade in documento.GradeContabil">
+                                <td>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Conta Contábil</label>
+                                        <p>{{grade.gradeCodContaContabil || 'Não informada'}}</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Descrição</label>
+                                        <p>{{grade.gradeContaContabil || 'Não informada'}}</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Valor</label>
+                                        <p>{{grade.gradeValor | currency:grade.gradeMoeda}}</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Natureza</label>
+                                        <p>{{grade.gradeNatureza}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-3">
+                    <div class="fs-txt-center">
+                        <canvas id="pie" height="140" width="140" class="chart chart-pie" chart-options="chartOptions" chart-data="documento.gradeContabilData" chart-labels="documento.gradeContabilLabels">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

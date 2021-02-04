@@ -1,0 +1,557 @@
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+  <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+  <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+  <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+  
+  <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="select2.min.css">
+  <script type="text/javascript" src="select2.min.js"></script>
+  <script type="text/javascript" src="main.js" charset="utf-8"></script>
+
+  <!-- Css y Scripts Arq -->   
+
+  <style>
+    .form-group{
+      float: left;
+      width: 100%;
+    }
+    .select2-container{
+      width: 370px !important;
+    }
+    *[readonly="readonly"], *[disabled="disabled"],
+    .select2-container--disabled li span {
+      color: #000 !important;
+    }
+    .select2-container ul li,
+    .select2-container ul span,
+    .select2-container--default .select2-selection--multiple .select2-selection__choice > span{
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice{
+      background-color:#777;
+      border: solid 1px #5e5e5e;
+      color:white;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice.conflict{
+      background-color:#a00e0e;
+    }
+    .conflict{
+      background-color:#a00e0e;
+    }
+    .select2-container--default .select2-selection--multiple .select2-selection__choice > span{
+      color:white;
+    }
+    .fluig-style-guide .bootstrap-tagsinput .tag .tag-text{
+      font-weight:100;
+    }
+    .fluig-style-guide .tab-content {
+        float: left;
+        width: 100%;
+        border: solid 1px #ddd;
+        border-top: none;
+    }
+    .fluigicon-trash {
+        display: none !important;
+    }
+
+   .Bcolor{
+      background-color: #FFFACD ;
+      height: 80px;
+    }
+    
+  .mostraMod{
+    align-contet : center;
+  }
+
+/*  #menu2 .tab-content {
+    color : white;
+    background-color: #428bca;
+    padding : 5px 15px;
+  }
+
+  #menu2 .tab-content {
+  color : white;
+  background-color: #E0FFFF;
+  padding : 5px 15px;
+}*/
+
+
+.badgebox
+{
+    opacity: 0;
+}
+
+.badgebox + .badge
+{
+    /* Move the check mark away when unchecked */
+    text-indent: -999999px;
+    /* Makes the badge's width stay the same checked and unchecked */
+  width: 27px;
+}
+
+.badgebox:focus + .badge
+{
+    /* Set something to make the badge looks focused */
+    /* This really depends on the application, in my case it was: */
+    
+    /* Adding a light border */
+    box-shadow: inset 0px 0px 5px;
+    /* Taking the difference out of the padding */
+}
+
+.badgebox:checked + .badge
+{
+    /* Move the check mark back when checked */
+  text-indent: 0;
+}
+
+
+  </style>  
+  
+</head>
+<body onload="ReadInputArea()">
+<div class="fluig-style-guide">
+<form name="form" role="form" id="form">
+
+<input type="text" class="hide" name="aprovacaoProg" id="aprovacaoProg">
+<input class="hide" type="text" name="cont_aprovador" id="cont_aprovador" />
+<input type="text" class="hide" name="recebeCod" id="recebeCod" >
+<input type="text" name="cont" id="cont" class="hide" value="0"> 
+<input type="text" name="incluirOk" class="hide" id="incluirOk" value="">
+<input type="text" class="hide" name="NomUserResptrick" id="NomUserResptrick">
+
+<input type="text" class="hide" name="servicoIntegracao" id="servicoIntegracao">
+<input type="text" class="hide" name="urlIntegracao" id="urlIntegracao">
+<input type="text" class="hide" name="userIntegracao" id="userIntegracao">
+
+  <div class="form-group text-center">
+    <h2 style="margin-bottom:25px;background-color: #0000CD;color:#FFFFFF;">Solicita&ccedil;&atilde;o de acesso ao Programa</h2>
+  </div>
+  <input type="text" class="hide" name="temConflito" id="temConflito" />
+  
+  <input type="text" class="hide" name="numPrecesso" id="numPrecesso" />
+  <input type="text" class="hide" name="solicitante" id="solicitante" />
+  
+  <br></br>
+  <div id="menu" class="row-fluid">
+    <ul class="nav nav-tabs nav-justified">
+      <li id="li1" class="active"><a href="#tab1" data-toggle="tab">Controle Acessos</a></li>
+      <li id="li2"><a href="#tab2" data-toggle="tab">Observa&ccedil;&otilde;es</a></li>
+      <!-- <li id="li3"><a href="#tab3" data-toggle="tab">Gestor Grupo</a></li> -->
+      <!-- <li id="li4"><a href="#tab4" data-toggle="tab">Gestor da Informa&ccedil;&atilde;o</a></li> -->
+      <!-- <li id="li5"><a href="#tab5" data-toggle="tab">Gestor S.I</a></li> -->
+    </ul>
+  </div>
+  
+  <div class='tab-content'>
+    <div class="tab-pane active" id="tab1">
+
+      <div class="form-group">
+  
+      <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+      
+
+            <label for="codigoEmpresa" class="control-label">Empresa</label>
+            <input type="text" class="form-control codigoEmpresa hide" name="codigoEmpresa" id="codigoEmpresa">
+            <input type="zoom" class="form-control nomeEmpresa" name="nomeEmpresa" id="nomeEmpresa"
+              data-zoom="{
+                'displayKey':'razaoSocial',                
+                'datasetId':'SGA-sql2dataset-empresas',                               
+                'fields':[
+                  {
+                    'field':'idLegEmpresa',
+                    'label':'Codigo'
+                  },{
+                    'field':'razaoSocial',
+                    'label':'Razão Social',
+                    'filterValues': 'razaoSocial',                                                           
+                    'standard':'true'
+                  }
+                ]
+              }"
+            />             
+          </div>    
+        </div>
+        
+
+
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="matriculaSolicitante" class="control-label">Solicitante</label>
+            <input type="text" class="form-control matriculaSolicitante hide" name="matriculaSolicitante" id="matriculaSolicitante">
+            <input type="text" class="form-control nomeSolicitante" name="nomeSolicitante" id="nomeSolicitante" readonly>             
+          </div>    
+        </div>
+
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+            <label for="dataSolic" class="control-label">Data</label>
+            <input type="text" class="form-control dataSolic" name="dataSolic" id="dataSolic" readonly>                 
+          </div>    
+        </div>
+        
+        <div class="label-field">
+          <div class="label-field">
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
+              <label for="horaSolic" class="control-label">Hora</label>
+              <input type="text" class="form-control horaSolic" name="horaSolic" id="horaSolic" readonly>                 
+            </div>    
+          </div>  
+        </div>  
+       <div id="divAprova"> 
+        <div>
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 tiraStyle" style="margin-left:10%;margin-top:2%; " align="center">
+              <button type="button" class="btn btn-success btnAprov" name="aprov" id="aprov">Aprovar</button>
+            </div>
+          </div>
+          <div>
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 tiraStyle" style="margin-left:1%;margin-top:2%; " align="center">
+              <button type="button" class="btn btn-danger btnAprov" name="reprov" id="reprov">Reprovar</button>
+            </div>
+          </div>
+        </div>  
+      </div>
+
+      </div>
+   <div class="tab-pane" id="tab2">
+    <br>
+    <div class="table-responsive">
+     <table class="viaportaltab3" tablename="respoCham" id="respoCham" noaddbutton=true align="center">
+      <thead>
+       <tr>
+        <td></td>
+        <td></td>
+       </tr>
+      </thead>
+     <tr>
+      <td style="text-align:left;">
+        <input class="form-control input-sm UsernamResp" type="text" id="NomUserResp" name="NomUserResp" readonly> 
+        <input type="text"  class="HoraResp" id="HoraResp" name="HoraResp" readonly>
+        <textarea onfocus="getIDUserResp(this.id)" onblur="getID(this.id);" class="form-control input-sm respArea" cols="64" type="text" rows="8" id="areaResp" name="areaResp"></textarea>
+     </td>
+    </tr>
+   </table>
+   <div align="center" class="btnrespContainer" id="btnrespContainer" name="btnrespContainer">
+    <button class="btn btn-default" onclick="respbtn()">Resposta</button>
+   </div>
+  </div>
+ </div> <!-- Fim da div tab-pane aba2 -->
+
+
+
+      </div>   
+      <div class="clearfix"></div>
+      
+     <div class="form-group"></div> 
+
+    
+
+      <div class="clearfix"></div>
+    <div class="form-group selecioneHid">
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="codUsuario" class="control-label">Usu&aacute;rio</label>
+            <input type="zoom" class="form-control codUsuario" name="codUsuario" id="codUsuario"
+              data-zoom="{
+                'displayKey':'nome_usuario',                
+                'datasetId':'SGA-sql2dataset-usuarios',                               
+                'fields':[
+                  {
+                    'field':'cod_usuario',
+                    'label':'Codigo'
+                  },{
+                    'field':'nome_usuario',
+                    'label':'Nome do Usuario',
+                    'filterValues': 'nome_usuario',                                                           
+                    'standard':'true'
+                  }
+                ]
+              }"
+            />                 
+          </div>    
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="nomeUsuario" class="control-label">&nbsp;</label>
+          <input type="text" class="form-control nomeUsuario" name="nomeUsuario" id="nomeUsuario" readonly>  
+           <input type="text" class="form-control hide" name="idUsuario" id="idUsuario"> 
+           <input type="text" class="form-control hide" name="codigoERP" id="codigoERP">                 
+        </div> 
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="gestorUsuario" class="control-label">Gestor</label>
+          <input type="text" class="form-control gestorUsuario" name="gestorUsuario" id="gestorUsuario" readonly>
+          <input type="text" class="hide" name="codGest" id="codGest">                          
+        </div>  
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+<!--         <label>Bloquear</label> 
+              <input type="checkbox" name="bloquear" id="bloquear">  -->
+           <label for="danger" class="btn btn-danger">Bloquear <input name="bloquear" type="checkbox" id="bloquear" class="badgebox"><span class="badge">&check;</span></label>
+          </div>
+        </div>                       
+      </div>
+
+      <!-- TESTE VALIDACAO GRUPO -->
+                       
+      <div class="clearfix"></div>
+
+      <div class="form-group selecioneHid" style="display:none;">
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <label for="grupos" class="control-label">Grupo</label>
+            <input type="text" class="hide codGrupoGest" name="codGrupoGest" id="codGrupoGest" readonly>
+            <input type="zoom" class="form-control grupos" name="grupos" id="grupos"
+              data-zoom="{
+                'displayKey': 'cod_grupo',
+                'datasetId':'SGA-sql2dataset-usuario-grupos',
+                'fields':[
+                  {
+                    'field':'cod_grupo',
+                    'label':'Grupo',                                                          
+                    'standard':'true'
+                  }
+                ]
+              }"  
+            />
+            <input type="text" name="codgrupoparam" id="codgrupoparam" class="hide">                    
+          </div>    
+        </div>      
+        <div class="label-field">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="descGrupo" class="control-label">&nbsp;</label>
+          <input type="text" class="form-control descGrupo" name="descGrupo" id="descGrupo" readonly>                                          
+        </div>       
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+          <label for="nomeGestGrupo" class="control-label">Gestor</label>
+          <input type="text" class="form-control nomeGestGrupo" name="nomeGestGrupo" id="nomeGestGrupo" readonly>
+        </div>         
+        </div> 
+      </div> 
+
+      <!-- MENU PRINCIPAL -->
+
+      <ul class="nav nav-tabs nav-justified"">
+        <li  class="active"><a data-toggle="pill" href="#menu1">Grupos/Conflitos Existentes</a></li>    
+        <li><a data-toggle="pill" href="#menu2">Grupos/Conflitos Adicionados</a></li>        
+      </ul>
+      <div class="tab-content">
+
+      <!-- FIM MENU PRINCIPAL -->
+
+    <div id="menu2" class="tab-pane fade">
+
+        <ul class="nav nav-tabs nav-justified"">
+          <li class="active"><a data-toggle="pill" href="#gruposNavAdd">Adicionar Grupos</a></li>        
+          <li><a data-toggle="pill" href="#conflitosAdd">Conflitos Adicionados</a></li>          
+          <li><a data-toggle="pill" href="#programasAdd">Programas Adicionados</a></li>
+        </ul>    
+    <div class="tab-content">
+
+     <div id="gruposNavAdd" class="tab-pane fade in active">
+       <div class="col-md-4 ">
+            <label for="addGrupo" class="control-label">Programa inclusão</label>
+          <input type="zoom" class="form-control programasZoom" name="programasZoom" id="programasZoom"
+              data-zoom="{
+                'displayKey': 'cod_programa',
+                'datasetId':'SGA-sql2dataset-programas-zoom',
+                'fields':[
+                  {
+                    'field':'cod_programa',
+                    'label':'Programa',                                                          
+                    'standard':'true'
+                  }
+                ]
+              }"  
+            />                  
+          </div>
+
+          <div class="form-group">
+            <table class="table table-hover" customFnDelete="fnCustomDelete(this)" tablename="tabela_programas3" id="tabela_programas3" noaddbutton=true   style="width: 100%;" >
+              <thead>
+                <tr>
+                  <th>&nbsp;</th>
+                  <th class="col-sm-2"><label>Grupo</th>
+                  <th class="col-sm-2"><label>Gestor</label></th>
+                  <th class="col-sm-2"><label>Programa</label></th>
+                  <th class="col-sm-2"><label>Descri&ccedil;&atilde;o Programa</label></th>              
+                </thead> 
+             <tbody>
+               <tr class="concat" id="concat">
+                 <td class="col-sm-2 lixeira">
+                   <img onclick="fnCustomDelete(this)" src="rubbish-bin.png" style="cursor: pointer;">
+                  </td>
+                 <td class="col-sm-2">
+                  <input class="form-control" type="text" name="nomedoseugrupo2" id="nomedoseugrupo2" readonly />
+                  <input class="form-control" type="text" name="descGrupoERP" id="descGrupoERP" readonly />  
+                 </td>
+                 <td class="col-sm-2">
+                  <input class="form-control" type="text" name="nomeGestdoGrupo2" id="nomeGestdoGrupo2" readonly />
+                  <input class="" type="text" name="gestorHide2" id="gestorHide2" readonly />
+                  <input class="" type="text" name="codGrupoERP" id="codGrupoERP" readonly />
+
+
+                </td>
+                <td class="col-sm-2">
+                  <input class="form-control" type="text" name="nomePrograma" id="nomePrograma" readonly />
+                </td>
+                <td class="col-sm-4">
+                  <input type="text" name="descGrupoUser2" id="descGrupoUser2" class="form-control" readonly >
+                  <input type="checkbox" name="manterTwo" id="manterTwo" checked="" class="form-control hide" />
+                </td>                
+               </tr>
+            </tbody>            
+           </table>             
+          </div>
+        </div>
+
+        <div id="conflitosAdd" class="tab-pane fade">
+          <table class="table table-striped" id="tabela_conflitosAdd">
+            <thead>
+              <tr align="center">
+                <th class="col-sm-2"><label>Programa Conflito</label></th>
+                <th class="col-sm-2"><label>Grupo</label></th>                
+                <th class="col-sm-2"><label>Programa conflitante</label></th>
+                <th class="col-sm-2"><label>Grupo conflitante</label></th>
+                <th class="col-sm-3"><label>Descri&ccedil;&atilde;o Conflito</label></th>
+                <th class="col-sm-1"><label>Risco</label></th>
+              </tr>
+            </thead>
+            <tbody class="testeColappse3">
+              <tr>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+       <div id="programasAdd" class="tab-pane fade">
+            <table class="table table-striped" id="tabela_programas" style="width:100%">
+              <table id="divProgramasAdd" width="100%">
+              <thead>
+                <tr>
+                  <th class="col-sm-2"><label>Grupo</th>
+                  <th class="col-sm-2"><label>Programa</label></th>
+                  <!-- <th class="col-sm-2"><label>Estrutura</label></th> -->
+                  <th class="col-sm-2"><label>Cod. Programa</label></th>
+                  <!-- <th class="col-sm-2"><label>OBS</label></th> -->
+              </thead>
+              <tbody >
+              </tbody>
+              </table>
+            </table>             
+        </div>
+
+
+            <!-- Fim do menu2 abaixo -->
+    </div>  
+                  <!-- Fim da tab-content -->
+
+    </div>                
+
+            <input type="text" class="hide" name="codProgramaCopiaAux" id="codProgramaCopiaAux" />
+            <input type="text" class="hide" name="nomeProgramaCopiaAux" id="nomeProgramaCopiaAux" />
+            <input type="text" class="hide" name="descProgramaCopiaAux" id="descProgramaCopiaAux" />
+            <input type="text" class="hide" name="descgrupoCopiaAux" id="descgrupoCopiaAux" />
+      
+       <div id="menu1" class="tab-pane fade in active">     
+        <!-- INICIO DO SUB-MENU -->
+
+        <ul class="nav nav-tabs nav-justified"">
+          <li class="active" ><a data-toggle="pill" href="#conflitosNav">Conflitos</a></li>          
+          <li><a data-toggle="pill" href="#programasNav">Programas</a></li>
+          <li><a data-toggle="pill" href="#gruposNavEx">Grupos</a></li>
+        </ul>
+         <div class="tab-content" id="content">
+
+        <!-- FIM DO SUB-MENU -->
+
+        <div id="conflitosNav" class="tab-pane fade in active">
+          <table class="table table-striped" id="tabela_conflitos">
+            <thead>
+              <tr align="center">
+                <th class="col-sm-2"><label>Programa Conflito</label></th>
+                <th class="col-sm-2"><label>Grupo</label></th>                
+                <th class="col-sm-2"><label>Programa conflitante</label></th>
+                <th class="col-sm-2"><label>Grupo conflitante</label></th>
+                <th class="col-sm-3"><label>Descri&ccedil;&atilde;o Conflito</label></th>
+                <th class="col-sm-1"><label>Risco</label></th>
+              </tr>
+            </thead>
+            <tbody class="testeColappse2">
+              <tr>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+       <div id="programasNav" class="tab-pane fade">
+            <table class="table table-striped" id="tabela_programas" >
+             <table  id="divProgramas"> 
+              <thead>
+                <tr>
+                  <th class="col-sm-2"><label>Grupo</th>
+                  <th class="col-sm-2"><label>M&oacute;dulo</label></th>
+                  <th class="col-sm-2"><label>Cod. Programa</label></th>
+              </thead>
+
+              <tbody>
+              
+              </tbody>
+            </table>    
+          </table>         
+        </div>
+
+        <div id="gruposNavEx" class="tab-pane fade">
+
+        <table class="table table-hover" id="tabela_programas2" tablename="tabela_programas2" noaddbutton="true">
+          <thead>
+            <tr>
+              <th class="col-sm-3">Grupo</th>
+              <th class="col-sm-4">Descrição</th>
+              <th class="col-sm-1">Manter</th>
+              <th class="col-sm-4">Gestor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="concat" id="concat">
+              <td class="col-sm-3">
+                <input class="form-control" type="text" name="nomedoseugrupo" id="nomedoseugrupo" readonly />
+              </td>
+              <td class="col-sm-4">
+                <input type="text" name="descGrupoUser" id="descGrupoUser" class="form-control" readonly >
+              </td>
+              <td class="col-sm-1">
+                <input type="checkbox" name="manter" id="manter" checked="" class="form-control" />
+              </td>
+              <td class="col-sm-4">
+                <input class="form-control" type="text" name="nomeGestdoGrupo" id="nomeGestdoGrupo" readonly />
+                <input class="hidden" type="text" name="gestorHide" id="gestorHide" readonly />
+                <input class="hidden" type="text" name="grupoAux" id="grupoAux" readonly />
+
+                
+
+              </td>
+            </tr>
+          </tbody>
+        </table> 
+ 
+    </div>
+   </div>  
+  </div> 
+
+    
+
+     </div> 
+    <!-- Fim da div tab-pane aba1 -->
+</div> <!-- Fim da div tab-content-->
+</form>
+</div>
+</body>
+</html>

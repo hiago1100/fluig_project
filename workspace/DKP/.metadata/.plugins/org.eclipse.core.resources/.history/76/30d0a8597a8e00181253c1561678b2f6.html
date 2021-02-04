@@ -1,0 +1,432 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Hiago Domingos de Oliveira">
+    <meta name="author" content="Jonathan Oliveira Canavieira">
+    
+
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/jquery.timepicker.css" />
+    
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/datatables/datatables.min.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/jquery.timepicker.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/scripts/toast/toastr.min.css" />
+
+    <!-- STYLE DA VIEW -->
+    <link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form">
+            <input type="hidden" name="cpChapaConsultor" id="cpChapaConsultor">
+            <input type="hidden" name="cpChapaGestor" id="cpChapaGestor">
+            <input type="hidden" name="cpChapaGestorSubst" id="cpChapaGestorSubst">
+            <input type="hidden" name="cpChapaGestorSubstSeg" id="cpChapaGestorSubstSeg">
+            <input type="hidden" name="cpDescritor" id="cpDescritor">
+            
+            <!-- Identificador / Colaborador + Obra/Departamento + Data de Admissão -->
+            <input type="hidden" name="cpIdentificador" id="cpIdentificador">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-home fluigicon-lg"></span>&nbsp;<span
+                            class="descricaoProcesso"></span>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    O formul&aacute;rio abaixo refere-se ao preenchimento de informa&ccedil;&otilde;es para a solicita&ccedil;&atilde;o de <b><span
+                        class="descricaoProcesso"></span></b>
+                    <br>
+                    <br> Para conhecer o passo a passo dessa solicita&ccedil;&atilde;o e conferir todas as regras para a abertura desse chamado <b>
+                        <a href="" target="_blank" id="ID_LINK_MANUAL">acesse o manual</a>.</b>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                        &nbsp;Dados do solicitante
+                    </h3>
+                </div>
+                <div class="panel-body container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">N.Solicita&ccedil;&atilde;o</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpNumeroSolicitacao" id="cpNumeroSolicitacao">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Data abertura</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpDataAbertura" id="cpDataAbertura">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Solicitante</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteNome" id="cpSolicitanteNome">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Fun&ccedil;&atilde;o</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteFuncao" id="cpSolicitanteFuncao">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Empresa</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteEmpresa" id="cpSolicitanteEmpresa">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Departam./Obra</span>
+                                    <input type="text" readonly class="form-control" name="cpSolicitanteObraDep" id=cpSolicitanteObraDep>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Email</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteEmail" id="cpSolicitanteEmail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Estado</span>
+                                    <input type="text" readonly="readonly" class="form-control" name=cpSolicitanteEstado id="cpSolicitanteEstado">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                        &nbsp;Dados da solicita&ccedil;&atilde;o
+                    </h3>
+                </div>
+                <div class="panel-body container">
+                    <h4>
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Reabertura de Processo - Solicitante
+                    </h4>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Aprova&ccedil;&atilde;o</label>
+                                <select name="cpEvidenciaHabilidade" id="cpEvidenciaHabilidade" class="form-control">
+                                    <option value="">Selecione...</option>
+                                    <option value="aprovado">Reenviar chamado</option>
+                                    <option value="reprovado">Cancelar chamado</option>
+                                </select>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Parecer</label>
+                                <textarea class="form-control" rows="5" name="cpParecerAprovador" id="cpParecerAprovador"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados da Solicita&ccedil;&atilde;o
+                    </h4>
+
+                    <h5 class="bgHeader">
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Car&aacute;cter&iacute;sticas da procura&ccedil;&atilde;o
+                    </h5>
+
+                    <div class="row">
+
+                       <div class="col-md-4">
+                            <div class="form-group">
+                            <label>Centro de Custo para alocar a despesa</label>
+                            <div class="input-group">
+                              <input type="text" readonly class="form-control" name="cpObraDepartamentoInfo" id="cpObraDepartamentoInfo">                      
+                                <span class="input-group-btn">
+                                   <button type="button" id="btDepartamentoObra" class="btn btn-info buttonZoom">
+                                   <span class="fluigicon fluigicon-search"></span>
+                                   </button>
+                                </span>  
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Tipo de Procura&ccedil;&atilde;o</label>
+                                <input type="text" class="form-control" id="cpTipoProcuracao" name="cpTipoProcuracao" readonly>
+                            </div>
+                        </div>
+
+                       <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Modalidade</label>
+                                <input type="text" class="form-control" id="cpModalidade" name="cpModalidade" readonly>
+                            </div>
+                        </div>
+
+                       <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Necess&aacute;rio via F&iacute;sica</label>
+                                <input type="text" class="form-control" id="cpViaFisica" name="cpViaFisica" readonly>
+                            </div>
+                        </div> 
+
+                    </div>  
+
+                    <div class="row form-group" id="div_zoom_certidao">
+                        <div class="col-md-3">
+                            <label>Livro</label>
+                            <input type="text" name="cpLivro" id="cpLivro" class="form-control">
+                        </div>
+
+                         <div class="col-md-3">
+                            <label>Folha</label>
+                            <input type="text" name="cpFolha" id="cpFolha" class="form-control">
+                        </div>
+                    </div>   
+                    <div id="zoom_novaProcuracao">
+                    <h5 class="bgHeader">
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados do Outorgante (quem concede poderes)
+                    </h5> 
+
+                    <div  class="row form-group" id="botaoOutorgante" name="botaoOutorgante" >
+                    <div class="col-md-3 col-xs-12">
+                    <button type="button" class="btn btn-info form-control" name="adicionaOutorgante" id="adicionaOutorgante">+ Adicionar Outorgante</button>
+                    </div>
+                    </div>
+
+                      <div class="row form-group">
+                            <div class="col-md-6">
+                                <label>Outorgado</label>
+                                <select name="cpOutorgado" id="cpOutorgardo" class="form-control">
+                                    <option value="">Selecione...</option>
+                                    <option value="corretora">Corretora</option>
+                                    <option value="spe">SPE</option>
+                                    <option value="speGaveta">SPE Gaveta</option>
+                                    <option value="scp">SCP</option>
+                                    <option value="parceiras">Parceiras</option>
+                                    <option value="regional">Regional</option>
+                                    <option value="tdEmpresas">Todas Empresas</option>
+
+                                </select>
+                            </div>
+                        </div> 
+                    </div>    
+
+                    <div id="zoom_tipoEmpresa">
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                           
+                               <label>Empresa Outorgante</label>
+                               <div class="input-group">
+                               <input type="text" readonly class="form-control" name="cpEmpresaOutorgante" id="cpEmpresaOutorgante">                      
+                               <span class="input-group-btn">
+                                   <button type="button" id="btEmpresaOutorgante" class="btn btn-info buttonZoom">
+                                   <span class="fluigicon fluigicon-search"></span>
+                                   </button>
+                               </span>  
+                               </div>
+                          
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>CNPJ</label>
+                                <input type="text" name="cpCnpj" id="cpCnpj" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-3">
+                                <label>Cep da Sede</label>
+                                <input type="text" name="cpCepSede" id="cpCepSede" class="form-control">
+                            </div>
+
+                             <div class="col-md-3">
+                                <label>Logradouro</label>
+                                <input type="text" name="cpLogradouro" id="cpLogradouro" class="form-control">
+                            </div>
+
+                             <div class="col-md-3">
+                                <label>N&uacute;mero</label>
+                                <input type="number" name="cpNumero" id="cpNumero" class="form-control">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label>Complemento</label>
+                                <input type="text" name="cpComplemento" id="cpComplemento" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                <label>Bairro</label>
+                                <input type="text" name="cpBairro" id="cpBairro" class="form-control">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Cidade</label>
+                                <input type="text" name="cpCidade" id="cpCidade" class="form-control">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>UF</label>
+                                <select name="estados_brasil" class="form-control">
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="zoom_regional">
+                          <div class="row form-group">
+                            <div class="col-md-12">
+                                <label>Quais Regionais?</label>
+                                <textarea class="form-control" rows="3" name="cpRegionais" id="cpRegionais"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="zoom_novaProcuracao">
+                    <h5 class="bgHeader">
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados do Outorgante (quem concede poderes)
+                    </h5> 
+
+                    <div  class="row form-group" id="botaoOutorgante" name="botaoOutorgante" >
+                    <div class="col-md-3 col-xs-12">
+                    <button type="button" class="btn btn-info form-control" name="adicionaOutorgante_dois" id="adicionaOutorgante_dois">+ Adicionar Outorgante</button>
+                    </div>
+                    </div>
+
+                      <div class="row form-group">
+                            <div class="col-md-6">
+                                <label>Outorgado</label>
+                                <select name="cpOutorgardo_dois" id="cpOutorgardo_dois" class="form-control">
+                                    <option value="">Selecione...</option>
+                                    <option value="pessoaFisica">Pessoa F&iacute;sica</option>
+                                    <option value="pessoaJuridica">Pessoa Jur&iacute;dica</option>
+                                </select>
+                            </div>
+                        </div> 
+                    </div>
+
+                    <div id="zoom_pessoaFisica">
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label>Solicitaç&atilde;o Para</label>
+                                <select name="cpSolicitacao" id="cpSolicitacao" class="form-control">
+                                    <option value="">Selecione...</option>
+                                    <option value="terceiro">Terceiro</option>
+                    <option value="proprioColaborador">Pr&oacute;prio Colaborador</option>
+                                    <option value="outroColaborador">Outro Colaborador</option>
+                                </select>
+                            </div>
+                        </div> 
+                    </div>
+
+
+
+                   
+
+                
+            </div>
+
+
+        </form>
+    </div>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/datepicker-pt-BR.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/zoom/zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/Compartilhados/scripts/compartilhados.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/model.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/formShared.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/datatables.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/buttons.html5.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/buttons.jqueryui.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/dataTables.buttons.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/aes.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/toast/toastr.min.js" charset="utf-8"></script>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="Zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="BLL.js" charset="utf-8"></script>
+    <script type="text/javascript" src="DAL.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="mensagens.js" charset="utf-8"></script>
+    <script type="text/javascript" src="FLUIG_0227_View.js"></script>
+
+</body>
+
+</html>

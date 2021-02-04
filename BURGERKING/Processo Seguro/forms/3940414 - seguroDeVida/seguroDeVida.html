@@ -1,0 +1,148 @@
+<html>
+  <head>
+	<link type="text/css" rel="stylesheet" href="http://meubkqas.burgerking.com.br/style-guide/css/fluig-style-guide.min.css" />
+	<script type="text/javascript" charset="UTF-8" src="http://meubkqas.burgerking.com.br/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="http://meubkqas.burgerking.com.br/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="http://meubkqas.burgerking.com.br/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="http://meubkqas.burgerking.com.br/style-guide/js/fluig-style-guide.min.js"></script>
+	<script type="text/javascript" src="View.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <style type="text/css">
+       select[readonly] {
+          background: #eee; /*Simular campo inativo*/
+          pointer-events: none;
+          touch-action: none;
+        }
+        .labelField{font-weight: bold;}
+        .no-print{color: orange}
+    </style>
+  </head>
+  <body>     
+  	<div class="fluig-style-guide">
+
+  	  <form name="form" role="form">
+      <input type="text" name="idPasta" id="idPasta" class="hide">
+      <input type="text" name="pastaCriada" id="pastaCriada" class="hide">
+      <input type="text" name="pastaSeguraExistente" id="pastaSeguraExistente" class="hide">
+        <div class="panel solicitante"> 
+                             <ul class="nav nav-tabs clearfix" role="tablist">
+                          <li class="list-group-item">Dados da solicitação</li>
+                        </ul>                  
+                    <div class="panel-body container">
+                        <div class="row">
+                                <div class="col-md-4">
+                                <div class="form-group">
+                                <label class="labelField">Solicitante <span class="no-print">*</span></label>
+                                 <div class="input-group">                                   
+                                     <div class="input-group-addon"><i class="fluigicon fluigicon-user icon-sm"></i></div>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteNome"
+                                        id="cpSolicitanteNome" />
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                	<label class="labelField">Data solicitação <span class="no-print">*</span></label>
+                                 <div class="input-group">
+                                    <div class="input-group-addon"><i class="fluigicon fluigicon-calendar icon-sm"></i></div>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpDataAbertura"
+                                        id="cpDataAbertura" />
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                	<label class="labelField">Num. Solicitante <span class="no-print">*</span></label>
+                                 <div class="input-group">
+                                    <div class="input-group-addon"><i class="fluigicon fluigicon-file icon-sm"></i></div>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpNumSolicita"
+                                        id="cpNumSolicita" />
+                                </div>
+                            </div>
+                            </div>  
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                	<label class="labelField">CPF <span class="no-print">*</span></label>
+                                 <div class="input-group">
+                                    <div class="input-group-addon"><i class="fluigicon fluigicon-user icon-sm"></i></div>
+                                    <input type="zoom"
+                                           id="cpCpf"
+                                           name="cpCpf"
+                                           data-zoom="{
+                                                'displayKey': 'CPF',
+                                                'datasetId': 'dsDadosFuncionarioRM',
+                                                'placeholder': 'Busque pelo CPF do colaborador',
+                                                'resultLimit':'20',
+                                                'fields': [
+                                                    {
+                                                        'field':'CPF',
+                                                        'label':'CPF'
+                                                    },
+                                                    {
+                                                        'field':'NOME',
+                                                        'label':'Nome',
+                                                        'standard':'true'
+                                                    }
+                                                ]
+                                            }"obrigatorio />
+                                </div>
+                            </div>
+                            </div>  
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                	<label class="labelField"> Nome Colaborador <span class="no-print">*</span></label>
+                                 <div class="input-group">
+                                    <div class="input-group-addon"><i class="fluigicon fluigicon-user icon-sm"></i></div>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpNomeColab"
+                                        id="cpNomeColab" obrigatorio/>
+                                </div>
+                            </div>
+                            </div>  
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                	<label class="labelField">Função <span class="no-print">*</span></label>
+                                 <div class="input-group">
+                                    <div class="input-group-addon"><i class="fluigicon fluigicon-user-favorite icon-sm"></i> </div>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpFuncao"
+                                        id="cpFuncao" obrigatorio/>
+                                </div>
+                            </div>
+                            </div>  
+
+                            <div class="col-md-4 divDownloadDoc">
+                                <div class="form-group">
+                                	<label class="labelField"><b>Formulário seguro de vida</b></label>
+                                 <div class="input-group">
+                                   
+                                    	<a class="btn btn-info" id="downloadDoc" href="http://meubkqas.burgerking.com.br/volume/stream/Rmx1aWc=/P3Q9MSZ2b2w9RGVmYXVsdCZpZD0zOTQwNDQyJnZlcj0xMDAwJmZpbGU9VEVSTU8rREUrTk9NRUElQzMlODclQzMlODNPK0UrT1UrQUxURVJBJUMzJTg3JUMzJTgzTytERStCRU5FRklDSSVDMyU4MVJJTytHRU5FUkFMSS5QREYmY3JjPTMxMjAzODY3OSZzaXplPTAuNTg1OTk5JnVJZD0zMzEwOTEwMzMmZlNJZD02MjgzJnVTSWQ9NjI4MyZkPWZhbHNlJnRrbj0mcHVibGljVXJsPWZhbHNl.PDF" download> <i class="fluigicon fluigicon-download icon-sm"></i> Download do Formulário</a>                                 
+                                </div>
+                            </div>
+                            </div> 
+
+                            <div class="col-md-4 divUploadDoc">
+                                <div class="form-group">
+                                	<label class="labelField"><b>Carregar arquivo</b></label>
+                                 <div class="input-group">
+									<button type="text" id="btUpload" class="btn btn-success btn-sm " name="btUpload" onclick="JSInterface.showCamera()">
+										Upload <i class="fluigicon fluigicon-upload icon-sm"></i>
+									</button>                                 
+                                </div>
+                            </div>
+                            </div> 
+
+
+                    </div>
+                </div>  
+                </div>  
+            </div>
+              
+
+                                 
+  	  </form>
+  	</div>
+  </body>
+</html>

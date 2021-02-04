@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-sm-4">
+        <label>Número</label>
+        <p>{{documento.cotacaoNumero || 'Não informado'}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Comprador</label>
+        <p>{{documento.cotacaoItemComprador || 'Não informado'}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Data da Cotação</label>
+        <p>{{documento.cotacaoItemData | date}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <label>Valor Aprovado</label>
+        <p>{{documento.cotacaoItemValorTotal | currency:documento.cotacaoMoeda}}</p>
+    </div>
+    <div class="col-sm-8 col-xs-12">
+        <label>Fornecedor</label>
+        <p>{{documento.cotacaoFornecedor || 'Não informado'}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="hidden-xs">
+                    <tr>
+                        <th>
+                            <div class="col-sm-6">Fornecedor</div>
+                            <div class="col-sm-3">Valor</div>
+                            <div class="col-sm-3">Status</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="cotacao in documento.Cotacoes" ng-if="$index < 2">
+                        <td>
+                            <div class="col-sm-6">
+                                <p><b class="visible-xs-inline">Fornecedor: </b> {{cotacao.cotacaoFornecedor}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b class="visible-xs-inline">Valor: </b> {{cotacao.cotacaoValor | currency:cotacao.cotacaoMoeda}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b class="visible-xs-inline">Status: </b> {{cotacao.cotacaoStatus}}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-if="documento.Cotacoes.length > 2">
+                        <td colspan="3">{{documento.Cotacoes.length - 2}} mais...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1877 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>SIGAJURI_Contrato</processId>
+    </processDefinitionPK>
+    <processDescription>Solicitação de Contratos</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>false</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>SIGAJURI</categoryId>
+    <managerEngineAllocationId></managerEngineAllocationId>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>0</complementsLevel>
+    <notifyRequisitionerComplements>false</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>false</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Solicitação de Contratos</processId>
+      <version>1</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>6</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>156</positionX>
+      <positionY>60</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </processStatePK>
+      <stateName>Abrir Solicitação</stateName>
+      <stateDescription>Abrir Solicitação</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>288</positionX>
+      <positionY>43</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Análise Documentos</stateName>
+      <stateDescription>Análise Documentos</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>288</positionX>
+      <positionY>168</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>6</sequence>
+      </processStatePK>
+      <stateName>Gerar Minuta</stateName>
+      <stateDescription>Gerar Minuta</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>288</positionX>
+      <positionY>288</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>8</sequence>
+      </processStatePK>
+      <stateName>Preenche Minuta</stateName>
+      <stateDescription>Preenche Minuta</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>595</positionX>
+      <positionY>281</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>13</sequence>
+      </processStatePK>
+      <stateName>Valida Minuta</stateName>
+      <stateDescription>Valida Minuta</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>288</positionX>
+      <positionY>420</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>15</sequence>
+      </processStatePK>
+      <stateName>Gera Minuta Final</stateName>
+      <stateDescription>Gera Minuta Final</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>288</positionX>
+      <positionY>551</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>17</sequence>
+      </processStatePK>
+      <stateName>Finaliza Contrato</stateName>
+      <stateDescription>Finaliza Contrato</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>480</positionX>
+      <positionY>551</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>21</sequence>
+      </processStatePK>
+      <stateName>Revisar Documentos</stateName>
+      <stateDescription>Revisar Documentos</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Executor Atividade</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;BaseActivity&gt;1&lt;/BaseActivity&gt;&lt;Returns&gt;Last&lt;/Returns&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>490</positionX>
+      <positionY>168</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>19</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>515</positionX>
+      <positionY>475</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>25</sequence>
+      </processStatePK>
+      <stateName>Fim com cancelamento de processo</stateName>
+      <stateDescription>Fim com cancelamento de processo</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>648</positionX>
+      <positionY>185</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>65</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <sequence>29</sequence>
+      </processStatePK>
+      <stateName>Fim com cancelamento de processo</stateName>
+      <stateDescription>Fim com cancelamento de processo</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>204</positionX>
+      <positionY>430</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>65</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list/>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>3</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>1</initialStateSequence>
+      <finalStateSequence>2</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>5</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>2</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>7</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>6</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>16</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>true</returnPermited>
+      <initialStateSequence>13</initialStateSequence>
+      <finalStateSequence>15</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>18</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>15</initialStateSequence>
+      <finalStateSequence>17</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>20</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>17</initialStateSequence>
+      <finalStateSequence>19</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>22</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>true</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>21</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>24</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>21</initialStateSequence>
+      <finalStateSequence>25</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>26</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>6</initialStateSequence>
+      <finalStateSequence>8</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Se não houver minuta automática</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>27</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>6</initialStateSequence>
+      <finalStateSequence>13</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>28</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>8</initialStateSequence>
+      <finalStateSequence>13</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>30</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>13</initialStateSequence>
+      <finalStateSequence>29</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterStateEntry</eventId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterStateEntry(sequenceId){&#xd;
+var INICIO           = 1;&#xd;
+var ABRIR            = 2;&#xd;
+var VALIDADOC        = 4;&#xd;
+var REVISADOC        = 21;&#xd;
+var GERARMINUTA      = 6;&#xd;
+var PREENCHEMINUT    = 8;&#xd;
+var VALIDAMINUTA     = 13;&#xd;
+var MINUTAFINAL      = 15;&#xd;
+var FINALIZACONTRATO = 17;&#xd;
+var CANCREVCONT      = 25;&#xd;
+var FIM              = 19;&#xd;
+var step             = parseInt(getValue(&quot;WKCurrentState&quot;));&#xd;
+var users            = new java.util.ArrayList();&#xd;
+var nextState        = null;&#xd;
+var cUser            = &quot;&quot;;&#xd;
+var numSolic         = getValue(&quot;WKNumProces&quot;);&#xd;
+var aPassosJur       = [ABRIR, VALIDADOC, MINUTAFINAL,PREENCHEMINUT];&#xd;
+var sStatusProc      = &quot;1&quot;;&#xd;
+&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Iniciando. Atividade: &quot; + step + &quot;/Sequence Id: &quot; + sequenceId);&#xd;
+	&#xd;
+	if (aPassosJur.indexOf(step) &gt; -1){&#xd;
+		sStatusProc = &quot;1&quot;;&#xd;
+	}else{&#xd;
+		sStatusProc = &quot;2&quot;;&#xd;
+	}&#xd;
+	&#xd;
+	log.info(&quot;resul aPassosJur.indexOf(step):&quot; + aPassosJur.indexOf(step) + &quot;,sStatusProc:&quot; + sStatusProc);&#xd;
+	&#xd;
+	hAPI.setCardValue(&quot;sStatusProc&quot;,sStatusProc); //1 - Pendente Jurídico, 2 - Solicitante, 3 - Cancelado, 4 - Concluído&#xd;
+	&#xd;
+	switch(step){&#xd;
+	case 0:&#xd;
+		break;&#xd;
+		&#xd;
+	case ABRIR:			&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Inicio Abrir.&quot;);&#xd;
+		&#xd;
+		hAPI.setCardValue(&quot;numSolic&quot;, numSolic);&#xd;
+		//cria o assunto contrato no SIGAJURI&#xd;
+		if (incluiContratoSIGAJURI()){&#xd;
+			nextState = VALIDADOC;&#xd;
+			users.clear();&#xd;
+&#xd;
+			if (hAPI.getCardValue(&quot;sAprovacao&quot;) == &quot;true&quot;){&#xd;
+				cUser = getAdminCol();&#xd;
+			}else{&#xd;
+				cUser = hAPI.getCardValue(&quot;cdAdvogado&quot;);&#xd;
+			}&#xd;
+&#xd;
+			hAPI.setCardValue(&quot;sExecutorFluig&quot;,cUser);&#xd;
+			users.add(cUser);&#xd;
+			hAPI.setCardValue(&quot;cdResponsavel&quot;,hAPI.getCardValue(&quot;cdAdvogado&quot;));&#xd;
+			hAPI.setCardValue(&quot;cdSolicitante&quot;, getColleagueIdByMail(hAPI.getCardValue(&quot;cdSolicitante&quot;)));&#xd;
+			&#xd;
+			//validar se alguma parte foi incluída.&#xd;
+			if (hAPI.getCardValue(&quot;sPassivo&quot;)==&quot;&quot;){&#xd;
+				hAPI.setCardValue(&quot;sPassivo&quot;,hAPI.getCardValue(&quot;sRazaoSocial&quot;));&#xd;
+			}else if (hAPI.getCardValue(&quot;sAtivo&quot;)==&quot;&quot;){&#xd;
+				hAPI.setCardValue(&quot;sAtivo&quot;,hAPI.getCardValue(&quot;sRazaoSocial&quot;));&#xd;
+			}&#xd;
+&#xd;
+			hAPI.setAutomaticDecision(nextState, users, &quot;Decisao Automatica: Encaminhado para Análise de documentos. Responsável: &quot; + hAPI.getCardValue(&quot;sAdvogado&quot;) );&#xd;
+		}else{&#xd;
+			throw &quot;Erro ao criar o assunto jurídico no SIGAJURI.&quot;;&#xd;
+		}&#xd;
+&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final Abrir.&quot;);&#xd;
+		break;&#xd;
+&#xd;
+	case VALIDADOC:		&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Inicio ValidaDoc.&quot;);&#xd;
+		//inclusão do follow-up no SIGAJURI se o fluxo de aprovações estiver ligado	&#xd;
+		if (hAPI.getCardValue(&quot;sAprovacao&quot;) == &quot;true&quot; &amp;&amp; hAPI.getCardValue(&quot;sRevisaDoc&quot;) == &quot;1&quot;){&#xd;
+			var sPrazo = getPrazo();&#xd;
+			hAPI.setCardValue(&quot;dtPrazoTarefa&quot;,getCurrentDate(Number(sPrazo)));&#xd;
+			setDueDate(hAPI.getCardValue(&quot;dtPrazoTarefa&quot;),hAPI.getCardValue(&quot;sExecutorFluig&quot;))&#xd;
+			&#xd;
+			incluiFollowupSIGAJURI(getValue(&quot;WKUserComment&quot;));&#xd;
+			hAPI.setCardValue(&quot;sRevisaDoc&quot;,&quot;2&quot;);&#xd;
+		}&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final ValidaDoc.&quot;);&#xd;
+		break;&#xd;
+		&#xd;
+	case GERARMINUTA:&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Inicio GerarMinuta.&quot;);&#xd;
+		//valida se a minuta foi gerada automaticamente&#xd;
+		&#xd;
+		users.clear();&#xd;
+		&#xd;
+		&#xd;
+		if (geraMinutaAuto()){&#xd;
+			//se a minuta foi gerada, devemos avançar para o step de validação da minuta&#xd;
+			nextState = VALIDAMINUTA;&#xd;
+			users.add(hAPI.getCardValue(&quot;cdSolicitante&quot;));&#xd;
+			hAPI.setAutomaticDecision(nextState, users, &quot;Decisao Automatica: Foi gerada minuta automaticamente. Tarefa enviada ao solicitante para análise da minuta.&quot;);&#xd;
+			&#xd;
+		}else{&#xd;
+			//caso não exista padrão de minuta para gerar automaticament&#xd;
+			&#xd;
+			hAPI.setCardValue(&quot;sExecutorFluig&quot;,hAPI.getCardValue(&quot;cdResponsavel&quot;));&#xd;
+			users.add(hAPI.getCardValue(&quot;cdResponsavel&quot;));&#xd;
+			nextState = PREENCHEMINUT;&#xd;
+			hAPI.setAutomaticDecision(nextState, users, &quot;Decisao Automatica: Nào existe minuta padrão do SIGAJURI. A minuta deverá ser preenchida manualmente.&quot; );&#xd;
+		}&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final ValidaMinuta.&quot;);&#xd;
+		break;&#xd;
+		&#xd;
+	case REVISADOC:&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Inicio RevisaDoc.&quot;);&#xd;
+		//seta que passou pela revisão de doc&#xd;
+		hAPI.setCardValue(&quot;sRevisaDoc&quot;,&quot;1&quot;);&#xd;
+		//valida se existe alguma observação que deva ser anexada a tarefa.&#xd;
+		if (hAPI.getCardValue(&quot;sAprovacao&quot;) == &quot;true&quot; &amp;&amp; hAPI.getCardValue(&quot;sRevisaDoc&quot;) == &quot;1&quot;){&#xd;
+		if (hAPI.getCardValue(&quot;sObsFW&quot;) != &quot;&quot;){		&#xd;
+				hAPI.setTaskComments(hAPI.getCardValue(&quot;cdAdvogado&quot;), numSolic,  0, hAPI.getCardValue(&quot;sObsFW&quot;));&#xd;
+			hAPI.setCardValue(&quot;sObsFW&quot;,&quot;&quot;);&#xd;
+		}else{&#xd;
+				hAPI.setTaskComments(hAPI.getCardValue(&quot;cdAdvogado&quot;), numSolic,  0, getValue(&quot;WKUserComment&quot;));&#xd;
+		}&#xd;
+		}&#xd;
+		&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final RevisaDoc.&quot;);&#xd;
+		break;&#xd;
+		&#xd;
+	case CANCREVCONT:&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Inicio CancRevCont.&quot;);&#xd;
+		//efetua o cancelamento do workflow&#xd;
+    	hAPI.setCardValue(&quot;sStatusProc&quot;,&quot;3&quot;);	//3=Cancelado&#xd;
+    	&#xd;
+    	var obs = &quot;&quot;;&#xd;
+&#xd;
+    	if (getValue(&quot;WKUserComment&quot;) == null || getValue(&quot;WKUserComment&quot;) == &quot;&quot;) {&#xd;
+    		obs = &quot;tarefa cancelada via FLUIG na etapa de Revisão da documentação&quot;;&#xd;
+    	}else{&#xd;
+    		obs = getValue(&quot;WKUserComment&quot;);&#xd;
+    	}&#xd;
+    	lAtu = encerraAssJurSIGAJURI(hAPI.getCardValue(&quot;cdAssJur&quot;), hAPI.getCardValue(&quot;cdCajuri&quot;), &quot;2&quot;, obs , getMailByUserId(colleagueId) );&#xd;
+    	&#xd;
+    	log.info(&quot;*** afterStateEntry Contrato: Final CancRevCont.&quot;);&#xd;
+		break;&#xd;
+		&#xd;
+	case MINUTAFINAL:&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Inicio MinutaFinal.&quot;);&#xd;
+		//Atualiza o prazo do advogado&#xd;
+		var sPrazo = getPrazo();&#xd;
+		hAPI.setCardValue(&quot;dtPrazoTarefa&quot;,getCurrentDate(Number(sPrazo)));&#xd;
+		setDueDate(hAPI.getCardValue(&quot;dtPrazoTarefa&quot;),hAPI.getCardValue(&quot;sExecutorFluig&quot;))&#xd;
+		&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final MinutaFinal.&quot;);&#xd;
+		break;&#xd;
+		&#xd;
+	case FINALIZACONTRATO:&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Inicio FinalizaContrato.&quot;);&#xd;
+&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final FinalizaContrato.&quot;);&#xd;
+		break;&#xd;
+		&#xd;
+	case FIM:&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Inicio FIM.&quot;);&#xd;
+		hAPI.setCardValue(&quot;sStatusProc&quot;,&quot;4&quot;);&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final FIM.&quot;);&#xd;
+		break;&#xd;
+		&#xd;
+	default:&#xd;
+		break;&#xd;
+	}&#xd;
+	&#xd;
+	//grava os documentos na pasta&#xd;
+	gravaDocs();&#xd;
+}&#xd;
+&#xd;
+&#xd;
+&#xd;
+function getMailByUserId(cUser){&#xd;
+	log.info(&quot;*** getMailByUserId: Recuperando Mail.&quot;);&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Inicio getMailByUserId.&quot; + cUser);&#xd;
+	var fields = new Array();&#xd;
+	var constraints = new Array();&#xd;
+	var colleagues = null;&#xd;
+	var UserId = cUser;&#xd;
+	&#xd;
+	fields.push(&quot;mail&quot;);&#xd;
+	&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;active&quot;, true, true, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, cUser, cUser, ConstraintType.MUST));&#xd;
+	&#xd;
+	try{&#xd;
+		colleagues = DatasetFactory.getDataset(&quot;colleague&quot;, fields, constraints, null);&#xd;
+		&#xd;
+		if (colleagues &amp;&amp; colleagues.rowsCount &gt; 0){&#xd;
+			UserId = colleagues.getValue(0, &quot;mail&quot;);&#xd;
+		}&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;*** getMailByUserId: Falha ao recuperar o dataset.&quot;);&#xd;
+		log.error(&quot;*** getMailByUserId: ERROR: &quot; + e.message);&#xd;
+	}&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Final getMailByUserId. Retorno:&quot; + UserId );&#xd;
+	return UserId;&#xd;
+}&#xd;
+&#xd;
+function getCardsBySol(cdTipoCon){		&#xd;
+	var cards = null;&#xd;
+	&#xd;
+	var fields = new Array(&quot;metadata#id&quot;);&#xd;
+	var constraints = new Array();&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Inicio getCardsBySol.&quot; + cdTipoCon);&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdTipoCon&quot;, cdTipoCon, cdTipoCon, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sStatusProc&quot;, &quot;1&quot;, &quot;1&quot;, ConstraintType.MUST));&#xd;
+	&#xd;
+	try {&#xd;
+		cards = DatasetFactory.getDataset(&quot;SIGAJURI_Contrato&quot;, fields, constraints, null);&#xd;
+		&#xd;
+		log.info(&quot;*** getCardsBySol:&quot; + cards.rowsCount);&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final getCardsBySol. Retorno: &quot; + cards.rowsCount);&#xd;
+		return cards.rowsCount;&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;*** getCardsBySol: Falha ao buscar dataset.&quot;);&#xd;
+		log.error(&quot;*** getCardsBySol: ERRO: &quot; + e.message);&#xd;
+	}&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Final getCardsBySol.&quot;);&#xd;
+	return 0;&#xd;
+	&#xd;
+}&#xd;
+&#xd;
+function getCardsByUser(cdTipoCon, cdUser){		&#xd;
+	var cards = null;&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Inicio getCardsByUser.&quot;);&#xd;
+	&#xd;
+	var fields = new Array(&quot;metadata#id&quot;);&#xd;
+	var constraints = new Array();&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdTipoCon&quot;, cdTipoCon, cdTipoCon, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sMailAdvogado&quot;, cdUser, cdUser, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sStatusProc&quot;, &quot;1&quot;, &quot;1&quot;, ConstraintType.MUST));&#xd;
+	&#xd;
+	log.info(&quot;*** getCardsByUser: cdTipoCon:&quot; + cdTipoCon + &quot;, cdAdvogado:&quot; + cdUser);&#xd;
+	&#xd;
+	try {&#xd;
+		cards = DatasetFactory.getDataset(&quot;SIGAJURI_Contrato&quot;, fields, constraints, null);&#xd;
+		&#xd;
+		log.info(&quot;*** getCardsByUser:&quot; + cards.rowsCount);&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final getCardsByUser. Retorno: &quot; + cards.rowsCount);&#xd;
+		return cards.rowsCount;&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;*** getCardsByUser: Falha ao buscar dataset.&quot;);&#xd;
+		log.error(&quot;*** getCardsByUser: ERRO: &quot; + e.message);&#xd;
+	}&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Final getCardsByUser.&quot;);&#xd;
+	return 0;&#xd;
+	&#xd;
+}&#xd;
+&#xd;
+function gravaDocs(){&#xd;
+	var calendar = java.util.Calendar.getInstance().getTime();&#xd;
+	var attachments = hAPI.listAttachments();&#xd;
+	var nParentFolder =  Number(hAPI.getCardValue(&quot;sPastaCaso&quot;));&#xd;
+	var aDocsCur = [];&#xd;
+	var aDocs = [];&#xd;
+	var curDoc;&#xd;
+	var nLenaDoc = 0;&#xd;
+	var sDocsCur = &quot;&quot;;&#xd;
+	&#xd;
+	log.info(&quot;*** gravaDocs - Iniciando gravação dos documentos&quot;);&#xd;
+	&#xd;
+	if (hAPI.getCardValue(&quot;sDocs&quot;) != null &amp;&amp; hAPI.getCardValue(&quot;sDocs&quot;) != &quot;&quot;){&#xd;
+		sDocsCur = hAPI.getCardValue(&quot;sDocs&quot;);&#xd;
+		aDocsCur = sDocsCur.split(&quot;;&quot;);&#xd;
+	}&#xd;
+	&#xd;
+	for (var i = 0; i &lt; attachments.size(); i++) {&#xd;
+        var doc = attachments.get(i);&#xd;
+         &#xd;
+        if (doc.getDocumentType() != &quot;7&quot; &amp;&amp; aScan(aDocsCur,doc.getDocumentId()) == true) {&#xd;
+            continue;&#xd;
+        }&#xd;
+         &#xd;
+        curDoc = doc.getDocumentId();&#xd;
+        &#xd;
+        doc.setParentDocumentId(nParentFolder);&#xd;
+        doc.setVersionDescription(&quot;Processo: &quot; + getValue(&quot;WKNumProces&quot;));&#xd;
+        doc.setExpires(false);&#xd;
+        doc.setCreateDate(calendar);&#xd;
+        doc.setInheritSecurity(true);&#xd;
+        doc.setTopicId(1);&#xd;
+        doc.setUserNotify(false);&#xd;
+        doc.setValidationStartDate(calendar);&#xd;
+        doc.setVersionOption(&quot;0&quot;);&#xd;
+        doc.setUpdateIsoProperties(true);&#xd;
+        doc.setPublisherId(getAdminCol())&#xd;
+        doc.setColleagueId(getAdminCol())&#xd;
+         &#xd;
+        try{&#xd;
+        	hAPI.publishWorkflowAttachment(doc);&#xd;
+        	aDocs.push(curDoc);&#xd;
+        }catch (e) {&#xd;
+        	log.error(&quot;*** gravaDocs - Problemas na criação do documento: &quot; + e.message);&#xd;
+        }&#xd;
+    }&#xd;
+    &#xd;
+	nLenaDoc =  aDocs.length;&#xd;
+	if (nLenaDoc == null){&#xd;
+		nLenaDoc = 0;&#xd;
+	} &#xd;
+	&#xd;
+	if (nLenaDoc &gt; 0){&#xd;
+    	//grava documentos&#xd;
+    	if (sDocsCur != null &amp;&amp; sDocsCur != &quot;&quot;){&#xd;
+    		sDocsCur = sDocsCur + &quot;;&quot;;&#xd;
+    	}&#xd;
+    	&#xd;
+    	sDocsCur = sDocsCur + aDocs.join(&quot;;&quot;);&#xd;
+    	&#xd;
+    	hAPI.setCardValue(&quot;sDocs&quot;, sDocsCur);&#xd;
+    	log.info(&quot;*** gravaDocs - Documentos anexados: &quot; + sDocsCur);&#xd;
+		&#xd;
+    }&#xd;
+	&#xd;
+	log.info(&quot;*** gravaDocs - Finalizando gravação dos documentos&quot;);&#xd;
+}&#xd;
+&#xd;
+function aScan(aX,cVal){&#xd;
+	var index;&#xd;
+	var nLenaX = 0;&#xd;
+	&#xd;
+	nLenaX = aX.length;&#xd;
+	if (nLenaX == null){&#xd;
+		nLenaX = 0;&#xd;
+	} &#xd;
+				&#xd;
+	for	(index = 0; index &lt; nLenaX; index++) {&#xd;
+	    if (aX[index] == cVal){&#xd;
+	    	return true;&#xd;
+	    }&#xd;
+	}&#xd;
+	&#xd;
+	return false;&#xd;
+}&#xd;
+&#xd;
+function getCurrentDate(nDias){&#xd;
+	var dUtil = new Date();&#xd;
+	&#xd;
+	if (nDias === undefined){&#xd;
+		nDias = 0;&#xd;
+	}&#xd;
+	&#xd;
+	var Now = new Date();&#xd;
+	&#xd;
+	Now = addWorkDays(Now,nDias);&#xd;
+&#xd;
+	return Now.getDate() + &quot;/&quot; + (Now.getMonth()+1).toString() + &quot;/&quot; + Now.getFullYear().toString();&#xd;
+}&#xd;
+&#xd;
+function incluiContratoSIGAJURI(){&#xd;
+	var constraints = new Array();&#xd;
+	var response = null;&#xd;
+	var sMailSolicitante = getMailByUserId(hAPI.getCardValue(&quot;cdSolicitante&quot;));&#xd;
+	var sCnpj = hAPI.getCardValue(&quot;sCnpj&quot;); //cpf sem pontuação&#xd;
+	var sPastaCaso = &quot;&quot;;&#xd;
+	var sValor = hAPI.getCardValue(&quot;sValor&quot;);&#xd;
+	var aCustom = hAPI.getCardData(getValue(&quot;WKNumProces&quot;));&#xd;
+	var keys = aCustom.keySet().toArray();&#xd;
+	var sException = &quot;sValor,sCampoRetorno,sCnpj,sMailSolicitante,numSolic&quot;;&#xd;
+&#xd;
+	&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Inicio incluiContratoSIGAJURI.&quot;);&#xd;
+	&#xd;
+	if (sCnpj != null){&#xd;
+		sCnpj = sCnpj.replace(&quot;/&quot;, &quot;&quot;);&#xd;
+		sCnpj = sCnpj.replace(&quot;-&quot;, &quot;&quot;);&#xd;
+		sCnpj = sCnpj.replace(&quot;.&quot;, &quot;&quot;);&#xd;
+	}else{&#xd;
+		sCnpj = &quot;&quot;;&#xd;
+	}&#xd;
+	&#xd;
+	if (sValor == null){&#xd;
+		sValor = &apos;0&apos;;&#xd;
+	}&#xd;
+	&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sCnpj&quot;, sCnpj , sCnpj, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sCampoRetorno&quot;, &quot;sObsFW&quot;, &quot;sObsFW&quot;, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sValor&quot;, sValor, sValor, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sMailSolicitante&quot;, sMailSolicitante, sMailSolicitante, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdWF&quot;, hAPI.getCardValue(&quot;numSolic&quot;), hAPI.getCardValue(&quot;numSolic&quot;), ConstraintType.MUST));&#xd;
+	&#xd;
+	var count = 0;&#xd;
+	var valorField = &quot;&quot;;&#xd;
+	for (var key in keys) {&#xd;
+		count++;&#xd;
+        var field = keys[key];&#xd;
+&#xd;
+        if (sException.search(field) &lt; 0){ //sValor&#xd;
+        	//valorField = hAPI.getCardValue(field);&#xd;
+        	valorField = aCustom.get(field);&#xd;
+        	if (valorField == null){&#xd;
+        		valorField = &quot;&quot;;&#xd;
+        	}&#xd;
+        	//log.info(&quot;** WYK - Field: [&quot; + field + &quot;]&quot;);&#xd;
+        	//log.info(&quot;** WYK - Value: [&quot; + valorField + &quot;]&quot;);&#xd;
+        	constraints.push(DatasetFactory.createConstraint(field.toString(), hAPI.getCardValue(field), hAPI.getCardValue(field), ConstraintType.MUST));&#xd;
+        } &#xd;
+    }&#xd;
+	&#xd;
+	&#xd;
+	try{&#xd;
+		response = DatasetFactory.getDataset(&quot;dsInsContratoSIGAJURI&quot;, null, constraints, null);&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;** incluiContratoSIGAJURI: Falha ao buscar dataset.&quot;);&#xd;
+		log.error(&quot;** incluiContratoSIGAJURI: ERRO: &quot; + e.message);&#xd;
+	}&#xd;
+	&#xd;
+	if (response.getValue(0, &quot;cdCajuri&quot;) != &quot;&quot;){&#xd;
+		&#xd;
+		sPastaCaso = response.getValue(0, &quot;sPastaCaso&quot;);&#xd;
+		&#xd;
+		//Pega id da pasta do caso a partir do follow-up&#xd;
+		if (sPastaCaso == null || sPastaCaso == &quot;&quot;){&#xd;
+			sPastaCaso = getPastaDocs(response.getValue(0, &quot;cdFollowup&quot;));&#xd;
+		}&#xd;
+		&#xd;
+		hAPI.setCardValue(&quot;cdCajuri&quot;, response.getValue(0, &quot;cdCajuri&quot;) );&#xd;
+		hAPI.setCardValue(&quot;sCodigoJuridico&quot;, response.getValue(0, &quot;sCodigoJuridico&quot;) );&#xd;
+		hAPI.setCardValue(&quot;sAprovacao&quot;, response.getValue(0, &quot;sAprovacao&quot;) );&#xd;
+		hAPI.setCardValue(&quot;sPastaCaso&quot;, sPastaCaso);&#xd;
+		&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final incluiContratosSIGAJURI. Retorno: True&quot;);&#xd;
+		return true;&#xd;
+		&#xd;
+	}else{&#xd;
+		log.error(&quot;** incluiContratoSIGAJURI: Retorno sem linhas &quot;);&#xd;
+	}&#xd;
+	&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Final incluiContratoSIGAJURI. Retorno: Falso&quot;);&#xd;
+	return false;&#xd;
+}&#xd;
+&#xd;
+function getColleagueIdByMail(Email){&#xd;
+	var fields = new Array();&#xd;
+	var constraints = new Array();&#xd;
+	var sort = new Array();&#xd;
+	var colleagues = null;&#xd;
+	var colID = Email;&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Inicio getColleagueIdByMail. Parâmetro:&quot; + Email);&#xd;
+	fields.push(&quot;colleaguePK.colleagueId&quot;);&#xd;
+	&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;active&quot;, true, true, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;mail&quot;, Email, Email, ConstraintType.MUST));&#xd;
+	&#xd;
+	try{&#xd;
+		colleagues = DatasetFactory.getDataset(&quot;colleague&quot;, fields, constraints, sort);&#xd;
+		&#xd;
+		if (colleagues &amp;&amp; colleagues.rowsCount &gt; 0){&#xd;
+			colID = colleagues.getValue(0, &quot;colleaguePK.colleagueId&quot;);&#xd;
+		}&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;*** getColleagueIdByMail: Falha ao recuperar o dataset.&quot;);&#xd;
+		log.error(&quot;*** getColleagueIdByMail: ERROR: &quot; + e.message);&#xd;
+	}&#xd;
+	&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Final getColleagueIdByMail. Retorno &quot; + colID);&#xd;
+	return colID;&#xd;
+}&#xd;
+&#xd;
+function getAdminCol(){&#xd;
+	// Recupera valores do dataset de parametros (Login e senha de Admin, Id do Form da Widget e Id da Empresa) para chamar o webservice.&#xd;
+	var dsParamsSIGAJURI = DatasetFactory.getDataset(&quot;dsParamsSIGAJURI&quot;, new Array(), new Array(), null);&#xd;
+	var sAdmin = dsParamsSIGAJURI.getValue(0, &quot;sAdmin&quot;);&#xd;
+	&#xd;
+	var colid = getColleagueIdByMail(sAdmin);&#xd;
+	&#xd;
+	return colid;&#xd;
+}&#xd;
+&#xd;
+function geraMinutaAuto(){&#xd;
+	var constraints = new Array();&#xd;
+	var response = null;&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Inicio getMinutaAuto.&quot;);&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdCajuri&quot;, hAPI.getCardValue(&quot;cdCajuri&quot;), hAPI.getCardValue(&quot;cdCajuri&quot;), ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdTipoCon&quot;, hAPI.getCardValue(&quot;cdTipoCon&quot;), hAPI.getCardValue(&quot;cdTipoCon&quot;), ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdFilialNS7&quot;, hAPI.getCardValue(&quot;cdFilialNS7&quot;), hAPI.getCardValue(&quot;cdFilialNS7&quot;), ConstraintType.MUST));&#xd;
+		&#xd;
+	try{&#xd;
+		response = DatasetFactory.getDataset(&quot;dsGeraMinutaSIGAJURI&quot;, null, constraints, null);&#xd;
+		&#xd;
+		if (response!=null){&#xd;
+			if (response.getValue(0, &quot;id_peticao&quot;) != &quot;0&quot;){&#xd;
+				//anexa o documento que foi criado na pasta do caso pelo &#xd;
+				hAPI.attachDocument(parseInt(response.getValue(0, &quot;id_peticao&quot;)));&#xd;
+				log.info(&quot;*** afterStateEntry Contrato: Final getMinutaAuto. Retorno: True&quot;);&#xd;
+				return true;&#xd;
+				&#xd;
+			}else{&#xd;
+				log.error(&quot;** dsGeraMinutaSIGAJURI: Retorno sem linhas &quot;);&#xd;
+			}&#xd;
+		}&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;** dsGeraMinutaSIGAJURI: Falha ao buscar dataset.&quot;);&#xd;
+		log.error(&quot;** dsGeraMinutaSIGAJURI: ERRO: &quot; + e.message);&#xd;
+	}&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Final getMinutaAuto. Retorno: False&quot;);&#xd;
+	return false;&#xd;
+}&#xd;
+&#xd;
+function incluiFollowupSIGAJURI(sCompDesc){&#xd;
+	var constraints = new Array();&#xd;
+	var response = null;&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Inicio incluiFollowupSIGAJURI. Parâmetro:&quot; + sCompDesc);&#xd;
+	if (sCompDesc == null){&#xd;
+		sCompDesc = &quot;&quot;;&#xd;
+	}else{&#xd;
+		sCompDesc = sCompDesc.replaceAll(&quot;\\&lt;.*?&gt;&quot;,&quot;&quot;);&#xd;
+		sCompDesc = sCompDesc + &apos;\n&apos; + &quot; --- &quot; + &apos;\n&apos; + hAPI.getCardValue(&quot;sDescSol&quot;);&#xd;
+	}&#xd;
+	&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdCajuri&quot;, hAPI.getCardValue(&quot;cdCajuri&quot;), hAPI.getCardValue(&quot;cdCajuri&quot;), ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdWF&quot;, hAPI.getCardValue(&quot;numSolic&quot;), hAPI.getCardValue(&quot;numSolic&quot;), ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;dtPrazoTarefa&quot;, hAPI.getCardValue(&quot;dtPrazoTarefa&quot;), hAPI.getCardValue(&quot;dtPrazoTarefa&quot;), ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdTipoOrigem&quot;, &quot;Contrato&quot;, &quot;Contrato&quot;, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sDescricao&quot;, sCompDesc, sCompDesc, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdCodOrigem&quot;, hAPI.getCardValue(&quot;cdTipoCon&quot;), hAPI.getCardValue(&quot;cdTipoCon&quot;), ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sStepDestino&quot;, hAPI.getCardValue(&quot;sStepDestinoConc&quot;), hAPI.getCardValue(&quot;sStepDestinoConc&quot;), ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sStepDestinoFalha&quot;, hAPI.getCardValue(&quot;sStepDestinoCanc&quot;), hAPI.getCardValue(&quot;sStepDestinoCanc&quot;), ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sCampoRetorno&quot;, &quot;sObsFW&quot;, &quot;sObsFW&quot;, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sSolicitante&quot;, getMailByUserId(hAPI.getCardValue(&quot;cdSolicitante&quot;)), getMailByUserId(hAPI.getCardValue(&quot;cdSolicitante&quot;)), ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdFilialNS7&quot;, hAPI.getCardValue(&quot;cdFilialNS7&quot;), hAPI.getCardValue(&quot;cdFilialNS7&quot;), ConstraintType.MUST));&#xd;
+		&#xd;
+	try{&#xd;
+		response = DatasetFactory.getDataset(&quot;dsInsFollowupSIGAJURI&quot;, null, constraints, null);&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;** dsInsFollowupSIGAJURI: Falha ao buscar dataset.&quot;);&#xd;
+		log.error(&quot;** dsInsFollowupSIGAJURI: ERRO: &quot; + e.message);&#xd;
+	}&#xd;
+	&#xd;
+	if (response.getValue(0, &quot;cdFollowup&quot;) != &quot;0&quot;){		&#xd;
+		log.error(&quot;** dsInsFollowupSIGAJURI: Incluido fw: &quot; + response.getValue(0, &quot;cdFollowup&quot;));&#xd;
+		log.info(&quot;*** afterStateEntry Contrato: Final incluiFollowupSIGAJURI. Retorno: True&quot;);&#xd;
+		return true;&#xd;
+	}else{&#xd;
+		log.error(&quot;** dsInsFollowupSIGAJURI: Retorno sem linhas &quot;);&#xd;
+	}&#xd;
+	log.info(&quot;*** afterStateEntry Contrato: Final incluiFollowupSIGAJURI. Retorno: False&quot;);&#xd;
+	return false;&#xd;
+}&#xd;
+&#xd;
+function getPrazo(){	&#xd;
+	var cdTipoCon = hAPI.getCardValue(&quot;cdTipoCon&quot;);&#xd;
+	var lRet = false;&#xd;
+	var sPrazo = 0;&#xd;
+	&#xd;
+	var fields = new Array(&quot;metadata#id&quot;, &quot;sPrioridade&quot;,&quot;cdAssJur&quot;, &quot;sPrazo&quot;, &quot;cdUser&quot;, &quot;cdTipoCon&quot;, &quot;sUser&quot;);&#xd;
+	var constraints = new Array();&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdTipoCon&quot;, cdTipoCon, cdTipoCon, ConstraintType.MUST));&#xd;
+		&#xd;
+	try {&#xd;
+		configs = DatasetFactory.getDataset(&quot;wcmSIGAJURI_Contratos&quot;, fields, constraints, null);&#xd;
+		sPrazo = configs.getValue(0, &quot;sPrazo&quot;);&#xd;
+		return sPrazo;&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;*** ContratoResp: Falha ao buscar dataset.&quot;);&#xd;
+		log.error(&quot;*** ContratoResp: ERRO: &quot; + e.message);&#xd;
+	}&#xd;
+	&#xd;
+	return 0;&#xd;
+}&#xd;
+&#xd;
+function getPastaDocs(cdFollowup){	&#xd;
+	var cards = null;&#xd;
+	var sPastaCaso = &quot;0&quot;;&#xd;
+	var fields = new Array(&quot;metadata#id&quot;,&quot;sPastaCaso&quot;);&#xd;
+	var constraints = new Array();&#xd;
+	&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdFollowUp&quot;, cdFollowup, cdFollowup, ConstraintType.MUST));&#xd;
+	&#xd;
+	try {	&#xd;
+		cards = DatasetFactory.getDataset(&quot;SIGAJURI_Followup&quot;, fields, constraints, null);&#xd;
+		&#xd;
+		if (cards.rowsCount == 1){&#xd;
+			sPastaCaso = cards.getValue(0, &quot;sPastaCaso&quot;)&#xd;
+		}else{&#xd;
+			log.info(&quot;*** getPastaDocs - Não será retornada a pasta do caso, porque existe mais que 1 follow-up com este código no dataset SIGAJURI_Followup: &quot; + cdFollowup);&#xd;
+		}&#xd;
+	&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;*** getPastaDocs - Falha ao buscar dataset SIGAJURI_Follow-up: &quot; + e.message);&#xd;
+	}&#xd;
+	&#xd;
+	return sPastaCaso;&#xd;
+}	&#xd;
+&#xd;
+function setDueDate(sData,colleagueId){&#xd;
+	var segundos = 50400;&#xd;
+	var cSep = &quot;-&quot;;&#xd;
+	var nDia = 2;&#xd;
+	var nMes = 1;&#xd;
+	var nAno = 0;&#xd;
+	var processo = getValue(&quot;WKNumProces&quot;);&#xd;
+	&#xd;
+	if (sData != null &amp;&amp; sData.trim() != &quot;&quot; &amp;&amp; sData != &quot;&quot;){&#xd;
+		&#xd;
+		//valida o separador entre / e -&#xd;
+	    if (sData.indexOf(&quot;/&quot;)&gt;0){&#xd;
+    		cSep = &quot;/&quot;;&#xd;
+    		nAno = 2;&#xd;
+    		nDia = 0;&#xd;
+    	}&#xd;
+	    &#xd;
+		var dateParts = sData.split(cSep);	    &#xd;
+		var dtPrazo = new Date(dateParts[nAno], (dateParts[nMes] - 1), dateParts[nDia]); //Javascript reconhece 0 como janeiro, 1 fevereiro ....&#xd;
+		&#xd;
+		hAPI.setDueDate(processo, 0, colleagueId, dtPrazo, segundos);&#xd;
+	}&#xd;
+	&#xd;
+}&#xd;
+&#xd;
+function addWorkDays(startDate, days) {&#xd;
+    if(isNaN(days)) {&#xd;
+        console.log(&quot;Value provided for \&quot;days\&quot; was not a number&quot;);&#xd;
+        return&#xd;
+    }&#xd;
+&#xd;
+    if(!(startDate instanceof Date)) {&#xd;
+        console.log(&quot;Value provided for \&quot;startDate\&quot; was not a Date object&quot;);&#xd;
+        return&#xd;
+    }&#xd;
+&#xd;
+    // Get the day of the week as a number (0 = Sunday, 1 = Monday, .... 6 = Saturday)&#xd;
+    var dow = startDate.getDay();&#xd;
+    var daysToAdd = parseInt(days);&#xd;
+&#xd;
+    // If the current day is Sunday add one day&#xd;
+    if (dow == 0)&#xd;
+        daysToAdd++;&#xd;
+    // If the start date plus the additional days falls on or after the closest Saturday calculate weekends&#xd;
+&#xd;
+    if (dow + daysToAdd &gt;= 6) {&#xd;
+&#xd;
+        //Subtract days in current working week from work days&#xd;
+&#xd;
+        var remainingWorkDays = daysToAdd - (5 - dow);&#xd;
+&#xd;
+        //Add current working week&apos;s weekend&#xd;
+&#xd;
+        daysToAdd += 2;&#xd;
+&#xd;
+        if (remainingWorkDays &gt; 5) {&#xd;
+&#xd;
+            //Add two days for each working week by calculating how many weeks are included&#xd;
+&#xd;
+            daysToAdd += 2 * Math.floor(remainingWorkDays / 5);&#xd;
+&#xd;
+            //Exclude final weekend if remainingWorkDays resolves to an exact number of weeks&#xd;
+&#xd;
+            if (remainingWorkDays % 5 == 0)&#xd;
+&#xd;
+                daysToAdd -= 2;&#xd;
+&#xd;
+        }&#xd;
+&#xd;
+    }&#xd;
+&#xd;
+    startDate.setDate(startDate.getDate() + daysToAdd);&#xd;
+&#xd;
+    return startDate;&#xd;
+&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeCancelProcess</eventId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeCancelProcess(colleagueId,processId){&#xd;
+	var lAtu = false;&#xd;
+	&#xd;
+    	hAPI.setCardValue(&quot;sStatusProc&quot;,&quot;3&quot;);	//3=Cancelado&#xd;
+    	&#xd;
+    	lAtu = encerraAssJurSIGAJURI(hAPI.getCardValue(&quot;cdAssJur&quot;), hAPI.getCardValue(&quot;cdCajuri&quot;), &quot;2&quot;, getValue(&quot;WKUserComment&quot;), getMailByUserId(colleagueId) );&#xd;
+    &#xd;
+	&#xd;
+	if (lAtu == false){&#xd;
+		throw &quot;Erro ao atualizar o SIGAJURI. O workflow não pode ser cancelada.&quot;;&#xd;
+	}&#xd;
+	&#xd;
+}&#xd;
+&#xd;
+function encerraAssJurSIGAJURI(cdAssJur,cdCajuri, sStatus, sObs, sUser ){&#xd;
+	var constraints = new Array();&#xd;
+	var response = null;&#xd;
+	var cdFilialNS7 = hAPI.getCardValue(&quot;cdFilialNS7&quot;);&#xd;
+	&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdAssJur&quot;, cdAssJur, cdAssJur, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sStatus&quot;, sStatus, sStatus, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sObs&quot;, sObs, sObs, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;sUser&quot;, sUser, sUser, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdCajuri&quot;, cdCajuri, cdCajuri, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdFilialNS7&quot;, cdFilialNS7, cdFilialNS7, ConstraintType.MUST));&#xd;
+		&#xd;
+	try{&#xd;
+		response = DatasetFactory.getDataset(&quot;dsEnceAssJurSIGAJURI&quot;, null, constraints, null);&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;** encerraAssJurSIGAJURI: Falha ao buscar dataset.&quot;);&#xd;
+		log.error(&quot;** encerraAssJurSIGAJURI: ERRO: &quot; + e.message);&#xd;
+	}&#xd;
+	&#xd;
+	if (response){&#xd;
+		var retorno = response.getValue(0, &quot;retorno&quot;);&#xd;
+		&#xd;
+		if (String(retorno) == &quot;true&quot;){&#xd;
+			return true;&#xd;
+		} else {&#xd;
+			log.error(&quot;*** encerraAssJurSIGAJURI: ERRO: retorno falso do SIGAJURI &quot;);&#xd;
+			return false;&#xd;
+		}&#xd;
+	}	else{&#xd;
+		log.error(&quot;** encerraAssJurSIGAJURI: Response false &quot;);&#xd;
+	}&#xd;
+	&#xd;
+	return false;&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>beforeStateEntry</eventId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function beforeStateEntry(sequenceId){&#xd;
+var ABRIR = 2;&#xd;
+var step  = parseInt(getValue(&quot;WKCurrentState&quot;));&#xd;
+&#xd;
+	log.info(&quot;*** beforeStateEntry Contrato: Inicio.&quot;);&#xd;
+	try{&#xd;
+&#xd;
+		switch(step){&#xd;
+			case ABRIR:			&#xd;
+				log.info(&quot;*** beforeStateEntry Contrato: Inicio Abrir.&quot;);&#xd;
+&#xd;
+				hAPI.setCardValue(&quot;sStepDestinoConc&quot;,&quot;6&quot;);&#xd;
+				hAPI.setCardValue(&quot;sStepDestinoCanc&quot;,&quot;21&quot;);&#xd;
+				hAPI.setCardValue(&quot;sRevisaDoc&quot;,&quot;2&quot;);&#xd;
+				&#xd;
+				log.info(&quot;*** beforeStateEntry Contrato: Configura o Responsavel pela tarefa.&quot;);&#xd;
+				if (setInfoConfig()){&#xd;
+					log.info(&quot;*** ContratoResp: Advogado:&quot; + hAPI.getCardValue(&quot;sAdvogado&quot;));			&#xd;
+					log.info(&quot;*** ContratoResp: Data Prazo:&quot; + hAPI.getCardValue(&quot;dtPrazoTarefa&quot;));&#xd;
+				}else{&#xd;
+					log.error(&quot;*** beforeStateEntry Contrato: Não foi possível determinar o responsável pelo contrato&quot;);&#xd;
+					throw &quot;Não foi possível determinar o responsável pelo contrato&quot;;&#xd;
+				}&#xd;
+				break;&#xd;
+			&#xd;
+			default:&#xd;
+				break;&#xd;
+		}&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;*** beforeStateEntry Contrato: ERROR: &quot; + e.message);&#xd;
+		log.info(&quot;*** beforeStateEntry Contrato: Fim.&quot;);&#xd;
+		throw &quot;Não foi possível determinar o responsável pelo contrato&quot;;&#xd;
+	}&#xd;
+	log.info(&quot;*** beforeStateEntry Contrato: Fim.&quot;);&#xd;
+}&#xd;
+&#xd;
+function setInfoConfig(){	&#xd;
+var cdTipoCon      = hAPI.getCardValue(&quot;cdTipoCon&quot;);&#xd;
+var configs        = null;&#xd;
+var nPerc          = 0; //porcentagem de atribuição do usuário&#xd;
+var cdUser         = 0;&#xd;
+var sUser          = 0;&#xd;
+var lRet           = false;&#xd;
+var sPrazo         = 0;&#xd;
+var nMenor         = 9999;&#xd;
+var nMenorAux      = 9999;&#xd;
+var idMenor        = -1;&#xd;
+var idMenorAux     = -1;&#xd;
+var qtdSol         = -1;&#xd;
+var qtdUser        = 0;&#xd;
+var fields         = new Array(&quot;metadata#id&quot;, &quot;sPrioridade&quot;,&quot;cdAssJur&quot;, &quot;sPrazo&quot;, &quot;cdUser&quot;, &quot;sUser&quot;, &quot;cdTipoCon&quot;, &quot;cdGrupo&quot;, &quot;sGrupo&quot;);&#xd;
+var constraints    = new Array();&#xd;
+var order          = new Array(&quot;sPrioridade&quot;);&#xd;
+var lGrupo         = false;&#xd;
+var cdResponsavel;&#xd;
+var sResponsavel;&#xd;
+var cdAssJur;&#xd;
+&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;metadata#active&quot;, true, true, ConstraintType.MUST));&#xd;
+	constraints.push(DatasetFactory.createConstraint(&quot;cdTipoCon&quot;, cdTipoCon, cdTipoCon, ConstraintType.MUST));&#xd;
+	&#xd;
+	try {&#xd;
+		configs = DatasetFactory.getDataset(&quot;wcmSIGAJURI_Contratos&quot;, fields, constraints, order);&#xd;
+	}catch(e){&#xd;
+		log.error(&quot;*** beforeStateEntry ContratoResp: Falha ao buscar dataset.&quot;);&#xd;
+		log.error(&quot;*** beforeStateEntry ContratoResp: ERRO: &quot; + e.message);&#xd;
+	}&#xd;
+&#xd;
+	if (!configs || configs.rowsCount &lt;= 0){&#xd;
+		log.info(&quot;*** beforeStateEntry ContratoResp: Nenhuma configuração. encontrada. Não irá para o FLUIG.&quot;);&#xd;
+		throw &quot;Nenhuma configuração encontrada. Solicitação não poderá ser gegistrada no FLUIG.&quot;;&#xd;
+		return false;&#xd;
+	}&#xd;
+&#xd;
+	log.info(&quot;*** ContratoResp: Processando dados encontrados: &quot; + configs.rowsCount);&#xd;
+&#xd;
+	for (var i = 0; i &lt; configs.rowsCount; i++){&#xd;
+		log.info(&quot;*** beforeStateEntry ContratoResp: Avaliando &quot; + configs.getValue(i, &quot;cdTipoCon&quot;));&#xd;
+&#xd;
+		//definição da prioridade&#xd;
+		if (configs.rowsCount==1){&#xd;
+			nPerc = 10;&#xd;
+		}else{&#xd;
+			nPerc = Number(configs.getValue(i, &quot;sPrioridade&quot;));&#xd;
+		}&#xd;
+&#xd;
+		//se o campo está igual a 10, deve receber todas as solicitações.&#xd;
+		if (nPerc == 10){&#xd;
+			idMenor = i;   &#xd;
+			lRet = true;&#xd;
+			break; //sai do loop &#xd;
+		}else{&#xd;
+			//pega a quantidade de solicitações ativas para determinado tipo de solicitação&#xd;
+			if (qtdSol==-1){&#xd;
+				qtdSol = getCardsBySol(configs.getValue(i, &quot;cdTipoCon&quot;));&#xd;
+			}&#xd;
+&#xd;
+			cdResponsavel = configs.getValue(i,&quot;cdUser&quot;);&#xd;
+			sResponsavel  = configs.getValue(i,&quot;sUser&quot;);&#xd;
+&#xd;
+			if ((cdResponsavel == null) || (cdResponsavel == &apos;&apos;)){&#xd;
+				cdResponsavel =  configs.getValue(i,&quot;cdGrupo&quot;);&#xd;
+				sResponsavel = configs.getValue(i,&quot;sGrupo&quot;);&#xd;
+			}&#xd;
+&#xd;
+			qtdUser = getCardsByUser(configs.getValue(i, &quot;cdTipoCon&quot;),cdResponsavel);&#xd;
+&#xd;
+			log.info(&quot;*** beforeStateEntry ContratoResp: qtdSol &quot; + qtdSol);&#xd;
+			log.info(&quot;*** beforeStateEntry ContratoResp: qtdUser &quot; + qtdUser);&#xd;
+			log.info(&quot;*** beforeStateEntry ContratoResp: valida menor (qtdUser &lt; nMenorAux):(&quot; + qtdUser + &quot; &lt; &quot; + nMenorAux);&#xd;
+&#xd;
+			//preenche o menor, independete se for elegível ou não.&#xd;
+			if (qtdUser &lt; nMenorAux){&#xd;
+				nMenorAux = qtdUser;&#xd;
+				idMenorAux = i;&#xd;
+			}&#xd;
+&#xd;
+			log.info(&quot;*** beforeStateEntry ContratoResp idMenorAux:&quot; + idMenorAux);&#xd;
+			log.info(&quot;*** beforeStateEntry ContratoResp: (((qtdSol/10)*nPerc) ) = &quot; +((qtdSol/10)*nPerc));&#xd;
+			&#xd;
+			//valida se o usuário deve receber a tarefa atual, baseado no campo prioridade&#xd;
+&#xd;
+			if ((qtdUser &lt; ((qtdSol/10)*nPerc)) || qtdUser == 0 || ((qtdSol/10)*nPerc) &lt; 1 ){&#xd;
+&#xd;
+				if (qtdUser &lt; nMenor){&#xd;
+					nMenor = qtdUser;&#xd;
+					idMenor = i;&#xd;
+				}&#xd;
+				&#xd;
+				lRet = true;&#xd;
+			}&#xd;
+		}&#xd;
+	}&#xd;
+	&#xd;
+	log.info(&quot;*** beforeStateEntry Contrato: Fim laço: lRet =&quot; + lRet + &quot;, idMenorAux=&quot; + idMenorAux);&#xd;
+&#xd;
+	if ((lRet==false) &amp;&amp; (idMenorAux &gt; -1)){&#xd;
+		lRet = true;&#xd;
+		idMenor = idMenorAux;&#xd;
+		nMenor = nMenorAux;&#xd;
+	}&#xd;
+&#xd;
+	//Usuário válido como executor&#xd;
+&#xd;
+	if (lRet){&#xd;
+		log.info(&quot;*** beforeStateEntry ContratoResp: menor = &quot; + idMenor + &quot;, qtd:&quot; + nMenor );        &#xd;
+		&#xd;
+		cdResponsavel = configs.getValue(idMenor, &quot;cdUser&quot;);&#xd;
+		sResponsavel = configs.getValue(idMenor, &quot;sUser&quot;);&#xd;
+		&#xd;
+		if ((cdResponsavel == null) || (cdResponsavel == &apos;&apos;)){&#xd;
+			sResponsavel  = configs.getValue(idMenor,&quot;sGrupo&quot;);&#xd;
+			cdResponsavel = configs.getValue(idMenor,&quot;cdGrupo&quot;);&#xd;
+			lGrupo        = true;&#xd;
+		}&#xd;
+		&#xd;
+		log.info(&quot;*** beforeStateEntry ContratoResp: cdResponsavel = &quot; + cdResponsavel + &quot;, sResponsavel:&quot; + sResponsavel + &quot;, lGrupo:&quot; + lGrupo);&#xd;
+		&#xd;
+		sPrazo = configs.getValue(idMenor, &quot;sPrazo&quot;);&#xd;
+		cdAssJur = configs.getValue(idMenor, &quot;cdAssJur&quot;);&#xd;
+		&#xd;
+		if (!lGrupo){&#xd;
+			hAPI.setCardValue(&quot;cdAdvogado&quot;,getColleagueIdByMail(cdResponsavel));&#xd;
+			hAPI.setCardValue(&quot;sMailAdvogado&quot;,getMailByUserId(cdResponsavel));&#xd;
+		} else {&#xd;
+			hAPI.setCardValue(&quot;cdAdvogado&quot;,&quot;Pool:Group:&quot; + cdResponsavel);&#xd;
+			hAPI.setCardValue(&quot;sMailAdvogado&quot;,cdResponsavel);&#xd;
+		}&#xd;
+&#xd;
+		hAPI.setCardValue(&quot;sAdvogado&quot;,sResponsavel);&#xd;
+		hAPI.setCardValue(&quot;cdAssJur&quot;,cdAssJur);&#xd;
+		&#xd;
+		hAPI.setCardValue(&quot;dtPrazoTarefa&quot;, getCurrentDate(Number(sPrazo)));&#xd;
+	}&#xd;
+&#xd;
+	return lRet;&#xd;
+	&#xd;
+}&#xd;
+</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskCreate</eventId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskCreate(colleagueId){&#xd;
+	var segundos = 50400;&#xd;
+	var lOk = false;&#xd;
+	var cSep = &quot;-&quot;;&#xd;
+	var nDia = 2;&#xd;
+	var nMes = 1;&#xd;
+	var nAno = 0;&#xd;
+	var dataForm = hAPI.getCardValue(&quot;dtPrazoTarefa&quot;);&#xd;
+             &#xd;
+    // Recupera o numero da solicitação&#xd;
+    var processo = getValue(&quot;WKNumProces&quot;);&#xd;
+    &#xd;
+    log.info(&quot;*** Data Form contrato:&quot; + dataForm);&#xd;
+        	&#xd;
+	if (dataForm != null &amp;&amp; dataForm.trim() != &quot;&quot; &amp;&amp; dataForm != &quot;&quot;){&#xd;
+		&#xd;
+		//valida o separador entre / e -&#xd;
+	    if (dataForm.indexOf(&quot;/&quot;)&gt;0){&#xd;
+    		cSep = &quot;/&quot;;&#xd;
+    		nAno = 2;&#xd;
+    		nDia = 0;&#xd;
+    	}&#xd;
+	    var dateParts = dataForm.split(cSep);&#xd;
+	    log.info(&quot;*** due calculado contrado: Dia:&quot; + dateParts[nDia] + &quot;, Mes:&quot; +  dateParts[nMes] + &quot;, Ano:&quot; + dateParts[nAno]);&#xd;
+	    &#xd;
+    	var dtPrazo = new Date(dateParts[nAno], (dateParts[nMes] - 1), dateParts[nDia]); //Javascript reconhece 0 como janeiro, 1 fevereiro ....&#xd;
+		lOk = true;&#xd;
+    }&#xd;
+	        &#xd;
+    if (lOk){&#xd;
+		// Seta o prazo para as 14:00&#xd;
+		log.info(&quot;*** due setado: Data:&quot; + dtPrazo.toString());&#xd;
+		hAPI.setDueDate(processo, 0, colleagueId, dtPrazo, segundos);&#xd;
+	}&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list>
+    <AdvancedProcessProperties>
+      <advancedProcessPropertiesPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <propertyId>AutomaticTasks</propertyId>
+        <version>1</version>
+      </advancedProcessPropertiesPK>
+      <propertieValue>2,6</propertieValue>
+    </AdvancedProcessProperties>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <linkSequence>28</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>648</positionX>
+      <positionY>448</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list>
+    <ExtendedPropertyField>
+      <extendedPropertyFieldPK>
+        <companyId>1</companyId>
+        <processId>SIGAJURI_Contrato</processId>
+        <version>1</version>
+        <stateSequence>0</stateSequence>
+        <propertyName>AutomaticTasks</propertyName>
+      </extendedPropertyFieldPK>
+      <propertyType>0</propertyType>
+      <propertyDescription>AutomaticTasks</propertyDescription>
+      <propertyValue>2,6</propertyValue>
+      <isDefaultProperty>false</isDefaultProperty>
+    </ExtendedPropertyField>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

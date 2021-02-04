@@ -1,0 +1,1765 @@
+<html>
+
+    <head>
+        <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+        <link href="https://csc.direcional.com.br/scripts/js/jquery-ui/jquery-ui.css" rel="stylesheet" />
+        <link href="https://csc.direcional.com.br/scripts/js/datatables/datatables.min.css" rel="stylesheet" />
+        <link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/css/estilo.css" />
+        <link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/css/jquery.timepicker.css" />
+        <link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/js/toast/toastr.min.css" />
+    </head>
+
+    <body>
+        <div class="fluig-style-guide">
+            <form name="form" role="form" id="form">
+                <input type="hidden" name="cpMatriculaSolicitante" id="cpMatriculaSolicitante" />
+                <input type="hidden" name="cpDescritor" id="cpDescritor" />
+                <input type="hidden" name="cpDataEmissaoCND" id="cpDataEmissaoCND" />
+                <input type="hidden" name="cpValidaCheckObra" id="cpValidaCheckObra" value="0" />
+                <input type="hidden" name="cpValidaCheckDemol" id="cpValidaCheckDemol" value="0" />
+                <input type="hidden" name="cpExecutorAtividade6" id="cpExecutorAtividade6" />
+                <input type="hidden" name="cpChapaExecutorAtividade6" id="cpChapaExecutorAtividade6" />
+                <input type="hidden" name="hddchResUnifamiliar" id="hddchResUnifamiliar" />
+                <input type="hidden" name="hddchResMultifamiliar" id="hddchResMultifamiliar" />
+                <input type="hidden" name="hddchResHotelfamiliar" id="hddchResHotelfamiliar" />
+                <input type="hidden" name="hddchAreaUnifamiliar" id="hddchAreaUnifamiliar" />
+                <input type="hidden" name="hddchAndaresUnifamiliar" id="hddchAndaresUnifamiliar" />
+                <input type="hidden" name="hddchSalasfamiliar" id="hddchSalasfamiliar" />
+                <input type="hidden" name="hddchGalpaofamiliar" id="hddchGalpaofamiliar" />
+                <input type="hidden" name="hddchCasaUnifamiliar" id="hddchCasaUnifamiliar" />
+                <input type="hidden" name="hddchConjuntoUnifamiliar" id="hddchConjuntoUnifamiliar" />
+
+                <input type="hidden" name="hddchDemolResUnifamiliar" id="hddchDemolResUnifamiliar" />
+                <input type="hidden" name="hddchDemolResMultifamiliar" id="hddchDemolResMultifamiliar" />
+                <input type="hidden" name="hddchDemolResHotelfamiliar" id="hddchDemolResHotelfamiliar" />
+                <input type="hidden" name="hddchDemolAreaUnifamiliar" id="hddchDemolAreaUnifamiliar" />
+                <input type="hidden" name="hddchDemolAndaresUnifamiliar" id="hddchDemolAndaresUnifamiliar" />
+                <input type="hidden" name="hddchDemolSalasfamiliar" id="hddchDemolSalasfamiliar" />
+                <input type="hidden" name="hddchDemolGalpaofamiliar" id="hddchDemolGalpaofamiliar" />
+                <input type="hidden" name="hddchDemolCasaUnifamiliar" id="hddchDemolCasaUnifamiliar" />
+                <input type="hidden" name="hddchDemolConjuntoUnifamiliar" id="hddchDemolConjuntoUnifamiliar" />
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="fluigicon fluigicon-home fluigicon-lg"></span>
+                        <span class="descricaoProcesso"></span>
+                    </div>
+                    <div class="panel-body">
+                        O formul&aacute;rio abaixo refere-se ao preenchimento de informa&ccedil;&otilde;es
+                        necess&aacute;rias no processo de <b><span class="descricaoProcesso"></span></b>.
+                        <br>
+                        <br> Para conhecer o passo a passo dessa solicita&ccedil;&atilde;o e conferir todas as regras
+                        para
+                        a abertura desse chamado <b><a
+                                href="http://csc.direcional.com.br:8080/portal/p/1/ecmnavigation?app_ecm_navigation_doc="
+                                target="_blank" id="ID_LINK_MANUAL" class="LinkManual">acesse o manual</a></b>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                            Dados do solicitante
+                        </h3>
+                    </div>
+                    <div class="panel-body container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">N&uacute;mero da solicita&ccedil;&atilde;o</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                        name="cpNumeroSolicitacao" id="cpNumeroSolicitacao" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Data de abertura</label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpDataAbertura"
+                                        id="cpDataAbertura" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Solicitante</label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteNome"
+                                        id="cpSolicitanteNome" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Fun&ccedil;&atilde;o</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                        name="cpSolicitanteFuncao" id="cpSolicitanteFuncao" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Empresa</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                        name="cpSolicitanteEmpresa" id="cpSolicitanteEmpresa" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Obra/Departamento</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                        name="cpSolicitanteObraDep" id="cpSolicitanteObraDep" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Estado</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                        name="cpSolicitanteEstado" id="cpSolicitanteEstado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Email</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                        name="cpSolicitanteEmail" id="cpSolicitanteEmail" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" id="divReaberturaIncorporacao">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+                            Reabertura do processo - Demanda de Incorporação
+                        </h3>
+                    </div>
+                    <div class="panel-body container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                    <select class="form-control" name="cpReaberturaIncorporacao"
+                                        id="cpReaberturaIncorporacao" aprovacao obrigatorio>
+                                        <option value="">Selecione...</option>
+                                        <option value="1" data-status="success">Reenviar Chamado</option>
+                                        <option value="2" data-status="success">Cancelar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Parecer</label>
+                                    <textarea rows="3" class="form-control" name="cpParecerIncorporacao"
+                                        id="cpParecerIncorporacao" parecer></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" id="divReaberturaJuridico">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+                            Reabertura do processo - Demanda do Jurídico
+                        </h3>
+                    </div>
+                    <div class="panel-body container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                    <select class="form-control" name="cpReaberturaJuridico" id="cpReaberturaJuridico"
+                                        aprovacao obrigatorio>
+                                        <option value="">Selecione...</option>
+                                        <option value="1" data-status="success">Reenviar Chamado</option>
+                                        <option value="2" data-status="success">Cancelar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Parecer</label>
+                                    <textarea rows="3" class="form-control" name="cpParecerReaberturaJuridico"
+                                        id="cpParecerReaberturaJuridico" parecer></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="fluigicon fluigicon-fileedit fluigicon-lg"></span>
+                            Dados da solicitação
+                        </h3>
+                    </div>
+                    <div class="panel-body container">
+                        <h4>
+                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>
+                            Dados da Obra
+                        </h4>
+                        <div class="alert alert-info" role="alert">
+                            <ul>
+                                <li>Caso o documento emitido pela prefeitura não possua selo de autenticação eletrônica,
+                                    é
+                                    necessáro autentica-lo em cartório.</li>
+                                <li>Obrigatório anexar Alvará e habite-se da obra.</li>
+                            </ul>
+                        </div>
+                        <div class="row" id="divObra">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Obra</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="cpObra" id="cpObra" readonly
+                                            obrigatorio>
+                                        <span class="input-group-btn">
+                                            <button type="button" id="btObra" class="btn btn-info buttonZoom">
+                                                <span class="fluigicon fluigicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="labelField">Identificação do proprietário do imóvel, dono,
+                                        incorporador
+                                        ou condomínio</label>
+                                    <input type="text" class="form-control" name="cpIdentificacao" id="cpIdentificacao"
+                                        obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Matricula CEI</label>
+                                    <input type="text" class="form-control" name="cpMatriculaCEI" id="cpMatriculaCEI"
+                                        obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="labelField">Logradouro</label>
+                                    <input type="text" class="form-control" name="cpLogradouro" id="cpLogradouro"
+                                        obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="labelField">Nº</label>
+                                    <input type="text" class="form-control" name="cpNumero" id="cpNumero" obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="labelField">Complemento</label>
+                                    <input type="text" class="form-control" name="cpComplemento" id="cpComplemento"
+                                        obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Lotes</label>
+                                    <input type="text" class="form-control" name="cpLotes" id="cpLotes" obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Quadra</label>
+                                    <input type="text" class="form-control" name="cpQuadra" id="cpQuadra" obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Bairro</label>
+                                    <input type="text" class="form-control" name="cpBairro" id="cpBairro" obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Município</label>
+                                    <input type="text" class="form-control" name="cpMunicipio" id="cpMunicipio"
+                                        obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="labelField">UF</label>
+                                    <select class="form-control" name="cpUF" id="cpUF" obrigatorio>
+                                        <option value="">Selecione...</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí&shy;</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="labelField">CEP</label>
+                                    <input type="text" class="form-control" name="cpCEP" id="cpCEP" obrigatorio
+                                        mask=00.000-000>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Telefone</label>
+                                    <input type="text" class="form-control" name="cpTelefone" id="cpTelefone"
+                                        obrigatorio mask=(00)00000-0000>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="labelField">Nº do alvará/habite- se</label>
+                                    <input type="text" class="form-control" name="cpNumAlvara" id="cpNumAlvara"
+                                        obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="labelField">Data alvará/habite-se</label>
+                                    <input type="text" class="form-control" name="cpDtAlvara" id="cpDtAlvara"
+                                        mask=00/00/0000 obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="labelField">Nº vistoria de conclusão</label>
+                                    <input type="text" class="form-control" name="cpNumVistoria" id="cpNumVistoria"
+                                        obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="labelField">Data da vistoria</label>
+                                    <input type="text" class="form-control" name="cpDtVistoria" id="cpDtVistoria"
+                                        mask=00/00/0000 obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="labelField">Data de início</label>
+                                    <input type="text" class="form-control" name="cpDtInicio" id="cpDtInicio"
+                                        mask=00/00/0000 obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="labelField">Data de término</label>
+                                    <input type="text" class="form-control" name="cpDtTermino" id="cpDtTermino"
+                                        mask=00/00/0000 obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Trata-se de obra</label>
+                                    <select name="cpTrataObra" id="cpTrataObra" class="form-control" obrigatorio>
+                                        <option value="">Selecione...</option>
+                                        <option value="Nova">Nova</option>
+                                        <option value="Inacabada">Inacabada</option>
+                                        <option value="Parcial">Parcial</option>
+                                        <option value="Reformada">Reformada</option>
+                                        <option value="Acrescida">Acrescida</option>
+                                        <option value="Demolida">Demolida</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>
+                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>
+                            Informações Contratuais
+                        </h4>
+                        <div class="row" id="divInfoContratuais">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="labelField">Número</label>
+                                    <input type="number" class="form-control" name="cpNumeroInfo" id="cpNumeroInfo"
+                                        obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="labelField">Registro</label>
+                                    <input type="text" class="form-control" name="cpRegistroInfo" id="cpRegistroInfo"
+                                        obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="labelField">Data</label>
+                                    <input type="text" class="form-control" name="cpDataInfo" id="cpDataInfo"
+                                        mask=00/00/0000 obrigatorio>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="labelField">Valor total com reajustes</label>
+                                    <input type="text" class="form-control" name="cpValorInfo" id="cpValorInfo"
+                                        mask=#.##0,00>
+                                </div>
+                            </div>
+                            <div class="row col-md-12">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="labelField">Contém aditivo?</label>
+                                        <select name="cpAditivoInfo" id="cpAditivoInfo" class="form-control"
+                                            obrigatorio>
+                                            <option value="">Selecione...</option>
+                                            <option value="1">Sim</option>
+                                            <option value="2">Não</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" id="divQuantosInfo">
+                                    <div class="form-group">
+                                        <label class="labelField">Quantos?</label>
+                                        <input type="number" class="form-control" name="cpQuantosInfo"
+                                            id="cpQuantosInfo" obrigatorio>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <label class="labelField">Tipo de CND</label>
+                                    <select name="cpTpCNDInfo" id="cpTpCNDInfo" class="form-control">
+                                        <option value="">Selecione...</option>
+                                        <option value="1">Obra com Demolição</option>
+                                        <option value="2">Obra sem Demolição</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="divTbObraInformacao">
+                            <h4>
+                                <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>
+                                Dados da obra- Informações contidas no projeto
+                            </h4>
+                            <div class="col-md-12 form-group">
+                                <label>Tipo da Obra: </label>
+
+                                <input type="checkbox" id="chAlvenaria" name="chAlvenaria" checked obrigatorio />
+                                <label>Alvenaria</label>
+
+                                <input type="checkbox" id="chMadeira" name="chMadeira" />
+                                <label>Madeira/Mista</label>
+                            </div>
+                            <div class="form-group">
+                                <table class="table table-bordered table-hover">
+
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-3">Destinação do Imóvel</th>
+                                            <th>Nº Unidades</th>
+                                            <th>Nº Pavimentos</th>
+                                            <th>Nº Unid. com até 02 banheiros</th>
+                                            <th>Nº Unid. com 03 banheiros</th>
+                                            <th>Nº Unid. com 04 ou mais banheiros</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id='TbObraInformacao'>
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoObra"
+                                                    id="chResUnifamiliar" name="chResUnifamiliar" />
+                                                <label>Residencial - Unifamiliar</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResUnifamiliar"
+                                                    name="cpUniNumUnidade" id="cpUniNumUnidade" readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResUnifamiliar"
+                                                    name="cpUniNumPavimento" id="cpUniNumPavimento" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResUnifamiliar"
+                                                    name="cpUniNumUnidade2" id="cpUniNumUnidade2" readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResUnifamiliar"
+                                                    name="cpUniNumUnidade3" id="cpUniNumUnidade3" readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResUnifamiliar"
+                                                    name="cpUniNumUnidade4" id="cpUniNumUnidade4" readonly obrigatorio>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoObra"
+                                                    id="chResMultifamiliar" name="chResMultifamiliar" />
+                                                <label>Residencial - Multifamiliar</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResMultifamiliar"
+                                                    name="cpMultiNumUnidade" id="cpMultiNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResMultifamiliar"
+                                                    name="cpMultiNumPavimento" id="cpMultiNumPavimento" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResMultifamiliar"
+                                                    name="cpMultiNumUnidade2" id="cpMultiNumUnidade2" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResMultifamiliar"
+                                                    name="cpMultiNumUnidade3" id="cpMultiNumUnidade3" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResMultifamiliar"
+                                                    name="cpMultiNumUnidade4" id="cpMultiNumUnidade4" readonly
+                                                    obrigatorio>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoObra"
+                                                    id="chResHotelfamiliar" name="chResHotelfamiliar" />
+                                                <label>Residencial Hotel, Motel, Spa</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResHotelfamiliar"
+                                                    name="cpHotelNumUnidade" id="cpHotelNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResHotelfamiliar"
+                                                    name="cpHotelNumPavimento" id="cpHotelNumPavimento" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResHotelfamiliar"
+                                                    name="cpHotelNumUnidade2" id="cpHotelNumUnidade2" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResHotelfamiliar"
+                                                    name="cpHotelNumUnidade3" id="cpHotelNumUnidade3" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chResHotelfamiliar"
+                                                    name="cpHotelNumUnidade4" id="cpHotelNumUnidade4" readonly
+                                                    obrigatorio>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoObra"
+                                                    id="chAreaUnifamiliar" name="chAreaUnifamiliar" />
+                                                <label>Áreas Comuns Cjt. Habt. Horiz</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chAreaUnifamiliar"
+                                                    name="cpAreaNumUnidade" id="cpAreaNumUnidade" readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chAreaUnifamiliar"
+                                                    name="cpAreaNumPavimento" id="cpAreaNumPavimento" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chAreaUnifamiliar"
+                                                    name="cpAreaNumUnidade2" id="cpAreaNumUnidade2" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chAreaUnifamiliar"
+                                                    name="cpAreaNumUnidade3" id="cpAreaNumUnidade3" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chAreaUnifamiliar"
+                                                    name="cpAreaNumUnidade4" id="cpAreaNumUnidade4" readonly
+                                                    obrigatorio>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoObra"
+                                                    id="chAndaresUnifamiliar" name="chAndaresUnifamiliar" />
+                                                <label>Comercial Andares Livres</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chAndaresUnifamiliar"
+                                                    name="cpAndaresNumUnidade" id="cpAndaresNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chAndaresUnifamiliar"
+                                                    name="cpAndaresNumPavimento" id="cpAndaresNumPavimento" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoObra"
+                                                    id="chSalasfamiliar" name="chSalasfamiliar" />
+                                                <label>Comercial Salas e Lojas</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chSalasfamiliar"
+                                                    name="cpSalasNumUnidade" id="cpSalasNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chSalasfamiliar"
+                                                    name="cpSalasNumPavimento" id="cpSalasNumPavimento" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoObra"
+                                                    id="chGalpaofamiliar" name="chGalpaofamiliar" />
+                                                <label> Galpão Industrial</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chGalpaofamiliar"
+                                                    name="cpGalpaoNumUnidade" id="cpGalpaoNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoObra"
+                                                    id="chCasaUnifamiliar" name="chCasaUnifamiliar" />
+                                                <label>Casa Popular</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chCasaUnifamiliar"
+                                                    name="cpCasaNumUnidade" id="cpCasaNumUnidade" readonly obrigatorio>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoObra"
+                                                    id="chConjuntoUnifamiliar" name="chConjuntoUnifamiliar" />
+                                                <label>Conjunto Habitacional Popular</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chConjuntoUnifamiliar"
+                                                    name="cpConjuntoNumUnidade" id="cpConjuntoNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chConjuntoUnifamiliar"
+                                                    name="cpConjuntoNumPavimento" id="cpConjuntoNumPavimento" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chConjuntoUnifamiliar"
+                                                    name="cpConjuntoNumUnidade2" id="cpConjuntoNumUnidade2" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chConjuntoUnifamiliar"
+                                                    name="cpConjuntoNumUnidade3" id="cpConjuntoNumUnidade3" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chConjuntoUnifamiliar"
+                                                    name="cpConjuntoNumUnidade4" id="cpConjuntoNumUnidade4" readonly
+                                                    obrigatorio>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="divTbObraDemolicao">
+                            <h4>
+                                <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>
+                                Dados do Enquadramento para obra com Demolição
+                            </h4>
+                            <div class="col-md-12 form-group">
+                                <label>Tipo da Obra: </label>
+
+                                <input type="checkbox" id="chAlvenariaDemol" name="chAlvenariaDemol" checked
+                                    obrigatorio />
+                                <label>Alvenaria</label>
+
+                                <input type="checkbox" id="chMadeiraDemol" name="chMadeiraDemol" />
+                                <label>Madeira/Mista</label>
+                            </div>
+                            <div class="form-group">
+                                <table class="table table-bordered table-hover">
+
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-3">Destinação do Imóvel</th>
+                                            <th>Nº Unidades</th>
+                                            <th>Nº Pavimentos</th>
+                                            <th>Nº Unid. com até 02 banheiros</th>
+                                            <th>Nº Unid. com 03 banheiros</th>
+                                            <th>Nº Unid. com 04 ou mais banheiros</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="TbObraDemolicao">
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoDemol"
+                                                    id="chDemolResUnifamiliar" name="chDemolResUnifamiliar" />
+                                                <label>Residencial - Unifamiliar</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResUnifamiliar"
+                                                    name="cpDemolUniNumUnidade" id="cpDemolUniNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResUnifamiliar"
+                                                    name="cpDemolUniNumPavimento" id="cpDemolUniNumPavimento" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResUnifamiliar"
+                                                    name="cpDemolUniNumUnidade2" id="cpDemolUniNumUnidade2" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResUnifamiliar"
+                                                    name="cpDemolUniNumUnidade3" id="cpDemolUniNumUnidade3" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResUnifamiliar"
+                                                    name="cpDemolUniNumUnidade4" id="cpDemolUniNumUnidade4" readonly
+                                                    obrigatorio>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoDemol"
+                                                    id="chDemolResMultifamiliar" name="chDemolResMultifamiliar" />
+                                                <label>Residencial - Multifamiliar</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResMultifamiliar"
+                                                    name="cpDemolMultiNumUnidade" id="cpDemolMultiNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResMultifamiliar"
+                                                    name="cpDemolMultiNumPavimento" id="cpDemolMultiNumPavimento"
+                                                    readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResMultifamiliar"
+                                                    name="cpDemolMultiNumUnidade2" id="cpDemolMultiNumUnidade2" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResMultifamiliar"
+                                                    name="cpDemolMultiNumUnidade3" id="cpDemolMultiNumUnidade3" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResMultifamiliar"
+                                                    name="cpDemolMultiNumUnidade4" id="cpDemolMultiNumUnidade4" readonly
+                                                    obrigatorio>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoDemol"
+                                                    id="chDemolResHotelfamiliar" name="chDemolResHotelfamiliar" />
+                                                <label>Residencial Hotel, Motel, Spa</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResHotelfamiliar"
+                                                    name="cpDemolHotelNumUnidade" id="cpDemolHotelNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResHotelfamiliar"
+                                                    name="cpDemolHotelNumPavimento" id="cpDemolHotelNumPavimento"
+                                                    readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResHotelfamiliar"
+                                                    name="cpDemolHotelNumUnidade2" id="cpDemolHotelNumUnidade2" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResHotelfamiliar"
+                                                    name="cpDemolHotelNumUnidade3" id="cpDemolHotelNumUnidade3" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolResHotelfamiliar"
+                                                    name="cpDemolHotelNumUnidade4" id="cpDemolHotelNumUnidade4" readonly
+                                                    obrigatorio>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoDemol"
+                                                    id="chDemolAreaUnifamiliar" name="chDemolAreaUnifamiliar" />
+                                                <label>Áreas Comuns Cjt. Habt. Horiz</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolAreaUnifamiliar"
+                                                    name="cpDemolAreaNumUnidade" id="cpDemolAreaNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolAreaUnifamiliar"
+                                                    name="cpDemolAreaNumPavimento" id="cpDemolAreaNumPavimento" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolAreaUnifamiliar"
+                                                    name="cpDemolAreaNumUnidade2" id="cpDemolAreaNumUnidade2" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolAreaUnifamiliar"
+                                                    name="cpDemolAreaNumUnidade3" id="cpDemolAreaNumUnidade3" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolAreaUnifamiliar"
+                                                    name="cpDemolAreaNumUnidade4" id="cpDemolAreaNumUnidade4" readonly
+                                                    obrigatorio>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoDemol"
+                                                    id="chDemolAndaresUnifamiliar" name="chDemolAndaresUnifamiliar" />
+                                                <label>Comercial Andares Livres</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolAndaresUnifamiliar"
+                                                    name="cpDemolAndaresNumUnidade" id="cpDemolAndaresNumUnidade"
+                                                    readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolAndaresUnifamiliar"
+                                                    name="cpDemolAndaresNumPavimento" id="cpDemolAndaresNumPavimento"
+                                                    readonly obrigatorio>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoDemol"
+                                                    id="chDemolSalasfamiliar" name="chDemolSalasfamiliar" />
+                                                <label>Comercial Salas e Lojas</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolSalasfamiliar"
+                                                    name="cpDemolSalasNumUnidade" id="cpDemolSalasNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolSalasfamiliar"
+                                                    name="cpDemolSalasNumPavimento" id="cpDemolSalasNumPavimento"
+                                                    readonly obrigatorio>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoDemol"
+                                                    id="chDemolGalpaofamiliar" name="chDemolGalpaofamiliar" />
+                                                <label> Galpão Industrial</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolGalpaofamiliar"
+                                                    name="cpDemolGalpaoNumUnidade" id="cpDemolGalpaoNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoDemol"
+                                                    id="chDemolCasaUnifamiliar" name="chDemolCasaUnifamiliar" />
+                                                <label>Casa Popular</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolCasaUnifamiliar"
+                                                    name="cpDemolCasaNumUnidade" id="cpDemolCasaNumUnidade" readonly
+                                                    obrigatorio>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox" class="SolicitaValidacaoDemol"
+                                                    id="chDemolConjuntoUnifamiliar" name="chDemolConjuntoUnifamiliar" />
+                                                <label>Conjunto Habitacional Popular</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolConjuntoUnifamiliar"
+                                                    name="cpDemolConjuntoNumUnidade" id="cpDemolConjuntoNumUnidade"
+                                                    readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolConjuntoUnifamiliar"
+                                                    name="cpDemolConjuntoNumPavimento" id="cpDemolConjuntoNumPavimento"
+                                                    readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolConjuntoUnifamiliar"
+                                                    name="cpDemolConjuntoNumUnidade2" id="cpDemolConjuntoNumUnidade2"
+                                                    readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolConjuntoUnifamiliar"
+                                                    name="cpDemolConjuntoNumUnidade3" id="cpDemolConjuntoNumUnidade3"
+                                                    readonly obrigatorio>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control chDemolConjuntoUnifamiliar"
+                                                    name="cpDemolConjuntoNumUnidade4" id="cpDemolConjuntoNumUnidade4"
+                                                    readonly obrigatorio>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div id="divTbInfoAreaObra">
+                            <h4>
+                                <span class="fluigicon fluigicon-pointer-right fluigicon-sm"></span>
+                                Informação sobre a área da obra
+                            </h4>
+                            <div class="form-group">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-md-2">Definição do Imóvel</th>
+                                            <th>Nova</th>
+                                            <th>Existente</th>
+                                            <th>Demolição</th>
+                                            <th>Reforma</th>
+                                            <th>Acréscimo</th>
+                                            <th>Parcial</th>
+                                            <th>Inacabada %</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <label>Residencial - Unifamiliar</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpUniNova" id="cpUniNova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpUniExistente"
+                                                    id="cpUniExistente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpUniDemolicao"
+                                                    id="cpUniDemolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpUniReforma"
+                                                    id="cpUniReforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpUniAcrescimo"
+                                                    id="cpUniAcrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpUniParcial"
+                                                    id="cpUniParcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpUniInacabada"
+                                                    id="cpUniInacabada">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Residencial - Multifamiliar</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpMultiNova"
+                                                    id="cpMultiNova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpMultiExistente"
+                                                    id="cpMultiExistente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpMultiDemolicao"
+                                                    id="cpMultiDemolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpMultiReforma"
+                                                    id="cpMultiReforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpMultiAcrescimo"
+                                                    id="cpMultiAcrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpMultiParcial"
+                                                    id="cpMultiParcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpMultiInacabada"
+                                                    id="cpMultiInacabada">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Residencial Hotel, Motel, Spa</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpHotelNova"
+                                                    id="cpHotelNova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpHotelExistente"
+                                                    id="cpHotelExistente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpHotelDemolicao"
+                                                    id="cpHotelDemolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpHotelReforma"
+                                                    id="cpHotelReforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpHotelAcrescimo"
+                                                    id="cpHotelAcrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpHotelParcial"
+                                                    id="cpHotelParcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpHotelInacabada"
+                                                    id="cpHotelInacabada">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Áreas Comuns Cjt. Habt. Horiz.</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAreaNova"
+                                                    id="cpAreaNova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAreaExistente"
+                                                    id="cpAreaExistente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAreaDemolicao"
+                                                    id="cpAreaDemolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAreaReforma"
+                                                    id="cpAreaReforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAreaAcrescimo"
+                                                    id="cpAreaAcrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAreaParcial"
+                                                    id="cpAreaParcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAreaInacabada"
+                                                    id="cpAreaInacabada">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Comercial Andares Livres</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAndaresNova"
+                                                    id="cpAndaresNova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAndaresExistente"
+                                                    id="cpAndaresExistente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAndaresDemolicao"
+                                                    id="cpAndaresDemolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAndaresReforma"
+                                                    id="cpAndaresReforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAndaresAcrescimo"
+                                                    id="cpAndaresAcrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAndaresParcial"
+                                                    id="cpAndaresParcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpAndaresInacabada"
+                                                    id="cpAndaresInacabada">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Comercial Salas e Lojas</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpSalasNova"
+                                                    id="cpSalasNova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpSalasExistente"
+                                                    id="cpSalasExistente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpSalasDemolicao"
+                                                    id="cpSalasDemolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpSalasReforma"
+                                                    id="cpSalasReforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpSalasAcrescimo"
+                                                    id="cpSalasAcrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpSalasParcial"
+                                                    id="cpSalasParcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpSalasInacabada"
+                                                    id="cpSalasInacabada">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Galpão Industrial</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpGalpaoNova"
+                                                    id="cpGalpaoNova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpGalpaoExistente"
+                                                    id="cpGalpaoExistente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpGalpaoDemolicao"
+                                                    id="cpGalpaoDemolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpGalpaoReforma"
+                                                    id="cpGalpaoReforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpGalpaoAcrescimo"
+                                                    id="cpGalpaoAcrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpGalpaoParcial"
+                                                    id="cpGalpaoParcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpGalpaoInacabada"
+                                                    id="cpGalpaoInacabada">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Casa Popular</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpCasaNova"
+                                                    id="cpCasaNova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpCasaExistente"
+                                                    id="cpCasaExistente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpCasaDemolicao"
+                                                    id="cpCasaDemolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpCasaReforma"
+                                                    id="cpCasaReforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpCasaAcrescimo"
+                                                    id="cpCasaAcrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpCasaParcial"
+                                                    id="cpCasaParcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpCasaInacabada"
+                                                    id="cpCasaInacabada">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Conjunto Habitacional Popular</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpConjuntoNova"
+                                                    id="cpConjuntoNova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpConjuntoExistente"
+                                                    id="cpConjuntoExistente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpConjuntoDemolicao"
+                                                    id="cpConjuntoDemolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpConjuntoReforma"
+                                                    id="cpConjuntoReforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpConjuntoAcrescimo"
+                                                    id="cpConjuntoAcrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpConjuntoParcial"
+                                                    id="cpConjuntoParcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpConjuntoInacabada"
+                                                    id="cpConjuntoInacabada">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Área com Redução de 50%</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao50Nova"
+                                                    id="cpReducao50Nova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao50Existente"
+                                                    id="cpReducao50Existente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao50Demolicao"
+                                                    id="cpReducao50Demolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao50Reforma"
+                                                    id="cpReducao50Reforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao50Acrescimo"
+                                                    id="cpReducao50Acrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao50Parcial"
+                                                    id="cpReducao50Parcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao50Inacabada"
+                                                    id="cpReducao50Inacabada">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Área com Redução de 75%</label>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao75Nova"
+                                                    id="cpReducao75Nova">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao75Existente"
+                                                    id="cpReducao75Existente">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao75Demolicao"
+                                                    id="cpReducao75Demolicao">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao75Reforma"
+                                                    id="cpReducao75Reforma">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao75Acrescimo"
+                                                    id="cpReducao75Acrescimo">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao75Parcial"
+                                                    id="cpReducao75Parcial">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" name="cpReducao75Inacabada"
+                                                    id="cpReducao75Inacabada">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Quando se tratar de regularização parcial informar a área local regularizada
+                                    anteriormente
+                                </label>
+                                <div class="input-group col-md-4">
+                                    <input type="text" class="form-control" name="cpArea" id="cpArea">
+                                    <div class="input-group-addon">m²</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Parecer</label>
+                                <textarea rows="3" class="form-control" name="cpParecerInfo" id="cpParecerInfo"
+                                    parecer></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+                            Etapas do processo
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                                        data-target="#panelAtividade_14">
+                                        Conferência da documentação - Jurídico
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_14" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Aprovação</label>
+                                                    <select name="cpAprovaConfJuridico" id="cpAprovaConfJuridico"
+                                                        class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpPareceConfJuridico"
+                                                        id="cpPareceConfJuridico"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                                        data-target="#panelAtividade_15">
+                                        Conferência dos dados Técnicos da documentação
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_15" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Aprovação</label>
+                                                    <select name="cpAprovaConfDados" id="cpAprovaConfDados"
+                                                        class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpPareceConfDados"
+                                                        id="cpPareceConfDados"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                                        data-target="#panelAtividade_18">
+                                        Agendamento de Senha na Receita Federal
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_18" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Aprovação</label>
+                                                    <select name="cpAgendamento" id="cpAgendamento" class="form-control"
+                                                        obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Data</label>
+                                                    <input type="text" class="form-control" name="cpDataAgendamento"
+                                                        id="cpDataAgendamento" mask=00/00/0000 obrigatorio>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Hora</label>
+                                                    <input type="text" class="form-control" name="cpHoraAgendamento"
+                                                        id="cpHoraAgendamento" obrigatorio>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpPareceAgendamento"
+                                                        id="cpPareceAgendamento"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                                        data-target="#panelAtividade_98">
+                                        Comunicação de agendamento
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                                        data-target="#panelAtividade_19">
+                                        Emissão de CND
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_19" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>CND Emitida?</label>
+                                                    <select name="cpAprovaCND" id="cpAprovaCND" class="form-control"
+                                                        obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpPareceCND"
+                                                        id="cpPareceCND"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                                        data-target="#panelAtividade_16">
+                                        Solicitar averbação da CND e demais documentos no cartório
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_16" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Protocolado</label>
+                                                    <select name="cpProtocolado" id="cpProtocolado" class="form-control"
+                                                        obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpPareceAverbacao"
+                                                        id="cpPareceAverbacao"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                                        data-target="#panelAtividade_17">
+                                        Recebimento da averbação
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_17" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Protocolado</label>
+                                                    <select name="cpProtocoladoRecebimento"
+                                                        id="cpProtocoladoRecebimento" class="form-control" obrigatorio
+                                                        aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Data da averbação do habite-se</label>
+                                                    <input type="text" class="form-control" name="cpDataRecebimento"
+                                                        id="cpDataRecebimento" mask=00/00/0000 obrigatorio>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Matricula</label>
+                                                    <input type="text" class="form-control"
+                                                        name="cpMatriculaRecebimento" id="cpMatriculaRecebimento"
+                                                        obrigatorio>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpPareceRecebimento"
+                                                        id="cpPareceRecebimento"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                                        data-target="#panelAtividade_13">
+                                        Conferência do processamento – Solicitante
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_13" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Aprovação</label>
+                                                    <select name="cpAprovaConfSolicitante" id="cpAprovaConfSolicitante"
+                                                        class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Parecer</label>
+                                                    <textarea class="form-control" rows="3"
+                                                        name="cpPareceConfSolicitante"
+                                                        id="cpPareceConfSolicitante"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="divAvaliacaoAtendimento">
+                                            <div class="panel-heading">
+                                                <h2 class="panel-title">
+                                                    <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                                                    Avaliação de atendimento
+                                                </h2>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Qual o seu grau de satisfação quanto ao
+                                                        atendimento desse chamado?</label>
+                                                    <select name="cpSatisfacaoSolicitante" id="cpSatisfacaoSolicitante"
+                                                        class="form-control" aprovacao obrigatorio>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">- Muito Satisfeito</option>
+                                                        <option value="2">- Satisfeito</option>
+                                                        <option value="3">- Insatisfeito (Justifique)</option>
+                                                        <option value="4">- Muito Insatisfeito (Justifique)</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="divObservacoesJustificativa">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Observações/Justificativa</label>
+                                                    <textarea class="form-control" rows="3"
+                                                        name="cpJustificativaSolicitante"
+                                                        id="cpJustificativaSolicitante" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/vcXMLRPC.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery.mask.min.js"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery.timepicker.min.js"></script>
+        <script type="text/javascript"
+            src="https://csc.direcional.com.br/scripts/js/jquery-ui/datepicker-pt-BR.js"></script>
+        <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js"
+            charset="utf-8"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/zoom/zoom.js"
+            charset="utf-8"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/compartilhados.js"
+            charset="utf-8"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/model.js" charset="utf-8"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/formShared.js"
+            charset="utf-8"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/datatables/datatables.min.js"
+            charset="utf-8"></script>
+        <script type="text/javascript"
+            src="https://csc.direcional.com.br/scripts/js/datatables/Buttons-1.5.1/js/buttons.html5.min.js"
+            charset="utf-8"></script>
+        <script type="text/javascript"
+            src="https://csc.direcional.com.br/scripts/js/datatables/Buttons-1.5.1/js/buttons.jqueryui.min.js"
+            charset="utf-8"></script>
+        <script type="text/javascript"
+            src="https://csc.direcional.com.br/scripts/js/datatables/Buttons-1.5.1/js/dataTables.buttons.min.js"
+            charset="utf-8"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/aes.js" charset="utf-8"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/toast/toastr.min.js"
+            charset="utf-8"></script>
+        <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+
+
+        <script type="text/javascript" src="Zoom.js" charset="utf-8"></script>
+        <script type="text/javascript" src="BLL.js" charset="utf-8"></script>
+        <script type="text/javascript" src="DAL.js" charset="utf-8"></script>
+        <script type="text/javascript" src="View.js" charset="utf-8"></script>
+        <script type="text/javascript" src="Mensagens.js" charset="utf-8"></script>
+
+        <link type="text/css" rel="stylesheet" href="Style.css" />
+    </body>
+
+</html>

@@ -1,0 +1,35 @@
+
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Estabelecimentos</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-offset-1 col-sm-10">
+                <label for="estabelecimentoPrincipal">Estabelecimento Principal</label>
+                <input type="text" name="estabelecimentoPrincipal" class="form-control" display-key="displaykey" >
+            </div>
+            <div class="col-sm-offset-1 col-sm-10">
+                <table class="table table-condensed table-striped" tablename="estabelecimentos" noaddbutton="true" nodeletebutton="true">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th class="col-sm-6">Estabelecimento</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span ng-if="vm.Params.edit" ng-click="vm.removeEstabelecimento($event)" class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+                            </td>
+                            <td ng-child="vm.Formulario.codigo" id="codigo">
+                                <input type="text" name="estabelecimento" class="form-control" display-key="displaykey" >
+                            </td>                           
+                        </tr>
+                    </tbody>
+                </table>
+                <button ng-if="vm.Params.edit" type="button" class="btn btn-lg btn-default" ng-click="vm.adicionaEstabelecimento()">Incluir Estab</button>
+            </div>
+        </div>
+    </div>
+</div>

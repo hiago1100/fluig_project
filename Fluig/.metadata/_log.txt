@@ -1,0 +1,841 @@
+!SESSION 2016-12-27 14:09:59.315 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/Hiago/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/Hiago/.eclipse_keyring -showlocation
+
+!ENTRY com.totvs.tds.ecm 4 0 2016-12-27 14:10:03.621
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm [1290]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+    -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.dsviewer 4 0 2016-12-27 14:10:03.632
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.dsviewer [1291]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+    -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.eclipse 4 0 2016-12-27 14:10:03.646
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.eclipse [1292]
+  Unresolved requirement: Import-Package: com.fluig.wcm.core.util
+    -> Export-Package: com.fluig.wcm.core.util; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.export.bpmn20 4 0 2016-12-27 14:10:03.660
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.export.bpmn20 [1293]
+  Unresolved requirement: Import-Package: com.thoughtworks.xstream
+    -> Export-Package: com.thoughtworks.xstream; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.export.image 4 0 2016-12-27 14:10:03.669
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.export.image [1294]
+  Unresolved requirement: Require-Bundle: com.totvs.tds.ecm.designer.eclipse
+    -> Bundle-SymbolicName: com.totvs.tds.ecm.designer.eclipse; bundle-version="1.5.12.1"; singleton:="true"
+       com.totvs.tds.ecm.designer.eclipse [1292]
+         Unresolved requirement: Import-Package: com.fluig.wcm.core.util
+           -> Export-Package: com.fluig.wcm.core.util; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+              com.totvs.tds.ecm [1290]
+                Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+                  -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+                     com.totvs.tds.ecm.designer.model [1299]
+                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.gui 4 0 2016-12-27 14:10:03.688
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.gui [1295]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.server.editors
+    -> Export-Package: com.totvs.tds.ecm.server.editors; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.help 4 0 2016-12-27 14:10:03.690
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.help [1296]
+  Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.integration 4 0 2016-12-27 14:10:03.695
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.integration [1297]
+  Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.serviceview 4 0 2016-12-27 14:10:03.698
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.serviceview [1300]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+    -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.validation.bpmn20 4 0 2016-12-27 14:10:03.703
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.validation.bpmn20 [1302]
+  Unresolved requirement: Require-Bundle: com.totvs.tds.ecm.designer.eclipse
+    -> Bundle-SymbolicName: com.totvs.tds.ecm.designer.eclipse; bundle-version="1.5.12.1"; singleton:="true"
+       com.totvs.tds.ecm.designer.eclipse [1292]
+         Unresolved requirement: Import-Package: com.fluig.wcm.core.util
+           -> Export-Package: com.fluig.wcm.core.util; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+              com.totvs.tds.ecm [1290]
+                Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+                  -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+                     com.totvs.tds.ecm.designer.model [1299]
+                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.report.dsengine 4 0 2016-12-27 14:10:03.708
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.report.dsengine [1303]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.server.editors
+    -> Export-Package: com.totvs.tds.ecm.server.editors; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.report.dsui 4 0 2016-12-27 14:10:03.728
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.report.dsui [1304]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.server.editors
+    -> Export-Package: com.totvs.tds.ecm.server.editors; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.core.net 1 0 2016-12-27 14:11:40.724
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2016-12-27 14:18:47.759 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/Hiago/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/Hiago/.eclipse_keyring -showlocation
+
+!ENTRY com.totvs.tds.ecm 4 0 2016-12-27 14:19:03.279
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm [1290]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+    -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.dsviewer 4 0 2016-12-27 14:19:03.282
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.dsviewer [1291]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+    -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.eclipse 4 0 2016-12-27 14:19:03.384
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.eclipse [1292]
+  Unresolved requirement: Import-Package: com.fluig.wcm.core.util
+    -> Export-Package: com.fluig.wcm.core.util; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.export.bpmn20 4 0 2016-12-27 14:19:03.388
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.export.bpmn20 [1293]
+  Unresolved requirement: Import-Package: com.thoughtworks.xstream
+    -> Export-Package: com.thoughtworks.xstream; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.export.image 4 0 2016-12-27 14:19:03.420
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.export.image [1294]
+  Unresolved requirement: Require-Bundle: com.totvs.tds.ecm.designer.eclipse
+    -> Bundle-SymbolicName: com.totvs.tds.ecm.designer.eclipse; bundle-version="1.5.12.1"; singleton:="true"
+       com.totvs.tds.ecm.designer.eclipse [1292]
+         Unresolved requirement: Import-Package: com.fluig.wcm.core.util
+           -> Export-Package: com.fluig.wcm.core.util; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+              com.totvs.tds.ecm [1290]
+                Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+                  -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+                     com.totvs.tds.ecm.designer.model [1299]
+                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.gui 4 0 2016-12-27 14:19:03.442
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.gui [1295]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.server.editors
+    -> Export-Package: com.totvs.tds.ecm.server.editors; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.help 4 0 2016-12-27 14:19:03.465
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.help [1296]
+  Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.integration 4 0 2016-12-27 14:19:03.470
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.integration [1297]
+  Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.serviceview 4 0 2016-12-27 14:19:03.470
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.serviceview [1300]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+    -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.validation.bpmn20 4 0 2016-12-27 14:19:03.471
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.validation.bpmn20 [1302]
+  Unresolved requirement: Require-Bundle: com.totvs.tds.ecm.designer.eclipse
+    -> Bundle-SymbolicName: com.totvs.tds.ecm.designer.eclipse; bundle-version="1.5.12.1"; singleton:="true"
+       com.totvs.tds.ecm.designer.eclipse [1292]
+         Unresolved requirement: Import-Package: com.fluig.wcm.core.util
+           -> Export-Package: com.fluig.wcm.core.util; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+              com.totvs.tds.ecm [1290]
+                Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+                  -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+                     com.totvs.tds.ecm.designer.model [1299]
+                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.report.dsengine 4 0 2016-12-27 14:19:03.472
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.report.dsengine [1303]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.server.editors
+    -> Export-Package: com.totvs.tds.ecm.server.editors; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.report.dsui 4 0 2016-12-27 14:19:03.515
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.report.dsui [1304]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.server.editors
+    -> Export-Package: com.totvs.tds.ecm.server.editors; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.core.net 1 0 2016-12-27 14:19:28.191
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.ui 4 4 2016-12-27 14:20:00.649
+!MESSAGE Referenced part does not exist yet: org.eclipse.ui.views.ProgressView.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-12-27 14:29:18.300
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.300
+!MESSAGE "Equinox CORE Feature Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.300
+!MESSAGE "Equinox Server CORE Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.300
+!MESSAGE "Equinox CORE SDK Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-12-27 14:29:18.423
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.423
+!MESSAGE "Equinox CORE Feature Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.423
+!MESSAGE "Equinox Server CORE Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.423
+!MESSAGE "Equinox CORE SDK Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-12-27 14:29:18.478
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.478
+!MESSAGE "Equinox CORE Feature Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.478
+!MESSAGE "Equinox Server CORE Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.478
+!MESSAGE "Equinox CORE SDK Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-12-27 14:29:18.478
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.479
+!MESSAGE "Equinox CORE Feature Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.479
+!MESSAGE "Equinox Server CORE Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:18.479
+!MESSAGE "Equinox CORE SDK Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-12-27 14:29:24.784
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:24.784
+!MESSAGE "Equinox Server CORE Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:24.784
+!MESSAGE "Equinox CORE Feature Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:24.784
+!MESSAGE "Equinox CORE SDK Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-12-27 14:29:24.785
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:24.785
+!MESSAGE "Equinox Server CORE Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:24.785
+!MESSAGE "Equinox CORE Feature Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:29:24.785
+!MESSAGE "Equinox CORE SDK Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2016-12-27 14:32:35.524
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/eclipse/update/4.4.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:653)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2016-12-27 14:32:35.525
+!MESSAGE No repository found at http://download.eclipse.org/eclipse/update/4.4.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-12-27 14:33:57.493
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.494
+!MESSAGE "Equinox CORE SDK Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.494
+!MESSAGE "Equinox Server CORE Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.494
+!MESSAGE "Equinox CORE Feature Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-12-27 14:33:57.554
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.555
+!MESSAGE "Equinox CORE SDK Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.555
+!MESSAGE "Equinox Server CORE Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.555
+!MESSAGE "Equinox CORE Feature Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-12-27 14:33:57.604
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.604
+!MESSAGE "Equinox CORE SDK Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.604
+!MESSAGE "Equinox Server CORE Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.604
+!MESSAGE "Equinox CORE Feature Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-12-27 14:33:57.604
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.605
+!MESSAGE "Equinox CORE SDK Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.605
+!MESSAGE "Equinox Server CORE Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 4 10011 2016-12-27 14:33:57.605
+!MESSAGE "Equinox CORE Feature Patch (bugzillas 445122)" is not applicable to the current configuration and will not be installed.
+!SESSION 2016-12-27 14:47:49.575 -----------------------------------------------
+eclipse.buildId=4.4.2.M20150204-1700
+java.version=1.6.0_65
+java.vendor=Apple Inc.
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=pt_BR
+Framework arguments:  -product org.eclipse.epp.package.jee.product -keyring /Users/Hiago/.eclipse_keyring -showlocation
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.jee.product -keyring /Users/Hiago/.eclipse_keyring -showlocation
+
+!ENTRY com.totvs.tds.ecm 4 0 2016-12-27 14:48:14.419
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm [1290]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+    -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.dsviewer 4 0 2016-12-27 14:48:14.422
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.dsviewer [1291]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+    -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.eclipse 4 0 2016-12-27 14:48:14.423
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.eclipse [1292]
+  Unresolved requirement: Import-Package: com.fluig.wcm.core.util
+    -> Export-Package: com.fluig.wcm.core.util; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.export.bpmn20 4 0 2016-12-27 14:48:14.427
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.export.bpmn20 [1293]
+  Unresolved requirement: Import-Package: com.thoughtworks.xstream
+    -> Export-Package: com.thoughtworks.xstream; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.export.image 4 0 2016-12-27 14:48:14.432
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.export.image [1294]
+  Unresolved requirement: Require-Bundle: com.totvs.tds.ecm.designer.eclipse
+    -> Bundle-SymbolicName: com.totvs.tds.ecm.designer.eclipse; bundle-version="1.5.12.1"; singleton:="true"
+       com.totvs.tds.ecm.designer.eclipse [1292]
+         Unresolved requirement: Import-Package: com.fluig.wcm.core.util
+           -> Export-Package: com.fluig.wcm.core.util; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+              com.totvs.tds.ecm [1290]
+                Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+                  -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+                     com.totvs.tds.ecm.designer.model [1299]
+                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.gui 4 0 2016-12-27 14:48:14.439
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.gui [1295]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.server.editors
+    -> Export-Package: com.totvs.tds.ecm.server.editors; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.help 4 0 2016-12-27 14:48:14.442
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.help [1296]
+  Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.integration 4 0 2016-12-27 14:48:14.446
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.integration [1297]
+  Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.serviceview 4 0 2016-12-27 14:48:14.451
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.serviceview [1300]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+    -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+       com.totvs.tds.ecm.designer.model [1299]
+         Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.designer.validation.bpmn20 4 0 2016-12-27 14:48:14.456
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.designer.validation.bpmn20 [1302]
+  Unresolved requirement: Require-Bundle: com.totvs.tds.ecm.designer.eclipse
+    -> Bundle-SymbolicName: com.totvs.tds.ecm.designer.eclipse; bundle-version="1.5.12.1"; singleton:="true"
+       com.totvs.tds.ecm.designer.eclipse [1292]
+         Unresolved requirement: Import-Package: com.fluig.wcm.core.util
+           -> Export-Package: com.fluig.wcm.core.util; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+              com.totvs.tds.ecm [1290]
+                Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+                  -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+                     com.totvs.tds.ecm.designer.model [1299]
+                       Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.report.dsengine 4 0 2016-12-27 14:48:14.464
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.report.dsengine [1303]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.server.editors
+    -> Export-Package: com.totvs.tds.ecm.server.editors; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY com.totvs.tds.ecm.report.dsui 4 0 2016-12-27 14:48:14.492
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: com.totvs.tds.ecm.report.dsui [1304]
+  Unresolved requirement: Import-Package: com.totvs.tds.ecm.server.editors
+    -> Export-Package: com.totvs.tds.ecm.server.editors; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm"; version="0.0.0"
+       com.totvs.tds.ecm [1290]
+         Unresolved requirement: Import-Package: com.totvs.tds.ecm.foundation.ws
+           -> Export-Package: com.totvs.tds.ecm.foundation.ws; bundle-version="1.5.12.1"; bundle-symbolic-name="com.totvs.tds.ecm.designer.model"; version="0.0.0"
+              com.totvs.tds.ecm.designer.model [1299]
+                Unresolved requirement: Require-Capability: osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=1.7))"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:434)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1582)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1561)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1533)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1476)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:340)
+
+!ENTRY org.eclipse.core.net 1 0 2016-12-27 14:50:33.460
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences

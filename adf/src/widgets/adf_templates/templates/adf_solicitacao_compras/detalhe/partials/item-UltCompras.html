@@ -1,0 +1,61 @@
+<div class="panel panel-default">
+    <div class="panel-heading fs-cursor-pointer" ng-click="item.ultComprasCollapsed=!item.ultComprasCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': item.ultComprasCollapsed}">
+                Últimas Compras
+            </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse animated" ng-class="{'in': item.ultComprasCollapsed}">
+        <div class="panel-body">
+            <i ng-if="!item.UltCompras || item.UltCompras.length<=0">Sem Últimas Compras</i>
+            <div class="row" ng-if="item.UltCompras.length>0">
+                <div class="col-md-5">
+                    <canvas id="line" class="chart chart-line" chart-options="chartOptions" chart-series="item.ultComprasSeries" chart-data="item.ultComprasData" chart-labels="item.ultComprasLabels">
+                    </canvas>
+                </div>
+                <div class="col-md-7">
+                    <table class="table table-striped">
+                        <thead class="hidden-xs">
+                            <tr>
+                                <th>
+                                    <div class="col-sm-4">Fornecedor</div>
+                                    <div class="col-sm-2">Data</div>
+                                    <div class="col-sm-2">Qtde</div>
+                                    <div class="col-sm-2">Valor</div>
+                                    <div class="col-sm-2">Total</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="compra in item.UltCompras">
+                                <td>
+                                    <div class="col-sm-4">
+                                        <label class="visible-xs-block">Fornecedor</label>
+                                        <p>{{compra.ultComprasFornecedor}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Data</label>
+                                        <p>{{compra.ultComprasDataEntrega}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Qtde</label>
+                                        <p>{{compra.ultComprasQtdRequisitada | number:2}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Valor Unitário</label>
+                                        <p>{{compra.ultComprasValor | currency:compra.ultComprasMoeda}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Valor Total</label>
+                                        <p>{{compra.ultComprasValorTotal | currency:compra.ultComprasMoeda}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

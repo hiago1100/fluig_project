@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Item</label>
+                <div class="col-sm-6">
+                    <input type="text" name="item_input" class="form-control" fluig-autocomplete values="vm.Itens" display-key="displaykey"
+                        ng-model="vm.Formulario.item" ng-change="vm.consultaDuplicado()" ng-disabled="vm.Params.formMode != 'ADD'">
+                    <textarea hidden name="item" ng-value="vm.Formulario.item | json:0" ng-bind="vm.Formulario.item | json:0"></textarea>
+                    <input name="codItem" type="hidden" ng-value="vm.Formulario.item.codigo">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

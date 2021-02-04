@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>87</string>
+	<key>AMApplicationVersion</key>
+	<string>1.0.4</string>
+	<key>AMDocumentVersion</key>
+	<string>1</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.presentation.object</string>
+						<string>com.microsoft.powerpoint.slideshow.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.presentation.object</string>
+						<string>com.microsoft.powerpoint.slideshow.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft PowerPoint</string>
+						<key>Resource</key>
+						<string>com.microsoft.powerpoint</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Save PowerPoint Presentations.action</string>
+				<key>ActionName</key>
+				<string>Save PowerPoint Presentations</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>saveAs</key>
+					<string>Untitled</string>
+					<key>saveFormat</key>
+					<string>1</string>
+					<key>saveOption</key>
+					<integer>0</integer>
+					<key>saveWhere</key>
+					<string>~/Desktop</string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Save_PowerPoint_Presentations</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryPresentations</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>D7C89646-CCAB-40EB-9E13-6BE9C4E0E630</string>
+				<key>Keywords</key>
+				<array>
+					<string>saving</string>
+					<string>save as</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>560CBF0F-4E84-4A3B-B46A-7209677397C8</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>96D1E0D0-1D5C-4442-A655-6AED6C964C60</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>saveOption</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string>~/Desktop</string>
+						<key>name</key>
+						<string>saveWhere</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<string>Untitled</string>
+						<key>name</key>
+						<string>saveAs</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string>1</string>
+						<key>name</key>
+						<string>saveFormat</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Save PowerPoint Presentations.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>852.000000:-947.666626</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.powerpoint.presentation.object</string>
+						<string>com.microsoft.powerpoint.slideshow.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft PowerPoint</string>
+						<key>Resource</key>
+						<string>com.microsoft.powerpoint</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Close PowerPoint Presentations.action</string>
+				<key>ActionName</key>
+				<string>Close PowerPoint Presentations</string>
+				<key>ActionParameters</key>
+				<dict/>
+				<key>Application</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Close_PowerPoint_Presentations</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryPresentations</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>E0FB2E39-9766-4318-92BC-2849F4C99DC6</string>
+				<key>Keywords</key>
+				<array>
+					<string>end</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>B8BA890E-58CC-44E1-AD85-4953EA29856C</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>BC615DEF-B9B1-4D87-A0F8-A369B7FC9961</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
+				<key>nibPath</key>
+				<string>/Library/Automator/Close PowerPoint Presentations.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>1132.000000:-994.333374</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft PowerPoint</string>
+						<key>Resource</key>
+						<string>com.microsoft.powerpoint</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Convert Format of PowerPoint Presentations.action</string>
+				<key>ActionName</key>
+				<string>Convert Format of PowerPoint Presentations</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>saveFormat</key>
+					<integer>0</integer>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Convert_Format_of_PowerPoint_Presentations</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryPresentations</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>F4A20C2E-765E-4E09-A8E4-4DF017A6A56E</string>
+				<key>Keywords</key>
+				<array>
+					<string>save</string>
+					<string>save as</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>BEBB484D-CEFE-494E-876F-85951295134B</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>193DE9DB-16B0-4B28-8A0B-904E7FD17398</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft PowerPoint</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>1</integer>
+						<key>name</key>
+						<string>saveFormat</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Convert Format of PowerPoint Presentations.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>572.000000:-1041.000000</string>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>11C73DAE-E73A-4CC9-9712-FFFD0269EBB5</key>
+		<dict>
+			<key>from</key>
+			<string>BC615DEF-B9B1-4D87-A0F8-A369B7FC9961 - B8BA890E-58CC-44E1-AD85-4953EA29856C</string>
+			<key>to</key>
+			<string>193DE9DB-16B0-4B28-8A0B-904E7FD17398 - F4A20C2E-765E-4E09-A8E4-4DF017A6A56E</string>
+		</dict>
+		<key>F3EC335C-E26F-4919-BA04-AC7E5691E09D</key>
+		<dict>
+			<key>from</key>
+			<string>96D1E0D0-1D5C-4442-A655-6AED6C964C60 - 560CBF0F-4E84-4A3B-B46A-7209677397C8</string>
+			<key>to</key>
+			<string>BC615DEF-B9B1-4D87-A0F8-A369B7FC9961 - E0FB2E39-9766-4318-92BC-2849F4C99DC6</string>
+		</dict>
+	</dict>
+	<key>state</key>
+	<dict>
+		<key>actionsSplitView</key>
+		<real>175</real>
+		<key>layoutFrame</key>
+		<string>{{0, 0}, {536, 581}}</string>
+		<key>layoutScrollPosition</key>
+		<string>{{0, 0}, {536, 581}}</string>
+		<key>mainSplitView</key>
+		<real>373</real>
+		<key>minorSplitView</key>
+		<real>439</real>
+		<key>windowFrame</key>
+		<string>{{250, 159}, {939, 709}}</string>
+	</dict>
+</dict>
+</plist>

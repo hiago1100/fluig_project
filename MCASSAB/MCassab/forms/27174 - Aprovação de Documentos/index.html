@@ -1,0 +1,117 @@
+<html ng-app="AdfApp">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/portal/resources/style-guide/css/fluig-style-guide.min.css">
+<link rel="stylesheet" type="text/css" href="/adf_lib/css/main.css" />
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script> 
+<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js"></script>
+<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+<script type="text/javascript" src="/adf_lib/js/vendor.min.js"></script>
+<script type="text/javascript" src="/adf_lib/js/script.min.js"></script>
+<script type="text/javascript" src="custom.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Aprovação de Documentos</title>
+</head>
+
+<body ng-controller="AdfController as vm">
+	<div class="fluig-style-guide ng-cloak">
+		<div class="container">
+			<div fluig-header class="hidden-xs"></div>
+			<form name="form" role="form" class="form-horizontal animate">
+				<div ng-show="!vm.TipoDocumento" class="alert alert-danger animate" role="alert">
+					<span ng-show="vm.Params.formMode=='ADD'">A solicitação deve ser iniciada pelo ERP</span>
+					<span ng-show="vm.Params.formMode!='ADD'">Não foi possível carregar os dados do documento. Verifique sua conexão.</span>
+				</div>
+				<div ng-show="vm.TipoDocumento">
+					<adf-documento tipo-documento="vm.TipoDocumento" cod-docto-template="vm.Formulario.codDoctoTemplate" type="detalhe"></adf-documento>
+					
+					<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Status Aprovação</h3>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label" for="statusNarrativa">Narrativa:</label>
+                <div class="col-sm-6">
+                    <textarea name="statusNarrativa" class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group fs-display-none">
+                <label class="col-sm-3 control-label" for="statusRejeicao">Rejeição:</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control col-sm-6" name="statusRejeicao_input" fluig-autocomplete values="Rejeicao" ng-model="vm.Formulario.statusRejeicao"
+                        display-key="descricao">
+                    <input type="hidden" ng-value="vm.Formulario.statusRejeicao | json:0" name="statusRejeicao" ng-child="vm.Formulario.statusRejeicao">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+					<table tablename="tabelaAprovadores" id="tabelaAprovadores"  class="hidden" noaddbutton="true" nodeletebutton="true">
+    <thead>
+        <tr>
+            <td></td>
+        </tr>
+    </thead>
+    <tbod>
+        <tr>
+            <td id="registroAprovador">
+                <input placeholder="aprovadorSeq"        type="text"  name="aprovadorSeq">
+                <input placeholder="aprovadorPrioridade" type="text"  name="aprovadorPrioridade">
+                <input placeholder="aprovadorEmail"      type="text"  name="aprovadorEmail">
+                <input placeholder="aprovadorCodigo"     type="text"  name="aprovadorCodigo">
+                <input placeholder="aprovadorQtdMinima"  type="text"  name="aprovadorQtdMinima">
+                <input placeholder="aprovadorStatus"     type="text"  name="aprovadorStatus">
+                <input placeholder="aprovadorRejeicao"   type="text"  name="aprovadorRejeicao">
+                <input placeholder="aprovadorNarrativa"  type="text"  name="aprovadorNarrativa">
+                <input placeholder="aprovadorData"       type="text"  name="aprovadorData">
+            </td>
+        </tr>
+    </tbod>
+</table>
+<!--<button hidden class="btn btn-default" ng-click="vm.adicionaAprovador()">Add Aprov</button>-->
+					<!--JSON para comunicação com backend-->
+<input name="Params" type="hidden" id="Params" ng-value="vm.Params | json:0">
+<input name="Errors" type="hidden" id="Errors" ng-value="vm.Errors | json:0">
+<!--Parâmetros enviados pelo ERP-->
+<input type="text" hidden id="nrTrans" name="nrTrans" ng-value="vm.Formulario.nrTrans" placeholder="nrTrans">
+<input type="text" hidden id="nivelEmergencial" name="nivelEmergencial" ng-value="vm.Formulario.nivelEmergencial" placeholder="nivelEmergencial">
+<input type="text" hidden id="codTipoDocto" name="codTipoDocto" ng-value="vm.Formulario.codTipoDocto" placeholder="codTipoDocto">
+<input type="text" hidden id="tipoDocto" name="tipoDocto" ng-value="vm.Formulario.tipoDocto" placeholder="tipoDocto">
+<input type="text" hidden id="codDoctoTemplate" name="codDoctoTemplate" ng-value="vm.Formulario.codDoctoTemplate" placeholder="codDoctoTemplate">
+<input type="text" hidden id="descricao" name="descricao" ng-value="vm.Formulario.descricao" placeholder="descricao">
+<input type="text" hidden id="codEmpresa" name="codEmpresa" ng-value="vm.Formulario.codEmpresa" placeholder="codEmpresa">
+<input type="text" hidden id="empresa" name="empresa" ng-value="vm.Formulario.empresa" placeholder="empresa">
+<input type="text" hidden id="codEstab" name="codEstab" ng-value="vm.Formulario.codEstab" placeholder="codEstab">
+<input type="text" hidden id="estab" name="estab" ng-value="vm.Formulario.estab" placeholder="estab">
+<input type="text" hidden id="valor" name="valor" ng-value="vm.Formulario.valor" placeholder="valor">
+<input type="text" hidden id="codLotacao" name="codLotacao" ng-value="vm.Formulario.codLotacao" placeholder="codLotacao">
+<input type="text" hidden id="codCCusto" name="codCcusto" ng-value="vm.Formulario.codCCusto" placeholder="codCCusto">
+<input type="text" hidden id="codFamilia" name="codFamilia" ng-value="vm.Formulario.codFamilia" placeholder="codFamilia">
+<input type="text" hidden id="codItem" name="codItem" ng-value="vm.Formulario.codItem" placeholder="codItem">
+<input type="text" hidden id="codEspecie" name="codEspecie" ng-value="vm.Formulario.codEspecie" placeholder="codEspecie">
+<input type="text" hidden id="codReferencia" name="codReferencia" ng-value="vm.Formulario.codReferencia" placeholder="codReferencia">
+<input type="text" hidden id="dataRef" name="dataRef" ng-value="vm.Formulario.dataRef" placeholder="dataRef">
+<input type="text" hidden id="labelDataRef" name="labelDataRef" ng-value="vm.Formulario.labelDataRef" placeholder="labelDataRef">
+<!--Parâmetros para controle interno-->
+<input type="text" hidden id="currentAprovadorSeq" name="currentAprovadorSeq" ng-value="vm.Formulario.currentAprovadorSeq" placeholder="currentAprovadorSeq">
+<input type="text" hidden id="lastAprovadorSeq" name="lastAprovadorSeq" ng-value="vm.Formulario.lastAprovadorSeq" placeholder="lastAprovadorSeq">
+<input type="text" hidden id="status" name="status" ng-value="vm.Formulario.status" placeholder="status">
+<input type="text" hidden id="integrado" name="integrado" ng-value="vm.Formulario.integrado" placeholder="integrado">
+<input type="text" hidden id="codProcesso" name="codProcesso" ng-value="vm.Formulario.codProcesso" placeholder="codProcesso">
+<input type="text" hidden id="statusIntegracao" name="statusIntegracao" ng-value="vm.Formulario.statusIntegracao" placeholder="statusIntegracao">
+<input type="text" hidden id="notifica" name="notifica" ng-value="vm.Formulario.notifica" placeholder="notifica">
+<input type="text" hidden id="notificaErro" name="notificaErro" ng-value="vm.Formulario.notificaErro" placeholder="notificaErro">
+<input type="text" hidden id="aprovacaoAutomatica" name="aprovacaoAutomatica" ng-value="vm.Formulario.aprovacaoAutomatica" placeholder="aprovacaoAutomatica">
+<input type="text" hidden id="prazo" name="prazo" ng-value="vm.Formulario.prazo" placeholder="prazo">
+
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

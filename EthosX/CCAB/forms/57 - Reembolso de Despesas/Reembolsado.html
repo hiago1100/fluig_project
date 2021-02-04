@@ -1,0 +1,81 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="https://style.fluig.com/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../vcXMLRPC.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<fieldset id="titulo" name="titulo">
+		<div class="col-xs-12" id="reembolsado">
+			<h1><b>Cadastro de Reembolsado</b></h1>
+		</div>
+
+		<div class=" row form-group">
+			<div class="col-md-5 col-xs-12">
+				<label for="reembolsadoTeste">Reembolsado:</label>
+				<input
+							    type="zoom"
+							    class="form-control"
+							    id = "reembolsadoTeste"
+							    name="reembolsadoTeste"
+							    data-zoom="{
+							        'displayKey':'colleagueName',
+							        'datasetId':'colleague',
+							        'fields':[
+
+
+							            {
+							               'field':'colleagueName',
+							               'label':'Nome',
+							               'search': 'true'
+							            },{
+							                'field':'colleagueId',
+							                'label':'Id',
+							                'standard' : 'true',
+							                'visible' : 'false'  
+							            }
+							        ]
+							     }" 
+                          />
+
+                        
+
+
+			</div>
+
+			<div class="col-md-5 col-xs-12">
+				<label for="gestor">CPF:</label>
+				 <input type="text" name="cpfReembolsado" id="cpfReembolsado" class="form-control" readonly="">
+		    </div>	
+	</div>
+
+	<div class="row form-group">
+		<div class="col-md-4 col-xs-12">
+			<label for="emailGestor">Conta:</label>
+			<input type="text" name="contaReembolsado" id="contaReembolsado" class="form-control">
+		</div>
+
+		<div class="col-md-4">
+			<label>Agência</label>
+			<input type="text" name="agenciaTeste" id="agenciaTeste" class="form-control">
+		</div>
+
+		<div class="col-md-4">
+			<label>Banco</label>
+			<input type="text" name="bancoTeste" id="bancoTeste" class="form-control">
+		</div>
+	</div>
+
+
+	</fieldset>
+</form>
+</div>
+</body>
+</html>

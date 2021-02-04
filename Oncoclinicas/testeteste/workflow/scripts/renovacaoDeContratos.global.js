@@ -1,0 +1,4 @@
+var INICIO = "4";
+var APROVACAO = "5";
+var FLUXO_COMPRAS_CONT = "10";
+var FLUXO_ENCERRAMETO_CONT = "12";

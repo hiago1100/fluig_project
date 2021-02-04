@@ -1,0 +1,873 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Hiago Domingos de Oliveira">
+    <meta name="author" content="Jonathan Oliveira Canavieira">
+    
+
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/jquery.timepicker.css" />
+    
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/datatables/datatables.min.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/jquery.timepicker.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/scripts/toast/toastr.min.css" />
+
+    <!-- STYLE DA VIEW -->
+    <link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form">
+            <input type="hidden" name="cpChapaConsultor" id="cpChapaConsultor">
+            <input type="hidden" name="cpChapaGestor" id="cpChapaGestor">
+            <input type="hidden" name="cpChapaGestorSubst" id="cpChapaGestorSubst">
+            <input type="hidden" name="cpChapaGestorSubstSeg" id="cpChapaGestorSubstSeg">
+            <input type="hidden" name="cpDescritor" id="cpDescritor">
+
+
+
+
+            <!-- Identificador / Colaborador + Obra/Departamento + Data de Admissão -->
+            <input type="hidden" name="cpIdentificador" id="cpIdentificador">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-home fluigicon-lg"></span>&nbsp;<span
+                            class="descricaoProcesso"></span>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    O formul&aacute;rio abaixo refere-se ao preenchimento de informa&ccedil;&otilde;es para a solicita&ccedil;&atilde;o de <b><span
+                        class="descricaoProcesso"></span></b>
+                    <br>
+                    <br> Para conhecer o passo a passo dessa solicita&ccedil;&atilde;o e conferir todas as regras para a abertura desse chamado <b>
+                        <a href="" target="_blank" id="ID_LINK_MANUAL">acesse o manual</a>.</b>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                        &nbsp;Dados do solicitante
+                    </h3>
+                </div>
+                <div class="panel-body container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">N.Solicita&ccedil;&atilde;o</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpNumeroSolicitacao" id="cpNumeroSolicitacao">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Data abertura</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpDataAbertura" id="cpDataAbertura">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Solicitante</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteNome" id="cpSolicitanteNome">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Fun&ccedil;&atilde;o</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteFuncao" id="cpSolicitanteFuncao">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Empresa</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteEmpresa" id="cpSolicitanteEmpresa">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Departam./Obra</span>
+                                    <input type="text" readonly class="form-control" name="cpSolicitanteObraDep" id=cpSolicitanteObraDep>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Email</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteEmail" id="cpSolicitanteEmail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Estado</span>
+                                    <input type="text" readonly="readonly" class="form-control" name=cpSolicitanteEstado id="cpSolicitanteEstado">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-fileedit fluigicon-lg"></span>
+                        &nbsp;Dados da solicita&ccedil;&atilde;o
+                    </h3>
+                </div>
+                <div class="panel-body container">
+
+                    <h4>
+                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Informações do Colaborador
+                    </h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Obra / Departamento</label>
+                                <div class="input-group">
+                                    <input type="text" readonly class="form-control" name="cpObraDepartamentoInfo" id="cpObraDepartamentoInfo">                      
+                                    <span class="input-group-btn">
+                                       <button type="button" id="btDepartamentoObra" class="btn btn-info buttonZoom">
+                                       <span class="fluigicon fluigicon-search"></span>
+                                       </button>
+                                    </span>  
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Empresa</label>
+                                <input type="text" readonly class="form-control" name="cpEmpresaInfo" id="cpEmpresaInfo">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Colaborador</label>
+                                <div class="input-group">
+                                <input type="text" readonly class="form-control" name="cpColaboradorInfo" id="cpColaboradorInfo">
+                                  <span class="input-group-btn">
+                                   <button type="button" id="btColaborador" class="btn btn-info buttonZoom">
+                                   <span class="fluigicon fluigicon-search"></span>
+                                   </button>
+                                </span> 
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Matricula</label>
+                                <input type="text" readonly class="form-control" name="cpMatriculaInfo" id="cpMatriculaInfo">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Função</label>
+                                <input type="text" readonly class="form-control" name="cpFuncaoInfo" id="cpFuncaoInfo">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Data de admissão</label>
+                                <input type="text" readonly class="form-control" name="cpDataAdmissaoInfo" id="cpDataAdmissaoInfo">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Tipo de mão de obra</label>
+                                <input type="text" readonly class="form-control" name="cpMaoObraInfo" id="cpMaoObraInfo"> 
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Gestor</label>
+                                <input type="text" readonly class="form-control" name="cpGestorInfo" id="cpGestorInfo">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h4>
+                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Avaliação de Desempenho
+                    </h4>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nº</th>
+                                <th>Título da dependência</th>
+                                <th>Descrição da competência</th>
+                                <th class="avaliacao">Avaliação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Busca de conhecimento / autodesenvolvimento</td>
+                                <td>
+                                    <p>Capacidade de adquirir e utilizar conhecimentos e habilidades para exercer sua função e impactar positivamente no resultado do negócio, bem como difundir o conhecimento adquirido para outros colaboradores.</p>
+                                </td>
+                                <td>
+                                    <select name="cpAvaliacaoN1" id="cpAvaliacaoN1" class="form-control PrimAvaliacao">
+                                        <option value="">Selecione</option>
+                                        <option value="4">Supera</option>
+                                        <option value="3">Atende</option>
+                                        <option value="2">Atende parcialmente</option>
+                                        <option value="1">Não atende</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Comunicação</td>
+                                <td>
+                                    <p>Capacidade de transmitir e receber informações relativas ao ambiente profissional, observando a adequada utilização de linguagem, os meios disponíveis e as estratégias da organização. Habilidade de comunicar-se de forma clara e assertiva comas pessoas, transmitindo segurança, firmeza, interesse e domínio sobre aquilo que fala.</p>
+                                </td>
+                                <td>
+                                    <select name="cpAvaliacaoN2" id="cpAvaliacaoN2" class="form-control PrimAvaliacao">
+                                        <option value="">Selecione</option>
+                                        <option value="4">Supera</option>
+                                        <option value="3">Atende</option>
+                                        <option value="2">Atende parcialmente</option>
+                                        <option value="1">Não atende</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Planejamento e organização</td>
+                                <td>
+                                    <p>Capacidade para programar, organizar e controlar a atividade da sua área de atuação e dos elementos que a integram, definindo objetivos, estabelecendo prazos e determinando prioridades.</p>
+                                </td>
+                                <td>
+                                    <select name="cpAvaliacaoN3" id="cpAvaliacaoN3" class="form-control PrimAvaliacao">
+                                        <option value="">Selecione</option>
+                                        <option value="4">Supera</option>
+                                        <option value="3">Atende</option>
+                                        <option value="2">Atende parcialmente</option>
+                                        <option value="1">Não atende</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Relacionamento interpessoal</td>
+                                <td>
+                                    <p>Capacidade de motivar, mobilizar e envolver pessoas e grupos, levando-os a contribuir e apoiar planos e iniciativas organizacionais, de forma consistente e comprometida com valores, a visão e diretrizes da organização. Pode inspirar e influenciar outros grupos.</p>
+                                </td>
+                                <td>
+                                    <select name="cpAvaliacaoN4" id="cpAvaliacaoN4" class="form-control PrimAvaliacao">
+                                        <option value="">Selecione</option>
+                                        <option value="4">Supera</option>
+                                        <option value="3">Atende</option>
+                                        <option value="2">Atende parcialmente</option>
+                                        <option value="1">Não atende</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Solução de problemas</td>
+                                <td>
+                                    <p>Encara os problemas individuais e da equipe de forma positiva e consegue aplicar conhecimentos e desenvolver alternativas de solução, buscando ajuda quando necessário.</p>
+                                </td>
+                                <td>
+                                    <select name="cpAvaliacaoN5" id="cpAvaliacaoN5" class="form-control PrimAvaliacao">
+                                        <option value="">Selecione</option>
+                                        <option value="4">Supera</option>
+                                        <option value="3">Atende</option>
+                                        <option value="2">Atende parcialmente</option>
+                                        <option value="1">Não atende</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Disciplina e método</td>
+                                <td>
+                                    <p>Capacidade de realizar e disseminar os procedimentos estabelecidos pela empresa, garantindo a aplicação padronizada dos processos em toda a organização, conforme as Políticas e os Padrões Operacionais da empresa.</p>
+                                </td>
+                                <td>
+                                    <select name="cpAvaliacaoN6" id="cpAvaliacaoN6" class="form-control  PrimAvaliacao">
+                                        <option value="">Selecione</option>
+                                        <option value="4">Supera</option>
+                                        <option value="3">Atende</option>
+                                        <option value="2">Atende parcialmente</option>
+                                        <option value="1">Não atende</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Conhecimento técnico específico</td>
+                                <td>
+                                    <p>Conhece e consegue aplicar as ferramentas, procedimentos, conceitos e legislação referentes ao trabalho que executa</p>
+                                </td>
+                                <td>
+                                    <select name="cpAvaliacaoN7" id="cpAvaliacaoN7" class="form-control PrimAvaliacao">
+                                        <option value="">Selecione</option>
+                                        <option value="4">Supera</option>
+                                        <option value="3">Atende</option>
+                                        <option value="2">Atende parcialmente</option>
+                                        <option value="1">Não atende</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Iniciativa</td>
+                                <td>
+                                    <p>Capacidade para identificar e agir sobre oportunidades, questionando regras e paradigmas, para aperfeiçoar ou desenvolver produtos, processos e serviços, bem como, para solucionar e prevenir problemas.</p>
+                                </td>
+                                <td>
+                                    <select name="cpAvaliacaoN8" id="cpAvaliacaoN8" class="form-control PrimAvaliacao">
+                                        <option value="">Selecione</option>
+                                        <option value="4">Supera</option>
+                                        <option value="3">Atende</option>
+                                        <option value="2">Atende parcialmente</option>
+                                        <option value="1">Não atende</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Trabalho em equipe</td>
+                                <td>
+                                    <p>É a capacidade, o interesse e a disponibilidade para desenvolver trabalhos com outras pessoas, contribuindo positivamente para a melhoria contínua das relações, tanto dentro da sua equipe quanto entre equipes diferentes.</p>
+                                </td>
+                                <td>
+                                    <select name="cpAvaliacaoN9" id="cpAvaliacaoN9" class="form-control PrimAvaliacao">
+                                        <option value="">Selecione</option>
+                                        <option value="4">Supera</option>
+                                        <option value="3">Atende</option>
+                                        <option value="2">Atende parcialmente</option>
+                                        <option value="1">Não atende</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Comprometimento com a empresa</td>
+                                <td>
+                                    <p>É o envolvimento do colaborador com a empresa e com o alcance dos resultados desejados em sua função, bem como responsabilidade no cumprimento das políticas e normas da empresa.
+                                    </p>
+                                </td>
+                                <td>
+                                    <select name="cpAvaliacaoN10" id="cpAvaliacaoN10" class="form-control PrimAvaliacao">
+                                        <option value="">Selecione</option>
+                                        <option value="4">Supera</option>
+                                        <option value="3">Atende</option>
+                                        <option value="2">Atende parcialmente</option>
+                                        <option value="1">Não atende</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="trNotaPimAv">
+                                <td colspan="3"></td>
+                                <td>
+                                    <input type="hidden" class="form-control" name="cpNotaAva" id="cpNotaAva" readonly />
+                                    </br>
+                                    <input type="text" class="form-control" name="cpNotaResultado" id="cpNotaResultado" readonly />
+                                    </br>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>
+                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Evidência
+                        da Habilidade
+                    </h4>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <select name="cbTransferirGestor" id="cbTransferirGestor">
+                                <option value="nao">Não</option>
+                                <option value="sim">Sim</option>
+                            </select>
+                            <label>Transferir a avaliação para outro gestor</label>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div id="GestorTransfer" class="hide col-md-12">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="labelField">Obra / Departamento</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="cpObraDepartamentoTransfer" id="cpObraDepartamentoTransfer" readonly>                      
+                                            <span class="input-group-btn">
+                                               <button type="button" id="btObraDepartamentoTransfer" class="btn btn-info buttonZoom">
+                                               <span class="fluigicon fluigicon-search"></span>
+                                               </button>
+                                            </span>  
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="labelField">Gestor / Avaliador</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="cpObraGestorAvaliadorTransfer" id="cpObraGestorAvaliadorTransfer" readonly>
+                                            <span class="input-group-btn">
+                                               <button type="button" id="btGestorAvaliadorTransfer" class="btn btn-info buttonZoom">
+                                               <span class="fluigicon fluigicon-search"></span>
+                                               </button>
+                                            </span>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Evidência</label>
+                                <select name="cpEvidenciaHabilidade" id="cpEvidenciaHabilidade" class="form-control">
+                                    <option value="">Selecione...</option>
+                                    <option value="1">Habilidade Evidenciada</option>
+                                    <option value="2">Necessária 2ª avaliação</option>
+                                    <option value="3">Não Evidenciou Habilidade</option>
+                                    <option value="4">N&atilde;o foi poss&iacute;vel avaliar o colaborador neste per&iacute;odo</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4><span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Observação</h4>
+
+                            <div class="form-group">
+                                <label>Observação</label>
+                                <textarea rows="3" class="form-control" name="cpObservacao" id="cpObservacao"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+                        Etapas do processo
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="panel-group">
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_4" id="panelHeaderAtividade_4">
+                                    &nbsp;Parecer da consultoria RH
+                                </div>
+                            </div>
+                            <div id="panelAtividade_4" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h4>
+                                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Evidência da Habilidade
+                                    </h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Evidência</label>
+                                                <select name="cpEvidenciaConsultoria" id="cpEvidenciaConsultoria" class="form-control">
+                                                    <option value="">Selecione...</option>
+                                                    <option value="1">Habilidade Evidenciada</option>
+                                                    <option value="2">Necessária 2ª avaliação</option>
+                                                    <option value="3">Não Evidenciou Habilidade</option>
+                                                    <option value="4">Retornar chamado para Gestor</option>
+                                                    <option value="5">Não foi possível avaliar o colaborador neste período</option>
+                                                    <option value="6">Cancelar Chamado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Parecer</label>
+                                                <textarea class="form-control" rows="5" name="cpParecerConsultoria" id="cpParecerConsultoria" parecer></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_5" id="panelHeaderAtividade_5">
+                                    &nbsp;2ª Avaliação do Gestor</div>
+                            </div>
+                            <div id="panelAtividade_5" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h4>
+                                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Avaliação de Desempenho
+                                    </h4>
+
+                                    <table class="table table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Nº</th>
+                                                <th>Título da dependência</th>
+                                                <th>Descrição da competência</th>
+                                                <th class="avaliacao">Avaliação</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Busca de conhecimento / autodesenvolvimento</td>
+                                                <td>
+                                                    <p>Capacidade de adquirir e utilizar conhecimentos e habilidades para exercer sua função e impactar positivamente no resultado do negócio, bem como difundir o conhecimento adquirido para outros colaboradores.
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <select name="cpSegundaAvaliacaoN1" id="cpSegundaAvaliacaoN1" class="form-control SegundaAvaliacao">
+                                                        <option value="">Selecione</option>
+                                                        <option value="4">Supera</option>
+                                                        <option value="3">Atende</option>
+                                                        <option value="2">Atende parcialmente</option>
+                                                        <option value="1">Não atende</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Comunicação</td>
+                                                <td>
+                                                    <p>Capacidade de transmitir e receber informações relativas ao ambiente profissional, observando a adequada utilização de linguagem, os meios disponíveis e as estratégias da organização. Habilidade de comunicar-se de forma clara e assertiva comas pessoas, transmitindo segurança, firmeza, interesse e domínio sobre aquilo que fala.
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <select name="cpSegundaAvaliacaoN2" id="cpSegundaAvaliacaoN2" class="form-control SegundaAvaliacao">
+                                                        <option value="">Selecione</option>
+                                                        <option value="4">Supera</option>
+                                                        <option value="3">Atende</option>
+                                                        <option value="2">Atende parcialmente</option>
+                                                        <option value="1">Não atende</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Planejamento e organização</td>
+                                                <td>
+                                                    <p>Capacidade para programar, organizar e controlar a atividade da sua área de atuação e dos elementos que a integram, definindo objetivos, estabelecendo prazos e determinando prioridades.</p>
+                                                </td>
+                                                <td>
+                                                    <select name="cpSegundaAvaliacaoN3" id="cpSegundaAvaliacaoN3" class="form-control SegundaAvaliacao">
+                                                        <option value="">Selecione</option>
+                                                        <option value="4">Supera</option>
+                                                        <option value="3">Atende</option>
+                                                        <option value="2">Atende parcialmente</option>
+                                                        <option value="1">Não atende</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Relacionamento interpessoal</td>
+                                                <td>
+                                                    <p>Capacidade de motivar, mobilizar e envolver pessoas e grupos, levando-os a contribuir e apoiar planos e iniciativas organizacionais, de forma consistente e comprometida com valores, a visão e diretrizes da organização. Pode inspirar e influenciar outros grupos.</p>
+                                                </td>
+                                                <td>
+                                                    <select name="cpSegundaAvaliacaoN4" id="cpSegundaAvaliacaoN4" class="form-control SegundaAvaliacao">
+                                                        <option value="">Selecione</option>
+                                                        <option value="4">Supera</option>
+                                                        <option value="3">Atende</option>
+                                                        <option value="2">Atende parcialmente</option>
+                                                        <option value="1">Não atende</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Solução de problemas</td>
+                                                <td>
+                                                    <p>Encara os problemas individuais e da equipe de forma positiva e consegue aplicar conhecimentos e desenvolver alternativas de solução, buscando ajuda quando necessário.
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <select name="cpSegundaAvaliacaoN5" id="cpSegundaAvaliacaoN5" class="form-control SegundaAvaliacao">
+                                                        <option value="">Selecione</option>
+                                                        <option value="4">Supera</option>
+                                                        <option value="3">Atende</option>
+                                                        <option value="2">Atende parcialmente</option>
+                                                        <option value="1">Não atende</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>Disciplina e método</td>
+                                                <td>
+                                                    <p>Capacidade de realizar e disseminar os procedimentos estabelecidos pela empresa, garantindo a aplicação padronizada dos processos em toda a organização, conforme as Políticas e os Padrões Operacionais da empresa.
+                                                    </p>
+                                                </td>
+                                                <td>
+                                                    <select name="cpSegundaAvaliacaoN6" id="cpSegundaAvaliacaoN6" class="form-control SegundaAvaliacao">
+                                                        <option value="">Selecione</option>
+                                                        <option value="4">Supera</option>
+                                                        <option value="3">Atende</option>
+                                                        <option value="2">Atende parcialmente</option>
+                                                        <option value="1">Não atende</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>Conhecimento técnico específico</td>
+                                                <td>
+                                                    <p>Conhece e consegue aplicar as ferramentas, procedimentos, conceitos e legislação referentes ao trabalho que executa</p>
+                                                </td>
+                                                <td>
+                                                    <select name="cpSegundaAvaliacaoN7" id="cpSegundaAvaliacaoN7" class="form-control SegundaAvaliacao">
+                                                        <option value="">Selecione</option>
+                                                        <option value="4">Supera</option>
+                                                        <option value="3">Atende</option>
+                                                        <option value="2">Atende parcialmente</option>
+                                                        <option value="1">Não atende</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>8</td>
+                                                <td>Iniciativa</td>
+                                                <td>
+                                                    <p>Capacidade para identificar e agir sobre oportunidades, questionando regras e paradigmas, para aperfeiçoar ou desenvolver produtos, processos e serviços, bem como, para solucionar e prevenir problemas.</p>
+                                                </td>
+                                                <td>
+                                                    <select name="cpSegundaAvaliacaoN8" id="cpSegundaAvaliacaoN8" class="form-control SegundaAvaliacao">
+                                                        <option value="">Selecione</option>
+                                                        <option value="4">Supera</option>
+                                                        <option value="3">Atende</option>
+                                                        <option value="2">Atende parcialmente</option>
+                                                        <option value="1">Não atende</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>9</td>
+                                                <td>Trabalho em equipe</td>
+                                                <td>
+                                                    <p>É a capacidade, o interesse e a disponibilidade para desenvolver trabalhos com outras pessoas, contribuindo positivamente para a melhoria contínua das relações, tanto dentro da sua equipe quanto entre equipes diferentes.</p>
+                                                </td>
+                                                <td>
+                                                    <select name="cpSegundaAvaliacaoN9" id="cpSegundaAvaliacaoN9" class="form-control SegundaAvaliacao">
+                                                        <option value="">Selecione</option>
+                                                        <option value="4">Supera</option>
+                                                        <option value="3">Atende</option>
+                                                        <option value="2">Atende parcialmente</option>
+                                                        <option value="1">Não atende</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>10</td>
+                                                <td>Comprometimento com a empresa</td>
+                                                <td>
+                                                    <p>É o envolvimento do colaborador com a empresa e com o alcance dos resultados desejados em sua função, bem como responsabilidade no cumprimento das políticas e normas da empresa.</p>
+                                                </td>
+                                                <td>
+                                                    <select name="cpSegundaAvaliacaoN10" id="cpSegundaAvaliacaoN10" class="form-control SegundaAvaliacao">
+                                                        <option value="">Selecione</option>
+                                                        <option value="4">Supera</option>
+                                                        <option value="3">Atende</option>
+                                                        <option value="2">Atende parcialmente</option>
+                                                        <option value="1">Não atende</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr id="trNotaSegAv">
+                                                <td colspan="3"></td>
+                                                <td>
+                                                    <input type="hidden" class="form-control" name="cpNotaAva2" id="cpNotaAva2" readonly />
+                                                    </br>
+                                                    <input type="text" class="form-control" name="cpNotaResultado2" id="cpNotaResultado2" readonly />
+                                                    </br>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <h4>
+                                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Evidência da Habilidade
+                                    </h4>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <select name="cbTransferirGestorSeg" id="cbTransferirGestorSeg">
+                                                <option value="nao">Não</option>
+                                                <option value="sim">Sim</option>
+                                            </select>
+                                            <label>Transferir a avaliação para outro Gestor</label>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+
+                                        <div id="GestorTransferSeg" class="hide col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="labelField">Obra / Departamento</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" name="cpObraDepartamentoTransferSeg" id="cpObraDepartamentoTransferSeg" readonly>                      
+                                                            <span class="input-group-btn">
+                                                               <button type="button" id="btObraDepartamentoTransferSeg" class="btn btn-info buttonZoom">
+                                                                    <span class="fluigicon fluigicon-search"></span>
+                                                               </button>
+                                                            </span>  
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="labelField">Gestor / Avaliador</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control" name="cpObraGestorAvaliTransfSeg" id="cpObraGestorAvaliTransfSeg" readonly>
+                                                            <span class="input-group-btn">
+                                                               <button type="button" id="btGestorAvaliTransfSeg" class="btn btn-info buttonZoom">
+                                                                    <span class="fluigicon fluigicon-search"></span>
+                                                               </button>
+                                                            </span>  
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Evid&ecirc;ncia</label>
+                                                <select name="cpEvidenciaGestor" id="cpEvidenciaGestor" class="form-control">
+                                                    <option value="">Selecione...</option>
+                                                    <option value="1">Habilidade Evidenciada</option>
+                                                    <option value="2">N&atilde;o Evidenciou Habilidade
+                                                    </option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4><span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Observa&ccedil;&atilde;o</h4>
+                                            
+                                            <div class="form-group">
+                                                <label>Observa&ccedil;&atilde;o</label>
+                                                <textarea class="form-control" rows="5" name="cpObservacaoGestor" id="cpObservacaoGestor" parecer></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_6" id="panelHeaderAtividade_6">
+                                    &nbsp;2ª Avaliação - Parecer da Consultoria RH</div>
+                            </div>
+                            <div id="panelAtividade_6" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h4>
+                                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Evidência da Habilidade
+                                    </h4>
+                                    <div class="row">
+
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Evidência</label>
+                                                <select name="cpEvidenciaAvaliacao" id="cpEvidenciaAvaliacao" class="form-control">
+                                                    <option value="">Selecione...</option>
+                                                    <option value="1">Habilidade Evidenciada</option>
+                                                    <option value="2">Não Evidenciou Habilidade</option>
+                                                    <option value="3">Retornar chamado para Gestor</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Parecer</label>
+                                                <textarea class="form-control" rows="5" name="cpParecerAvaliacao" id="cpParecerAvaliacao" parecer></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/datepicker-pt-BR.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/zoom/zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/Compartilhados/scripts/compartilhados.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/model.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/formShared.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/datatables.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/buttons.html5.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/buttons.jqueryui.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/dataTables.buttons.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/aes.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/toast/toastr.min.js" charset="utf-8"></script>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="Zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="BLL.js" charset="utf-8"></script>
+    <script type="text/javascript" src="DAL.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="mensagens.js" charset="utf-8"></script>
+    <script type="text/javascript" src="FLUIG_0185_View.js"></script>
+
+</body>
+
+</html>

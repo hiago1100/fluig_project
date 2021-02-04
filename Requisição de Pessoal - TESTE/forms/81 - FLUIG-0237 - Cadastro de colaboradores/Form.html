@@ -1,0 +1,1841 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+     <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="https://csc.direcional.com.br/scripts/js/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="https://csc.direcional.com.br/scripts/js/datatables/datatables.min.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/css/jquery.timepicker.css" />
+    <link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/js/toast/toastr.min.css" />
+    <link type="text/css" rel="stylesheet" href="Style.css" />
+</head>
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form" id="form">
+            <input type="hidden" name="cpMatriculaSolicitante" id="cpMatriculaSolicitante" class="cript"/>
+            <input type="hidden" name="cpResponsavelRecrutamentoSelec" id="cpResponsavelRecrutamentoSelec" class="cript"/>
+            <input type="hidden" name="cpResponsavelExcecaoRH" id="cpResponsavelExcecaoRH" class="cript"/>
+            <input type="hidden" name="cpResponsavelAprovadorN1Candid" id="cpResponsavelAprovadorN1Candid" class="cript"/>
+            <input type="hidden" name="cpResponsavelRecolhimentoObra" id="cpResponsavelRecolhimentoObra" class="cript"/>
+            <input type="hidden" name="cpResponsavelAssinaturaKit" id="cpResponsavelAssinaturaKit" class="cript"/>
+            <input type="hidden" name="cpResponsavelAberturaDesligame" id="cpResponsavelAberturaDesligame" class="cript"/>
+            <input type="hidden" name="cpResponsavelAberturMovimentac" id="cpResponsavelAberturMovimentac" class="cript"/>
+            <input type="hidden" name="cpResponsavelExcecaoN1" id="cpResponsavelExcecaoN1" class="cript"/>
+            <input type="hidden" name="cpResponsavelExcecaoN2" id="cpResponsavelExcecaoN2" class="cript"/>
+            <input type="hidden" name="cpResponsavelExcecaoN3" id="cpResponsavelExcecaoN3" class="cript"/>
+            <input type="hidden" name="cpResponsavelExcecaoN4" id="cpResponsavelExcecaoN4" class="cript"/>
+            <input type="hidden" name="cpResponsavelDataAdmissao" id="cpResponsavelDataAdmissao" class="cript"/>
+            <input type="hidden" name="cpSlaCadastroKit" id="cpSlaCadastroKit" class="cript"/>
+            <input type="hidden" name="cpCodNomePostoTrabalho" id="cpCodNomePostoTrabalho" class="cript"/>
+            <input type="hidden" name="cpCodObra" id="cpCodObra" />
+            <input type="hidden" name="cpIntegracaoOcrEnvio" id="cpIntegracaoOcrEnvio" />
+            <input type="hidden" name="cpIntegracaoOcrDocumento" id="cpIntegracaoOcrDocumento" />
+            <input type="hidden" name="cpIntegracaoOcrExclusao" id="cpIntegracaoOcrExclusao" />
+            <input type="hidden" name="cpIsEncode" id="cpIsEncode"/>
+            <input type="hidden" name="cpEncodeKey" id="cpEncodeKey"/>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_Titulo">
+                        <span class="fluigicon fluigicon-home fluigicon-lg"></span>
+                        <span class="descricaoProcesso"></span>
+                    </div>
+                </div>
+                <div id="panelAtividade_Titulo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        O formul&aacute;rio abaixo refere-se ao preenchimento de informa&ccedil;&otilde;es necess&aacute;rias no processo de <b><span class="descricaoProcesso"></span></b>.
+                        <br>
+                        <br> Para conhecer o passo a passo dessa solicita&ccedil;&atilde;o e conferir todas as regras para a abertura desse chamado <b><a href="http://csc.direcional.com.br:8080/portal/p/1/ecmnavigation?app_ecm_navigation_doc=" target="_blank" id="ID_LINK_MANUAL" class="LinkManual">acesse o manual</a></b>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_Solicitante">
+                        <h3 class="panel-title">
+                            <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                            Dados do solicitante
+                        </h3>
+                    </div>
+                </div>
+                <div id="panelAtividade_Solicitante" class="panel-collapse collapse">
+                    <div class="panel-body container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">N&uacute;mero da solicita&ccedil;&atilde;o</label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpNumeroSolicitacao" id="cpNumeroSolicitacao" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Data de abertura</label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpDataAbertura" id="cpDataAbertura" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Solicitante</label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteNome" id="cpSolicitanteNome" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Fun&ccedil;&atilde;o</label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteFuncao" id="cpSolicitanteFuncao" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Empresa</label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteEmpresa" id="cpSolicitanteEmpresa" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Obra/Departamento</label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteObraDep" id="cpSolicitanteObraDep" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Estado</label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteEstado" id="cpSolicitanteEstado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Email</label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteEmail" id="cpSolicitanteEmail" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_Solicitacao">
+                        <h3 class="panel-title">
+                            <span class="fluigicon fluigicon-fileedit fluigicon-lg"></span>
+                            Dados da solicitação
+                        </h3>
+                    </div>
+                </div>
+                <div id="panelAtividade_Solicitacao" class="panel-collapse">
+                    <div class="panel-body">
+                        <h4>
+                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Informações da requisição de pessoal
+                        </h4>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Número da solicitação de requisição de pessoal</label>
+                                    <input type="text" class="form-control" name="cpNumeroRequisicao" id="cpNumeroRequisicao" readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Solicitação de requisição de pessoal</label>  
+                                    <button type="button" id="btSolicitacaoRequisicao" class="btn btn-link form-control">clique aqui para acessar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="labelField">Obra/Departamento</label>
+                                <input type="text" class="form-control" name="cpReqDepartamentoObra" id="cpReqDepartamentoObra" readonly/>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Cód. da seção</label>
+                                    <input type="text" class="form-control" name="cpReqCodSecao" id="cpReqCodSecao" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Tipo da seção</label>
+                                    <input type="text" class="form-control" name="cpReqTipoSecao" id="cpReqTipoSecao" readonly/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Empresa</label>
+                                    <input type="text" class="form-control" name="cpReqEmpresaDescricao" id="cpReqEmpresaDescricao" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Cod. empresa</label>
+                                    <input type="text" class="form-control" name="cpReqCodEmpresa" id="cpReqCodEmpresa" readonly/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Estado</label>
+                                    <input type="text" class="form-control" name="cpReqEstado" id="cpReqEstado" readonly/>
+                                </div>
+                            </div>     
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Aprovador N1</label>
+                                    <input type="text" class="form-control" name="cpReqGestorNome" id="cpReqGestorNome" readonly/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Aprovador N2</label>
+                                    <input type="text" class="form-control" name="cpReqGerenteGeralNome" id="cpReqGerenteGeralNome" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Função</label>
+                                    <input type="text" class="form-control" name="cpReqFuncao" id="cpReqFuncao" readonly/>
+                                    <input type="hidden" class="form-control" name="cpReqCodFuncao" id="cpReqCodFuncao" value>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Salário</label>
+                                    <input type="text" class="form-control" name="cpReqSalario" id="cpReqSalario" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Tipo de mão de obra</label>
+                                    <input type="text" class="form-control" name="cpReqTipoMaoObra" id="cpReqTipoMaoObra" readonly/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Horário de trabalho</label>
+                                    <input type="text" class="form-control" name="cpReqHorario" id="cpReqHorario" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Responsável por recolher documentação da admissão</label>
+                                    <input type="text" class="form-control" name="cpReqResponsavelRecolhimento" id="cpReqResponsavelRecolhimento" readonly/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Tipo de posto de trabalho</label>
+                                    <input type="text" class="form-control" name="cpReTipoPosto" id="cpReTipoPosto" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Nome do posto de trabalho</label>
+                                    <input type="text" class="form-control" name="cpReqNomePostoTrabalho" id="cpReqNomePostoTrabalho" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>
+                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Informações do Recrutamento e Seleção
+                        </h4>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Tipo de recrutamento</label>
+                                    <select name="cpCadTipoRecrutamento" id="cpCadTipoRecrutamento" class="form-control" obrigatorio>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row divCadTipoRecrutamentoParecer">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="labelField">Motivo / Justificativa</label>
+                                    <textarea class="form-control" rows="3" name="cpCadTipoRecrutamentoParecer" id="cpCadTipoRecrutamentoParecer"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="divRecrutamentoExterno">
+                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Recrutamento externo
+                        </h4>
+                        <br>
+                        <div class="row divRecrutamentoExterno">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Candidato aprovado</label>
+                                    <input type="text" class="form-control" name="cpCadExternoCandidato" id="cpCadExternoCandidato" style="text-transform: uppercase" obrigatorio />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">CPF</label>
+                                    <input type="text" class="form-control" name="cpCadExternoCpf" id="cpCadExternoCpf" mask="00000000000" obrigatorio/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row divRecrutamentoExterno">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Telefone 1</label>
+                                    <input type="text" class="form-control" name="cpCadExternoTelefone1" id="cpCadExternoTelefone1" mask="(00)00000-0000" placeholder="(00)00000-0000" obrigatorio/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Telefone 2</label>
+                                    <input type="text" class="form-control" name="cpCadExternoTelefone2" id="cpCadExternoTelefone2" mask="(00)00000-0000" placeholder="(00)00000-0000" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Email pessoal</label>
+                                    <input type="text" class="form-control" name="cpCadExternoEmailPessoal" id="cpCadExternoEmailPessoal"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row divRecrutamentoExterno">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Primeiro emprego?</label>
+                                    <select name="cpCadExterno1Emprego" id="cpCadExterno1Emprego" class="form-control" obrigatorio>
+                                        <option value="Nao" selected>Não</option>
+                                        <option value="Sim">Sim</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">PCD?</label>
+                                    <select name="cpCadExternoPcd" id="cpCadExternoPcd" class="form-control" obrigatorio>
+                                        <option value="Nao" selected>Não</option>
+                                        <option value="Sim">Sim</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row divRecrutamentoExterno">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Alteração de salário ou horário?</label>
+                                    <select name="cpCadExternoAltSalario" id="cpCadExternoAltSalario" class="form-control" obrigatorio>
+                                        <option value="Nao" selected>Não</option>
+                                        <option value="Sim">Sim</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Salário fora da tabela salarial?</label>
+                                    <select name="cpCadExternoAltSalarioFaixa" id="cpCadExternoAltSalarioFaixa" class="form-control">
+                                        <option value="">Selecione...</option>
+                                        <option value="Sim">Sim</option>
+                                        <option value="Nao">Não</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row divRecrutamentoExterno divAlteracaoSalario">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Função</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="cpCadVagaFuncao" id="cpCadVagaFuncao" readonly>
+                                        <input type="hidden" class="form-control" name="cpCadCodVagaFuncao" id="cpCadCodVagaFuncao">
+                                        <span class="input-group-btn">
+                                            <button type="button" id="btCadVagaFuncao" class="btn btn-info buttonZoom">
+                                                <span class="fluigicon fluigicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Salário</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">R$</span>
+                                        <input type="text" class="form-control" name="cpCadVagaSalario" id="cpCadVagaSalario" readonly>
+                                        <span class="input-group-btn">
+                                            <button type="button" id="btCadVagaSalario" class="btn btn-info buttonZoom">
+                                                <span class="fluigicon fluigicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row divRecrutamentoExterno divAlteracaoSalario">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Horário</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="cpCadVagaHorario" id="cpCadVagaHorario" readonly>
+                                        <span class="input-group-btn">
+                                            <button type="button" id="btCadVagaHorario" class="btn btn-info buttonZoom">
+                                                <span class="fluigicon fluigicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="divRecrutamentoInterno">
+                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Recrutamento interno
+                        </h4>
+                        <br>
+                        <div class="row divRecrutamentoInterno">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Obra/Departamento de origem</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="cpCadInternoObraDep" id="cpCadInternoObraDep" readonly obrigatorio>
+                                        <span class="input-group-btn">
+                                            <button type="button" id="btCadInternoObraDep" class="btn btn-info buttonZoom">
+                                                <span class="fluigicon fluigicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Colaborador selecionado</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="cpCadInternoColaborador" id="cpCadInternoColaborador" readonly obrigatorio>
+                                        <span class="input-group-btn">
+                                            <button type="button" id="btCadInternoColaborador" class="btn btn-info buttonZoom">
+                                                <span class="fluigicon fluigicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row divRecrutamentoInterno">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Código da seção de origem</label>
+                                    <input type="text" class="form-control" name="cpCadInternoCodSecao" id="cpCadInternoCodSecao" readonly/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Código da empresa de origem</label>
+                                    <input type="text" class="form-control" name="cpCadInternoCodEmpresa" id="cpCadInternoCodEmpresa" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row divRecrutamentoInterno">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Função</label>
+                                    <input type="text" class="form-control" name="cpCadInternoFuncao" id="cpCadInternoFuncao" readonly/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Aprovador N1 de origem</label>
+                                    <input type="text" class="form-control" name="cpCadInternoAprovadorN1" id="cpCadInternoAprovadorN1" readonly/>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Aprovador N2 de origem</label>
+                                    <input type="text" class="form-control" name="cpCadInternoAprovadorN2" id="cpCadInternoAprovadorN2" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="labelField">Observações</label>
+                                    <textarea class="form-control" rows="3" name="cpCadObservacoes" id="cpCadObservacoes"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default panelEtapaProcesso">
+                <div class="panel-heading">
+                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_Etapas">
+                        <h3 class="panel-title">
+                            <span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+                            Etapas do processo
+                        </h3>
+                    </div>
+                </div>
+                <div id="panelAtividade_Etapas" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="panel-group panelAtividade panelAtividade_8">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_8">
+                                        Aprovação do candidato - Aprovador N1
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_8" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoN1" id="cpAprovacaoN1" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Candidato possui experiência na função?</label>
+                                                    <select name="cpAprovacaoN1Experiencia" id="cpAprovacaoN1Experiencia" class="form-control" obrigatorio>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerAprovacaoN1" id="cpParecerAprovacaoN1" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_269">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_269">
+                                        Integração OCR - Envio da solicitação
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_269" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div id="divAvisoIntegracaoOcrEnvioSucesso" class="alert alert-success" role="alert">Integração com o OCR realizada com sucesso :)</div>
+                                                    <div id="divAvisoIntegracaoOcrEnvioErro" class="alert alert-danger" role="alert">Houve um erro na integração com o OCR :(</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_313">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_313">
+                                        Definição da Data de Admissão 
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_313" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoDataAdmissao" id="cpAprovacaoDataAdmissao" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                        <option value="3">Cancelar chamado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerDataAdmissao" id="cpParecerDataAdmissao" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Data de Admissão</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" name="cpRecolhimentoSedeDataAdmissao" id="cpRecolhimentoSedeDataAdmissao" />
+                                                        <div class="input-group-btn">
+                                                            <button class="btn btn-info picker">
+                                                                <span class="fluigicon fluigicon-calendar"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="alert alert-info" role="alert">A data selecionada deverá obedecer ao prazo disponibilizado no calendário do Departamento Pessoal. <a href="http://csc.direcional.com.br:8080/portal/p/1/ecmnavigation?app_ecm_navigation_doc=191090" target="_blank">Clique aqui para consultar o calendário do DP</a></div>
+                                            </div>
+                                        </div>
+                                        <h4>
+                                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Consulta qualificação cadastral
+                                        </h4>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Situação</label>
+                                                    <select name="cpRecolhimentoSedeSituacao" id="cpRecolhimentoSedeSituacao" class="form-control" obrigatorio>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">O candidato está em vias de percepção de seguro desemprego?</label>
+                                                    <select name="cpRecolhimentoSeguroDesemprego" id="cpRecolhimentoSeguroDesemprego" class="form-control" obrigatorio>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-info divDadosRecolhimentoSede" role="alert"><a href="http://consultacadastral.inss.gov.br/Esocial/pages/index.xhtml" target="_blank">Clique aqui para acessar.</a> A Consulta Qualificação Cadastral do candidato é obrigatória. Apenas serão aceitos os candidatos que estiverem com todas as informações de acordo, ou seja, sem nenhuma </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_9">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_9">
+                                            Recolhimento da documentação e definição da Data de Admissão (Sede e Escritório)
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_9" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoRecolhimentoSede" id="cpAprovacaoRecolhimentoSede" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                        <option value="3">Cancelar chamado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerRecolhimentoSede" id="cpParecerRecolhimentoSede" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                        <h4 class="divDadosRecolhimentoSede">
+                                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Informações de conta bancária
+                                        </h4>
+                                        <br>
+                                        <div class="row divDadosRecolhimentoSede">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Banco</label>
+                                                    <input type="text" class="form-control" name="cpRecolhimentoBanco" id="cpRecolhimentoBanco" mask="0000"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Agência</label>
+                                                    <input type="text" class="form-control" name="cpRecolhimentoAgencia" id="cpRecolhimentoAgencia" mask="000000"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Nº da Conta</label>
+                                                    <input type="text" class="form-control" name="cpRecolhimentoConta" id="cpRecolhimentoConta"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divDadosRecolhimentoSede">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Tipo de conta</label>
+                                                    <select name="cpRecolhimentoTipoConta" id="cpRecolhimentoTipoConta" class="form-control">
+                                                        <option value="">Selecione...</option>
+                                                        <option value="Corrente">Corrente</option>
+                                                        <option value="Poupanca">Poupança</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Possui cartão ativo?</label>
+                                                    <select name="cpRecolhimentoCartaoAtivo" id="cpRecolhimentoCartaoAtivo" class="form-control">
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Operação</label>
+                                                    <input type="text" class="form-control" name="cpRecolhimentoOperacao" id="cpRecolhimentoOperacao"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4 class="divDadosRecolhimentoSede">
+                                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Informações de Benefícios
+                                        </h4>
+                                        <br>
+                                        <div class="row divDadosRecolhimentoSede">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Vale transporte</label>
+                                                    <select name="cpRecolhimentoVR" id="cpRecolhimentoVR" class="form-control" obrigatorio>
+                                                        <option value="NaoAplica" selected>Não se aplica</option>
+                                                        <option value="Sim">Sim</option>
+                                                        <option value="Nao">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Alimentação/Refeição</label>
+                                                    <select name="cpRecolhimentoVA" id="cpRecolhimentoVA" class="form-control" obrigatorio>
+                                                        <option value="NaoAplica" selected>Não se aplica</option>
+                                                        <option value="Sim">Sim</option>
+                                                        <option value="Nao">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Plano de saúde</label>
+                                                    <select name="cpRecolhimentoPlanoSaude" id="cpRecolhimentoPlanoSaude" class="form-control" obrigatorio>
+                                                        <option value="NaoAplica" selected>Não se aplica</option>
+                                                        <option value="Sim">Sim</option>
+                                                        <option value="Nao">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divDadosRecolhimentoSede">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Convênio odontológico</label>
+                                                    <select name="cpRecolhimentoConvenioOdonto" id="cpRecolhimentoConvenioOdonto" class="form-control" obrigatorio>
+                                                        <option value="NaoAplica" selected>Não se aplica</option>
+                                                        <option value="Sim">Sim</option>
+                                                        <option value="Nao">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Convênio farmácia</label>
+                                                    <select name="cpRecolhimentoConvenioFarmacia" id="cpRecolhimentoConvenioFarmacia" class="form-control" obrigatorio>
+                                                        <option value="NaoAplica" selected>Não se aplica</option>
+                                                        <option value="Sim">Sim</option>
+                                                        <option value="Nao">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Cesta básica</label>
+                                                    <select name="cpRecolhimentoCestaBasica" id="cpRecolhimentoCestaBasica" class="form-control" obrigatorio>
+                                                        <option value="NaoAplica" selected>Não se aplica</option>
+                                                        <option value="Sim">Sim</option>
+                                                        <option value="Nao">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divDadosRecolhimentoSede">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Vale combustível</label>
+                                                    <select name="cpRecolhimentoValeCombustivel" id="cpRecolhimentoValeCombustivel" class="form-control" obrigatorio>
+                                                        <option value="NaoAplica" selected>Não se aplica</option>
+                                                        <option value="Sim">Sim</option>
+                                                        <option value="Nao">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="alert alert-info" role="alert">O benefício selecionado deverá obedecer as regras conforme o procedimento disponibilizado pela área de Benefícios. <a href="" target="_blank">Clique aqui para consultar os procedimentos</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="row divDadosRecolhimentoSede">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Observações</label>
+                                                    <textarea class="form-control" rows="3" name="cpRecolhimentoObs" id="cpObs"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_10">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_10">
+                                            Recolhimento da documentação e definição da Data de Admissão (Obra)
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_10" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <h4>
+                                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Agendamento da data de admissão
+                                        </h4>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Data de Admissão</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" name="cpRecolhimentoObraDataAdmissao" id="cpRecolhimentoObraDataAdmissao" />
+                                                        <div class="input-group-btn">
+                                                            <button class="btn btn-info picker">
+                                                                <span class="fluigicon fluigicon-calendar"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="alert alert-info" role="alert">A data selecionada deverá obedecer ao prazo disponibilizado no calendário do Departamento Pessoal. <a href="" target="_blank">Clique aqui para consultar o calendário do DP</a></div>
+                                            </div>
+                                        </div>
+                                        <h4 class="divDadosRecolhimentoSede">
+                                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Consulta qualificação cadastral
+                                        </h4>
+                                        <br>
+                                        <div class="row divDadosRecolhimentoSede">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Situação</label>
+                                                    <select name="cpRecolhimentoObraSituacao" id="cpRecolhimentoObraSituacao" class="form-control" obrigatorio>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">O candidato está em vias de percepção de seguro desemprego?</label>
+                                                    <select name="cpRecolhimentoObraSegurDesempr" id="cpRecolhimentoObraSegurDesempr" class="form-control" obrigatorio>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4>
+                                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Informações de conta bancária
+                                        </h4>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Banco</label>
+                                                    <input type="text" class="form-control" name="cpRecolhimentoObraBanco" id="cpRecolhimentoObraBanco" mask="0000"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Agência</label>
+                                                    <input type="text" class="form-control" name="cpRecolhimentoObraAgencia" id="cpRecolhimentoObraAgencia" mask="000000"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Nº da Conta</label>
+                                                    <input type="text" class="form-control" name="cpRecolhimentoObraConta" id="cpRecolhimentoObraConta"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Tipo de conta</label>
+                                                    <select name="cpRecolhimentoObraTipoConta" id="cpRecolhimentoObraTipoConta" class="form-control">
+                                                        <option value="">Selecione...</option>
+                                                        <option value="Corrente">Corrente</option>
+                                                        <option value="Poupanca">Poupança</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Possui cartão ativo?</label>
+                                                    <select name="cpRecolhimentoObraCartaoAtivo" id="cpRecolhimentoObraCartaoAtivo" class="form-control">
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Operação</label>
+                                                    <input type="text" class="form-control" name="cpRecolhimentoObraOperacao" id="cpRecolhimentoObraOperacao" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h4>
+                                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Informações de Benefícios
+                                        </h4>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Vale transporte</label>
+                                                    <select name="cpRecolhimentoObraVR" id="cpRecolhimentoObraVR" class="form-control" obrigatorio>
+                                                        <option value="3" selected>Não se aplica</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Alimentação/Refeição</label>
+                                                    <select name="cpRecolhimentoObraVA" id="cpRecolhimentoObraVA" class="form-control" obrigatorio>
+                                                        <option value="3" selected>Não se aplica</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Plano de saúde</label>
+                                                    <select name="cpRecolhimentoObraPlanoSaude" id="cpRecolhimentoObraPlanoSaude" class="form-control" obrigatorio>
+                                                        <option value="3" selected>Não se aplica</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Convênio odontológico</label>
+                                                    <select name="cpRecolhimentoObraConvenOdonto" id="cpRecolhimentoObraConvenOdonto" class="form-control" obrigatorio>
+                                                        <option value="3" selected>Não se aplica</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Convênio farmácia</label>
+                                                    <select name="cpRecolhimentoObraConvFarmacia" id="cpRecolhimentoObraConvFarmacia" class="form-control" obrigatorio>
+                                                        <option value="3" selected>Não se aplica</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Cesta básica</label>
+                                                    <select name="cpRecolhimentoObraCestaBasica" id="cpRecolhimentoObraCestaBasica" class="form-control" obrigatorio>
+                                                        <option value="3" selected>Não se aplica</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="labelField">Vale combustível</label>
+                                                    <select name="cpRecolhimentoObraCombustivel" id="cpRecolhimentoObraCombustivel" class="form-control" obrigatorio>
+                                                        <option value="3" selected>Não se aplica</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="alert alert-info" role="alert">O benefício selecionado deverá obedecer as regras conforme o procedimento disponibilizado pela área de Benefícios. <a href="" target="_blank">Clique aqui para consultar os procedimentos</a></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Observações</label>
+                                                    <textarea class="form-control" rows="3" name="cpRecolhimentoObraObs" id="cpRecolhimentoObraObs"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_37">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_37">
+                                        Abertura de chamado de Movimentação - Aprovador N1 de origem
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_37" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Realizar a abertura de chamado de movimentação de pessoal</label>
+                                                    <select name="cpAprovacaoMovimentacao" id="cpAprovacaoMovimentacao" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado - Finalizar chamado</option>
+                                                        <option value="2">Reprovado - Retornar para Recrutamento e Seleção</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="alert alert-info" role="alert"><a href="http://csc.direcional.com.br:8080/portal/p/1/pageworkflowview?processID=FLUIG-0105" target="_blank">Link de acesso ao processo de movimentação de pessoal</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerMovimentacao" id="cpParecerMovimentacao" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_69">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_69">
+                                        Integração OCR - Recebimento de documentos
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_69" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="alert alert-success" role="alert">Integração com o OCR realizada com sucesso!</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_77">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_77">
+                                        TI - Erro serviço
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_77" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Erro corrigido?</label>
+                                                    <select name="cpAprovacaoErroTI77" id="cpAprovacaoErroTI77" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerErroTI77" id="cpParecerErroTI77" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_11">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_11">
+                                        Cadastro do Kit Admissional - área CSC Cadastro
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_11" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Processamento do cadastro?</label>
+                                                    <select name="cpAprovacaoCadastroKit" id="cpAprovacaoCadastroKit" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <!--<option value="4">Cadastrar por integração</option>-->
+                                                        <option value="5">Cadastrar manualmente</option>
+                                                        <option value="6">Reprovado - Retornar para Recolhimento da documentação</option>
+                                                        <option value="7">Reprovado - Retornar para Recrutamento e Seleção</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divCadastroKitCadastrado">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Matricula</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control cadastroKitCadastrado" name="cpCadastroKitMatricula" id="cpCadastroKitMatricula" readonly obrigatorio mask="0000000">
+                                                        <span class="input-group-btn">
+                                                            <button type="button" id="btCadastroKitMatricula" class="btn btn-info buttonZoom">
+                                                                <span class="fluigicon fluigicon-search"></span>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Digitar dados manualmente?</label>
+                                                    <select name="cpCadastroKitManual" id="cpCadastroKitManual" class="form-control" obrigatorio>
+                                                        <option value="Nao">Não</option>
+                                                        <option value="Sim">Sim</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divCadastroKitCadastrado">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Colaborador admitido</label>
+                                                    <input type="text" class="form-control cadastroKitCadastrado" name="cpCadastroKitColaborador" id="cpCadastroKitColaborador" readonly/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">CPF</label>
+                                                    <input type="text" class="form-control cadastroKitCadastrado" name="cpCadastroKitCpf" id="cpCadastroKitCpf" readonly mask="00000000000"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divCadastroKitCadastrado">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Data de Admissão</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" name="cpCadastroKitDataAdmissao" id="cpCadastroKitDataAdmissao" readonly>
+                                                        <div class="input-group-btn">
+                                                            <button class="btn btn-info picker">
+                                                                <span class="fluigicon fluigicon-calendar"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Função</label>
+                                                    <input type="text" class="form-control cadastroKitCadastrado" name="cpCadastroKitFuncao" id="cpCadastroKitFuncao" readonly/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divCadastroKitCadastrado">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Situação</label>
+                                                    <input type="text" class="form-control cadastroKitCadastrado" name="cpCadastroKitSituacao" id="cpCadastroKitSituacao" readonly/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Salário</label>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">R$</span>
+                                                        <input type="text" class="form-control cadastroKitCadastrado" name="cpCadastroKitSalario" id="cpCadastroKitSalario" readonly value>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divCadastroKitCadastrado">
+                                            <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="labelField">Obra/Departamento</label>
+                                                        <input type="text" class="form-control cadastroKitCadastrado" name="cpCadastroKitObraDepartamento" id="cpCadastroKitObraDepartamento" readonly/>
+                                                    </div>
+                                                </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Código da seção</label>
+                                                    <input type="text" class="form-control cadastroKitCadastrado" name="cpCadastroKitCodSecao" id="cpCadastroKitCodSecao" readonly/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divCadastroKitCadastrado">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Código da coligada</label>
+                                                    <input type="text" class="form-control cadastroKitCadastrado" name="cpCadastroKitCodColigada" id="cpCadastroKitCodColigada" readonly mask="00"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerCadastroKit" id="cpParecerCadastroKit" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_96">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_96">
+                                            Integração Posto de Trabalho
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_96" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="alert alert-success" role="alert">Integração com o RM realizada com sucesso!</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_12">
+                                        Assinatura do Kit Admissional
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_12" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoAssinaturaKit" id="cpAprovacaoAssinaturaKit" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado - Kit assinado</option>
+                                                        <option value="2">Reprovado - ajuste do cadastro</option>
+                                                        <option value="3">Cancelar cadastro</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row divAvisoAssinaturaKit">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="alert alert-info" role="alert">
+                                                        No caso de solicitação de cancelamento de cadastro,  seguirá as seguintes regras: 
+                                                        - Se a data de solicitação for anterior que "Data de Admissão até as 12:00", será realizado o cancelamento do cadastro do funcionário.
+                                                        - Se a data de solicitação for após "Data de Admissão e após as 12:01", é necessário a abertura de chamado de Desligamento de Colaboradores"																										                                                  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerAssinaturaKit" id="cpParecerAssinaturaKit" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_13">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_13">
+                                        Ajuste do Cadastro - CSC Cadastro
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_13" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoAjusteCadastro" id="cpAprovacaoAjusteCadastro" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerAjusteCadastro" id="cpParecerAjusteCadastro" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_14">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_14">
+                                        Cadastro de ponto sede - CSC Ponto
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_14" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoCadastroPonto" id="cpAprovacaoCadastroPonto" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerCadastroPonto" id="cpParecerCadastroPonto" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_15">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_15">
+                                        Cancelamento de cadastro - CSC Cadastro
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_15" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoCadastroCancelament" id="cpAprovacaoCadastroCancelament" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="2">Cadastro cancelado</option>
+                                                        <option value="4">Necessário abrir chamado de desligamento</option>
+                                                        <option value="5">Retornar para Assinatura do Kit Admissional</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerCadastroCancelament" id="cpParecerCadastroCancelament" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_181">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_181">
+                                        Abertura de chamado de desligamento - Solicitante
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_181" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Realizar abertura de chamado de Desligamento de colaboradores</label>
+                                                    <select name="cpAprovacaoAberturaDesligament" id="cpAprovacaoAberturaDesligament" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Ciente - finalizar chamado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="alert alert-info" role="alert">						
+                                                        <a href="http://csc.direcional.com.br:8080/portal/p/1/pageworkflowview?processID=FLUIG-0114" target="_blank">Link de acesso ao Processo de Desligamento de colaboradores</a>
+                                                    </div>   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerAberturaDesligament" id="cpParecerAberturaDesligament" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_18">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_18">
+                                        Solicitação de Acessos Iniciais de TI
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_18" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Numero da solicitação </label>
+                                                    <input type="text" class="form-control" name="cpNumeroChamadoAcessoInicialTI" id="cpNumeroChamadoAcessoInicialTI" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Solicitação de Acessos Iniciais de TI</label>  
+                                                    <button type="button" id="btSolicitacaoAcessoInicial" class="btn btn-link form-control">clique aqui para acessar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_170">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_170">
+                                        TI - Erro serviço
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_170" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Erro corrigido?</label>
+                                                    <select name="cpAprovacaoErroTI170" id="cpAprovacaoErroTI170" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerErroTI170" id="cpParecerErroTI170" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_143">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_143">
+                                        Cadastro manual do Posto de Trabalho - SSMT
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_143" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoCadastroSSMTManual" id="cpAprovacaoCadastroSSMTManual" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Cadastro realizado</option>
+                                                        <option value="2">Cadastro não realizado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerCadastroSSMTManual" id="cpParecerCadastroSSMTManual" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_19">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_19">
+                                            Integração Posto de Trabalho
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_19" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <div class="alert alert-success" role="alert">Integração com o RM realizada com sucesso!</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_146">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_146">
+                                        TI - Erro serviço
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_146" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Erro corrigido?</label>
+                                                    <select name="cpAprovacaoErroTI146" id="cpAprovacaoErroTI146" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Sim</option>
+                                                        <option value="2">Não</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerErroTI146" id="cpParecerErroTI146" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_239">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_239">
+                                        Exceção - Aprovação - Consutor RH
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_239" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoExcecaoConsultorRH" id="cpAprovacaoExcecaoConsultorRH" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerExcecaoConsultorRH" id="cpParecerExcecaoConsultorRH" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_240">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_240">
+                                        Exceção - Aprovação - Gestor RH
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_240" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoExcecaoGestorRH" id="cpAprovacaoExcecaoGestorRH" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerExcecaoGestorRH" id="cpParecerExcecaoGestorRH" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_241">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_241">
+                                        Exceção - Aprovador remuneração
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_241" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoExcecaoRemuneracao" id="cpAprovacaoExcecaoRemuneracao" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerExcecaoRemuneracao" id="cpParecerExcecaoRemuneracao" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_43">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_43">
+                                        Exceção - Aprovador - N1
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_43" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoExcecaoAprovadorN1" id="cpAprovacaoExcecaoAprovadorN1" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerExcecaoAprovadorN1" id="cpParecerExcecaoAprovadorN1" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_222">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_222">
+                                        Exceção - Aprovador - N2
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_222" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoExcecaoAprovadorN2" id="cpAprovacaoExcecaoAprovadorN2" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerExcecaoAprovadorN2" id="cpParecerExcecaoAprovadorN2" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_228">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_228">
+                                        Exceção - Aprovador - N3
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_228" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoExcecaoAprovadorN3" id="cpAprovacaoExcecaoAprovadorN3" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerExcecaoAprovadorN3" id="cpParecerExcecaoAprovadorN3" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-group panelAtividade panelAtividade_232">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_232">
+                                        Exceção - Aprovador - N4
+                                    </div>
+                                </div>
+                                <div id="panelAtividade_232" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="labelField">Aprovação</label>
+                                                    <select name="cpAprovacaoExcecaoAprovadorN4" id="cpAprovacaoExcecaoAprovadorN4" class="form-control" obrigatorio aprovacao>
+                                                        <option value="">Selecione...</option>
+                                                        <option value="1">Aprovado</option>
+                                                        <option value="2">Reprovado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="labelField">Parecer</label>
+                                                    <textarea class="form-control" rows="3" name="cpParecerExcecaoAprovadorN4" id="cpParecerExcecaoAprovadorN4" parecer></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery-ui/datepicker-pt-BR.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/zoom/zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/compartilhados.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/model.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/formShared.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/datatables/datatables.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/datatables/Buttons-1.5.1/js/buttons.html5.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/datatables/Buttons-1.5.1/js/buttons.jqueryui.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/datatables/Buttons-1.5.1/js/dataTables.buttons.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/aes.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/toast/toastr.min.js" charset="utf-8"></script>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery.priceformat.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="BLL.js" charset="utf-8"></script>
+    <script type="text/javascript" src="DAL.js" charset="utf-8"></script>
+    <script type="text/javascript" src="View.js" charset="utf-8"></script>
+    <script type="text/javascript" src="Mensagens.js" charset="utf-8"></script>
+</body>
+
+</html>

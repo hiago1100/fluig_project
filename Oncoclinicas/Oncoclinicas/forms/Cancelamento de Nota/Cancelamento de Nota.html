@@ -1,0 +1,137 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<style type="text/css">
+
+		.form-group {margin-left: 0px;}
+
+	</style>
+
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+		<input type="hidden" name="cpTipoTitulo" id="cpTipoTitulo">
+			<div class="container" >
+				<br>		
+				<div id="div_solicitante" name="div_solicitante">
+					<div class="form-group row">
+						<div class="col-md-6">
+							<label for="nomeSolicitante">Solicitante  </label>
+							<input type="text" class="form-control" id="nomeSolicitante" name="nomeSolicitante" readonly="" >
+						</div>
+						
+						<div class="col-md-4">
+							<label>Tipo de Nota</label>
+							<!--    teste para integração -->
+							<input type="text" id="cpTipoNota" name="cpTipoNota" class="form-control" readonly="">							
+						</div>
+
+
+
+						<div class="col-md-2">
+							<label ">Data Solicitação </label>
+							<!--    teste para integração -->
+							<input type="text" name="dataSolicitacao" id="dataSolicitacao" class="form-control"  readonly=""> 
+							
+						</div>              
+
+					</div>   
+
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Filial</label>
+								<div class="input-group">
+									<input type="hidden" name="cpCodFiliais" id="cpCodFiliais">
+									<input type="text" class="form-control" name="cpFilial" id="cpFilial" readonly>
+									<span class="input-group-btn">
+										<button type="button" id="zoomFilial" class="btn btn-info zoomFilial" onclick="setZooms()" name="zoomFilial">
+											<span class="fluigicon fluigicon-search fluigicon-sm"></span>
+										</button>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label ">Número da Nota</label>
+								<input type="text" class="form-control" name="cpNumeroNota" id="cpNumeroNota" onblur="autoComplete()">
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div class="row form-group">
+
+					<div class="col-md-6">
+						<label>Data de Emissão</label>
+						<input type="text" name="cpDataEmissao" id="cpDataEmissao" class="form-control" readonly="">
+					</div>          
+
+
+					<div class="col-md-6">
+						<label>CNPJ do Cliente</label>
+						<input type="text" name="cpCnpjCliente" id="cpCnpjCliente" class="form-control" readonly="readonly">
+					</div>
+				</div>
+				<div class="row form-group">
+
+					<div class="col-md-6">
+						<span class="required text-info">
+						 <label for="cpRazaoSocial">Razão Social</label>
+					 </span>
+					 <input  type="text" class="form-control" name="cpRazaoSocial" id="cpRazaoSocial" readonly="">
+				 </div>          
+				 <div class="col-md-6">
+					<span class="required text-info">
+						<label for="cpValorNf" align="left">Valor na NF</label>
+					</span>
+					<input type="text" class="form-control" name="cpValorNf" id="cpValorNf" readonly="">
+				</div>
+			</div>
+
+			<div class="row form-group">
+
+				<div class="col-md-6">
+					<span class="required text-info">
+					 <label for="cpStatusNf">Status da NF</label>
+				 </span>
+				 <input  type="text" class="form-control" name="cpStatusNf" id="cpStatusNf" readonly="">
+			 </div>          
+			 <div class="col-md-6">
+				<span class="required text-info">
+					<label for="cpMotivo" align="left">Motivo Cancelamento</label>
+				</span>
+				<input type="text" class="form-control" name="cpMotivo" id="cpMotivo" readonly="">
+			</div>
+		</div>
+
+		<div class="row form-group">
+
+			<div class="col-md-12">
+				<span class="required text-info">
+				 <label for="cpObservacao">Observações</label>
+			 </span>
+			 <textarea class="form-control" name="cpObservacao" id="cpObservacao"  rows="10" cols="10"></textarea>
+		 </div>          
+	 </div>
+ </div>
+</div> <br><br><!-- Ultima Div -->
+</form>
+</div>
+</body>
+</html>

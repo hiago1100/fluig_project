@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
+importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.com.datasul.technology.webdesk.search.controller);
+importPackage(Packages.java.util);
+importPackage(Packages.java.io);
+importPackage(Packages.java.text);
+var count = 0;
+var dataset = null;
+
+var countForm = 0;
+var datasetForm = null;
+
+pw = new PrintWriter(new FileWriter("/opt/fluig/logs_relatorios/log.log", true), true);
+
+
+
+pw.println("INITIALIZE***********************************");]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="nr_ficha" id="32">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="wkCompany" id="201">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="tableName" id="202">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="metaVersion" id="203">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <script-data-source name="FLUIG_DATASET" id="30"/>
+        <script-data-source name="Data Source" id="71"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="PR004_etapa_paixfilho" id="735">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">cd_regra</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">nm_regra</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">descricao_regra</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">status_regra_conforme</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">observacao</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">como_verificar</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">cd_regra</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nm_regra</property>
+                </structure>
+                <structure>
+                    <property name="columnName">descricao_regra</property>
+                </structure>
+                <structure>
+                    <property name="columnName">status_regra_conforme</property>
+                </structure>
+                <structure>
+                    <property name="columnName">observacao</property>
+                </structure>
+                <structure>
+                    <property name="columnName">como_verificar</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">cd_regra</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">nm_regra</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">descricao_regra</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">status_regra_conforme</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">observacao</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">como_verificar</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+    var c2 = new Array();
+    var c3 = new Array();
+     
+    var sortingFields = new Array();
+    var i = 0;     
+
+    
+      
+    //Dataset
+    dataset = factory.getDataset("birt_consulta_PR004_table_regras", null, null, sortingFields);
+    
+    
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (dataset != null) {
+    if (count <  dataset.rowsCount){
+        //monta o objeto da linha
+        row["cd_regra"] = dataset.getValue(count, "cd_regra");
+        row["nm_regra"] = dataset.getValue(count, "nm_regra");
+        row["descricao_regra"] = dataset.getValue(count, "descricao_regra");
+        row["status_regra_conforme"] = dataset.getValue(count, "status_regra_conforme");
+        row["observacao"] = dataset.getValue(count, "observacao");
+        row["como_verificar"] = dataset.getValue(count, "como_verificar");
+         
+        count++;
+        return true;
+    }
+}
+
+if (datasetForm != null) {
+    if (countForm <  datasetForm.rowsCount){
+        //monta o objeto da linha
+        row["cd_etapa"] = datasetForm.getValue(countForm, "cd_etapa");         
+        countForm++;
+        return true;
+    }
+}
+
+
+return false;]]></method>
+        </script-data-set>
+        <script-data-set name="PR004_itensForm" id="736">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">cd_etapa</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">etapa</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">mes_ano</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">n_contrato</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">cd_etapa</property>
+                </structure>
+                <structure>
+                    <property name="columnName">etapa</property>
+                </structure>
+                <structure>
+                    <property name="columnName">mes_ano</property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_contrato</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">cd_etapa</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">etapa</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">mes_ano</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">n_contrato</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+    var c2 = new Array();
+    var c3 = new Array();
+     
+    var sortingFields = new Array();
+    var i = 0;     
+
+
+   	    c1[i] = factory.createConstraint("METADATA#ID", params["nr_ficha"].value, params["nr_ficha"].value, ConstraintType.MUST);    
+      
+    	var constraints = new Array(c1[i]);
+        i++;
+    
+    datasetForm = factory.getDataset("PR004", null, constraints, sortingFields);
+    
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (datasetForm != null) {
+    if (countForm <  datasetForm.rowsCount){
+        //monta o objeto da linha
+        row["cd_etapa"]   = datasetForm.getValue(countForm, "cd_etapa"); 
+        row["n_contrato"] = datasetForm.getValue(countForm, "zoom_contrato");  
+        row["etapa"]      = datasetForm.getValue(countForm, "zoom_etapa");              
+        row["mes_ano"]    = datasetForm.getValue(countForm, "dt_execucao_testes");; 
+       
+        countForm++;
+        return true;
+    }
+}
+
+
+return false;]]></method>
+        </script-data-set>
+    </data-sets>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="leftMargin">0.13541666666666666in</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="737">
+            <property name="dataSet">PR004_etapa_paixfilho</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">cd_regra</property>
+                    <text-property name="displayName">cd_regra</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cd_regra"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nm_regra</property>
+                    <text-property name="displayName">nm_regra</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nm_regra"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">descricao_regra</property>
+                    <text-property name="displayName">descricao_regra</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["descricao_regra"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">status_regra_conforme</property>
+                    <text-property name="displayName">status_regra_conforme</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["status_regra_conforme"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">observacao</property>
+                    <text-property name="displayName">observacao</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["observacao"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">como_verificar</property>
+                    <text-property name="displayName">como_verificar</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["como_verificar"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="771"/>
+            <column id="772"/>
+            <column id="773"/>
+            <column id="774"/>
+            <column id="775"/>
+            <column id="776"/>
+            <header>
+                <row id="738">
+                    <cell id="739">
+                        <label id="740">
+                            <text-property name="text">cd_regra</text-property>
+                        </label>
+                    </cell>
+                    <cell id="741">
+                        <label id="742">
+                            <text-property name="text">nm_regra</text-property>
+                        </label>
+                    </cell>
+                    <cell id="743">
+                        <label id="744">
+                            <text-property name="text">descricao_regra</text-property>
+                        </label>
+                    </cell>
+                    <cell id="745">
+                        <label id="746">
+                            <text-property name="text">status_regra_conforme</text-property>
+                        </label>
+                    </cell>
+                    <cell id="747">
+                        <label id="748">
+                            <text-property name="text">observacao</text-property>
+                        </label>
+                    </cell>
+                    <cell id="749">
+                        <label id="750">
+                            <text-property name="text">como_verificar</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="751">
+                    <cell id="752">
+                        <data id="753">
+                            <property name="resultSetColumn">cd_regra</property>
+                        </data>
+                    </cell>
+                    <cell id="754">
+                        <data id="755">
+                            <property name="resultSetColumn">nm_regra</property>
+                        </data>
+                    </cell>
+                    <cell id="756">
+                        <data id="757">
+                            <property name="resultSetColumn">descricao_regra</property>
+                        </data>
+                    </cell>
+                    <cell id="758">
+                        <data id="759">
+                            <property name="resultSetColumn">status_regra_conforme</property>
+                        </data>
+                    </cell>
+                    <cell id="760">
+                        <data id="761">
+                            <property name="resultSetColumn">observacao</property>
+                        </data>
+                    </cell>
+                    <cell id="762">
+                        <data id="763">
+                            <property name="resultSetColumn">como_verificar</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="764">
+                    <cell id="765"/>
+                    <cell id="766"/>
+                    <cell id="767"/>
+                    <cell id="768"/>
+                    <cell id="769"/>
+                    <cell id="770"/>
+                </row>
+            </footer>
+        </table>
+        <table id="777">
+            <property name="dataSet">PR004_itensForm</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">cd_etapa</property>
+                    <text-property name="displayName">cd_etapa</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cd_etapa"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">etapa</property>
+                    <text-property name="displayName">etapa</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["etapa"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">mes_ano</property>
+                    <text-property name="displayName">mes_ano</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["mes_ano"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">n_contrato</property>
+                    <text-property name="displayName">n_contrato</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["n_contrato"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="801"/>
+            <column id="802"/>
+            <column id="803"/>
+            <column id="804"/>
+            <header>
+                <row id="778">
+                    <cell id="779">
+                        <label id="780">
+                            <text-property name="text">cd_etapa</text-property>
+                        </label>
+                    </cell>
+                    <cell id="781">
+                        <label id="782">
+                            <text-property name="text">etapa</text-property>
+                        </label>
+                    </cell>
+                    <cell id="783">
+                        <label id="784">
+                            <text-property name="text">mes_ano</text-property>
+                        </label>
+                    </cell>
+                    <cell id="785">
+                        <label id="786">
+                            <text-property name="text">n_contrato</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="787">
+                    <cell id="788">
+                        <data id="789">
+                            <property name="resultSetColumn">cd_etapa</property>
+                        </data>
+                    </cell>
+                    <cell id="790">
+                        <data id="791">
+                            <property name="resultSetColumn">etapa</property>
+                        </data>
+                    </cell>
+                    <cell id="792">
+                        <data id="793">
+                            <property name="resultSetColumn">mes_ano</property>
+                        </data>
+                    </cell>
+                    <cell id="794">
+                        <data id="795">
+                            <property name="resultSetColumn">n_contrato</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="796">
+                    <cell id="797"/>
+                    <cell id="798"/>
+                    <cell id="799"/>
+                    <cell id="800"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

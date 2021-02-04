@@ -1,0 +1,19 @@
+<div class="panel panel-default" ng-if="documento.Anexos.length>0">
+    <div class="panel-heading fs-cursor-pointer" ng-click="anexosCollapsed = !anexosCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': anexosCollapsed}">
+                Anexos
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': anexosCollapsed}">
+        <div class="panel-body">
+            <div ng-repeat="anexo in documento.Anexos">
+                <blockquote>
+                    <p>{{anexo.anexoSeq}} - {{anexo.anexoDescricao}}</p>
+                </blockquote>
+                <p>{{anexo.anexoNarrativa || 'Sem detalhes'}}</p>
+            </div>
+        </div>
+    </div>
+</div>

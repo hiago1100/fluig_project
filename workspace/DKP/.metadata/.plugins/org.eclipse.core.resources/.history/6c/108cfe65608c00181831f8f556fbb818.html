@@ -1,0 +1,255 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Hiago Domingos de Oliveira">
+    <meta name="author" content="Jonathan Oliveira Canavieira">
+    
+
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/jquery.timepicker.css" />
+    
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/datatables/datatables.min.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/jquery.timepicker.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/scripts/toast/toastr.min.css" />
+
+    <!-- STYLE DA VIEW -->
+    <link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form">
+            <input type="hidden" name="cpChapaConsultor" id="cpChapaConsultor">
+            <input type="hidden" name="cpChapaGestor" id="cpChapaGestor">
+            <input type="hidden" name="cpChapaGestorSubst" id="cpChapaGestorSubst">
+            <input type="hidden" name="cpChapaGestorSubstSeg" id="cpChapaGestorSubstSeg">
+            <input type="hidden" name="cpDescritor" id="cpDescritor">
+
+
+
+
+            <!-- Identificador / Colaborador + Obra/Departamento + Data de Admissão -->
+            <input type="hidden" name="cpIdentificador" id="cpIdentificador">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-home fluigicon-lg"></span>&nbsp;<span
+                            class="descricaoProcesso"></span>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    O formul&aacute;rio abaixo refere-se ao preenchimento de informa&ccedil;&otilde;es para a solicita&ccedil;&atilde;o de <b><span
+                        class="descricaoProcesso"></span></b>
+                    <br>
+                    <br> Para conhecer o passo a passo dessa solicita&ccedil;&atilde;o e conferir todas as regras para a abertura desse chamado <b>
+                        <a href="" target="_blank" id="ID_LINK_MANUAL">acesse o manual</a>.</b>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                        &nbsp;Dados do solicitante
+                    </h3>
+                </div>
+                <div class="panel-body container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">N.Solicita&ccedil;&atilde;o</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpNumeroSolicitacao" id="cpNumeroSolicitacao">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Data abertura</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpDataAbertura" id="cpDataAbertura">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Solicitante</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteNome" id="cpSolicitanteNome">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Fun&ccedil;&atilde;o</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteFuncao" id="cpSolicitanteFuncao">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Empresa</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteEmpresa" id="cpSolicitanteEmpresa">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Departam./Obra</span>
+                                    <input type="text" readonly class="form-control" name="cpSolicitanteObraDep" id=cpSolicitanteObraDep>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Email</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteEmail" id="cpSolicitanteEmail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Estado</span>
+                                    <input type="text" readonly="readonly" class="form-control" name=cpSolicitanteEstado id="cpSolicitanteEstado">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                        &nbsp;Dados da solicita&ccedil;&atilde;o
+                    </h3>
+                </div>
+                <div class="panel-body container">
+                    <h4>
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Reabertura de Processo - Solicitante
+                    </h4>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Aprova&ccedil;&atilde;o</label>
+                                <select name="cpEvidenciaHabilidade" id="cpEvidenciaHabilidade" class="form-control">
+                                    <option value="">Selecione...</option>
+                                    <option value="aprovado">Aprovado</option>
+                                    <option value="reprovado">Reprovado</option>
+                                </select>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Parecer</label>
+                                <textarea class="form-control" rows="5" name="cpParecerAprovador" id="cpParecerAprovador" parecer></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados da Solicita&ccedil;&atilde;o
+                    </h4>
+
+                    <h5 class="bgHeader">
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Car&aacute;cter&iacute;sticas da procura&ccedil;&atilde;o
+                    </h5>
+
+                    <div class="row">
+
+                       <div class="col-md-4">
+                            <div class="form-group">
+                            <label>Centro de Custo para alocar a despesa</label>
+                            <div class="input-group">
+                              <input type="text" readonly class="form-control" name="cpObraDepartamentoInfo" id="cpObraDepartamentoInfo">                      
+                                <span class="input-group-btn">
+                                   <button type="button" id="btDepartamentoObra" class="btn btn-info buttonZoom">
+                                   <span class="fluigicon fluigicon-search"></span>
+                                   </button>
+                                </span>  
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Tipo de Procura&ccedil;&atilde;o</label>
+                                <input type="text" class="form-control" id="cpTipoProcuracao" name="cpTipoProcuracao" readonly>
+                            </div>
+                        </div>
+
+                       <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Modalidade</label>
+                                <input type="text" class="form-control" id="cpModalidade" name="cpModalidade" readonly>
+                            </div>
+                        </div>
+
+                       <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Necess&aacute;rio via F&iacute;sica</label>
+                                <input type="text" class="form-control" id="cpViaFisica" name="cpViaFisica" readonly>
+                            </div>
+                        </div> 
+
+
+
+                    </div>                    
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/datepicker-pt-BR.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/zoom/zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/Compartilhados/scripts/compartilhados.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/model.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/formShared.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/datatables.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/buttons.html5.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/buttons.jqueryui.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/dataTables.buttons.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/aes.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/toast/toastr.min.js" charset="utf-8"></script>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="Zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="BLL.js" charset="utf-8"></script>
+    <script type="text/javascript" src="DAL.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="mensagens.js" charset="utf-8"></script>
+    <script type="text/javascript" src="FLUIG_0227_View.js"></script>
+
+</body>
+
+</html>

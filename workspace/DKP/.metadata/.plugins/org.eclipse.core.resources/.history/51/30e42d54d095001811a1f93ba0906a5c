@@ -1,0 +1,82 @@
+function enableFields(form){
+
+	var atividade = getValue("WKNumState"); 
+
+
+	if(atividade == 4 || atividade == 5  || atividade == 17){
+		// Aprovação
+		form.setEnabled("cbAprovacao", false);
+		form.setEnabled("cpParecerGestor", false);
+		// Juridico
+		form.setEnabled("cbAprovacaoJuridico", false);
+		form.setEnabled("cbStatus", false);
+		form.setEnabled("cpPrevisao", false);
+		form.setEnabled("cpParecerJuridico", false);
+		// Adicional
+		form.setEnabled("cbAprovacaoAdicional", false);
+		form.setEnabled("cpParecerAdicional", false);
+		// Validação
+		form.setEnabled("cbValidacao", false);
+		form.setEnabled("cpParecerValidacao", false);
+		// Diretoria
+		form.setEnabled("cbAprovacaoDiretoria", false);
+		form.setEnabled("cpParecerDiretoria", false);
+		// Solicitante
+		form.setEnabled("cbAprovacaoSolicitante", false);
+		form.setEnabled("cpParecerSolicitante", false);
+		form.setEnabled("cbAvaliacao", false);
+		form.setEnabled("cpJustificativa", false);
+		form.setEnabled("btDepartamentoObra", true);
+		
+		form.setEnabled("btEmpresaOutorgante", false);
+
+	}
+
+	if (atividade == 9 || atividade == 11 || atividade == 28 || atividade == 38 || atividade == 46 ) {
+
+
+
+		
+			form.setEnabled("cbTipoProcuracao", false);
+			form.setEnabled("cbModalidade", false);
+			form.setEnabled("cbViaFisica", false);
+			form.setEnabled("cpLivro", false);
+			form.setEnabled("cpFolha", false);
+			form.setEnabled("botaoOutorgante", false);
+			form.setEnabled("cpOutorgado", false);
+			form.setEnabled("btEmpresaOutorgante", false);
+			form.setEnabled("cpCnpj", false);
+			form.setEnabled("cpCepSede", false);
+			form.setEnabled("cpLogradouro", false);
+			form.setEnabled("cpNumero", false);
+			form.setEnabled("cpComplemento",false);
+			form.setEnabled("cpBairro", false);
+			form.setEnabled("cpCidade", false);
+			form.setEnabled("cbEstados_brasil", false);
+			form.setEnabled("cpSolicitacao" , false);
+			form.setEnabled("cpObra", false);
+			form.setEnabled("cpNomeOutorgado", false);
+			form.setEnabled("cpEstadoCivil", false);
+			form.setEnabled("cpCpf", false);
+			form.setEnabled("cpRg", false);
+			form.setEnabled("cpFuncao", false);
+			form.setEnabled("cpCarteira", false);
+			form.setEnabled("cpNacionalidade", false);
+			form.setEnabled("cpCep", false);
+			form.setEnabled("cpLogradouro_dois", false);
+			form.setEnabled("cpNumero_dois", false);
+			form.setEnabled("cpComplemento_dois",false);
+			form.setEnabled("cpBairro_dois", false);
+			form.setEnabled("cpCidade_dois", false);
+			form.setEnabled("cbEstados_brasil_dois", false);
+		
+
+
+	
+
+	}
+
+
+}
+
+

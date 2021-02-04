@@ -1,0 +1,831 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/datatables/datatables.min.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/jquery.timepicker.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/scripts/toast/toastr.min.css" />
+    <link type="text/css" rel="stylesheet" href="Style.css" />
+</head>
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form" id="form">
+            <input type="hidden" name="cpMatriculaSolicitante" id="cpMatriculaSolicitante" />
+            <input type="hidden" name="cpMatriculaGestorSolicitante" id="cpMatriculaGestorSolicitante" />
+            <input type="hidden" name="cpMatriculaGGSolicitante" id="cpMatriculaGGSolicitante" />
+            <input type="hidden" name="cpMatriculaSuperSolicitante" id="cpMatriculaSuperSolicitante" />
+            <input type="hidden" name="cpMatriculaDiretorSolicitante" id="cpMatriculaDiretorSolicitante" />
+            <input type="hidden" name="cpCodSecaoSolicitante" id="cpCodSecaoSolicitante" />
+            <input type="hidden" name="cpCodColigadaSolicitante" id="cpCodColigadaSolicitante" />
+            <input type="hidden" name="cpJaTemFerias" id="cpJaTemFerias" class="selectedObra limparDadosColaborador" />
+            <input type="hidden" name="cp13SalarioImpresso" id="cp13SalarioImpresso" class="limparDadosColaborador">
+            <input type="hidden" name="cpChapaGestorImediato" id="cpChapaGestorImediato" />
+            <input type="hidden" name="cpNumeroPeriodosFerias" id="cpNumeroPeriodosFerias" value="0" />
+            <input type="hidden" name="cpCodColigadaColaborador" id="cpCodColigadaColaborador" />
+            <input type="hidden" name="cpCodSindicatoColaborador" id="cpCodSindicatoColaborador" />
+            <input type="hidden" name="cpColaboradorCPF" id="cpColaboradorCPF" />
+            <input type="hidden" name="cpColaboradorCTPSSerie" id="cpColaboradorCTPSSerie" />
+            <input type="hidden" name="cpColaboradorCTPSEstado" id="cpColaboradorCTPSEstado" />
+            <input type="hidden" name="cpColaboradorCTPSData" id="cpColaboradorCTPSData" />
+            <input type="hidden" name="cpColaboradorSalario" id="cpColaboradorSalario" />
+            <input type="hidden" name="cpCidadeColigada" id="cpCidadeColigada" />
+            <input type="hidden" name="cpDescritor" id="cpDescritor" />
+            <input type="hidden" name="cpQuantidadeFerias" id="cpQuantidadeFerias" />
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="fluigicon fluigicon-home fluigicon-lg"></span>
+                    <span class="descricaoProcesso"></span>
+                </div>
+                <div class="panel-body">
+                    O formul&aacute;rio abaixo refere-se ao preenchimento de informa&ccedil;&otilde;es necess&aacute;rias no processo de <b><span class="descricaoProcesso"></span></b>.
+                    <br>
+                    <br> Para conhecer o passo a passo dessa solicita&ccedil;&atilde;o e conferir todas as regras para a abertura desse chamado <b><a href="http://csc.direcional.com.br:8080/portal/p/1/ecmnavigation?app_ecm_navigation_doc=" target="_blank" id="ID_LINK_MANUAL" class="LinkManual">acesse o manual</a></b>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                        Dados do solicitante
+                    </h3>
+                </div>
+                <div class="panel-body container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">N&uacute;mero da solicita&ccedil;&atilde;o</label>
+                                <input type="text" class="form-control" readonly="readonly" name="cpNumeroSolicitacao" id="cpNumeroSolicitacao" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Data de abertura</label>
+                                <input type="text" class="form-control" readonly="readonly" name="cpDataAbertura" id="cpDataAbertura" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Solicitante</label>
+                                <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteNome" id="cpSolicitanteNome" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Fun&ccedil;&atilde;o</label>
+                                <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteFuncao" id="cpSolicitanteFuncao" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Empresa</label>
+                                <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteEmpresa" id="cpSolicitanteEmpresa" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Obra/Departamento</label>
+                                <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteObraDep" id="cpSolicitanteObraDep" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Estado</label>
+                                <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteEstado" id="cpSolicitanteEstado" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Email</label>
+                                <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteEmail" id="cpSolicitanteEmail" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default" id="divReabertura">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+                        &nbsp;Reabertura de processo
+                    </h3>
+                </div>
+                <div class="panel-body container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                <select class="form-control" name="cpReaberturaChamado" id="cpReaberturaChamado" aprovacao obrigatorio>
+                                    <option value="">Selecione...</option>
+                                    <option value="1" data-status="success">Reenviar Chamado</option>
+                                    <option value="2" data-status="success">Cancelar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Parecer</label>
+                                <textarea rows="3" class="form-control" name="cpParecerReabertura" id="cpParecerReabertura" parecer></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-fileedit fluigicon-lg"></span>
+                        Dados da solicita&ccedil;&atilde;o
+                    </h3>
+                </div>
+                <div class="panel-body container">
+                    <h4>
+                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados do Colaborador
+                    </h4>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="labelField">Solicita&ccedil;&atilde;o para</label>
+                            <div class="form-group">
+                                <input type="radio" name="cpProprioOutroColaborador" id="cpProprioColaborador" value="1" checked obrigatorio>&nbsp;Pr&oacute;prio Colaborador &nbsp;
+                                <span id="spanOutroColaborador"><input type="radio" name="cpProprioOutroColaborador" id="cpOutroColaborador" value="2">&nbsp;Outro Colaborador</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divColaborador">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelField">Colaborador</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control limparDadosColaborador" name="cpColaboradorNome" id="cpColaboradorNome" readonly obrigatorio>
+                                        <span class="input-group-btn">
+                                            <button type="button" id="btColaborador" class="btn btn-info buttonZoom">
+                                                <span class="fluigicon fluigicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Fun&ccedil;&atilde;o</label>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpColaboradorFuncao" id="cpColaboradorFuncao" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Matr&iacute;cula</label>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpColaboradorMatricula" id="cpColaboradorMatricula" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>CTPS</label>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpCTPS" id="cpCTPS" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Data de admiss&atilde;o</label>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpDataAdmissao" id="cpDataAdmissao" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Data de nascimento</label>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpDtNascimento" id="cpDtNascimento" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Idade</label>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpIdade" id="cpIdade" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label>Situa&ccedil;&atilde;o</label>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpSituacao" id="cpSituacao" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Obra/Departamento</label>
+                                    <input type="text" name="cpColaboradorCentroCusto" id="cpColaboradorCentroCusto" class="form-control limparDadosColaborador" readonly />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Empresa</label>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpColaboradorEmpresa" id="cpColaboradorEmpresa" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Gestor imediato</label>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpGestorImediato" id="cpGestorImediato" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="divChamadosFeriasAbertos">
+                            <div class="col-md-12">
+                                <p><strong>Aten&ccedil;&atilde;o!</strong> J&aacute; existe solicita&ccedil;&atilde;o de F&eacute;rias para este colaborador. (<span id="listaChamados"></span>)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="divFimContratoEstagiario">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Data fim do contrato</label>
+                                <input type="text" class="form-control limparDadosColaborador" name="cpFimContrato" id="cpFimContrato" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>
+                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados do Per&iacute;dodo Aquisitivo
+                    </h4>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Situa&ccedil;&atilde;o das f&eacute;rias</label>
+                                <input type="text" class="form-control limparDadosColaborador" name="cpSituacaoFerias" id="cpSituacaoFerias" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Per&iacute;odo aquisitivo de</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpInicioPeriodoAquisitivo" id="cpInicioPeriodoAquisitivo" readonly>
+                                    <div class="input-group-addon">at&eacute;</div>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpFimPeriodoAquisitivo" id="cpFimPeriodoAquisitivo" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>N&uacute;mero de Faltas</label>
+                                <input type="text" class="form-control limparDadosColaborador" name="cpNumeroFaltas" id="cpNumeroFaltas" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- POSSUI FERIAS MARCADAS -->
+                    <div id="blockPossuiFeriasMarcadas">
+                        <h4>
+                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados das F&eacute;rias Marcadas
+                        </h4>
+                        <div class="well">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label><span class="fluigicon fluigicon-calendar fluigicon-md"></span>&nbsp; Data</label>
+                                    <span id="dataInicioFeriasMarcadas" class="clearDadosFeriasMarcadas "></span>
+                                    à
+                                    <span id="dataFimFeriasMarcadas" class="clearDadosFeriasMarcadas "></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label><span class="fluigicon fluigicon-money fluigicon-md"></span> Data pagamento&nbsp;</label><span id="dtPagFeriasMarcadas" class="clearDadosFeriasMarcadas"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label><span class="fluigicon fluigicon-query-ordered fluigicon-md"></span>&nbsp; Total dias</label>
+                                    <span id="diasFeriasMarcadas" name="diasFeriasMarcadas" class="clearDadosFeriasMarcadas"></span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    <div id="blockDadosDasFerias">
+                        <h4>
+                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados das F&eacute;rias
+                        </h4>
+                        <div class="row">
+                            <div class="row" id="divRegrasFeriasColaborador">
+                                <div class="col-md-12">
+                                    <div class="alert alert-info">
+                                        <p class="form-group">REGRAS PARA MARCA&Ccedil;&Atilde;O DE F&Eacute;RIAS:</p>
+                                        <p> - As f&eacute;rias devem ser marcadas com no m&iacute;nimo 45 dias corridos de anteced&ecirc;ncia da data de in&iacute;cio.</p>
+                                        <p> - O per&iacute;odo das f&eacute;rias dever&aacute; ser iniciado impreterivelmente &agrave;s segundas-feiras, exceto feriados. Caso haja feriado na segunda-feira, as f&eacute;rias poder&atilde;o ser iniciadas no pr&oacute;ximo dia &uacute;til da semana.</p>
+                                        <p> - Em caso de antecipa&ccedil;&atilde;o do pagamento da 1&ordf; parcela do 13&ordm; sal&aacute;rio, imprimir, assinar e anexar ao chamado o 'Termo de Adiantamento do 13&ordm; sal&aacute;rio'.</p>
+                                        <p> - F&eacute;rias marcadas para os meses de novembro, dezembro e janeiro n&atilde;o poder&atilde;o solicitar o adiantamento do 13&ordm; sal&aacute;rio.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" id="divRegrasFeriasEstagiario">
+                                <div class="col-md-12">
+                                    <div class="alert alert-info">
+                                        <p class="form-group">REGRAS PARA MARCA&Ccedil;&Atilde;O DE F&Eacute;RIAS:</p>
+                                        <p> - As f&eacute;rias devem ser marcadas com no m&iacute;nimo 20 dias corridos de anteced&ecirc;ncia da data de in&iacute;cio.</p>
+                                        <p> - O per&iacute;odo das f&eacute;rias dever&aacute; ser iniciado impreterivelmente &agrave;s segundas-feiras, exceto feriados. Caso haja feriado na segunda-feira, as f&eacute;rias poder&atilde;o ser iniciadas no pr&oacute;ximo dia &uacute;til da semana.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="labelField">Dias de direito</label>
+                                    <input type="text" class="form-control limparDadosColaborador" name="cpDiasDireito" id="cpDiasDireito" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-4 ocultaCampo">
+                                <div class="form-group">
+                                    <label class="labelField">Haver&aacute; abono</label>
+                                    <select name="cpHaveraAbono" id="cpHaveraAbono" class="form-control limparDadosColaborador" obrigatorio>
+                                        <option value="">Selecione...</option>
+                                        <option value="1">Sim</option>
+                                        <option value="0">N&atilde;o</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 ocultaCampo">
+                                <div class="form-group">
+                                    <label>Dias de abono</label>
+                                    <input type="text" class="form-control" value="0" name="cpDiasAbono" id="cpDiasAbono" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" class='btn btn-info' id="btAddDataferias">
+                                            <span class="fluigicon fluigicon-calendar fluigicon-sm"></span>&nbsp; Adicionar periodo
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="alert alert-danger" id="divAvisosFeriasPeriodos">
+                                    <ul></ul>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table id="tableDatasFerias" class="table" nodeletebutton="false" tablename="DatasFerias" noaddbutton="true" customFnDelete="ExcluirDataFerias(this)">
+                                            <thead>
+                                                <tr>
+                                                    <td></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <input type="hidden" name="cpFeriasEmDobro" id="cpFeriasEmDobro" />
+
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <h4>
+                                                                    <span class="fluigicon fluigicon-calendar fluigicon-sm"></span>&nbsp;<span id="NumeroDatasFerias"></span>&deg; Periodo
+                                                                </h4>
+                                                            </div>
+                                                            <div class="col-sm-8">
+                                                                <input type="hidden" name="cpFeriasIntegradaRM" id="cpFeriasIntegradaRM" value="0" />
+                                                                <span class="label label-danger pull-right processadoAviso" id="spanProcessado" name="spanProcessado">
+                                                                    <span class="fluigicon fluigicon-check-circle-on fluigicon-sm processado"></span>&nbsp;Processado
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
+                                                                    <label class="labelField">Data inicio</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control " name="cpDataInicioFerias" id="cpDataInicioFerias" obrigatorio/>
+                                                                        <div class="input-group-btn">
+                                                                            <button class="btn btn-info picker" id="btDataInicioFerias">
+                                                                                <span class="fluigicon fluigicon-calendar"></span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
+                                                                    <label class="labelField">Data fim</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control" name="cpDataFimFerias" id="cpDataFimFerias" obrigatorio/>
+                                                                        <div class="input-group-btn">
+                                                                            <button class="btn btn-info picker" id="btDataFimFerias">
+                                                                                <span class="fluigicon fluigicon-calendar"></span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label>Dia da semana</label>
+                                                                    <input type="text" class="form-control" name="cpDiaSemana" id="cpDiaSemana" readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                <label>Dias</label>
+                                                                <input type="text" class="form-control" value="0" name="cpQuantidadesDiasFeriasPeriodo" id="cpQuantidadesDiasFeriasPeriodo" readonly="">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row" id="divTotalDiasFerias">
+                                    <div class="col-md-2 col-md-offset-10">
+                                        <div class="form-group">
+                                            <label  class="labelField">Total dias de f&eacute;rias</label>
+                                            <input type="text" class="form-control limparDadosColaborador clearPosDataInicio" name="cpDiasFerias" id="cpDiasFerias" value="0" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label  class="labelField">Antecipar o pagamento da 1&ordf; parcela do 13&ordm;?</label>
+                                    <select name="cpAntecipar13Salario" id="cpAntecipar13Salario" class="form-control limparDadosColaborador" obrigatorio>
+                                        <option value="">Selecione...</option>
+                                        <option value="1" id="opcaoSim13Salario">Sim</option>
+                                        <option value="0">N&atilde;o</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="divImprimirTermo">
+                                <div class="form-group">
+                                    <label  class="labelField"> Termo de adiantamento do 13&ordm; sal&aacute;rio</label>
+                                    <span>
+                                        <button type="button" class="btn btn-info" id="btImprimirAdiantamento13"><span class="fluigicon fluigicon-print fluigicon-sm"></span>&nbsp;Imprimir</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label  class="labelField">Haver&aacute; substituto?</label>
+                                    <select name="cpHaveraSubstituto" id="cpHaveraSubstituto" class="form-control limparDadosColaborador" obrigatorio>
+                                        <option value="">Selecione...</option>
+                                        <option value="1">Sim</option>
+                                        <option value="2">N&atilde;o</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="divSubstituto">
+                            <h4>
+                                <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados do Substituto
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label class="labelField">Obra/Departamento</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control limparDadosColaborador" name="cpCentroCustoSubstituto" id="cpCentroCustoSubstituto" readonly obrigatorio >
+                                            <span class="input-group-btn">
+                                                <button type="button" id="btColaboradorSubstituto" class="btn btn-info buttonZoom">
+                                                    <span class="fluigicon fluigicon-search"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label  class="labelField">Matr&iacute;cula</label>
+                                        <input type="text" class="form-control limparDadosColaborador limparDadosColaboradorSubstituto" name="cpMatriculaSubstituto" id="cpMatriculaSubstituto" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label  class="labelField">Colaborador</label>
+                                        <input type="text" name="cpColaboradorSubstituto" id="cpColaboradorSubstituto" class="form-control limparDadosColaborador limparDadosColaboradorSubstituto" readonly />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="PeriodoVencido">
+                            <div class="col-md-12 alert-danger">
+                                <div class="form-group alert-danger">
+                                    <label  class="labelField">Aten&ccedil;&atilde;o</label>
+                                    <span name="cpAtencao" id="cpAtencao"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label  class="labelField">Observa&ccedil;&atilde;o</label>
+                                    <textarea class="form-control limparDadosColaborador" rows="3" name="cpObs" id="cpObs"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>
+                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Hist&oacute;rico
+                        </h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <ul class="nav nav-tabs" role="tablist" id="tabPeriodos">
+                                    <li class="active"><a href="#situacao" role="tab" data-toggle="tab">Situa&ccedil;&atilde;o</a></li>
+                                    <li><a href="#faltas" role="tab" data-toggle="tab">Faltas</a></li>
+                                    <li><a href="#afastamentos" role="tab" data-toggle="tab">Afastamentos</a></li>
+                                    <li><a href="#Historico" role="tab" data-toggle="tab">Per&iacute;odos</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="situacao">
+                                        <table id="tableSituacaoPeriodo" class="display" width="100%"></table>
+                                    </div>
+                                    <div class="tab-pane" id="faltas">
+                                        <table id="tableFaltasPeriodo" class="display" width="100%"></table>
+                                    </div>
+                                    <div class="tab-pane" id="afastamentos">
+                                        <table id="tableAfastamentosPeriodo" class="display" width="100%"></table>
+                                    </div>
+                                    <div class="tab-pane" id="Historico">
+                                        <table id="tableHistoricoPeriodo" class="display" width="100%"></table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+                        Etapas do processo
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_11">
+                                    Gestor imediato
+                                </div>
+                            </div>
+                            <div id="panelAtividade_11" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                                <select name="cpAprovacaoGestor" id="cpAprovacaoGestor" class="form-control" aprovacao obrigatorio>
+                                                    <option value="">Selecione...</option>
+                                                    <option value="1">Aprovado</option>
+                                                    <option value="2">Reprovado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="labelField">Parecer</label>
+                                                <textarea class="form-control" rows="3" name="cpParecerGestor" id="cpParecerGestor" parecer></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_16">
+                                    Confer&ecirc;ncia da solicita&ccedil;&atilde;o de f&eacute;rias
+                                </div>
+                            </div>
+                            <div id="panelAtividade_16" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                                <select name="cpAprovacaoConfSolicitacao" id="cpAprovacaoConfSolicitacao" class="form-control" aprovacao obrigatorio>
+                                                    <option value="">Selecione...</option>
+                                                    <option value="1">Aprovado</option>
+                                                    <option value="2">Reprovado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="labelField">Parecer</label>
+                                                <textarea class="form-control" rows="3" name="cpParecerConfSolicitacao" id="cpParecerConfSolicitacao" parecer></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_20">
+                                    Processamento das f&eacute;rias e envio do aviso/Recibo
+                                </div>
+                            </div>
+                            <div id="panelAtividade_20" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                                <select name="cpAprovacaoProcessamento" id="cpAprovacaoProcessamento" class="form-control" aprovacao obrigatorio>
+                                                    <option value="">Selecione...</option>
+                                                    <option value="1">Aprovado</option>
+                                                    <option value="2">Reprovado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="labelField">Data de pagamento</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="cpDataPagamento" id="cpDataPagamento" />
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-info picker">
+                                                        <span class="fluigicon fluigicon-calendar"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="labelField">Parecer</label>
+                                                <textarea class="form-control" rows="3" name="cpParecerProcessamento" id="cpParecerProcessamento" parecer></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_24">
+                                    Confer&ecirc;ncia e assinatura do aviso/recibo de f&eacute;rias
+                                </div>
+                            </div>
+                            <div id="panelAtividade_24" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                                <select name="cpAprovacaoConfAssinatura" id="cpAprovacaoConfAssinatura" class="form-control" aprovacao obrigatorio>
+                                                    <option value="">Selecione...</option>
+                                                    <option value="1">Aprovado</option>
+                                                    <option value="2">Reprovado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="labelField">Parecer</label>
+                                                <textarea class="form-control" rows="3" name="cpParecerConfAssinatura" id="cpParecerConfAssinatura" parecer></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_26">
+                                    Ajuste/cancelamento da solicita&ccedil;&atilde;o de f&eacute;rias
+                                </div>
+                            </div>
+                            <div id="panelAtividade_26" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                                <select name="cpAprovacaoAjustes" id="cpAprovacaoAjustes" class="form-control" aprovacao obrigatorio>
+                                                    <option value="">Selecione...</option>
+                                                    <option value="1">Aprovado</option>
+                                                    <option value="2">Reprovado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="labelField">Parecer</label>
+                                                <textarea class="form-control" rows="3" name="cpParecerAjustes" id="cpParecerAjustes" parecer></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_40">
+                                    Substitui&ccedil;&atilde;o de colaborador em f&eacute;rias
+                                </div>
+                            </div>
+                            <div id="panelAtividade_40" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                                <select name="cpAprovacaoSubstituicao" id="cpAprovacaoSubstituicao" class="form-control" aprovacao obrigatorio>
+                                                    <option value="">Selecione...</option>
+                                                    <option value="1">Aprovado</option>
+                                                    <option value="2">Reprovado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="labelField">Parecer</label>
+                                                <textarea class="form-control" rows="3" name="cpParecerSubstituicao" id="cpParecerSubstituicao" parecer></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_118">
+                                    Integra&ccedil;&atilde;o RM
+                                </div>
+                            </div>
+                            <div id="panelAtividade_118" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                                <select name="cpAprovacaoIntegracaoRM" id="cpAprovacaoIntegracaoRM" class="form-control" obrigatorio>
+                                                    <option value="">Selecione...</option>
+                                                    <option value="1">Tentar novamente</option>
+                                                    <option value="2">Integra&ccedil;&atilde;o Manual</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="labelField">Parecer</label>
+                                                <textarea class="form-control" rows="3" name="cpParecerIntegracaoRM" id="cpParecerIntegracaoRM" parecer></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/datepicker-pt-BR.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/zoom/zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/Compartilhados/scripts/compartilhados.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/model.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/formShared.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/datatables.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/buttons.html5.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/buttons.jqueryui.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/dataTables.buttons.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/aes.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/toast/toastr.min.js" charset="utf-8"></script>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="Zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="BLL.js" charset="utf-8"></script>
+    <script type="text/javascript" src="DAL.js" charset="utf-8"></script>
+    <script type="text/javascript" src="View.js" charset="utf-8"></script>
+    <script type="text/javascript" src="mensagens.js" charset="utf-8"></script>
+</body>
+</html>

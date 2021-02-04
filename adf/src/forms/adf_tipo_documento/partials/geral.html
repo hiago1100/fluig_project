@@ -1,0 +1,107 @@
+<div class="row" ng-show="vm.currentTab==1">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Documento</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Código</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="codigo" class="form-control" ng-model="vm.Formulario.codigo" ng-value="vm.Formulario.codigo" ng-readonly="vm.Params.formMode != 'ADD'" ng-change="vm.consultaDuplicado()">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Descrição</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="descricao" class="form-control" ng-model="vm.Formulario.descricao" ng-value="vm.Formulario.descricao">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Prazos</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Destacar Documentos Próximos do Prazo</label>
+                    <div class="col-sm-3">
+                        <input type="checkbox" fluig-switch name="destacarDoctoPrazo_input" class="form-control" ng-model="vm.Formulario.destacarDoctoPrazo" data-on-text="SIM" data-off-text="NÃO" data-on-color="success">
+                        <input type="hidden" name="destacarDoctoPrazo" ng-value="vm.Formulario.destacarDoctoPrazo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Prazo Para Destacar (dias)</label>
+                    <div class="col-sm-2">
+                        <input type="text" name="prazoDestacar_input" fluig-number-mask="0" class="form-control" ng-model="vm.Formulario.prazoDestacar">
+                        <input type="hidden" class="form-control" name="prazoDestacar" ng-value="vm.Formulario.prazoDestacar">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Prazo Padrão (horas úteis)</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="prazoPadrao_input" fluig-number-mask fluig-hide-group-sep="true" ng-model="vm.Formulario.prazoPadrao">
+                        <input type="hidden" class="form-control" name="prazoPadrao" ng-value="vm.Formulario.prazoPadrao">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Prioridade</label>
+                    <div class="col-sm-9">
+                        <label class="radio-inline">
+                            <input type="radio" name="prioridade" id="prioridadeD" value="D"> Documento
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="prioridade" id="prioridadeI" value="I"> Item
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="prioridade" id="prioridadeR" value="R"> Referência
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Prioridade Lista</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" name="prioridadeLista_input" ng-model="vm.Formulario.prioridadeLista" fluig-number-mask="0">
+                        <input type="hidden" name="prioridadeLista" ng-value="vm.Formulario.prioridadeLista">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Verba Orçamentária</label>
+                    <div class="col-sm-3">
+                        <input type="checkbox" name="verbaOrcamentaria_input" ng-model="vm.Formulario.verbaOrcamentaria" fluig-switch data-on-text="SIM" data-off-text="NÃO" data-on-color="success">
+                        <input type="hidden" name="verbaOrcamentaria" ng-value="vm.Formulario.verbaOrcamentaria">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Visualiza Narrativas</label>
+                    <div class="col-sm-3">
+                        <input type="checkbox" name="visualizaNarrativas_input" ng-model="vm.Formulario.visualizaNarrativas" fluig-switch data-on-text="SIM" data-off-text="NÃO" data-on-color="success">
+                        <input type="hidden" name="visualizaNarrativas" ng-value="vm.Formulario.visualizaNarrativas">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Re-análise de Pendências</label>
+                    <div class="col-sm-3">
+                        <input type="checkbox" name="reAnalisePendencias_input" ng-model="vm.Formulario.reAnalisePendencias" fluig-switch data-on-text="SIM" data-off-text="NÃO" data-on-color="success">
+                        <input type="hidden" name="reAnalisePendencias" ng-value="vm.Formulario.reAnalisePendencias">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_221" class="java.beans.XMLDecoder">
+ <object class="java.util.HashMap">
+  <void method="put">
+   <string>volume</string>
+   <array class="java.lang.String" length="1">
+    <void index="0">
+     <string>Default</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>mecanismoGrupo</string>
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Administradores BPM</string>
+      </void>
+      <void property="groupId">
+       <string>bpm</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Database Adminitrator</string>
+      </void>
+      <void property="groupId">
+       <string>DBA</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Administração ERP</string>
+      </void>
+      <void property="groupId">
+       <string>ERP</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Grupo Telecom</string>
+      </void>
+      <void property="groupId">
+       <string>TELECOM</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Grupo Workplace</string>
+      </void>
+      <void property="groupId">
+       <string>WORKPLACE</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Grupo NETWORK&amp;FIREWALL</string>
+      </void>
+      <void property="groupId">
+       <string>NETWORK</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Grupo Segurança da Informação</string>
+      </void>
+      <void property="groupId">
+       <string>SECURITY</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>DESENVOLVIMENTO</string>
+      </void>
+      <void property="groupId">
+       <string>DESENVOLVIMENTO</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Fornecedores</string>
+      </void>
+      <void property="groupId">
+       <string>Fornecedor</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>System Administrators</string>
+      </void>
+      <void property="groupId">
+       <string>SYSADMINS</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Qualidade</string>
+      </void>
+      <void property="groupId">
+       <string>Qualidade</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Área de Negocio</string>
+      </void>
+      <void property="groupId">
+       <string>Área de Negocio</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Diretoria TI</string>
+      </void>
+      <void property="groupId">
+       <string>DIRETORIA_TI</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>Grupo de gestores do Comité de Mudanças</string>
+      </void>
+      <void property="groupId">
+       <string>Comitê GMUD</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>expediente</string>
+   <array class="java.lang.String" length="1">
+    <void index="0">
+     <string>Default</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 9</string>
+   <array class="java.lang.String" length="133">
+    <void index="0">
+     <string>ambiente_callCenter</string>
+    </void>
+    <void index="1">
+     <string>ambiente_dataCenterAllianzBR</string>
+    </void>
+    <void index="2">
+     <string>ambiente_Infraestrutura</string>
+    </void>
+    <void index="3">
+     <string>ambiente_level3</string>
+    </void>
+    <void index="4">
+     <string>aprovacao_AreaNegocios</string>
+    </void>
+    <void index="5">
+     <string>aprovacao_DBA</string>
+    </void>
+    <void index="6">
+     <string>aprovacao_Desenvolvimento</string>
+    </void>
+    <void index="7">
+     <string>aprovacao_DiretoriaNegocios</string>
+    </void>
+    <void index="8">
+     <string>aprovacao_DiretoriaTI</string>
+    </void>
+    <void index="9">
+     <string>aprovacao_Fornecedor_2</string>
+    </void>
+    <void index="10">
+     <string>aprovacao_Gerente_1</string>
+    </void>
+    <void index="11">
+     <string>aprovacao_Gerente_2</string>
+    </void>
+    <void index="12">
+     <string>aprovacao_Gerente_3</string>
+    </void>
+    <void index="13">
+     <string>aprovacao_Network</string>
+    </void>
+    <void index="14">
+     <string>aprovacao_Seguranca</string>
+    </void>
+    <void index="15">
+     <string>aprovacao_sysadmins</string>
+    </void>
+    <void index="16">
+     <string>aprovacao_Telecom_2</string>
+    </void>
+    <void index="17">
+     <string>aprovacao_Workplace</string>
+    </void>
+    <void index="18">
+     <string>aprovacaoAreaNegocio</string>
+    </void>
+    <void index="19">
+     <string>aprovacaoDBA</string>
+    </void>
+    <void index="20">
+     <string>aprovacaoDeretoriaTI</string>
+    </void>
+    <void index="21">
+     <string>aprovacaoDesenvolvimento</string>
+    </void>
+    <void index="22">
+     <string>aprovacaoDiretoriaNegocios</string>
+    </void>
+    <void index="23">
+     <string>aprovacaoFornecedor</string>
+    </void>
+    <void index="24">
+     <string>aprovacaoNetwork</string>
+    </void>
+    <void index="25">
+     <string>aprovacaoSeguranca</string>
+    </void>
+    <void index="26">
+     <string>aprovacaoSysadmin</string>
+    </void>
+    <void index="27">
+     <string>aprovacaoTelecom</string>
+    </void>
+    <void index="28">
+     <string>aprovacaoWorkplace</string>
+    </void>
+    <void index="29">
+     <string>aprovador_AreaNegocio</string>
+    </void>
+    <void index="30">
+     <string>aprovador_DBA</string>
+    </void>
+    <void index="31">
+     <string>aprovador_Desenvolvimento</string>
+    </void>
+    <void index="32">
+     <string>aprovador_DiretoriaNegocios</string>
+    </void>
+    <void index="33">
+     <string>aprovador_DiretoriaTI</string>
+    </void>
+    <void index="34">
+     <string>aprovador_Fornecedor</string>
+    </void>
+    <void index="35">
+     <string>aprovador_Network</string>
+    </void>
+    <void index="36">
+     <string>aprovador_Seguranca</string>
+    </void>
+    <void index="37">
+     <string>aprovador_sysadmins</string>
+    </void>
+    <void index="38">
+     <string>aprovador_Telecom</string>
+    </void>
+    <void index="39">
+     <string>aprovador_Workplace</string>
+    </void>
+    <void index="40">
+     <string>area_responsavel</string>
+    </void>
+    <void index="41">
+     <string>areaResponsavel_PlanoDeVolta</string>
+    </void>
+    <void index="42">
+     <string>atividade</string>
+    </void>
+    <void index="43">
+     <string>atividade_planoDeVolta</string>
+    </void>
+    <void index="44">
+     <string>check_aprovador_1</string>
+    </void>
+    <void index="45">
+     <string>check_aprovador_10</string>
+    </void>
+    <void index="46">
+     <string>check_aprovador_11</string>
+    </void>
+    <void index="47">
+     <string>check_aprovador_12</string>
+    </void>
+    <void index="48">
+     <string>check_aprovador_2</string>
+    </void>
+    <void index="49">
+     <string>check_aprovador_3</string>
+    </void>
+    <void index="50">
+     <string>check_aprovador_4</string>
+    </void>
+    <void index="51">
+     <string>check_aprovador_5</string>
+    </void>
+    <void index="52">
+     <string>check_aprovador_6</string>
+    </void>
+    <void index="53">
+     <string>check_aprovador_7</string>
+    </void>
+    <void index="54">
+     <string>check_aprovador_8</string>
+    </void>
+    <void index="55">
+     <string>check_aprovador_9</string>
+    </void>
+    <void index="56">
+     <string>classificacao</string>
+    </void>
+    <void index="57">
+     <string>data_final</string>
+    </void>
+    <void index="58">
+     <string>data_inicial</string>
+    </void>
+    <void index="59">
+     <string>dt_dataFinal</string>
+    </void>
+    <void index="60">
+     <string>dt_dataSolicitacao</string>
+    </void>
+    <void index="61">
+     <string>dtFinalPlanoDeVolta</string>
+    </void>
+    <void index="62">
+     <string>dtInicialPlanoDeVolta</string>
+    </void>
+    <void index="63">
+     <string>executor_atividade</string>
+    </void>
+    <void index="64">
+     <string>executor_planoDeVolta</string>
+    </void>
+    <void index="65">
+     <string>indisponibilidade_dataFinal</string>
+    </void>
+    <void index="66">
+     <string>indisponibilidade_dataInicial</string>
+    </void>
+    <void index="67">
+     <string>indisponibilidade_totalHoras</string>
+    </void>
+    <void index="68">
+     <string>matriculaUsuario</string>
+    </void>
+    <void index="69">
+     <string>motivo_legal</string>
+    </void>
+    <void index="70">
+     <string>motivo_melhoria</string>
+    </void>
+    <void index="71">
+     <string>motivo_preventiva</string>
+    </void>
+    <void index="72">
+     <string>motivo_projeto</string>
+    </void>
+    <void index="73">
+     <string>necessario_pci</string>
+    </void>
+    <void index="74">
+     <string>numAtividade</string>
+    </void>
+    <void index="75">
+     <string>observacoesPlanoDeVolta</string>
+    </void>
+    <void index="76">
+     <string>planoTeste_responsavel</string>
+    </void>
+    <void index="77">
+     <string>planoTeste_resultado</string>
+    </void>
+    <void index="78">
+     <string>qtdRegistros</string>
+    </void>
+    <void index="79">
+     <string>radio_execucaoGMUD</string>
+    </void>
+    <void index="80">
+     <string>radio_severidade</string>
+    </void>
+    <void index="81">
+     <string>responsavel_areaNegocios</string>
+    </void>
+    <void index="82">
+     <string>responsavel_diretoriaNegocios</string>
+    </void>
+    <void index="83">
+     <string>responsavel_diretoriaTI</string>
+    </void>
+    <void index="84">
+     <string>responsavel_fornecedor</string>
+    </void>
+    <void index="85">
+     <string>tempoExecucao</string>
+    </void>
+    <void index="86">
+     <string>tempoExecucaoPlanoDeVolta</string>
+    </void>
+    <void index="87">
+     <string>tipo_aplicacao</string>
+    </void>
+    <void index="88">
+     <string>tipo_dadosbancarios</string>
+    </void>
+    <void index="89">
+     <string>tipo_distribuicaoPacotes</string>
+    </void>
+    <void index="90">
+     <string>tipo_imac</string>
+    </void>
+    <void index="91">
+     <string>tipo_segurancaInformacao</string>
+    </void>
+    <void index="92">
+     <string>tipo_SI</string>
+    </void>
+    <void index="93">
+     <string>tipo_telecom</string>
+    </void>
+    <void index="94">
+     <string>tipo_telecomVoz</string>
+    </void>
+    <void index="95">
+     <string>totalHorasPlanoDeVolta</string>
+    </void>
+    <void index="96">
+     <string>txt_Cargo</string>
+    </void>
+    <void index="97">
+     <string>txt_dataInicial</string>
+    </void>
+    <void index="98">
+     <string>txt_departamento</string>
+    </void>
+    <void index="99">
+     <string>txt_descricaoDetalhada</string>
+    </void>
+    <void index="100">
+     <string>txt_detalhesImpacto</string>
+    </void>
+    <void index="101">
+     <string>txt_ItemTestado</string>
+    </void>
+    <void index="102">
+     <string>txt_Nome</string>
+    </void>
+    <void index="103">
+     <string>txt_NomeGestor</string>
+    </void>
+    <void index="104">
+     <string>txt_NumeroMudanca</string>
+    </void>
+    <void index="105">
+     <string>txt_observacoesAtividades</string>
+    </void>
+    <void index="106">
+     <string>txt_observacoesTeste</string>
+    </void>
+    <void index="107">
+     <string>txt_outros</string>
+    </void>
+    <void index="108">
+     <string>txt_servidoresAfetados</string>
+    </void>
+    <void index="109">
+     <string>txt_sistemaAfetado</string>
+    </void>
+    <void index="110">
+     <string>txt_telefone_01</string>
+    </void>
+    <void index="111">
+     <string>txt_telefone_02</string>
+    </void>
+    <void index="112">
+     <string>txt_tituloMudanca</string>
+    </void>
+    <void index="113">
+     <string>txt_totalHoras</string>
+    </void>
+    <void index="114">
+     <string>txt_totalHorasAtividades</string>
+    </void>
+    <void index="115">
+     <string>txtAreaEscalonamento</string>
+    </void>
+    <void index="116">
+     <string>txtNomeEscalonamento</string>
+    </void>
+    <void index="117">
+     <string>txtObservacoesAreaNegocios</string>
+    </void>
+    <void index="118">
+     <string>txtObservacoesDBA</string>
+    </void>
+    <void index="119">
+     <string>txtObservacoesDesenvolvimento</string>
+    </void>
+    <void index="120">
+     <string>txtObservacoesDiretoriaTI</string>
+    </void>
+    <void index="121">
+     <string>txtObservacoesDNegocios</string>
+    </void>
+    <void index="122">
+     <string>txtObservacoesFornecedor</string>
+    </void>
+    <void index="123">
+     <string>txtObservacoesGerente_1</string>
+    </void>
+    <void index="124">
+     <string>txtObservacoesGerente_2</string>
+    </void>
+    <void index="125">
+     <string>txtObservacoesGerente_3</string>
+    </void>
+    <void index="126">
+     <string>txtObservacoesNetwork</string>
+    </void>
+    <void index="127">
+     <string>txtObservacoesSeguranca</string>
+    </void>
+    <void index="128">
+     <string>txtObservacoesSysadmins</string>
+    </void>
+    <void index="129">
+     <string>txtObservacoesTelecom</string>
+    </void>
+    <void index="130">
+     <string>txtObservacoesWorkplace</string>
+    </void>
+    <void index="131">
+     <string>txtObsExecucaoGMUD</string>
+    </void>
+    <void index="132">
+     <string>txtTelefoneEscalonamento</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>mecanismo</string>
+   <array class="[Ljava.lang.Object;" length="9">
+    <void index="0">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Associação</string>
+      </void>
+      <void index="1">
+       <string>Associado</string>
+      </void>
+     </array>
+    </void>
+    <void index="1">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Campo de Formulário</string>
+      </void>
+      <void index="1">
+       <string>Campo Formulário</string>
+      </void>
+     </array>
+    </void>
+    <void index="2">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Executor de Atividade</string>
+      </void>
+      <void index="1">
+       <string>Executor Atividade</string>
+      </void>
+     </array>
+    </void>
+    <void index="3">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Grupo</string>
+      </void>
+      <void index="1">
+       <string>Grupo</string>
+      </void>
+     </array>
+    </void>
+    <void index="4">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Grupos do Colaborador</string>
+      </void>
+      <void index="1">
+       <string>Grupos Colaborador</string>
+      </void>
+     </array>
+    </void>
+    <void index="5">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Papel</string>
+      </void>
+      <void index="1">
+       <string>Papel</string>
+      </void>
+     </array>
+    </void>
+    <void index="6">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição para um Grupo</string>
+      </void>
+      <void index="1">
+       <string>Pool Grupo</string>
+      </void>
+     </array>
+    </void>
+    <void index="7">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição para um Papel</string>
+      </void>
+      <void index="1">
+       <string>Pool Papel</string>
+      </void>
+     </array>
+    </void>
+    <void index="8">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Usuário</string>
+      </void>
+      <void index="1">
+       <string>Usuário</string>
+      </void>
+     </array>
+    </void>
+   </array>
+  </void>
+ </object>
+</java>

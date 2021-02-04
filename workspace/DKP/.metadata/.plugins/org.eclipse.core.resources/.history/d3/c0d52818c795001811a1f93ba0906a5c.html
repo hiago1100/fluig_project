@@ -1,0 +1,1381 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Hiago Domingos de Oliveira">
+    <meta name="author" content="Jonathan Oliveira Canavieira">
+    
+
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/jquery.timepicker.css" />
+    
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/jquery-ui.css" rel="stylesheet" />
+    <link href="http://csc.direcional.com.br/compartilhados/scripts/datatables/datatables.min.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/estilo.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/css/jquery.timepicker.css" />
+    <link type="text/css" rel="stylesheet" href="http://csc.direcional.com.br/compartilhados/scripts/toast/toastr.min.css" />
+    
+
+    <!-- STYLE DA VIEW -->
+    <link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+        <form name="form" role="form" onload="validaGestor()">
+            <input type="hidden" name="cpChapaConsultor" id="cpChapaConsultor">
+            <input type="hidden" name="cpChapaGestor" id="cpChapaGestor">
+            <input type="hidden" name="cpChapaGestorSubst" id="cpChapaGestorSubst">
+            <input type="hidden" name="cpChapaGestorSubstSeg" id="cpChapaGestorSubstSeg">
+            <input type="hidden" name="cpDescritor" id="cpDescritor">
+
+
+
+
+            <!-- Identificador / Colaborador + Obra/Departamento + Data de Admissão -->
+            <input type="hidden" name="cpIdentificador" id="cpIdentificador">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-home fluigicon-lg"></span>&nbsp;<span
+                            class="descricaoProcesso"></span>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    O formul&aacute;rio abaixo refere-se ao preenchimento de informa&ccedil;&otilde;es para a solicita&ccedil;&atilde;o de <b><span
+                        class="descricaoProcesso"></span></b>
+                    <br>
+                    <br> Para conhecer o passo a passo dessa solicita&ccedil;&atilde;o e conferir todas as regras para a abertura desse chamado <b>
+                        <a href="" target="_blank" id="ID_LINK_MANUAL">acesse o manual</a>.</b>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                        &nbsp;Dados do solicitante
+                    </h3>
+                </div>
+                <div class="panel-body container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">N.Solicita&ccedil;&atilde;o</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpNumeroSolicitacao" id="cpNumeroSolicitacao">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Data abertura</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpDataAbertura" id="cpDataAbertura">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Solicitante</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteNome" id="cpSolicitanteNome">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Fun&ccedil;&atilde;o</span>
+                                    <input type="text" class="form-control" name="cpSolicitanteFuncao" id="cpSolicitanteFuncao">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Empresa</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteEmpresa" id="cpSolicitanteEmpresa">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Departam./Obra</span>
+                                    <input type="text" readonly class="form-control" name="cpSolicitanteObraDep" id=cpSolicitanteObraDep>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Email</span>
+                                    <input type="text" readonly="readonly" class="form-control" name="cpSolicitanteEmail" id="cpSolicitanteEmail">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Estado</span>
+                                    <input type="text" readonly="readonly" class="form-control" name=cpSolicitanteEstado id="cpSolicitanteEstado">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <input type="text" name="cpAprovaGerente" id="cpAprovaGerente">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="panel panel-default" id="div_dadosSolicitacao" style="display: none">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <span class="fluigicon fluigicon-user fluigicon-lg"></span>
+                        &nbsp;Dados da solicita&ccedil;&atilde;o
+                    </h3>
+                </div>
+                <div class="panel-body container">
+                    <h4>
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Reabertura de Processo - Solicitante
+                    </h4>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Aprova&ccedil;&atilde;o</label>
+                                <select name="cpEvidenciaHabilidade" id="cpEvidenciaHabilidade" class="form-control">
+                                    <option value="">Selecione...</option>
+                                    <option value="aprovado">Reenviar chamado</option>
+                                    <option value="reprovado">Cancelar chamado</option>
+                                </select>
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Parecer</label>
+                                <textarea class="form-control" rows="5" name="cpParecerAprovador" id="cpParecerAprovador"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <h4>
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados da Solicita&ccedil;&atilde;o
+                    </h4>
+
+                    <h5 class="bgHeader">
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Car&aacute;cter&iacute;sticas da procura&ccedil;&atilde;o
+                    </h5>
+
+                    <div class="row">
+
+                       <div class="col-md-4">
+                            <div class="form-group">
+                            <label>Centro de Custo para alocar a despesa</label>
+                            <div class="input-group">
+                              <input type="text" readonly class="form-control" name="cpObraDepartamentoInfo" id="cpObraDepartamentoInfo">                      
+                                <span class="input-group-btn">
+                                   <button type="button" id="btDepartamentoObra" class="btn btn-info">
+                                   <span class="fluigicon fluigicon-search"></span>
+                                   </button>
+                                </span>  
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Tipo de Procura&ccedil;&atilde;o</label>
+                                   <select name="cbTipoProcuracao" id="cbTipoProcuracao" class="form-control">
+                                   <option value="">Selecione...</option>
+                                   <option value="particular">Particular</option>
+                                   <option value="publica">P&uacute;blica</option>
+                                   </select>
+                            </div>
+                        </div>
+
+                       <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Modalidade</label>
+                                <select name="cbModalidade" id="cbModalidade" class="form-control" onchange="mostraCampos()">
+                                <option value="">Selecione...</option>
+                                <option value="certidao">Certid&atilde;o</option>
+                                <option value="nova">Nova Procura&ccedil;&atilde;o</option>
+                                <option value="renovacao">Renova&ccedil;&atilde;o</option>
+                                </select>
+                            </div>
+                        </div>
+
+                       <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Necess&aacute;rio via F&iacute;sica</label>
+                                <select name="cbViaFisica" id="cbViaFisica" class="form-control">
+                                <option value="">Selecione...</option>
+                                <option value="sim">Sim</option>
+                                <option value="nao">N&atilde;o</option>
+                                </select>
+                            </div>
+                        </div> 
+
+                    </div>  
+                    <!-- =============================Inicio div ====================================== -->
+                    <div class="row form-group" id="div_livro" style="display: none">
+                        <div class="col-md-6">
+                            <label>Livro</label>
+                            <input type="text" name="cpLivro" id="cpLivro" class="form-control">
+                        </div>
+
+                         <div class="col-md-6">
+                            <label>Folha</label>
+                            <input type="text" name="cpFolha" id="cpFolha" class="form-control">
+                        </div>
+                    </div> 
+                    <!-- ====================== fim da div =================================================== -->  
+                    <div id="div_tipoEmpresa" style="display: none">
+                    <h5 class="bgHeader">
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados do Outorgante (quem concede poderes)
+                    </h5> 
+
+                    <div  class="row form-group" id="botaoOutorgante" name="botaoOutorgante" >
+                    <div class="col-md-3 col-xs-12">
+                    <button type="button" class="btn btn-info form-control" name="adicionaOutorgante" id="adicionaOutorgante" onclick="adicionarLinhaTipoEmpresa(),validaBotao();">+ Adicionar Outorgante</button>
+                    <input type="hidden" name="botaoTipoEmpresa" id="botaoTipoEmpresa" class="form-control">
+                    </div>
+                    </div>
+
+                                <div id="div_seleciona_tipoEmpresa" style="display: none">
+                             
+                                    <div class="row form-group">
+                                        <div class="col-md-6"> 
+                                            <label>Tipo de Empresa</label>
+                                            <select name="cpOutorgado" id="cpOutorgado" class="form-control" onchange="mostraCampos()" >
+                                            <option value="">Selecione...</option>
+                                            <option value="corretora">Corretora</option>
+                                            <option value="spe">SPE</option>
+                                            <option value="speGaveta">SPE Gaveta</option>
+                                            <option value="scp">SCP</option>
+                                            <option value="parceiras">Parceiras</option>
+                                            <option value="regional">Regional</option>
+                                            <option value="tdEmpresas">Todas Empresas</option>
+
+                                            </select> 
+                                        </div>
+                                   </div>
+                                </div>   
+
+                                   <br>
+
+
+
+
+
+                        
+
+
+                            <!-- =================== inicio div ============================== -->
+                            <div id="div_EmpresaOutorgante" style="display: none">
+                                <div class="row form-group">
+                                    <div class="col-md-6">
+                                   
+                                       <label>Empresa Outorgante</label>
+                                       <div class="input-group">
+                                       <input type="text" readonly class="form-control" name="cpEmpresaOutorgante" id="cpEmpresaOutorgante">                      
+                                       <span class="input-group-btn">
+                                           <button type="button" id="btEmpresaOutorgante" class="btn btn-info buttonZoom">
+                                           <span class="fluigicon fluigicon-search"></span>
+                                           </button>
+                                       </span>  
+                                       </div>
+                                  
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>CNPJ</label>
+                                        <input type="text" name="cpCnpj" id="cpCnpj" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-md-3">
+                                        <label>Cep da Sede</label>
+                                        <input type="text" name="cpCepSede" id="cpCepSede" class="form-control">
+                                    </div>
+
+                                     <div class="col-md-3">
+                                        <label>Logradouro</label>
+                                        <input type="text" name="cpLogradouro" id="cpLogradouro" class="form-control">
+                                    </div>
+
+                                     <div class="col-md-3">
+                                        <label>N&uacute;mero</label>
+                                        <input type="number" name="cpNumero" id="cpNumero" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>Complemento</label>
+                                        <input type="text" name="cpComplemento" id="cpComplemento" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="row form-group">
+                                    <div class="col-md-4">
+                                        <label>Bairro</label>
+                                        <input type="text" name="cpBairro" id="cpBairro" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>Cidade</label>
+                                        <input type="text" name="cpCidade" id="cpCidade" class="form-control">
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label>UF</label>
+                                        <select name="cbEstados_brasil" id="cbEstados_brasil" class="form-control">
+                                            <option>Selecione...</option>
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ======================= fim div ========================== -->
+                       
+                                    
+                      
+                         
+                    </div>    
+                    
+
+                    <div id="div_regionais" style="display: none">
+                          <div class="row form-group">
+                            <div class="col-md-12">
+                                <label>Quais Regionais?</label>
+                                <textarea class="form-control" rows="3" name="cpRegionais" id="cpRegionais"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ====================== inicio div ========================= -->
+                    <div id="div_outorgardo" style="display: none">
+                    <h5 class="bgHeader">
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Dados do Outorgante (quem recebe poderes)
+                    </h5> 
+
+                    <div  class="row form-group" id="botaoOutorgante_dois" name="botaoOutorgante_dois" >
+                    <div class="col-md-3 col-xs-12">
+                    <button type="button" class="btn btn-info form-control" name="adicionaOutorgante_dois" id="adicionaOutorgante_dois" onclick="adicionarLinhaOutorgado(), validaBotaoOutorgado();">+ Adicionar Outorgante</button>
+                    <input type="hidden" name="botaoOutorgado" id="botaoOutorgado" class="form-control">
+                    </div>
+                    </div>
+
+                    <div id="div_seleciona_Outorgado" style="display: none">
+                      <div class="row form-group">
+                            <div class="col-md-6">
+                               
+                                    <label>Outorgado</label> 
+                                    <select name="cpOutorgado_dois" id="cpOutorgado_dois" class="form-control" onchange="mostraCampos()">
+                                        <option value="">Selecione...</option>
+                                        <option value="pessoaFisica">Pessoa F&iacute;sica</option>
+                                        <option value="pessoaJuridica">Pessoa Jur&iacute;dica</option>
+                                    </select> 
+                                    
+                                
+                            </div>
+                        </div> 
+                    </div>
+                    <!-- ============================ fim div ========================== -->
+
+                    <!-- ============ inicio div ===================================== -->
+                    <div id="div_solicitacao" style="display: none">
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                                <label>Solicitaç&atilde;o Para</label>
+                                <select name="cpSolicitacao" id="cpSolicitacao" class="form-control" onchange="mostraCampos()">
+                                    <option value="">Selecione...</option>
+                                    <option value="terceiro">Terceiro</option>
+                    <option value="proprioColaborador">Pr&oacute;prio Colaborador</option>
+                                    <option value="outroColaborador">Outro Colaborador</option>
+                                </select>
+                            </div>
+                        </div> 
+                    </div>
+                    <!-- ====================fim div ============================== -->
+
+                    <!-- =======================inicio div ========================= -->
+
+                    <div id="div_obra" style="display: none">
+                        <div class="row form-group">
+                            <div class="col-md-6">
+                            
+                               <label>Obra/Departamento</label>
+                               <div class="input-group">
+                               <input type="text" readonly class="form-control" name="cpObra" id="cpObra">                      
+                               <span class="input-group-btn">
+                                   <button type="button" id="btObra" class="btn btn-info buttonZoom">
+                                   <span class="fluigicon fluigicon-search"></span>
+                                   </button>
+                               </span>  
+                               </div>
+                            
+                            </div>
+
+                            <div class="col-md-6">
+                            
+                               <label>Nome do Outorgado</label>
+                               <div class="input-group">
+                               <input type="text" readonly class="form-control" name="cpNomeOutorgado" id="cpNomeOutorgado">                      
+                               <span class="input-group-btn">
+                                   <button type="button" id="btNomeOutorgado" class="btn btn-info buttonZoom">
+                                   <span class="fluigicon fluigicon-search"></span>
+                                   </button>
+                               </span>  
+                               </div>
+                            
+                            </div>
+                            
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                <label>Estado Civil</label>
+                                <input type="text" name="cpEstadoCivil" id="cpEstadoCivil" class="form-control" readonly="">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>CPF</label>
+                                <input type="text" name="cpCpf" id="cpCpf" class="form-control" readonly="">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>RG</label>
+                                <input type="text" name="cpRg" id="cpRg" class="form-control" readonly="">
+                            </div>
+                        </div>
+
+
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                <label>Fun&ccedil;&atilde;o</label>
+                                <input type="text" name="cpFuncao" id="cpFuncao" class="form-control" readonly="">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Carteira Profissional</label>
+                                <input type="text" name="cpCarteira" id="cpCarteira" class="form-control">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Nacionalidade</label>
+                                <input type="text" name="cpNacionalidade" id="cpNacionalidade" class="form-control">
+                            </div>
+                        </div>
+
+
+                        <div class="row form-group">
+                            <div class="col-md-3">
+                                <label>CEP</label>
+                                <input type="text" name="cpCep" id="cpCep" class="form-control" readonly="">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Logradouro</label>
+                                <input type="text" name="cpLogradouro_dois" id="cpLogradouro_dois" class="form-control" readonly="">
+                            </div>
+
+                            <div class="col-md-2">
+                                <label>N&uacute;mero</label>
+                                <input type="number" name="cpNumero_dois" id="cpNumero_dois" class="form-control" readonly="">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label>Complemento</label>
+                                <input type="text" name="cpComplemento_dois" id="cpComplemento_dois" class="form-control" readonly="">
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-4">
+                                <label>Bairro</label>
+                                <input type="text" name="cpBairro_dois" id="cpBairro_dois" class="form-control" readonly="">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>Cidade</label>
+                                <input type="text" name="cpCidade_dois" id="cpCidade_dois" class="form-control" readonly="">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>UF</label>
+                                <select name="cbEstados_brasil_dois" id="cbEstados_brasil_dois" class="form-control">
+                                    <option>Selecione...</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- ================================= fim div ===================== -->
+
+                <!-- =================== inicio div ==================================== -->
+                <div id="div_outorgante" style="display: none">
+                    <div class="row form-group">
+
+                        <h5 class="bgHeader" align="center">
+                          <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span><label>Para conceder poder a terceiros, é necessário que o outorgado assine um termo de responsabilidade.</label> <br>
+                          <label>Clique aqui para acessar a pasta com o documento.</label>
+                        </h5> 
+
+                        <div class="col-md-12">
+                            <label>Nome Completo Outorgante</label>
+                            <input type="text" name="cpNomeCompletoOutorgante" id="cpNomeCompletoOutorgante" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label>Estado Civil</label>
+                            <input type="text" name="cpEstadoCivil_dois" id="cpEstadoCivil_dois" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>CPF</label>
+                            <input type="text" name="cpCpf_dois" id="cpCpf_dois" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>RG</label>
+                            <input type="text" name="cpRg_dois" id="cpRg_dois" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label>Profiss&atilde;o</label>
+                            <input type="text" name="cpProfissao" id="cpProfissao" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Carteira Profissional</label>
+                            <input type="text" name="cpCarteira_dois" id="cpCarteira_dois" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Nacionalidade</label>
+                            <input type="text" name="cpNacionalidade_dois" id="cpNacionalidade_dois" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <label>CEP Comercial</label>
+                            <input type="text" name="cpCepComercial" id="cpCepComercial" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Logradouro</label>
+                            <input type="text" name="cpLogradouro_tres" id="cpLogradouro_tres" class="form-control">
+                        </div>
+
+                        <div class="col-md-2">
+                            <label>N&uacute;mero</label>
+                            <input type="number" name="cpNumero_tres" id="cpNumero_tres" class="form-control">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label>Complemento</label>
+                            <input type="text" name="cpComplemento_tres" id="cpComplemento_tres" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label>Bairro</label>
+                            <input type="text" name="cpBairro_tres" id="cpBairro_tres" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Cidade</label>
+                            <input type="text" name="cpCidade_tres" id="cpCidade_tres" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>UF</label>
+                            <select name="cbEstados_brasil_tres" id="cbEstados_brasil_tres" class="form-control">
+                                <option>Selecione...</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- ================================= fim div ===================== -->
+
+                <!-- ==================== inicio div ===============================-->
+                <div id="div_empresa" style="display: none">
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label>Nome Empresarial</label>
+                            <input type="text" name="cpNomeEmpresarial" id="cpNomeEmpresarial" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>CNPJ</label>
+                            <input type="text" name="cpCnpj_dois" id="cpCnpj_dois" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Nome Representante Legal</label>
+                            <input type="text" name="cpNomeRepresentante" id="cpNomeRepresentante" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label>CPF do Representante Legal</label>
+                            <input type="text" name="cpCpfRepresentante" id="cpCpfRepresentante" class="form-control">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>RG do Representante Legal</label>
+                            <input type="text" name="cpRgRepresentante" id="cpRgRepresentante" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-3">
+                            <label>CEP da Empresa</label>
+                            <input type="text" name="cpCepEmpresa" id="cpCepEmpresa" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Logradouro</label>
+                            <input type="text" name="cpLogradouroEmpresa" id="cpLogradouroEmpresa" class="form-control">
+                        </div>
+
+                        <div class="col-md-2">
+                            <label>N&uacute;mero</label>
+                            <input type="number" name="cpNumeroEmpresa" id="cpNumeroEmpresa" class="form-control">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label>Complemento</label>
+                            <input type="text" name="cpComplementoEmpresa" id="cpComplementoEmpresa" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label>Bairro</label>
+                            <input type="text" name="cpBairroEmpresa" id="cpBairroEmpresa" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Cidade</label>
+                            <input type="text" name="cpCidadeEmpresa" id="cpCidadeEmpresa" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>UF</label>
+                            <select name="cbEstados_brasilEmpresa" id="cbEstados_brasilEmpresa" class="form-control">
+                                <option>Selecione...</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- ================================= fim div ===================== -->
+
+                <!-- ==================== inicio div ===============================-->
+                <div id="div_poderes" style="display: none">
+                     <h5 class="bgHeader">
+                      <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Poderes da Produ&ccedil;&atilde;o
+                     </h5> 
+
+                     <div  class="row form-group" id="botaoPoderes" name="botaoPoderes" >
+                     <div class="col-md-3 col-xs-12">
+                     <button type="button" class="btn btn-info form-control" name="adicionaPoderes" id="adicionaPoderes" onclick="adicionarLinhaPoder(), validaBotaoPoderes()">+ Adicionar Poder</button>
+                     <input type="hidden" name="poderesBotao" id="poderesBotao" class="form-control">
+                     </div>
+                     </div>
+
+                     <div id="div_seleciona_Poderes" style="display: none">
+                     <div class="row form-group">
+                           <div class="col-md-6">
+
+                            <label>Poderes</label>
+                             <select name="cpPoderes" id="cpPoderes" class="form-control" onchange="mostraCampos()">
+                                   <option value="">Selecione...</option>
+                                   <option value="juridica">Ad Juridica</option>
+                                   <option value="assinaturaPrestacao">Assinatura de contratos de presta&ccedil;&atilde;o de servi&ccedil;o</option>
+                                   <option value="escritura">Assinatura de escritura publica</option>
+                                   <option value="assinatura">Assinatura de PVC de Cliente</option>
+                                   <option value="financiamento">Financiamento Imobili&aacute;rio</option>
+                                   <option value="incorporacao">Incorpora&ccedil;&atilde;o</option>
+                                   <option value="movimentacao">Movimenta&ccedil;&atilde;o Banc&aacute;ria</option>
+                                   <option value="orgaos">&Oacute;rg&atilde;os</option>
+                                   <option value="outros">Outros</option>
+                                   <option value="assembleia">Participa&ccedil;&atilde;o em assembleias de condom&iacute;nio</option>
+                                   <option value="projetos">Projetos</option>
+                            </select>
+                                
+                        
+                           </div>
+
+                           <div class="col-md-6" id="div_qPoderes" style="display: none">
+                               <label>Quais poderes?</label>
+                               <input type="text" name="cpQpoderes" id="cpQpoderes" class="form-control">
+                           </div>
+                       </div> 
+                    </div>    
+
+                    
+                </div>
+                <!-- ================================= fim div ===================== -->
+
+                <!-- =========================Inicio div ========================== -->
+                <div id="div_orgao" style="display: none">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label>Quais Org&atilde;os?</label>
+                            <input type="text" name="cpQorgaos" id="cpQorgaos" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <!-- ================================= fim div ===================== -->
+
+                <!-- =========================Inicio div ========================== -->
+                <div id="div_empreedimento" style="display: none">
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label>Nome do Empreedimento</label>
+                            <input type="text" name="cpNomeEmpreedimento" id="cpNomeEmpreedimento" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Cidade</label>
+                            <input type="text" name="cpCidadeEmpreedimento" id="cpCidadeEmpreedimento" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>UF</label>
+                            <select name="cbEstados_brasilEmpreedimento" id="cbEstados_brasilEmpreedimento" class="form-control">
+                                <option>Selecione...</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label>Matricula</label>
+                            <input type="text" name="cpMatricula" id="cpMatricula" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Cart&oacute;rio</label>
+                            <input type="text" name="cpCartorio" id="cpCartorio" class="form-control">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Livro</label>
+                            <input type="text" name="cpLivroEmpreedimento" id="cpLivroEmpreedimento" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <!-- =================== fim da div =========================================== -->
+
+                 <!-- =========================Inicio div ========================== -->
+
+                 <div id="div_banco" style="display: none">
+                     <div class="row form-group">
+                         <div class="col-md-6">
+                             <label>Bancos</label>
+                             <select name="cpBancos" id="cpBancos" class="form-control" onchange="mostraCampos()">
+                                 <option value="">Selecione...</option>
+                                 <option value="nordeste">Banco do Nordeste</option>
+                                 <option value="safra">Banco Safra</option>
+                                 <option value="votarantim">Banco Votarantim</option>
+                                 <option value="banrisul">Banrisul</option>
+                                 <option value="bndes">BNDS</option>
+                                 <option value="bradesco">Bradesco</option>
+                                 <option value="btg">BTG Pactual</option>
+                                 <option value="todos">Todos</option>
+                                 <option value="caixa">Caixa Econ&ocirc;mica Federal</option>
+                                 <option value="citibank">Citibank Brasil</option>
+                                 <option value="hsbc">HSBC Brasil</option>
+                                 <option value="itau">Ita&uacute; Unibanco</option>
+                                 <option value="satander">Satander Brasil</option>
+                                 <option value="outros">Outros</option>
+
+                             </select>
+                         </div>
+
+                         <div class="col-md-6" id="div_qBanco" style="display: none">
+                             <label>Qual banco?</label>
+                             <input type="text" name="cpQbanco" id="cpQbanco" class="form-control">
+                         </div>
+                     </div>
+                 </div>
+
+                  <!-- =================== fim da div =========================================== -->
+
+                  <!-- =========================Inicio div ========================== -->
+                  <div id="div_matricula" style="display: none">
+                      <div class="row form-group">
+                          <div class="col-md-4">
+                              <label>Matricula</label>
+                              <input type="text" name="cpMatricula_escrituras" id="cpMatricula_escrituras" class="form-control">
+                          </div>
+
+                          <div class="col-md-4">
+                              <label>Cidade</label>
+                              <input type="text" name="cpCidade_escrituras" id="cpCidade_escrituras" class="form-control">
+                          </div>
+
+                         <div class="col-md-4">
+                             <label>UF</label>
+                             <select name="cbEstados_brasilEscrituras" id="cbEstados_brasilEscrituras" class="form-control">
+                                 <option>Selecione...</option>
+                                 <option value="AC">Acre</option>
+                                 <option value="AL">Alagoas</option>
+                                 <option value="AP">Amapá</option>
+                                 <option value="AM">Amazonas</option>
+                                 <option value="BA">Bahia</option>
+                                 <option value="CE">Ceará</option>
+                                 <option value="DF">Distrito Federal</option>
+                                 <option value="ES">Espírito Santo</option>
+                                 <option value="GO">Goiás</option>
+                                 <option value="MA">Maranhão</option>
+                                 <option value="MT">Mato Grosso</option>
+                                 <option value="MS">Mato Grosso do Sul</option>
+                                 <option value="MG">Minas Gerais</option>
+                                 <option value="PA">Pará</option>
+                                 <option value="PB">Paraíba</option>
+                                 <option value="PR">Paraná</option>
+                                 <option value="PE">Pernambuco</option>
+                                 <option value="PI">Piauí</option>
+                                 <option value="RJ">Rio de Janeiro</option>
+                                 <option value="RN">Rio Grande do Norte</option>
+                                 <option value="RS">Rio Grande do Sul</option>
+                                 <option value="RO">Rondônia</option>
+                                 <option value="RR">Roraima</option>
+                                 <option value="SC">Santa Catarina</option>
+                                 <option value="SP">São Paulo</option>
+                                 <option value="SE">Sergipe</option>
+                                 <option value="TO">Tocantins</option>
+                             </select>
+
+                         </div>
+                      </div>
+
+                      <div class="row form-group">
+                          <div class="col-md-6">
+                              <label>Cart&oacute;rio</label>
+                              <input type="text" name="cpCartorio_escrituras" id="cpCartorio_escrituras" class="form-control">
+                          </div>
+
+                          <div class="col-md-6">
+                              <label>Livro</label>
+                              <input type="text" name="cpLivro_escrituras" id="cpLivro_escrituras" class="form-control">
+                          </div>
+                      </div>
+            
+
+                         <div class="row form-group">
+                            <div class="col-md-12">
+                                <label>Observa&ccedil;&atilde;o?</label>
+                                <textarea class="form-control" rows="3" name="cpObservacao" id="cpObservacao"></textarea>
+                            </div>
+                        </div>
+                    </div>    
+             
+
+                  <!-- =================== fim da div =========================================== -->
+
+                  <!-- ====================Inicio div ================================================= -->
+                  <div id="div_painel">
+                      <div class="panel panel-default">
+                                   <div class="panel-heading">
+                                       <h3 class="panel-title">
+                                           <span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+                                           Etapas do processo
+                                       </h3>
+                                   </div>
+                                   <div class="panel-body">
+                                       <div class="panel-group">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_4" id="panelHeaderAtividade_4">
+                                                   Aprova&ccedil;&atilde;o do Gestor
+                                                </div>
+                                            </div>
+                                            <div id="panelAtividade_4" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <h4>
+                                                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Aprova&ccedil;&atilde;o
+                                                    </h4>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Aprova&ccedil;&atilde;o</label>
+                                                                <select name="cbAprovacao" id="cbAprovacao" class="form-control">
+                                                                    <option value="">Selecione...</option>
+                                                                    <option value="1">Aprovado</option>
+                                                                    <option value="2">Reprovado</option>
+                                                                   
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Parecer</label>
+                                                                <textarea class="form-control" rows="5" name="cpParecerGestor" id="cpParecerGestor"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_5" id="panelHeaderAtividade_5">
+                                                   Processamento do Jur&iacute;dico
+                                                </div>
+                                            </div>
+                                            <div id="panelAtividade_5" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <h4>
+                                                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Aprova&ccedil;&atilde;o
+                                                    </h4>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Aprova&ccedil;&atilde;o</label>
+                                                                <select name="cbAprovacaoJuridico" id="cbAprovacaoJuridico" class="form-control" >
+                                                                    <option value="">Selecione...</option>
+                                                                    <option value="1">Aprovado - valida&ccedil;&atilde;o da minuta</option>
+                                                                    <option value="2">Aprova&ccedil;&atilde;o Adicional</option>
+                                                                    <option value="3">Reprovado</option>
+                                                                    
+                                                                   
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row form-group">
+                                                        <div class="col-md-6">
+                                                                <label>Status</label>
+                                                                <select name="cbStatus" id="cbStatus" class="form-control" onchange="mostraCampos()">
+                                                                    <option value="">Selecione...</option>
+                                                                    <option value="1">Em Elabora&ccedil;&atilde;o da Minuta</option>
+                                                                    <option value="2">Em Assinatura</option>
+                                                                    <option value="3">Em Tr&acirc;mite de Cart&oacute;rio</option>
+                                                                </select>
+                                                        </div>
+
+                                                        <div class="col-md-6" id="div_previsao" style="display: none">
+                                                            <label>Previs&ccedil;&atilde;o de coleta das assinaturas </label>
+                                                            <input type="date" name="cpPrevisao" id="cpPrevisao" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Parecer</label>
+                                                                <textarea class="form-control" rows="5" name="cpParecerJuridico" id="cpParecerJuridico"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_6" id="panelHeaderAtividade_6">
+                                                   Aprova&ccedil;&atilde;o Adicional
+                                                </div>
+                                            </div>
+                                            <div id="panelAtividade_6" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <h4>
+                                                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Aprova&ccedil;&atilde;o
+                                                    </h4>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Aprova&ccedil;&atilde;o</label>
+                                                                <select name="cbAprovacaoAdicional" id="cbAprovacaoAdicional" class="form-control">
+                                                                    <option value="">Selecione...</option>
+                                                                    <option value="1">Aprovado</option>
+                                                                    <option value="2">Reprovado</option>
+                                                                   
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Parecer</label>
+                                                                <textarea class="form-control" rows="5" name="cpParecerAdicional" id="cpParecerAdicional"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_7" id="panelHeaderAtividade_7">
+                                                   Valida&ccedil;&atilde;o da Minuta
+                                                </div>
+                                            </div>
+                                            <div id="panelAtividade_7" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <h4>
+                                                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Aprova&ccedil;&atilde;o
+                                                    </h4>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Aprova&ccedil;&atilde;o</label>
+                                                                <select name="cbValidacao" id="cbValidacao" class="form-control">
+                                                                    <option value="">Selecione...</option>
+                                                                    <option value="1">Aprovado</option>
+                                                                    <option value="2">Reprovado</option>
+                                                                   
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Parecer</label>
+                                                                <textarea class="form-control" rows="5" name="cpParecerValidacao" id="cpParecerValidacao"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_8" id="panelHeaderAtividade_8">
+                                                   Aprova&ccedil;&atilde;o diretoria financeria
+                                                </div>
+                                            </div>
+                                            <div id="panelAtividade_8" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <h4>
+                                                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Aprova&ccedil;&atilde;o
+                                                    </h4>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Aprova&ccedil;&atilde;o</label>
+                                                                <select name="cbAprovacaoDiretoria" id="cbAprovacaoDiretoria" class="form-control">
+                                                                    <option value="">Selecione...</option>
+                                                                    <option value="1">Aprovado</option>
+                                                                    <option value="2">Reprovado</option>
+                                                                   
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Parecer</label>
+                                                                <textarea class="form-control" rows="5" name="cpParecerDiretoria" id="cpParecerDiretoria"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_9" id="panelHeaderAtividade_9">
+                                                   Confer&ecirc;ncia do processamento - Solicitante
+                                                </div>
+                                            </div>
+                                            <div id="panelAtividade_9" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <h4>
+                                                        <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Aprova&ccedil;&atilde;o
+                                                    </h4>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label>Aprova&ccedil;&atilde;o</label>
+                                                                <select name="cbAprovacaoSolicitante" id="cbAprovacaoSolicitante" class="form-control" onchange="mostraCampos()">
+                                                                    <option value="">Selecione...</option>
+                                                                    <option value="1">Aprovado</option>
+                                                                    <option value="2">Reprovado</option>
+                                                                   
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Parecer</label>
+                                                                <textarea class="form-control" rows="5" name="cpParecerSolicitante" id="cpParecerSolicitante"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                     <div id="div_avaliacaoAtendimento" style="display: none">
+                                                        <h4>
+                                                            <span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>Avalia&ccedil;&atilde;o de atendimento
+                                                        </h4>
+                                                    <div class="row form-group">
+                                                        <div class="col-md-6">
+                                                            <label>Qual o seu grau de satisfa&ccedil;&atilde;o quanto ao atendimento desse chamado?</label>
+                                                            <select name="cbAvaliacao" id="cbAvaliacao" class="form-control">
+                                                                <option value="">Selecione...</option>
+                                                                <option value="1">Muito Satisfeito</option>
+                                                                <option value="2">Satisfeito</option>
+                                                                <option value="3">Insatisfeito(Justifique)</option>
+                                                                <option value="4">Muito Insatisfeito(Justifique)</option>
+                                                               
+                                                            </select>
+                                                        </div>
+                                                    </div>   
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label>Justificativa</label>
+                                                                <textarea class="form-control" rows="5" name="cpJustificativa" id="cpJustificativa"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div> <!-- ===== final da div avaliação atendimento========== -->
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                       </div>
+
+                     </div>   
+                     </div>      
+                     </div>         
+                  <!-- ================= fim da div ======================================================== -->
+
+
+
+                   
+
+                
+            </div>
+
+
+        </form>
+    </div>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/vcXMLRPC.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/jquery-ui/datepicker-pt-BR.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/zoom/zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/Compartilhados/scripts/compartilhados.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/model.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/formShared.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/datatables.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/buttons.html5.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/buttons.jqueryui.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/datatables/Buttons-1.5.1/js/dataTables.buttons.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/aes.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://csc.direcional.com.br/compartilhados/scripts/toast/toastr.min.js" charset="utf-8"></script>
+    <!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+    <script type="text/javascript" src="Zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="BLL.js" charset="utf-8"></script>
+    <script type="text/javascript" src="DAL.js" charset="utf-8"></script>
+    <script type="text/javascript" src="FLUIG_0227_View.js"></script>
+    
+    
+
+</body>
+
+
+
+</html>

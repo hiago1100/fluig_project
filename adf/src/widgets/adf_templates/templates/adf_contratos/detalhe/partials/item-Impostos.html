@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+    <div class="panel-heading fs-cursor-pointer" ng-click="item.impostosCollapsed=!item.impostosCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': item.impostosCollapsed}">
+                Impostos
+            </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse animated" ng-class="{'in': item.impostosCollapsed}">
+        <div class="panel-body">
+            <i ng-if="!item.Impostos || item.Impostos.length<=0">Sem Impostos</i>
+            <div class="row" ng-if="item.Impostos.length>0">
+                <!--<div class="col-md-5">
+                    <canvas id="line" class="chart chart-line" chart-options="chartOptions" chart-series="item.ultComprasSeries" chart-data="item.ultComprasData"
+                        chart-labels="item.ultComprasLabels">
+                    </canvas>
+                </div>-->
+                <!--<div class="col-md-7">-->
+                    <table class="table table-striped">
+                        <thead class="hidden-xs">
+                            <tr>
+                                <th>
+                                    <div class="col-sm-6">Imposto</div>
+                                    <div class="col-sm-3">Alíquota</div>
+                                    <div class="col-sm-3">Valor</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="imposto in item.Impostos">
+                                <td>
+                                    <div class="col-sm-6">
+                                        <label class="visible-xs-block">Imposto</label>
+                                        <p>{{imposto.impostoNome}}</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Alíquota</label>
+                                        <p>{{imposto.impostoAliquota | percentage}}</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Qtde</label>
+                                        <p>{{imposto.impostoValor | currency:imposto.impostoMoeda}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+</div>

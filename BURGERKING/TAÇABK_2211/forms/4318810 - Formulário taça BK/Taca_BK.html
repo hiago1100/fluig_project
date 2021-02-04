@@ -1,0 +1,332 @@
+<html>
+
+<head>
+    <link type="text/css" rel="stylesheet" href="http://meubkqas.burgerking.com.br/style-guide/css/fluig-style-guide.min.css" />
+    <script type="text/javascript" charset="UTF-8" src="http://meubkqas.burgerking.com.br/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="http://meubkqas.burgerking.com.br/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="http://meubkqas.burgerking.com.br/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" charset="UTF-8" src="http://meubkqas.burgerking.com.br/style-guide/js/fluig-style-guide.min.js"></script>
+    <script type="text/javascript" src="View.js" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <style type="text/css">
+        select[readonly] {
+            background: #eee;
+            /*Simular campo inativo*/
+            pointer-events: none;
+            touch-action: none;
+        }
+
+        .labelField {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+
+        <form name="form" role="form">
+            <input type="text" name="cpAprovador" id="cpAprovador" class="hide" value="">
+            <input type="text" name="cpTipoResposta" id="cpTipoResposta" class="hide" value="">
+            <div class="panel solicitante">
+                <ul class="nav nav-tabs clearfix" role="tablist">
+                    <li class="list-group-item list-group-item-success">Preenchimento inicial</li>
+                </ul>
+                <div class="panel-body container">
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="labelField"><b>Num. Solicitação</b></label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpNumSolicitacao"
+                                        id="cpNumSolicitacao" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="labelField"><b> Solicitante</b></label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteNome"
+                                        id="cpSolicitanteNome" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="labelField"><b>Email:</b></label>
+                                    <input type="text" name="cpEmail" id="cpEmail" class="form-control" readonly="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="labelField"><b>Data solicitação</b></label>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpDataAbertura"
+                                        id="cpDataAbertura" />
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="labelField"><b><span
+                                                    style="color: orange;">*</span>Setor</b></label>
+                                        <input type="zoom" id="cpSetor" name="cpSetor" class="form-control solicitante"
+                                            data-zoom="{
+                                                'displayKey': 'cpSetor',
+                                                'datasetId': 'ds_LojasTacaBk',
+                                                'placeholder': 'Informe o setor',
+                                                'fields': [
+                                                    {
+                                                        'field':'cpSetor',
+                                                        'label':'Setor'
+                                                    },
+                                                    {
+                                                        'field':'cpRegional',
+                                                        'label':'Regional'
+                                                    }
+                                                ]
+                                            }" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="labelField"><b><span
+                                                    style="color: orange;">*</span>Regional</b></label>
+                                        <input type="text" class="form-control solicitante" value="" name="cpRegional"
+                                            id="cpRegional" readonly="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Dúvida na
+                                            pontuação</b></label>
+                                    <select obrigatorio name="slcDuvida" id="slcDuvida" class="form-control solicitante"
+                                        onchange="tipoSolicita(this.value)">
+                                        <option value="">Selecione</option>
+                                        <option value="1">Loja</option>
+                                        <option value="2">Setor</option>
+                                        <option value="3">Regional</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Tipo de
+                                            solicitação</b></label>
+                                    <select obrigatorio name="slcTipo" id="slcTipo" class="form-control solicitante">
+                                        <option value="">Selecione</option>
+                                        <option value="Dúvida">Dúvida</option>
+                                        <option value="Reclamação">Reclamação</option>
+                                        <option value="Sugestão">Sugestão</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divItem" class="hide">
+                            <div class="col-md-3 numeroBk">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="labelField"><b><span style="color: orange;">*</span>Número
+                                                BK</b></label>
+                                        <input type="text" class="form-control solicitante" name="cpNumeroBk"
+                                            id="cpNumeroBk" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="labelField"><b><span
+                                                style="color: orange;">*</span>Indicador</b></label>
+                                    <select obrigatorio name="slcIndicador" id="slcIndicador"
+                                        class="form-control solicitante" onchange="aprovacao()">
+                                        <option>selecione</option>
+                                        <option value="1">CARREIRA - O restaurante tem o quadro de colaboradores
+                                            completo ?</option>
+                                        <option value="2">CARREIRA - O restaurante tem todo o time escalado?</option>
+                                        <option value="3">CULTURA - As lideranças reforçam a cultura constantemente com
+                                            suas equipes ?</option>
+                                        <option value="4">CULTURA - O restaurante utiliza o programa destaque do mês e
+                                            cheque valor para reconhecer atitudes aderente à cultura Burger King ?
+                                        </option>
+                                        <option value="5">CULTURA - Os quadros de comunicação e gestão estão atualizados
+                                            e os colaboradores tem o conhecimento das informações ?</option>
+                                        <option value="6">FINANCEIRO - O restaurante opera sem quebra de caixa ?
+                                        </option>
+                                        <option value="7">FINANCEIRO - O restaurante respeita a política para uso do
+                                            caixa pequeno ?</option>
+                                        <option value="8">FINANCEIRO - Os apontamentos de CMV estão sendo realizados
+                                            corretamente ?</option>
+                                        <option value="9">JORNADA - Não existem colaboradores realizando interjornada
+                                        </option>
+                                        <option value="10">JORNADA - Não existem colaboradores trabalhando mais de 2
+                                            horas extras diárias.</option>
+                                        <option value="11">JORNADA - O restaurante cumpre a legislação referente ao
+                                            horário de trabalho do colaborador menor de idade</option>
+                                        <option value="12">JORNADA - Os contratos de admissão são assinados e devolvidos
+                                            dentro do prazo definido ?</option>
+                                        <option value="13">MARKETING - A loja esta realizando as coletas semanais de
+                                            preço com aderência ?</option>
+                                        <option value="14">MARKETING - A loja está atingindo o AUV de Cupom?</option>
+                                        <option value="15">MARKETING - A loja está atingindo o AUV de Premium ?</option>
+                                        <option value="16">MARKETING - A loja está atingindo o AUV de Sobremesa ?
+                                        </option>
+                                        <option value="17">MARKETING - A loja está atingindo o AUV de kids ? </option>
+                                        <option value="18">PONTO EXTRA - ATENDIMENTO INCRÍVEL (ZERO B3)</option>
+                                        <option value="19">PONTO EXTRA - ATENDIMENTO LACRADOR</option>
+                                        <option value="20">PONTO EXTRA - AUDITORIA</option>
+                                        <option value="21">PONTO EXTRA - Cumprimento de CIPA</option>
+                                        <option value="22">PONTO EXTRA - DIVERSIDADE</option>
+                                        <option value="23">PONTO EXTRA - INCENTIVO DE VENDAS</option>
+                                        <option value="24">PONTO EXTRA - RT REGIONAL</option>
+                                        <option value="25">PONTO EXTRA - RT SETOR</option>
+                                        <option value="26">PONTO EXTRA - TEMPO DE DRIVE LOJA</option>
+                                        <option value="27">PONTO EXTRA - TEMPO DE DRIVE REGIONAL</option>
+                                        <option value="28">PONTO EXTRA - TEMPO DE DRIVE SETOR</option>
+                                        <option value="29">PPR</option>
+                                        <option value="30">R.E.V</option>
+                                        <option value="31">RV - B3</option>
+                                        <option value="32">RV - CMV</option>
+                                        <option value="33">RV - EBTIDA</option>
+                                        <option value="34">RV - TURNOVER</option>
+                                        <option value="35">RV - VENDAS</option>
+                                        <option value="36">SESMET - Não existem colaboradores com Atestado de Saúde
+                                            Ocupacional (ASO Periódico) pendente. </option>
+                                        <option value="37">SESMET - O restaurante não teve nenhuma CAT ou afastamento
+                                            informado fora do prazo.</option>
+                                        <option value="38">TREINAMENTO - Os colaboradores completam a trilha do BK LINK
+                                            em até 45 dias ?</option>
+
+
+
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="labelField"><b><span style="color: orange;">*</span>Mês</b></label>
+                                    <select obrigatorio name="slcMes" id="slcMes" class="form-control solicitante"
+                                        onchange="aprovacao()">
+                                        <option value="">Selecione</option>
+                                        <option value="1">Janeiro</option>
+                                        <option value="2">Fevereiro</option>
+                                        <option value="3">Março</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Maio</option>
+                                        <option value="6">Junho</option>
+                                        <option value="7">Julho</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="labelField"><b><span
+                                                style="color: orange;">*</span>Observação</b></label>
+                                    <textarea obrigatorio class="form-control solicitante" rows="3" cols="600"
+                                        name="txtSolicitante" id="txtSolicitante" parecer
+                                        placeholder="Digite uma observação"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="div1" class="panel divAtividade" data-atividade="999">
+
+                <div class="panel-heading">
+                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                        data-target="#appJuridico">
+                        <h4>
+                            ETAPA 2 : AVALIAÇÃO GESTÃO
+                        </h4>
+                    </div>
+                </div>
+                <div id="appJuridico" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label class="labelField">Enviar para apuradores ?</label>
+                                    <p>
+                                        <button type="button" id="btnApuraSim" class="btn btn-primary btn-lg"
+                                            onclick="masterClass(this.value)" value="1">Sim</button>
+                                        <button type="button" id="btnApuraNao" class="btn btn-default btn-lg"
+                                            onclick="masterClass(this.value)" value="2">Não</button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <label class="labelField"><b>Mensagem</b></label>
+                                    <textarea obrigatorio class="form-control aprovadores" rows="3"
+                                        name="txtParecerJuridico" id="txtParecerJuridico" parecer></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="div1" class="panel  divResposta" data-atividade="999">
+
+                <div class="panel-heading">
+                    <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                        data-target="#appApurador">
+                        <h4>
+                            ETAPA 3 : AVALIAÇÃO POOL
+                        </h4>
+                    </div>
+                </div>
+                <div id="appApurador" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="labelField"><b>Mensagem</b></label>
+                                    <textarea obrigatorio class="form-control apurador" rows="3"
+                                        name="txtRespostaApurador" id="txtRespostaApurador" parecer></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</body>
+
+</html>

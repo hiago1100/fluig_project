@@ -1,0 +1,252 @@
+<html>
+  <head>
+	<link type="text/css" rel="stylesheet" href="http://oncoclinicastst.fluig.com/style-guide/css/fluig-style-guide.min.css" />
+	<script type="text/javascript" charset="UTF-8" src="http://oncoclinicastst.fluig.com/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="http://oncoclinicastst.fluig.com/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="http://oncoclinicastst.fluig.com/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" charset="UTF-8" src="http://oncoclinicastst.fluig.com/style-guide/js/fluig-style-guide.min.js"></script>
+	<script type="text/javascript" src="View.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+	<!-- datatable -->
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">  
+
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+	<!-- datatable -->
+    <style type="text/css">
+       select[readonly] {
+          background: #eee; /*Simular campo inativo*/
+          pointer-events: none;
+          touch-action: none;
+        }
+    </style>
+  </head>
+  <body>
+  	<div class="fluig-style-guide">
+  	  <form name="form" role="form">
+      <input type="text" name="cpAprovador" id="cpAprovador" class="hide" value="">
+        <div class="panel panel-info solicitante">
+                    <div class="panel-heading">
+                        <h3 class="fluig-style-guide panel-title">
+                            <img src="tag.png">
+                            Aprovação do pedido de vendas 
+                        </h3>
+                    </div>
+                    <div class="panel-body container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <div class="input-group-addon"><img src="event.png"> Data solicitação</div>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                        name="cpDataAbertura" id="cpDataAbertura" />
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <div class="input-group-addon"><img src="investor.png"> Solicitante</div>
+                                    <input type="text" class="form-control" readonly="readonly" name="cpSolicitanteNome"
+                                        id="cpSolicitanteNome" />
+                                </div>
+                            </div>
+                            </div>
+                            
+
+                            <!--  -->
+
+
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Solicitação por:</div>
+                                    <select obrigatorio name="tipoSolicitacao" id="tipoSolicitacao" class="form-control solicitante solicitante" onchange="tipoSolicita(this.value)">
+                                        <option value="">Selecione</option>
+                                        <option value="1">Pedido</option>
+                                        <option value="2">Item</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+                           <div id="divItem" class="hide"> 
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <div class="input-group-addon">Número sequência</div>
+                                    <input type="text" class="form-control solicitante" value="" name="cpNumeroSequencia"
+                                        id="cpNumeroSequencia" />
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                 <div class="input-group">
+                                    <div class="input-group-addon">Cod. Item</div>
+                                    <input type="text" class="form-control solicitante" value="" name="cpCodItem"
+                                        id="cpCodItem" />
+                                </div>
+                            </div>
+                            </div>
+                           </div> 
+
+
+
+
+
+
+                            <!--  -->
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Tipo de desconto</div>
+                                    <select obrigatorio name="tipoDesconto" id="tipoDesconto" class="form-control solicitante" onchange="aprovacao()">
+                                        <option value="">Selecione</option>
+                                        <option value="1">Desconto Janela</option>
+                                        <option value="2">Desconto trimestral</option>
+                                        <option value="3">Desconto Negociado</option>
+                                        <option value="4">Promoção MKT</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Pedido</div>
+                                    <input obrigatorio type="text" class="form-control solicitante" name="cpPedido"
+                                        id="cpPedido" />
+                                </div>
+                            </div>
+                            </div>            
+
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Pedido Cliente</div>
+                                    <input obrigatorio type="text" class="form-control solicitante" name="cpPedidoCli"
+                                        id="cpPedidoCli" />
+                                </div>
+                            </div>
+                            </div>  
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Código cliente</div>
+                                    <input obrigatorio type="text" class="form-control solicitante" name="cpCodCliente"
+                                        id="cpCodCliente" />
+                                </div>
+                            </div>
+                            </div>     
+
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Nome abreviado</div>
+                                    <input obrigatorio type="text" class="form-control solicitante" name="cpNomeAbrev"
+                                        id="cpNomeAbrev" />
+                                </div>
+                            </div>
+                            </div>     
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Valor do pedido</div>
+                                    <input obrigatorio type="text" class="form-control solicitante" name="cpValorPedido"
+                                        id="cpValorPedido"  placeholder="R$00,00" mask="#00.000.000.000.000,00" value="" onblur="calculoPercent()" />
+                                </div>
+                            </div>
+                            </div>     
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Percentual desconto</div>
+                                    <input obrigatorio type="text" class="form-control solicitante" name="cpPercentual"
+                                        id="cpPercentual" onblur="aprovacao();calculoPercent();validaPerc(this.value)" onkeypress="return onlynumber();" value="0" mask="#00.00" maxlength="5"/>
+                                </div>
+                            </div>
+                            </div>     
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-addon">Valor de desconto $</div>
+                                    <input obrigatorio type="text" class="form-control" name="cpValorDesconto"
+                                        id="cpValorDesconto" readonly="" />
+                                </div>
+                            </div>
+                            </div>    
+                         <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                <div class="input-group-addon">Observação</div>
+                                <textarea obrigatorio class="form-control solicitante" rows="3"
+                                    name="txtSolicitante" id="txtSolicitante"
+                                    parecer></textarea>
+                            </div>
+                        </div>                             
+                        </div>
+                    </div>
+                </div>  
+            </div>
+                <div id="div1" class="panel panel-info  divAtividade"  data-atividade="999">
+                                
+                                    <div class="panel-heading">
+                                        <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse"
+                                            data-target="#appJuridico">
+                                            <h4>
+                                            <img src="chequenewnew.png">
+                                               Aprovação
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div id="appJuridico" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="labelField">Aprova&ccedil;&atilde;o</label>
+                                                        <select name="slcAprovador"
+                                                            id="slcAprovador" class="form-control aprovadores" aprovacao
+                                                            obrigatorio onchange="masterClass(this.value)">
+                                                            <option value="">Selecione...</option>
+                                                            <option value="1">Aprovado</option>
+                                                            <option value="2">Ajustar</option>
+                                                            <option value="3">Reprovado</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="labelField">Parecer</label>
+                                                        <textarea obrigatorio class="form-control aprovadores" rows="3"
+                                                            name="txtParecerJuridico" id="txtParecerJuridico"
+                                                            parecer></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 
+  	  </form>
+  	</div>
+  </body>
+</html>

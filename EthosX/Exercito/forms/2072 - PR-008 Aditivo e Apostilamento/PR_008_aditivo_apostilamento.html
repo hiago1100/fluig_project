@@ -1,0 +1,393 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+	<link href='css/visual.css' rel='stylesheet' />
+
+	<script type="text/javascript" src="js/activities.js" ></script>
+	<script type="text/javascript" src="js/requiredFields.js"></script>
+	<script type="text/javascript" src="js/enableFields.js"></script>
+	<script type="text/javascript" src="js/moment.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/jquery.maskMoney.min.js"></script>
+
+	<script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+	<script type="text/javascript" src="js/zoom.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+		
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+
+	<input type="hidden" id="id_fluig" name="id_fluig" />
+	<input type="hidden" name="solic_cancelada" id="solic_cancelada" value="false" />
+	<input type="hidden" id="estado_processo" name="estado_processo" />
+	<input type="hidden" id="estado_corrente" name="estado_corrente" />
+
+	<div class="panel panel-primary">
+		<div class="panel-body">
+			<h1>
+				<b>Aditivo/Apostilamento</b>
+			</h1>
+		</div>
+	</div>
+	<div class="panel panel-primary" id="panelDadosSolicitacao">
+		<div class="panel-heading ">
+			<h3 class="panel-title">
+				<b>Dados solicitação</b>
+			</h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group row">
+				<div class="col-md-3"> 
+					<label for="num_adt_apo">Nº Aditivo/Apostilamento</label> 
+					<input type="hidden" name="num_seq_aditivo" id="num_seq_aditivo" />
+					<input type="hidden" name="num_seq_apostilamento" id="num_seq_apostilamento" />
+					<input type="text" class="form-control" name="num_adt_apo" id="num_adt_apo" readonly />
+				</div>
+				<div class="col-md-4"> 
+					<label for="nm_solicitante">Solicitante</label> 
+					<input type="hidden" name="id_solicitante" id="id_solicitante" />
+					<input type="text" class="form-control" name="nm_solicitante" id="nm_solicitante" readonly />
+				</div>
+				<div class="col-md-3"> 
+					<label for="dt_solicitacao">Data Solicitação</label>
+					<input type="hidden" name="dt_solicitacao_filtro" id="dt_solicitacao_filtro" />
+					<input type="text" class="form-control" name="dt_solicitacao" id="dt_solicitacao" readonly />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-primary" id="panelDetalhesSolicitacao">
+		<div class="panel-heading ">
+			<h3 class="panel-title"><b>Detalhes</b></h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group row">
+				<div class="col-md-6"> 
+					<label for="rb_SM_de">Solicitação de</label>
+					<div class="radio">
+						<label> 
+							<input name="rb_SM_de" id="rb_SM_de_aditivo" value="aditivo" type="radio">Aditivo
+						</label>
+						<label> 
+							<input name="rb_SM_de" id="rb_SM_de_apostilamento" value="apostilamento" type="radio">Apostilamento
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-md-6">
+					<label for="nm_contratada">Contratada</label>
+					<input type="hidden" id="cnpj_contratada" name="cnpj_contratada" />
+					<input type="zoom" class="form-control" name="nm_contratada" id="nm_contratada"
+						data-zoom="{
+							'displayKey':'ds_nome',
+							'datasetId':'geral_cadastro_fornecedor',
+							'maximumSelectionLength':'1',
+							'fields':[
+										{
+											'field':'ds_cnpj',
+											'label':'CNPJ Fornecedor',
+											'standard':false,
+											'visible':'true'
+										},
+										{
+											'field':'ds_nome',
+											'label':'Fornecedor',
+											'standard':true
+										}
+									]										
+						}"
+					/>	 
+				</div>
+				<div class="col-md-6">
+					<label for="nm_contrato">Contrato</label>
+					<input type="hidden" id="id_gestor_contrato" name="id_gestor_contrato" />
+					<input type="hidden" id="nm_gestor_contrato" name="nm_gestor_contrato" />
+					<input type="hidden" id="cd_contrato" name="cd_contrato" />
+					<input type="zoom" class="form-control" name="nm_contrato" id="nm_contrato"
+						data-zoom="{
+								'displayKey':'nm_contrato',
+								'datasetId':'geral_cadastro_contratos',
+								'maximumSelectionLength':'1',
+								'fields':[
+											{
+												'field':'cd_contrato',
+												'label':'Código'
+											},
+											{
+												'field':'nm_contrato',
+												'label':'Nome',
+												'standard':'true'
+											},
+											{
+												'field':'id_gestor_contrato',
+												'label':'ID Gestor',
+												'visible':'true'
+											},
+											{
+												'field':'nm_gestor_contrato',
+												'label':'Nome Gestor',
+												'visible':'true'
+											}
+										]
+							}"
+					/>
+				</div>
+			</div>
+			<div class="page-header">
+				<h3>Solicitações de Mudanças de Contrato<small> (SMs)</small></h3>
+			</div>
+			<div class="form-group row">
+				<div class="col-md-2">
+					<input type="button" class="btn btn-primary" id="btnAddSMs" value="Adicionar SM">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<table border="0" class="table table-striped table-bordered table-eb" 
+							tablename="tb_SMs" id="tb_SMs"
+							nodeletebutton="false" noaddbutton="true" customFnDelete="fnCustomDelete(this)">
+							<thead>
+								<tr>
+									<td style="width: 85%;"><b>SM</b></td>
+									<td style="width: 8%;"><b>Acessar SM</b></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="fs-v-align-middle">
+										<input type="hidden" class="id_fluig_SM" id="id_fluig_SM" name="id_fluig_SM" />
+										<input type="hidden" id="id_card_SM" name="id_card_SM" />
+										<input type="hidden" id="id_version_SM" name="id_version_SM" />
+										<input type="zoom" class="form-control" name="num_SM" id="num_SM"
+											data-zoom="{
+												'displayKey':'numSM',
+												'datasetId':'aditivo_apostilamento_consulta_sm_contrato',
+												'maximumSelectionLength':'1',
+												'fields':[
+														{
+															'field':'numSM',
+															'label':'Número SM',
+															'standard':'true'
+														},
+														{
+															'field':'descSMProposta',
+															'label':'Descrição SM'
+														},
+														{
+															'field':'idFluig',
+															'label':'Id Fluig SM',
+															'visible' : 'false'
+														}
+													]
+												}"
+											/>
+										
+									</td>
+									<td class="fs-v-align-middle">
+										<div class="divLinkSM"s></div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-md-12"> 
+					<label for="desc_finalidade">Finalidade</label> 
+					<textarea class="form-control" name="desc_finalidade" id="desc_finalidade"></textarea>
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-md-3">
+					<label for="vl_aditivo_apost">Valor (R$)</label>
+					<input type="text" class="form-control money" name="vl_aditivo_apost" id="vl_aditivo_apost" />
+				</div>
+				<div class="col-md-3">
+					<label for="vl_diferenca">Diferença (R$)</label>
+					<input type="text" class="form-control money" name="vl_diferenca" id="vl_diferenca" />
+				</div>
+				<div class="col-md-2">
+					<label for="vl_variacao">Variação (%)</label>
+					<input type="text" class="form-control money" name="vl_variacao" id="vl_variacao" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary" id="panelValidaComposicao" style="display: none;">
+		<div class="panel-heading ">
+			<h3 class="panel-title"><b>Validação da composição (SMs)</b></h3>
+		</div>
+		<div class="panel-body">
+			<div class="form-group row">
+				<div class="col-md-4">
+					<label for="nm_resp_valida_composicao">Responsável</label>
+					<input type="hidden" id="id_resp_valida_composicao" name="id_resp_valida_composicao" />
+					<input type="text" class="form-control" name="nm_resp_valida_composicao" id="nm_resp_valida_composicao" readonly />
+				</div>
+				<div class="col-md-2"> 
+					<label for="dt_valida_composicao">Data validação</label>
+					<input type="hidden" id="dt_valida_composicao_filtro" name="dt_valida_composicao_filtro" />
+					<input type="text" class="form-control" name="dt_valida_composicao" id="dt_valida_composicao" readonly />
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-md-12"> 
+					<label for="obs_valida_composicao">Observação</label> 
+					<textarea class="form-control" name="obs_valida_composicao" id="obs_valida_composicao"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary" id="panelACODE" style="display: none;">
+		<div class="panel-heading ">
+			<h3 class="panel-title"><b>ACODE</b></h3>
+		</div>
+		<div class="panel-body">
+			<div id="divElaboracaoDocumemtalACODE">
+				<div class="page-header">
+					<h3>Elaboração<small> Aditivo ou Apostilamento</small></h3>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-4">
+						<label for="nm_resp_analise_acode">Responsável</label>
+						<input type="hidden" id="id_resp_analise_acode" name="id_resp_analise_acode" />
+						<input type="text" class="form-control" name="nm_resp_analise_acode" id="nm_resp_analise_acode" readonly />
+					</div>
+					<div class="col-md-2"> 
+						<label for="dt_analise_acode">Data conclusão</label>
+						<input type="hidden" id="dt_analise_acode_filtro" name="dt_analise_acode_filtro" />
+						<input type="text" class="form-control" name="dt_analise_acode" id="dt_analise_acode" readonly />
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-12"> 
+						<label for="obs_analise_acode">Observação</label> 
+						<textarea class="form-control" name="obs_analise_acode" id="obs_analise_acode"></textarea>
+						</div>
+				</div>
+			</div>
+			<div id="divAssinaturasAditivo" style="display: none;">
+				<div class="page-header">
+					<h3>Assinaturas<small> Aditivo</small></h3>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-4">
+						<label for="nm_resp_assinaturas_acode">Responsável</label>
+						<input type="hidden" id="id_resp_assinaturas_acode" name="id_resp_assinaturas_acode" />
+						<input type="text" class="form-control" name="nm_resp_assinaturas_acode" id="nm_resp_assinaturas_acode" readonly />
+					</div>
+					<div class="col-md-2"> 
+						<label for="dt_assinaturas_acode">Data conclusão</label>
+						<input type="hidden" id="dt_assinaturas_acode_filtro" name="dt_assinaturas_acode_filtro" />
+						<input type="text" class="form-control" name="dt_assinaturas_acode" id="dt_assinaturas_acode" readonly />
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-12"> 
+						<label for="obs_assinaturas_acode">Observação</label> 
+						<textarea class="form-control" name="obs_assinaturas_acode" id="obs_assinaturas_acode"></textarea>
+						</div>
+				</div>
+			</div>
+			<div id="divDatasAssinaturaPublicacoes" style="display: none;">
+				<div class="page-header">
+					<h3>Datas<small> e publicações DOU/BI</small></h3>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-2">
+						<label for="dt_assinaturas">Data assinaturas</label>
+						<input type="hidden" id="dt_assinaturas_filtro" name="dt_assinaturas_filtro" /> 
+						<input type="text" class="form-control campo-data" name="dt_assinaturas" id="dt_assinaturas" />
+					</div>
+					<div class="col-md-2">
+						<label for="dt_inicio_vigencia">Início Vigência</label>
+						<input type="hidden" id="dt_inicio_vigencia_filtro" name="dt_inicio_vigencia_filtro" />
+						<input type="text" class="form-control campo-data" name="dt_inicio_vigencia" id="dt_inicio_vigencia" maxlength="10" />
+					</div>
+					<div class="col-md-2">
+						<label for="dt_termino_vigencia">Término Vigência</label>
+						<input type="hidden" id="dt_termino_vigencia_filtro" name="dt_termino_vigencia_filtro" />
+						<input type="text" class="form-control campo-data" name="dt_termino_vigencia" id="dt_termino_vigencia" maxlength="10"/>
+					</div>
+					<div class="col-md-4">
+						<label for="txt_ref_dou_bi">Referência DOU/BI</label>
+						<input type="text" class="form-control" name="txt_ref_dou_bi" id="txt_ref_dou_bi"/>
+					</div>
+					<div class="col-md-2">
+						<label for="dt_pub_dou_bi">Publicação DOU/BI</label>
+						<input type="hidden" id="dt_pub_dou_bi_filtro" name="dt_pub_dou_bi_filtro" />
+						<input type="text" class="form-control campo-data" name="dt_pub_dou_bi" id="dt_pub_dou_bi" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-primary" id="panelGestaoContrato" style="display: none;">
+		<div class="panel-heading ">
+			<h3 class="panel-title"><b>Gestão de Contratos</b></h3>
+		</div>
+		<div class="panel-body">
+			<div id="divAvalicaoMinuta" style="display: none;">
+				<div class="page-header">
+					<h3>Avaliação<small> aditivo</small></h3>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-4">
+						<label for="nm_resp_avalicao_aditivo">Responsável</label>
+						<input type="hidden" id="id_resp_avalicao_aditivo" name="id_resp_avalicao_aditivo" />
+						<input type="text" class="form-control" name="nm_resp_avalicao_aditivo" id="nm_resp_avalicao_aditivo" readonly />
+					</div>
+					<div class="col-md-2"> 
+						<label for="dt_avalicao_aditivo">Data conclusão</label>
+						<input type="hidden" id="dt_avalicao_aditivo_filtro" name="dt_avalicao_aditivo_filtro" />
+						<input type="text" class="form-control" name="dt_avalicao_aditivo" id="dt_avalicao_aditivo" readonly />
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-12"> 
+						<label for="obs_avalicao_aditivo">Observação</label> 
+						<textarea class="form-control" name="obs_avalicao_aditivo" id="obs_avalicao_aditivo"></textarea>
+					</div>
+				</div>
+			</div>
+			<div id="divAtualizarContrato" style="display: none;">
+				<div class="page-header">
+					<h3>Atualizar<small> contrato</small></h3>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-4">
+						<label for="nm_resp_atualizacao_contrato">Responsável</label>
+						<input type="hidden" id="id_resp_atualizacao_contrato" name="id_resp_atualizacao_contrato" />
+						<input type="text" class="form-control" name="nm_resp_atualizacao_contrato" id="nm_resp_atualizacao_contrato" readonly />
+					</div>
+					<div class="col-md-2"> 
+						<label for="dt_atualizacao_contrato">Data conclusão</label>
+						<input type="hidden" id="dt_atualizacao_contrato_filtro" name="dt_atualizacao_contrato_filtro" />
+						<input type="text" class="form-control" name="dt_atualizacao_contrato" id="dt_atualizacao_contrato" readonly />
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-12"> 
+						<label for="obs_atualizacao_contrato">Observação</label> 
+						<textarea class="form-control" name="obs_atualizacao_contrato" id="obs_atualizacao_contrato"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+</body>
+</html>

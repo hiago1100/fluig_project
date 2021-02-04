@@ -1,0 +1,1780 @@
+<html> 
+<head>
+<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+<script type="text/javascript" src="funcoes.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="copiarprocesso.js"></script>
+<script>
+
+$("#numCaixa").attr('readonly', false);
+
+function CopiaJustificativa(){
+
+/* Copia Justificativas do Gestor */
+
+var justificativa = $('input[name="txtJustificativa___1"]').val();
+
+$("input").each( function(index, value) {
+
+		var name = $(this).attr('id');
+		
+    if ( Left( name, 17 ) == "txtJustificativa_" ){
+
+    	console.log(name+'-'+justificativa);
+
+    	$('input[name="'+name+'"]').val(justificativa);
+    }
+
+	}); 
+
+/* Copia Justificativas da Diretora Financeira */
+
+var justFIN = $('input[name="txtJustificativaFin___1"]').val();
+
+
+$("input").each( function(index, value) {
+
+		var name = $(this).attr('id');
+		
+    if ( Left( name, 20 ) == "txtJustificativaFin_" ){
+
+    	$('input[name="'+name+'"]').val(justFIN);
+    }
+
+	}); 
+
+/* Copia Justificativas da Mantenedora */
+
+var justMAN = $('input[name="txtJustificativaMan___1"]').val();
+
+
+$("input").each( function(index, value) {
+
+		var name = $(this).attr('id');
+		
+    if ( Left( name, 20 ) == "txtJustificativaMan_" ){
+
+    	$('input[name="'+name+'"]').val(justMAN);
+    }
+
+	}); 
+
+}
+
+function AprovadorFOL(){
+
+$('input[name="txtDataVencimento"]').val("");
+$('input[name="txtCondPagamento"]').val("");
+
+
+var comSerie = $('select[name="comSerie"]').val();
+
+console.log("Qual a Serie"+comSerie);
+
+if (comSerie == "D") {
+	$("#tipoSerie").val("D");
+	$("#comSerieAux").val("DIR");
+}
+if (comSerie == "P") {
+
+	$("#comSerieAux").val("PCA");
+}
+
+
+if (comSerie == "F" ){
+
+$("#comSerieAux").val("FOL");
+console.log("Qual a Serie dentor do IF"+comSerie);
+
+//melissa.sekimoto  // 695f1313-2d90-4c2f-b83e-eed59629883f"
+
+$('input[name="txtUsuarioAprovador"]').val("695f1313-2d90-4c2f-b83e-eed59629883f");
+$('input[name="txtUserApr"]').val("melissa.sekimoto");
+$('input[name="lbAprovador"]').val("Melissa De Fatima Goncalves Sekimoto");
+
+} else {
+
+$('input[name="txtUsuarioAprovador"]').val("");
+$('input[name="txtUserApr"]').val("");
+$('input[name="lbAprovador"]').val("");
+
+}	
+
+}
+
+function setZoomData(instance, value){ window[instance].setValue(value); }
+
+function SaldoEstoque (coligada,filial,local, produto, item){
+
+
+var c1 = DatasetFactory.createConstraint("CODCOLIGADA", coligada, coligada, ConstraintType.MUST);
+var c2 = DatasetFactory.createConstraint("CODFILIAL", filial, filial, ConstraintType.MUST);
+var c3 = DatasetFactory.createConstraint("CODLOCAL", local, local, ConstraintType.MUST);
+var c4 = DatasetFactory.createConstraint("IDPRD", produto, produto, ConstraintType.MUST);
+var constraints   = new Array(c1,c2,c3,c4);
+var dataset         = DatasetFactory.getDataset("dsTPRDLOC", null, constraints, null);
+
+var vlrestoque = 0;
+
+if (dataset != null && dataset.values.length > 0) {
+
+  console.info("Saldo Estoque "+ dataset.values[0].SALDOFISICO2);
+
+   vlrestoque = dataset.values[0].SALDOFISICO2;
+}
+	return vlrestoque;
+
+}
+
+function reloadColigada(){ 
+	
+	if(window['txtColigada'] == undefined){ 
+	setTimeout(reloadColigada(), 500); 
+	
+	}else{ 
+	
+	reloadZoomFilterValues("txtColigada", "CODUSUARIO,"+$('input[name="txtUsuarioRM"]').val());
+	$('input[name="txtValorFrete"]').prop('disabled',true);
+	$('input[name="txtValorDesconto"]').prop('disabled',true);
+
+	} 
+}
+
+function Aprovachild(){
+
+var atv = $('input[name="ATIVIDADEATUAL"]').val();
+
+if ( atv == 5 ){  // APROVA TODOS DO CENTRO DE CUSTO
+
+$("select").each( function(index, value) {
+
+		var name = $(this).attr('id');
+		
+    if ( Left( name, 11 ) == "comAprovado" ){
+
+    	$('select[name="'+name+'"]').val("S");
+
+    	
+    }
+
+}); 
+
+} else if ( atv == 46 ){  // APROVA TODOS DA FINANCEIRO
+
+
+
+		$("select").each( function(index, value) {
+
+				var name = $(this).attr('id');
+				
+            if ( Left( name, 16 ) == "comAprFinanceiro" ){
+
+            	$('select[name="'+name+'"]').val("S");
+
+            
+            }
+
+			});
+		} else  if ( atv == 69 ){  // APROVA TODOS DA MANTENEDORA
+
+				$("select").each( function(index, value) {
+
+  					var name = $(this).attr('id');
+     				
+                    if ( Left( name, 17 ) == "comAprMantenedora" ){
+
+                    	$('select[name="'+name+'"]').val("S");
+
+                    	
+                    }
+
+    				});
+				}
+	SomaTotal();
+}
+   
+function Reprovachild(){
+
+
+
+if ( atv == 5 ){  // REAPROVA TODOS DO CENTRO DE CUSTO
+
+$("select").each( function(index, value) {
+
+		var name = $(this).attr('id');
+		
+    if ( Left( name, 11 ) == "comAprovado" ){
+
+    	$('select[name="'+name+'"]').val("N");
+
+    	
+    }
+
+	}); 
+
+} else if ( atv == 46 ){  // REAPROVA TODOS DA FINANCEIRO
+
+		$("select").each( function(index, value) {
+
+				var name = $(this).attr('id');
+				
+            if ( Left( name, 16 ) == "comAprFinanceiro" ){
+
+            	$('select[name="'+name+'"]').val("N");
+
+            
+            }
+
+			});
+		} else  if ( atv == 69 ){  // REAPROVA TODOS DA MANTENEDORA
+
+				$("select").each( function(index, value) {
+
+  					var name = $(this).attr('id');
+     				
+                    if ( Left( name, 17 ) == "comAprMantenedora" ){
+
+                    	$('select[name="'+name+'"]').val("N");
+
+                 
+                    }
+
+    				});
+				} 
+
+	SomaTotal();
+
+}
+
+function validaEmissao(data){
+
+	console.log("data completa" + data);
+
+var dtemissao = new Date(data.value);
+var mesNF = dtemissao.getMonth();
+
+var anoNF = dtemissao.getFullYear();
+
+var diaNF = dtemissao.getDay();
+	diaNF = diaNF + 1;
+
+var dataTOL = new Date();
+dataTOL.setDate(dataTOL.getDate()- 6);
+
+var mesAtual = dataTOL.getMonth();
+var anoAtual = dataTOL.getFullYear();
+
+
+var dataTolAux = new Date();
+var diaAtual = dataTolAux.getDay();
+
+console.log("Dia atual para comparação NF  "+ diaNF);
+console.log("Dia de emissão  "+ diaAtual);
+
+
+if (diaNF < diaAtual) {
+
+	data.value = "";
+
+	 FLUIGC.message.alert({
+        message: 'A Data Emissão da Nota Fiscal/Parcela de Contrato deve ser maior ou igual ao dia atual!',
+        title: 'Data Emissão Fora do Mês Atual',
+        label: 'OK'
+
+    });
+}
+
+if (mesNF < mesAtual) {
+
+	data.value = "";
+
+	 FLUIGC.message.alert({
+        message: 'A Data Emissão da Nota Fiscal/Parcela de Contrato deve estar no Mês Vigente!',
+        title: 'Data Emissão Fora do Mês Atual',
+        label: 'OK'
+
+    });
+}
+
+if (anoNF != anoAtual) {
+
+	data.value = "";
+
+	 FLUIGC.message.alert({
+        message: 'A Data Emissão da Nota Fiscal/Parcela de Contrato deve estar no Ano Vigente!',
+        title: 'Data Emissão Fora do Mês Atual',
+        label: 'OK'
+
+    });
+
+}
+
+}
+
+function validaVencimento(data){
+
+var dtvencimento = new Date(data.value);
+
+var prazo = new Date();
+
+prazo.setDate(prazo.getDate()+ 10 );
+
+if (dtvencimento <= prazo) {
+
+var TP = $('input[name="txtTipoProcesso"]').val();
+var SERIE = $('select[name="comSerie"]').val();
+var idcnt = $('input[name="IDCNT"]').val();
+var coligada = $('input[name="CODCOLIGADA"]').val();
+var filial = $('input[name="CODFILIAL"]').val();
+
+
+
+if (TP == "2"){
+
+		
+
+		if ((idcnt == null) || (idcnt == "")){
+
+			data.value = "";
+
+		 FLUIGC.message.alert({
+            message: 'Preencha o Campo Contrato Primeiro!',
+            title: 'Contrato',
+            label: 'OK'
+            });
+
+		} else {
+
+			var c1 = DatasetFactory.createConstraint("CODCOLIGADA", coligada, coligada, ConstraintType.MUST);
+			var c2 = DatasetFactory.createConstraint("CODFILIAL", filial, filial, ConstraintType.MUST);
+				var c3 = DatasetFactory.createConstraint("IDCNT", idcnt, idcnt, ConstraintType.MUST);
+				
+				var constraints   = new Array(c1,c2,c3);
+				
+				var dataset = DatasetFactory.getDataset("dsCCUSTO", null, constraints, null);
+				
+				
+
+				  if (dataset != null && dataset.values.length > 0) {
+
+  					
+
+	   				var CENTRODECUSTO = dataset.values[0].CODCCUSTO;
+
+	   				
+	   			}
+
+	   			if (CENTRODECUSTO != "4.01.07.001") {
+
+	   				data.value = "";
+
+				 FLUIGC.message.alert({
+                    message: 'A Data Vencimento informada não atende os requisitos necessários do setor financeiro para realizaçao do pagamento!',
+                    title: 'Data Vencimento Fora do Prazo Mínino',
+                    label: 'OK'
+
+        		});
+
+
+
+	   			}
+
+
+
+		}
+
+}
+
+
+if ((TP == "3") && (SERIE == "P")) {
+
+		data.value = "";
+
+		 FLUIGC.message.alert({
+            message: 'A Data Vencimento informada não atende os requisitos necessários do setor financeiro para realizaçao do pagamento!',
+            title: 'Data Vencimento Fora do Prazo Mínino',
+            label: 'OK'
+
+        });
+
+	}
+}
+}
+
+function fnCustomDelete(oElement){
+
+FLUIGC.message.confirm({
+message: 'Confirma exclusão do item?',
+title: 'Excluir Item',
+labelYes: 'Excluir',
+labelNo: 'Cancelar'
+}, function(result, el, ev) {
+if (result) {
+    fnWdkRemoveChild(oElement);
+    var valor = SomaTotal();
+    if ( valor == 0 ){
+       window['txtColigada'].disable(false);
+        window['txtFilial'].disable(false);	
+        $('select[name="comSerie"]').removeAttr('disabled');
+        $('input[name="txtTP"]').prop('disabled',false);
+        
+      	$('input[name="txtUsuarioAprovador"]').val("");
+      	$('input[name="lbAprovador"]').val("");
+      	$('input[name="txtUserApr"]').val("");
+
+    }                   
+}
+});
+
+}
+
+
+function NewchildAdd(){
+if ( $('input[name="documentidcopia"]').val() == "" ) {
+if ($("table[tablename='dsItens'] tbody tr").length == 1) {
+	   	childAdd();
+}
+}
+}
+
+function childAdd(){
+
+var filial = $('input[name="CODFILIAL"]').val();
+
+if ( filial != "" ) { 
+var row = wdkAddChild('dsItens'); //Adicionar filhos
+
+    var usuario = $('input[name="txtUsuarioRM"]').val();
+	var local = $('input[name="CODLOC"]').val();
+    var coligada = $('input[name="CODCOLIGADA"]').val();
+    var idcnt = $('input[name="IDCNT"]').val();
+    var TP = $('input[name="txtTipoProcesso"]').val();
+    var centrocusto = "4.01.07.005";
+    var tipo = "P";
+    var estocavel = "SIM";
+   
+
+
+
+window['txtColigada'].disable(true);
+window['txtFilial'].disable(true);
+$('input[name="txtTP"]').prop('disabled',true);
+$('select[name="comSerie"]').attr({'disabled': 'disabled'});
+
+if ( $('input[name="ATIVIDADEATUAL"]') == 32 ) {
+
+		$("select").each( function(index, value) {
+
+			var name = $(this).attr('id');
+		
+    	if ( Left( name, 11 ) == "comAprovado" ){
+
+    	 $('select[name="'+name+'"]').attr({'disabled': 'disabled'});
+    }
+
+	}); 
+
+}
+
+
+
+if (( idcnt == "") || (idcnt == null)) { 
+		
+		if (TP == "4"){
+			console.log("to dentro "+centrocusto)
+    	 reloadZoomFilterValues("txtCodCCusto___"+row, "CODUSUARIO," + usuario+",CODCOLIGADA,"+coligada+",CODFILIAL,"+filial+",CODCCUSTO,"+centrocusto);
+    	 reloadZoomFilterValues("txtcodigoPRD___"+row, "CODCOLIGADA,"+coligada+",CODFILIAL,"+filial+",CODLOC,"+local+",TIPO,"+tipo+",ESTOCAVEL,"+estocavel); 	
+				} else { 
+
+					reloadZoomFilterValues("txtCodCCusto___"+row, "CODUSUARIO," + usuario+",CODCOLIGADA,"+coligada+",CODFILIAL,"+filial); 
+	             reloadZoomFilterValues("txtcodigoPRD___"+row, "CODCOLIGADA,"+coligada+",CODFILIAL,"+filial+",CODLOC,"+local); 
+	            }						             
+    } else {
+            	reloadZoomFilterValues("txtcodigoPRD___"+row, "CODCOLIGADA,"+coligada+",CODFILIAL,"+filial+",CODLOC,"+local+",IDCNT,"+idcnt);
+            	reloadZoomFilterValues("txtCodCCusto___"+row, "CODUSUARIO," + usuario+",CODCOLIGADA,"+coligada+",CODFILIAL,"+filial+",IDCNT,"+idcnt);  	
+            	}
+
+    var inputs = $("[mask]");
+MaskEvent.initMask(inputs);
+MaskEvent.initMask($('input[name="txtValorItens"]'));
+$('input[name="txtItem___'+row+'"]').val($("table[tablename='dsItens'] tbody tr").length-1); 
+} 
+else {
+FLUIGC.message.alert({
+    message: 'Favor selecionar Filial!',
+    title: 'AVISO',
+    label: 'OK'
+ });
+}
+
+return row;
+}  	
+
+function ShowContrato(tipo) {
+
+
+if (tipo != null) {
+	
+	$('#divDadosMov').show();
+	$('#pnlHistorico').show();
+
+	if (tipo.value == "2" ){
+	//	$('select[name="comSerie"]').val("");
+		$("#pnlContrato").show(); 
+		$("#pnlCompraDireta").hide();
+		$('input[name="txtTipoProcesso"]').val("2");
+		$('input[name="txtValorFrete"]').prop('disabled',true);
+		$('input[name="txtValorDesconto"]').prop('disabled',true);
+
+		
+	}
+	else if (tipo.value == "3" ){
+			$("#pnlContrato").hide();
+			$("#pnlCompraDireta").show();
+			$('input[name="txtTipoProcesso"]').val("3");
+			$('input[name="txtValorFrete"]').prop('disabled',false);
+			$('input[name="txtValorDesconto"]').prop('disabled',false);
+			}
+	   		else if (tipo.value == "1" ) {
+
+	   			$("#pnlContrato").hide(); 
+  			$("#pnlCompraDireta").hide();
+  			$('input[name="txtTipoProcesso"]').val("1");
+  			$('input[name="txtValorFrete"]').prop('disabled',true);
+				$('input[name="txtValorDesconto"]').prop('disabled',true);
+
+	   			} else if (tipo.value == "4") { 
+  			//		$('select[name="comSerie"]').val("");
+  					$("#pnlContrato").hide(); 
+  					$("#pnlCompraDireta").hide();
+  					$('input[name="txtTipoProcesso"]').val("4");
+  					$('input[name="txtValorFrete"]').prop('disabled',true);
+						$('input[name="txtValorDesconto"]').prop('disabled',true);
+  					
+					}
+}
+}
+
+function removedZoomItem(removedItem) {
+
+var CAMPO = removedItem.inputName; 
+
+if(CAMPO == 'txtColigada' ){ 
+
+	window['txtFilial'].clear();
+	document.getElementById("txtLocalEstoque").value = "";
+	window['txtFornecedor'].clear();
+	window['txtContrato'].clear();
+	window['txtParcela'].clear();
+	document.getElementById("txtCondPagamento").value = "";
+
+} else if(CAMPO == 'txtFilial' ){ 
+	window['txtFilial'].clear();
+	document.getElementById("CODFILIAL").value = "";
+		}
+
+
+}
+
+function setSelectedZoomItem(selectedItem) {  
+
+var CAMPO = selectedItem.inputName; 
+
+var usuario = $('input[name="txtUsuarioRM"]').val();
+
+if(CAMPO == 'txtColigada' ){ 
+	$('input[name="CODCOLIGADA"]').val(selectedItem["CODCOLIGADA"]);
+	reloadZoomFilterValues("txtFilial","CODCOLIGADA,"+selectedItem.CODCOLIGADA);
+	reloadZoomFilterValues("txtRequisitante","CODCOLIGADA,"+selectedItem.CODCOLIGADA);
+	reloadZoomFilterValues("txtFornecedor", "CODCOLIGADA," + selectedItem.CODCOLIGADA);
+	reloadZoomFilterValues("txtContrato", "CODCOLIGADA," + selectedItem.CODCOLIGADA+",CODUSUARIO,"+usuario);
+    }
+else if(CAMPO == 'txtFilial' ){ 
+	$('input[name="CODFILIAL"]').val(selectedItem["CODFILIAL"]);
+	$('input[name="CODLOC"]').val(selectedItem["CODLOC"]);
+	document.getElementById("txtLocalEstoque").value = selectedItem["CODLOC"];
+
+					    console.log("codfilial = " + selectedItem["CODFILIAL"]);
+
+					   reloadZoomFilterValues("txtContrato","CODUSUARIO," +usuario+ ",CODCOLIGADA," +selectedItem.CODCOLIGADA+ ",CODFILIAL," + selectedItem['CODFILIAL']);
+
+
+
+}
+else  if(CAMPO == 'txtRequisitante' ){ 
+	$('input[name="CODVEN"]').val(selectedItem["CODVEN"]);
+}
+else  if( Left(CAMPO,12) == 'txtComprador' ){ 
+
+	it = "CODCOMP___" + selectedItem.inputName.replace("txtComprador___",""); 
+	$('input[name="'+it+'"]').val(selectedItem["CODVEN"]);
+	    }
+        else if( Left(CAMPO,12) == 'txtcodigoPRD' ){ 
+                it = "IDPRD___" + selectedItem.inputName.replace("txtcodigoPRD___","");
+                console.log("Que esta acontecendo"+it); 
+				$('input[name="'+it+'"]').val(selectedItem["IDPRD"]);
+				it = "ckPrdEstocavel___" + selectedItem.inputName.replace("txtcodigoPRD___",""); 
+				$('input[name="'+it+'"]').val(selectedItem["ESTOCAVEL"]); 
+				it = "txtPrecoUnitario___" + selectedItem.inputName.replace("txtcodigoPRD___","");
+				$('input[name="'+it+'"]').val(selectedItem["CUSTOUNITARIO"].replace(".",",")); ;
+				it = "CODIGOPRD___" + selectedItem.inputName.replace("txtcodigoPRD___","");
+				$('input[name="'+it+'"]').val(selectedItem["CODIGOPRD"]);
+		    }	
+                else if( Left(CAMPO,12) == 'txtCodCCusto' ){ 
+                    it = "CODCCUSTO___"  + selectedItem.inputName.replace("txtCodCCusto___",""); 
+					$('input[name="'+it+'"]').val(selectedItem["CODCCUSTO"]);
+					
+					it = "txtUserApr";
+					campoAprovador = "APROVADOR";
+					campoNomeAprovador = "APELIDO_APROVADOR";
+					campoMatricula = "MATRICULA";
+					if ( $('input[name="'+it+'"]').val() == "" ) {
+						$('input[name="'+it+'"]').val(selectedItem[campoAprovador]);
+						$('input[name="lbAprovador"]').val(selectedItem[campoNomeAprovador]);
+						$('input[name="txtUsuarioAprovador"]').val(selectedItem[campoMatricula]);
+												
+					} 
+					else if (( $('input[name="'+it+'"]').val() != selectedItem[campoAprovador] ) && ( $('select[name="comSerie"]').val() != "F" ))  {
+		            	FLUIGC.message.alert({
+					        message: 'Centro de Custo com gestor ('+selectedItem[campoAprovador]+') Diferente do Inicial!',
+					        title: 'ERRO',
+					        label: 'OK'
+				         });				
+				         
+			         window['txtCodCCusto'+ Right( selectedItem.inputName, 4)].clear();		
+					}
+    }					    
+    else if( CAMPO == 'txtFornecedor' ){ 
+
+
+
+        $('input[name="CODCFO"]').val(selectedItem["CODCFO"]);
+        $('input[name="CODCOLCFO"]').val(selectedItem["CODCOLIGADA"]); //DATASET DSFCFO
+
+
+
+    }
+     else if( CAMPO == 'txtContrato' ){ 
+
+    	reloadZoomFilterValues("txtParcela", "CODCOLIGADA," + selectedItem.CODCOLIGADA+",IDCNT,"+selectedItem.IDCNT);
+        $('input[name="IDCNT"]').val(selectedItem["IDCNT"]);
+        $('input[name="CODCPG"]').val(selectedItem["CODCPG"]);
+        $('input[name="CODCFO"]').val(selectedItem["CODCFO"]);
+        $('input[name="CODCOLCFO"]').val(selectedItem["CODCOLCFO"]); //DATASET DSTCNT
+
+    }	
+    else if( CAMPO == 'txtParcela' ){ 
+     	$('input[name="IDMOVCNT"]').val(selectedItem["IDMOV"]);
+        $('input[name="txtDataVencimento"]').val(selectedItem["DATAVENCIMENTO"]);
+        $('input[name="txtValorPrevisto"]').val(selectedItem["VALORLIQUIDO"]);
+        $('input[name="CODTMV"]').val(selectedItem["CODTMV"]);
+        $('input[name="IDNAT"]').val(selectedItem["IDNAT"]);
+        
+
+    } else if ( CAMPO == 'txtProcessoCopia' ) {
+       
+       setZoomData("txtColigada", selectedItem["txtColigada"]);
+       $('input[name="CODCOLIGADA"]').val(selectedItem["CODCOLIGADA"]);
+       
+       setZoomData("txtFilial", selectedItem["txtFilial"]);
+       $('input[name="CODFILIAL"]').val(selectedItem["CODFILIAL"]);
+       
+       $('input[name="txtLocalEstoque"]').val(selectedItem["txtLocalEstoque"]);
+       $('input[name="CODLOC"]').val(selectedItem["CODLOC"]);
+       
+       $('input[name="txtTipoProcesso"]').val(selectedItem["txtTipoProcesso"]);
+
+       var TP = $('input[name="txtTipoProcesso"]').val();
+
+       if (TP == "1") {
+
+       		$('#txtTP1').prop('checked' , true);
+       		$('#txtTP1').click();
+
+       } else if (TP == "2") {
+
+		       		$('#txtTP2').prop('checked' , true);
+		       		$('#txtTP2').click();
+
+		       } if (TP == "3") {
+
+			       		$('#txtTP3').prop('checked' , true);
+			       		$('#txtTP3').click();
+
+			       } else if (TP == "4") {
+
+					       		$('#txtTP4').prop('checked' , true);
+					       		$('#txtTP4').click();
+
+					       }
+
+       
+       
+       setZoomData("txtRequisitante", selectedItem["txtRequisitante"]);
+       $('input[name="CODVEN"]').val(selectedItem["CODVEN"]);	
+       $('input[name="documentidcopia"]').val(	selectedItem["documentid"]);
+       $('input[name="txtUsuarioAprovador"]').val(	selectedItem["txtUsuarioAprovador"]);
+       $('input[name="txtUserApr"]').val(	selectedItem["txtUserApr"]);
+       $('input[name="lbAprovador"]').val(	selectedItem["lbAprovador"]);
+       setZoomData("txtContrato", selectedItem["txtContrato"]);	
+       $('input[name="IDCNT"]').val(	selectedItem["IDCNT"]);
+       setZoomData("txtFornecedor", selectedItem["txtFornecedor"]);
+       $('input[name="CODCOLCFO"]').val(	selectedItem["CODCOLCFO"]); //COPIA DE PROCESSO
+       $('input[name="CODCFO"]').val(	selectedItem["CODCFO"]);
+       
+       					       
+       CopiarItensProcesso (selectedItem["documentid"]);
+       
+       
+    }
+       
+}
+
+function CalcTotalItem(e){
+
+var valortotal = 0;
+var nomecampo = e.name;
+var n = nomecampo.indexOf("___");
+var item = nomecampo.replace ( Left(nomecampo,n), "");
+
+var precountPONTO = $("[name='txtPrecoUnitario"+item+"']").val().replace(".","");
+
+var precounitario = precountPONTO.replace(".","");
+var precounitario = precounitario.replace(".","");
+var precounitario = precounitario.replace(",",".");
+
+var quantidadePONTO = $("[name='txtQtdSolicitada"+item+"']").val().replace(".","");
+
+var quantidade = quantidadePONTO.replace(".","");
+var quantidade = quantidade.replace(".","");
+var quantidade = quantidade.replace(",",".");
+
+
+
+
+if( !isNaN(precounitario) & !isNaN(quantidade) ){
+		var val_precounitario = parseFloat( precounitario );
+		var val_quantidade = parseFloat( quantidade );
+		if (val_quantidade<0 || val_precounitario<0){
+			FLUIGC.message.alert({
+	        message: 'Campo quantidade ou Preço Unitário Negativo, corrigir!',
+	        title: 'ERRO',
+	        label: 'OK'
+         });
+		} else {valortotal = val_precounitario * val_quantidade;
+		}
+	}
+	if ( !isNaN(valortotal) ){
+	   $("[name='txtTotalItem"+item+"']").val(valortotal.toFixed(3).replace(".",","));
+	}
+	
+
+SomaTotal();
+		
+}
+
+function SomaTotal() {
+
+		
+var soma = 0;
+$("input").each( function(index, value) {
+
+    var name = $(this).attr('id');
+    var item = "";
+    
+    if ( Left( name, 16 ) == "txtQtdSolicitada" ){
+
+    	if ( $('input[name="'+name+'"]').val().length < 4 ) {
+
+    			var mascara = "000"+$('input[name="'+name+'"]').val();
+    			mascara = parseFloat(mascara);
+    			mascara = mascara.toFixed(2).replace(".",",");
+
+    			$('input[name="'+name+'"]').val(mascara);
+
+    		}
+
+    	
+    }
+
+    if ( Left( name, 16 ) == "txtPrecoUnitario" ){
+
+    		console.log("Que Numero é Esse"+$('input[name="'+name+'"]').length);
+
+    		if ( $('input[name="'+name+'"]').val().length < 5 ) {
+
+    			var mascara = "0000"+$('input[name="'+name+'"]').val();
+    			mascara = parseFloat(mascara);
+    			mascara = mascara.toFixed(3).replace(".",",");
+
+    			$('input[name="'+name+'"]').val(mascara);
+
+    		}
+
+
+
+    
+    }
+
+
+    if ( Left( name, 12 ) == "txtTotalItem" ){
+
+    
+    	valorReplace = $(this).val().replace(".","");
+    	valorReplace = valorReplace.replace(".","");
+    	valorReplace = valorReplace.replace(".","");
+    	valorReplace = valorReplace.replace(",",".");
+
+       if ( valorReplace != "" ){
+       	  
+       	    soma = soma + parseFloat(valorReplace);
+        					       }
+    
+
+    }	
+}) ; 
+
+var Frete = $("[name='txtValorFrete']").val().replace(",",".");
+console.info(parseFloat(Frete));
+var Desconto = $("[name='txtValorDesconto']").val().replace(",",".");
+console.info(parseFloat(Desconto));
+console.info(parseFloat(soma));
+
+var somaReplace =  parseFloat(soma) + parseFloat(Frete) - parseFloat(Desconto);
+console.info(somaReplace);
+
+$("[name='txtValorItens']").val(somaReplace.toFixed(3).replace(".",","));
+
+MaskEvent.initMask($('input[name="txtValorItens"]'));
+
+
+
+// VERIFICA ITEN APROVADO PELO CENTRO DE CUSTO
+var revisadoCCU = 0;
+var reprovadoCCU = 0;
+var aprovadoCCU = 0;
+var estoquetotal = 0;
+	
+$("select").each( function(index, value) {
+
+		var name = $(this).attr('id');
+		
+		if ( Left( name, 12 ) == "comAprovado_" ){
+
+
+
+		if ( $(this).val() == "R" ) {
+				revisadoCCU = revisadoCCU + 1;
+				$('input[name="txtSaldoEstoque___'+index+'"]').val("");
+            $('input[name="txtEstoque___'+index+'"]').val("");
+            $('input[name="txtQtdCompra___'+index+'"]').val("");
+            $('input[name="ATENDIDO___'+index+'"]').val("");
+            
+
+            				
+			} else if ( $(this).val() == "N" ) {
+       				reprovadoCCU = reprovadoCCU + 1;
+       				$('input[name="txtSaldoEstoque___'+index+'"]').val("");
+                    $('input[name="txtEstoque___'+index+'"]').val("");
+                    $('input[name="txtQtdCompra___'+index+'"]').val("");
+                    $('input[name="ATENDIDO___'+index+'"]').val("");
+            		
+
+
+    				} else if ( $(this).val() == "S" ) {
+
+    					
+
+           						aprovadoCCU = aprovadoCCU + 1;
+
+           					console.log("Dentro do If"+aprovadoCCU);
+           					// Inicia o Processo para Consulta de Estoque e ver a baixa
+           					var index =  name.replace("comAprovado___","");
+
+           					var estocavel = $('input[name="ckPrdEstocavel___'+index+'"]').val();
+           					var tipoprocesso = $('input[name="txtTipoProcesso"]').val();
+
+           					console.log("produto Estocavel"+estocavel);
+           					console.log("Qual tipo Processo-> "+tipoprocesso);
+
+           					if ((tipoprocesso == "1")  && (estocavel == "SIM")) {
+
+           							var codcoligada = $('input[name="CODCOLIGADA"]').val();
+           							var codfilial 	= $('input[name="CODFILIAL"]').val();
+           							var codloc 		= $('input[name="CODLOC"]').val();
+           							var idprd 		= $('input[name="IDPRD___'+index+'"]').val();
+           							
+           							var qtdEstoque  = 0;
+           							var qtdCompra   = 0;
+
+           							var saldo = SaldoEstoque(codcoligada,codfilial,codloc,idprd,'___'+index);
+           							saldo = parseFloat(saldo);
+
+           							console.log("Saldo Estoque ->>"+ saldo);
+
+           							var qtdSOL = $('input[name="txtQtdSolicitada___'+index+'"]').val();
+           							qtdSOL = qtdSOL.replace(".","");
+                                	qtdSOL = qtdSOL.replace(".","");
+                                	qtdSOL = qtdSOL.replace(".","");
+                                	qtdSOL = parseFloat(qtdSOL.replace(",","."));
+
+                                	if (saldo == 0) {
+
+                                		qtdEstoque = 0;
+                                        qtdCompra = qtdSOL;
+
+                                        console.log("qtd Solic ->>"+qtdSOL);
+                                        console.log("qtd Estoque ->>"+qtdEstoque);
+                                        console.log("qtd compra ->>"+qtdCompra);
+
+                                	} else if (saldo >= qtdSOL) {
+
+                                		console.log("Entrei Primeiro IF ->>"+saldo);
+                                        
+                                        	qtdEstoque = qtdSOL;
+                                        	qtdCompra = 0;
+                                        console.log("qtd Solic ->>"+qtdSOL);
+                                        console.log("qtd Estoque ->>"+qtdEstoque);
+                                        console.log("qtd compra ->>"+qtdCompra);	
+
+                                    } else {
+
+                                        	qtdEstoque = saldo;
+                                        	qtdCompra = qtdSOL - saldo;
+
+                                        	console.log("qtd Solic ->>"+qtdSOL);
+                                        	console.log("qtd Estoque ->>"+qtdEstoque);
+                                        	console.log("qtd compra ->>"+qtdCompra);
+                                    	}
+                                
+
+                                     $('input[name="txtSaldoEstoque___'+index+'"]').val(saldo);
+                                     $('input[name="txtEstoque___'+index+'"]').val(qtdEstoque);
+                                     $('input[name="txtQtdCompra___'+index+'"]').val(qtdCompra);
+                                     $('input[name="ATENDIDO___'+index+'"]').val(qtdEstoque);
+
+                                     console.log("qtdCompra ->>"+qtdCompra);
+
+                                     if (qtdCompra == 0) {
+
+                                     	estoquetotal = estoquetotal+1;
+                                     }
+
+           						} else if ((tipoprocesso == "4") || (estocavel == "NAO")) {
+
+           							var qtdSOL = $('input[name="txtQtdSolicitada___'+index+'"]').val();
+           							qtdSOL = qtdSOL.replace(".","");
+                                	qtdSOL = qtdSOL.replace(".","");
+                                	qtdSOL = qtdSOL.replace(".","");
+                                	qtdSOL = parseFloat(qtdSOL.replace(",","."));
+
+           							$('input[name="txtSaldoEstoque___'+index+'"]').val("0");
+                                    $('input[name="txtEstoque___'+index+'"]').val("0");
+                                    $('input[name="txtQtdCompra___'+index+'"]').val(qtdSOL);
+                                    $('input[name="ATENDIDO___'+index+'"]').val("0");
+
+                                    console.log("qtd Solic ->>"+qtdSOL);
+                                    console.log("qtd Estoque ->>"+qtdEstoque);
+                                    console.log("qtd compra ->>"+$('input[name="txtQtdCompra___'+index+'"]').val());
+
+           							}   
+
+           					       
+				 	} //final do if do Aprovado
+	 } //fecha o IF do campo Arpovado
+}); //fecha a Função Search
+
+$("[name='QTDREVISADOCCU']").val(Right("000"+revisadoCCU,4));
+$("[name='QTDREPROVADOCCU']").val(Right("000"+reprovadoCCU,4));
+$("[name='QTDAPROVADOCCU']").val(Right("000"+aprovadoCCU,4));
+$("[name='ESTOQUETOTAL']").val(Right("000"+estoquetotal,4));
+
+// FIM DA APROVACAO DO CENTRO DE CUSTO
+
+// VERIFICA ITEN APROVADO PELO FINANCEIRO
+var revisadoFIN = 0;
+var reprovadoFIN = 0;
+var aprovadoFIN = 0;
+
+	
+$("select").each( function(index, value) {
+
+		var name = $(this).attr('id');
+		
+		if ( Left( name, 17 ) == "comAprFinanceiro_" ){
+		if ( $(this).val() == "R" ) {
+            
+           
+				revisadoFIN = revisadoFIN + 1;				
+		
+		} else if ( $(this).val() == "N" ) {
+
+           
+				reprovadoFIN = reprovadoFIN + 1;				
+			
+			} else if ( $(this).val() == "S" ) {
+
+					
+						aprovadoFIN = aprovadoFIN + 1;
+				}         
+
+	 	}
+	}); 
+
+$("[name='QTDREVISADOFIN']").val(Right("000"+revisadoFIN,4));
+$("[name='QTDREPROVADOFIN']").val(Right("000"+reprovadoFIN,4));
+$("[name='QTDAPROVADOFIN']").val(Right("000"+aprovadoFIN,4));
+
+// FIM DA APROVACAO FINANCEIRA
+
+// VERIFICA ITEN APROVADO PELO MANTENEDORA
+var revisadoMAN = 0;
+var reprovadoMAN = 0;
+var aprovadoMAN = 0;
+
+	
+$("select").each( function(index, value) {
+
+		var name = $(this).attr('id');
+		
+		if ( Left( name, 18 ) == "comAprMantenedora_" ){
+		if ( $(this).val() == "R" ) {
+				revisadoMAN = revisadoMAN + 1;				
+		} else if ( $(this).val() == "N" ) {
+				reprovadoMAN = reprovadoMAN + 1;				
+			} else if ( $(this).val() == "S" ) {
+						aprovadoMAN = aprovadoMAN + 1;
+				}         
+
+	 	}
+	}); 
+
+$("[name='QTDREVISADOMAN']").val(Right("000"+revisadoMAN,4));
+$("[name='QTDREPROVADOMAN']").val(Right("000"+reprovadoMAN,4));
+$("[name='QTDAPROVADOMAN']").val(Right("000"+aprovadoMAN,4));
+
+// FIM DA ATUALIZAÇÃO
+
+
+
+console.log("Aprovado-> "+$("[name='QTDAPROVADOCCU']").val());
+console.log("Reprovado-> "+$("[name='QTDREPROVADOCCU']").val());
+console.log("Revisado-> "+$("[name='QTDREVISADOCCU']").val());
+console.log("Total Estoque-> "+$("[name='ESTOQUETOTAL']").val());
+
+return soma;
+
+}
+
+
+
+function buscaColab(){
+
+	var dados = {
+		"name": "colleague",
+		"fields":null,
+		"constraints":[
+		{
+		"_field":"colleaguePK.colleagueId",
+		"_initialValue": 'adm_emp1',
+		"_finalValue": 'adm_emp1',
+		"_type":1
+		}
+		]
+	};
+	
+	$.ajax({
+		method: "POST",
+		url: "/api/public/ecm/dataset/datasets/",
+		data: JSON.stringify(dados),
+		contentType: "application/json", 
+		async: false,
+		error: function(x, e) {
+		if (x.status == 500) {
+		alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+		}
+		},
+		beforeSend: function(){
+
+		},
+		success:function(model) {
+
+		$.each(model.content.values, function(index, value){
+
+		var nomeRegiao  = value.colleagueName;
+
+		console.log(nomeRegiao);
+
+
+
+		});
+		return model;
+		}
+	});
+
+
+}
+
+
+</script>
+</head>
+<body onload="reloadColigada()">
+<div class="well well-sm">
+<div class="fluig-style-guide">
+<form name="form" role="form" >
+
+<div class="panel with-nav-tabs panel-default">
+
+<div class="panel-heading"> 
+	<ul class="nav nav-tabs clearfix" id="nav" >
+    	
+	    	<li class="nav-item active" >
+
+	    	    <a data-toggle="tab" href="#cabecalho" ><h3 class="list-group-item-heading">Dados Gerais</h3></a>
+	    	</li>
+	    	<li class="nav-item" >
+		    	<a data-toggle="tab" href="#itens" onclick="NewchildAdd()"><h3 class="list-group-item-heading">Itens</h3></a>
+		    </li>
+	    	<li class="nav-item" >
+		    	<a data-toggle="tab" href="#tecnologia"><h3 class="list-group-item-heading">Tecnologia</h3></a>
+		    </li>
+		    <li>
+		    <div class="paragraph-is-required system-message-information alert alert-info" role="alert">Todos os campos com * são de preenchimento obrigatório.</div>
+		    </li>
+		
+	</ul>
+</div>
+<div class="panel-body"> <div class="tab-content">
+	
+    <div id="cabecalho" class="tab-pane fade in active" >	
+	    
+	    
+        <div class="panel panel-default" align="center">
+	       <div class="panel-heading"><h4>Dados da Requisição</h4></div>
+	       <div class="panel-body">
+			    <div class="row">
+					<div class="col-md-2" id="divTipoProcesso" align="left" >	
+						<div class="form-group">
+							<label for="txtNumeroProcesso">Número do Processo</label>
+							<input type="text" id="txtNumeroProcesso" name="txtNumeroProcesso" class="form-control" style="text-align:center;" readonly />
+						</div>
+						<div class="form-group">
+							<label for="txtData">Data da Solicitação</label>
+							<input type="text" id="txtData" name="txtData" class="form-control" style="text-align:center;" readonly />
+						</div>
+						<div class="form-group">
+							<label for="txtData">Emissor</label>
+							<input type="text" id="txtUsuarioRM" name="txtUsuarioRM" class="form-control" style="text-align:center;" readonly />
+							<input type="hidden" id="txtSolicitanteRM" name="txtSolicitanteRM" />
+						</div>	
+						
+						
+					</div>	
+					<div class="col-md-10" id="divTipoProcesso" align="left" >
+						<div class="form-group">
+							<span class="required text-info">
+								<label for="txtTP">Tipo de Processo</label><strong>*</strong>
+							</span>
+							<div class="radio">
+								<label>
+											<input type="radio" name="txtTP" id="txtTP1" value="1" checked onclick="ShowContrato(this)">
+											<strong>Requisição de Produtos ou Serviços:</strong> Selecione essa opção para Realizar Solicitações à área de Suprimentos/Almoxarifado.
+								</label>
+								<label>
+											<input type="radio" name="txtTP" id="txtTP2" value="2" onclick="ShowContrato(this)">
+											<strong>Parcelas de Contratos já estabelecidos para Pagamento:</strong> Selecione essa opção caso já exista um contrato de prestação de serviços já estabelecido com o fornecedor e você deseja lançar novo pagamento.
+								</label>
+								<label>
+											<input type="radio" name="txtTP" id="txtTP3" value="3" onclick="ShowContrato(this)">
+											<strong>Compra direta, aprovada pela Mantenedora:</strong> Selecione essa opção apenas para situações de compras emergenciais pré-aprovadas pela Mantenedora mediante formulário de exceção devidamente assinado.
+								</label>
+								<label>
+											<input type="radio" name="txtTP" id="txtTP4" value="4" onclick="ShowContrato(this)">
+											<strong>Ressuprimento do Almoxarifado:</strong> Selecione essa opção apenas para repor os produtos estocáveis. Uso exclusivo dos funcionários do Almoxarifado.
+								</label>
+								<input type="hidden" name="txtTipoProcesso" id="txtTipoProcesso" >
+							</div>
+						</div>
+						
+						
+						<div class="col-md-4"  align="left" id="divCopiar">
+							<div class="form-group">
+								<span class="required text-info">
+									<label for="txtProcessoCopia" align="left">Processo Origem para Cópia<strong>*</strong></label>
+								</span>
+								<input type="zoom" name="txtProcessoCopia" id="txtProcessoCopia"  data-zoom="
+													{
+													 'displayKey':'txtNumeroProcesso',
+													 'datasetId':'dsProcCompras',
+													 'placeholder':'Numero Processo',
+													 'fields':[
+													            {'field':'Numero Processo','label':'txtNumeroProcesso','standard':'true'}
+													           ]
+													}" class="form-control" fieldkey="txtNumeroProcesso" />
+							    <input type="hidden" name="documentidcopia" id="documentidcopia">
+							</div>
+						</div>				
+						
+					</div>
+						
+				</div>	
+			    <div class="row">	
+						<div class="col-md-4"  align="left" >
+						<div class="form-group">
+							<span class="required text-info">
+								<label for="txtColigada">Coligada</label><strong>*</strong>
+							</span>
+							<input  type="zoom" name="txtColigada" id="txtColigada"  data-zoom="
+												{
+												 'displayKey':'COLIGADA',
+												 'datasetId':'dsGCOLIGADA',
+												 'placeholder':'Coligada',
+												 'fields':[
+												 			{'field':'COLIGADA','label':'Nome Fantasia','standard':'true'},
+												 			{'field':'CODCOLIGADA','label':'Código','visible':'false'}
+															]
+												}" class="form-control" fieldkey="CODCOLIGADA" />
+							<input type="hidden" name="CODCOLIGADA" id="CODCOLIGADA" >
+							<input type="hidden" name="IDMOV" id="IDMOV" >
+						</div>
+						</div>	
+						<div class="col-md-4"  align="left">
+							<div class="form-group">
+								<span class="required text-info">
+									<label for="txtFilial" align="left">Filial</label><strong>*</strong>
+								</span>
+								<input type="zoom" name="txtFilial" id="txtFilial"  data-zoom="
+													{
+													 'displayKey':'FILIAL',
+													 'datasetId':'dsGFILIAL',
+													 'placeholder':'Filial',
+													 'fields':[
+													            {'field':'FILIAL',
+													            'label':'Filial',
+													            'standard':'true'
+													            },{
+													            'field':'CODFILIAL',
+													            'label':'Cod.Filial'
+													            }
+													           ]
+													}" class="form-control" fieldkey="CODFILIAL" />
+							    <input type="hidden" name="CODFILIAL" id="CODFILIAL">
+							</div>
+						</div>
+						<div class="col-md-4"  align="left">
+							<div class="form-group">
+								<span class="required text-info">
+									<label for="txtRequisitante" align="left">Requisitante</label><strong>*</strong>
+								</span>
+								<input type="zoom" name="txtRequisitante" id="txtRequisitante"  data-zoom="
+													{
+													 'displayKey':'REQUISITANTE',
+													 'datasetId':'dsTVEN',
+													 'placeholder':'Requisitante',
+													 'fields':[
+													            {'field':'REQUISITANTE','label':'Requisitante','standard':'true'}
+													           ]
+													}" class="form-control" fieldkey="REQUISITANTE" />
+							    <input type="hidden" name="CODVEN" id="CODVEN">
+							</div>
+						</div>
+						<div id="LocalEstoque">
+							<div class="col-md-2"  align="left">
+								<div class="form-group">
+									<span class="required text-info">
+										<label for="txtLocalEstoque" align="left">Local de Estoque</label><strong>*</strong>
+									</span>
+									<input type="text" name="txtLocalEstoque" id="txtLocalEstoque" class="form-control" readonly />
+					                <input type="hidden" name="CODLOC" id="CODLOC">
+								</div>
+							</div>
+						</div>										
+					</div>
+					 <div class="row">	
+						<div class="col-md-12" align="center">
+							<div class="form-group">
+								<label for="txtHistoricoMOV">Observações da Requisição</label>
+								<textarea name="txtHistoricoMOV" rows="5" cols="100" style="width: 98%;overflow-x: scroll;" id="txtHistoricoMOV" class="form-group" data-size="big"></textarea>
+								<span class="required text-alert">
+								<label align="left" ><p class="help-block"><i><h6>Para os tipos de Processo "Parcela de Contrato" e "Compras Diretas" preenchimento Obrigatório</h6></i></p></label>
+								</span>
+							</div>
+								
+						</div>									
+					</div>
+														
+				</div>
+		</div>
+		
+		 <div class="panel panel-default" align="center" id="pnlContrato">
+	       <div class="panel-heading" ><h3>Dados do Contrato</h3></div>
+	       <div class="panel-body">
+			    <div class="row">	
+					<div class="col-md-6"  align="left">
+						<div class="form-group" >
+							<span class="required text-alert">
+								<label for="txtContrato" align="left">Contrato</label><strong>*</strong>
+							</span>
+							<input type="zoom" name="txtContrato" id="txtContrato"  data-zoom="
+												{
+												 'displayKey':'CONTRATO',
+												 'datasetId':'dsTCNT',
+												 'placeholder':'Contrato',
+												 'fields':[
+												            {'field':'CONTRATO','label':'Contrato','standard':'true'},
+												 			{'field':'CODIGOCONTRATO','label':'Código Contrato','visible':'false'}
+												           ]
+												}" class="form-control" fieldkey="CONTRATO" />
+						    <input type="hidden" name="IDCNT" id="IDCNT">
+						    <input type="hidden" name="CODCPG" id="CODCPG">
+						</div>
+					</div>
+					<div class="col-md-6"  align="left">
+						<div class="form-group" >
+							<span class="required text-alert">
+								<label for="txtParcela" align="left">Parcela</label><strong>*</strong>
+							</span>
+							<input type="zoom" name="txtParcela" id="txtParcela"  data-zoom="
+												{
+												 'displayKey':'NUMEROMOV',
+												 'datasetId':'dsPARCELACNT',
+												 'placeholder':'Parcela Contrato',
+												 'fields':[
+												            {'field':'PARCELACONTRATO','label':'Parcela - Vencimento - Valor','standard':'true'}
+												           ]
+												}" class="form-control" fieldkey="PARCELACONTRATO" />
+						    <input type="hidden" name="IDMOVCNT" id="IDMOVCNT">
+						    <input type="hidden" name="CODTMV" id="CODTMV">
+						    <input type="hidden" name="IDNAT" id="IDNAT">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3" align="left" >
+							<div class="form-group">
+								<span class="required text-info">
+								<label for="txtNumNF">Nº Nota Fiscal</label><strong>*</strong></span>
+								<input type="text" id="txtNumNF" style="text-align:center!important;" name="txtNumNF" class="form-control" mask="#000000000" maxlength="9" />
+							</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<span class="required text-info">
+								<label for="txtEmissaoCNT">Data Emissão</label><strong>*</strong>
+							</span>
+							<input type="date" id="txtEmissaoCNT" name="txtEmissaoCNT" class="form-control"  style="text-align:center;" onblur="validaEmissao(this)"/>
+						</div>
+					</div>
+					
+					<div class="col-md-3">
+						<div class="form-group">
+							<span class="required text-info">
+								<label for="txtDataVencimento">Data Vencimento</label><strong>*</strong>
+							</span>
+							<input type="date" id="txtDataVencimento" name="txtDataVencimento" class="form-control"  style="text-align:center;" onblur="validaVencimento(this)"  />
+						</div>
+					</div>
+					<div class="col-md-3" align="left">
+						<div class="form-group">
+							<label for="txtValorPrevisto">Valor Previsto</label>
+							<input type="text" id="txtValorPrevisto" name="txtValorPrevisto" class="form-control"  style="text-align:right!important;" mask="#00.000.000.000.000,00" readonly />
+						</div>
+					</div>
+				</div>
+													
+			</div>
+		</div>
+			<div class="panel panel-default" align="center" id="pnlCompraDireta">
+	       <div class="panel-heading" ><h3>Compras Diretas</h3></div>
+	       <div class="panel-body">
+			    <div class="row">	
+			    	<div class="col-md-4" id="divFornecedor"  align="left">
+						<div class="form-group" >
+							<span class="required text-info">
+								<label for="txtFornecedor" align="left">Fornecedor</label><strong>*</strong>
+							</span>
+							<input type="zoom" name="txtFornecedor" id="txtFornecedor"  data-zoom="
+												{
+												 'displayKey':'FORNECEDOR',
+												 'datasetId':'dsFCFO',
+												 'placeholder':'Fornecedor',
+												 'fields':[
+												            {
+												            'field':'FORNECEDOR',
+												            'label':'Fornecedor',
+												            'standard':'true'
+												            }
+												           ]
+												}" class="form-control" fieldkey="CODCFO" />
+						    <input type="hidden" name="CODCOLCFO" id="CODCOLCFO">
+						    <input type="hidden" name="CODCFO" id="CODCFO">
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<span class="required text-info">
+								<label for="txtEmissaoCD">Data Emissão</label><strong>*</strong>
+							</span>
+							<input type="date" id="txtEmissaoCD" name="txtEmissaoCD" class="form-control"  style="text-align:center;" onblur="validaEmissao(this)"  />
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="form-group">
+							<span class="required text-info">
+								<label for="txtCondPagamento">Data Pagamento</label><strong>*</strong>
+							</span>
+							<input type="date" id="txtCondPagamento" name="txtCondPagamento" class="form-control"  style="text-align:center;" onblur="validaVencimento(this)"  />
+						</div>
+					</div>
+					<div class="col-md-2" align="left">
+							<div class="form-group">
+								<label for="comSerie">Série</label>
+								<select class="form-control" name="comSerie" id="comSerie" onchange="AprovadorFOL()">
+									<option value="P">PCA</option>
+									<option value="F">FOL</option>
+									<option value="D">DIR</option>		
+								</select>
+
+							</div>
+					</div>	
+					<div class="col-md-2" align="left">
+							<div class="form-group">
+								<label for="comSerie">Tipo Série</label>
+								<input type="text" id="comSerieAux" name="comSerieAux" class="form-control" readonly value="PCA" />
+								<input type="hidden" name="tipoSerie" id="tipoSerie">
+							</div>
+					</div>	
+				</div>
+													
+			</div>
+		</div>
+    </div>
+    
+    <div id="itens" class="tab-pane" >	  
+	    <div class="row">
+			<div class="col-md-2" align="left">
+				<div class="form-group">
+					<label for="txtValorFrete">Frete</label>
+					<input type="text" id="txtValorFrete" name="txtValorFrete" class="form-control"  style="text-align:right!important;" mask="#00.000.000.000.000,00" onchange="SomaTotal(this)" />
+				</div>
+			</div>
+			<div class="col-md-2" align="left">
+				<div class="form-group">
+					<label for="txtValorDesconto">Desconto</label>
+					<input type="text" id="txtValorDesconto" name="txtValorDesconto" class="form-control"  style="text-align:right!important;" mask="#00.000.000.000.000,00" onchange="SomaTotal(this)" />
+				</div>
+			</div>
+			<div class="col-md-2" align="left">
+				<div class="form-group">
+					<label for="txtValorItens">Valor Total</label>
+					<input type="text" id="txtValorItens" name="txtValorItens" class="form-control"  style="text-align:right!important;" mask="#00.000.000.000.000,000" readonly />
+				</div>
+			</div>
+			<div id="Divcompras">
+				<div class="col-md-5">
+					<div class="form-group">
+						<label for="txtComentarioComprador">Comentário para Comprador</label>
+						<input type="text" id="txtComentarioComprador" name="txtComentarioComprador" class="form-control" />
+					</div>
+				</div>
+				<div class="col-md-1"  align="center">
+					<div class="form-group">
+						<label>
+						<input name="ckbFinalizar" id="ckbFinalizar" type="checkbox" value="1"/> Finalizar Requisição
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="form-group">
+					<label for="txtUsuarioAprovador">Usuário Aprovador</label>
+					<input type="text" id="txtUserApr" name="txtUserApr" class="form-control" readonly/>
+					<input type="hidden" id="txtUsuarioAprovador" name="txtUsuarioAprovador"/>
+
+					<input type="hidden" name="emailSolicitante" id="emailSolicitante">
+
+					<input type="hidden" name="QTDAPROVADOCCU" id="QTDAPROVADOCCU">
+					<input type="hidden" name="QTDREPROVADOCCU" id="QTDREPROVADOCCU">
+					<input type="hidden" name="QTDREVISADOCCU" id="QTDREVISADOCCU">
+					<input type="text" class="form-control" name="QTDAPROVADOFIN" id="QTDAPROVADOFIN">
+					<input type="hidden" name="QTDREPROVADOFIN" id="QTDREPROVADOFIN">
+					<input type="hidden" name="QTDREVISADOFIN" id="QTDREVISADOFIN">
+					<input type="hidden" name="QTDAPROVADOMAN" id="QTDAPROVADOMAN">
+					<input type="hidden" name="QTDREPROVADOMAN" id="QTDREPROVADOMAN">
+					<input type="hidden" name="QTDREVISADOMAN" id="QTDREVISADOMAN">
+					<input type="hidden" name="ATIVIDADEATUAL" id="ATIVIDADEATUAL">
+					<input type="hidden" name="ESTOQUETOTAL" id="ESTOQUETOTAL">
+					<input type="hidden" name="QTDITEM" id="QTDITEM">
+					
+				</div>
+			</div>
+			<div class="col-md-7">
+				<div class="form-group">
+					<label for="lbAprovador">Gestor Centro Custo</label>
+					<input type="text" id="lbAprovador" name="lbAprovador" class="form-control" readonly/>
+				</div>
+			</div>
+
+		</div>		
+		
+        	<div class="btn-group btn-group-lg">
+	           <input name="btnAprovar" id="btnAprovar" class="btn btn-info btn-lg" type="button" value="Aprovar Todos" onclick="Aprovachild()" />
+	           <input name="btnReprovar" id="btnReprovar" class="btn btn-info btn-lg"  type="button" onclick="Reprovachild()" value="Reprovar Todos" />
+	           <input name="btnCopiarJustificativa" id="btnCopiarJustificativa" class="btn btn-info btn-lg"  type="button" onclick="CopiaJustificativa()" value="Copiar Justificativas" />
+	        </div> 
+	  
+	     <div class="table-responsive">  <!--table-bordered--> 
+           <table  class="table table-condensed" border="0" tablename="dsItens" id="dsItens" noaddbutton="true" addbuttonlabel="Novo" deletebuttonlabel="X" width="100%" customFnDelete="fnCustomDelete(this)">
+				<thead>
+					<tr>
+						<th><h4><a>Itens da Requisição de Compras</a></h4></th>
+					</tr>
+				</thead>	
+				
+				<tbody>
+				  <tr>
+				  	<th>
+				  		
+				  		 <div class="row">
+				  		 	<div class="col-md-1" align="center" >
+								<div class="form-group">
+							        <label for="txtItem">Item</label>
+							        <input type="text" name="txtItem" id="txtItem" class="form-control" style="text-align:center; " readonly>
+								</div>
+							</div>
+							<div class="col-md-10" align="left" >
+								<div class="form-group">
+									<span class="required text-info">
+									<label for="txtcodigoPRD">Produto</label><strong>*</strong></span>
+									<input type="zoom" name="txtcodigoPRD" id="txtcodigoPRD"  data-zoom="
+																		{
+																		 'displayKey':'PRODUTO',
+																		 'datasetId':'dsTPRD',
+																		 'placeholder':'Produto',
+																		 'fields':[
+																					{'field':'PRODUTO','label':'Produto','standard':'true'}
+																				   ]
+																		}" class="form-control"  />    
+									  <input type="hidden" id="IDPRD" name="IDPRD" class="form-control" readonly />
+									  <input type="hidden" id="CODIGOPRD" name="CODIGOPRD" class="form-control" readonly/> 
+							  </div>
+							</div>
+							<div class="col-md-1" align="center" >
+								<div class="form-group">
+							        <label for="ckPrdEstocavel">Prd.Estocável</label>
+							        <input type="text" name="ckPrdEstocavel" id="ckPrdEstocavel" class="form-control" readonly>
+							        <input type="hidden" name="ATENDIDO" id="ATENDIDO">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2" align="left" >
+								<div class="form-group">
+									<span class="required text-info">
+									<label for="txtQtdSolicitada">Qtd.Solicitada</label><strong>*</strong></span>
+								    <input type="text" id="txtQtdSolicitada" style="text-align:right!important;" name="txtQtdSolicitada" class="form-control" onchange="CalcTotalItem(this)" mask="#00.000.000.000.000,00" value="0,00" maxlength="15" />
+								</div>
+							</div>
+							<div class="col-md-2" align="left" >
+								<div class="form-group">
+									<label for="txtPrecoUnitario">Preço Unitário</label>
+								    <input type="text" id="txtPrecoUnitario" name="txtPrecoUnitario" class="form-control" onchange="CalcTotalItem(this)"  style="text-align:right!important;" mask="#00.000.000.000.000,000" maxlength="15" />
+								</div>
+							</div>
+							<div class="col-md-2" align="left" >    
+								<div class="form-group">
+									<label for="txtTotalItem">Total Item</label>
+									<input type="text" id="txtTotalItem" name="txtTotalItem" class="form-control"  style="text-align:right!important;" mask="#00.000.000.000.000,000" readonly />
+						  		</div>
+						  	</div>
+						  	<div class="col-md-4"  align="left" id="divComprador">
+							<div class="form-group">
+								<span class="required text-info">
+									<label for="txtComprador" align="left">Comprador</label><strong>*</strong>
+								</span>
+								<input type="zoom" name="txtComprador" id="txtComprador"  data-zoom="
+													{
+													 'displayKey':'REQUISITANTE',
+													 'filterValues':'CODCOLIGADA,1,COMPRADOR,2',
+													 'datasetId':'dsTVEN',
+													 'placeholder':'Comprador',
+													 'fields':[
+													            {'field':'REQUISITANTE','label':'Comprador','standard':'true'}
+													           ]
+													}" class="form-control" fieldkey="REQUISITANTE" />
+							    <input type="hidden" name="CODCOMP" id="CODCOMP">
+							</div>
+							</div>
+						  	<div class="col-md-2"  align="left" id="divComprador">
+							<div class="form-group">
+							  			<input type="hidden" id="txtSaldoEstoque" name="txtSaldoEstoque"/>
+							  	 		<input type="hidden" id="txtEstoque" name="txtEstoque"/>
+								 	<label for="txtQtdCompra" align="left">Qtd Compra</label><strong>*</strong>
+								 	<input type="text" id="txtQtdCompra" name="txtQtdCompra" class="form-control"  style="text-align:right!important;" readonly/>
+							</div>
+							</div>	
+						</div>	
+	<div class="row">
+		<div class="col-md-5" align="left" >
+			<div class="form-group">
+				<span class="required text-info">
+				<label for="txtCodCCusto">Centro de Custo</label><strong>*</strong></span>
+			    <input type="zoom" name="txtCodCCusto" id="txtCodCCusto"  data-zoom="
+		    									{
+												  'displayKey':'CENTROCUSTO',
+												  'datasetId':'dsCCUSTO',
+												  'placeholder':'Escolha Centro de Custo',
+												  'fields':[
+														 {
+														 'field':'CENTROCUSTO',
+														 'label':'Centro Custo',
+														 'standard':'true'
+														 }
+														]
+												}" class="form-control" />
+							    	<input type="hidden" id="CODCCUSTO" name="CODCCUSTO" class="form-control" readonly />
+								</div>
+							</div>
+							<div class="col-md-7" align="left" >
+					  			<div class="form-group">
+									<label for="txtHistoricoITMMOV">Observações do Item</label>
+							  		<input type="text" id="txtHistoricoITMMOV" name="txtHistoricoITMMOV" class="form-control" />
+							  	</div>
+							</div>
+						</div>
+						
+						<div id="GestorCCU">
+							<div class="row">
+							
+								<div class="col-md-3" align="left">
+									<div class="form-group">
+										<label><h3>Gestor Centro de Custo</h3></label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3" align="left">
+									<div class="form-group">
+										<label for="comAprovado">Aprovar?</label>
+											<select class="form-control" name="comAprovado" id="comAprovado" onchange="SomaTotal()">
+												<option value="">   </option>
+												<option value="S">Sim</option>
+												<option value="N">Não</option>
+												<option value="R">Revisar</option>
+											</select>
+									</div>
+								</div>
+								<div class="col-md-9" align="left">
+									<div class="form-group">
+										<label for="txtJustificativa">Justificativa</label>
+										<input typel="text" id="txtJustificativa" name="txtJustificativa" class="form-control" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+						
+						<div id="GestorFin">
+							<div class="row">
+								<div class="col-md-5" align="left" >
+									<div class="form-group">
+										<label><h3>Diretoria Financeira</h3></label>
+									</div>
+								</div>
+							</div>											
+							<div class="row">
+								<div class="col-md-3" align="left" >
+									<div class="form-group">
+										<label for="comAprFinanceiro">Aprovar?</label>
+										<select class="form-control" name="comAprFinanceiro" id="comAprFinanceiro" onchange="SomaTotal()">
+												<option value="">   </option>
+												<option value="S">Sim</option>
+												<option value="N">Não</option>
+												<option value="R">Revisar</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-9" align="left" >
+									<div class="form-group">
+										<label for="txtJustificativaFin">Justificativa</label>
+										<input typel="text" id="txtJustificativaFin" name="txtJustificativaFin" class="form-control" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="GestorMan">
+							<div class="row">
+								<div class="col-md-5" align="left" >
+									<div class="form-group">
+										<label ><h3>Mantenedora</h3></label>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3" align="left">
+									<div class="form-group">
+										<label for="comAprMantenedora">Aprovar?</label>
+										<select class="form-control" name="comAprMantenedora" id="comAprMantenedora" onchange="SomaTotal()">
+												<option value="">   </option>
+												<option value="S">Sim</option>
+												<option value="N">Não</option>
+												<option value="R">Revisar</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-9" align="left">
+									<div class="form-group">
+										<label for="txtJustificativaMan">Justificativa</label>
+								  		<input typel="text" id="txtJustificativaMan" name="txtJustificativaMan" class="form-control" />
+								  	</div>
+								</div>
+							</div>
+						</div>
+
+						</th>
+				  </tr>
+
+				</tbody>
+           </table>
+            <input name="btnAdicionar" id="btnAdicionar" class="btn btn-info btn-lg" type="button" onclick="childAdd()" value="Adicionar Item" />
+        </div>   							
+
+	</div>	
+
+	<div id="tecnologia" class="tab-pane">
+
+		<div class="row">	
+						<div class="col-md-12" align="center">
+							<div class="form-group">
+
+								<input class="form-control" name="statusIntegra" id="statusIntegra">	
+
+								<label for="txtErroIntegra">Descrição Erro</label>
+								<textarea name="txtErroIntegra" rows="5" cols="100" style="width: 98%;overflow-x: scroll;" id="txtErroIntegra" class="form-group" data-size="big" readonly=""></textarea>
+							</div>
+								
+						</div>									
+				</div>
+
+	</div>				    
+    
+    
+</div></div>
+
+</div>
+
+
+
+</form>
+</div>
+</div>
+</body>
+
+</html>

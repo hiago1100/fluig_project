@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://www.wfmc.org/2009/XPDL2.2">
+  <PackageHeader>
+    <XPDLVersion>2.2</XPDLVersion>
+    <Vendor>Fluig BPMN Modeler</Vendor>
+    <Created>Tue Jan 12 14:13:29 BRST 2021</Created>
+  </PackageHeader>
+  <RedefinableHeader>
+    <Version>1</Version>
+  </RedefinableHeader>
+  <ExternalPackages/>
+  <Participants/>
+  <DataStores/>
+  <Pools>
+    <Pool Id="pool1" Name="Pool" BoundaryVisible="true" Process="AFIP-COMPRAS">
+      <Lanes>
+        <Lane Id="swimlane2" Name="Reporter" ParentPool="pool1">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="218.0" Width="801.0" FillColor="9F9F9F">
+              <Coordinates XCoordinate="30.0" YCoordinate="0.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Lane>
+        <Lane Id="swimlane3" Name="Assignee" ParentPool="pool1">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="218.0" Width="801.0" FillColor="C0C0C0">
+              <Coordinates XCoordinate="30.0" YCoordinate="218.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Lane>
+        <Lane Id="swimlane9" Name="SwimLane" ParentPool="pool1">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="218.0" Width="801.0" FillColor="82b0b7">
+              <Coordinates XCoordinate="30.0" YCoordinate="436.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Lane>
+        <Lane Id="swimlane10" Name="SwimLane" ParentPool="pool1">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="218.0" Width="801.0" FillColor="adc9ac">
+              <Coordinates XCoordinate="30.0" YCoordinate="654.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Lane>
+        <Lane Id="swimlane57" Name="SwimLane" ParentPool="pool1">
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="219.0" Width="801.0" FillColor="d0daae">
+              <Coordinates XCoordinate="30.0" YCoordinate="872.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Lane>
+      </Lanes>
+      <NodeGraphicsInfos>
+        <NodeGraphicsInfo Height="1091.0" Width="831.0" FillColor="FFFFFF">
+          <Coordinates XCoordinate="10.0" YCoordinate="10.0"/>
+        </NodeGraphicsInfo>
+      </NodeGraphicsInfos>
+    </Pool>
+  </Pools>
+  <Associations/>
+  <Artifacts/>
+  <WorkflowProcesses>
+    <WorkflowProcess Id="AFIP-COMPRAS" Name="AFIP-COMPRAS">
+      <ProcessHeader>
+        <Created>Tue Jan 12 14:13:29 BRST 2021</Created>
+      </ProcessHeader>
+      <RedefinableHeader/>
+      <ActivitySets/>
+      <Activities>
+        <Activity Id="6d04d496-aec1-b983-560e-34ea32756b65" Name="Início">
+          <Event>
+            <StartEvent Trigger="None"/>
+          </Event>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="35.0" Width="35.0">
+              <Coordinates XCoordinate="120.0" YCoordinate="78.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="35aefed0-d461-c6d1-3fba-aa0677f263ec" Name="Intermediário">
+          <Event>
+            <IntermediateEvent Trigger="None"/>
+          </Event>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="30.0" Width="30.0">
+              <Coordinates XCoordinate="454.0" YCoordinate="534.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="ce0937ee-9543-09d4-ea01-21a8e37780f8" Name="Intermediário">
+          <Event>
+            <IntermediateEvent Trigger="Link">
+              <TriggerResultLink CatchThrow="THROW"/>
+            </IntermediateEvent>
+          </Event>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="FLUIG_linkId" Value="1661e0ca-6bc2-b852-8f75-93d46b6b587f"/>
+          </ExtendedAttributes>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="35.0" Width="35.0">
+              <Coordinates XCoordinate="530.0" YCoordinate="680.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="a218f1c2-98dc-04ec-96de-b831222a5b4e" Name="Intermediário">
+          <Event>
+            <IntermediateEvent Trigger="Link">
+              <TriggerResultLink CatchThrow="THROW"/>
+            </IntermediateEvent>
+          </Event>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="FLUIG_linkId" Value="1f33917e-fdb2-3cc7-5bd6-b032159f10a7"/>
+          </ExtendedAttributes>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="35.0" Width="35.0">
+              <Coordinates XCoordinate="530.0" YCoordinate="830.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="92f2546d-5b98-ce85-8449-4f12fa04a782" Name="Intermediário">
+          <Event>
+            <IntermediateEvent Trigger="Link">
+              <TriggerResultLink CatchThrow="THROW"/>
+            </IntermediateEvent>
+          </Event>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="FLUIG_linkId" Value="cc2bdd31-6381-13d5-2673-efdb34b6dc15"/>
+          </ExtendedAttributes>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="35.0" Width="35.0">
+              <Coordinates XCoordinate="340.0" YCoordinate="78.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="1661e0ca-6bc2-b852-8f75-93d46b6b587f" Name="Correção solicitante">
+          <Event>
+            <IntermediateEvent Trigger="Link">
+              <TriggerResultLink/>
+            </IntermediateEvent>
+          </Event>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="35.0" Width="35.0">
+              <Coordinates XCoordinate="567.0" YCoordinate="78.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="cc2bdd31-6381-13d5-2673-efdb34b6dc15" Name="retorno Solicitante">
+          <Event>
+            <IntermediateEvent Trigger="Link">
+              <TriggerResultLink/>
+            </IntermediateEvent>
+          </Event>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="35.0" Width="35.0">
+              <Coordinates XCoordinate="60.0" YCoordinate="680.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="1f33917e-fdb2-3cc7-5bd6-b032159f10a7" Name="retorno compras">
+          <Event>
+            <IntermediateEvent Trigger="Link">
+              <TriggerResultLink/>
+            </IntermediateEvent>
+          </Event>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="35.0" Width="35.0">
+              <Coordinates XCoordinate="105.0" YCoordinate="470.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="d038a370-f753-890a-9bd9-fb17064735a5" Name="Intermediário">
+          <Event>
+            <IntermediateEvent Trigger="None"/>
+          </Event>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="30.0" Width="30.0">
+              <Coordinates XCoordinate="240.0" YCoordinate="1000.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="72234120-6d9d-9a6b-87a1-8bd08aeeab05" Name="Fim">
+          <Event>
+            <EndEvent Result="None"/>
+          </Event>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="35.0" Width="35.0">
+              <Coordinates XCoordinate="543.0" YCoordinate="359.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="c21bfa42-f707-cbc8-65e5-7fee2ae588bd" Name="Fim">
+          <Event>
+            <EndEvent Result="None"/>
+          </Event>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="35.0" Width="35.0">
+              <Coordinates XCoordinate="745.0" YCoordinate="977.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="d7aebb8a-eb51-fdca-2874-8f3f88326e9d" Name="Aprovação">
+          <Implementation>
+            <Task/>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="56.0" Width="105.0">
+              <Coordinates XCoordinate="227.0" YCoordinate="348.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="a63bd293-cb2e-d582-41fc-967be207f09f" Name="Ajuste">
+          <Implementation>
+            <Task/>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="56.0" Width="105.0">
+              <Coordinates XCoordinate="504.0" YCoordinate="460.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="c8c4cb86-2758-aaa1-5791-da34008d8383" Name="Gerar solicitação de compras">
+          <Implementation>
+            <Task>
+              <TaskService/>
+            </Task>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="84.0" Width="105.0">
+              <Coordinates XCoordinate="350.0" YCoordinate="547.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="d05e1402-8ca5-7560-6507-bf648362e932" Name="Ajuste erro de integração">
+          <Implementation>
+            <Task/>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="70.0" Width="105.0">
+              <Coordinates XCoordinate="354.0" YCoordinate="460.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="3fd0d27b-ff48-17fe-c2a0-9bf16e028e50" Name="ADM compras">
+          <Implementation>
+            <Task/>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="56.0" Width="105.0">
+              <Coordinates XCoordinate="206.0" YCoordinate="562.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="935fec1f-cff7-071f-a746-e8e44553bbf9" Name="Cotação">
+          <Implementation>
+            <Task/>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="56.0" Width="105.0">
+              <Coordinates XCoordinate="70.0" YCoordinate="562.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="843e80c9-2ce3-06e7-4419-7f4e49287afb" Name="Aprovação">
+          <Implementation>
+            <Task/>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="56.0" Width="105.0">
+              <Coordinates XCoordinate="70.0" YCoordinate="781.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="3d6deb9-478d-cdae-b60e-8ec4270f83f8" Name="Ajuste">
+          <Implementation>
+            <Task/>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="56.0" Width="105.0">
+              <Coordinates XCoordinate="710.0" YCoordinate="140.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="26264f99-a117-18a7-5a11-9b2f3f6bd85d" Name="Atividade">
+          <Implementation>
+            <Task/>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="55.0" Width="105.0">
+              <Coordinates XCoordinate="420.0" YCoordinate="68.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="5f00ae41-46d5-294f-1687-f42a98b7eea8" Name="Gerar pedido de compra">
+          <Implementation>
+            <Task>
+              <TaskService/>
+            </Task>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="70.0" Width="105.0">
+              <Coordinates XCoordinate="247.0" YCoordinate="960.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="9a64505c-a1c1-2e8d-95d4-5de9b6128517" Name="Ajuste de erro de integração">
+          <Implementation>
+            <Task/>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="70.0" Width="105.0">
+              <Coordinates XCoordinate="90.0" YCoordinate="960.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="78b49e2a-4e34-381a-7d66-c997f0338543" Name="Pedido de compra efetuado.">
+          <Implementation>
+            <Task/>
+          </Implementation>
+          <ExtendedAttributes/>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="84.0" Width="105.0">
+              <Coordinates XCoordinate="495.0" YCoordinate="953.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="7329821e-9740-5cdd-4867-90560ba40d44" Name="Nível">
+          <Route/>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="FLUIG_conditions" Value="&lt;list/>"/>
+          </ExtendedAttributes>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="88.0" Width="60.0">
+              <Coordinates XCoordinate="250.0" YCoordinate="240.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="51f9af63-7fe0-4ed1-d6b7-5815d950d308" Name="Aprovar">
+          <Route/>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="FLUIG_conditions" Value="&lt;list/>"/>
+          </ExtendedAttributes>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="88.0" Width="60.0">
+              <Coordinates XCoordinate="377.0" YCoordinate="332.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="5432051-5a87-5e56-149d-789aa29bf405" Name="Correto?">
+          <Route/>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="FLUIG_conditions" Value="&lt;list/>"/>
+          </ExtendedAttributes>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="88.0" Width="60.0">
+              <Coordinates XCoordinate="526.0" YCoordinate="545.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+        <Activity Id="5bb3e1bc-b98a-a2ec-bb7b-7ed8ccb0bdf7" Name="Aprovar">
+          <Route/>
+          <ExtendedAttributes>
+            <ExtendedAttribute Name="FLUIG_conditions" Value="&lt;list/>"/>
+          </ExtendedAttributes>
+          <NodeGraphicsInfos>
+            <NodeGraphicsInfo Height="88.0" Width="60.0">
+              <Coordinates XCoordinate="270.0" YCoordinate="760.0"/>
+            </NodeGraphicsInfo>
+          </NodeGraphicsInfos>
+        </Activity>
+      </Activities>
+      <DataObjects/>
+      <DataInputOutputs/>
+      <DataStoreReferences/>
+      <Transitions>
+        <Transition Id="7fc30bb8-b0bc-096c-2971-fb4ed8e2e76b" Name="" From="6d04d496-aec1-b983-560e-34ea32756b65" To="7329821e-9740-5cdd-4867-90560ba40d44">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="155.0" YCoordinate="95.0"/>
+              <Coordinates XCoordinate="279.0" YCoordinate="95.0"/>
+              <Coordinates XCoordinate="280.0" YCoordinate="240.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="ac49333c-9ede-3474-6b38-b4c99d8ec274" Name="" From="7329821e-9740-5cdd-4867-90560ba40d44" To="d7aebb8a-eb51-fdca-2874-8f3f88326e9d">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="250.0" YCoordinate="328.0"/>
+              <Coordinates XCoordinate="279.0" YCoordinate="376.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="84291c17-9f03-1453-371c-bf5873534eec" Name="" From="d7aebb8a-eb51-fdca-2874-8f3f88326e9d" To="51f9af63-7fe0-4ed1-d6b7-5815d950d308">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="332.0" YCoordinate="376.0"/>
+              <Coordinates XCoordinate="377.0" YCoordinate="376.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="efe2eeae-bbb3-1317-506c-4e44803d86d2" Name="Próximo nível" From="51f9af63-7fe0-4ed1-d6b7-5815d950d308" To="7329821e-9740-5cdd-4867-90560ba40d44">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="407.0" YCoordinate="332.0"/>
+              <Coordinates XCoordinate="406.0" YCoordinate="283.0"/>
+              <Coordinates XCoordinate="310.0" YCoordinate="284.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="4b56cea2-eee6-d5a4-17bb-ec932415185c" Name="reprovar" From="51f9af63-7fe0-4ed1-d6b7-5815d950d308" To="72234120-6d9d-9a6b-87a1-8bd08aeeab05">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="437.0" YCoordinate="376.0"/>
+              <Coordinates XCoordinate="543.0" YCoordinate="376.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="e33fa75c-3129-3893-c686-876a105355c8" Name="" From="51f9af63-7fe0-4ed1-d6b7-5815d950d308" To="a63bd293-cb2e-d582-41fc-967be207f09f">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="437.0" YCoordinate="420.0"/>
+              <Coordinates XCoordinate="504.0" YCoordinate="488.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="c406ecab-6051-c396-f0f6-c4fa622fba81" Name="" From="a63bd293-cb2e-d582-41fc-967be207f09f" To="5432051-5a87-5e56-149d-789aa29bf405">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="556.0" YCoordinate="516.0"/>
+              <Coordinates XCoordinate="526.0" YCoordinate="589.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="10786db5-6ede-e516-6189-d01ada17ec6c" Name="" From="5432051-5a87-5e56-149d-789aa29bf405" To="c8c4cb86-2758-aaa1-5791-da34008d8383">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="526.0" YCoordinate="589.0"/>
+              <Coordinates XCoordinate="455.0" YCoordinate="589.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="a8f56bb7-5352-3c4f-88ca-9aa9dc9cd412" Name="" From="35aefed0-d461-c6d1-3fba-aa0677f263ec" To="d05e1402-8ca5-7560-6507-bf648362e932">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="454.0" YCoordinate="549.0"/>
+              <Coordinates XCoordinate="406.0" YCoordinate="530.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="f72dc96d-92ec-8506-d9fe-154e0348127a" Name="" From="d05e1402-8ca5-7560-6507-bf648362e932" To="c8c4cb86-2758-aaa1-5791-da34008d8383">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="354.0" YCoordinate="530.0"/>
+              <Coordinates XCoordinate="402.0" YCoordinate="589.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="2d8b1562-9cc6-c43f-88db-a32d34af7c37" Name="" From="c8c4cb86-2758-aaa1-5791-da34008d8383" To="3fd0d27b-ff48-17fe-c2a0-9bf16e028e50">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="350.0" YCoordinate="589.0"/>
+              <Coordinates XCoordinate="311.0" YCoordinate="590.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="7b893f09-37c0-bdfb-9b2c-40774a1b0a70" Name="" From="3fd0d27b-ff48-17fe-c2a0-9bf16e028e50" To="935fec1f-cff7-071f-a746-e8e44553bbf9">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="206.0" YCoordinate="590.0"/>
+              <Coordinates XCoordinate="175.0" YCoordinate="590.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="92198423-7e45-e640-dc3a-2ced323add54" Name="" From="935fec1f-cff7-071f-a746-e8e44553bbf9" To="843e80c9-2ce3-06e7-4419-7f4e49287afb">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="70.0" YCoordinate="618.0"/>
+              <Coordinates XCoordinate="70.0" YCoordinate="809.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="51e9ce27-2955-6fae-784b-db1c4d7bf315" Name="" From="843e80c9-2ce3-06e7-4419-7f4e49287afb" To="5bb3e1bc-b98a-a2ec-bb7b-7ed8ccb0bdf7">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="175.0" YCoordinate="809.0"/>
+              <Coordinates XCoordinate="270.0" YCoordinate="804.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="4f3c4ef7-e8c6-6719-63bb-1f50d07dd07d" Name="Próximo nível" From="5bb3e1bc-b98a-a2ec-bb7b-7ed8ccb0bdf7" To="843e80c9-2ce3-06e7-4419-7f4e49287afb">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="270.0" YCoordinate="804.0"/>
+              <Coordinates XCoordinate="246.0" YCoordinate="773.0"/>
+              <Coordinates XCoordinate="200.0" YCoordinate="773.0"/>
+              <Coordinates XCoordinate="175.0" YCoordinate="781.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="1c870fdd-1d5d-fbb3-face-f423b76828b4" Name="Esclarecimento solicitante" From="5bb3e1bc-b98a-a2ec-bb7b-7ed8ccb0bdf7" To="ce0937ee-9543-09d4-ea01-21a8e37780f8">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="330.0" YCoordinate="804.0"/>
+              <Coordinates XCoordinate="530.0" YCoordinate="715.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="b39a901e-aeaa-3807-a803-a9225ef136e1" Name="Esclarecimento Compras" From="5bb3e1bc-b98a-a2ec-bb7b-7ed8ccb0bdf7" To="a218f1c2-98dc-04ec-96de-b831222a5b4e">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="330.0" YCoordinate="804.0"/>
+              <Coordinates XCoordinate="530.0" YCoordinate="847.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="a563c9ae-80dd-6254-f0a4-c130b7f7bb11" Name="Não" From="5432051-5a87-5e56-149d-789aa29bf405" To="3d6deb9-478d-cdae-b60e-8ec4270f83f8">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="586.0" YCoordinate="589.0"/>
+              <Coordinates XCoordinate="765.0" YCoordinate="588.0"/>
+              <Coordinates XCoordinate="762.0" YCoordinate="196.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="a783897a-608b-de16-0414-4ea15229dfb0" Name="" From="26264f99-a117-18a7-5a11-9b2f3f6bd85d" To="92f2546d-5b98-ce85-8449-4f12fa04a782">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="420.0" YCoordinate="95.0"/>
+              <Coordinates XCoordinate="375.0" YCoordinate="95.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="ae1b0765-f8a3-0ee6-53da-94cbcbef8264" Name="" From="1661e0ca-6bc2-b852-8f75-93d46b6b587f" To="26264f99-a117-18a7-5a11-9b2f3f6bd85d">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="567.0" YCoordinate="95.0"/>
+              <Coordinates XCoordinate="525.0" YCoordinate="95.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="66d112f9-22f4-0693-4049-9035dd6634e8" Name="" From="cc2bdd31-6381-13d5-2673-efdb34b6dc15" To="843e80c9-2ce3-06e7-4419-7f4e49287afb">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="95.0" YCoordinate="697.0"/>
+              <Coordinates XCoordinate="122.0" YCoordinate="697.0"/>
+              <Coordinates XCoordinate="122.0" YCoordinate="781.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="1e205a82-23a5-e878-700d-46c26c8b79d8" Name="" From="1f33917e-fdb2-3cc7-5bd6-b032159f10a7" To="935fec1f-cff7-071f-a746-e8e44553bbf9">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="105.0" YCoordinate="505.0"/>
+              <Coordinates XCoordinate="122.0" YCoordinate="590.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="ce78a220-1ce0-ad14-3a2d-c3697247e996" Name="" From="3d6deb9-478d-cdae-b60e-8ec4270f83f8" To="7329821e-9740-5cdd-4867-90560ba40d44">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="710.0" YCoordinate="168.0"/>
+              <Coordinates XCoordinate="280.0" YCoordinate="168.0"/>
+              <Coordinates XCoordinate="280.0" YCoordinate="240.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="8f76f702-a238-f20b-21e3-b8d3a1e8ec70" Name="" From="5bb3e1bc-b98a-a2ec-bb7b-7ed8ccb0bdf7" To="5f00ae41-46d5-294f-1687-f42a98b7eea8">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="270.0" YCoordinate="848.0"/>
+              <Coordinates XCoordinate="299.0" YCoordinate="995.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="ca6d8d10-51d4-f313-af21-5865d7ddfd6e" Name="" From="d038a370-f753-890a-9bd9-fb17064735a5" To="9a64505c-a1c1-2e8d-95d4-5de9b6128517">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="240.0" YCoordinate="1015.0"/>
+              <Coordinates XCoordinate="195.0" YCoordinate="995.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="465acd9e-48f0-be1e-1082-1a8d92beb8c9" Name="" From="9a64505c-a1c1-2e8d-95d4-5de9b6128517" To="5f00ae41-46d5-294f-1687-f42a98b7eea8">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="195.0" YCoordinate="995.0"/>
+              <Coordinates XCoordinate="220.0" YCoordinate="978.0"/>
+              <Coordinates XCoordinate="247.0" YCoordinate="995.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="fa2c322f-6be6-fb3b-4d38-a6555bb7a7f0" Name="" From="5f00ae41-46d5-294f-1687-f42a98b7eea8" To="78b49e2a-4e34-381a-7d66-c997f0338543">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="352.0" YCoordinate="995.0"/>
+              <Coordinates XCoordinate="495.0" YCoordinate="995.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+        <Transition Id="e284c8bb-a638-95f0-006a-8e294515acbf" Name="" From="78b49e2a-4e34-381a-7d66-c997f0338543" To="c21bfa42-f707-cbc8-65e5-7fee2ae588bd">
+          <Condition/>
+          <ExtendedAttributes/>
+          <ConnectorGraphicsInfos>
+            <ConnectorGraphicsInfo>
+              <Coordinates XCoordinate="600.0" YCoordinate="995.0"/>
+              <Coordinates XCoordinate="745.0" YCoordinate="994.0"/>
+            </ConnectorGraphicsInfo>
+          </ConnectorGraphicsInfos>
+        </Transition>
+      </Transitions>
+      <ExtendedAttributes>
+        <ExtendedAttribute Name="FLUIG_category" Value=""/>
+        <ExtendedAttribute Name="FLUIG_cardIndex" Value=""/>
+        <ExtendedAttribute Name="FLUIG_formSource" Value="server"/>
+      </ExtendedAttributes>
+    </WorkflowProcess>
+  </WorkflowProcesses>
+  <ExtendedAttributes/>
+</Package>

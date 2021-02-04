@@ -1,0 +1,676 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<link type="text/css" rel="stylesheet" href="style.css" media="screen" />
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="jquery.maskedinput-1.4.js"></script>
+	<script type="text/javascript" src="jquery.maskMoney.min.js"></script>
+	<script type="text/javascript" src="/widget_sla/resources/js/class/ScriptGetSla.js"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="custom.js"></script>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">			
+			<div>
+				<input type="hidden" name="anexos" value="0" />
+				<input type="hidden" name="numAnexoNF" value="0" />
+			</div>
+			<fieldset class="panel panel-default" id="fieldsetSolicitante">
+				<div class="panel-heading">
+					<h2>
+						<span class="fluigicon fluigicon-user fluigicon-md icone-span"></span>	
+						Solicitante
+					</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Nome</label>
+							<input type="hidden" name="codSolicitante" id="codSolicitante">
+							<input type="text" class="form-control" name="nomeSolicitante" id="nomeSolicitante" readonly>
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Data</label>
+							<input type="text" class="form-control" name="dataSolicitante" id="dataSolicitante" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 form-group">
+							<label>CNPJ Filial</label>
+							<em class="required">*</em>
+							<div class="input-group">
+								<input type="hidden" name="codFiliais" id="codFiliais" readonly="readonly" />
+								<input type="text" class="form-control maskCNPJ" id="cnpjFilial" name="cnpjFilial" readonly="readonly">
+								<span class="btn btn-default fluigicon fluigicon-search fluigicon-xs buttonCrud input-group-addon zoomFilial" name="btZoomFilial"
+								id="btZoomFilial" style="top: 0; bottom: 0;"></span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<label>Filial</label>
+							<input type="hidden" name="codRazaoSocial" id="codRazaoSocial" readonly="readonly" />
+							<input type="text" class="form-control" id="razaoSocial" name="razaoSocial" readonly="readonly">
+						</div>
+						<div class="col-md-3 form-group">
+							<label>Estado</label>
+							<input type="text" class="form-control" name="estado" id="estado" readonly="readonly" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>Cidade</label>
+							<input type="text" class="form-control" name="cidade" id="cidade" readonly="readonly" />
+						</div>
+						<div class="col-md-3 form-group">
+							<label>Bairro</label>
+							<input type="text" class="form-control" name="bairro" id="bairro" readonly="readonly" />
+						</div>
+						<div class="col-md-3 form-group">
+							<label>Rua</label>
+							<input type="text" class="form-control" name="endereco" id="endereco" readonly="readonly">
+						</div>
+						<div class="col-md-3 form-group">
+							<label>Complemento</label>
+							<input type="text" class="form-control" name="complemento" id="complemento" readonly="readonly">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 form-group">
+							<label>Responsável:</label>
+							<em class="required">*</em>
+							<input type="text" class="form-control" name="nomeResponsavel" id="nomeResponsavel">
+						</div>
+						<div class="col-md-4 form-group">
+							<label>Conselho Profissional/Nº:</label>
+							<input type="text" class="form-control" name="numConselhoProfi" id="numConselhoProfi">
+						</div>
+						<div class="col-md-2 form-group">
+							<label>UF</label>
+							<em class="required">*</em>
+							<div>
+								<select required class="form-control" name="uf" id="uf">
+									<option value="selecione">Selecione...</option> 
+									<option value="AC">AC</option> 
+									<option value="AL">AL</option> 
+									<option value="AM">AM</option> 
+									<option value="AP">AP</option> 
+									<option value="BA">BA</option> 
+									<option value="CE">CE</option> 
+									<option value="DF">DF</option> 
+									<option value="ED">ES</option> 
+									<option value="GO">GO</option> 
+									<option value="MA">MA</option> 
+									<option value="MT">MT</option> 
+									<option value="MS">MS</option> 
+									<option value="MG">MG</option> 
+									<option value="PA">PA</option> 
+									<option value="PB">PB</option> 
+									<option value="PR">PR</option> 
+									<option value="PE">PE</option> 
+									<option value="PI">PI</option> 
+									<option value="RJ">RJ</option> 
+									<option value="RN">RN</option> 
+									<option value="RO">RO</option> 
+									<option value="RS">RS</option> 
+									<option value="RR">RR</option> 
+									<option value="SC">SC</option> 
+									<option value="SE">SE</option> 
+									<option value="SP">SP</option> 
+									<option value="TO">TO</option> 
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>					
+			</fieldset>
+							
+			<fieldset id="fieldsetProduto2">
+				<div class="panel panel-default" id="fieldsetProduto2">
+					<div class="panel-heading">
+						<h2>
+							<span class="fluigicon fluigicon-library fluigicon-md icone-span"></span>	
+							Produto
+						</h2>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-4 form-group">
+								<label>Código Produto:</label>
+								<em class="required">*</em>
+								<div class="input-group">
+									<input type="hidden" name="hiddenCodProduto" id="hiddenCodProduto" readonly="readonly" />
+									<input type="text" class="form-control" id="codProduto" name="codProduto" readonly="readonly">
+									<span class="btn btn-default fluigicon fluigicon-search fluigicon-xs buttonCrud input-group-addon zoomCodProduto" name="btZoomCodProduto"
+									id="btZoomCodProduto" style="top: 0; bottom: 0;"></span>
+								</div>
+							</div>
+							<div class="col-md-4 form-group">
+								<label>Descrição:</label>
+								<input type="text" class="form-control" id="descricaoProdu" name="descricaoProdu" readonly="readonly">
+							</div>
+							<div class="col-md-4 form-group">
+								<label>Tipo do Produto:</label>
+								<input type="text" class="form-control" id="tipoProduto" name="tipoProduto" readonly="readonly">
+							</div>
+						</div>
+						<div class="row">	
+							<div class="col-md-2 form-group">
+								<label>Princípio Ativo:</label>
+								<input type="text" class="form-control" id="principioAtivo" name="principioAtivo" readonly="readonly">
+							</div>
+							<div class="col-md-2 form-group">
+								<label>Forma Farmacêutica:</label>
+								<input type="text" class="form-control" id="formFarmaceutica" name="formFarmaceutica" readonly="readonly">
+							</div>
+							<div class="col-md-2 form-group">
+								<label>Fabricante:</label>
+								<input type="text" class="form-control" id="fabricante" name="fabricante" readonly="readonly">
+							</div>
+							<div class="col-md-2 form-group">
+								<label>Lote:</label>
+								<em class="required">*</em>
+								<div class="input-group">
+									<input type="text" class="form-control" id="loteProduto" name="loteProduto" readonly="readonly">
+									<span class="btn btn-default fluigicon fluigicon-search fluigicon-xs buttonCrud input-group-addon zoomFornecedor" name="btZoomFornecedor"
+									id="btZoomFornecedor" style="top: 0; bottom: 0;"></span>
+								</div>
+							</div>
+							<div class="col-md-2 form-group">
+								<label>Validade:</label>
+								<input type="text" class="form-control" id="validadeProduto" name="validadeProduto" readonly="readonly">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<label>Tipo de Desvio</label>
+								<em class="required">*</em>	
+								<select required class="form-control" id="tipoDesvio" name="tipoDesvio">
+									<option value="selecione">Selecione...</option>
+									<option value="problemRotudo">Problemas no Rotulo: adulteração, inelegível, inadequação</option>
+									<option value="corpEstranho">Presença de corpo estranho na embalagem</option>
+									<option value="rachadoQuebrado">Rachadura, quebra do produto ou parte dele</option>
+									<option value="aspectoAlterado">Aspecto alterado: cor, manchas, cheiro</option>
+									<option value="qtdMenor">Quantidade de unidades menor que o informando na embalagem</option>
+									<option value="validadeVencida">Produto com data de validade vencida</option>
+									<option value="estenilizacaoVencida">Produto com data de estenilização vencida</option>
+									<option value="prodReprocessado">Produto de uso único sendo reprocessado</option>
+									<option value="outras">Outras</option>
+								</select>
+								<input type="hidden" id="hiddenTipoDesvio" name="hiddenTipoDesvio">
+							</div>
+							<div class="col-md-4 form-group">
+								<label>Nº Notificação Anvisa:</label>
+								<em class="required">*</em>
+								<input type="text" class="form-control numero" id="notificacaoNotivisa" name="notificacaoNotivisa">
+							</div>
+							<div class="col-md-4 form-group">
+								<label>Há evidência (foto,video)?</label>
+								<em class="required">*</em>
+								<div class="col-md-12">
+									<span id="evideciaSim">
+										<input type="radio" name="aceiteEvidencia" id="aceiteEvidencia" value="SIM" />
+										<label>Sim</label>
+									</span>
+									<span id="evideciaNao">
+										<input type="radio" name="aceiteEvidencia" id="aceiteEvidencia" value="NAO" />
+										<label>Não</label>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group">
+								<label>Descrição detalhada do desvio de qualidade:</label>
+								<em class="required">*</em>
+								<textArea class="form-control" name="descricaoDesvio" id="descricaoDesvio" rows="4"></textArea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 form-group">
+								<label>Nota fiscal:</label>
+								<em class="required">*</em>
+								<div class="input-group">
+									<input type="number" class="form-control" id="nfProduto" name="nfProduto" readonly="readonly">
+									<span class="btn btn-default fluigicon fluigicon-search fluigicon-xs buttonCrud input-group-addon zoomNotaFiscalFornecedor" name="btZoomNF"
+									id="btZoomNF" style="top: 0; bottom: 0;"></span>
+								</div>
+							</div>
+							<div class="col-md-4 form-group">
+								<label>Fornecedor:</label>								
+								<input type="hidden" id="codFornecedor" name="codFornecedor">
+								<input type="text" class="form-control" id="fornecedor" name="fornecedor" readonly="readonly">
+							</div>
+							<div class="col-md-4 form-group">
+								<label>Nº Selo Rastreabilidade (se Oncoprod):</label>
+								<input type="text" class="form-control numero" id="numSeloRastreabilidade" name="numSeloRastreabilidade">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 form-group">
+								<label>Quantidade que apresentou desvio de qualidade:</label>
+								<em class="required">*</em>
+								<input type="text" class="form-control numero" id="qtdDesvio" name="qtdDesvio">
+							</div>
+							<div class="col-md-4 form-group">
+								<label>Produto disponível para recolhimento?</label>
+								<em class="required">*</em>
+								<div>
+									<span id="recolhimentoSim">
+										<input type="radio" name="recolhimentoProduto" id="recolhimentoProduto" value="SIM" />
+										<label>Sim</label>
+									</span>
+									<span id="recolhimentoNao">
+										<input type="radio" name="recolhimentoProduto" id="recolhimentoProduto" value="NAO" />
+										<label>Não</label>
+									</span>
+								</div>
+							</div>
+							<div class="col-md-4 form-group situacaoEstoque" style="display:none">
+								<label>Consta no estoque virtual?</label>
+								<em class="required">*</em>
+								<select required class="form-control" id="situacaoEstoque" name="situacaoEstoque" value="">
+									<option value="selecione">Selecione...</option>
+									<option value="SIM">Sim</option>
+									<option value="NAO">Não</option>
+								</select>
+								<input type="hidden" id="hiddenSituacaoEstoque" name="hiddenSituacaoEstoque" value="">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 form-group">
+								<label>Deseja devolver outras unidades do mesmo lote?</label>
+								<em class="required">*</em>
+								<div>
+									<span id="devolverUnidadesSim">
+										<input type="radio" name="devolverUnidades" id="devolverUnidades" value="SIM" />
+										<label>Sim</label>
+									</span>
+									<span id="devolverUnidadesNao">
+										<input type="radio" name="devolverUnidades" id="devolverUnidades" value="NAO" />
+										<label>Não</label>
+									</span>
+								</div>
+							</div>
+							<div class="col-md-1 form-group quantidadeLote" style="display:none">
+								<label>Quantidade:</label>
+								<input type="text" class="form-control numero" id="qtdMesmoLote" name="qtdMesmoLote">
+							</div>
+							<div class="col-md-4 form-group">
+								<label>O produto foi administrado no paciente?</label>
+								<em class="required">*</em>
+								<div>
+									<span id="adminEmPacienteSim">
+										<input type="radio" name="adminEmPaciente" id="adminEmPaciente" value="SIM" />
+										<label>Sim</label>
+									</span>
+									<span id="adminEmPacienteNao">
+										<input type="radio" name="adminEmPaciente" id="adminEmPaciente" value="NAO" />
+										<label>Não</label>
+									</span>
+								</div>
+							</div>
+							<div class="col-md-3 form-group impactoPaciente" style="display:none">
+								<label>Houve impacto na saúde do paciente?</label>
+								<em class="required">*</em>
+								<div>
+									<span id="impactoPacienteSim">
+										<input type="radio" name="impactoPaciente" id="impactoPaciente" value="SIM" />
+										<label>Sim</label>
+									</span>
+									<span id="impactoPacienteNao">
+										<input type="radio" name="impactoPaciente" id="impactoPaciente" value="NAO" />
+										<label>Não</label>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12 form-group descricaoImpacto" style="display:none">
+								<label>Descrição do impacto causado:</label>
+								<em class="required">*</em>
+								<textArea class="form-control" name="descricaoImpacto" id="descricaoImpacto" rows="4"></textArea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="panel panel-default" id="fieldsetNumChamadoNF">
+				<div class=" panel-heading">
+					<h2>
+						<span class="fluigicon fluigicon-group fluigicon-md icone-span"></span>	
+						Chamado aberto para entrada da NFD
+					</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-4 form-group">
+							<label>Número do Chamado</label>
+							<input type="text" class="form-control" name="numChamadoNF" id="numChamadoNF" readonly>
+						</div>
+						<div class="col-md-4 form-group">
+							<label>Data da abertura do Chamado</label>
+							<input type="text" class="form-control" name="dataChamadoNF" id="dataChamadoNF" readonly>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="panel panel-default" id="fieldsetMatMed">
+				<div class=" panel-heading">
+					<h2>
+						<span class="fluigicon fluigicon-group fluigicon-md icone-span"></span>	
+						Mat/Med
+					</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Nome</label>
+							<input type="hidden" name="codSolicitanteMatMed" id="codSolicitanteMatMed">
+							<input type="text" class="form-control" name="nomeUserMatMed" id="nomeUserMatMed" readonly>
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Data</label>
+							<input type="text" class="form-control" name="dataUserMatMed" id="dataUserMatMed" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Aprovação:</label>
+							<em class="required">*</em>
+							<span id="aprovMatMedSim">
+								<input type="radio" name="aprovMatMed" id="aprovMatMed" value="SIM" />
+								<label>Sim</label>
+							</span>
+							<span id="aprovMatMedNao">
+								<input type="radio" name="aprovMatMed" id="aprovMatMed" value="NAO" />
+								<label>Não</label>
+							</span>
+						</div>					
+					</div>
+					<div class="row">
+						<div class="col-md-12 campoDescriMatMed" id="campoDescriMatMed" style="display:none">
+							<label>Motivo da Reprovação</label>
+							<em class="required">*</em>
+							<textArea class="form-control" name="descMatMed" id="descMatMed" rows="6"></textArea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group emailFornecedor">
+							<label>Digite o email do fornecedor para o envio:</label>
+							<em class="required">*</em>
+							<input type="text" class="form-control" name="emailFornecedor" id="emailFornecedor">
+						</div>
+						<div class="col-md-6 form-group emailFornecedor">
+							<label>E-mail alternativo:</label>
+							<input type="text" class="form-control" name="emailAlternativo" id="emailAlternativo">
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="panel panel-default" id="fieldsetRetornoFornecedor">
+				<div class=" panel-heading">
+					<h2>
+						<span class="fluigicon fluigicon-group fluigicon-md icone-span"></span>	
+						Mat/Med
+					</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Nome</label>
+							<input type="hidden" name="codSolicitanteMatMedRetorno" id="codSolicitanteMatMedRetorno">
+							<input type="text" class="form-control" name="nomeUserMatMedRetorno" id="nomeUserMatMedRetorno" readonly>
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Data</label>
+							<input type="text" class="form-control" name="dataUserMatMedRetorno" id="dataUserMatMedRetorno" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>Item será coletado?</label>
+							<em class="required">*</em>
+							<div class="form-group">
+								<span id="seraRecolhidoSim">
+									<input type="radio" name="seraRecolhido" id="seraRecolhido" value="SIM" />
+									<label>Sim</label>
+								</span>
+								<span id="seraRecolhidoNao">
+									<input type="radio" name="seraRecolhido" id="seraRecolhido" value="NAO" />
+									<label>Não</label>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-6 form-group dataAproximada" style="display:none">
+							<label>Data Prevista:</label>
+							<em class="required">*</em>
+							<div class="form-group">
+								<input type="text" class="form-control" name="dataAproximada" id="dataAproximada">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group observacaoRetorno" style="display:none">
+							<label>Descrição para o não recolhimento:</label>
+							<em class="required">*</em>
+							<textArea class="form-control" name="observacaoRetorno" id="observacaoRetorno" rows="4"></textArea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="panel panel-default" id="fieldsetColetaItem">
+				<div class=" panel-heading">
+					<h2>
+						<span class="fluigicon fluigicon-user fluigicon-md icone-span"></span>	
+						Solicitante
+					</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Nome</label>
+							<input type="hidden" name="codSolicitanteUnidade" id="codSolicitanteUnidade">
+							<input type="text" class="form-control" name="nomeSolicitanteUnidade" id="nomeSolicitanteUnidade" readonly>
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Data</label>
+							<input type="text" class="form-control" name="dataSolicitanteUnidade" id="dataSolicitanteUnidade" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>Produto Coletado?</label>
+							<em class="required">*</em>
+							<div class="form-group">
+								<span id="equipamentoRecolhidoSim">
+									<input type="radio" name="equipamentoRecolhido" id="equipamentoRecolhido" value="SIM" />
+									<label>Sim</label>
+								</span>
+								<span id="equipamentoRecolhidoNao">
+									<input type="radio" name="equipamentoRecolhido" id="equipamentoRecolhido" value="NAO" />
+									<label>Não</label>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-3 form-group numSolicitaNFD" style="display:none">
+							<label>Número da NFD:</label>
+							<input type="text" class="form-control numero" name="numNF" id="numNF">
+						</div>
+						<div class="col-md-3 form-group numSolicitaNFD" style="display:none">
+							<label>Valor da Nota:</label>
+							<input type="text" class="form-control" name="valorNF" id="valorNF">
+						</div>
+						<div class="col-md-3 form-group numSolicitaNFD" style="display:none">
+							<label>CNPJ Fornecedor:</label>
+							<input type="text" class="form-control maskCNPJ" name="cnpjFornecedor" id="cnpjFornecedor">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 form-group numSolicitaNFD" style="display:none">
+							<label>Prioridade:</label>
+							<em class="required">*</em>
+							<select required class="form-control" name="prioridade" id="prioridade">
+								<option value="selecione">Selecione...</option>
+								<option value="N">Normal</option>
+								<option value="E">Emergencial</option>
+							</select>
+						</div>
+						<div class="col-md-6 form-group numSolicitaNFD" style="display:none">
+							<label>Titulo da Solicitação:</label>
+							<em class="required">*</em>
+							<input type="text" value="" name="tituloSolicitacao" id="tituloSolicitacao" maxlength="30" class="form-control">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<label>Observação:</label>
+							<textArea class="form-control" name="observacaoNaoRecolhido" id="observacaoNaoRecolhido" rows="4"></textArea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="panel panel-default" id="fieldsetAguardaRetornoFornecedor">
+				<div class=" panel-heading">
+					<h2>
+						<span class="fluigicon fluigicon-group fluigicon-md icone-span"></span>	
+						Mat/Med
+					</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Nome</label>
+							<input type="hidden" name="codSolicitanteMatMed2" id="codSolicitanteMatMed2">
+							<input type="text" class="form-control" name="nomeSolicitanteMatMed2" id="nomeSolicitanteMatMed2" readonly>
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Data</label>
+							<input type="text" class="form-control" name="dataSolicitanteMatMed2" id="dataSolicitanteMatMed2" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group" id="retornoFabricante" name="retornoFabricante">
+							<label>Retorno do Fabricante:</label>
+							<em class="required">*</em>
+							<div class="form-group">
+								<span id="laudoEnviadoSim">
+									<input type="radio" name="laudoEnviado" id="laudoEnviado" value="SIM" />
+									<label>Enviado Laudo de Analise</label>
+								</span>
+								<span id="laudoNao">
+									<input type="radio" name="laudoEnviado" id="laudoEnviado" value="NAO" />
+									<label>Não enviado Laudo de Analise</label>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group motivoSemLaudo" style="display:none">
+							<label>Motivo:</label>
+							<em class="required">*</em>
+							<textArea class="form-control" name="motivoSemLaudo" id="motivoSemLaudo" rows="4"></textArea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="panel panel-default" id="fieldsetAprovSolicitante">
+				<div class=" panel-heading">
+					<h2>
+						<span class="fluigicon fluigicon-user fluigicon-md icone-span"></span>	
+						Solicitante
+					</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Nome</label>
+							<input type="hidden" name="codSolicitanteAprov" id="codSolicitanteAprov">
+							<input type="text" class="form-control" name="nomeSolicitanteAprov" id="nomeSolicitanteAprov" readonly>
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Data</label>
+							<input type="text" class="form-control" name="dataSolicitanteAprov" id="dataSolicitanteAprov" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>Aprovado:</label>
+							<em class="required">*</em>
+							<div class="form-group">
+								<span id="aprovSolicitacaoSim">
+									<input type="radio" name="aprovSolicitacao" id="aprovSolicitacao" value="SIM" />
+									<label>Sim</label>
+								</span>
+								<span id="aprovSolicitacaoNao">
+									<input type="radio" name="aprovSolicitacao" id="aprovSolicitacao" value="NAO" />
+									<label>Não</label>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-8 form-group semRetornofornecedor" id="semRetornofornecedor" style="display:none">
+							<label>Sem retorno do fornecedor:</label>
+							<div class="form-group">
+								<input type="text" class="form-control" name="motivoRetornofornecedor" id="motivoRetornofornecedor" value="Ausência de retorno quanto a analise do produto." readonly="readonly"/>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group MotivoReprovSoli" style="display:none">
+							<label>Motivo:</label>
+							<em class="required">*</em>
+							<textArea class="form-control" name="MotivoReprovSoli" id="MotivoReprovSoli" rows="4"></textArea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="panel panel-default" id="fieldsetSolucaoInconsistencia">
+				<div class=" panel-heading">
+					<h2>
+						<span class="fluigicon fluigicon-group fluigicon-md icone-span"></span>	
+						Grupo Solução de Inconsistência Mat/Med
+					</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Nome</label>
+							<input type="hidden" name="codUserInconsistencia" id="codUserInconsistencia">
+							<input type="text" class="form-control" name="nomeUserInconsistencia" id="nomeUserInconsistencia" readonly>
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Data</label>
+							<input type="text" class="form-control" name="dataUserInconsistencia" id="dataUserInconsistencia" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group MotivoReprovSoli">
+							<label>Solução:</label>
+							<em class="required">*</em>
+							<textArea class="form-control" name="solucaoInconsistencia" id="solucaoInconsistencia" rows="4"></textArea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<div>
+				<input type="hidden" name="SLA4" />
+				<input type="hidden" name="SLA5" />
+				<input type="hidden" name="SLA9" />
+				<input type="hidden" name="SLA37" />
+				<input type="hidden" name="SLA13" />
+				<input type="hidden" name="SLA14" />
+				<input type="hidden" name="SLA15" />
+			</div>
+		</form>
+	</div>
+</body>
+</html>

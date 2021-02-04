@@ -1,0 +1,62 @@
+<div class="panel panel-default" ng-if="documento.TitulosRelacionados.length>0">
+    <div class="panel-heading fs-cursor-pointer" ng-click="titulosCollapsed=!titulosCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': titulosCollapsed}">
+                Títulos Relacionados
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': titulosCollapsed}">
+        <div class="panel-body">
+            <i ng-if="!documento.TitulosRelacionados || documento.TitulosRelacionados.length<=0">Sem Títulos Relacionados</i>
+            <div class="row" ng-if="documento.TitulosRelacionados.length>0">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead class="hidden-xs">
+                            <tr>
+                                <th>
+                                    <div class="col-sm-2">Número</div>
+                                    <div class="col-sm-2">Parcela</div>
+                                    <div class="col-sm-2">Tipo</div>
+                                    <div class="col-sm-2">Espécie</div>
+                                    <div class="col-sm-2">Vencimento</div>
+                                    <div class="col-sm-2">Valor</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="titRelac in documento.TitulosRelacionados">
+                                <td>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Número</label>
+                                        <p>{{titRelac.titRelacNumero || 'Não informado'}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Parcela</label>
+                                        <p>{{titRelac.titRelacParcela || 'Não informada'}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Tipo</label>
+                                        <p>{{titRelac.titRelacTipo || 'Não informado'}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Espécie</label>
+                                        <p>{{titRelac.titRelacEspecie || 'Não informada'}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Vencimento</label>
+                                        <p>{{titRelac.titRelacDataVencimento | date}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Valor</label>
+                                        <p>{{titRelac.titRelacValor | currency:titRelac.titRelacMoeda}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

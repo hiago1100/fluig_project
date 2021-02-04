@@ -1,0 +1,1675 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+		<!-- ==================================================================== -->
+		<script src="jquery.mask.js" type="text/javascript"></script>
+		<!-- -------------------------------------------------------------------- -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+		<script src="dataset.js"></script>	
+		<script src="atividades.js"></script>
+		<script src="enableFields.js"></script>	
+		<script src="zoom.js"></script>	
+		<script src="custom.js"></script>
+	</head>
+	<body onload=init()>
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="panel panel-default" id="divDadosSolicitacao">
+					<!-- ========= CABEÇALHO ========= -->
+					<div class="panel-body">
+						<div class="col-md-12 title">
+							<img src="logo450x95.fw.png" class="imagen"> &nbsp;
+							<h1>
+								<b><span class="fluigicon fluigicon-process fluigicon-md"></span> Cadastro de Produto</b>
+							</h1>
+							<div class="grau_label" style="margin-top: 30px;margin-left: -10px;">
+								<span id="lblGrauUrg" class="label label-danger" style="font-size: 22px;">Urgente</span>
+							</div>
+						</div>
+					</div>
+		
+					<div class="container">
+						<!-- ========= SOLICITAÇÃO - RESPONSAVEL SUPRIMENTOS ========= -->
+						<div id="divSolicitacao">
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-3 col-xs-12">
+										<div class="form-group">
+											<label> Data Solicitação</label>
+											<div class="input-group input-group">
+												<span class="input-group-addon"><i class="fluigicon fluigicon-calendar"></i></span>
+												<input type="text" name="data_solicitacao" id="data_solicitacao" class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4 col-xs-12 grau_opcoes" >
+										<div class="form-group grau_botoes">
+											<label for="grauUrg" class="bmd-label-floating">Grau de urgência <span class="obg"> *</span></label><br>											
+											<div class="btn-group btn-block" data-toggle="buttons" id="grau" style="margin: auto;">
+												<label class="btn btn-default" id="bai" for="baixo" data-urg="baixo" onclick="showButtonUrgence(this)">
+													<input type="radio" name="grauUrg" id="baixo" value="Baixa" style="display: none;">
+													Baixa
+												</label>
+												<label class="btn btn-default" id="med" for="medio" data-urg="medio" onclick="showButtonUrgence(this)">
+													<input type="radio" name="grauUrg" id="medio" value="Media"  style="display: none;">
+													Média
+												</label>
+												<label class="btn btn-default" id="alt" for="alta" data-urg="alta" onclick="showButtonUrgence(this)">
+													<input type="radio" name="grauUrg" id="alta" value="Alta" style="display: none;">
+													Alta
+												</label>
+												<label class="btn btn-default" id="urg" for="urgente" data-urg="urgente" onclick="showButtonUrgence(this)">
+													<input type="radio" name="grauUrg" id="urgente" value="Urgente" style="display: none;">
+													Urgente
+												</label>
+											</div>																						
+											<input type="hidden" name="grauUrgHor" id="grauUrgHor" class="cabecalho" value="">
+										</div>
+										<!-- <div class="grau_label" style="display: none; margin-top: 30px;" >
+											<span id="lblGrauUrg" class="label"  style="font-size: 19px;" ></span>
+										</div> -->
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-2 col-xs-12">
+										<div class="form-group">
+											<label> Usuário </label>
+											<input type="text" name="usuario_solicitante" id="usuario_solicitante" class="form-control">
+										</div>
+									</div>
+	
+									<div class="col-md-5 col-xs-12">
+										<div class="form-group">
+											<label> Nome Solicitante</label>
+											<input type="text" name="nome_solicitante" id="nome_solicitante" class="form-control">
+										</div>
+									</div>
+			
+									<div class="col-md-5 col-xs-12">
+										<div class="form-group">
+											<label> E-mail Solicitante</label>
+											<input type="text" name="email_solicitante" id="email_solicitante" class="form-control">
+										</div>
+									</div>	
+								</div>
+
+								<div class="row" id="catProd">
+									<div class="col-md-5 col-xs-12">
+										<div class="form-group">
+											<label> Novo produto <span class="obg">**</span></label>
+											<div class="input-group" id="desCadProd">
+												<span class="input-group-addon">Categorizado como </span>
+												<input type="text" name="tipoProdDesc" id="tipoProdDesc" class="form-control">
+											</div>
+											
+											<select name="tipoProd" id="tipoProd" class="form-control" onchange="verificaCatgProd(this.value)">
+												<option value="" disabled selected>Selecione a categoria do Produto</option>
+												<option value="direta"> Produto relacionado com Compra Direta </option>
+												<option value="indireta"> Produto relacionado com Compra Indireta </option>
+												<option value="servico"> Serviço </option>
+											</select>
+										</div>
+									</div> 
+
+									<div class="col-md-3 col-xs-12" id="depart">
+										<label for="departCad"> Departamento cadastrante </label>
+										
+										<input type="text" name="tipoDepartCad" id="tipoDepartCad" class="form-control">
+										
+										<select name="departCad" id="departCad" class="form-control" onchange="verificaDepartCad(this.value)">
+											<option value="" disabled selected>Selecione o seu departamento </option>
+											<option value="suprimentos"> Suprimentos </option>
+											<option value="fiscal"> Fiscal </option>
+										</select>
+									</div>
+
+									<div class="col-md-4 col-xs-12" id="consulProd">
+										<div class="form-group">
+											<label for="consul_cod_prod">Consulta de Produtos já Cadastrado <span class="badge pull-right" style="margin-left: 5px;" data-toggle="tooltip" data-placement="right" title="Campos para referencia do Código do Produto - Não influencia no cadastro!">?</span></label>
+											<input type="zoom" name="consul_cod_prod" id="consul_cod_prod" class="form-control"
+												data-zoom="{
+													'displayKey':'CODIGO',
+													'datasetId':'ds_produto',
+													'maximumSelectionLength':'1',
+													'fields':[
+														{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+														{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+													]
+												}"
+											>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- ========= SUPRIMENTOS ========= -->
+						<div id="divSupply">
+							<div class="panel-heading" id="respSupli">
+								<div style="text-align:center;">
+									<div style="height:30px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;padding-top:6px;">
+										SUPRIMENTOS
+									</div>
+								</div>
+							</div>
+							<div class="panel-heading" id="respServFiscal">
+								<div style="text-align:center;">
+									<div style="height:30px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;padding-top:6px;">
+										FISCAL
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-body">
+						
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codigo_produto">Código <span class="obg">*</span> <span class="badge pull-right" style="margin-left: 5px;" data-toggle="tooltip" data-placement="right" title="Codigo do Produto">?</span></label>
+										<input type="text" name="codigo_produto" id="codigo_produto" class="form-control" maxlength="15" >
+										<input type="hidden" name="cod_prod" id="cod_prod" class="form-control" value="">
+									</div>
+								</div>
+								<div class="col-md-9 col-xs-12">
+									<div class="form-group">
+										<label for="desc_produto">Descrição <span class="obg">*</span></label>
+										<input type="text" name="desc_produto" id="desc_produto" class="form-control">
+									</div>
+								</div>
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="tipo_produto">Tipo <span class="obg">*</span></label>
+										<input type="zoom" name="tipo_produto" id = "tipo_produto" class="form-control"	 
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_tipo_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codTipo_produto"> Código - Tipo</label>
+										<input type="text" name="codTipo_produto" id="codTipo_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descTipo_produto">Descrição - Tipo</label>
+										<input type="text" name="descTipo_produto" id="descTipo_produto" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="grupo_produto">Grupo <span class="obg">*</span></label>
+										<input type="zoom" name="grupo_produto" id="grupo_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_grupo_produto',
+												'maximumSelectionLength': '1',
+												'fields':[
+													{ 'field': 'CODIGO', 'label': 'Código', 'standard': true, 'search': 'true' },
+													{ 'field': 'DESCRICAO', 'label': 'Descrição', 'standard': 'true', 'search': 'true' }
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codGrupo"> Código - Grupo</label>
+										<input type="text" name="codGrupo_produto" id="codGrupo_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descGrupo_produto"> Descrição - Grupo</label>
+										<input type="text" name="descGrupo_produto" id="descGrupo_produto" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="uniMedida_Produto">Unidade Medida <span class="obg">*</span></label>
+										<input type="zoom" name="uniMedida_Produto" id="uniMedida_Produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_unidade_medida_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codUniMed_produto"> Código - Unidade Medida</label>
+										<input type="text" name="codUniMed_produto" id="codUniMed_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descUniMed_produto"> Descrição - Unidade Medida</label>
+										<input type="text" name="descUniMed_produto" id="descUniMed_produto" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="segUniMedida_Produto">Segunda Unidade Medida </label>
+										<input type="zoom" name="segUniMedida_Produto" id="segUniMedida_Produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_unidade_medida_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codSegUniMed_produto">Código - Segunda Unidade Medida</label>
+										<input type="text" name="codSegUniMed_produto" id="codSegUniMed_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descSegUniMed_produto">Descrição - Segunda Unidade Medida</label>
+										<input type="text" name="descSegUniMed_produto" id="descSegUniMed_produto" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="ncm_produto"> NCM</label>
+										<input type="zoom" name="ncm_produto" id="ncm_produto" class="form-control teste" 										data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_ncm_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field': 'DESCRICAO', 'label': 'Descrição', 'standard': 'true', 'search': 'true' }
+												]
+											}"
+										> 
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codNcm_produto">Código - NCM </label>
+										<input type="text" name="codNcm_produto" id="codNcm_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descNcm_produto">Descrição - NCM</label>
+										<input type="text" name="descNcm_produto" id="descNcm_produto" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="formulacao_produto">Formulação </label>
+										<input type="zoom" name="formulacao_produto" id="formulacao_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_formulacao_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codFormula_produto"> Código - Formulação</label>
+										<input type="text" name="codFormula_produto" id="codFormula_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descFormula_produto"> Descrição - Formulação</label>
+										<input type="text" name="descFormula_produto" id="descFormula_produto" class="form-control">
+									</div>
+								</div>
+
+								 
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="classe_produto">Classe </label>
+										<input type="zoom" name="classe_produto" id="classe_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_classe_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codClasse_produto"> Código - Classe</label>
+										<input type="text" name="codClasse_produto" id="codClasse_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descClasse_produto"> Descrição - Classe</label>
+										<input type="text" name="descClasse_produto" id="descClasse_produto" class="form-control">
+									</div>
+								</div>
+
+	
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="concentracao_produto">Concentração </label>
+										<input onchange="validaCampo(this.value)" type="text" name="concentracao_produto" id="concentracao_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="fabric_produto">
+											Fabricante 
+											<span class="pull-right" style="margin-left: 5px;font-size: 18; color: #777" data-toggle="tooltip" data-placement="right" title="" data-original-title="Recomendado não preencher quando o produto for nacional">
+												<i class="fluigicon fluigicon-exclamation-sign-on"></i>												
+											</span>
+										</label>
+										<input type="zoom" name="fabric_produto" id="fabric_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_fornecedores',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="codFabric_produto">Código - Fabricante</label>
+										<input type="text" name="codFabric_produto" id="codFabric_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descFabric_produto"> Descrição - Fabricante </label>
+										<input type="text" name="descFabric_produto" id="descFabric_produto" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="bloq_produto">Bloqueado </label>
+										<select name="bloq_produto" id="bloq_produto" onchange="verificaSelect('bloqueado', this.value)" class="form-control">
+											<option value="2"> Não </option>
+											<option value="1"> Sim </option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codBloq_produto" id="codBloq_produto" value="2" class="form-control">
+										<input type="text" name="descBloq_produto" id="descBloq_produto" value="Não" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="registrante_produto">Registrante </label>
+										<input type="zoom" name="registrante_produto" id="registrante_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_fornecedores',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="codRegistrante_produto"> Código - Registrante </label>
+										<input type="text" name="codRegistrante_produto" id="codRegistrante_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descRegistrante_produto"> Descrição - Registrante </label>
+										<input type="text" name="descRegistrante_produto" id="descRegistrante_produto" class="form-control">
+									</div>
+								</div>
+								
+	
+								
+								<div class="col-md-12 col-xs-12">
+									<div class="form-group">
+										<label for="infoComp_produto">Informação complementar</label>
+										<textarea name="infoComp_produto" id="infoComp_produto" rows="3" class="form-control"></textarea>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- ========= RESPONSAVEL LOGISTICA ========= -->
+						<div id="divRespLogist">
+							<div class="panel-heading">
+								<div style="height:2px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;"></div>
+							</div>
+
+							<div class="panel-body">
+								<div class="row">
+	
+									<div class="col-md-2 col-xs-12">
+										<div class="form-group">
+											<label for="usuario_logistica"> Usuário </label>
+											<input type="text" name="usuario_logistica" id="usuario_logistica" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-5 col-xs-12">
+										<div class="form-group">
+											<label for="nome_logistica"> Nome Responsável Logística</label>
+											<input type="text" name="nome_logistica" id="nome_logistica" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-5 col-xs-12">
+										<div class="form-group">
+											<label for="email_logistica"> E-mail Responsável Logística</label>
+											<input type="text" name="email_logistica" id="email_logistica" class="form-control">
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<!-- ========= LOGISTICA ========= -->
+						<div id="divLogist">
+							<div class="panel-heading" id="respLog">
+								<div style="text-align:center;">
+									<div style="height:30px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;padding-top:6px;">
+										LOGÍSTICA
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-body">
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="armazem_produto"> Armazém Padrão <span class="obg">*</span></label>
+										<input type="zoom" name="armazem_produto" id="armazem_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_armazem_padrao_produto',
+												'maximumSelectionLength': '1',
+												'fields':[
+													{ 'field': 'CODIGO', 'label': 'Código', 'standard': true, 'search': 'true' },
+													{ 'field': 'DESCRICAO', 'label': 'Descrição', 'standard': 'true', 'search': 'true' }
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codArmazem_produto"> Código - Armazém Pad.</label>
+										<input type="text" name="codArmazem_produto" id="codArmazem_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descArmazem_produto">Descrição - Armazém Padrão</label>
+										<input type="text" name="descArmazem_produto" id="descArmazem_produto" class="form-control">
+									</div>
+								</div>
+								
+
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="pesoLiq_produto">Peso líquido </label>
+										<input type="text" name="pesoLiq_produto" id="pesoLiq_produto" class="form-control" data-mask="###,000">
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="pesoBrut_produto">Peso Bruto </label>
+										<input type="text" name="pesoBrut_produto" id="pesoBrut_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="fatorConver_produto">Fator de Conversão </label>
+										<input type="text" name="fatorConver_produto" id="fatorConver_produto" class="form-control" value="1,00">
+										<!-- Padrão valor 1,00 quando compra indireta --> 
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="tipoConver_produto">Tipo Conversão</label>
+										<select name="tipoConver_produto" id="tipoConver_produto" class="form-control" onchange="verificaSelect('tipoConver', this.value)">
+											<option value="M">Multiplicador</option>
+											<option value="D">Divisor</option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codTipoConver_produto" id="codTipoConver_produto" value="M" class="form-control">
+										<input type="text" name="descTipoConver_produto" id="descTipoConver_produto" value="Multiplicador" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="rastro_produto">Rastro </label>
+										<!-- S - SubLote | L - Lote | N - Não utiliza / Padrão N -->
+										<select name="rastro_produto" id="rastro_produto" class="form-control" onchange="verificaSelect('rastro', this.value)">
+											<option value="N">Não utiliza</option>
+											<option value="L">Lote</option>
+											<option value="S">SubLote</option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codRastro_produto" id="codRastro_produto" value="N" class="form-control">
+										<input type="text" name="descRastro_produto" id="descRastro_produto" value="Não utiliza" class="form-control" style="display: none;">
+									</div>
+								</div>
+
+
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="import_produto">Produto Importado <span class="obg">*</span></label>
+										<select name="import_produto" id="import_produto" class="form-control" onchange="verificaSelect('importado', this.value)">
+											<option value="N">Não</option>
+											<option value="S">Sim</option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codImport_produto" id="codImport_produto" value="N" class="form-control">
+										<input type="text" name="descImport_produto" id="descImport_produto" value="Não" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="indust_produto">Produto Industrializado <span class="obg">*</span></label>
+										<select name="indust_produto" id="indust_produto" class="form-control" onchange="verificaSelect('industrilizado', this.value)">
+											<option value="N">Não</option>
+											<option value="S">Sim</option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codIndus_produto" id="codIndus_produto" value="N" class="form-control">
+										<input type="text" name="descIndus_produto" id="descIndus_produto" value="Não" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="qtdEmb_produto"> Qtd. Primaria Emb.</label>
+										<input type="text" name="qtdEmb_produto" id="qtdEmb_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="qtdEmb2_produto"> Qtd. Segundaria Emb.</label>
+										<input type="text" name="qtdEmb2_produto" id="qtdEmb2_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="embalagem_produto">Embalagem</label>
+										<input type="text" name="embalagem_produto" id="embalagem_produto" class="form-control">
+									</div>
+								</div>
+			
+								
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="newPrincpAtivo">Novo Princípio Ativo? <span class="obg">*</span></label>
+										<select name="newPrincpAtivo" id="newPrincpAtivo" class="form-control" onchange="verificaNewPrincip(this.value)">
+											<option value="" selected>Selecione</option>
+											<option value="sim">Sim</option>
+											<option value="nao">Não</option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="text" name="codNewPrincpAtivo" id="codNewPrincpAtivo" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12" id="princatv">
+									<div class="form-group">
+										<label for="princpAtivo_produto">Princípio Ativo </label>
+										<input type="zoom" name="princpAtivo_produto" id="princpAtivo_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'DESCRICAO',
+												'datasetId':'ds_principio_ativo_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12" id="codprincatv">
+									<div class="form-group">
+										<label for="codPrincpAtivo_produto"> Cód. - Princp. Ativo</label>
+										<input type="text" name="codPrincpAtivo_produto" id="codPrincpAtivo_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12" id="descprincatv">
+									<div class="form-group">
+										<label for="descPrincpAtivo_produto"> Descrição - Princípio Ativo</label>
+										<input type="text" name="descPrincpAtivo_produto" id="descPrincpAtivo_produto" class="form-control">
+									</div>
+								</div>
+								
+
+								<div id="divPrincpAtivo">
+									<div class="col-md-3 col-md-offset-2 col-xs-12" id="codpriatv">
+										<div class="form-group">
+											<label for="codigo_princpAtiv">Código Princípio Ativo <span class="obg">*</span></label>
+											<input type="text" name="codigo_princpAtiv" id="codigo_princpAtiv" class="form-control" maxlength="15">
+											<!-- onblur="verificaCodNewPrincAtiv(this.value)" -->
+											<input type="hidden" name="cod_princpAtiv" id="cod_princpAtiv" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-7 col-xs-12">
+										<div class="form-group">
+											<label for="desc_principAtiv">Descrição Princípio Ativo <span class="obg">*</span></label>
+											<input type="text" name="desc_principAtiv" id="desc_principAtiv" class="form-control">
+										</div>
+									</div>
+								</div>
+								
+
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="newPreProd"> Novo Pré-produto? <span class="obg">*</span></label>
+										<select name="newPreProd" id="newPreProd" class="form-control" onchange="verificaNewPreProd(this.value)">
+											<option value="" selected>Selecione</option>
+											<option value="sim">Sim</option>
+											<option value="nao">Não</option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="text" name="codNewPreProd" id="codNewPreProd" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12" id="preprodut">
+									<div class="form-group">
+										<label for="preProd_produto"> Pré-Produto</label>
+										<input type="zoom" name="preProd_produto" id="preProd_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'DESCRICAO',
+												'datasetId':'ds_preproduto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12" id="codpreprod">
+									<div class="form-group">
+										<label for="codPreProd_produto"> Cód. - Pré-Prod</label>
+										<input type="text" name="codPreProd_produto" id="codPreProd_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12" id="descpreprod">
+									<div class="form-group">
+										<label for="descPreProd_produto"> Descrição - Pré-Produto</label>
+										<input type="text" name="descPreProd_produto" id="descPreProd_produto" class="form-control">
+									</div>
+								</div>
+																
+								<div id="divPreProd">
+									<div class="col-md-3 col-md-offset-2 col-xs-12" id="codpreprodut">
+										<div class="form-group">
+											<label for="codigo_preproduto">Código pré-produto<span class="obg">*</span></label>
+											<input type="text" name="codigo_preproduto" id="codigo_preproduto" class="form-control" maxlength="15">
+											<!-- onblur="verificaCodNewPreProd(this.value)" -->
+											<input type="hidden" name="cod_preProduto" id="cod_preProduto" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-7 col-xs-12">
+										<div class="form-group">
+											<label for="desc_preproduto">Descrição pré-produto<span class="obg">*</span></label>
+											<input type="text" name="desc_preproduto" id="desc_preproduto" class="form-control">
+										</div>
+									</div>
+								</div>
+								
+								<div class="col-md-12 col-xs-12">
+									<div class="form-group">
+										<label for="descricao_produto"> Descrição sobre o produto</label>
+										<textarea name="descricao_produto" id="descricao_produto" class="form-control"></textarea>
+									</div>
+								</div>
+
+								<div id="necInfoLog">
+									<div class="col-md-4 col-xs-12">
+										<label for="infoComplLogist"> Necessita informações complementares? <span class="obg">*</span></label>
+										<select name="infoComplLogist" id="infoComplLogist" class="form-control" onchange="verificaComplLogist(this.value)">
+											<option value="" disabled selected>Selecione uma opção</option>
+											<option value="nao"> Não </option>
+											<option value="sim"> Sim </option>
+										</select>
+									</div>
+									<div class="col-md-4 col-xs-12" id="depLogistInfo">
+										<label for="departLogist"> Informe o departamento <span class="obg">*</span></label>
+										<select name="departLogist" id="departLogist" onchange="verificaNecCompl()" class="form-control">
+											<option value="" disabled selected>Selecione uma opção</option>
+											<option value="supply"> Suprimentos </option>
+										</select>
+									</div>
+								</div>		
+							</div>
+						</div>
+
+						<!-- ========= RESPONSAVEL CONTABILIDADE ========= -->
+						<div id="divRespContab">
+							<div class="panel-heading">
+								<div style="height:2px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;"></div>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2 col-xs-12">
+										<div class="form-group">
+											<label for="usuario_contabilidade"> Usuário </label>
+											<input type="text" name="usuario_contabilidade" id="usuario_contabilidade" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-5 col-xs-12">
+										<div class="form-group">
+											<label for="nome_contabilidade"> Nome Responsável Contabilidade</label>
+											<input type="text" name="nome_contabilidade" id="nome_contabilidade" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-5 col-xs-12">
+										<div class="form-group">
+											<label for="email_contabilidade"> E-mail Responsável Contabilidade</label>
+											<input type="text" name="email_contabilidade" id="email_contabilidade" class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- ========= CONTABILIDADE ========= -->
+						<div id="divContab">
+							<div class="panel-heading">
+								<div style="text-align:center;">
+									<div style="height:30px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;padding-top:6px;">
+										CONTABILIDADE
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-body">
+								
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="contaContb_produto">Conta Contábil <span class="obg">*</span></label>
+										<input type="zoom" name="contaContb_produto" id="contaContb_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'DESCRICAO',
+												'datasetId':'ds_conta_contabil_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codContaContb_produto">Código - Conta Contábil</label>
+										<input type="text" name="codContaContb_produto" id="codContaContb_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descContaContb_produto"> Descrição - Conta</label>
+										<input type="text" name="descContaContb_produto" id="descContaContb_produto" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="itemContb_produto">Item contábil <span class="obg">*</span></label>
+										<input type="zoom" name="itemContb_produto" id="itemContb_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_item_contabil_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codItemContb_produto">Código - Item Contábil</label>
+										<input type="text" name="codItemContb_produto" id="codItemContb_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descItemContb_produto"> Descrição - Item Contábil</label>
+										<input type="text" name="descItemContb_produto" id="descItemContb_produto" class="form-control">
+									</div>
+								</div>
+
+
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="ativo_produto">Ativo </label>
+										<!-- SELECT S - SIM | N - NÃO -->
+										<select name="ativo_produto" id="ativo_produto" class="form-control" onchange="verificaSelect('ativo', this.value)">
+											<option value="" disabled selected>Selecione</option>
+											<option value="N"> Não </option>
+											<option value="S"> Sim </option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codAtivo_produto" id="codAtivo_produto" value="" class="form-control">
+										<input type="text" name="descAtivo_produto" id="descAtivo_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="ccusto_produto"> Centro de Custo </label>
+										<input type="zoom" name="ccusto_produto" id="ccusto_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_centroCusto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'Centro de Custo', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="codCCusto_produto"> Código - CC</label>
+										<input type="text" name="codCCusto_produto" id="codCCusto_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descCCusto_produto"> Descrição - Centro de Custo</label>
+										<input type="text" name="descCCusto_produto" id="descCCusto_produto" class="form-control">
+									</div>
+								</div>
+
+								<div id="necInfoCont">
+									<div class="col-md-4 col-xs-12">
+										<label for="infoComplCont"> Necessita informações complementares? <span class="obg">*</span></label>
+										<select name="infoComplCont" id="infoComplCont" class="form-control" onchange="verificaComplCont(this.value)">
+											<option value="" disabled selected>Selecione uma opção</option>
+											<option value="nao"> Não </option>
+											<option value="sim"> Sim </option>
+										</select>
+									</div>
+									<div class="col-md-4 col-xs-12" id="depContInfo">
+										<label for="departCont"> Informe o departamento <span class="obg">*</span></label>
+										<div id="dc1">
+											<select name="departCont1" id="departCont1" class="form-control" onchange="verficaDepartCont(this.value)">
+												<option value="" disabled selected>Selecione uma opção</option>
+												<option value="supply"> Suprimentos </option>
+												<option value="logistica"> Logística </option>
+											</select>
+										</div>
+										<div id="dc2">
+											<select name="departCont2" id="departCont2" class="form-control" onchange="verficaDepartCont(this.value)">
+												<option value="" disabled selected>Selecione uma opção</option>
+												<option value="supply"> Suprimentos </option>
+											</select>
+										</div>
+										<div id="dc3">
+											<select name="departCont3" id="departCont3" class="form-control" onchange="verficaDepartCont(this.value)">
+												<option value="" disabled selected>Selecione uma opção</option>
+												<option value="fiscal"> Fiscal </option>
+											</select>
+										</div>
+										<!-- ======== ======== -->
+										<input type="text" name="selecDepartCont" id="selecDepartCont" class="form-control" style="display: none;">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- ========= RESPONSAVEL FISCAL ========= -->
+						<div id="divRespFiscal">
+							<div class="panel-heading">
+								<div style="height:2px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;"></div>
+							</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-md-2 col-xs-12">
+										<div class="form-group">
+											<label for="usuario_fiscal">Usuário </label>
+											<input type="text" name="usuario_fiscal" id="usuario_fiscal" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-5 col-xs-12">
+										<div class="form-group">
+											<label for="nome_fiscal">Nome Responsável Fiscal </label>
+											<input type="text" name="nome_fiscal" id="nome_fiscal" class="form-control">
+										</div>
+									</div>
+									<div class="col-md-5 col-xs-12">
+										<div class="form-group">
+											<label for="email_fiscal">E-mail Responsável Fiscal </label>
+											<input type="text" name="email_fiscal" id="email_fiscal" class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- ========= FISCAL ========= -->
+						<div id="divFiscal">
+							<div class="panel-heading" id="respFis">
+								<div style="text-align:center;">
+									<div style="height:30px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;padding-top:6px;">
+										FISCAL
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="origem_produto">Origem <span class="obg">*</span></label>
+										<input type="zoom" name="origem_produto" id="origem_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_origem_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codOrigem_produto"> Código - Origem</label>
+										<input type="text" name="codOrigem_produto" id="codOrigem_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descOrigem_produto"> Descrição - Origem</label>
+										<input type="text" name="descOrigem_produto" id="descOrigem_produto" class="form-control">
+									</div>
+								</div>
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="grupoTrib_produto"> Grupo Tributário <span class="obg">*</span> </label>
+										<input type="zoom" name="grupoTrib_produto" id="grupoTrib_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_grupo_tributario_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codGrupTrib_produto"> Código - Grupo Tributária </label>
+										<input type="text" name="codGrupTrib_produto" id="codGrupTrib_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descGrupTrib_produto"> Descrição - Grupo Tributária </label>
+										<input type="text" name="descGrupTrib_produto" id="descGrupTrib_produto" class="form-control">
+									</div>
+								</div>
+								
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="exNcm_produto">Exceção NCM</label>
+										<input type="zoom" name="exNcm_produto" id="exNcm_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_ncm_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codExNcm_produto"> Código - Exceção NCM</label>
+										<input type="text" name="codExNcm_produto" id="codExNcm_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descExNcm_produto"> Descrição - Exceção NCM</label>
+										<input type="text" name="descExNcm_produto" id="descExNcm_produto" class="form-control">
+									</div>
+								</div>
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="tabNatRec_produto">Tabela Natureza Receita </label>
+										<input type="zoom" name="tabNatRec_produto" id="tabNatRec_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_tabela_natureza_rec_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+										<!-- Tabela Natureza Receita | API/Dataset -->
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codTabNatRec_produto"> Código - Tab. Nat. Rec.</label>
+										<input type="text" name="codTabNatRec_produto" id="codTabNatRec_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descTabNatRec_produto"> Descrição - Tab. Nat. Rec.</label>
+										<input type="text" name="descTabNatRec_produto" id="descTabNatRec_produto" class="form-control">
+									</div>
+								</div>
+
+								<div class="col-md-4 col-xs-12">
+									<div class="form-group">
+										<label for="servIss_produto">Serviço ISS </label>
+										<input type="zoom" name="servIss_produto" id="servIss_produto" class="form-control"
+											data-zoom="{
+												'displayKey':'CODIGO',
+												'datasetId':'ds_servico_iss_produto',
+												'maximumSelectionLength':'1',
+												'fields':[
+													{ 'field':'CODIGO', 'label':'Código', 'standard' : 'true', 'search': 'true' },
+													{ 'field':'DESCRICAO', 'label':'Descrição', 'standard' : 'true', 'search': 'true'}
+												]
+											}"
+										>
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codServIss_produto"> Código - Cód. Serv. ISS</label>
+										<input type="text" name="codServIss_produto" id="codServIss_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-12">
+									<div class="form-group">
+										<label for="descServIss_produto"> Descrição - Cód.Serv. ISS</label>
+										<input type="text" name="descServIss_produto" id="descServIss_produto" class="form-control">
+									</div>
+								</div>
+
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="codTribMunic_produto">Código Tributário Município</label>
+										<input type="text" name="codTribMunic_produto" id="codTribMunic_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-3 col-xs-12">
+									<div class="form-group">
+										<label for="classeFiscal_produto">Classe Fiscal </label>
+										<input type="text" name="classeFiscal_produto" id="classeFiscal_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="impostRenda_produto">Imposto de Renda</label>
+										<!-- SELECT S - SIM | N - NÃO -->
+										<select name="impostRenda_produto" id="impostRenda_produto" class="form-control" onchange="verificaSelect('impostRenda', this.value)">
+											<option value="" disabled selected>Selecione</option>
+											<option value="N"> Não </option>
+											<option value="S"> Sim </option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codImpostRenda_produto" id="codImpostRenda_produto" value="" class="form-control">
+										<input type="text" name="descImpostRenda_produto" id="descImpostRenda_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="foraEstado_produto">Fora Estado </label>
+										<!-- SELECT S - SIM | N - NÃO -->
+										<select name="foraEstado_produto" id="foraEstado_produto" class="form-control" onchange="verificaSelect('foraEstado', this.value)">
+											<option value="" disabled selected>Selecione</option>
+											<option value="N"> Não </option>
+											<option value="S"> Sim </option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codForaEstado_produto" id="codForaEstado_produto" value="" class="form-control">
+										<input type="text" name="descForaEstado_produto" id="descForaEstado_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="fRetIss_produto">Forma Retenção ISS</label>
+										<!-- SELECT 1 - Cons Vlr Minimo | 2 - Sempre Retem -->
+										<select name="fRetIss_produto" id="fRetIss_produto" class="form-control" onchange="verificaSelect('fRetInss', this.value)">
+											<option value="" disabled selected>Selecione</option>
+											<option value="1">Cons Vlr Minimo</option>
+											<option value="2">Sempre Retem</option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codfRetInss_produto" id="codfRetInss_produto" value="" class="form-control">
+										<input type="text" name="descfRetInss_produto" id="descfRetInss_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="percSll_produto">Percentual CSLL </label>
+										<input type="text" name="percSll_produto" id="percSll_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="percCofins_produto">Percentual COFINS </label>
+										<input type="text" name="percCofins_produto" id="percCofins_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="percPis_produto">Percentual PIS</label>
+										<input type="text" name="percPis_produto" id="percPis_produto" class="form-control">
+									</div>
+								</div>	
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="alqIcms_produto">Alíquota ICMS </label>
+										<input type="text" name="alqIcms_produto" id="alqIcms_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="alqIpi_produto">Alíquota IPI </label>
+										<input type="text" name="alqIpi_produto" id="alqIpi_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="alqIss_produto">Alíquota ISS </label>
+										<input type="text" name="alqIss_produto" id="alqIss_produto" class="form-control">
+									</div>
+								</div>
+								
+								
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="redInss_produto">% Redução INSS </label>
+										<input type="text" name="redInss_produto" id="redInss_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="redIrrf_produto">% Redução IRRF </label>
+										<input type="text" name="redIrrf_produto" id="redIrrf_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="redPid_produto">% Redução PIS </label>
+										<input type="text" name="redPid_produto" id="redPid_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="redCof_produto">% Redução COFINS </label>
+										<input type="text" name="redCof_produto" id="redCof_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="espTipi_produto">Espécie TIPI </label>
+										<input type="text" name="espTipi_produto" id="espTipi_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="sitTrib_produto">Situação Tributária </label>
+										<input type="text" name="sitTrib_produto" id="sitTrib_produto" maxlength="1" class="form-control">
+										<!-- Limitar pra 1 caracter -->
+									</div>
+								</div>
+
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="tePadrao_produto">TES/TE - Entrada Padrão</label>
+										<input type="text" name="tePadrao_produto" id="tePadrao_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="tsPadrao_produto">TES/TS - Saída Padrão</label>
+										<input type="text" name="tsPadrao_produto" id="tsPadrao_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="calcInss_produto">Cálcula INSS </label>
+										<select name="calcInss_produto" id="calcInss_produto" class="form-control" onchange="verificaSelect('calculaInss', this.value)">
+											<option value="" disabled selected>Selecione</option>
+											<option value="N"> Não </option>
+											<option value="S"> Sim </option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codCalcInss_produto" id="codCalcInss_produto" value="" class="form-control">
+										<input type="text" name="descCalcInss_produto" id="descCalcInss_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="retemPis_produto">Retém PIS </label>
+										<select name="retemPis_produto" id="retemPis_produto" class="form-control" onchange="verificaSelect('retemPis', this.value)">
+											<option value="" disabled selected>Selecione</option>
+											<option value="2"> Não </option>
+											<option value="1"> Sim </option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codRetemPis_produto" id="codRetemPis_produto" value="" class="form-control">
+										<input type="text" name="descRetemPis_produto" id="descRetemPis_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="retemConfins_produto">Retém Confins </label>
+										<select name="retemConfins_produto" id="retemConfins_produto" class="form-control" onchange="verificaSelect('retemConfins', this.value)">
+											<option value="" disabled="" selected="">Selecione</option>
+											<option value="2"> Não </option>
+											<option value="1"> Sim </option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codRetemConfins_produto" id="codRetemConfins_produto" value="" class="form-control">
+										<input type="text" name="descRetemConfins_produto" id="descRetemConfins_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="retemCsll_produto">Retém CSLL </label>
+										<select name="retemCsll_produto" id="retemCsll_produto" class="form-control" onchange="verificaSelect('retemCsll',this.value)">
+											<option value="" disabled selected>Selecione</option>
+											<option value="2"> Não </option>
+											<option value="1"> Sim </option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codRetemCsll_produto" id="codRetemCsll_produto" value="" class="form-control" >
+										<input type="text" name="descRetemCsll_produto" id="descRetemCsll_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+
+								<div class="col-md-6 col-xs-12">
+									<div class="form-group">
+										<label for="cnae_produto">CNAE</label>
+										<input type="text" name="cnae_produto" id="cnae_produto" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="credIcms_produto">Crédito ICMS </label>
+										<!-- SELECT 1- SIM | 0 - NÃO -->
+										<select name="credIcms_produto" id="credIcms_produto" class="form-control" onchange="verificaSelect('creditoICMS', this.value)">
+											<option value="" disabled selected>Selecione</option>
+											<option value="0">Não</option>
+											<option value="1">Sim</option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codCreditoIcms_produto" id="codCreditoIcms_produto" value="" class="form-control">
+										<input type="text" name="descCreditoIcms_produto" id="descCreditoIcms_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="retOp_produto">Retorno Operação </label>
+										<select name="retOp_produto" id="retOp_produto" class="form-control" onchange="verificaSelect('retornoOp', this.value)">
+											<option value="" disabled selected>Selecione</option>
+											<option value="2"> Não </option>
+											<option value="1"> Sim </option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codRetornoOp_produto" id="codRetornoOp_produto" value="" class="form-control">
+										<input type="text" name="descRetornoOp_produto" id="descRetornoOp_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+								<div class="col-md-2 col-xs-12">
+									<div class="form-group">
+										<label for="ratroAtivo_produto">Rastro Ativo </label>
+										<!-- SELECT 1 - SIM | 2 - NÃO -->
+										<select name="ratroAtivo_produto" id="ratroAtivo_produto" class="form-control" onchange="verificaSelect('rastroAtivo', this.value)">
+											<option value="" disabled selected>Selecione</option>
+											<option value="2">Não</option>
+											<option value="1">Sim</option>
+										</select>
+										<!-- ======== ======== -->
+										<input type="hidden" name="codRastroAtivo_produto" id="codRastroAtivo_produto" value="" class="form-control">
+										<input type="text" name="descRastroAtivo_produto" id="descRastroAtivo_produto" value="" class="form-control" style="display: none;">
+									</div>
+								</div>
+
+								
+								<div id="necInfoFisc">
+									<div class="col-md-4 col-xs-12">
+										<label for="infoComplFisc"> Necessita informações complementares? <span class="obg">*</span></label>
+										<select name="infoComplFisc" id="infoComplFisc" class="form-control" onchange="verificaComplFisc(this.value)">
+											<option value="" disabled selected>Selecione uma opção</option>
+											<option value="nao"> Não </option>
+											<option value="sim"> Sim </option>
+										</select>
+									</div>
+									<div class="col-md-4 col-xs-12" id="depFiscInfo">
+										<label for="departFisc"> Informe o departamento <span class="obg">*</span></label>
+										<div id="df1">
+											<select name="departFisc1" id="departFisc1" class="form-control" onchange="verficaDepartFisc(this.value)">
+												<option value="" disabled selected>Selecione uma opção</option>
+												<option value="supply"> Suprimentos </option>
+												<option value="logistica"> Logística </option>
+												<option value="contabilidade"> Contabilidade </option>
+											</select>
+										</div>
+										<div id="df2">
+											<select name="departFisc2" id="departFisc2" class="form-control" onchange="verficaDepartFisc(this.value)">
+												<option value="" disabled selected>Selecione uma opção</option>
+												<option value="supply"> Suprimentos </option>
+												<option value="contabilidade"> Contabilidade </option>
+											</select>
+										</div>
+										<div id="df3">
+											<select name="departFisc3" id="departFisc3" class="form-control" onchange="verficaDepartFisc(this.value)">
+												<option value="" disabled selected>Selecione uma opção</option>
+												<option value="supply"> Suprimentos </option>
+											</select>
+										</div>
+										<!-- ======== ======== -->
+										<input type="hidden" name="selecDepartFisc" id="selecDepartFisc" class="form-control">
+									</div>
+								</div>
+
+							</div>
+						</div>
+						
+						<!-- =========== NECESSIDADE RETORNO ============ -->
+						<div id="divNecessidade">
+							<div class="panel-heading">
+								<div style="text-align:center;">
+									<div style="height:30px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;padding-top:6px;">
+										REGISTRO DE NECESSIDADE E RETORNO
+									</div>
+								</div>
+							</div>
+							
+							<div class="panel-body">
+								
+								<div class="col-md-12 col-xs-12">
+									<div class="col-md-12">
+										<label for="necess_retorno">Descrição Necessidade/Retorno <span class="obg">**</span></label>
+										<textarea class="form-control" id="necess_retorno" name="necess_retorno" rows="2"></textarea>
+									</div>
+								</div>
+											
+								<div class="col-md-12 col-xs-12" style="margin-top: 15px;">
+									<table class="table table-hover" tablename="tabNecRet" id="tabNecRet" name="tabNecRet" noaddbutton="true" nodeletebutton="true">
+										<thead class="thead-light">
+											<tr class="tableHeadRow"><th class="tableColumn">
+												<div class="row">
+													<div class="col-md-3 col-xs-12"> Data e Hora </div>
+													<div class="col-md-2 col-xs-12"> Usuário </div>
+													<div class="col-md-6 col-xs-12"> Detalhes </div>
+												</div>
+											</th></tr>
+										</thead>
+										<tbody>
+											<tr detail="true" detailname="tableDetalhes" class="tabledDetalhes">
+												<td><div class="row">
+													<div class="col-md-3 col-xs-12">
+														<div class="input-group input-group">
+															<span class="input-group-addon"><i class="fluigicon fluigicon-calendar"></i></span>
+															<input type="text" class="form-control" name="td_data" id="td_data" readonly="">
+														</div>
+													</div>
+													<div class="col-md-2 col-xs-12">
+														<input type="text" class="form-control" name="tb_usuario" id="tb_usuario" readonly="">
+													</div>
+													<div class="col-md-7 col-xs-12">
+														<textarea class="form-control" name="tb_descricao" id="tb_descricao" rows="2" readonly=""></textarea>
+													</div>	
+												</div></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- =========== ANEXOS DO PROCESSO ============ -->
+						<div id="divAnexoProcesso">	
+							
+							<div class="panel-heading">
+								<div style="text-align:center;">
+									<div style="height:30px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;padding-top:6px;">
+										INSIRA OS ANEXOS DO CADASTRO DE PRODUTO
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-body">
+								
+								<div class="row btnaddanexos" >
+									<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+										<div class='col-lg-4 col-md-4 col-sm-12 col-xs-12'>												
+										</div>															
+										<div class='col-lg-8 col-md-8 col-sm-12 col-xs-12'>
+											<button class="btn pull-right btn-primary" onclick="addRow()">Adicionar anexo </button>																
+										</div>															
+									</div>
+								</div>
+
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<table class="table" id="tbanexos" tablename="tbanexos" nodeletebutton="true" noaddbutton="true">
+											<thead>
+												<tr>													
+													<th class="text-center">Anexo</th>													
+													<th class="tdacoes text-center">Ações</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>													
+													<td>
+														<div id="anexo" class="divanexo">																		
+															<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+																<div class="form-group">																	
+																	<div class="input-group">
+																		<span class="input-group-btn"> 
+																			<button class="btn btn-success removAnexo" type="button" name="removAnexo" onclick="delAnexo(this);" style="height: 34px;" disabled="disabled"><i class="fluigicon fluigicon-remove-sign icon-sm"></i></button>
+																		</span>
+																		<input type="text" class="form-control" name="descAnexo" id="descAnexo" data-ref="descAnexo" readonly>
+																		<span class="input-group-btn">
+																			<button class="btn btn-default adicAnexo" type="button" data-toggle="tooltip" data-placement="left" data-ref="showCamera" title="Anexo" id="adicAnexo" onclick="showCamera(this);">Adicionar anexo</button>
+																		</span>
+																	</div>
+																	<input type="hidden" name="checkAnexo" id="checkAnexo">																	
+																	<input type="hidden" name="linkAnexo" id="linkAnexo">																	
+																</div>	
+															</div>
+														</div>														
+													</td>
+													<td class="tdacoes text-center">
+														<button type="button" class="btn btn-default" onclick="modalShow(this)" style="display: none;">Visualizar Anexo</button>																												
+														<input type="hidden" name="paramAnexo" id="paramAnexo">
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>								
+							</div>
+
+						</div>
+
+						<!-- ========== NOTIFICAÇÃO DE USUARIOS ESPECIFICOS ========== -->
+						<div id="divNotifUser">
+							<div class="panel-heading">
+								<div style="text-align:center;">
+									<div style="height:30px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;padding-top:6px;">
+										ADICIONE NOTIFICAÇÃO PARA PESSOAS ESPECIFICOS
+									</div>
+								</div>
+							</div>
+
+							<div class="panel-body">
+								<div id="infoNotif">
+									<div class="col-md-5 col-xs-12">
+										<div class="form-group">
+											<label for="emailUser">E-mail do Usuario a ser notificado </label>
+											<div class="input-group">
+												<input type="text" id="emailUser" name="emailUser" class="form-control">
+												<span class="input-group-addon"><i class="fluigicon fluigicon-arroba"></i></span>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3 col-xs-12">
+										<div class="form-group">
+											<label for="endereco_email">.</label>
+											<select name="endereco_email" id="endereco_email" class="form-control" onchange="verificaSelect('email',this.value)">
+												<option value="ccab-agro.com.br"> ccab-agro.com.br </option>
+												<option value="ccab-agro.net"> ccab-agro.net </option>
+												<option value="hqsolucoes.com"> hqsolucoes.com </option>
+												<option value="wikitec.com.br"> wikitec.com.br </option>
+											</select>
+											<input type="hidden" id="end_email" name="end_email" class="form-control" value="ccab-agro.com.br">
+										</div>
+									</div>
+									<div class="col-md-4 col-xs-12">
+										<div class="form-group">
+											<button type="button" id="btnAddEmail" name="btnAddEmail" class="btn btn-primary" style="margin: 23px;" onclick="addEmail()"> <i class="fluigicon fluigicon-plus"></i> Adicionar Novo E-mail para Notificação</button>
+										</div>
+									</div>
+								</div>
+											
+								<div class="col-md-12 col-xs-12" style="margin-top: 15px;">
+									<table class="table table-hover" tablename="tabNotifUser" id="tabNotifUser" name="tabNotifUser" noaddbutton="true">
+										<thead class="thead-light">
+											<tr>
+												<th width="95%" style="text-align: center;">E-mail</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<div class="input-group input-group">
+														<input type="text" class="form-control" name="td_email" id="td_email" readonly="">
+														<span class="input-group-addon"><i class="fluigicon fluigicon-arroba"></i></span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+							
+				</div>
+
+				<!-- ========= PARAMETROS ========= -->
+				<div>
+					<input type="hidden" name="formMode" id="formMode" class="form-control">
+					<input type="hidden" name="isMobile" id="idMobile" class="form-control">
+					<input type="hidden" name="atvAtual" id="atvAtual" class="form-control" value="0">
+					<input type="hidden" name="createDate" id="createDate" class="form-control">
+					<input type="hidden" name="numSolicitacao" id="numSolicitacao" class="form-control">
+					<input type="hidden" name="numDoc" id="numDoc" class="form-control">
+					<input type="hidden" name="matricula" id="matricula" class="form-control">
+					<!-- DEFINIÇÃO DE RESPONSAVEIS -->
+					<input type="hidden" name="supplyResp" id="supplyResp" value="Pool:Role:suprimentos" class="form-control">
+					<input type="hidden" name="supplyPrazo" id="supplyPrazo" value="001:00" class="form-control">
+					<input type="hidden" name="logistResp" id="logistResp" value="Pool:Role:logistica" class="form-control">
+					<input type="hidden" name="logistPrazo" id="logistPrazo" value="001:00" class="form-control">
+					<input type="hidden" name="contabResp" id="contabResp" value="Pool:Role:contabilidade" class="form-control">
+					<input type="hidden" name="contabPrazo" id="contabPrazo" value="001:00" class="form-control">
+					<input type="hidden" name="fiscalResp" id="fiscalResp" value="Pool:Role:fiscal" class="form-control">
+					<input type="hidden" name="fiscalPrazo" id="fiscalPrazo" value="001:00" class="form-control">
+					<!-- DEFINIÇÃO DE TAREFAS -->
+					<input type="hidden" name="tipoProduto" id="tipoProduto" class="form-control">
+					<input type="hidden" name="departCadastrante" id="departCadastrante" class="form-control">
+					<input type="hidden" name="retorno" id="retorno" value="nao" class="form-control">
+					<input type="hidden" name="auxRetorno" id="auxRetorno" value="" class="form-contro">
+					<input type="hidden" name="departamento" id="departamento" value="" class="form-control">
+				</div>
+
+
+				<!-- formulario de anexo -->
+				<div class="hide">
+					<script type="text/template" id="tmplModal">
+						<div class="container-fluid" style="height: 100%;">
+							<iframe id="visuaAnexo" name="visuaAnexo" frameborder="0"  src=""></iframe>												
+						</div>
+					</script>
+				</div>
+
+			</form>
+		</div>
+	</body>
+</html>

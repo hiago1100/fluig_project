@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Estabelecimento</label>
+                <div class="col-sm-5">
+                    <input type="text" name="estabelecimento_input" class="form-control" fluig-autocomplete values="vm.Estabelecimentos" display-key="displaykey"
+                        ng-model="vm.Formulario.estabelecimento" ng-change="vm.consultaDuplicado()" ng-readonly="vm.Params.formMode != 'ADD'">
+                    <textarea hidden name="estabelecimento" ng-value="vm.Formulario.estabelecimento | json:0" ng-bind="vm.Formulario.estabelecimento | json:0"></textarea>
+                    <input type="hidden" name="codEstab" ng-value="vm.Formulario.estabelecimento.codigo">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Tipo de Documento</label>
+                <div class="col-sm-5">
+                    <input type="text" name="tipoDocumento_input" class="form-control" fluig-autocomplete values="vm.TiposDocumento" display-key="displaykey"
+                        ng-model="vm.Formulario.tipoDocumento" ng-change="vm.consultaDuplicado();vm.buscaReferencias()" ng-readonly="vm.Params.formMode != 'ADD'">
+                    <textarea hidden name="tipoDocumento" ng-value="vm.Formulario.tipoDocumento | json:0" ng-bind="vm.Formulario.tipoDocumento | json:0"></textarea>
+                    <input type="hidden" name="codTipoDocto" ng-value="vm.Formulario.tipoDocumento.codigo">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Referência</label>
+                <div class="col-sm-5">
+                    <input type="text" name="referencia_input" class="form-control" fluig-autocomplete values="vm.Referencias" display-key="referenciaDescricao"
+                        ng-model="vm.Formulario.referencia" ng-change="vm.consultaDuplicado()" ng-readonly="vm.Params.formMode != 'ADD' || !vm.Referencias">
+                    <textarea hidden name="referencia" ng-value="vm.Formulario.referencia | json:0" ng-bind="vm.Formulario.referencia | json:0"></textarea>
+                    <input type="hidden" name="codReferencia" ng-value="vm.Formulario.referencia.referenciaCodigo">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>

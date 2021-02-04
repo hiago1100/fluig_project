@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_121" class="java.beans.XMLDecoder">
+ <object class="java.util.HashMap">
+  <void method="put">
+   <string>volume</string>
+   <array class="java.lang.String" length="1">
+    <void index="0">
+     <string>Default</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>camposFormulario, documentoId = 1099</string>
+   <array class="java.lang.String" length="39">
+    <void index="0">
+     <string>cod_aprovador</string>
+    </void>
+    <void index="1">
+     <string>cod_desenho_item_comp_de</string>
+    </void>
+    <void index="2">
+     <string>cod_desenho_item_comp_para</string>
+    </void>
+    <void index="3">
+     <string>cod_desvio</string>
+    </void>
+    <void index="4">
+     <string>cod_estabel</string>
+    </void>
+    <void index="5">
+     <string>cod_fam_desvio</string>
+    </void>
+    <void index="6">
+     <string>cod_item_acab_desv</string>
+    </void>
+    <void index="7">
+     <string>cod_item_comp_de</string>
+    </void>
+    <void index="8">
+     <string>cod_item_comp_para</string>
+    </void>
+    <void index="9">
+     <string>cod_motiv_desvio</string>
+    </void>
+    <void index="10">
+     <string>cod_revisao_item_comp_de</string>
+    </void>
+    <void index="11">
+     <string>cod_revisao_item_comp_para</string>
+    </void>
+    <void index="12">
+     <string>cod_solicitante</string>
+    </void>
+    <void index="13">
+     <string>cod_tp_desvio</string>
+    </void>
+    <void index="14">
+     <string>cont_aprovador</string>
+    </void>
+    <void index="15">
+     <string>desc_area_solicit</string>
+    </void>
+    <void index="16">
+     <string>desc_fam_desvio</string>
+    </void>
+    <void index="17">
+     <string>desc_item_acab_desv</string>
+    </void>
+    <void index="18">
+     <string>desc_item_comp_de</string>
+    </void>
+    <void index="19">
+     <string>desc_item_comp_para</string>
+    </void>
+    <void index="20">
+     <string>desc_observacao</string>
+    </void>
+    <void index="21">
+     <string>dt_abert_desvio</string>
+    </void>
+    <void index="22">
+     <string>dt_valid_fim_desvio</string>
+    </void>
+    <void index="23">
+     <string>dt_valid_ini_desvio</string>
+    </void>
+    <void index="24">
+     <string>envia_aprovador</string>
+    </void>
+    <void index="25">
+     <string>Especis</string>
+    </void>
+    <void index="26">
+     <string>familias</string>
+    </void>
+    <void index="27">
+     <string>ind_aprova_desvio</string>
+    </void>
+    <void index="28">
+     <string>ind_status_desvio</string>
+    </void>
+    <void index="29">
+     <string>items</string>
+    </void>
+    <void index="30">
+     <string>log_lin_especiais</string>
+    </void>
+    <void index="31">
+     <string>log_lin_fabricacao</string>
+    </void>
+    <void index="32">
+     <string>log_lin_horizontal</string>
+    </void>
+    <void index="33">
+     <string>log_lin_vitrines</string>
+    </void>
+    <void index="34">
+     <string>nom_fornec_item_comp_de</string>
+    </void>
+    <void index="35">
+     <string>nom_fornec_item_comp_para</string>
+    </void>
+    <void index="36">
+     <string>qtd_item_comp_para</string>
+    </void>
+    <void index="37">
+     <string>utilizas</string>
+    </void>
+    <void index="38">
+     <string>vl_varicao_desvio</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>mecanismoGrupo</string>
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>MetalFrio: Diretor</string>
+      </void>
+      <void property="groupId">
+       <string>metal_diretor</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>MetalFrio: Controladoria</string>
+      </void>
+      <void property="groupId">
+       <string>metal_controladoria</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>MetalFrio: Marketing</string>
+      </void>
+      <void property="groupId">
+       <string>metal_marketing</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>MetalFrio: Vendas</string>
+      </void>
+      <void property="groupId">
+       <string>metal_vendas</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.GroupDto">
+      <void property="groupDescription">
+       <string>MetalFrio: Ambos</string>
+      </void>
+      <void property="groupId">
+       <string>metal_ambos</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>expediente</string>
+   <array class="java.lang.String" length="1">
+    <void index="0">
+     <string>Default</string>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>processosServidor</string>
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processDescription">
+       <string>Aprovação Desvio</string>
+      </void>
+      <void property="processId">
+       <string>cAprovaçãoDesvio</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processDescription">
+       <string>Listar Tarefas</string>
+      </void>
+      <void property="processId">
+       <string>FLUIGADHOC</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processDescription">
+       <string>teste_retorno_inicio</string>
+      </void>
+      <void property="processId">
+       <string>teste_retorno_inicio</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processDescription">
+       <string>PNLD EM 2018</string>
+      </void>
+      <void property="processId">
+       <string>wf_pnld</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processDescription">
+       <string>SE 2018</string>
+      </void>
+      <void property="processId">
+       <string>wf_se2018</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processDescription">
+       <string>SE 2018</string>
+      </void>
+      <void property="processId">
+       <string>wf_sistema_de_ensino</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ProcessDefinitionDto">
+      <void property="companyId">
+       <int>1</int>
+      </void>
+      <void property="processDescription">
+       <string>Assistente de Importacao Rapida</string>
+      </void>
+      <void property="processId">
+       <string>wizard</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>mecanismoPapel</string>
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
+      <void property="companyId">
+       <long>1</long>
+      </void>
+      <void property="roleDescription">
+       <string>admin</string>
+      </void>
+      <void property="roleId">
+       <string>admin</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
+      <void property="companyId">
+       <long>1</long>
+      </void>
+      <void property="roleDescription">
+       <string>SETOR 1</string>
+      </void>
+      <void property="roleId">
+       <string>04-1</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
+      <void property="companyId">
+       <long>1</long>
+      </void>
+      <void property="roleDescription">
+       <string>SE: Consultor Educacional</string>
+      </void>
+      <void property="roleId">
+       <string>se_consultor_educacional</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
+      <void property="companyId">
+       <long>1</long>
+      </void>
+      <void property="roleDescription">
+       <string>SE: Jurídico</string>
+      </void>
+      <void property="roleId">
+       <string>se_juridico</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
+      <void property="companyId">
+       <long>1</long>
+      </void>
+      <void property="roleDescription">
+       <string>SE: Administração</string>
+      </void>
+      <void property="roleId">
+       <string>se_administracao</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.WorkflowRoleDto">
+      <void property="companyId">
+       <long>1</long>
+      </void>
+      <void property="roleDescription">
+       <string>Setor para teste</string>
+      </void>
+      <void property="roleId">
+       <string>04-2</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="put">
+   <string>mecanismo</string>
+   <array class="[Ljava.lang.Object;" length="9">
+    <void index="0">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Associação</string>
+      </void>
+      <void index="1">
+       <string>Associado</string>
+      </void>
+     </array>
+    </void>
+    <void index="1">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Campo de Formulário</string>
+      </void>
+      <void index="1">
+       <string>Campo Formulário</string>
+      </void>
+     </array>
+    </void>
+    <void index="2">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Executor de Atividade</string>
+      </void>
+      <void index="1">
+       <string>Executor Atividade</string>
+      </void>
+     </array>
+    </void>
+    <void index="3">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Grupo</string>
+      </void>
+      <void index="1">
+       <string>Grupo</string>
+      </void>
+     </array>
+    </void>
+    <void index="4">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Grupos do Colaborador</string>
+      </void>
+      <void index="1">
+       <string>Grupos Colaborador</string>
+      </void>
+     </array>
+    </void>
+    <void index="5">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Papel</string>
+      </void>
+      <void index="1">
+       <string>Papel</string>
+      </void>
+     </array>
+    </void>
+    <void index="6">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição para um Grupo</string>
+      </void>
+      <void index="1">
+       <string>Pool Grupo</string>
+      </void>
+     </array>
+    </void>
+    <void index="7">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição para um Papel</string>
+      </void>
+      <void index="1">
+       <string>Pool Papel</string>
+      </void>
+     </array>
+    </void>
+    <void index="8">
+     <array class="java.lang.Object" length="2">
+      <void index="0">
+       <string>Atribuição por Usuário</string>
+      </void>
+      <void index="1">
+       <string>Usuário</string>
+      </void>
+     </array>
+    </void>
+   </array>
+  </void>
+  <void method="put">
+   <string>mecanismoColaborador</string>
+   <object class="java.util.ArrayList">
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ColleagueDtoLite">
+      <void property="colleagueId">
+       <string>adm</string>
+      </void>
+      <void property="colleagueName">
+       <string>Administrador Desenvolvimento</string>
+      </void>
+     </object>
+    </void>
+    <void method="add">
+     <object class="com.totvs.tds.ecm.foundation.ws.ColleagueDtoLite">
+      <void property="colleagueId">
+       <string>fluig</string>
+      </void>
+      <void property="colleagueName">
+       <string>Fluig Integração</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

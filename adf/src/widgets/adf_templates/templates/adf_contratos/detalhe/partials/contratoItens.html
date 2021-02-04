@@ -1,0 +1,58 @@
+<div class="panel-group" ng-init="itensCollapsed = true">
+    <div class="panel panel-default">
+        <div class="panel-heading fs-cursor-pointer" ng-click="itensCollapsed = !itensCollapsed">
+            <a class="collapse-icon" ng-class="{'up': itensCollapsed}">
+                <h3 class="panel-title">Itens do Contrato</h3>
+            </a>
+        </div>
+        <div id="collapseItens" class="panel-collapse collapse" ng-class="{'in': itensCollapsed}">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-info" ng-repeat="item in documento.Itens">
+                    <div class="panel-heading fs-cursor-pointer" ng-click="item.collapsed=!item.collapsed">
+                        <a class="collapse-icon" ng-class="{'up': item.collapsed}">
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <b>Item</b>
+                                    <p>{{item.itemCodigo}} - {{item.itemDescricao}}</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <b>% Relativo</b>
+                                    <p>{{item.itemValorTotal / documento.contratoValor | percentage:2}}</p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <b>Valor</b>
+                                    <p>{{item.itemValor | currency:item.itemMoeda}}</p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <b>Qtde</b>
+                                    <p>{{item.itemQtde | number:2}} {{item.itemUnMedida}}</p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <b>Valor Total</b>
+                                    <p>{{item.itemValorTotal | currency:item.itemMoeda}}</p>
+                                </div>
+                                <div class="col-sm-3">
+                                    <b>Saldo</b>
+                                    <p>{{item.itemSaldo | currency:item.itemMoeda}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseItem{{item.itemSeq}}" ng-class="{'in': item.collapsed}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion{{item.itemSeq}}">
+                               
+                                <!-- partial:item-Impostos.html -->
+                                <!-- partial -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

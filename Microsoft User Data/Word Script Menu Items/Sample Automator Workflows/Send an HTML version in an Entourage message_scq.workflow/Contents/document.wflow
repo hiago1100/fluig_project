@@ -1,0 +1,735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>87</string>
+	<key>AMApplicationVersion</key>
+	<string>1.0.4</string>
+	<key>AMDocumentVersion</key>
+	<string>1</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.word.document.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.word.document.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Word</string>
+						<key>Resource</key>
+						<string>com.microsoft.word</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Save Word Documents.action</string>
+				<key>ActionName</key>
+				<string>Save Word Documents</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>saveAs</key>
+					<string>Untitled</string>
+					<key>saveFormat</key>
+					<integer>0</integer>
+					<key>saveOption</key>
+					<integer>0</integer>
+					<key>saveWhere</key>
+					<string>~/Desktop</string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Word</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Save_Word_Documents</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryDocuments</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>1066CB32-129F-4BCC-9E26-FDE4B3B912B4</string>
+				<key>Keywords</key>
+				<array>
+					<string>saving</string>
+					<string>save as</string>
+					<string>PDF</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>169CED45-1997-46C6-B31B-1B35701C9FED</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>0D6BF4BA-5646-4FAC-86FA-0F4B913ADAE8</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Word</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>saveOption</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string>~/Desktop</string>
+						<key>name</key>
+						<string>saveWhere</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<string>Untitled</string>
+						<key>name</key>
+						<string>saveAs</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>saveFormat</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Save Word Documents.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>847.000000:-1775.666748</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.word.document.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Word</string>
+						<key>Resource</key>
+						<string>com.microsoft.word</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Close Word Documents.action</string>
+				<key>ActionName</key>
+				<string>Close Word Documents</string>
+				<key>ActionParameters</key>
+				<dict/>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Word</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Close_Word_Documents</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<false/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryDocuments</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>144BC4EA-B46C-4C0B-8750-2959828B9237</string>
+				<key>Keywords</key>
+				<array>
+					<string>end</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>F6AF865A-87F4-43D6-BF1D-FCA8CAE1EF7F</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>345F185C-ECF1-45BB-9FF1-4FD1EA4DBE83</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Word</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
+				<key>nibPath</key>
+				<string>/Library/Automator/Close Word Documents.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>1127.000000:-1822.333252</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Word</string>
+						<key>Resource</key>
+						<string>com.microsoft.word</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Convert Format of Word Documents.action</string>
+				<key>ActionName</key>
+				<string>Convert Format of Word Documents</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>outputFormat</key>
+					<integer>6</integer>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Word</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Convert_Format_of_Word_Documents</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryDocuments</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>90E12E95-86D0-4455-B628-3789CCB98C69</string>
+				<key>Keywords</key>
+				<array>
+					<string>save</string>
+					<string>save as</string>
+					<string>PDF</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>E7611E00-02BD-4629-B363-9D25AADAEACF</string>
+				<key>StartAction</key>
+				<false/>
+				<key>UUID</key>
+				<string>BCC4F13D-68C1-4051-B7F2-24EF2A9F1AFF</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Word</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>outputFormat</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Convert Format of Word Documents.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>567.000000:-1869.000000</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.alias-object</string>
+						<string>com.apple.applescript.alias-object.image</string>
+						<string>com.apple.applescript.url-object</string>
+						<string>com.apple.applescript.text-object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Entourage</string>
+						<key>Resource</key>
+						<string>com.microsoft.entourage</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Create New Entourage Mail Message.action</string>
+				<key>ActionName</key>
+				<string>Create New Entourage Mail Message</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>account</key>
+					<string>Default Account</string>
+					<key>bcc</key>
+					<string></string>
+					<key>cc</key>
+					<string></string>
+					<key>messageBody</key>
+					<string></string>
+					<key>priority</key>
+					<integer>2</integer>
+					<key>subject</key>
+					<string></string>
+					<key>to</key>
+					<string></string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Create_New_Entourage_Mail_Message</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>A44DF4C5-2764-478F-9142-F0349E43C68B</string>
+				<key>Keywords</key>
+				<array>
+					<string>build</string>
+					<string>create</string>
+					<string>email</string>
+					<string>generate</string>
+					<string>make</string>
+					<string>mail</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>55C3C7E0-34C3-430C-8457-E8E34156018D</string>
+				<key>ShowWhenRun</key>
+				<true/>
+				<key>UUID</key>
+				<string>BC1AE523-2311-43D3-8C10-199961E129F9</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>bcc</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<string>Default Account</string>
+						<key>name</key>
+						<string>account</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<integer>2</integer>
+						<key>name</key>
+						<string>priority</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>cc</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>subject</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+					<key>5</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>messageBody</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>5</string>
+					</dict>
+					<key>6</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>to</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>6</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Create New Entourage Mail Message.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>1127.000000:91.000000</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0</string>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.microsoft.entourage.message.object</string>
+					</array>
+				</dict>
+				<key>AMRequiredResources</key>
+				<array>
+					<dict>
+						<key>Display Name</key>
+						<string>Microsoft Entourage</string>
+						<key>Resource</key>
+						<string>com.microsoft.entourage</string>
+						<key>Type</key>
+						<string>application</string>
+						<key>Version</key>
+						<string>12.0</string>
+					</dict>
+				</array>
+				<key>ActionBundlePath</key>
+				<string>/Library/Automator/Send Outgoing Entourage Mail Messages.action</string>
+				<key>ActionName</key>
+				<string>Send Outgoing Entourage Mail Messages</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>from</key>
+					<string>Account that created message</string>
+				</dict>
+				<key>Application</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>BundleIdentifier</key>
+				<string>com.microsoft.Automator.Send_Outgoing_Entourage_Mail_Messages</string>
+				<key>CFBundleVersion</key>
+				<string>1.0</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryMail</string>
+				</array>
+				<key>Class Name</key>
+				<string>AMAppleScriptAction</string>
+				<key>InputUUID</key>
+				<string>710E3C8F-6139-42F6-AF46-D5AD5C4447AB</string>
+				<key>Keywords</key>
+				<array>
+					<string>mail</string>
+					<string>email</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>ECCA4A80-8907-4A98-837A-1DA966037231</string>
+				<key>UUID</key>
+				<string>C6C168CD-3D1D-4A37-BDB2-8A474E0727F8</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Microsoft Entourage</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>Account that created message</string>
+						<key>name</key>
+						<string>from</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>nibPath</key>
+				<string>/Library/Automator/Send Outgoing Entourage Mail Messages.action/Contents/Resources/en.lproj/main.nib</string>
+			</dict>
+			<key>collapsed</key>
+			<false/>
+			<key>isOutletsVisible</key>
+			<false/>
+			<key>isViewVisible</key>
+			<true/>
+			<key>location</key>
+			<string>567.000000:-49.000000</string>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>2EDA76B9-6C65-4679-84AE-FDF8AF0106C5</key>
+		<dict>
+			<key>from</key>
+			<string>BCC4F13D-68C1-4051-B7F2-24EF2A9F1AFF - E7611E00-02BD-4629-B363-9D25AADAEACF</string>
+			<key>to</key>
+			<string>BC1AE523-2311-43D3-8C10-199961E129F9 - A44DF4C5-2764-478F-9142-F0349E43C68B</string>
+		</dict>
+		<key>4C53BB07-623C-477B-974F-F38B179EAC27</key>
+		<dict>
+			<key>from</key>
+			<string>0D6BF4BA-5646-4FAC-86FA-0F4B913ADAE8 - 169CED45-1997-46C6-B31B-1B35701C9FED</string>
+			<key>to</key>
+			<string>345F185C-ECF1-45BB-9FF1-4FD1EA4DBE83 - 144BC4EA-B46C-4C0B-8750-2959828B9237</string>
+		</dict>
+		<key>F54FD1CF-4668-4AEE-A67A-9DE59709754D</key>
+		<dict>
+			<key>from</key>
+			<string>BC1AE523-2311-43D3-8C10-199961E129F9 - 55C3C7E0-34C3-430C-8457-E8E34156018D</string>
+			<key>to</key>
+			<string>C6C168CD-3D1D-4A37-BDB2-8A474E0727F8 - 710E3C8F-6139-42F6-AF46-D5AD5C4447AB</string>
+		</dict>
+		<key>F9C7C0E3-31CA-45CC-9760-B767E233A4BD</key>
+		<dict>
+			<key>from</key>
+			<string>345F185C-ECF1-45BB-9FF1-4FD1EA4DBE83 - F6AF865A-87F4-43D6-BF1D-FCA8CAE1EF7F</string>
+			<key>to</key>
+			<string>BCC4F13D-68C1-4051-B7F2-24EF2A9F1AFF - 90E12E95-86D0-4455-B628-3789CCB98C69</string>
+		</dict>
+	</dict>
+	<key>state</key>
+	<dict>
+		<key>actionsSplitView</key>
+		<real>175</real>
+		<key>layoutFrame</key>
+		<string>{{0, 0}, {550, 823}}</string>
+		<key>layoutScrollPosition</key>
+		<string>{{0, 0}, {550, 823}}</string>
+		<key>mainSplitView</key>
+		<real>373</real>
+		<key>minorSplitView</key>
+		<real>681</real>
+		<key>windowFrame</key>
+		<string>{{247, 227}, {953, 951}}</string>
+	</dict>
+</dict>
+</plist>

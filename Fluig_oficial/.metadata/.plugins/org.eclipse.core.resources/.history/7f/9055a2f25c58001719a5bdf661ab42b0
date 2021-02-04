@@ -1,0 +1,63 @@
+$().ready(function () {
+    $('#mostrarDiv').on('click', function (e) {
+        e.preventDefault();
+        $('#esconderMostrar').fadeToggle();
+    })
+
+    $('#crianca').on('click', function () {
+        $('#divPrimeiro').fadeIn();
+        $('#divSegundo').hide();
+        $('#divTerceiro').hide();
+        $('#divQuarto').hide();
+    })
+
+    $('#jovem').on('click', function () {
+        $('#divPrimeiro').hide();
+        $('#divSegundo').fadeIn();
+        $('#divTerceiro').hide();
+        $('#divQuarto').hide();
+    })
+
+    $('#adulto').on('click', function () {
+        $('#divPrimeiro').hide();
+        $('#divSegundo').hide();
+        $('#divTerceiro').fadeIn();
+        $('#divQuarto').hide();
+    })
+
+    $('#tercIdade').on('click', function () {
+        $('#divPrimeiro').hide();
+        $('#divSegundo').hide();
+        $('#divTerceiro').hide();
+        $('#divQuarto').fadeIn();
+    })
+
+})
+
+    function testdiv(id){
+         id = id;
+       if(id == "bg1" ){
+           $("#bg1").attr('src', "img/plano-familiar/crianca-b.png");
+           $("#bg2").attr('src', "img/plano-familiar/jovens-a.png");
+           $("#bg3").attr('src', "img/plano-familiar/adultos-a.png");
+           $("#bg4").attr('src', "img/plano-familiar/idoso-a.png");
+       }else if(id == "bg2"){
+           $("#bg2").attr('src', "img/plano-familiar/jovens-b.png");
+           $("#bg1").attr('src', "img/plano-familiar/crianca-a.png");
+           $("#bg3").attr('src', "img/plano-familiar/adultos-a.png");
+           $("#bg4").attr('src', "img/plano-familiar/idoso-a.png");
+       }else if (id == "bg3"){
+           $("#bg3").attr('src', "img/plano-familiar/adultos-b.png");
+           $("#bg1").attr('src', "img/plano-familiar/crianca-a.png");
+            $("#bg2").attr('src', "img/plano-familiar/jovens-a.png");
+            $("#bg4").attr('src', "img/plano-familiar/idoso-a.png");
+       }else if(id == "bg4"){
+           $("#bg4").attr('src', "img/plano-familiar/idoso-b.png");
+           $("#bg1").attr('src', "img/plano-familiar/crianca-a.png");
+           $("#bg2").attr('src', "img/plano-familiar/jovens-a.png");
+           $("#bg3").attr('src', "img/plano-familiar/adultos-a.png");
+       }
+          
+           
+       
+    };

@@ -1,0 +1,1118 @@
+@font-face{
+    font-family: 'Roboto-Thin';
+    src: url('../fonts/Roboto/Roboto-Thin.ttf');
+    font-size: 1em;
+}
+
+@font-face{
+    font-family: 'Roboto-Regular';
+    src: url('../fonts/Roboto/Roboto-Regular.ttf');
+    font-size: 1em;
+}
+
+@font-face{
+    font-family: 'Roboto-Medium';
+    src: url('../fonts/Roboto/Roboto-Medium.ttf');
+    font-size: 1em;
+}
+
+
+@font-face{
+    font-family: 'Roboto-Bold';
+    src: url('../fonts/Roboto/Roboto-Bold.ttf');
+    font-size: 1em;
+}
+
+@font-face{
+    font-family: 'Roboto-Light';
+    src: url('../fonts/Roboto/Roboto-Light.ttf');
+    font-size: 1em;
+}
+
+
+
+
+html, body{
+    width:100%;
+    height:100%;
+    background-color:#fff;
+	font-family: 'Roboto', sans-serif;
+    }
+
+.cor-cinza{
+    color: #6d6d6d;
+}
+
+.cor-cinza-claro{
+   color: #c9c9c9;
+}
+
+/*------Banner topo-----*/
+
+.banner_topo{
+    width: 100%;
+    background: #ffffff;
+    position:relative;
+    margin-bottom: 30px;
+
+}
+
+#logo-topo{
+    margin-top: 23px;
+    margin-left: 10px;    
+}
+
+#fone-topo{
+    font-size: 13px;
+    color: #004693;
+    font-weight: bold;
+    float: left;
+    margin-top: 66px;
+    margin-left: 30px;
+}
+
+#contato-topo{
+    font-size: 13px;
+    color: #004693;
+    font-weight: bold;
+    float: left;
+    margin-top: 64px;
+    margin-left: 30px;
+}
+
+#usuario-topo{
+    float: left;
+    padding-left: 0px;
+    margin-top: 65px;
+    margin-left: 12px;
+}
+
+#seta-topo{
+    float: left;
+    padding-left: 0px;
+    margin-left: -10px;
+    margin-top: 66px;
+    margin-left: 3px; 
+}
+
+/*---------Formatação do Login----*/
+#login-topo{
+    float: left;
+    font-size: 13px;
+    color: #004693;
+    font-weight: bold;
+    margin-top: 67px;
+    margin-left: 16px;
+}
+
+div #login-topo a{
+    text-decoration: none;
+}
+
+div #login-topo > a{
+  color: #f7a600;
+  /* IE8 proofing */
+  color: rgba(0,70,147, .95);
+  border-bottom: 3px solid transparent;
+  border-bottom-width: 3px;
+}
+
+div #login-topo > a:hover,
+div #login-topo > a:focus {
+  background-color: transparent;
+  color: #004693;
+  border-bottom-color: #f7a600;
+}
+
+div #login-topo > .active > a,
+div #login-topo > .active > a:hover,
+div #login-topo > .active > a:focus {
+  color: #004693;
+  border-bottom-color: #f7a600;
+}
+
+
+/*---------Formatação do Cadastre-se----*/
+#cadastro-topo{
+    float: left;
+    font-size: 13px;
+    color: #004693;
+    font-weight: bold;
+    margin-top: 67px;
+    margin-left: 23px;
+}
+
+div #cadastro-topo a{
+    text-decoration: none;
+}
+
+div #cadastro-topo > a{
+  color: #f7a600;
+  /* IE8 proofing */
+  color: rgba(0,70,147, .95);
+  border-bottom: 3px solid transparent;
+  border-bottom-width: 3px;
+}
+
+div #cadastro-topo > a:hover,
+div #cadastro-topo > a:focus {
+  background-color: transparent;
+  color: #004693;
+  border-bottom-color: #f7a600;
+}
+
+div #cadastro-topo > .active > a,
+div #cadastro-topo > .active > a:hover,
+div #cadastro-topo > .active > a:focus {
+  color: #004693;
+  border-bottom-color: #f7a600;
+}
+
+/*----------Gooogle Maps*/
+      #map {
+        width: 100%;
+        height: 379px;
+        background-color: grey;
+      }
+/*------Facebook----*/
+
+
+
+
+/*----------------- Area do Menu----------*/
+
+
+#menu-top.navbar-default {
+    font-size: 13px;
+    background-color: rgba(243, 243, 243, 1);
+    border-width: 0px;
+    border-radius: 0px;
+    border-bottom: 1px #ed9c28 solid;
+    line-height: 36px;
+    font-family: 'Roboto-Bold';
+}
+
+
+#menu-top.navbar-default .navbar-nav>li>a {
+    color: rgba(0, 70, 147, 1);
+    background-color: rgba(243, 243, 243, 1);  
+}
+
+#menu-top.navbar-default .navbar-nav>li>a:hover,
+#menu-top.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(247, 166, 0, 1);
+}
+
+
+#menu-top.navbar-default .navbar-nav>.active>a,
+#menu-top.navbar-default .navbar-nav>.active>a:hover,
+#menu-top.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(247, 166, 0, 1);
+}
+
+
+#menu-top.navbar-default .navbar-toggle {
+    border-color: #f7a600;
+}
+#menu-top.navbar-default .navbar-toggle:hover,
+#menu-top.navbar-default .navbar-toggle:focus {
+    background-color: #f7a600;
+}
+#menu-top.navbar-default .navbar-toggle .icon-bar {
+    background-color: #f7a600;
+}
+#menu-top.navbar-default .navbar-toggle:hover .icon-bar,
+#menu-top.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #f3f3f3;
+}
+
+
+
+
+
+/*----------------- Fim Area do Menu----------*/
+
+
+
+
+/*Area do Slider Carousel*/
+/*------------------------------ vertical bootstrap slider----------------------------*/
+
+.carousel-inner> .item.next ,  .carousel-inner > .item.active.right{ transform: translateY(100%); -webkit-transform: translateY(100%); -ms-transform: translateY(100%);
+-moz-transform: translateY(100%); -o-transform: translateY(100%);  top: 0;left:0;}
+.carousel-inner > .item.prev ,.carousel-inner > .item.active.left{ transform: translateY(-100%); -webkit-transform: translateY(-100%);  -moz-transform: translateY(-100%);
+-ms-transform: translateY(-100%); -o-transform: translateY(-100%); top: 0; left:0;}
+.carousel-inner > .item.next.left , .carousel-inner > .item.prev.right , .carousel-inner > .item.active{transform:translateY(0); -webkit-transform:translateY(0);
+-ms-transform:translateY(0);-moz-transform:translateY(0); -o-transform:translateY(0); top:0; left:0;}
+
+/*------------------------------- vertical carousel indicadores ------------------------------*/
+.carousel-indicators{
+position:absolute;
+top:0;
+bottom:0;
+margin:auto;
+height:20px;
+right:10px; left:auto;
+width:auto;
+}
+.carousel-indicators li{display:block; margin-bottom:5px; border:1px solid #ffffff; }
+.carousel-indicators li.active{margin-bottom:5px; background:#f7a600;}
+
+/*------------------------------- Controle da imagem ------------------------------*/
+
+.item img {
+    /*position: absolute;
+    top: 0;
+    left: 0;*/
+    min-height: 300px;
+}
+/*Implentar espaçamento das imagens*/
+
+
+.divslider{
+    width: 100%;
+    margin-top: -20px;
+}
+
+carousel-caption{
+    margin-left: 10px;
+}
+
+.carousel-caption h4{
+    font-size: 60px ;
+    font-weight: bold;
+    font-family: 'Roboto';
+}
+
+.carousel-caption h5{
+    font-family: 'Roboto-Thin';
+    font-size: 40px;
+ 
+}
+.carousel-caption h5 span{
+    font-family: 'Roboto';
+    font-size: 40px;
+
+}
+
+.carousel-caption p{
+    font-family: 'Roboto';
+    font-size: 10px;
+}
+
+.carousel-caption p {
+    font-size: 10px ;
+    margin: 0px;
+}
+
+
+/*------------------------------- Plano Familiar ------------------------------*/
+.plano_familiar_container .descritivos{
+    float: left;
+    font-size: 24px;
+    font-weight: 500;
+    color: #f7a600; 
+}
+
+.plano_familiar_container .descritivos p{
+    float: left;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6d6d6d; 
+}
+
+.descritivos .row{
+    margin-top: 30px;
+    margin-left: 15px;
+}
+
+
+
+.menu_mouse_ouver .btn-group .btn p{
+    padding-top: 9px;
+}
+
+
+.demoPadder {
+    padding-top:15px;
+}
+
+.btn-default {
+  color: #f7a600;
+  background-color: #fff;
+  border: none;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
+  color: #fff;
+  background-color: #f7a600;
+  border-color: #f7a600;
+}
+
+.textBox {
+    height: 13em;
+    letter-spacing: -1px;
+    line-height: 1.2em;
+}
+
+.caixa-providencia.thumbnail {
+    border: none;
+}
+
+.planos_rotativos_container .caixa-providencia{
+    margin-top: 30px;
+}
+
+.caixa-providencia{
+    color: #6d6d6d;
+    text-align: center;
+}
+
+.caixa-providencia h5{
+    font-size: 15px;
+    font-family: 'Roboto-Bold';
+    color: #004693;
+}
+
+#mostrarDiv {
+    margin-top: 2em;
+}
+
+.esconder {
+    display: none;
+}
+
+#providencia-infantil p, #seguro-pais p, #saude p{
+    font-size: 16px;
+    color: #004693;
+    text-align: left;
+}
+
+
+.btn {
+    border-radius: 0;
+    -webkit-transition: all 0.3s;
+       -moz-transition: all 0.3s;
+            transition: all 0.3s;
+}
+
+.btn-warning {
+    background: none;
+    border: 2px solid #f0ad4e;
+    color: #f0ad4e;
+}
+.btn-warning:hover,
+.btn-warning:active {
+    color: #FFF;
+    background: #ed9c28;
+}
+
+.btn-info {
+    background-color: #39b3d7;
+    border-color: #348fd2;
+    text-shadow: 1px 1px 0 #238ed5;
+}
+.btn-info:hover, .btn-info:focus {
+    background-color: #45abcd;
+    border-color: #347abe;
+}
+
+
+/*Botão Apolice*/
+.menu_apolice button{
+    height: 11.375em;
+}
+
+/*dica do Lucas*/
+.apolice .menu_apolice .corrige-full{
+    width: 100%;
+}
+
+
+.menu_apolice a{
+    font-size: 1.500em;
+    font-weight: 900;
+    font-family: "Roboto";
+    color:#ffffff;
+}
+
+.menu_apolice .btn-default {
+  color: #f7a600;
+  background-color: #f7a600;
+  border: none;
+}
+
+.menu_apolice .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
+  color: #f7a600;
+  background-color: #f7a600;
+  border-color: #f7a600;
+}
+
+/*---------Form Apolice-----*/
+
+
+.no-effect{
+    border: 1px transparent;
+}
+
+
+/*---------Certificado Digital -----*/
+.certificado_digital{
+  background: url('../img/certificado/certificado-digital-fundo.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.btn-certificado .row{
+    margin-top: 93px;
+    margin-bottom: 5.000em;
+}
+
+.titulo-topo .row{
+margin-top: 4.000em;
+}
+
+.titulo-topo p{
+  font-size: 2.250em;
+  color: #ffffff;
+}
+
+.contexto_assistencia_24 p{
+    font-size: 32px;
+    font-family: 'Roboto';
+    color: #ffffff;
+}
+
+.contexto_aviso_sinistro p{
+    font-size: 32px;
+    font-family: 'Roboto';
+    color: #ffffff
+}
+
+.contexto_links_uteis p{
+    font-size: 32px;
+    font-family: 'Roboto';
+    color: #ffffff;
+}
+
+.texto-certificado{
+    margin-top: 10px;
+}
+
+.texto-baixo p{
+    font-size: 12px;
+    font-weight: normal;
+    text-align: center;
+    color: #ffffff;
+    padding: 0px;
+}
+
+.texto-certificado .row{
+    margin-bottom: 5.000em;
+}
+
+
+
+.texto-form-topo .precisa p{
+    color:#004693;
+    font-family: 'Roboto-Medium';
+    font-size: 36px;
+    
+}
+.texto-form-topo .fale p{
+    color:#004693;
+    font-family: 'Roboto-Light';
+    font-size: 36px;
+}
+
+.map-responsive{
+    overflow:hidden;
+    position:relative;
+    height:377px;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    width:100%;
+    position:absolute;
+}
+
+footer {   
+            background: #004693;
+            height: 6.875em;   
+        }
+
+footer p{
+    color: #ffffff;
+    font-family: 'Roboto';
+    font-size: 0.750em;
+    margin-top: 33px;
+    margin-left: -117px;
+}
+
+/* Formulario */
+
+/* Social side */
+.pin-top, .phone-top, .contato-top, .whats-top, .atendimento-top{
+margin-top: 15px;
+}
+
+
+/*---------------Apolice-------------*/
+
+.apolice-baixo{
+    background-image: url('../img/apolice/background.png');
+    width: 100%;
+    height: 817px;
+}
+
+#ap-texto-topo{
+    margin-top: 70px;
+}
+#area-form-top{
+    margin-top: 38px;
+}
+
+.apolice-baixo .texto h2{
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Roboto-Regular';
+    color: #004693;
+}
+
+#text-area{
+    margin-top: 16px;
+}
+
+#label-estilo {
+    font-size: 12px;
+    margin-left: 15px;
+    color: #adacb3;
+}
+
+
+/*--------Serviços----*/
+
+.servicos-princial{
+    width: 100%;
+    background-image: url('../img/apolice/background.png');
+    margin-top: -20px;
+}
+
+.serv-text-top h2{
+    margin-top: 88px;
+    font-size: 36px;
+    color: #004693;
+    font-family: 'Roboto-Medium';
+}
+
+.serv-text-md h5{
+    font-size: 14px;
+    color: #004693;
+    font-family: 'Roboto-Regular';
+}
+
+
+.botao-collapse-efeito{
+    color: #004693;
+
+}
+
+.botao-collapse-efeito a{
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+}
+
+
+
+.servicos-princial #img-botao{
+    background-color:#f7a600;
+
+}
+
+#img-botao img {
+    padding: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    
+}
+
+#img-botao{
+    padding: 0 10px;
+    margin-top: 60px;
+}
+
+.nav-title{
+    text-align: center;
+}
+
+.btn-info {
+    background-color: #004693;
+    border-color: #004693;
+    text-shadow: 1px 1px 0 #004693;
+    padding: 12px 0;
+}
+
+.btn-info:hover, .btn-info:focus {
+    background-color: #043b77;
+    border-color: #004693;
+}
+
+.btn-info.active, .btn-info:active, .open>.dropdown-toggle.btn-info {
+    color: #fff;
+    background-color: #004693;
+    border-color: #004693;
+}
+
+.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, .btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, .open>.dropdown-toggle.btn-info.focus, .open>.dropdown-toggle.btn-info:focus, .open>.dropdown-toggle.btn-info:hover {
+    color: #fff;
+    background-color: #004693;
+    border-color: #004693;
+
+}
+.conteudo-servico{
+background-color: #fff;
+margin-top: 58px;
+padding: 56px 91px 50px 39px;
+font-family: 'Roboto-Regular';
+
+}
+
+.marraf-contato-preferido{
+    text-align: center;
+    background-color: #f7a600;
+    height: 60px;
+}
+
+.marraf-contato-preferido span{
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    color: #ffffff;
+    
+}
+
+.marraf-contato-preferido .marraf-texto-contato{
+    padding-top: 18px;
+}
+
+/*------ Botão para você e sua empresa----*/
+
+.marrafvoce-group .btn{
+    background-color: #ffffff;
+    font-family: 'Roboto-Medium';
+    color: #8b8b8b;
+    border: 1px solid transparent;
+    border-bottom: 1px #dedede solid;
+}
+
+.marrafvoce-group .dropdown-menu{
+    padding: 0;
+    
+}
+
+.marrafvoce-group .dropdown-menu .sub ul{
+    border: none;
+    padding: 0;
+}
+
+.marrafvoce-group .dropdown-menu li{
+    border-bottom: 1px #d4d4d4 solid;
+    border-top: 1px #d4d4d4 solid;
+    margin: -1px;
+    padding: 0px;
+    margin-top: -4px;
+}
+
+.marrafvoce-group .dropdown-menu a{
+    color: #8b8b8b;
+}
+
+.marrafvoce-group .sub .btn{
+    background-color: none;
+}
+
+.marrafvoce-group .dropdown-menu>li:focus, .dropdown-menu>li:hover {
+    color: #262626;
+    text-decoration: none;
+    background-color: #1e90ff;
+    color:#ffffff;
+}
+
+.page {
+  padding: 15px 0 0;
+}
+
+.bmd-modalButton {
+  display: block;
+  margin: 15px auto;
+  padding: 5px 15px;
+}
+
+.close-button {
+  overflow: hidden;
+}
+
+.bmd-modalContent {
+  box-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+  
+.bmd-modalContent .close {
+  font-size: 30px;
+  line-height: 30px;
+  padding: 7px 4px 7px 13px;
+  text-shadow: none;
+  opacity: .7;
+  color:#fff;
+}
+
+.bmd-modalContent .close span {
+  display: block;
+}
+
+.bmd-modalContent .close:hover,
+.bmd-modalContent .close:focus {
+  opacity: 1;
+  outline: none;
+}
+
+.bmd-modalContent iframe {
+  display: block;
+  margin: 0 auto;
+}
+/*------ Fim Botão para você e sua empresa----*/
+
+/*----- start: Consorcio -------*/
+
+
+#con-imovel li, #con-imovel-empresa li {
+    background-color: #1e90ff;
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+}
+
+#con-btn-imovel,
+#con-btn-epi,
+#con-btn-veiculo,
+#con-btn-empresa-imovel,
+#con-btn-empresa-epi,
+#con-btn-empresa-veiculo {
+    background-color: #1e90ff;
+    border: none;
+}
+
+
+
+
+
+
+
+#img-botao span{
+    margin-left: 35%;
+    font-family: 'Roboto-Medium';
+    font-size: 18px;
+    color: #ffffff;
+}
+
+/*----------marraf-checkbox-area----*/
+
+.marraf-checkbox-area
+{
+    background-color: #ffffff;
+    text-align: center; 
+    font-family: 'Roboto-Medium'; 
+}
+
+
+.marraf-checkbox-area .checkbox-tel{
+padding-top: 35px;
+}
+
+.marraf-checkbox-area .checkbox-cel{
+ padding-top: 39px;
+}
+
+.marraf-checkbox-area .checkbox-whats{
+padding-top: 36px;
+}
+
+ .marraf-checkbox-area .checkbox-email{
+    padding-top: 34px;
+}
+
+.marraf-checkbox-input{
+background-color: #ffffff;
+    padding-top: 24px;
+    padding-bottom: 26px;
+}
+
+/*---------- Fim marraf-checkbox-area----*/
+
+/*------ Area seguradora ----*/
+
+.seg-seguros-group .btn{
+    background-color: #ffffff;
+    font-family: 'Roboto-Medium';
+    color: #f7a600;
+    height: 80px;
+}
+
+
+
+.seg-saude-group .btn{
+    background-color: #ffffff;
+    font-family: 'Roboto-Medium';
+    color: #f7a600;
+    height: 80px;
+}
+
+
+.seg-saude-group .btn::before{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 96%;
+    left: 2%;
+    border-top: 1px solid #adacb3;
+    
+}
+
+.img-center{
+    margin-top: 50px;
+}
+
+/*------ Fim da Area seguradora ----*/
+
+
+/*------ Area seguradora ----*/
+
+.area-seguros-group .btn{
+    font-size: 16px;
+    font-family: 'Roboto-Regular';
+    color: #adacb3;
+    background-color: #ffffff;
+}
+
+.area-seguros-group .dropdown-menu{
+    padding: 0;
+    
+}
+
+.area-seguros-group .dropdown-menu .sub ul{
+    border: none;
+    padding: 0;
+}
+
+.area-seguros-group .dropdown-menu li{
+    border-bottom: 1px #d4d4d4 solid;
+    border-top: 1px #d4d4d4 solid;
+    margin: -1px;
+    padding: 0px;
+    margin-top: -4px;
+}
+
+.area-seguros-group .dropdown-menu li{
+    color: #8b8b8b;
+    padding: 10px;
+}
+
+.area-seguros-group .sub .btn{
+    background-color: none;
+}
+
+
+.seguradora-format{
+    font-size: 12px;
+    font-family: 'Roboto-Regular';
+    color: #004693;
+    text-decoration: none;
+}
+
+.seguradora-format p{
+    margin: 0 0 0px;
+}
+
+
+.anular-link{
+    text-decoration: none;
+}
+
+.seguradora-logo{
+    padding-top: 187px;
+}
+
+
+div .seguradora-format:before {
+  content : "";
+  position: absolute;
+    left: -51px;
+    bottom: -21px;
+    height: 107%;
+    width: 0%;
+    border-left: 1px solid #adacb3;
+}
+
+.area-seguros-group .dropdown-menu>li:focus, .dropdown-menu>li:hover {
+    color: #262626;
+    text-decoration: none;
+    background-color: #1e90ff;
+    color:#ffffff;
+}
+
+
+/*------ Fim da Area seguradora ----*/
+
+
+
+.rodape {
+    overflow: auto;
+}
+
+.marraf-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 10px;
+    outline: none;
+}
+
+.marraf-text-area {
+    border-radius: 0;
+    border-color: #e5e5e5 !important;
+    margin-top: 10px; 
+}
+
+.marraf-input-label {
+    color: #c9c9c9;
+    vertical-align: bottom;
+    margin: 17px 0 0 0;
+    text-align: center;
+    }
+
+    .l-width-100 {
+        width: 100%
+    }
+
+#custom-bootstrap-menu li:not(:last-child) a {
+    padding: 25px 15px !important;
+}
+
+.navbar {
+  min-height: 50px;
+}
+
+.navbar-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+/* =Media Queries
+-------------------------------------------------------------- */
+@media (max-width:767px) {
+
+  .navbar-nav > li > a {
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
+
+
+    div .seguradora-format:before {
+  content : "";
+  position: absolute;
+  left    : 0;
+  bottom  : 0;
+  height  : 1px;
+  width   : 50%; 
+  border-bottom:1px solid transparent;
+}
+}
+
+@media (min-width: 480px) and (max-width:992px){
+div .seguradora-format:before {
+  content : "";
+  position: absolute;
+  left    : 0;
+  bottom  : 0;
+  height  : 1px;
+  width   : 50%; 
+  border-bottom:1px solid transparent;
+}
+}
+
+@media (min-width: 768px) and (max-width:992px) {
+
+}
+
+@media (min-width:992px) {
+
+}
+
+
+@media (min-width:1200px) {
+.apolice .col-lg-offset-2 {
+    margin-left: 16.667%;
+}
+
+	.navbar > .container {
+	    text-align: center;
+	}
+	.navbar-header,.navbar-brand,.navbar .navbar-nav,.navbar .navbar-nav > li {
+	    float: none;
+	    display: inline-block;
+	}
+	.collapse.navbar-collapse {
+	    float: none;
+	    display: inline-block!important;
+	    width: auto;
+	    clear: none;
+	}
+
+.navbar-nav > li > a {
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+    padding-left: 0px;
+    padding-right: 27px;
+  }
+    
+
+
+.conrole-checkbox .col-lg-11 {
+    width: 83.666667%;
+}
+
+}
+
+
+@media(max-width:480px)
+{
+/*#logo-topo {margin-left: 23px;}*/
+div .seguradora-format:before {
+  content : "";
+  position: absolute;
+  left    : 0;
+  bottom  : 0;
+  height  : 1px;
+  width   : 50%; 
+  border-bottom:1px solid transparent;
+}
+}
+
+
+
+
+
+
+
+
+

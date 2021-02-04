@@ -1,0 +1,376 @@
+@charset "UTF-8";
+
+/*---------------------------- CONFIGURA IMPRESSÃO ----------------------------*/
+@page {
+  size: A4;
+  margin-top: 2cm;
+  margin-bottom: 2cm;
+  margin-left: 2cm;
+  margin-right: 2cm;
+}
+
+
+/*---------------------------- CONFIGURA PÁGINA ----------------------------*/
+body{
+  font-family: sans-serif;
+}
+
+label span {
+  color: #ff6800;
+}
+
+.title{
+	text-align: center;
+	font-family: "Trebuchet MS", sans-serif;
+	color: #ff6800 !important;
+	font-size: 25px;
+	margin-top: 0 !important;
+}
+
+.label {
+	color: #777 !important;
+}
+
+.row-space {
+  margin-bottom: 15px;
+}
+
+/*---------------------------- CONFIGURA CABEÇALHO ----------------------------*/
+#cabecalho {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  overflow: hidden;
+}
+
+#id_logo_bking img {
+  height: 100px !important;
+  width: 100px !important;
+
+}
+
+/*---------------------------- CONFIGURA RADIO BUTTON ----------------------------*/
+#id_radio_button {
+  display: flex;
+}
+
+#id_btn-group {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.btn-acao {
+  min-width: 150px;
+}
+
+/*------------------------- CONFIGURA POP-UP DE ERRO -------------------------*/
+.alert {
+  border-bottom: 1px solid black;
+  display: inline-block;
+  position: absolute !important;
+  display: block;
+  z-index: 5;
+  padding: 5px;
+}
+
+.alert .tooltiptext {
+  min-width: 150px;
+  display: none;
+  position: absolute;
+  background-color: #555;
+  border: 0;
+  border-radius: 6px;
+  padding: 5px;
+  top: 5px;
+  left: 50%;
+  margin-left: 10px;
+}
+
+.alert output {
+  background-color: transparent;
+  border: 0;
+  color: #fff !important;
+  text-align: center;
+}
+
+.alert .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 25%;
+  margin-left: 15px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+/*---------------------------- CONFIGURA TABELAS ----------------------------*/
+.table {
+  width: 98% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.table input {
+  border: 0;
+  width: 100%;
+  height: 35px;
+  background-color: transparent;
+  text-align: center;
+}
+
+table .select2-search__field {
+    max-width: 440px !important;
+}
+
+.table td:hover {
+  color: #777 !important;
+}
+
+td {
+  text-align: center;
+  height: 30px;
+}
+
+.fit_input {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#total_VT {
+  text-align: end;
+}
+
+/*---------------------------- CONFIGURA CONECTIVO A ----------------------------*/
+#div_a_tren p {
+  padding-top: 13px;
+  text-align: center;
+}
+
+/*---------------------------- CONFIGURA LABEL TREINAMENTO ----------------------------*/
+#id_label_tren {
+  width: 200px;
+}
+
+/*------------------------- CONFIGURA INPUT NUMBER -------------------------*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  padding: 17px 0 17px 0;
+  margin: 0;
+}
+
+/*---------------------------- CONFIGURA BOTÃO IMPRIMIR ----------------------------*/
+#id_grupo_print {
+  display: flex;
+}
+
+#id_grupo_print_center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+#id_print {
+  background-color:#ff6800;
+  color:#fff;
+  font-weight: bold;
+  font-size: 12pt;
+}
+
+.select2-selection__rendered {
+    text-align: left !important;
+}
+
+.select2-search__field {
+    width: auto;
+}
+
+.fill-space {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+}
+
+select[readonly].select2-hidden-accessible + .select2-container {
+    pointer-events: none;
+    touch-action: none;
+}
+
+select[readonly].select2-hidden-accessible + .select2-container .select2-selection {
+    background: #eee;
+    box-shadow: none;
+}
+
+select[readonly].select2-hidden-accessible + .select2-container .select2-selection__arrow, select[readonly].select2-hidden-accessible + .select2-container .select2-selection__clear {
+    display: none;
+}
+
+.operador-transporte-caption {
+    display: none;
+    height: 22px;
+    line-height: 22px;
+}
+
+@media print {
+
+    body {
+        padding-top: 0px !important;
+    }
+
+    * {
+        font-family: arial, sans-serif;
+        background-image: none;
+        border: none;
+        padding: 0;
+    }
+
+    .menu, .banner, .no-print {
+        display: none;
+    }
+
+    #h1_space {
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+    }
+
+    h2 {
+        margin-top: 10px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .acao-cadastro {
+        margin-top: 10px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .sheet, .panel, body, html, form {
+        border: none !important;
+    }
+
+    .form-control {
+        border: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        border-bottom: 1px solid #888 !important;
+        border-radius: 0px !important;
+        box-shadow: none !important;
+        height: 20px !important;
+    }
+
+    .row-space {
+        margin-bottom: 0px !important;
+    }
+
+    select.form-control {
+        -moz-appearance: none !important;
+        -webkit-appearance: none !important;
+        appearance: none !important;
+    }
+
+    .nome-campo {
+        margin-bottom: 2px !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+    }
+
+    .table input {
+        height: 20px !important;
+        width: auto !important;
+    }
+
+    .table td {
+        padding: 0px !important;
+        line-height: 23px !important;
+        height: auto !important;
+    }
+
+    .select2-container {
+        box-shadow: none !important;
+    }
+
+    .select2-selection--multiple {
+        border: none !important;
+        overflow: visible !important;
+        border-bottom: 1px solid #888 !important;
+        border-radius: 0px !important;
+        box-shadow: none !important;
+        height: 20px !important;
+        min-height: auto !important;
+        padding: 0px !important;
+    }
+
+    table .select2-selection--multiple {
+        border-bottom: none !important;
+    }
+
+    table .select2-search__field{
+        opacity: 0;
+    }
+
+    .select2-selection__choice {
+        background-color: transparent !important;
+        border: none !important;
+        padding: 0px !important;
+        margin: 0px !important;
+        color: #555 !important;
+
+    }
+
+    table .select2-search__field {
+        border-bottom: none;
+    }
+
+    .select2-selection__choice__remove {
+        display: none !important;
+    }
+
+    .select2-selection__rendered {
+        padding: 0px !important;
+    }
+
+    .input-group-addon {
+        display: none !important;
+    }
+
+    .select2-selection.select2-selection--single {
+        border: none !important;
+        height: 30px !important;
+    }
+
+    .select2-selection__arrow {
+        display: none !important;
+    }
+
+    .select2-selection__placeholder {
+        visibility: hidden !important;
+    }
+
+    .select2-search__field {
+        visibility: hidden !important;
+    }
+
+    input:-internal-autofill-selected{
+        color: #555 !important;
+    }
+
+    .select2-container .select2-selection--single {
+        padding-top: 0px !important;
+        height: 22px !important;
+    }
+
+    .operador-transporte-caption {
+        display: inline !important;
+    }
+
+    .coluna-operador {
+        min-width: 400px !important;
+        max-width: 400px !important;
+    }
+
+    .coluna-operador .select2-container {
+        display: none !important;
+    }
+
+    .coluna-operador .operador-transporte {
+        display: none !important;
+    }
+}

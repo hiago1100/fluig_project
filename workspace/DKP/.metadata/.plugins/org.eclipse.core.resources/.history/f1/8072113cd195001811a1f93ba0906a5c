@@ -1,0 +1,31 @@
+function displayFields(form,customHTML){ 
+	var atividade  = getValue("WKNumState");
+
+	if (atividade == 0 || atividade == 4) {
+		customHTML.append("<script>" +
+						  "$('#div_painel').css('display', 'none');"+
+						  "</script>");
+	}
+
+	if (atividade == 5) {
+			customHTML.append("<script>" +
+						  "$('#div_dadosSolicitacao').css('display', 'block');"+
+						  "$('#div_painel').css('display', 'none');"+
+						  
+						  "</script>");
+	}
+
+	if (atividade == 9 || atividade == 11 || atividade == 28 || atividade == 38 || atividade == 46 || atividade == 50) {
+		customHTML.append("<script>" +
+						  "$('#div_painel').css('display', 'block');"+
+						   "$('#div_dadosSolicitacao').css('display', 'block');"+
+						  "</script>");
+	}
+	
+	if (atividade == 17) {
+		customHTML.append("<script>" +
+					  "$('#controleReabertura').removeClass('hide');"+					  
+					  "</script>");
+	}
+	
+}  

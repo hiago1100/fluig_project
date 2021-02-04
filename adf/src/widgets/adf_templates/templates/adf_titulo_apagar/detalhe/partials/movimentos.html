@@ -1,0 +1,62 @@
+<div class="panel-group" ng-init="movtosCollapsed = true" ng-if="documento.Movimentos.length>0">
+    <div class="panel panel-default">
+        <div class="panel-heading fs-cursor-pointer" ng-click="movtosCollapsed = !movtosCollapsed">
+            <a class="collapse-icon" ng-class="{'up': movtosCollapsed}">
+                <h3 class="panel-title">Movimentos do Título</h3>
+            </a>
+        </div>
+        <div id="collapseMovimentos" class="panel-collapse collapse" ng-class="{'in': movtosCollapsed}">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-info" ng-repeat="movto in documento.Movimentos">
+                    <div class="panel-heading fs-cursor-pointer" ng-click="movto.collapsed=!movto.collapsed">
+                        <a class="collapse-icon" ng-class="{'up': movto.collapsed}">
+                            <!--data-toggle="collapse" data-parent="#accordion" href="#collapseMovimento{{movto.movtoSeq}}"-->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <b>Transação:</b> {{movto.movtoTipoTransacao || 'Não informado'}}
+                                </div>
+                                <div class="col-sm-4">
+                                    <b>Data: </b> {{movto.movtoDataTransacao | date}}
+                                </div>
+
+                                <div class="col-sm-4">
+                                    <b>Valor Total: </b> {{movto.movtoValorMovimento | currency:movto.movtoMoeda}}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseMovimento{{movto.movtoSeq}}" ng-class="{'in': movto.collapsed}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion{{movto.movtoSeq}}">
+                                <div class="col-sm-2">
+                                    <label>Valor do Desconto</label>
+                                    <p>{{movto.movtoValorDesconto | currency:movto.movtoMoeda}}</p>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label>Valor do Abatimento</label>
+                                    <p>{{movto.movtoValorAbatimento | currency:movto.movtoMoeda}}</p>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label>Valor dos Juros</label>
+                                    <p>{{movto.movtoValorJuros | currency:movto.movtoMoeda}}</p>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label>Valor da Multa</label>
+                                    <p>{{movto.movtoValorMulta | currency:movto.movtoMoeda}}</p>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label>Correção Monetária</label>
+                                    <p>{{movto.movtoCorrecaoMonetaria | currency:movto.movtoMoeda}}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <label>Narrativa</label>
+                                    <i>{{movto.movtoNarrativa}}</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

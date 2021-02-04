@@ -1,0 +1,1862 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet"
+	href="/style-guide/css/fluig-style-guide.min.css" />
+<script type="text/javascript"
+	src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript"
+	src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript"
+	src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="custom.js" charset="utf-8"></script>
+</head>
+<body onload="aprovadoresProcesso()">
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+			<input type="hidden" name="cpNumSolicitacao" id="cpNumSolicitacao" />
+
+			<div class="panel panel-default" id="panel_gestaoMudanca">
+				<div class="panel-body">
+					<h1>
+						<img src="logo.png" alt="Logo" id="logo"
+							style="max-height: 50px; max-width: 250px;"><b> GestÃ£o
+							de MudanÃ§as</b>
+					</h1>
+				</div>
+			</div>
+
+			<!--########################################## CAMPOS DE CONTROLE ########################################## -->
+
+			<input type="hidden" name="matriculaUsuario" id="matriculaUsuario" />
+			<input type="hidden" name="numAtividade" id="numAtividade" /> <input
+				type="hidden" name="aprovador_sysadmins" id="aprovador_sysadmins" />
+			<input type="hidden" name="aprovador_DBA" id="aprovador_DBA" /> <input
+				type="hidden" name="aprovador_Telecom" id="aprovador_Telecom" /> <input
+				type="hidden" name="aprovador_Network" id="aprovador_Network" /> <input
+				type="hidden" name="aprovador_Seguranca" id="aprovador_Seguranca" />
+			<input type="hidden" name="aprovador_Workplace"
+				id="aprovador_Workplace" /> <input type="hidden"
+				name="aprovador_Desenvolvimento" id="aprovador_Desenvolvimento" />
+			<input type="hidden" name="aprovador_Fornecedor"
+				id="aprovador_Fornecedor" /> <input type="hidden"
+				name="aprovador_DiretoriaTI" id="aprovador_DiretoriaTI" /> <input
+				type="hidden" name="aprovador_AreaNegocio"
+				id="aprovador_AreaNegocio" /> <input type="hidden"
+				name="aprovador_DiretoriaNegocios" id="aprovador_DiretoriaNegocios" />
+
+			<input type="hidden" name="aprovacaoSysadmin" id="aprovacaoSysadmin" />
+			<input type="hidden" name="aprovacaoDBA" id="aprovacaoDBA" /> <input
+				type="hidden" name="aprovacaoTelecom" id="aprovacaoTelecom" /> <input
+				type="hidden" name="aprovacaoNetwork" id="aprovacaoNetwork" /> <input
+				type="hidden" name="aprovacaoSeguranca" id="aprovacaoSeguranca" />
+			<input type="hidden" name="aprovacaoWorkplace"
+				id="aprovacaoWorkplace" /> <input type="hidden"
+				name="aprovacaoDesenvolvimento" id="aprovacaoDesenvolvimento" /> <input
+				type="hidden" name="aprovacaoFornecedor" id="aprovacaoFornecedor" />
+			<input type="hidden" name="aprovacaoDeretoriaTI"
+				id="aprovacaoDeretoriaTI" /> <input type="hidden"
+				name="aprovacaoAreaNegocio" id="aprovacaoAreaNegocio" /> <input
+				type="hidden" name="aprovacaoDiretoriaNegocios"
+				id="aprovacaoDiretoriaNegocios" /> <input type="hidden"
+				name="qtdRegistros" id="qtdRegistros" />
+
+
+
+			<!--########################################## CONTROLE DAS ABAS DO FORMULARIO ########################################## -->
+
+
+			<div class="panel with-nav-tabs">
+				<div class="panel-heading">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#tab_informacaoesGerais"
+							data-toggle="tab">InformaÃ§Ãµes Gerais</a></li>
+						<li><a href="#tab_atividadesMudanca" data-toggle="tab">Atividades
+								de MudanÃ§a</a></li>
+						<li><a href="#tab_planoTeste" data-toggle="tab">Plano de
+								Teste</a></li>
+						<li><a href="#tab_planoRollback" data-toggle="tab">Plano
+								de Rollback</a></li>
+						<li><a href="#tab_escalonamento" data-toggle="tab">Escalonamento</a></li>
+						<li id="abaEscondida"><a href="#tab_aprovacoes"
+							data-toggle="tab">AprovaÃ§Ãµes</a></li>
+
+					</ul>
+					</li>
+					</ul>
+				</div>
+
+
+				<!-- #################################### ABA INFORMAÃ‡Ã•ES GERAIS ########################################### -->
+
+				<div class="panel-body">
+					<div class="tab-content">
+						<div class="tab-pane fade in active" id="tab_informacaoesGerais">
+
+
+							<div class="panel panel-default"
+								id="panel_informacoesSolicitante">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>InformaÃ§Ãµes do Solicitante</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+										<div class="col-md-6">
+											<label>Nome<span style="color: red">*</span>:
+											</label> <input type="text" class="form-control" name="txt_Nome"
+												id="txt_Nome" readonly>
+										</div>
+										<div class="col-md-6">
+											<label>Telefone/Celular<span style="color: red">*</span>:
+											</label> <input type="text" class="form-control"
+												name="txt_telefone_01" id="txt_telefone_01" readonly>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-6">
+											<label>Gestor do Solicitante<span style="color: red">*</span>:
+											</label> <input type="text" class="form-control"
+												name="txt_NomeGestor" id="txt_NomeGestor" readonly>
+										</div>
+										<div class="col-md-6">
+											<label>Telefone/Celular<span style="color: red">*</span>:
+											</label> <input type="text" class="form-control"
+												name="txt_telefone_02" id="txt_telefone_02" readonly>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-6">
+											<label>Departamento<span style="color: red">*</span>:
+											</label> <input type="text" class="form-control"
+												name="txt_departamento" id="txt_departamento" readonly>
+										</div>
+										<div class="col-md-6">
+											<label>Cargo<span style="color: red">*</span>:
+											</label> <input type="text" class="form-control" name="txt_Cargo"
+												id="txt_Cargo" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default" id="panel_DadosMudanca">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Dados da MudanÃ§a</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+										<div class="col-md-6">
+											<label for="NMudanaMondial_29">NÂº MudanÃ§a (Mondial)<span
+												style="color: red">*</span>:
+											</label> <input type="text" class="form-control"
+												name="txt_NumeroMudanca" id="txt_NumeroMudanca" readonly>
+										</div>
+										<div class="col-md-6">
+											<label>Data SolicitaÃ§Ã£o<span style="color: red">*</span>:
+											</label> <input type="date" name="dt_dataSolicitacao"
+												id="dt_dataSolicitacao" class="form-control" readonly>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-12">
+											<label>Titulo da MudanÃ§a<span style="color: red">*</span>:
+											</label>
+											<textarea class="form-control" name="txt_tituloMudanca"
+												id="txt_tituloMudanca"></textarea>
+										</div>
+									</div>
+									<div class="form-group row">
+
+										<div class="col-md-4">
+											<label>Data de Inicio<span style="color: red">*</span>:
+											</label> <input type="datetime-local" name="txt_dataInicial"
+												id="txt_dataInicial" class="form-control">
+										</div> 
+
+										<!-- <div class="col-md-4">
+											<label>Data de Inicio<span style="color: red">*</span>:
+											</label>
+											<div class="input-group date">
+												<input type="text" class="editField form-control checkdate"
+													name="txt_dataInicial" id="txt_dataInicial" /> <span
+													class="input-group-addon" id="btnDataInicial"> <span
+													class="fluigicon fluigicon-calendar"></span>
+												</span>
+											</div>
+										</div> -->
+
+										<!-- <div class="col-md-2">
+											<label>Hora de Inicio<span style="color: red">*</span>:
+											</label> <input type="text" class="form-control"
+												name="txt_horaInicial" id="txt_horaInicial" maxlength="5"
+												mask="00:00" oninput="calcular()">
+
+										</div> -->
+									</div>
+
+									<div class="form-group row">
+
+										 <div class="col-md-4">
+											<label>Data de TÃ©rmino<span style="color: red">*</span>:
+											</label> <input type="datetime-local" name="dt_dataFinal" id="dt_dataFinal"
+												class="form-control" oninput="calcularHoras()">
+										</div> 
+
+
+									<!-- 	<div class="col-md-4">
+											<label>Data de TÃ©rmino<span style="color: red">*</span>:
+											</label>
+											<div class="input-group date">
+												<input type="text" class="editField form-control checkdate"
+													name="dt_dataFinal" id="dt_dataFinal" /> <span
+													class="input-group-addon" id="btnDataFinal"> <span
+													class="fluigicon fluigicon-calendar"></span>
+												</span>
+											</div>
+										</div> -->
+
+
+									<!-- 	<div class="col-md-2">
+											<label>Hora de TÃ©rmino<span style="color: red">*</span>:
+											</label> <input type="text" class="form-control" name="txt_horaFinal"
+												id="txt_horaFinal" maxlength="5" mask="00:00"
+												oninput="calcular()">
+
+										</div> -->
+
+										<div class="col-md-2">
+											<label for="Total_44">Total:</label> <input type="text"
+												class="form-control" name="txt_totalHoras"
+												id="txt_totalHoras" readonly>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-12">
+											<label>DescriÃ§Ã£o Detalhada<span style="color: red">*</span>:
+											</label>
+											<textarea class="form-control" name="txt_descricaoDetalhada"
+												id="txt_descricaoDetalhada" minlength="100"
+												onblur="validarCampo()"></textarea>
+										</div>
+									</div>
+
+									<div class="form-group row">
+
+
+										<div class="col-md-2">
+											<label>ClassificaÃ§Ã£o<span style="color: red">*</span>:
+											</label>
+											<div class="radio">
+												<label> <input type="radio" name="classificacao"
+													id="classificacao_programada" value="Programada"> <span
+													class="">Programada</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio" name="classificacao"
+													id="classificacao_emergencial" value="Emergencial">
+													<span class="">Emergencial</span>
+												</label>
+											</div>
+										</div>
+
+										<div class="col-md-2">
+											<label>Motivo<span style="color: red">*</span>:
+											</label>
+											<div class="checkbox">
+												<label> <input name="motivo_melhoria"
+													value="Melhoria" type="checkbox" id="motivo_melhoria">
+													<span class="">Melhoria</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="motivo_preventiva"
+													value="Preventiva" type="checkbox" id="motivo_preventiva">
+													<span class="">Preventiva</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="motivo_projeto" value="Projeto"
+													type="checkbox" id="motivo_projeto"> <span class="">Projeto</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="motivo_legal" value="Legal"
+													type="checkbox" id="motivo_legal"> <span class="">Legal</span>
+												</label>
+											</div>
+										</div>
+
+
+
+										<div class="col-md-3">
+											<label for="Tipo_97">Tipo<span style="color: red">*</span>:
+											</label>
+											<div class="checkbox">
+												<label> <input name="tipo_dadosbancarios"
+													value="Banco da Dados" type="checkbox"
+													id="tipo_dadosbancarios"> <span class="">Banco
+														da Dados</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="tipo_SI"
+													value="Sistema Operacional" type="checkbox" id="tipo_SI">
+													<span class="">Sistema Operacional</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="tipo_aplicacao"
+													value="AplicaÃ§Ã£o" type="checkbox" id="tipo_aplicacao">
+													<span class="">AplicaÃ§Ã£o</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="tipo_telecom"
+													value="Telecom( Wan e Lan)" type="checkbox"
+													id="tipo_telecom"> <span class="">Telecom(
+														Wan e Lan)</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="tipo_segurancaInformacao"
+													value="SeguranÃ§a da InformaÃ§Ã£o" type="checkbox"
+													id="tipo_segurancaInformacao"> <span class="">SeguranÃ§a
+														da InformaÃ§Ã£o</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="tipo_imac" value="IMAC"
+													type="checkbox" id="tipo_imac"> <span class="">IMAC</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="tipo_telecomVoz"
+													value="Telecom (Voz)" type="checkbox" id="tipo_telecomVoz">
+													<span class="">Telecom (Voz)</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="tipo_distribuicaoPacotes"
+													value="DistribuiÃ§Ã£o de Pacotes" type="checkbox"
+													id="tipo_distribuicaoPacotes"> <span class="">DistribuiÃ§Ã£o
+														de Pacotes</span>
+												</label>
+											</div>
+										</div>
+
+
+										<div class="col-md-3">
+											<label>Ambiente Impactado<span style="color: red">*</span>:
+											</label>
+											<div class="checkbox">
+												<label> <input name="ambiente_dataCenterAllianzBR"
+													value="Data	Center - Allianz - BR" type="checkbox"
+													id="ambiente_dataCenterAllianzBR"> <span class="">Data
+														Center - Allianz - BR</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="ambiente_callCenter"
+													value="Call Center" type="checkbox"
+													id="ambiente_callCenter"> <span class="">Call
+														Center</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="ambiente_level3"
+													value="Data Center - Level3" type="checkbox"
+													id="ambiente_level3"> <span class="">Data
+														Center - Level3</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="ambiente_Infraestrutura"
+													value="Infraestrutura" type="checkbox"
+													id="ambiente_Infraestrutura"> <span class="">Infraestrutura</span>
+												</label>
+											</div>
+										</div>
+
+										<div class="col-md-2">
+											<label>PCI?<span style="color: red">*</span>:
+											</label>
+											<div class="radio">
+												<label> <input type="radio" name="necessario_pci"
+													id="necessario_pci" value="Sim"
+													onclick="aprovadoresProcesso()"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio" name="necessario_pci"
+													id="necessario_pci" value="Nao"
+													onclick="aprovadoresProcesso()"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+
+
+
+
+
+									<div class="form-group row">
+										<div class="col-md-6">
+											<label>Sistema afetado<span style="color: red">*</span>:
+											</label>
+											<textarea class="form-control" name="txt_sistemaAfetado"
+												id="txt_sistemaAfetado"></textarea>
+										</div>
+										<div class="col-md-6">
+											<label>Servidores afetados<span style="color: red">*</span>:
+											</label>
+											<textarea class="form-control" name="txt_servidoresAfetados"
+												id="txt_servidoresAfetados"></textarea>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-12">
+											<label>Outros:</label>
+											<textarea class="form-control" name="txt_outros"
+												id="txt_outros"></textarea>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-3">
+											<label>Severidade<span style="color: red">*</span>:
+											</label>
+											<div class="checkbox">
+												<label> <input name="radio_severidade"
+													value="Critica" type="radio" id="severidade_critica"
+													onclick="aprovadoresProcesso()"> <span class="">Critica</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="radio_severidade"
+													value="Grande Impacto" type="radio"
+													id="severidade_grandeImpacto"
+													onclick="aprovadoresProcesso()"> <span class="">Alto
+														Impacto</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="radio_severidade"
+													value="MÃ©dio Impacto" type="radio"
+													id="severidade_medioImpacto"
+													onclick="aprovadoresProcesso()"> <span class="">MÃ©dio
+														Impacto</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="radio_severidade"
+													value="Baixo Impacto" type="radio"
+													id="severidade_baixoImpacto"
+													onclick="aprovadoresProcesso()"> <span class="">Baixo
+														Impacto</span>
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-md-12">
+											<label>Quais os riscos e impactos da tarefa?
+												DescrevÃª-los detalhadamente<span style="color: red">*</span>:
+											</label>
+											<textarea class="form-control" name="txt_detalhesImpacto"
+												id="txt_detalhesImpacto"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panel_indisponiblidade">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Caso haja indisponibilidade no ambiente</b>
+									</h3>
+								</div>
+
+								<div class="panel-body">
+
+									<div class="form-group row">
+
+										<div class="col-md-4">
+											<label>Data de Inicio:</label> <input type="datetime-local"
+												name="indisponibilidade_dataInicial"
+												id="indisponibilidade_dataInicial" class="form-control">
+										</div>
+
+										<!-- <div class="col-md-2">
+											<label>Hora de Inicio:</label> <input type="text"
+												class="form-control" name="indisponibilidade_horaInicial"
+												id="indisponibilidade_horaInicial" maxlength="5"
+												mask="00:00" oninput="calcularIndisponibilidade()">
+
+										</div> -->
+									</div>
+
+									<div class="form-group row">
+
+										<div class="col-md-4">
+											<label>Data de TÃ©rmino:</label> <input type="datetime-local"
+												name="indisponibilidade_dataFinal"
+												id="indisponibilidade_dataFinal" class="form-control" oninput="calcularIndisponibilidade()">
+										</div>
+										<!-- <div class="col-md-2">
+											<label>Hora de TÃ©rmino:</label> <input type="text"
+												class="form-control" name="indisponibilidade_horaFinal"
+												id="indisponibilidade_horaFinal" maxlength="5" mask="00:00"
+												oninput="calcularIndisponibilidade()">
+
+										</div>
+ -->
+										<div class="col-md-2">
+											<label>Total:</label> <input type="text" class="form-control"
+												name="indisponibilidade_totalHoras"
+												id="indisponibilidade_totalHoras" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panel_aprovadores">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>AprovaÃ§Ã£o</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+
+									<div class="row">
+
+										<div class="col-md-6">
+											<label>Quais serÃ£o os envolvidos nesta solicitaÃ§Ã£o?<span
+												style="color: red">*</span>:
+											</label>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_1"
+													value="sysadmin" type="checkbox" id="check_aprovador_1"
+													onclick="aprovadoresProcesso()"> <span class="">Sysadmin</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_2" value="DBA"
+													type="checkbox" id="check_aprovador_2"
+													onclick="aprovadoresProcesso()"> <span class="">DBA</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_3"
+													value="Telecom" type="checkbox" id="check_aprovador_3"
+													onclick="aprovadoresProcesso()"> <span class="">Telecom</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_4"
+													value="Network" type="checkbox" id="check_aprovador_4"
+													onclick="aprovadoresProcesso()"> <span class="">Network</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_5"
+													value="Seguranca" type="checkbox" id="check_aprovador_5"
+													onclick="aprovadoresProcesso()"> <span class="">SeguranÃ§a</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_6"
+													value="workplace" type="checkbox" id="check_aprovador_6"
+													onclick="aprovadoresProcesso()"> <span class="">Workplace</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_7"
+													value="desenvolvimento" type="checkbox"
+													id="check_aprovador_7" onclick="aprovadoresProcesso()">
+													<span class="">Desenvolvimento/Arquitetura</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_8"
+													value="fornecedor" type="checkbox" id="check_aprovador_8"
+													onclick="aprovadoresProcesso()"> <span class="">Fornecedor</span>
+												</label>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<label>Quais serÃ£o os aprovadores nesta solicitaÃ§Ã£o?<span
+												style="color: red">*</span>:
+											</label>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_9"
+													value="gerente" type="checkbox" id="check_aprovador_9"
+													checked onclick="return false;"> <span class="">Gerente</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_10"
+													value="diretoria_ti" type="checkbox"
+													id="check_aprovador_10" onclick="aprovadoresProcesso()">
+													<span class="">Diretoria - TI</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_11"
+													value="area_negocio" type="checkbox"
+													id="check_aprovador_11" checked onclick="return false;">
+													<span class="">Ã�rea de NegÃ³cio</span>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label> <input name="check_aprovador_12"
+													value="diretoria_areNegocio" type="checkbox"
+													id="check_aprovador_12" onclick="aprovadoresProcesso()">
+													<span class="">Diretoria - Ã�rea de NegÃ³cio</span>
+												</label>
+											</div>
+										</div>
+
+
+									</div>
+
+
+
+									<div class="row">
+
+										<div class="col-md-12">
+
+										<!-- 	<div id="habilitaSysAdmin">
+												<label class="control-label">Sysadmins<span
+													style="color: red">*</span>:
+												</label> <input type="zoom" name="responsavel_Sysadmins"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'colleague',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleagueId', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'},
+																						{'field':'login', 'label':'Login'}]
+																					}" />
+
+											</div>
+
+
+											<div id="habilitaDBA">
+
+												<label class="control-label">DBA<span
+													style="color: red">*</span>:
+												</label> <input type="zoom" name="responsavel_DBA"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'colleague',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleagueId', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'},
+																						{'field':'login', 'label':'Login'}]
+																					}" />
+											</div>
+
+											<div id="habilitaTelecom">
+
+
+												<label class="control-label">Telecom<span
+													style="color: red">*</span>:
+												</label> <input type="zoom" name="responsavel_Telecom"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'colleague',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleagueId', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'},
+																						{'field':'login', 'label':'Login'}]
+																					}" />
+											</div>
+											<div id="habilitaNetwork">
+
+
+
+												<label class="control-label">Network<span
+													style="color: red">*</span>:
+												</label> <input type="zoom" name="responsavel_Network"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'colleague',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleagueId', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'},
+																						{'field':'login', 'label':'Login'}]
+																					}" />
+
+											</div>
+
+											<div id="habilitaSeguranca">
+
+												<label class="control-label">SeguranÃ§a<span
+													style="color: red">*</span>:
+												</label> <input type="zoom" name="responsavel_Seguranca"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'colleague',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleagueId', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'},
+																						{'field':'login', 'label':'Login'}]
+																					}" />
+
+											</div>
+											<div id="habilitaWorkplace">
+
+												<label class="control-label">Workplace<span
+													style="color: red">*</span>:
+												</label> <input type="zoom" name="responsavel_Workplace"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'colleague',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleagueId', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'},
+																						{'field':'login', 'label':'Login'}]
+																					}" />
+											</div>
+											<div id="habilitaDesenvolvimento">
+
+												<label class="control-label">Desenvolvimento<span
+													style="color: red">*</span>:
+												</label> <input type="zoom" name="responsavel_Desenvolvimento"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'colleague',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleagueId', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'},
+																						{'field':'login', 'label':'Login'}]
+																					}" />
+											</div> -->
+											<div id="habilitaFornecedor">
+												<label class="control-label">Fornecedor<span
+													style="color: red">*</span>:
+												</label> <input type="zoom" name="responsavel_fornecedor"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'ds_grupo_fornecedor',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleague', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'}
+																						]
+																					}" />
+											</div>
+											<div id="habilitaDiretoriaTI">
+
+												<label class="control-label">Diretoria - TI<span
+													style="color: red">*</span>:
+												</label> <input type="zoom" name="responsavel_diretoriaTI"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'ds_grupo_diretoria_ti',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleague', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'}
+																						]
+																					}" />
+											</div>
+
+											<div id="habilitaAreaNegocios">
+
+
+												<label class="control-label">Ã�rea de NegÃ³cios<span
+													style="color: red">*</span>:
+												</label> <input type="zoom" name="responsavel_areaNegocios"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'ds_grupo_area_de_negocio',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleague', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'}
+																						]
+																					}" />
+											</div>
+
+											<div id="habilitaDiretoriaNegocios">
+
+												<label class="control-label">Diretoria - Ã�rea de
+													NegÃ³cios<span style="color: red">*</span>:
+												</label> <input type="zoom" name="7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777"
+													data-zoom="{
+																					'displayKey':'colleagueName',
+																					'datasetId':'ds_grupo_diretoria_negocios',
+																					'filterValues':'active,true',
+																					'fields':[
+																						{'field':'colleague', 'label':'ID'},
+																						{'field':'colleagueName', 'label':'Nome', 'standard':'true'}
+																						]
+																					}" />
+											</div>
+
+
+
+
+
+
+
+
+										</div>
+
+									</div>
+
+
+
+								</div>
+
+
+							</div>
+
+							<div class="panel panel-default" id="panel_ExecucaoGMUD">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>ExecuÃ§Ã£o GMUD</b>
+									</h3>
+								</div>
+									<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>GMUD foi executada?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="radio_execucaoGMUD" id="radio_execucaoGMUD_sim"
+													value="Sim"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="radio_execucaoGMUD" id="radio_execucaoGMUD_nao"
+													value="Nao"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObsExecucaoGMUD"
+												id="txtObsExecucaoGMUD"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+
+
+
+
+
+
+						</div>
+						<div class="tab-pane fade" id="tab_atividadesMudanca">
+
+							<fieldset id="fAtividadesMudanca" class="marginFieldset">
+								<legend style="font-size: 18px;">Atividades de MudanÃ§a</legend>
+								<div class="row">
+									<div class="col-md-12 table-responsive">
+										<table tablename="tableAtividadesMudanca" class="table"
+											noaddbutton="true" nodeletebutton="false">
+											<thead>
+												<tr>
+													<td></td>
+													<td></td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<!-- <td><span
+											class="fluigicon fluigicon-trash fluigicon-md fs-cursor-pointer"
+											id="removerAtividade" 	onclick="Javascript:fnWdkRemoveChild(this)"></span></td> -->
+													<td>
+														<div class="row">
+															<div class="col-md-3">
+																<label class="control-label">Executor<span
+																	style="color: red">*</span>:
+																</label> <input type="text" class="form-control"
+																	id="executor_atividade" name="executor_atividade" />
+															</div>
+															<div class="col-md-3">
+																<label class="control-label">Ã�rea ResponsÃ¡vel<span
+																	style="color: red">*</span>:
+																</label> <input type="text" class="form-control"
+																	id="area_responsavel" name="area_responsavel" />
+															</div>
+															<div class="col-md-6">
+																<label class="control-label">Atividade<span
+																	style="color: red">*</span>:
+																</label> <input class="form-control" type="text"
+																	name="atividade" id="atividade">
+															</div>
+														</div>
+
+														<div class="row">
+														<div class="col-md-3">
+																<label class="control-label">Data Inicial<span
+												style="color: red">*</span>:</label> <input
+																	type="datetime-local" name="data_inicial" id="data_inicial"
+																	class="form-control"  >
+															</div>
+															
+															
+
+															<!-- <div class="col-md-3">
+																<label>Data Inicial<span style="color: red">*</span>:
+																</label>
+																<div class="input-group date">
+																	<input type="text"
+																		class="editField form-control checkdate"
+																		name="data_inicial" id="data_inicial" /> <span
+																		class="input-group-addon" id="dataInicialAtividade">
+																		<span class="fluigicon fluigicon-calendar"></span>
+																	</span>
+																</div>
+															</div> -->
+
+															<div class="col-md-3">
+																<label class="control-label">Data Final<span
+												style="color: red">*</span>:</label> <input
+																	type="datetime-local" name="data_final" id="data_final"
+																	class="form-control" >
+															</div>
+
+
+															<!-- <div class="col-md-3">
+																<label>Data Final<span style="color: red">*</span>:
+																</label>
+																<div class="input-group date">
+																	<input type="text"
+																		class="editField form-control checkdate"
+																		name="data_final" id="data_final" /> <span
+																		class="input-group-addon" id="dataFinalAtividade">
+																		<span class="fluigicon fluigicon-calendar"></span>
+																	</span>
+																</div>
+															</div> -->
+
+														<!-- 	<div class="col-md-2">
+																<label>Hora de Inicio<span style="color: red">*</span>:
+																</label> <input type="text" class="form-control"
+																	name="hora_inicial" id="hora_inicial" maxlength="5"
+																	mask="00:00">
+
+															</div>
+
+															<div class="col-md-2">
+																<label>Hora de Final<span style="color: red">*</span>:
+																</label> <input type="text" class="form-control"
+																	name="hora_final" id="hora_final" maxlength="5"
+																	mask="00:00">
+
+															</div> -->
+
+															<div class="col-md-2">
+																<label>Tempo de ExecuÃ§Ã£o</label> <input type="text"
+																	class="form-control" name="tempoExecucao"
+																	id="tempoExecucao" readonly>
+
+															</div>
+
+														</div>
+
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<button type="button" name="addItens" id="addItens"
+											class="btn btn-primary"
+											onclick="addChild('tableAtividadesMudanca');init();">Adicionar</button>
+									</div>
+									<div class="col-md-10 text-right">
+										<label for="totalHorasAtividade">Tempo total de
+											execuÃ§Ã£o da mudanÃ§a (em horas):</label>
+									</div>
+									<div class="form-group col-md-2">
+										<input type="text" class="form-control"
+											name="txt_totalHorasAtividades" id="txt_totalHorasAtividades"
+											maxlength="5" mask="00:00" readonly>
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-12">
+										<label>ObservaÃ§Ãµes</label>
+										<textarea class="editField form-control" rows="3"
+											name="txt_observacoesAtividades"
+											id="txt_observacoesAtividades" style="resize: none;"></textarea>
+									</div>
+								</div>
+							</fieldset>
+
+
+
+						</div>
+						<div class="tab-pane fade" id="tab_planoTeste">
+
+							<fieldset id="fplanoTeste" class="marginFieldset">
+								<legend style="font-size: 18px;">Plano de Teste</legend>
+								<div class="row">
+									<div class="col-md-12 table-responsive">
+										<table tablename="tablePlanoTeste" class="table"
+											noaddbutton="true" nodeletebutton="false">
+											<thead>
+												<tr>
+													<td></td>
+													<td></td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<!-- <td><span
+											 class="fluigicon fluigicon-trash fluigicon-md" 
+											id="removerPlanoTeste" name="removerPlanoTeste"	onclick="Javascript:fnWdkRemoveChild(this)" style="cursor:pointer"></span></td> -->
+
+													<td>
+														<div class="row">
+
+															<div class="col-md-6">
+																<label class="control-label">Item a ser testado<span
+																	style="color: red">*</span>:
+																</label> <input type="text" class="form-control"
+																	id="txt_ItemTestado" name="txt_ItemTestado" />
+															</div>
+
+
+															<div class="col-md-6">
+																<label class="control-label">ResponsÃ¡vel<span
+																	style="color: red">*</span>:
+																</label> <input type="text" class="form-control"
+																	id="planoTeste_responsavel"
+																	name="planoTeste_responsavel" />
+															</div>
+
+														</div>
+
+														<div class="row">
+
+															<div class="col-md-12">
+																<label class="control-label">Resultado Esperado<span
+																	style="color: red">*</span>:
+																</label>
+																<textarea class="editField form-control"
+																	name="planoTeste_resultado" id="planoTeste_resultado"></textarea>
+															</div>
+
+
+
+
+
+														</div>
+
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-md-12">
+										<button type="button" name="addItens_planoTete"
+											id="addItens_planoTete" class="btn btn-primary"
+											onclick="addChild('tablePlanoTeste')">Adicionar</button>
+									</div>
+
+								</div>
+								<div class="row">
+									<div class="form-group col-md-12">
+										<label>ObservaÃ§Ãµes<span style="color: red">*</span>:
+										</label>
+										<textarea class="editField form-control" rows="3"
+											name="txt_observacoesTeste" id="txt_observacoesTeste"
+											style="resize: none;"></textarea>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+
+
+
+						<div class="tab-pane fade" id="tab_planoRollback">
+
+							<fieldset id="fplanoDeVolta" class="marginFieldset">
+								<legend style="font-size: 18px;">Plano de Volta</legend>
+								<div class="row">
+									<div class="col-md-12 table-responsive">
+										<table tablename="tablePlanoDeVolta" class="table"
+											noaddbutton="true" nodeletebutton="false">
+											<thead>
+												<tr>
+													<td></td>
+													<td></td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<!-- <td><span
+											 class="fluigicon fluigicon-trash fluigicon-md" 
+											id="removerPlanaDeVolta" name="removerPlanaDeVolta"	onclick="Javascript:fnWdkRemoveChild(this)" style="cursor:pointer"></span></td> -->
+
+													<td>
+														<div class="row">
+															<div class="col-md-3">
+																<label class="control-label">Executor<span
+																	style="color: red">*</span>:
+																</label> <input type="text" class="form-control"
+																	id="executor_planoDeVolta" name="executor_planoDeVolta" />
+															</div>
+															<div class="col-md-3">
+																<label class="control-label">Ã�rea ResponsÃ¡vel<span
+																	style="color: red">*</span>:
+																</label> <input type="text" class="form-control"
+																	id="areaResponsavel_PlanoDeVolta"
+																	name="areaResponsavel_PlanoDeVolta" />
+															</div>
+															<div class="col-md-6">
+																<label class="control-label">Atividade<span
+																	style="color: red">*</span>:
+																</label> <input class="form-control" type="text"
+																	name="atividade_planoDeVolta"
+																	id="atividade_planoDeVolta">
+															</div>
+
+														</div>
+
+														<div class="row">
+															 <div class="col-md-3">
+																<label class="control-label">Data Inicial<span
+												style="color: red">*</span>:</label> <input
+																	type="datetime-local" name="dtInicialPlanoDeVolta"
+																	id="dtInicialPlanoDeVolta" class="form-control" >
+															</div> 
+
+														<!-- 	<div class="col-md-3">
+																<label>Data Inicial<span style="color: red">*</span>:
+																</label>
+																<div class="input-group date">
+																	<input type="text"
+																		class="editField form-control checkdate"
+																		name="dtInicialPlanoDeVolta"
+																		id="dtInicialPlanoDeVolta" /> <span
+																		class="input-group-addon" id="dataInicialRollBack">
+																		<span class="fluigicon fluigicon-calendar"></span>
+																	</span>
+																</div>
+															</div> -->
+
+															 <div class="col-md-3">
+																<label class="control-label">Data Final<span
+												style="color: red">*</span>:</label> <input
+																	type="datetime-local" name="dtFinalPlanoDeVolta"
+																	id="dtFinalPlanoDeVolta" class="form-control" >
+															</div> 
+
+<!-- 
+															<div class="col-md-3">
+																<label>Data Inicial<span style="color: red">*</span>:
+																</label>
+																<div class="input-group date">
+																	<input type="text"
+																		class="editField form-control checkdate"
+																		name="dtFinalPlanoDeVolta" id="dtFinalPlanoDeVolta" />
+																	<span class="input-group-addon" id="dataFinalRollBack">
+																		<span class="fluigicon fluigicon-calendar"></span>
+																	</span>
+																</div>
+															</div> -->
+
+														<!-- 	<div class="col-md-2">
+																<label>Hora de Inicio<span style="color: red">*</span>:
+																</label> <input type="text" class="form-control"
+																	name="horaInicialPlanoDeVolta"
+																	id="horaInicialPlanoDeVolta" maxlength="5" mask="00:00">
+
+															</div>
+
+															<div class="col-md-2">
+																<label>Hora de Final<span style="color: red">*</span>:
+																</label> <input type="text" class="form-control"
+																	name="horaFinalPlanoDeVolta" id="horaFinalPlanoDeVolta"
+																	maxlength="5" mask="00:00">
+
+															</div> -->
+
+															<div class="col-md-2">
+																<label class="control-label">Tempo de ExecuÃ§Ã£o</label> <input
+																	class="form-control" type="text"
+																	name="tempoExecucaoPlanoDeVolta"
+																	id="tempoExecucaoPlanoDeVolta" readonly>
+															</div>
+
+														</div>
+
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<button type="button" name="addItens_planoDeVolta"
+											id="addItens_planoDeVolta" class="btn btn-primary"
+											onclick="addChild('tablePlanoDeVolta');init();">Adicionar</button>
+									</div>
+									<div class="col-md-10 text-right">
+										<label>Tempo total do plano de volta (em horas):</label>
+									</div>
+									<div class="form-group col-md-2">
+										<input type="text" class="form-control"
+											name="totalHorasPlanoDeVolta" id="totalHorasPlanoDeVolta"
+											readonly="">
+									</div>
+								</div>
+								<div class="row">
+									<div class="form-group col-md-12">
+										<label>ObservaÃ§Ãµes</label>
+										<textarea class="editField form-control" rows="3"
+											name="observacoesPlanoDeVolta" id="observacoesPlanoDeVolta"
+											style="resize: none;"></textarea>
+									</div>
+								</div>
+							</fieldset>
+
+
+
+
+						</div>
+						<div class="tab-pane fade" id="tab_escalonamento">
+
+							<fieldset id="fplanoDeVolta" class="marginFieldset">
+								<legend style="font-size: 18px;">Escalonamento</legend>
+								<div class="row">
+									<div class="col-md-12 table-responsive">
+										<table tablename="tableEscalonamento" class="table"
+											noaddbutton="true" nodeletebutton="false">
+											<thead>
+												<tr>
+
+													<td><b>Nome<span style="color: red">*</span>:
+													</b></td>
+													<td><b>Ã�rea<span style="color: red">*</span>:
+													</b></td>
+													<td><b>Telefone<span style="color: red">*</span>:
+													</b></td>
+												</tr>
+											</thead>
+											<tbody>
+												<tr class="text-center">
+													<!-- <td><span
+											 class="fluigicon fluigicon-trash fluigicon-md" 
+											id="removerEscalonamento" name="removerEscalonamento"	onclick="Javascript:fnWdkRemoveChild(this)" style="cursor:pointer"></span></td> -->
+
+
+													<td><input type="text" class="form-control"
+														name="txtNomeEscalonamento" id="txtNomeEscalonamento"></td>
+													<td><input type="text" class="form-control"
+														name="txtAreaEscalonamento" id="txtAreaEscalonamento"></td>
+													<td><input type="text" class="form-control"
+														name="txtTelefoneEscalonamento"
+														id="txtTelefoneEscalonamento" mask="(00)00000-0000"></td>
+
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<button type="button" name="addItens_escalonamento"
+											id="addItens_escalonamento" class="btn btn-primary"
+											onclick="addChild('tableEscalonamento')">Adicionar</button>
+									</div>
+								</div>
+							</fieldset>
+
+						</div>
+
+						<div class="tab-pane fade" id="tab_aprovacoes">
+
+							<div class="panel panel-default" id="panelaprovacaoSysadmins">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Sysadmins</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_sysadmins" id="aprovacao_sysadmins_sim"
+													value="Sim"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_sysadmins" id="aprovacao_sysadmins_nao"
+													value="Nao"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObservacoesSysadmins"
+												id="txtObservacoesSysadmins"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panelaprovacaoDBA">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>DBA</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio" name="aprovacao_DBA"
+													id="aprovacao_DBA_sim" value="Sim"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio" name="aprovacao_DBA"
+													id="aprovacao_DBA_nao" value="Nao"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObservacoesDBA"
+												id="txtObservacoesDBA"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panelApvTelecom">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Telecom</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Telecom_2" id="aprovacao_Telecom_2_sim"
+													value="Sim"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Telecom_2" id="aprovacao_Telecom_2_nao"
+													value="Nao"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObservacoesTelecom"
+												id="txtObservacoesTelecom"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panelaprovacaoNetwork">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Network</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio" name="aprovacao_Network"
+													id="aprovacao_Network_sim" value="Sim"> <span
+													class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio" name="aprovacao_Network"
+													id="aprovacao_Network_nao" value="Nao"> <span
+													class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObservacoesNetwork"
+												id="txtObservacoesNetwork"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panelaprovacaoSeguranca">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>SeguranÃ§a</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Seguranca" id="aprovacao_Seguranca_sim"
+													value="Sim"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Seguranca" id="aprovacao_Seguranca_nao"
+													value="Nao"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObservacoesSeguranca"
+												id="txtObservacoesSeguranca"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+
+							<div class="panel panel-default" id="panelaprovacaoWorkplace">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Workplace</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Workplace" id="aprovacao_Workplace_sim"
+													value="Sim"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Workplace" id="aprovacao_Workplace_nao"
+													value="Nao"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObservacoesWorkplace"
+												id="txtObservacoesWorkplace"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+
+
+
+
+							<div class="panel panel-default" id="panelApvDesenvolvimento">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Desenvolvimento/Arquitetura</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Desenvolvimento"
+													id="apv_Desenvolvimento_sim" value="Sim"> <span
+													class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Desenvolvimento"
+													id="apv_Desenvolvimento_nao" value="Nao"> <span
+													class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control"
+												name="txtObservacoesDesenvolvimento"
+												id="txtObservacoesDesenvolvimento"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panelaprovacaoFornecedor">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Fornecedor</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Fornecedor_2"
+													id="aprovacao_Fornecedor_2__sim" value="Sim"> <span
+													class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Fornecedor_2"
+													id="aprovacao_Fornecedor_2__nao" value="Nao"> <span
+													class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control"
+												name="txtObservacoesFornecedor"
+												id="txtObservacoesFornecedor"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panelaprovacaoGerente_1">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Gerente</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Gerente_1" id="aprovacao_Gerente_sim_1"
+													value="Sim"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Gerente_1" id="aprovacao_Gerente_nao_1"
+													value="Nao"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObservacoesGerente_1"
+												id="txtObservacoesGerente_1"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panelaprovacaoGerente_2">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Gerente</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Gerente_2" id="aprovacao_Gerente_sim_2"
+													value="Sim"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Gerente_2" id="aprovacao_Gerente_nao_2"
+													value="Nao"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObservacoesGerente_2"
+												id="txtObservacoesGerente_2"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panelaprovacaoGerente_3">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Gerente</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Gerente_3" id="aprovacao_Gerente_sim_3"
+													value="Sim"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_Gerente_3" id="aprovacao_Gerente_nao_3"
+													value="Nao"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObservacoesGerente_3"
+												id="txtObservacoesGerente_3"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panelaprovacaoDiretoriaTI">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Diretoria - TI</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_DiretoriaTI" id="aprovacao_DiretoriaTI_sim"
+													value="Sim"> <span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_DiretoriaTI" id="aprovacao_DiretoriaTI_nao"
+													value="Nao"> <span class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control"
+												name="txtObservacoesDiretoriaTI"
+												id="txtObservacoesDiretoriaTI"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default" id="panelaprovacaoAreaNegocios">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Ã�rea de NegÃ³cios</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_AreaNegocios"
+													id="aprovacao_AreaNegocios_sim" value="Sim"> <span
+													class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_AreaNegocios"
+													id="aprovacao_AreaNegocios_nao" value="Nao"> <span
+													class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control"
+												name="txtObservacoesAreaNegocios"
+												id="txtObservacoesAreaNegocios"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="panel panel-default"
+								id="panelaprovacaoDiretoriaNegocios">
+								<div class="panel-heading ">
+									<h3 class="panel-title">
+										<b>Diretoria - NegÃ³cios</b>
+									</h3>
+								</div>
+								<div class="panel-body">
+									<div class="form-group row">
+
+										<div class="col-md-3">
+											<label>Aprova SolicitaÃ§Ã£o?</label>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_DiretoriaNegocios"
+													id="aprovacao_DDiretoriaNegocios_sim" value="Sim">
+													<span class="">Sim</span>
+												</label>
+											</div>
+											<div class="radio">
+												<label> <input type="radio"
+													name="aprovacao_DiretoriaNegocios"
+													id="aprovacao_DiretoriaNegocios_nao" value="Nao"> <span
+													class="">NÃ£o</span>
+												</label>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group row row-danger">
+										<div class="col-md-12">
+											<label>ObservaÃ§Ãµes</label>
+											<textarea class="form-control" name="txtObservacoesDNegocios"
+												id="txtObservacoesDNegocios"></textarea>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

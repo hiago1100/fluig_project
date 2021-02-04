@@ -1,0 +1,46 @@
+function createDataset(fields, constraints, sortFields) {
+
+	var dataset = DatasetFactory.newDataset();
+	dataset.addColumn("FECHADO");
+	dataset.addColumn("SALDO");
+	dataset.addColumn("SUCESSO");
+
+	var	periodicService = ServiceManager.getService('ws_FechamentoCaixa');
+	var serviceHelper = periodicService.getBean();
+	var serviceLocator = serviceHelper.instantiate('br.com.oncoclinicas.webservices.wsconsultas_apw.WSCONSULTAS');
+	var service = serviceLocator.getWSCONSULTASSOAP();
+
+
+	var filial = "";
+	var FECHADO = "";
+	var SALDO = "";
+	var SUCESSO = "";
+	
+	if(constraints != undefined && constraints != '' && constraints != null){
+		for ( var i in constraints) {
+	
+			if(constraints[i].fieldName == "FILIAL"){
+				filial = constraints[i].initialValue;
+			}
+						
+			var resultObj = service.wsbanco(FECHADO, SALDO, SUCESSO );
+			var result = resultObj.getWSRETCONSULTAS().toArray();
+			
+			for (var x in result) {
+				dataset.addRow(new Array(result[x].getFECHADO(), result[x].getSALDO(), result[x].getSUCESSO()));
+			}
+		}
+	} else {
+	
+		var resultObj = service.wsbanco(FECHADO, SALDO, SUCESSO);
+		var result = resultObj.getWSRETCONSULTAS().toArray();
+		
+		for (var x in result) {
+			dataset.addRow(new Array(result[x].getFECHADO(), result[x].getSALDO(), result[x].getSUCESSO()));
+		}
+		
+	}
+	
+	return dataset;
+	
+}

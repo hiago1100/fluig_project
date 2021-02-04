@@ -1,0 +1,281 @@
+var BDOForms = {
+    params: {},
+    initForm: function(params) {
+        this.params = params;
+        var $this = this;
+        $(function() {
+            if (params.formMode == "ADD" || params.formMode == "MOD") {
+                $this.onEdit(params);
+            } else {
+                $this.onView(params);
+            }
+        });
+        // openLocator();
+    },
+    onView: function(params) {
+        
+    },
+    onEdit: function(params) { //Edição do formulário
+
+      var atividade = params.WKNumState;  
+
+      if (atividade == 5) {
+        $("#btEmpresaOutorgante").prop('disabled', false);
+      }
+
+      validaGestor();
+
+      // DATASET DE OBRA COLABORADOR
+
+      $('#btDepartamentoObra').click(function() {
+      FLUIGC.sessionStorage.setItem('selecionandoSubstituto', true);
+      window.loadingLayer.show();
+
+      $.when(ZOOM.getInstance().GetTodosCentroCusto()).then(function() {
+          window.loadingLayer.hide();
+      });
+    });
+
+
+        // DATASET DE EMPRESA UAU
+
+
+      $('#btEmpresaOutorgante').click(function() {
+        FLUIGC.sessionStorage.setItem('selecionandoSubstitutoEmpresa', true);
+        window.loadingLayer.show();
+
+        $.when(ZOOM.getInstance().GetTodosCentroCusto()).then(function() {
+            window.loadingLayer.hide();
+        });
+    });
+
+
+    $(document).on('ZoomSecaoSelecionada', function(ev, retorno) {
+          window.loadingLayer.show();
+          setTimeout(function() {
+
+          $("#cpObraDepartamentoInfo").val(retorno.SECAO);            
+           window.loadingLayer.hide();
+          }, 100);
+    
+
+      });
+
+    $(document).on('ZoomSecaoSelecionadaSubst', function(ev, retorno) {
+          window.loadingLayer.show();
+          setTimeout(function() {
+
+
+          var dados2 = Model.get_DS0133();
+
+        if (dados2.values.length == 0) {
+                Compartilhados.WarningToast('', Mensagens.M0012, 'error');
+                window.loadingLayer.hide();
+                return;
+        }
+
+
+        if (FLUIGC.sessionStorage.getItem('selecionandoSubstitutoEmpresa')) {
+
+            console.log("entrou no if do colaborador");
+
+            // Compartilhados.LimparCampos(['limparDadosColaboradorSubstituto']);
+
+            $('#cpEmpresaOutorgante').val(dados2.values[0].EMPRESA);
+            // $('#cpColaboradorInfo').val(dados2.values[0].NOME);
+            // $('#cpMatriculaInfo').val(dados2.values[0].CHAPA);
+            // $('#cpDataAdmissaoInfo').val(dados2.values[0].ADMISSAO);
+            // $('#cpFuncaoInfo').val(dados2.values[0].FUNCAO);
+            // $('#cpMaoObraInfo').val(dados2.values[0].OBRAOUSEDE);
+            // $('#cpEmpresaInfo').val(dados2.values[0].EMPRESA);
+            // $('#cpGestorInfo').val(dados2.values[0].NOME_GESTOR);
+
+            // $("#cpChapaGestor").val(dados2.values[0].CHAPA_GESTOR);
+            // $("#cpChapaConsultor").val(dados2.values[0].CHAPA_CONS);
+            FLUIGC.sessionStorage.setItem('selecionandoSubstituto', false);
+        }else {
+            Compartilhados.LimparCampos(['limparDadosColaborador']);
+
+        }
+    
+    });
+
+
+
+    }
+ }
+
+
+ function mostraCampos(){
+    // ====================IF para div Livros=======================
+    if($("#cbModalidade").val() == "certidao"){
+        $("#div_livro").css('display','block');
+    }else{
+        $("#div_livro").css('display','none');
+    }
+
+    // =========================IF para div tipoEmpresa,div outorgado e div poderes =================
+
+    if ($("#cbModalidade").val() == "nova" || $("#cbModalidade").val() == "renovacao")
+    {
+        $("#div_tipoEmpresa").css('display','block');
+        $("#div_outorgardo").css('display','block');
+         $("#div_poderes").css('display','block');
+    }else{
+         $("#div_tipoEmpresa").css('display','none');
+         $("#div_outorgardo").css('display','none');
+         $("#div_poderes").css('display','none');
+    }
+
+    // ===========IF para EmpresaOutorgante ==================================
+    if ($("#cpOutorgado").val() == "spe" || $("#cpOutorgado").val() == "speGaveta" ||
+       $("#cpOutorgado").val() == "scp" || $("#cpOutorgado").val() == "parceiras" ||
+       $("#cpOutorgado").val() == "corretora"){
+    
+        
+        $("#div_EmpresaOutorgante").css('display','block'); 
+    }else{
+        $("#div_EmpresaOutorgante").css('display','none');
+    }
+
+    // ===========IF para Regional ==================================
+    if ($("#cpOutorgado").val() == "regional") {
+        $("#div_regionais").css('display','block'); 
+    }else{
+        $("#div_regionais").css('display','none'); 
+    }
+
+    // ===================IF solicitação e empresa  ===============================
+    if ($("#cpOutorgado_dois").val() == "pessoaFisica") {
+         $("#div_solicitacao").css('display','block'); 
+    }else if ($("#cpOutorgado_dois").val() == "pessoaJuridica"){
+        $("#div_solicitacao").css('display','none'); 
+        $("#div_empresa").css('display','block'); 
+    }
+
+    // =========================IF obra e IF outorgante================================
+    if ($("#cpSolicitacao").val() == "outroColaborador" || $("#cpSolicitacao").val() == "proprioColaborador" ) {
+        $("#div_obra").css('display','block');
+        $("#div_outorgante").css('display','none'); 
+    }else if ($("#cpSolicitacao").val() == "terceiro"){
+        $("#div_obra").css('display','none'); 
+        $("#div_outorgante").css('display','block');
+    }
+
+    // =================== if select poderes =======================================================
+
+    if ($("#cpPoderes").val() == "orgaos") {
+         $("#div_orgao").css('display','block');
+         $("#div_empreedimento").css('display','none');
+         $("#div_banco").css('display','none');
+         $("#div_matricula").css('display','none');
+         $("#div_qPoderes").css('display','none');
+    }else if ($("#cpPoderes").val() == "financiamento"){
+         $("#div_orgao").css('display','none');
+         $("#div_banco").css('display','none');
+         $("#div_empreedimento").css('display','block');
+         $("#div_matricula").css('display','none');
+         $("#div_qPoderes").css('display','none');
+    }else if ($("#cpPoderes").val() == "movimentacao") {
+         $("#div_banco").css('display','block');
+         $("#div_orgao").css('display','none');
+         $("#div_empreedimento").css('display','none');
+         $("#div_matricula").css('display','none');
+         $("#div_qPoderes").css('display','none');
+    }else if ($("#cpPoderes").val() == "escritura") {
+         $("#div_banco").css('display','none');
+         $("#div_orgao").css('display','none');
+         $("#div_empreedimento").css('display','none');
+         $("#div_matricula").css('display','block');
+         $("#div_qPoderes").css('display','none');
+    }else if ($("#cpPoderes").val() == "outros"){
+         $("#div_banco").css('display','none');
+         $("#div_orgao").css('display','none');
+         $("#div_empreedimento").css('display','none');
+         $("#div_matricula").css('display','none');
+         $("#div_qPoderes").css('display','block');
+    }else{
+         $("#div_banco").css('display','none');
+         $("#div_orgao").css('display','none');
+         $("#div_empreedimento").css('display','none');
+         $("#div_matricula").css('display','none');
+         $("#div_qPoderes").css('display','none');
+    }
+
+    // ============================= if quais bancos===================
+
+    if ($("#cpBancos").val() == "outros") {
+        $("#div_qBanco").css('display','block');
+    }else{
+        $("#div_qBanco").css('display','none');
+    }
+
+    // ================================ if select status aprovação juridico =============
+    if ($("#cbStatus").val() == "2"){
+        $("#div_previsao").css('display','block');
+    }else{
+        $("#div_previsao").css('display','none');
+    }
+
+    // =================== if aprovação conferência do processamento =======================
+    if ($("#cbAprovacaoSolicitante").val() == "2") {
+         $("#div_avaliacaoAtendimento").css('display','block');
+    }else{
+         $("#div_avaliacaoAtendimento").css('display','none');
+    }
+
+  // =============fim da função================  
+  }  
+  // =============fim da função================
+
+
+  function adicionarLinhaTipoEmpresa(){
+    $("#div_seleciona_tipoEmpresa").css('display','block');
+  }
+
+
+
+  function adicionarLinhaOutorgado(){
+   $("#div_seleciona_Outorgado").css('display','block');
+  }
+
+  function adicionarLinhaPoder(){
+     $("#div_seleciona_Poderes").css('display','block');
+  }
+
+  function validaGestor(){
+
+    console.log("entrou na function");
+    var str = $("#cpAprovaGerente").val();
+    if(str.match(/GERENTE/) || str.match(/SUPERINTENDENTE/) || str.match(/GESTOR DO CENTRO DE CUSTO/) || str.match(/GESTOR/)){
+      $("#cpAprovaGerente").val("nao");
+    }else{
+      $("#cpAprovaGerente").val("sim");
+    }
+
+  }
+
+  // =================== função para validar botão tipo empresa ===============
+  function validaBotao(){
+    $("#botaoTipoEmpresa").val("sim");
+  }
+  // ======================= função para validar botão adicionar outorgado =======
+  function validaBotaoOutorgado(){
+    $("#botaoOutorgado").val("sim");
+  }
+  // ========================== função para validar botão adicionar poderes =========
+  function validaBotaoPoderes(){
+    $("#poderesBotao").val("sim");
+  }
+
+
+  // ==============================================================================================
+
+
+
+
+  
+// =====================================Inicio do Form===============================
+
+
+

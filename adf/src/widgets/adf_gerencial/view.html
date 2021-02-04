@@ -1,0 +1,104 @@
+<div ng-app="AdfApp" ng-controller="AdfController as vm" class="fluig-style-guide ng-cloak">
+
+    <head>
+        <!-- partial:partials/head.html -->
+        <!-- partial -->
+    </head>
+    <div class="loader" ng-show="!vm.done || vm.loading">
+        <div id="pgloading" style="background: rgba(255,255,255,0.3);">
+            <div class="loadingwrap">
+                <ul class="bokeh">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="vm.done" class="fadein fadeout">
+        <div class="ng-cloak adf-gerencial" ng-class="{'docto-open': vm.doctoOpen}">
+
+
+            <div class="main">
+
+                <!-- partial:partials/modalDetalhe.html -->
+                <!-- partial -->
+                <div class="control-menu">
+                    <!-- partial:partials/control-menu.html -->
+                    <!-- partial -->
+                </div>
+
+                <div ng-show="vm.Errors.length === 0">
+
+                    <div class="mobile-tab content" ng-class="{active: vm.Control.tab==1}">
+                        <!-- partial:partials/documentos.html -->
+                        <!-- partial -->
+                        <div ng-show="vm.Processos.length === 0 && vm.Errors.length === 0" class="fs-txt-center" style="margin: 80px 15px">
+
+                            <p style="font-size: 30px; margin-top: 40px; line-height: 2">Você não possui documentos pendentes de aprovação</p>
+
+                            <p style="font-size: 24px;" class="fs-cursor-pointer" ng-click="vm.load();vm.Control.tab=1">
+                                <span class="fa fa-refresh"></span> Recarregar
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mobile-tab top-resumo" ng-class="{active: vm.Control.tab==2}">
+                        <!-- partial:partials/resumo-top.html -->
+                        <!-- partial -->
+                    </div>
+                    <div class="left-menu" ng-class="{empty: vm.Processos.length === 0}">
+                        <div class="mobile-tab" ng-class="{active: vm.Control.tab==3}">
+                            <!-- partial:partials/filtros.html -->
+                            <!-- partial -->
+                        </div>
+                        <div class="mobile-tab" ng-class="{active: vm.Control.tab==4}">
+                            <!-- partial:partials/atalhos.html -->
+                            <!-- partial -->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-10 col-md-offset-1" ng-repeat="erro in vm.Errors">
+                    <div class="alert alert-danger animate" role="alert">
+                        {{erro}}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div ng-show="vm.doctoOpen" class="detalhe-documento container fadein fadeout">
+            <div>
+                <div style="margin-bottom: 10px">
+                    <div class="btn-group btn-group-justified" role="group">
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-lg fs-no-border" ng-class="{'btn-success' : vm.selectedProcesso.status=='A', 'btn-primary': vm.selectedProcesso.status!='A'}" ng-click="vm.alteraStatus(vm.selectedProcesso, 'A');vm.closeDetalhe()">
+                                <span class="fa fa-check fs-text-lg fs-cursor-pointer"></span> Aprovar
+                            </a>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-lg fs-no-border" ng-class="{'btn-danger' : vm.selectedProcesso.status=='R', 'btn-primary': vm.selectedProcesso.status!='R'}" ng-click="vm.alteraStatus(vm.selectedProcesso, 'R');vm.closeDetalhe()">
+                                <span class="fa fa-ban fs-text-lg fs-cursor-pointer"></span> Reprovar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 10px">
+                    <textarea ng-model="vm.selectedProcesso.comments" class="form-control" elastic placeholder="Clique aqui para incluir observações sobre o documento"></textarea>
+                </div>
+
+                <div style="margin-bottom: 70px; height: 100%">
+
+                    <adf-documento docto-template="vm.selectedProcesso.doctoTemplate" ng-if="vm.doctoOpen" tipo-documento="vm.selectedProcesso.TipoDocumento" cod-docto-template="vm.selectedProcesso.codDoctoTemplate" type="detalhe"></adf-documento>
+                </div>
+
+                <a class="btn btn-primary btn-circle btn-xl btn-return" ng-click="vm.closeDetalhe()"><i class="fa fa-undo"></i></a>
+            </div>
+
+        </div>
+    </div>
+</div>

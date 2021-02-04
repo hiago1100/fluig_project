@@ -1,0 +1,819 @@
+<!doctype html>
+<html>
+
+<head>
+	<!-- ARQUIVOS CSS -->
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://style.fluig.com/css/fluig-style-guide.min.css" />
+	<link type="text/css" rel="stylesheet" href="main.css" />
+
+	<!-- ARQUIVOS JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="jquery.mask.js" charset="utf-8"></script>
+	<script type="text/javascript" src="main.js" charset="utf-8"></script>
+	<script type="text/javascript" src="zoom.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		function setChildValues() {
+
+			var dt = new Date();
+			var dia = dt.getDate();
+			var mes = dt.getMonth() + 1;
+			if (mes <= 9) {
+				mes = "0" + mes;
+			}
+			var ano = dt.getFullYear();
+			var data = dia + "/" + mes + "/" + ano;
+
+			$("input[id^='dt_data_revisao___']:last").val(data);
+
+		}
+
+		function SomenteNumero(e) {
+			var tecla = (window.event) ? event.keyCode : e.which;
+			if ((tecla > 47 && tecla < 58)) return true;
+			else {
+				if (tecla == 8 || tecla == 0) return true;
+				else return false;
+			}
+		}
+	</script>
+
+</head>
+
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+
+			<div class="form_group ">
+				<div class="col-md-12 title">
+					<h1><b><span class="fluigicon fluigicon-process fluigicon-md"></span>&nbsp;i18n.translate("txt_padr_doc")</b></h1>
+				</div>
+			</div><br>
+
+			<div class="row">
+				<div class="col-md-5">
+					<h3>Os campos com <span style="color:#ff6800;">*</span> são de preenchimento obrigatório.</h3>
+					<hr class="hrClass">
+				</div>
+			</div>
+
+			<input type="hidden" class="form-control" name="txt_integrado" id="txt_integrado" value="" readonly>
+			<input type="hidden" class="form-control" name="txt_requisitante" id="txt_requisitante" value="" readonly>
+			<input type="hidden" class="form-control" name="txt_consenso_final" id="txt_consenso_final" value="" readonly>
+			<input type="hidden" class="form-control" name="txt_cod_proc" id="txt_cod_proc" value="" readonly>
+			<input type="hidden" class="form-control" name="txt_cod_form" id="txt_cod_proc" value="" readonly>
+			<input type="hidden" class="form-control" name="txt_modelo_id" id="txt_modelo_id" value="" readonly>
+			<input type="hidden" class="form-control" name="txt_doc_plubicado" id="txt_doc_plubicado" value="" readonly>
+			<input type="hidden" class="form-control" name="txt_index_ficha" id="txt_index_ficha" value="" readonly>
+			<input type="hidden" class="form-control" name="txt_index_revisao" id="txt_index_revisao" value="" readonly>
+			<input type="hidden" class="form-control" name="op_consenseh" id="op_consenseh" readonly>
+			<input type="hidden" class="form-control" name="txt_atv_corrente" id="txt_atv_corrente" readonly>
+			
+			<!-- Auxliares para aprovações  -->
+			<input type="hidden" id="aprovacaoGestor" name="aprovacaoGestor" readonly>
+
+			<!-- Campos para revisao -->
+			<input type="hidden" class="form-control" name="txt_data_cadastro" id="txt_data_cadastro" readonly>
+			<input type="hidden" class="form-control" name="txt_finalizado" id="txt_finalizado" readonly>
+
+			<!-- MODELO REVISAO -->
+			<input type="hidden" class="form-control" name="txt_cod_revisao" id="txt_cod_revisao" value="" readonly>
+
+			<!-- Lista de abas -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="active"><a href="#configuracoes" id="configuracao" role="tab" data-toggle="tab">i18n.translate("configuracoes")</a></li>
+				<li class=""><a href="#documento" role="tab" id="doc" data-toggle="tab">i18n.translate("documento")</a></li>
+			</ul><!-- Fim da lista de abas -->
+
+			<div class="panel panel-default	">
+				<div class="tab-content">
+
+					<!-- configuracoes -->
+					<div class="tab-pane fade in active" id="configuracoes">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("txt_nome_solicitante") <span style="color:#ff6800;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" class="form-control" name="txt_nome_solicitante" id="txt_nome_solicitante" readonly>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("txt_data_solicitacao") <span style="color:#ff6800;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" class="form-control" name="txt_data_solicitacao" id="txt_data_solicitacao" readonly>
+									</div>
+								</div>
+							</div>
+							<!-- Campo Qual a sua &aacute;rea? -->
+							<div class="col-md-3" id="div_cfg_area">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("txt_cfg_area") <span style="color:#ff6800;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" data-toggle="tooltip" title=i18n.translate("tp_cfg_area") onchange="search_area_description(this.value)" class="form-control" name="txt_cfg_area"
+										 id="txt_cfg_area" maxlength="" placeholder="">
+										<div class="fs-cursor-pointer input-group-addon" id="ztxt_cfg_area" onclick="zoom(this.id)">
+											<span class="fluigicon fluigicon-search"></span>
+											<param name="ds_param" value="ds_parametrizacao_area">
+											<param name="cst_param" value="CodArea,DescArea">
+										</div>
+									</div>
+								</div>
+							</div><!-- Fim do campo Qual a sua &aacute;rea? -->
+
+							<!-- Campo Tipo de solicita&ccedil;&atilde;o -->
+							<div class="col-md-3" id="div_cfg_tipo">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("op_cfg_tipo") <span style="color:#ff6800;">*</span></label>
+									<div class="switch-field" id="id_op_cfg_tipo">
+										<input type="radio" id="op_cfg_tipo_revisao" name="op_cfg_tipo" value="revisao" />
+										<label for="op_cfg_tipo_revisao">REVISÃO</label>
+										<input type="radio" id="op_cfg_tipo_criacao" name="op_cfg_tipo" value="criacao" />
+										<label for="op_cfg_tipo_criacao">CRIAÇÃO</label>
+									</div>
+								</div>
+							</div><!-- Fim do campo Tipo de solicita&ccedil;&atilde;o -->
+						</div>
+
+						<div class="row">
+							<!-- Campo O que deseja padronizar -->
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("op_cfg_tipo_docto") <span style="color:#ff6800;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<select type="text" class="form-control" name="op_cfg_tipo_docto" id="op_cfg_tipo_docto">
+											<option value="">i18n.translate("txt_selec_op")</option>
+											<option value="pl">i18n.translate("txt_regras_comport_pl")</option>
+											<option value="po">i18n.translate("txt_encer_atv_po")</option>
+											<option value="it">i18n.translate("txt_como_realiz_atv_it")</option>
+											<option value="db">i18n.translate("txt_atv_func_db")</option>
+										</select>
+									</div>
+								</div>
+							</div><!-- Fim do campo O que deseja padronizar -->
+
+							<!-- Campo Onde o padr&atilde;o se aplica -->
+							<div class="col-md-4" id="div_cfg_uso">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("op_cfg_uso") <span style="color:#ff6800;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<select type="text" class="form-control" name="op_cfg_uso" id="op_cfg_uso">
+											<option value="">i18n.translate("txt_selec_op")</option>
+											<option value="restrito">i18n.translate("txt_uso_rest_area")</option>
+											<option value="demais">i18n.translate("txt_uso_demais_areas")</option>
+										</select>
+									</div>
+								</div>
+							</div><!-- Fim do campo Onde o padr&atilde;o se aplica -->
+
+							<!-- Campo Principais &Aacute;reas de Interface -->
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("txt_cfg_consenso") <span style="color:#ff6800;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" data-toggle="tooltip" title=i18n.translate("tp_cfg_consenso") class="form-control" name="txt_cfg_consenso"
+										 id="txt_cfg_consenso" maxlength="" placeholder="">
+										<div class="fs-cursor-pointer input-group-addon" id="ztxt_cfg_consenso" onclick="zoom(this.id)">
+											<span class="fluigicon fluigicon-search"></span>
+											<param name="ds_param" value="ds_parametrizacao_area">
+											<param name="cst_param" value="CodArea,DescArea">
+										</div>
+									</div>
+								</div>
+							</div><!-- Fim do campo Principais &Aacute;reas de Interface -->
+
+							<!-- Campo C&oacute;digo do documento -->
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("txt_cfg_codigo_docto") <span style="color:#ff6800;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" data-toggle="tooltip" title=i18n.translate("tp_cfg_codigo_docto") class="form-control"
+										 name="txt_cfg_codigo_docto" id="txt_cfg_codigo_docto" maxlength="" placeholder="">
+										<div class="fs-cursor-pointer input-group-addon" id="ztxt_cfg_codigo_docto" onclick="zoom(this.id)">
+											<span class="fluigicon fluigicon-search"></span>
+											<param name="ds_param" value="ds_ordena_revisao">
+											<param name="cst_param" value="txt_cfg_codigo_docto,txt_cfg_nome_docto,txt_data_cadastro,txt_cfg_consenso,txt_cod_proc">
+											<param name="var_param" value="valor_inicial:txt_cfg_codigo_docto,travar_input:true,pesq_av:txt_finalizado:X,trava_btn:true:">
+										</div>
+									</div>
+								</div>
+							</div><!-- Fim do campo C&oacute;digo do documento -->
+							
+						</div>
+
+						<div class="row" id="div_linha2_parametros">
+
+							<!-- Campo Nome do documento -->
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("op_pl_aplicacao") <span style="color:#ff6800;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<select name="op_pl_aplicacao" id="op_pl_aplicacao" class="form-control">
+											<option value="">i18n.translate("txt_selec_op")</option>
+											<option value="1">i18n.translate("txt_restaurante")</option>
+											<option value="2">i18n.translate("txt_corporativo")</option>
+											<option value="1">i18n.translate("txt_todos")</option>
+										</select>
+									</div>
+								</div>
+							</div><!-- Fim do campo Nome do documento -->
+
+							<!-- Campo Nome do documento -->
+							<div class="col-md-2">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("txt_cfg_nome_docto") <span style="color:#ff6800;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" class="form-control" name="txt_cfg_nome_docto" id="txt_cfg_nome_docto" maxlength="50"
+										 placeholder="Digite aqui o nome">
+									</div>
+								</div>
+							</div><!-- Fim do campo Nome do documento -->
+
+							<!-- Campo Tipo de solicita&ccedil;&atilde;o -->
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="">i18n.translate("comunica_bk") <span style="color:#ff6800;">*</span></label>
+									<div class="switch-field" id="id_comunica_bk" style="width: 200px;">
+										<input type="radio" id="radio_comunica_bk_sim" name="radio_comunica_bk" value="sim" />
+										<label for="radio_comunica_bk_sim">SIM</label>
+										<input type="radio" id="radio_comunica_bk_nao" name="radio_comunica_bk" value="nao" />
+										<label for="radio_comunica_bk_nao">NÂO</label>
+									</div>
+								</div>
+							</div><!-- Fim do campo Tipo de solicita&ccedil;&atilde;o -->
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("txt_area_ler_doc") <span style="color:#ff6800;">*</span></label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" data-toggle="tooltip" title=i18n.translate("txt_area_ler_doc") class="form-control" name="txt_area_ler_doc"
+											id="txt_area_ler_doc" maxlength="" placeholder="" readonly="readonly">
+										<div class="fs-cursor-pointer input-group-addon" id="ztxt_area_ler_doc" onclick="zoom(this.id)">
+											<span class="fluigicon fluigicon-search"></span>
+											<param name="ds_param" value="ds_parametrizacao_area">
+											<param name="cst_param" value="CodArea,DescArea">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group">
+									<button type="button" id="btnEnviar" name="btnEnviar" onclick="enviaFormulario(this)" 
+										class="btn btn-default btn-lg btn-block" style="background-color: #ff6800; color: white; margin-top: 6px; height: 58px;">
+										<b style="font-size: 16px;">PRÓXIMA ETAPA</b> <p style="font-size: 14px">clique aqui!</p>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="row hide_ini" id="div_op_consense">
+								<div class="col-md-12"><hr><br></div>
+							<!-- <div class="col-md-3">
+								<div class="form-group">
+									<label for="op_consense">i18n.translate("op_consense")</label>
+									<select name="op_consense" id="op_consense" class="form-control">
+										<option value="">i18n.translate("txt_selec_op")</option>
+										<option value="s">i18n.translate("aprovado")</option>
+										<option value="n">i18n.translate("reprovado")</option>
+									</select>
+								</div>
+							</div> -->
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="op_consense" style="color:#ff6800;">i18n.translate("op_consense") *</label>
+									<div class="switch-field" id="id_comunica_bk">
+										<input type="radio" id="radio_aprovado_consense" name="op_consense" value="s" />
+										<label for="radio_aprovado_consense">i18n.translate("aprovado")</label>
+										<input type="radio" id="radio_reprovado_consense" class="reprovado" name="op_consense" value="n" />
+										<label for="radio_reprovado_consense">i18n.translate("reprovado")</label>
+									</div>
+								</div>
+							</div>
+							<!-- Campo Obvserva&ccedil;&atilde;o de consenso -->
+							<div class="col-md-9">
+								<div class="form-group">
+									<label for="txt_nome" style="color:#ff6800;">i18n.translate("txt_obs_consense") *</label>
+									<textarea class="form-control" id="txt_obs_consense" name="txt_obs_consense" rows="4" maxlength="1024"
+									 placeholder="Digite aqui uma observação em casos de aprovação ou reprovação do documento"></textarea>
+								</div>
+							</div><!-- Fim do campo Obvserva&ccedil;&atilde;o de consenso -->
+						</div>
+						<div class="row hide_ini" id="div_gestor">
+							<div class="col-md-12">
+								<h2 class="lb_tit_gestor_conf">i18n.translate("gestor")</h2>
+							</div>
+						</div>
+						<div class="row hide_ini" id="div_campos_gestor">
+							<!-- Campo Aprova&ccedil;&atilde;o -->
+							<!-- <div class="col-md-3">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("op_cfg_aprov_gestor")</label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon obr fluigicon-sm"></span></div>
+										<select type="text" class="form-control" name="op_cfg_aprov_gestor" id="op_cfg_aprov_gestor">
+											<option value="">i18n.translate("txt_selec_op")</option>
+											<option value="1">i18n.translate("aprovado")</option>
+											<option value="2">i18n.translate("reprovado")</option>
+										</select>
+									</div>
+								</div>
+							</div> -->
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="" style="color:#ff6800;"><b>i18n.translate("op_cfg_aprov_gestor")</b> *</span></label>
+									<div class="switch-field">
+										<input type="radio" id="radio_aprovado_gestor" name="op_cfg_aprov_gestor" value="1" />
+										<label for="radio_aprovado_gestor">i18n.translate("aprovado")</label>
+										<input type="radio" id="radio_reprovado_gestor" class="reprovado" name="op_cfg_aprov_gestor" value="2" />
+										<label for="radio_reprovado_gestor">i18n.translate("reprovado")</label>
+									</div>
+								</div>
+							</div>
+							<!-- Fim do campo Aprova&ccedil;&atilde;o -->
+
+							<!-- Campo Observa&ccedil;&otilde;es -->
+							<div class="col-md-9">
+								<div class="form-group">
+									<label for="txt_nome" style="color:#ff6800;"><b>i18n.translate("txt_cfg_obs_gestor") </b>*</span></label>
+									<textarea class="form-control" id="txt_cfg_obs_gestor" name="txt_cfg_obs_gestor" rows="4" maxlength="1024"
+									 placeholder="Digite aqui uma observação em casos de aprovação ou reprovação do documento"></textarea>
+								</div>
+							</div><!-- Fim do campo Observa&ccedil;&otilde;es -->
+
+						</div>
+						<div class="row hide_ini" id="div_gestao">
+							<div class="col-md-12">
+								<h2 class="lb_tit_gestao_conf">i18n.translate("gestao")</h2>
+							</div>
+						</div>
+
+						<div class="row hide_ini" id="div_campos_gestao">							
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="" style="color:#ff6800;"><b>APROVAÇÃO GESTÃO</b> *</span></label>
+									<div class="switch-field">
+										<input type="radio" id="radio_aprovado_gestao" name="aprovacao_gestao" value="aprovado" />
+										<label for="radio_aprovado_gestao">i18n.translate("aprovado")</label>
+										<input type="radio" id="radio_reprovado_gestao" class="reprovado" name="aprovacao_gestao" value="reprovado" />
+										<label for="radio_reprovado_gestao">i18n.translate("reprovado")</label>
+									</div>
+								</div>
+							</div>
+
+							<!-- Campo Observa&ccedil;&otilde;es -->
+							<div class="col-md-9">
+								<div class="form-group">
+									<label for="txt_nome" style="color:#ff6800;">i18n.translate("txt_cfg_obs_gestao") *</label>
+									<textarea class="form-control" id="txt_cfg_obs_gestao" name="txt_cfg_obs_gestao" rows="4" maxlength="1024"
+										placeholder="Obvserva&ccedil;&otilde;es da atividade Validar (Gest&atilde;o)"></textarea>
+								</div>
+							</div><!-- Fim do campo Observa&ccedil;&otilde;es -->							
+						</div>
+
+						<div class="row hide_ini" id="div_int_operac">
+							<div class="col-md-12">
+								<h2 class="lb_tit_conteudo_conf">i18n.translate("conteudo")</h2>
+							</div>
+						</div>
+						<div class="row hide_ini" id="div_campos_int_operac">
+							<!-- Campo Aprova&ccedil;&atilde;o -->
+							<!-- <div class="col-md-3">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("op_cfg_aprov_conteudo")</label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon obr fluigicon-sm"></span></div>
+										<select type="text" class="form-control" name="op_cfg_aprov_conteudo" id="op_cfg_aprov_conteudo">
+											<option value="">i18n.translate("txt_selec_op")</option>
+											<option value="1">i18n.translate("aprovado")</option>
+											<option value="2">i18n.translate("reprovado")</option>
+										</select>
+									</div>
+								</div>
+							</div> -->
+							
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="" style="color:#ff6800;"><b>i18n.translate("op_cfg_aprov_conteudo")</b> *</span></label>
+									<div class="switch-field">
+										<input type="radio" id="radio_aprovado_conteudor" name="op_cfg_aprov_conteudo" value="1" />
+										<label for="radio_aprovado_conteudor">i18n.translate("aprovado")</label>
+										<input type="radio" id="radio_reprovado_conteudor" class="reprovado" name="op_cfg_aprov_conteudo" value="2" />
+										<label for="radio_reprovado_conteudor">i18n.translate("reprovado")</label>
+									</div>
+								</div>
+							</div><!-- Fim do campo Aprova&ccedil;&atilde;o -->
+
+							<!-- Campo Obvserva&ccedil;&atilde;o da atividade Aprovar (Conte&uacute;do) -->
+							<div class="col-md-9">
+								<div class="form-group">
+									<label for="txt_nome" style="color:#ff6800;">i18n.translate("txt_cfg_obs_conteudo") *</label>
+									<textarea class="form-control" id="txt_cfg_obs_conteudo" name="txt_cfg_obs_conteudo" rows="4" maxlength="1024"
+									 placeholder="Digite aqui uma observação em casos de aprovação ou reprovação do documento"></textarea>
+								</div>
+							</div><!-- Fim do campo Obvserva&ccedil;&atilde;o da atividade Aprovar (Conte&uacute;do) -->
+
+						</div>
+
+						<div class="row hide_ini" id="div_diretoria">
+							<div class="col-md-12">
+								<h2 class="lb_tit_diretor_conf">i18n.translate("diretoria")</h2>
+							</div>
+						</div>
+
+						<div class="row hide_ini" id="div_campos_diretoria">
+							
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="" style="color:#ff6800;"><b>APROVAÇÃO DIRETORIA</b> *</span></label>
+									<div class="switch-field">
+										<input type="radio" id="radio_aprovado_dir" name="aprovacao_diretoria" value="aprovado" />
+										<label for="radio_aprovado_dir">i18n.translate("aprovado")</label>
+										<input type="radio" id="radio_reprovado_dir" class="reprovado" name="aprovacao_diretoria" value="reprovado" />
+										<label for="radio_reprovado_dir">i18n.translate("reprovado")</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-9">
+								<div class="form-group">
+									<label for="txt_nome" style="color:#ff6800;">i18n.translate("txt_cfg_obs_diretor") *</label>
+									<textarea class="form-control" id="txt_cfg_obs_diretor" name="txt_cfg_obs_diretor" rows="4" maxlength="1024"
+									placeholder="Digite aqui uma observação em casos de aprovação ou reprovação do documento"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="row hide_ini" id="div_cfg_requer_aprov">
+							<!-- Campo Requer nova aprova&ccedil;&atilde;o -->
+							<div class="col-md-3">
+								<div class="form-group">
+									<label for="txt_nome">i18n.translate("op_cfg_requer_aprov")</label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon obr fluigicon-sm"></span></div>
+										<select type="text" class="form-control" name="op_cfg_requer_aprov" id="op_cfg_requer_aprov">
+											<option value="1">i18n.translate("sim")</option>
+											<option value="2">i18n.translate("nao")</option>
+										</select>
+									</div>
+								</div>
+							</div><!-- Fim do campo Requer nova aprova&ccedil;&atilde;o -->
+
+						</div>
+
+						<div class="row" id="div_campos_hierarquia">
+							<!-- <div class="col-md-4" id="div_cdg_hierarquia">
+									<div class="form-group">
+										<label for="txt_cdg_hierarquia">i18n.translate("txt_cdg_hierarquia")</label>
+										<div class="input-group">
+											<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+											<input type="text" class="form-control" name="txt_cdg_hierarquia" id="txt_cdg_hierarquia">
+										</div>
+									</div>
+								</div> -->								
+									<table border="1" tablename="tb_hierarquia" id="tb_hierarquia" noaddbutton="true" nodeletebutton="true" class="table table-bordered">
+										<thead>
+											<tr>
+											<td align="center"><button onclick="addHierarquia()" class="btn btn-info">Nova Hierarquia</button></td></td>
+									<!-- 			<td><label for="txt_revisao">i18n.translate("txt_cdg_hierarquia")</label></td>
+												<td><label for="dt_data_revisao">i18n.translate("dt_data_revisao")</label></td>
+												<td><label for="txt_desc_revisao">i18n.translate("txt_desc_revisao")</label></td> -->
+											</tr>
+										</thead>
+
+								<tr>
+									 <td>
+									 	<div class="form-group">
+									 		<label for="txt_cdg_hierarquia">i18n.translate("txt_cdg_hierarquia")</label>
+										 <div class="input-group">										
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" class="form-control" name="txt_cdg_hierarquia" id="txt_cdg_hierarquia" maxlength=""
+										 placeholder="">
+										<div class="fs-cursor-pointer input-group-addon" id="ztxt_cdg_hierarquia" onclick="zoomDoido(this.id)">
+											<span class="fluigicon fluigicon-search"></span>
+											<param name="ds_param" value="dsCadastroHierarquia">
+											<param name="cst_param" value="txt_cdg_hierarquia,txt_desc_hierarquia">
+										</div>
+									</div>
+									</div>
+								</td>
+								<td>
+									<div class="form-group">
+									<label for="txt_nivel_hierarquia">i18n.translate("txt_nivel_hierarquia")</label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" class="form-control" name="txt_nivel_hierarquia" id="txt_nivel_hierarquia" onkeypress="return SomenteNumero(event)"
+										 maxlength="1">
+									</div>
+								  </div>
+								</td>
+								<td>
+									<div class="form-group" style="margin-top: 19px">
+									<button type="button" id="btnListaUsuarios" class="btnListaUsuarios" name="btnListaUsuarios" 
+										class="btn btn-default btn-lg btn-block" style="background-color: #ff6800; color: white; height: 40px;" onclick="seFodeuPc(this.id)">
+										<span class="fluigicon fluigicon-group icon-sm"></span>&nbsp; <b style="font-size: 16px;">Lista de Usuários</b>
+									</button>
+								</div>
+								</td>
+
+							</tr>	
+
+						</table>									
+
+
+
+
+
+							<!-- Campo Qual a sua &aacute;rea? -->
+<!-- 							<div class="col-md-4" id="div_cdg_hierarquia">
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" class="form-control" name="txt_cdg_hierarquia" id="txt_cdg_hierarquia" maxlength=""
+										 placeholder="">
+										<div class="fs-cursor-pointer input-group-addon" id="ztxt_cdg_hierarquia" onclick="zoom(this.id)">
+											<span class="fluigicon fluigicon-search"></span>
+											<param name="ds_param" value="dsCadastroHierarquia">
+											<param name="cst_param" value="txt_cdg_hierarquia,txt_desc_hierarquia">
+										</div>
+									</div>
+								</div>
+							</div> -->
+							<!-- Fim do campo Qual a sua &aacute;rea? -->
+
+
+							<!-- <div class="col-md-2">
+								<div class="form-group">
+									<label for="txt_nivel_hierarquia">i18n.translate("txt_nivel_hierarquia")</label>
+									<div class="input-group">
+										<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+										<input type="text" class="form-control" name="txt_nivel_hierarquia" id="txt_nivel_hierarquia" onkeypress="return SomenteNumero(event)"
+										 maxlength="1">
+									</div>
+								</div>
+							</div> -->
+
+							<!-- <div class="col-md-3">
+								<div class="form-group" style="margin-top: 19px">
+									<button type="button" id="btnListaUsuarios" name="btnListaUsuarios" 
+										class="btn btn-default btn-lg btn-block" style="background-color: #ff6800; color: white; height: 40px;">
+										<span class="fluigicon fluigicon-group icon-sm"></span>&nbsp; <b style="font-size: 16px;">Lista de Usuários</b>
+									</button>
+								</div>
+							</div> -->
+						</div>
+						<!-- documento -->
+					</div>
+
+					<!-- Documento -->
+					<div class="tab-pane fade " id="documento">
+						<!-- Conteudo de politica -->
+						<div class="row info_doc">
+							<div class="col-md-12">
+								<center>
+									<h2>i18n.translate("txt_preenchimento_doc_nesc")</h2>
+								</center>
+							</div>
+						</div>
+						<div id="div_conteudo">
+							<div class="row">
+								<!-- Campo Assunto -->
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="txt_nome">i18n.translate("txt_assunto")</label>
+										<div class="input-group">
+											<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+											<input type="text" class="form-control" name="txt_assunto" id="txt_assunto" maxlength="35" placeholder="ASSUNTO DA POL&Iacute;TICA">
+										</div>
+									</div>
+								</div><!-- Fim do campo Assunto -->
+
+							</div>
+							<div class="row">
+								<!-- Campo C&oacute;digo -->
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="txt_nome">i18n.translate("txt_codigo")</label>
+										<div class="input-group">
+											<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+											<input type="text" class="form-control" name="txt_codigo" id="txt_codigo" maxlength="12" placeholder="">
+										</div>
+									</div>
+								</div><!-- Fim do campo C&oacute;digo -->
+
+								<!-- Campo Validade -->
+								<div class="col-md-2">
+									<div class="form-group">
+										<label for="txt_nome">i18n.translate("txt_validade")</label>
+										<div class="input-group">
+											<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+											<input type="text" class="form-control" name="txt_validade" id="txt_validade" maxlength="10" placeholder="">
+										</div>
+									</div>
+								</div><!-- Fim do campo Validade -->
+
+								<!-- Campo &Aacute;rea respons&aacute;vel -->
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="txt_nome">i18n.translate("txt_area_resp")</label>
+										<div class="input-group">
+											<div class="input-group-addon"><span class="fluigicon fluigicon-checked fluigicon-sm"></span></div>
+											<input type="text" class="form-control" name="txt_area_resp" id="txt_area_resp" maxlength="10" placeholder="">
+										</div>
+									</div>
+								</div><!-- Fim do campo &Aacute;rea respons&aacute;vel -->
+
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<a href="#" class="btn btn-info" id="a_link_modelo" target="_blank">i18n.translate("txt_dowload_modelo")</a>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-12">
+									<h2>i18n.translate("txt_ficha_tecnica")</h2>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h2>i18n.translate("txt_registros_dec_padr")</h2>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<button class="btn btn-primary" onclick="wdkAddChild('tb_reg_ocorr')" id="btn_tb_reg_ocorr">i18n.translate("txt_add_nv_linha")</button>
+									<br><br></div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="table-responsive">
+										<table border="1" tablename="tb_reg_ocorr" noaddbutton="true" nodeletebutton="true" class="table table-layout-fixed table-bordered">
+											<thead>
+												<tr>
+													<td width="40">&nbsp;</td>
+													<td width="300"><label for="txt_nome_arquivo">i18n.translate("txt_nome_arquivo")</label></td>
+													<td width="300"><label for="txt_local_arm">i18n.translate("txt_local_arm")</label></td>
+													<td width="300"><label for="txt_quem_acessa">i18n.translate("txt_quem_acessa")</label></td>
+													<td width="300"><label for="txt_qual_inform">i18n.translate("txt_qual_inform")</label></td>
+													<td width="300"><label for="txt_periodo_retencao">i18n.translate("txt_periodo_retencao")</label></td>
+													<td width="300"><label for="txt_apos_expira">i18n.translate("txt_apos_expira")</label></td>
+												</tr>
+											</thead>
+											<tr>
+												<td>
+													<div onclick="fnWdkRemoveChild(this)"><span class="fluigicon fluigicon-trash fluigicon-md botao_remove"></span></div>
+												</td>
+												<td>
+													<textarea name="txt_nome_arquivo" id="txt_nome_arquivo" class="form-control" rows="3" maxlength="500"></textarea>
+												</td>
+												<td>
+													<textarea name="txt_local_arm" id="txt_local_arm" class="form-control" rows="3" maxlength="500"></textarea>
+												</td>
+												<td>
+													<textarea name="txt_quem_acessa" id="txt_quem_acessa" class="form-control" rows="3" maxlength="500"></textarea>
+												</td>
+												<td>
+													<textarea name="txt_qual_inform" id="txt_qual_inform" class="form-control" rows="3" maxlength="500"></textarea>
+												</td>
+												<td>
+													<textarea name="txt_periodo_retencao" id="txt_periodo_retencao" class="form-control" rows="3" maxlength="500"></textarea>
+												</td>
+												<td>
+													<textarea name="txt_apos_expira" id="txt_apos_expira" class="form-control" rows="3" maxlength="500"></textarea>
+												</td>
+											</tr>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h2>i18n.translate("txt_controle_elaboracao_aprovacao")</h2>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<table border="1" class="table table-bordered">
+										<thead>
+											<tr>
+												<td><label for="lb_desc">i18n.translate("lb_desc")</label></td>
+												<td><label for="lb_nome_elaborado">i18n.translate("lb_nome_elaborado")</label></td>
+												<td><label for="lb_nome_aprovado">i18n.translate("lb_nome_aprovado")</label></td>
+											</tr>
+										</thead>
+										<tr>
+											<td><label>i18n.translate("nome")</label></td>
+											<td><input type="text" class="form-control" name="txt_nome_elaborado" id="txt_nome_elaborado" placeholder=""
+												 maxlength="20"></td>
+											<td><input type="text" class="form-control" name="txt_nome_aprovado" id="txt_nome_aprovado" placeholder=""
+												 maxlength="10"></td>
+										</tr>
+										<tr>
+											<td>
+												<label>i18n.translate("cargo")</label>
+											</td>
+											<td>	
+												<input type="text" class="form-control" name="txt_cargo_elaborado" id="txt_cargo_elaborado">
+												<!-- <select type="text" class="form-control" name="txt_cargo_elaborado" id="txt_cargo_elaborado">
+													<option value="">i18n.translate("txt_selec_op")</option>
+													<option value="ASSISTENTE">i18n.translate("assistente")</option>
+													<option value="ANALISTA">i18n.translate("analista")</option>
+													<option value="COORDENADOR">i18n.translate("coordenador")</option>
+													<option value="GERENTE">i18n.translate("gerente")</option>
+													<option value="DIRETOR">i18n.translate("diretor")</option>
+												</select> -->
+											</td>
+											<td>
+												<input type="text" class="form-control" name="txt_cargo_aprovado" id="txt_cargo_aprovado">
+												<!-- <select type="text" class="form-control" name="txt_cargo_aprovado" id="txt_cargo_aprovado">
+													<option value="">i18n.translate("txt_selec_op")</option>
+													<option value="ASSISTENTE">i18n.translate("assistente")</option>
+													<option value="ANALISTA">i18n.translate("analista")</option>
+													<option value="COORDENADOR">i18n.translate("coordenador")</option>
+													<option value="GERENTE">i18n.translate("gerente")</option>
+													<option value="DIRETOR">i18n.translate("diretor")</option>
+												</select> -->
+											</td>
+										</tr>
+										<tr>
+											<td><label>i18n.translate("data")</label></td>
+											<td><input type="text" class="form-control" name="dt_data_elaborado" id="dt_data_elaborado" placeholder=""
+												 maxlength="10"></td>
+											<td><input type="text" class="form-control" name="dt_data_aprovado" id="dt_data_aprovado" placeholder=""
+												 maxlength="10"></td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h2>i18n.translate("txt_controle_revisao")</h2>
+								</div>
+							</div>
+							<!-- <div class="row">
+								<div class="col-md-12">
+									<button class="btn btn-primary" onclick="wdkAddChild('tb_revisao'); setChildValues();"  id="btn_tb_revisao">i18n.translate("txt_add_nv_linha")</button>
+								<br><br></div>
+							</div> -->
+							<div class="row">
+								<div class="col-md-12">
+									<table border="1" tablename="tb_revisao" id="tb_revisao" noaddbutton="true" nodeletebutton="true" class="table table-bordered">
+										<thead>
+											<tr>
+												<!-- <td width="40">&nbsp;</td> -->
+												<td><label for="txt_revisao">i18n.translate("txt_revisao")</label></td>
+												<td><label for="dt_data_revisao">i18n.translate("dt_data_revisao")</label></td>
+												<td><label for="txt_desc_revisao">i18n.translate("txt_desc_revisao")</label></td>
+											</tr>
+										</thead>
+										<tr>
+											<!-- <td>
+											<div onclick="fnWdkRemoveChild(this)"><span class="fluigicon fluigicon-trash fluigicon-md botao_remove"></span></div>
+										</td> -->
+											<td>
+												<div class="form-group">
+													<input type="text" class="form-control" name="txt_revisao" id="txt_revisao" placeholder="" maxlength="14">
+												</div>
+											</td>
+											<td>
+												<div class="form-group">
+													<input type="text" class="form-control" name="dt_data_revisao" id="dt_data_revisao" placeholder=""
+													 maxlength="10">
+												</div>
+											</td>
+											<td>
+												<textarea name="txt_desc_revisao" id="txt_desc_revisao" class="form-control" rows="3" maxlength="500"></textarea>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<input type="hidden" id="hd_tb_revisao" name="hd_tb_revisao" value="nao">
+							</div>
+						</div>
+					</div><!-- Documento -->
+
+				</div>
+			</div>
+		</form><br><br>
+	</div>
+</body>
+
+</html>

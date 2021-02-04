@@ -1,0 +1,79 @@
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+	<style>
+		.col-md-5{
+	       margin-top: 17px;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#descritor').val('Parâmetros da Aprovação');
+		});
+		
+		function setSelectedZoomItem(selectedItem) {
+			console.log(selectedItem);
+			if(selectedItem.inputName.match(/desc_papel___/g)){
+				var index = selectedItem.inputName.split("___");
+				console.log(index);
+				$('#cod_papel___'+index[1]).val(selectedItem.roleId);
+			}
+		}
+		
+	</script>
+</head>
+<body>
+<div class="fluig-style-guide">
+<form name="form" role="form">
+	<input type="text" class="hide" id="descritor" name="descritor" /> 
+	<div class="row">
+		<div class="col-md-6">			
+			<h2>Par&acirc;metros da Aprova&ccedil;&atilde;o</h2>
+		</div>
+	</div>
+	<br>
+	<div class="row">	
+		<table class="table table-hover" tablename="tabela_aprovadores" id="tabela_aprovadores" addbuttonlabel="Adicionar">
+			<thead>
+				<tr>
+					<th style="width:85%;">&nbsp;&nbsp;&nbsp;&nbsp;Àrea Aprovadora</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<div class="col-md-5">
+						    <input type="text" class="hide" name="cod_papel" id="cod_papel">
+							<input type="zoom"
+								   id="desc_papel"
+								   name="desc_papel"
+								   data-zoom="{
+								        'displayKey':'roleDescription',
+								        'datasetId':'workflowRole',
+								        'fields':[
+								            {
+                                              'field':'roleId',
+                                              'label':'ID'
+                                            },{
+								              'field':'roleDescription',
+								              'label':'Descrição',
+								              'standard':'true'
+								            }
+								        ]
+								    }" 
+								    class="form-control"  
+							/>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</form>
+</div>
+</body>
+</html>

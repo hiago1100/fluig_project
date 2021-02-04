@@ -1,0 +1,223 @@
+function servicetask97(attempt, message) {
+ try {
+	 //log.info("*** attempt: " + attempt);
+	 //log.info("*** message: " + message);
+	 //log.info("*** WSEXECBO WSEXECBO WSEXECBO");
+	// Utiliza o ServiceManager para obter uma referencia ao servico.
+	var serviceProvider = ServiceManager.getService('WSEXECBO');
+	var serviceLocator = serviceProvider.instantiate('com.totvs.framework.ws.execbo.service.WebServiceExecBO');
+	var service = serviceLocator.getWebServiceExecBOPort();	     
+
+	var params = new Array();    
+
+	fields = new Array();
+
+	fields[0] = new Object();
+	fields[0].name = "num_proces";
+	fields[0].label = "num_proces";
+	fields[0].type = "character";
+
+	fields[1] = new Object();
+	fields[1].name = "com_eventos";
+	fields[1].label = "com_eventos";
+	fields[1].type = "character";
+
+	fields[2] = new Object();
+	fields[2].name = "com_just_niv_1";
+	fields[2].label = "com_just_niv_1";
+	fields[2].type = "character";
+
+	fields[3] = new Object();
+	fields[3].name = "com_just_niv_2";
+	fields[3].label = "com_just_niv_2";
+	fields[3].type = "character";
+
+	fields[4] = new Object();
+	fields[4].name = "comdir_eventos";
+	fields[4].label = "comdir_eventos";
+	fields[4].type = "character";
+
+	fields[5] = new Object();
+	fields[5].name = "comdir_just_niv_1";
+	fields[5].label = "comdir_just_niv_1";
+	fields[5].type = "character";
+
+	fields[6] = new Object();
+	fields[6].name = "adv_eventos";
+	fields[6].label = "adv_eventos";
+	fields[6].type = "character";
+
+	fields[7] = new Object();
+	fields[7].name = "adv_just_niv_1";
+	fields[7].label = "adv_just_niv_1";
+	fields[7].type = "character";
+
+	fields[8] = new Object();
+	fields[8].name = "fis_eventos";
+	fields[8].label = "fis_eventos";
+	fields[8].type = "character";
+
+	fields[9] = new Object();
+	fields[9].name = "fis_just_niv_1";
+	fields[9].label = "fis_just_niv_1";
+	fields[9].type = "character";
+
+	fields[10] = new Object();
+	fields[10].name = "fis_just_niv_2";
+	fields[10].label = "fis_just_niv_2";
+	fields[10].type = "character";
+
+	fields[11] = new Object();
+	fields[11].name = "imp_eventos";
+	fields[11].label = "imp_eventos";
+	fields[11].type = "character";
+
+	fields[12] = new Object();
+	fields[12].name = "imp_just_niv_1";
+	fields[12].label = "imp_just_niv_1";
+	fields[12].type = "character";
+
+	fields[13] = new Object();
+	fields[13].name = "imp_just_niv_2";
+	fields[13].label = "imp_just_niv_2";
+	fields[13].type = "character";
+
+	fields[14] = new Object();
+	fields[14].name = "log_eventos";
+	fields[14].label = "log_eventos";
+	fields[14].type = "character";
+
+	fields[15] = new Object();
+	fields[15].name = "log_just_niv_1";
+	fields[15].label = "log_just_niv_1";
+	fields[15].type = "character";
+
+	fields[16] = new Object();
+	fields[16].name = "log_just_niv_2";
+	fields[16].label = "log_just_niv_2";
+	fields[16].type = "character";
+	
+	fields[17] = new Object();
+	fields[17].name = "inefic_transp";
+	fields[17].label = "inefic_transp";
+	fields[17].type = "character";		
+
+	var inefTransp;  
+	if (hAPI.getCardValue("inefTransp") == null || hAPI.getCardValue("inefTransp") != "on"){
+		inefTransp = "no"; 
+	} else {
+		inefTransp = "yes"; 
+	}
+	
+	var solicitacao =  getValue("WKNumProces");
+	var eventoComerc =  fnBuscaValor("eventoComerc");
+	var nivel1Comerc =  fnBuscaValor("nivel1Comerc");
+	var nivel2Comerc  =  fnBuscaValor("nivel2Comerc");
+	var eventoDirComerc =  fnBuscaValor("eventoDirComerc");
+	var nivel1DirComerc =  fnBuscaValor("nivel1DirComerc");
+	var eventoVendas =  fnBuscaValor("eventoVendas");
+	var nivel1Vendas =  fnBuscaValor("nivel1Vendas");
+	var eventoFiscal =  fnBuscaValor("eventoFiscal");
+	var nivel1Fiscal =  fnBuscaValor("nivel1Fiscal");
+	var nivel2Fiscal =  fnBuscaValor("nivel2Fiscal");
+	var eventoImport =  fnBuscaValor("eventoImport");
+	var nivel1Import =  fnBuscaValor("nivel1Import");
+	var nivel2Import =  fnBuscaValor("nivel2Import");
+	var eventoLogist =  fnBuscaValor("eventoLogist");
+	var nivel1Logist =  fnBuscaValor("nivel1Logist");
+	var nivel2Logist =  fnBuscaValor("nivel2Logist");
+		
+	var records = new Array();
+	
+	records[0] = new Object();
+	records[0].num_proces = '"' + solicitacao.toString() + '"'; 
+	records[0].com_eventos = '"' + eventoComerc.toString() + '"';
+	records[0].com_just_niv_1 = '"' + nivel1Comerc.toString() + '"';
+	records[0].com_just_niv_2 = '"' + nivel2Comerc.toString() + '"';
+	records[0].comdir_eventos = '"' + eventoDirComerc.toString() + '"';
+	records[0].comdir_just_niv_1 = '"' + nivel1DirComerc.toString() + '"';
+	records[0].adv_eventos = '"' + eventoVendas.toString() + '"';
+	records[0].adv_just_niv_1 = '"' + nivel1Vendas.toString() + '"';
+	records[0].fis_eventos =  '"' + eventoFiscal.toString() + '"';
+	records[0].fis_just_niv_1 = '"' + nivel1Fiscal.toString() + '"';
+	records[0].fis_just_niv_2 = '"' + nivel2Fiscal.toString() + '"';
+	records[0].imp_eventos = '"' + eventoImport.toString() + '"';
+	records[0].imp_just_niv_1 = '"' + nivel1Import.toString() + '"';
+	records[0].imp_just_niv_2 = '"' + nivel2Import.toString() + '"';
+	records[0].log_eventos =  '"' + eventoLogist.toString() + '"';
+	records[0].log_just_niv_1 = '"' + nivel1Logist.toString() + '"';
+	records[0].log_just_niv_2 = '"' + nivel2Logist.toString() + '"';
+	records[0].inefic_transp = '"' + inefTransp.toString() + '"';
+		
+	var obj = {
+		name: "ttJustificativas", 
+		fields: fields,
+		records: records			      
+	};
+	
+	var ret = new Object();
+	ret.dataType = "character";
+	ret.name = "retorno";
+	ret.type = "output";
+
+	params[0] = new Object();
+	params[0].name = "ttJustificativas";
+	params[0].type = "input";
+	params[0].dataType = "temptable";      
+	params[0].value = obj;
+	params[1] = ret;
+    /*
+	log.info("*** records[0].num_proces        :" + records[0].num_proces       );
+	log.info("*** records[0].com_eventos       :" + records[0].com_eventos      );
+	log.info("*** records[0].com_just_niv_1    :" + records[0].com_just_niv_1   );
+	log.info("*** records[0].com_just_niv_2    :" + records[0].com_just_niv_2   );
+	log.info("*** records[0].comdir_eventos    :" + records[0].comdir_eventos   );
+	log.info("*** records[0].comdir_just_niv_1 :" + records[0].comdir_just_niv_1);
+	log.info("*** records[0].adv_eventos       :" + records[0].adv_eventos      );
+	log.info("*** records[0].adv_just_niv_1    :" + records[0].adv_just_niv_1   );
+	log.info("*** records[0].fis_eventos       :" + records[0].fis_eventos      );
+	log.info("*** records[0].fis_just_niv_1    :" + records[0].fis_just_niv_1   );
+	log.info("*** records[0].fis_just_niv_2    :" + records[0].fis_just_niv_2   );
+	log.info("*** records[0].imp_eventos       :" + records[0].imp_eventos      );
+	log.info("*** records[0].imp_just_niv_1    :" + records[0].imp_just_niv_1   );
+	log.info("*** records[0].imp_just_niv_2    :" + records[0].imp_just_niv_2   );
+	log.info("*** records[0].log_eventos       :" + records[0].log_eventos      );
+	log.info("*** records[0].log_just_niv_1    :" + records[0].log_just_niv_1   );
+	log.info("*** records[0].log_just_niv_2    :" + records[0].log_just_niv_2   );
+	log.info("*** records[0].inefic_transp     :" + records[0].inefic_transp    );
+	*/	
+	var jsonParams = JSON.stringify(params);
+	
+	//log.info("*** jsonParams: " + jsonParams);
+	
+	// Faz login e recebe o token de autenticacao
+	var token = service.userLogin("fluig");
+	//log.info("*** token: " + token);
+	
+	//log.info("*** Inicio Integracao");
+	var resp = service.callProcedureWithToken(token, 'mtp/esmt0012.p', 'piJustificativas', jsonParams);
+
+	// Converte o resultado para um objeto
+	var respObj = JSON.parse(resp);
+
+	// Apresenta o resultado no log.
+    //log.info("*** respObj: " + respObj[0].value);
+    //log.info("*** Fim Integracao");
+    
+    if (respObj[0].value != "" || respObj[0].value != null){
+    	hAPI.setCardValue("erroIntegracao", respObj[0].value);
+    }
+    return true;
+ } catch(error) { 
+	//log.error("*** ErroIntegração: " + error);
+	hAPI.setCardValue("erroIntegracao", error);
+ }
+}
+
+function fnBuscaValor(campo){
+	var aux = hAPI.getCardValue(campo);
+	if(aux == null){
+		return "";
+	}	
+	return aux;
+}

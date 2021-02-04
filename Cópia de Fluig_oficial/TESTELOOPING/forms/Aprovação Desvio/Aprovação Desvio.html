@@ -1,0 +1,259 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+<style>
+	.fluig-style-guide .form-control {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+</style>
+</head>
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form">
+
+			<h2>Aprovação Desvio</h2>
+			<input class="hide" type="text" name="cod_aprovador" id="cod_aprovador" /> 
+			<input class="hide" type="text" name="cont_aprovador" id="cont_aprovador" /> 
+			<input class="hide" type="text" name="envia_aprovador" id="envia_aprovador" />
+
+			<div class="row">
+				<div class="col-sm-2">
+					<label for="cod_desvio">Número Desvio</label> 
+					<input class="form-control" id="cod_desvio" type="text" name="cod_desvio" />
+				</div>
+				<div class="col-sm-3">
+					<label for="cod_estabel">Estabelecimento</label> 
+					<input class="form-control" type="text" name="cod_estabel" id="cod_estabel" />
+				</div>
+				<div class="col-sm-2">
+					<label for="dt_abert_desvio">Data Abertura</label> 
+					<input class="form-control" type="text" name="dt_abert_desvio" id="dt_abert_desvio" mask="00/00/0000" />
+				</div>
+				<div class="col-sm-3">
+					<label for="ind_status_desvio">Status</label> 
+					<select class="form-control" name="ind_status_desvio" id="ind_status_desvio">
+						<option value=""></option>
+						<option value="5">Aprovar</option>
+						<option value="3">Rejeição Dados Incorretos</option>
+						<option value="6">Aprovar com Resalva</option>
+					</select>
+				</div>
+				<div class="col-sm-2">
+					<label for="ind_aprova_desvio">Necessita Aprovador?</label> 
+					<select class="form-control" name="ind_aprova_desvio" id="ind_aprova_desvio">
+						<option value="Não">Não</option>
+						<option value="Marketing">Marketing</option>
+						<option value="Vendas">Vendas</option>
+						<option value="Ambos">Ambos</option>
+					</select>
+				</div>
+			</div>
+			<br>
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#home">Desvio</a></li>
+				<li><a data-toggle="tab" href="#menu1">Modelo</a></li>
+				<li><a data-toggle="tab" href="#menu2">Componente</a></li>
+			</ul>
+
+			<div class="tab-content">
+				<div id="home" class="tab-pane fade in active">
+					<div clas="col-sm-12">
+						<br>
+						<div class="row">
+							<div class="col-sm-3" >
+								<label for="desv_emer">Desvio Emergencial</label>
+								<br>
+								<input class="hide" type="text" id="log_desv_emer" name="log_desv_emer" /> 
+								<input name="desv_emer" id="desv_emer" type="checkbox" disabled>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-3">
+								<label for="cod_solicitante">Solicitante</label>
+								<input class="form-control" type="text" name="cod_solicitante" id="cod_solicitante" />
+							</div>
+							<div class="col-sm-3">
+								<label for="desc_area_solicit">Área Solicitante</label>
+								<input class="form-control" type="text" name="desc_area_solicit" id="desc_area_solicit" />
+							</div>
+							<div class="col-sm-3">
+								<label for="cod_tp_desvio">Tipo Desvio</label>
+								<input class="form-control" type="text" name="cod_tp_desvio" id="cod_tp_desvio" />
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-3">
+								<label for="cod_motiv_desvio">Motivo Desvio</label>
+								<input class="form-control" type="text" name="cod_motiv_desvio" id="cod_motiv_desvio" />
+							</div>
+							<div class="col-sm-3">
+								<label for="dt_valid_ini_desvio">Data Inicio</label>
+								<input class="form-control" type="text" name="dt_valid_ini_desvio" mask="00/00/0000" id="dt_valid_ini_desvio /">
+							</div>
+							<div class="col-sm-3">
+								<label for="dt_valid_fim_desvio">Data Final</label>
+								<input class="form-control" type="text" name="dt_valid_fim_desvio" id="dt_valid_fim_desvio" mask="00/00/0000" />
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-2">
+								<label for="vl_varicao_desvio">Variação</label>
+								<div class="input-group">
+									<input class="form-control" type="text" name="vl_varicao_desvio" id="vl_varicao_desvio" />
+							  		<span class="input-group-addon">%</span>
+								</div>
+							</div>
+							<div class="col-sm-1">&nbsp;</div>
+							<div class="col-sm-2">
+								<label for="">Linha Produção</label>
+								<div class="checkbox">
+									<label><input type="checkbox" name="log_lin_horizontal" id="log_lin_horizontal" value="1">Linha Horizontal</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" name="log_lin_fabricacao" id="log_lin_fabricacao" value="2">Linha Fabricação</label>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<label for="">&nbsp;</label>
+								<div class="checkbox">
+									<label><input type="checkbox" name="log_lin_vitrines" id="log_lin_vitrines" value="3">Linha Vitrines</label>
+								</div>
+								<div class="checkbox">
+									<label><input type="checkbox" name="log_lin_especiais" id="log_lin_especiais" value="4">Linha Especiais</label>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-9">
+								<label>Observa&ccedil;&atilde;o</label>
+								<input class="form-control" type="text" name="desc_observacao" id="desc_observacao" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="menu1" class="tab-pane fade">
+					<div class="row">
+						<br>
+						<div class="col-md-12">
+							<table id="familia" name="familias" tablename="pedido_familia" style="width: 100%;">
+								<thead>
+									<tr>
+										<th class="col-sm-2"><label>Cod. Familia&nbsp;&nbsp;</label></th>
+										<th class="col-sm-4"><label>Descrição</label></th>
+										<th class="col-sm-6"><label>&nbsp;</label></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="col-sm-2"><input class="form-control" type="text" name="cod_fam_desvio" id="cod_fam_desvio" /></td>
+										<td class="col-sm-4"><input class="form-control" type="text" name="desc_fam_desvio" id="desc_fam_desvio" /></td>
+										<td class="col-sm-6">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="row">
+						<br>
+						<div class="col-sm-12">
+							<table id="items" name="items" tablename="pedido_items" style="width: 100%;">
+								<thead>
+									<tr>
+										<th class="col-sm-2"><label>Cod. Item Acabado&nbsp;&nbsp;</label></th>
+										<th class="col-sm-2"><label>Quantidade</label></th>
+										<th class="col-sm-4"><label>Descrição</label></th>
+										<th class="col-sm-4"><label>&nbsp;</label></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="col-sm-2"><input class="form-control" type="text" name="cod_item_acab_desv" id="cod_item_acab_desv" /></td>
+										<td class="col-sm-2"><input class="form-control" type="text" name="qtd_item_acab_desv" id="qts_item_acab_desv" /></td>
+										<td class="col-sm-4"><input class="form-control" type="text" name="desc_item_acab_desv" id="desc_item_acab_desv" /></td>
+										<td class="col-sm-4">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+				<div id="menu2" class="tab-pane fade">
+					<div class="row">
+						<br>
+						<div class="col-sm-12">
+							<table id="Especi" name="Especis" tablename="pedido_especi" style="width: 100%;">
+								<thead>
+									<tr>
+										<th class="col-sm-2"><label>Cod. Item Especificado&nbsp;&nbsp;</label></th>
+										<th class="col-sm-4"><label>Descrição&nbsp;&nbsp;</label></th>
+										<th class="col-sm-1"><label>Quantidade&nbsp;&nbsp;</label></th>
+										<th class="col-sm-3"><label>Nome Fornecedor&nbsp;&nbsp;</label></th>
+										<th class="col-sm-2"><label>Desenho Item&nbsp;&nbsp;</label></th>
+										<th class="col-sm-1"><label>Revisão Item</label></th>
+										<th class="col-sm-3"><label>&nbsp;</label></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="col-sm-2"><input class="form-control" type="text" name="cod_item_comp_de" id="cod_item_comp_de" /></td>
+										<td class="col-sm-4"><input class="form-control" type="text" name="desc_item_comp_de" id="desc_item_comp_de" /></td>
+										<td class="col-sm-1"><input class="form-control" type="text" name="qtd_item_comp_de" id="qtd_item_comp_de" /></td>
+										<td class="col-sm-3"><input class="form-control" type="text" name="nom_fornec_item_comp_de" id="nom_fornec_item_comp_de" /></td>
+										<td class="col-sm-2"><input class="form-control" type="text" name="cod_desenho_item_comp_de" id="cod_desenho_item_comp_de" /></td>
+										<td class="col-sm-1"><input class="form-control" type="text" name="cod_revisao_item_comp_de" id="cod_revisao_item_comp_de" /></td>
+										<td class="col-sm-3">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="row">
+						<br>
+						<div class="col-sm-12">
+							<table id="utiliza" name="utilizas" tablename="pedido_utilizas" style="width: 100%;">
+								<thead>
+									<tr>
+										<th class="col-sm-2"><label>Cod. Item Utilizado&nbsp;&nbsp;</label></th>
+										<th class="col-sm-4"><label>Descrição&nbsp;&nbsp;</label></th>
+										<th class="col-sm-1"><label>Quantidade&nbsp;&nbsp;</label></th>
+										<th class="col-sm-3"><label>Nome Fornecedor&nbsp;&nbsp;</label></th>
+										<th class="col-sm-2"><label>Desenho Item&nbsp;&nbsp;</label></th>
+										<th class="col-sm-1"><label>Revisão Item</label></th>
+										<th class="col-sm-3"><label>&nbsp;</label></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="col-sm-2"><input class="form-control" type="text" name="cod_item_comp_para" id="cod_item_comp_para" /></td>
+										<td class="col-sm-4"><input class="form-control" type="text" name="desc_item_comp_para" id="desc_item_comp_para" /></td>
+										<td class="col-sm-1"><input class="form-control" type="text" name="qtd_item_comp_para" id="qtd_item_comp_para" /></td>
+										<td class="col-sm-3"><input class="form-control" type="text" name="nom_fornec_item_comp_para" id="nom_fornec_item_comp_para" /></td>
+										<td class="col-sm-2"><input class="form-control" type="text" name="cod_desenho_item_comp_para" id="cod_desenho_item_comp_para" /></td>
+										<td class="col-sm-1"><input class="form-control" type="text" name="cod_revisao_item_comp_para" id="cod_revisao_item_comp_para" /></td>
+										<td class="col-sm-3">&nbsp;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	if($("#log_desv_emer").val() == 'yes' || $("#log_desv_emer").text() == 'yes'){
+		$("input[type='checkbox'][name='desv_emer']").prop('checked', true);			
+	}
+</script>
+</html>
+

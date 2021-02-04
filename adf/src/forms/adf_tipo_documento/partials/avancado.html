@@ -1,0 +1,117 @@
+<div class="row" ng-show="vm.currentTab==3">
+    <div class="col-md-12">
+        <div class="alert alert-warning" role="alert">
+
+            <strong>Atenção!</strong> Para alterar os dados abaixo, consulte a planilha de referência de Templates. <a href="Templates ADF.xlsx">Clique aqui</a> para baixa-la.
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Templates</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Template Detalhe</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="templateDetalhe" autocomplete="off" class="form-control" ng-value="vm.Formulario.templateDetalhe" placeholder="Arquivo HTML contendo o template detalhe">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Template Resumo</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="templateResumo" autocomplete="off" class="form-control" ng-value="vm.Formulario.templateResumo" placeholder="Arquivo HTML contendo o template resumo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Controller</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="templateController" autocomplete="off" class="form-control" ng-value="vm.Formulario.templateController" placeholder="Arquivo JS do controller do template">
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" name="controllerFunction" autocomplete="off" class="form-control" ng-value="vm.Formulario.controllerFunction" placeholder="Função principal do controller">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Atributo Pai (JSON)</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="atributoPaiJson" autocomplete="off" class="form-control" ng-value="vm.Formulario.atributoPaiJson" placeholder="Atributo Pai do template JSON, caso não inicie na raiz padrão">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Classificação</h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Campo</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="campoClassificaCodigo" ng-model="vm.Formulario.campoClassificaCodigo" ng-value="vm.Formulario.campoClassificaCodigo" placeholder="Código do campo">
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" name="campoClassificaTipo_input" ng-model="vm.Formulario.campoClassificaTipo" fluig-autocomplete values="vm.fieldFilters" display-key="name" placeholder="Tipo do campo">
+                        <textarea hidden ng-value="vm.Formulario.campoClassificaTipo | json:0" ng-bind="vm.Formulario.campoClassificaTipo | json:0" name="campoClassificaTipo"></textarea>
+                        <input type="hidden" name="campoClassificaTipoType" ng-value="vm.Formulario.campoClassificaTipo.type">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Reverso</label>
+                    <div class="col-sm-3">
+                        <input type="checkbox" class="form-control" name="campoClassificaReverso_input" ng-model="vm.Formulario.campoClassificaReverso" fluig-switch data-on-text="SIM" data-off-text="NÃO" data-on-color="success">
+                        <input type="hidden" name="campoClassificaReverso" ng-value="vm.Formulario.campoClassificaReverso">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Campos do Gerencial Lista</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-sm-offset-2 col-sm-8">
+                    <table class="table table-condensed table-striped" tablename="camposLista" noaddbutton="true" nodeletebutton="true">
+                        <thead>
+                            <tr>
+                                <td></td>
+                                <th class="col-sm-3">Campo</th>
+                                <th class="col-sm-3">Descrição</th>
+                                <th class="col-sm-3">Formato</th>
+                                <th class="col-sm-3">Argumentos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span ng-if="vm.Params.edit" ng-click="vm.removeCampoLista($event)" class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+                                </td>
+                                <td ng-child="vm.Formulario.campoListaCodigo" id="campoListaCodigo">
+                                    <input type="text" class="form-control" name="campoListaCodigo" ng-model="vm.Formulario.campoListaCodigo" ng-value="vm.Formulario.campoListaCodigo">
+                                </td>
+                                <td ng-child="vm.Formulario.campoListaDescricao" id="campoListaDescricao">
+                                    <input type="text" class="form-control" name="campoListaDescricao" ng-model="vm.Formulario.campoListaDescricao" ng-value="vm.Formulario.campoListaDescricao">
+                                </td>
+                                <td ng-child="vm.Formulario.campoListaTipo" id="campoListaTipo">
+                                    <input type="text" class="form-control" name="campoListaTipo_input" ng-model="vm.Formulario.campoListaTipo" ng-child-tags='{"fluig-autocomplete":""}' values="vm.fieldFilters" display-key="name">
+                                    <textarea hidden ng-value="vm.Formulario.campoListaTipo | json:0" ng-bind="vm.Formulario.campoListaTipo | json:0" name="campoListaTipo"></textarea>
+                                    <input type="hidden" name="campoListaTipoType" ng-value="vm.Formulario.campoListaTipo.type">
+                                </td>
+                                <!-- <td ng-child="vm.Formulario.campoListaArgumento" id="campoListaArgumento">
+                                    <input type="text" class="form-control" name="campoListaArgumento" ng-model="vm.Formulario.campoListaArgumento" ng-value="vm.Formulario.campoListaArgumento">
+                                </td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button ng-if="vm.Params.edit" type="button" class="btn btn-lg btn-default" ng-click="vm.adicionaCampoLista()">Incluir Campo</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

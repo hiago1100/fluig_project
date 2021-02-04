@@ -1,0 +1,304 @@
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+    <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+    
+    <script type="text/javascript">
+    
+    function setSelectedZoomItem(selectedItem) {
+        console.log(selectedItem);
+        if(selectedItem.inputName.match(/appMain/g)){
+            
+            $('#appMainDesc').val(selectedItem.description_program);
+            $('#appMainObs').val(selectedItem.OBS_UPC);         
+            
+        } 
+        if(selectedItem.inputName.match(/aplicativo___/g)){
+            var index = selectedItem.inputName.split("___");
+            console.log(index);
+            $('#appDescricao___'+index[1]).val(selectedItem.description_program);
+            $('#appObs___'+index[1]).val(selectedItem.OBS_UPC);
+        }
+    }
+    </script>
+    <style>
+        .bootstrap-tagsinput.bootstrap-tagsinput-max{
+        height:34px !important;
+        }
+             /* fieldset*/
+          .bs-box {
+           border-color: #e5e5e5 #eee #eee;
+           border-style: solid;
+           border-width: 1px 0;
+           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05) inset;
+           margin: 0 -15px 15px;
+           padding: 45px 15px 15px;
+           position: relative;
+          }
+          .bs-box:after {
+           color: #959595;
+           content: "";
+           font-size: 12px;
+           font-weight: 700;
+           left: 15px;
+           letter-spacing: 1px;
+           position: absolute;
+           text-transform: uppercase;
+           top: 15px;
+          }
+          .bs-box + .highlight {
+           border-radius: 0;
+           border-width: 0 0 1px;
+           margin: -15px -15px 15px;
+          }
+          @media (min-width: 768px) {
+           .bs-box {
+            background-color: #fff;
+            border-color: #ddd;
+            border-radius: 4px 4px 0 0;
+            border-width: 1px;
+            box-shadow: none;
+            margin-left: 0;
+            margin-right: 0;
+           }
+           .bs-box + .highlight {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-width: 1px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: -16px;
+           }
+          }
+          .bs-box .container {
+           width: auto;
+          }
+          /* box tabs*/
+          .bs-box-tabs {
+           border-color: #e5e5e5 #eee #eee;
+           border-style: solid;
+           border-width: 1px 0;
+           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05) inset;
+           margin: 0 -15px 15px;
+           padding: 45px 15px 15px;
+           position: relative;
+          }
+          .bs-box-tabs:after {
+           color: #959595;
+           content: "";
+           font-size: 12px;
+           font-weight: 700;
+           left: 15px;
+           letter-spacing: 1px;
+           position: absolute;
+           text-transform: uppercase;
+           top: 15px;
+          }
+          .bs-box-tabs + .highlight {
+           border-radius: 0;
+           border-width: 0 0 1px;
+           margin: -15px -15px 15px;
+          }
+          @media (min-width: 768px) {
+           .bs-box-tabs {
+            background-color: #fff;
+            border-color: #ddd;
+            border-radius: 4px 4px 0 0;
+            border-width: 1px;
+            box-shadow: none;
+            margin-left: 0;
+            margin-right: 0;
+           }
+           .bs-box-tabs + .highlight {
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-width: 1px;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: -16px;
+           }
+          }
+          .bs-box-tabs .container {
+           width: auto;
+          }
+          
+          fieldset {
+           margin-top: 20px;
+          }
+          .title {
+           margin-bottom: 15px;
+          }
+          #logo {
+           width: auto;
+          }
+          legend {
+           -moz-border-bottom-colors: none;
+           -moz-border-left-colors: none;
+           -moz-border-right-colors: none;
+           -moz-border-top-colors: none;
+           border-color: -moz-use-text-color -moz-use-text-color #e5e5e5;
+           border-image: none;
+           border-style: none none solid;
+           border-width: 0 0 1px;
+           color: #FF9900;
+           display: block;
+           font-size: 15px;
+           line-height: inherit;
+           margin-bottom: 20px;
+           padding: 0;
+           width: 100%;
+           text-transform: uppercase;
+           text-align: left;
+          }
+          span.help-block:empty{
+          display: none; 
+          }
+          
+          .input-group-addon {
+             padding: 6px 3px;
+            }
+            .glyphicon {
+             font-size: 10px;
+          }
+          .radio-inline span.help-block{
+               display: none; 
+             }
+
+    </style>
+
+</head>
+<body>
+    <div class="fluig-style-guide">
+        <div class="container">
+            <div class="row title" align="center">
+                <div class="row">
+                    <div class="col-md-3">
+                </div>
+            <div class="col-md-5">
+                <h2>Cadastro de Conflitos</h2>
+            </div>
+            <br><br>
+        </div> <!-- Fim da div row title -->
+
+
+            <form class="form-horizontal" name="form" id="form" role="form">
+
+
+                <div class="form-group">
+                    <label for="codConflito" class="col-md-1 col-sm-1 control-label">Conflito</label>
+                    <div class="col-md-4 col-sm-3">
+                        <input type="text" class="form-control codConflito" name="codConflito" id="codConflito" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao" class="col-md-1 col-sm-1 control-label">Descri&ccedil;&atilde;o</label>
+                    <div class="col-md-6 col-sm-4">
+                        <textarea rows="4" class="form-control" name="descricao" id="descricao"></textarea>
+                    </div>  
+                </div>
+
+                <br></br>
+                
+                <div class="form-group">
+                    <label for="appMain" class="col-md-1 col-sm-1 control-label">Aplicativo</label>
+                    <div class="col-md-4 col-sm-3">
+                        <input type="zoom" class="form-control appMain" name="appMain" id="appMain"
+                            data-zoom="{
+                                'displayKey':'cod_program',
+                                'datasetId':'SGA-sql2dataset-programa',
+                                'fields':[
+                                    {
+                                        'field':'cod_program',
+                                        'label':'Cod Programa'
+                                    },
+                                    {
+                                        'field':'description_program',
+                                        'label':'Desc Programa'
+                                    }
+                                ]
+                            }"
+                        >
+                    </div>
+                    <div class='label-field'>
+                        <label for="appMainDesc" class="col-md-1 col-sm-1 control-label">Descri&ccedil;&atilde;o</label>
+                        <div class="col-md-4 col-sm-4">
+                            <input type="text" class="form-control" name="appMainDesc" id="appMainDesc" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="appMainObs" class="col-md-1 col-sm-1 control-label">Observa&ccedil;&atilde;o</label>
+                    <div class="col-md-6 col-sm-4">
+                        <textarea rows="4" class="form-control" name="appMainObs" id="appMainObs" readonly></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button onclick="wdkAddChild('tabelaConflitos')" class="btn btn-default pull-right" id="btnNovo">Novo Aplicativo</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <table class="table table-hover" tablename="tabelaConflitos" noaddbutton="true">
+                        <thead>
+                            <tr>
+                                <th>&nbsp;</th>
+                                <th style="width:25%;">Aplicativo</th>
+                                <th style="width:25%;">Descri&ccedil;&atilde;o</th>
+                                <th style="width:30%;">Observa&ccedil;&atilde;o</th>
+                                <th style="width:20%;">Risco</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                               <td>&nbsp;</td>
+                               <td>
+                                   <input type="zoom" class="form-control aplicativo" name="aplicativo" id="aplicativo" 
+                                        data-zoom="{
+                                            'displayKey':'cod_program',
+                                            'datasetId':'SGA-sql2dataset-programa',
+                                            'fields':[
+                                                {
+                                                    'field':'cod_program',
+                                                    'label':'Cod Programa'
+                                                },
+                                                {
+                                                    'field':'description_program',
+                                                    'label':'Desc Programa'
+                                                }
+                                            ]
+                                        }"
+                                   >
+                               </td>
+                               <td>
+                                   <input class="form-control appDescricao" name="appDescricao" id="appDescricao"  readonly/>
+                               </td>
+                               <td>
+                                   <input class="form-control appObs" name="appObs" id="appObs" readonly />
+                               </td>
+                               <td>
+                                   <select class="form-control appRisco" name="appRisco" id="appRisco" >
+                                        <option value=""></option>
+                                        <option value="alto">Alto</option>
+                                        <option value="medio">Médio</option>
+                                        <option value="baixo">Baixo</option>
+                                   </select>
+                               </td>
+                           </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </form>
+        </div> <!-- Fim da div Container -->
+    </div> <!-- Fim da div fluig-style-guide -->
+</body>
+</html>

@@ -1,0 +1,61 @@
+<div class="panel panel-default" ng-if="item.Entregas.length>0">
+    <div class="panel-heading fs-cursor-pointer" ng-click="item.entregasCollapsed=!item.entregasCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': item.entregasCollapsed}">
+                Entregas
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': item.entregasCollapsed}">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead class="hidden-xs">
+                            <tr>
+                                <th>
+                                    <div class="col-sm-2">Parcela</div>
+                                    <div class="col-sm-2">Data</div>
+                                    <div class="col-sm-2">Qtde</div>
+                                    <div class="col-sm-2">Qtde Recebida</div>
+                                    <div class="col-sm-2">Qtde Rejeitada</div>
+                                    <div class="col-sm-2">Saldo</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="entrega in item.Entregas">
+                                <td>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Parcela</label>
+                                        <p>{{entrega.entregaParcela}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Data</label>
+                                        <p>{{entrega.entregaDataEntrega | date}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Qtde</label>
+                                        <p>{{entrega.entregaQtd | number:2}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Qtde Recebida</label>
+                                        <p>{{entrega.entregaQtdRecebida | number:2}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Qtde. Rejeitada</label>
+                                        <p>{{entrega.entregaQtdRejeitada | number:2}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Saldo</label>
+                                        <p>{{entrega.entregaQtdSaldo | number:2}}</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

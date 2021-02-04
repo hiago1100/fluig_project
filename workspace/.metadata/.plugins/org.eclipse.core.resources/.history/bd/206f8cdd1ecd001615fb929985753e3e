@@ -1,0 +1,63 @@
+function displayFields(form, customHTML) {
+	
+	
+	
+	filter = new java.util.HashMap();
+	filter.put("colleaguePK.colleagueId", getValue("WKUser"));
+	colaborador = getDatasetValues('colleague', filter);
+	if (form.getValue("NomUserResptrick") == "" || form.getValue("NomUserResptrick") == null){
+	 form.setValue("NomUserResptrick", colaborador.get(0).get("colleagueName"));
+	}
+	if (form.getValue("NomUser") == "" || form.getValue("NomUser") == null){
+		 form.setValue("NomUser", colaborador.get(0).get("colleagueName"));
+	}
+	
+	
+	 form.setValue("idSolicitante", colaborador.get(0).get("colleagueId"));
+	 form.setValue("NomUserResptrick", colaborador.get(0).get("colleagueName"));
+	 
+
+	// var _numAtiv = getValue("WKNumState");
+	 var _numProc = getValue("WKNumProces");
+	 var numUser = getValue("WKUser");
+	 var nomeUser = colaborador.get(0).get("colleagueName");
+	 
+	 form.setValue("numSolicitacao", getValue("WKNumProces"));
+	// form.setValue("numAtividade", _numAtiv);
+	 form.setValue("gformMode", form.getFormMode());
+	 
+ 
+		 
+	 form.setValue("userMatrichidden", getValue("WKUser"));
+
+
+	 if(getValue("WKNumState") == 112){
+	  form.setValue('NomeSupImed', colaborador.get(0).get("colleagueName"));
+	 }
+	 if(getValue("WKNumState") == 113){
+	  form.setValue('NomeUnidade', colaborador.get(0).get("colleagueName"));
+	 }
+	 if(getValue("WKNumState") == 110){
+	  form.setValue('NomeEmpresa', colaborador.get(0).get("colleagueName"));
+	 }
+	 if(_numAtiv != 112){
+	 form.setEnabled('RespSupImed', false);
+	 }
+	 if(_numAtiv != 113){
+	 form.setEnabled('RespUnidade', false);
+	 }
+	 if(_numAtiv != 110){
+	 form.setEnabled('RespEmpresa', false);
+	 }
+
+
+
+	 
+	 
+	}
+
+
+
+
+
+

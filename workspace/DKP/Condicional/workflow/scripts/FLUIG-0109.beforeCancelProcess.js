@@ -1,0 +1,5 @@
+function beforeCancelProcess(colleagueId,processId){
+	
+	
+
+}

@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-sm-4">
+        <label>Número</label>
+        <p>{{documento.contratoNumero || 'Não informado'}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Fornecedor</label>
+        <p>{{documento.contratoFornecedor || 'Não informado'}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Valor</label>
+        <p>{{documento.contratoValor | currency:documento.contratoMoeda}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <label>Data</label>
+        <p>{{documento.contratoDataContrato | date}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Comprador</label>
+        <p>{{documento.contratoComprador || 'Não informado'}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Conta Contábil</label>
+        <p>{{documento.contratoContaContabil || 'Não informada'}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="hidden-xs">
+                    <tr>
+                        <th>
+                            <div class="col-sm-6">Item</div>
+                            <div class="col-sm-3">Qtde</div>
+                            <div class="col-sm-3">V.Un.</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in documento.Itens" ng-if="$index < 2">
+                        <td>
+                            <div class="col-sm-6">
+                                <p><b class="visible-xs-inline">Item: </b> {{item.itemDescricao}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b class="visible-xs-inline">Qtde: </b> {{item.itemQtde | number}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b class="visible-xs-inline">V.Un.: </b> {{item.itemValor | currency:item.itemMoeda}}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-if="documento.Itens.length > 2">
+                        <td colspan="3">{{documento.Itens.length - 2}} mais...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

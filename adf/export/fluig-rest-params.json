@@ -1,0 +1,31 @@
+{
+  "projectDir": "../adf",
+  "companyId": 3,
+  "host": "http://192.168.1.21:8080",
+  "username": "admin.adf",
+  "password": "admin.adf@%23",
+  "datasetParams": {
+    "mobileCache": false,
+    "type": "CUSTOM",
+    "updateInterval": 0,
+    "serverOffline": true,
+    "mobileOffline": false,
+    "updateIntervalTimestamp": 0,
+    "lastReset": 0,
+    "lastRemoteSync": 0,
+    "datasetBuilder": "com.datasul.technology.webdesk.dataset.CustomizedDatasetBuilder"
+  },
+  "datasets": {
+    "adf_erp_consulta_ccusto": "Consulta centros de custo no ERP",
+    "adf_erp_consulta_codigo_rejeicao": "Consulta códigos de rejeição no ERP",
+    "adf_erp_consulta_especie_docto": "Consulta espécies de Documento no ERP",
+    "adf_erp_consulta_estabelecimento": "Consulta estabelecimentos no ERP",
+    "adf_erp_consulta_familia": "Consulta famílias de itens no ERP",
+    "adf_erp_consulta_item": "Consulta itens no ERP",
+    "adf_erp_consulta_moeda": "Consulta moedas no ERP",
+    "adf_erp_consulta_nivel_emergencial": "Consulta níveis emergenciais no ERP",
+    "adf_integra_aprovacao_docto": "Integra aprovações de documento pendentes no ADF",
+    "fluig_converte_form": "Converte formulários no Fluig"
+  }
+}
+

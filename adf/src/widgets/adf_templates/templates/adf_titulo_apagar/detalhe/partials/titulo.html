@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-sm-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Título {{documento.tituloNumero}}</h4>
+                        <h4>{{documento.tituloEmpresa}} - {{documento.tituloEstab}}</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4> A Pagar</h4>
+                        <h4> {{documento.tituloValorSaldo | currency:documento.tituloMoeda}}</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+
+
+                <div class="col-sm-6">
+                    <label>Número
+                        <span ng-show="documento.tituloSerie"> / Série </span>
+                        <span ng-show="documento.tituloParcela"> / Parcela </span>
+                    </label>
+                    <p>{{documento.tituloNumero}}
+                        <span ng-show="documento.tituloSerie"> / {{documento.tituloSerie}} </span>
+                        <span ng-show="documento.tituloParcela"> / {{documento.tituloParcela}} </span>
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <label>Fornecedor</label>
+                    <p>{{documento.tituloFornecedor || 'Não informado'}}</p>
+                </div>
+                <div class="col-sm-6">
+                    <label>Data de Emissão</label>
+                    <p>{{documento.tituloDataEmissao | date}}</p>
+                </div>
+                <div class="col-sm-6">
+                    <label>Data de Vencimento</label>
+                    <p>{{documento.tituloDataVencimento | date}}</p>
+                </div>
+                <div class="col-sm-6">
+                    <label>Valor Original</label>
+                    <p>{{documento.tituloValorOriginal | currency:documento.tituloMoeda}}</p>
+                </div>
+                <div class="col-sm-6">
+                    <label>Saldo</label>
+                    <p>{{documento.tituloValorSaldo | currency:documento.tituloMoeda}}</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="panel panel-default" ng-class="{'panel-danger': documento.tituloDiasAtraso > 0}">
+            <div class="panel-heading">
+                <h5 class="fs-no-margin">
+                    <span class="fluigicon" ng-class="{'fluigicon-warning-sign': documento.tituloDiasAtraso > 0}"></span> Atraso</h5>
+            </div>
+            <div class="panel-body">
+
+                <table class="table table-striped">
+                    <thead class="hidden-xs">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dias de Atraso</td>
+                            <td>{{documento.tituloDiasAtraso}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>% Dia</td>
+                            <td>{{documento.tituloPercDia | percentage}}</td>
+                        </tr>
+                        <tr>
+                            <td>Multa</td>
+                            <td>{{documento.tituloMulta | currency:documento.tituloMoeda}}</td>
+                        </tr>
+                        <tr>
+                            <td>Atraso</td>
+                            <td>{{documento.tituloAtraso}}</td>
+                        </tr>
+                        <tr>
+                            <td>Juros / Dia</td>
+                            <td>{{documento.tituloJurosDia | percentage}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

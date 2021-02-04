@@ -1,0 +1,2078 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.4.2.v201410272105 Build &lt;4.4.2.v20150217-1805></property>
+    <property name="units">in</property>
+    <method name="initialize"><![CDATA[importPackage(Packages.com.datasul.technology.webdesk.dataset.service);
+importPackage(Packages.com.datasul.technology.webdesk.dataset);
+importPackage(Packages.com.datasul.technology.webdesk.search.controller);
+importPackage(Packages.java.util);
+importPackage(Packages.java.io);
+importPackage(Packages.java.text);
+var count = 0;
+var dataset = null;
+var datasetCdEtapa = null;
+var countCdEtapa = 0;
+var countForm = 0;
+var datasetForm = null;
+
+var countConc = 0;
+var datasetConc = null;
+
+var countNconf = 0;
+var datasetNconf = null;
+
+var datasetRef = null;
+var countRef = 0;
+
+var datasetConc = null;
+var countConc   = 0;
+
+var datasetReceb = null;
+var countReceb   = 0;
+
+var datasetEtapaNconf = null;
+var countEtapaNconf = 0;]]></method>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="nr_ficha" id="32">
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="wkCompany" id="201">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="tableName" id="202">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="metaVersion" id="203">
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <script-data-source name="Data Source" id="71"/>
+        <script-data-source name="FLUIG_DATASET" id="30"/>
+    </data-sources>
+    <data-sets>
+        <script-data-set name="PR004_cabecalho" id="204">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">cd_etapa</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">cd_etapa</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">cd_etapa</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+    var c2 = new Array();
+    var c3 = new Array();
+     
+    var sortingFields = new Array();
+    var i = 0;     
+
+
+   	    c1[i] = factory.createConstraint("METADATA#ID", params["nr_ficha"].value, params["nr_ficha"].value, ConstraintType.MUST);    
+      
+    	var constraints = new Array(c1[i]);
+        i++;
+    
+    datasetCdEtapa = factory.getDataset("PR004", null, constraints, sortingFields);
+    
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (datasetCdEtapa != null) {
+    if (countCdEtapa <  datasetCdEtapa.rowsCount){
+
+        row["cd_etapa"]    = datasetCdEtapa.getValue(countCdEtapa, "cd_etapa");
+        
+        countCdEtapa++;
+        return true;
+    }
+}
+
+
+return false;]]></method>
+        </script-data-set>
+        <script-data-set name="PR004_itensForm" id="1103">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">etapa</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">mes_ano</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">n_contrato</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">etapa</property>
+                </structure>
+                <structure>
+                    <property name="columnName">mes_ano</property>
+                </structure>
+                <structure>
+                    <property name="columnName">n_contrato</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">etapa</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">mes_ano</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">n_contrato</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+    var c2 = new Array();
+    var c3 = new Array();
+     
+    var sortingFields = new Array();
+    var i = 0;     
+
+
+   	    c1[i] = factory.createConstraint("METADATA#ID", params["nr_ficha"].value, params["nr_ficha"].value, ConstraintType.MUST);    
+      
+    	var constraints = new Array(c1[i]);
+        i++;
+    
+    datasetForm = factory.getDataset("PR004", null, constraints, sortingFields);
+    
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (datasetForm != null) {
+    if (countForm <  datasetForm.rowsCount){
+        //monta o objeto da linha
+        row["n_contrato"] = datasetForm.getValue(countForm, "zoom_contrato");  
+        row["etapa"]      = datasetForm.getValue(countForm, "etapa");              
+        row["mes_ano"]    = datasetForm.getValue(countForm, "dt_solicitacao");
+      //  row["cd_etapa"]    = datasetForm.getValue(countForm, "cd_etapa");
+        
+        countForm++;
+        return true;
+    }
+}
+
+
+return false;]]></method>
+        </script-data-set>
+        <script-data-set name="PR004_objetivo" id="1635">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">objetivo</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">objetivo</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">objetivo</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+   
+    var sortingFields = new Array();
+    var i = 0;     
+
+
+   	    c1[i] = factory.createConstraint("METADATA#ID", params["nr_ficha"].value, params["nr_ficha"].value, ConstraintType.MUST);    
+      
+    	var constraints = new Array(c1[i]);
+        i++;
+    
+    datasetConc = factory.getDataset("PR004", null, constraints, sortingFields);
+    
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (datasetConc != null) {
+    if (countConc <  datasetConc.rowsCount){
+        //monta o objeto da linha
+        row["objetivo"] = datasetConc.getValue(countConc, "objetivo_termo");
+
+        datasetConc++;
+        return true;
+    }
+}
+
+
+return false;]]></method>
+        </script-data-set>
+        <script-data-set name="PR004_refencia" id="1648">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">referencia</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">referencia</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">referencia</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+   
+    var sortingFields = new Array();
+    var i = 0;     
+
+
+   	    c1[i] = factory.createConstraint("METADATA#ID", params["nr_ficha"].value, params["nr_ficha"].value, ConstraintType.MUST);    
+      
+    	var constraints = new Array(c1[i]);
+        i++;
+    
+    datasetRef = factory.getDataset("PR004", null, constraints, sortingFields);
+    
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (datasetRef != null) {
+    if (countRef <  datasetRef.rowsCount){
+        //monta o objeto da linha
+        row["referencia"] = datasetRef.getValue(countRef, "referencia_termo");
+
+        datasetRef++;
+        return true;
+    }
+}
+
+return false;]]></method>
+        </script-data-set>
+        <script-data-set name="PR004_itens_etapa_todos" id="1678">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">cd_item_componente</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">nm_item_componente</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">local_recebidor_item</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">vl_componente</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">qtd_componente</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">vl_total</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">qtd_nao_conforme</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">status_regra</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">quantidade_retida</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">vl_retido</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">observacao_componente</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">cd_item_componente</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nm_item_componente</property>
+                </structure>
+                <structure>
+                    <property name="columnName">local_recebidor_item</property>
+                </structure>
+                <structure>
+                    <property name="columnName">vl_componente</property>
+                </structure>
+                <structure>
+                    <property name="columnName">qtd_componente</property>
+                </structure>
+                <structure>
+                    <property name="columnName">vl_total</property>
+                </structure>
+                <structure>
+                    <property name="columnName">qtd_nao_conforme</property>
+                </structure>
+                <structure>
+                    <property name="columnName">status_regra</property>
+                </structure>
+                <structure>
+                    <property name="columnName">quantidade_retida</property>
+                </structure>
+                <structure>
+                    <property name="columnName">vl_retido</property>
+                </structure>
+                <structure>
+                    <property name="columnName">observacao_componente</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">cd_item_componente</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">nm_item_componente</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">local_recebidor_item</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">vl_componente</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">qtd_componente</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">vl_total</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">qtd_nao_conforme</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">status_regra</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">quantidade_retida</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">vl_retido</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">observacao_componente</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+    var c2 = new Array();
+    var c3 = new Array();
+     
+    var sortingFields = new Array();
+    var i = 0;     
+	
+	c1[i] = factory.createConstraint("METADATA#ID", params["nr_ficha"].value, params["nr_ficha"].value, ConstraintType.MUST);    
+	c2[i] = factory.createConstraint("TABLENAME", params["tableName"].value, params["tableName"].value, ConstraintType.MUST);    
+	c3[i] = factory.createConstraint("METADATA#VERSION", params["metaVersion"].value, params["metaVersion"].value, ConstraintType.MUST);    
+	         
+	var constraints = new Array(c1[i],c2[i],c3[i]);
+    i++;
+          
+    //Dataset
+    dataset = factory.getDataset("birt_consulta_PR004_table_item_etapa", null, constraints, sortingFields);
+    
+    
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (dataset != null) {
+    if (count <  dataset.rowsCount){
+        //monta o objeto da linha
+        row["cd_item_componente"] = dataset.getValue(count, "cd_item_componente");  
+        row["nm_item_componente"]      = dataset.getValue(count, "nm_item_componente");              
+        row["local_recebidor_item"]    = dataset.getValue(count, "local_recebidor_item");	
+        row["vl_componente"] = dataset.getValue(count, "vl_componente");  
+        row["qtd_componente"]      = dataset.getValue(count, "qtd_componente");              
+        row["vl_total"]    = dataset.getValue(count, "vl_total");	
+        row["qtd_nao_conforme"] = dataset.getValue(count, "qtd_nao_conforme");  
+        row["status_regra"]      = dataset.getValue(count, "status_regra");              
+        row["quantidade_retida"]    = dataset.getValue(count, "quantidade_retida");	
+        row["vl_retido"] = dataset.getValue(count, "vl_retido");  
+        row["observacao_componente"]      = dataset.getValue(count, "observacao_componente");
+        
+        count++;
+        return true;
+    }
+}
+
+
+return false;]]></method>
+        </script-data-set>
+        <script-data-set name="PR004_itens_etapa_nConforme" id="1753">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">cd_item_componenteNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">nm_item_componenteNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">local_recebidor_itemNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">vl_componenteNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">qtd_componenteNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">vl_totalNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">qtd_nao_conformeNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">status_regraNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">quantidade_retidaNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">vl_retidoNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">observacao_componenteNconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">cd_item_componenteNconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nm_item_componenteNconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">local_recebidor_itemNconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">vl_componenteNconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">qtd_componenteNconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">vl_totalNconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">qtd_nao_conformeNconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">status_regraNconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">quantidade_retidaNconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">vl_retidoNconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">observacao_componenteNconf</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">cd_item_componenteNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">nm_item_componenteNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">local_recebidor_itemNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">vl_componenteNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">qtd_componenteNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">vl_totalNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">qtd_nao_conformeNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">status_regraNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">quantidade_retidaNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">vl_retidoNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">observacao_componenteNconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+    var c2 = new Array();
+    var c3 = new Array();
+     
+    var sortingFields = new Array();
+    var i = 0;     
+	
+	c1[i] = factory.createConstraint("METADATA#ID", params["nr_ficha"].value, params["nr_ficha"].value, ConstraintType.MUST);    
+	c2[i] = factory.createConstraint("TABLENAME", params["tableName"].value, params["tableName"].value, ConstraintType.MUST);    
+	c3[i] = factory.createConstraint("METADATA#VERSION", params["metaVersion"].value, params["metaVersion"].value, ConstraintType.MUST);    
+	         
+	var constraints = new Array(c1[i],c2[i],c3[i]);
+    i++;
+          
+    //Dataset
+    datasetNconf = factory.getDataset("birt_consulta_PR004_table_item_nConforme", null, constraints, sortingFields);
+    
+    
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (datasetNconf != null) {
+    if (countNconf <  datasetNconf.rowsCount){
+        //monta o objeto da linha
+ 
+        
+        row["cd_item_componenteNconf"] = datasetNconf.getValue(countNconf, "cd_item_componente");  
+        row["nm_item_componenteNconf"]      = datasetNconf.getValue(countNconf, "nm_item_componente");              
+        row["local_recebidor_itemNconf"]    = datasetNconf.getValue(countNconf, "local_recebidor_item"); 
+        row["vl_componenteNconf"] = datasetNconf.getValue(countNconf, "vl_componente");  
+        row["qtd_componenteNconf"]      = datasetNconf.getValue(countNconf, "qtd_componente");              
+        row["vl_totalNconf"]    = datasetNconf.getValue(countNconf, "vl_total"); 
+        row["qtd_nao_conformeNconf"] = datasetNconf.getValue(countNconf, "qtd_nao_conforme");  
+        row["status_regraNconf"]      = datasetNconf.getValue(countNconf, "status_regra");              
+        row["quantidade_retidaNconf"]    = datasetNconf.getValue(countNconf, "quantidade_retida");   
+        row["vl_retidoNconf"] = datasetNconf.getValue(countNconf, "vl_retido");  
+        row["observacao_componenteNconf"]      = datasetNconf.getValue(countNconf, "observacao_componente");
+        countNconf++;
+        return true;
+        
+    }
+}
+
+
+return false;]]></method>
+        </script-data-set>
+        <script-data-set name="PR004_itens_Nconf" id="1967">
+            <list-property name="resultSetHints">
+                <structure>
+                    <property name="position">0</property>
+                    <property name="name">cd_regra_Nconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">nm_regra_Nconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">descricao_regra_Nconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">status_regra_Nconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">observacao_Nconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">como_verificar_Nconf</property>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">cd_regra_Nconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">nm_regra_Nconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">descricao_regra_Nconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">status_regra_Nconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">observacao_Nconf</property>
+                </structure>
+                <structure>
+                    <property name="columnName">como_verificar_Nconf</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">cd_regra_Nconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">nm_regra_Nconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">descricao_regra_Nconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">status_regra_Nconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">observacao_Nconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">como_verificar_Nconf</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <method name="beforeOpen"><![CDATA[try{
+    var factory = DatasetFactory.getInstance(params['wkCompany'].value);
+    var c1 = new Array();
+    var c2 = new Array();
+    var c3 = new Array();
+     
+    var sortingFields = new Array();
+    var i = 0;     
+	
+	c1[i] = factory.createConstraint("METADATA#ID", params["nr_ficha"].value, params["nr_ficha"].value, ConstraintType.MUST);    
+	c2[i] = factory.createConstraint("TABLENAME", params["tableName"].value, params["tableName"].value, ConstraintType.MUST);    
+	c3[i] = factory.createConstraint("METADATA#VERSION", params["metaVersion"].value, params["metaVersion"].value, ConstraintType.MUST);    
+	         
+	var constraints = new Array(c1[i],c2[i],c3[i]);
+    i++;
+          
+    //Dataset
+    datasetEtapaNconf = factory.getDataset("birt_consulta_PR004_table_regras_Nconf", null, constraints, sortingFields);
+    
+    
+}catch (e) {
+}finally {
+}]]></method>
+            <property name="dataSource">Data Source</property>
+            <method name="fetch"><![CDATA[if (datasetEtapaNconf != null) {
+    if (countEtapaNconf <  datasetEtapaNconf.rowsCount){
+        //monta o objeto da linha
+        row["cd_regra_Nconf"] = datasetEtapaNconf.getValue(countEtapaNconf, "cd_regra");
+        row["nm_regra_Nconf"] = datasetEtapaNconf.getValue(countEtapaNconf, "nm_regra");
+        row["descricao_regra_Nconf"] = datasetEtapaNconf.getValue(countEtapaNconf, "descricao_regra");
+        row["status_regra_conforme_Nconf"] = datasetEtapaNconf.getValue(countEtapaNconf, "status_regra");
+        row["observacao_Nconf"] = datasetEtapaNconf.getValue(countEtapaNconf, "observacao");
+        row["como_verificar_Nconf"] = datasetEtapaNconf.getValue(countEtapaNconf, "como_verificar");
+         
+        countEtapaNconf++;
+        return true;
+    }
+}
+
+
+return false;]]></method>
+        </script-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="rightMargin">0.13541666666666666in</property>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="1013">
+            <column id="1014"/>
+            <row id="1015">
+                <property name="color">black</property>
+                <property name="textAlign">center</property>
+                <cell id="1016">
+                    <image id="1017">
+                        <property name="height">1.5729166666666667in</property>
+                        <property name="width">2.2604166666666665in</property>
+                        <property name="source">embed</property>
+                        <property name="imageName">download.jpg</property>
+                    </image>
+                </cell>
+            </row>
+        </grid>
+        <text id="805">
+            <property name="fontWeight">bold</property>
+            <property name="textAlign">center</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[MINISTÉRIO DA DEFESA
+EXÉRCITO BRASILEIRO
+
+DEPARTAMENTO DE CIÊNCIA E TECNOLOGIA
+
+COMANDO DE COMUNICAÇÕES E GUERRA ELETRONICA DO EXÉRCITO
+COMANDO MARECHAL CÂNDIDO MARIANO DA SILVA RONDON]]></text-property>
+        </text>
+        <table id="1084">
+            <property name="width">7.885416666666667in</property>
+            <property name="dataSet">PR004_cabecalho</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">cd_etapa</property>
+                    <text-property name="displayName">cd_etapa</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cd_etapa"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="1098">
+                <property name="width">4.364583333333333in</property>
+            </column>
+            <column id="1099">
+                <property name="width">3.5208333333333335in</property>
+            </column>
+            <header>
+                <row id="1085">
+                    <cell id="1087"/>
+                    <cell id="1088"/>
+                </row>
+            </header>
+            <detail>
+                <row id="1089">
+                    <property name="fontWeight">bold</property>
+                    <cell id="1091">
+                        <text id="1100">
+                            <property name="textAlign">right</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[TERMO DE RECEBIMENTO DA ETAPA:]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1092">
+                        <data id="1102">
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">cd_etapa</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1093">
+                    <cell id="1095"/>
+                    <cell id="1096"/>
+                </row>
+            </footer>
+        </table>
+        <table id="1120">
+            <property name="width">7.885416666666667in</property>
+            <property name="dataSet">PR004_itensForm</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">etapa</property>
+                    <text-property name="displayName">etapa</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["etapa"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">mes_ano</property>
+                    <text-property name="displayName">mes_ano</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["mes_ano"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">n_contrato</property>
+                    <text-property name="displayName">n_contrato</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["n_contrato"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="1142">
+                <property name="width">1.34375in</property>
+            </column>
+            <column id="1143">
+                <property name="width">1.34375in</property>
+            </column>
+            <column id="1144">
+                <property name="width">1.34375in</property>
+            </column>
+            <column id="1145">
+                <property name="width">1.34375in</property>
+            </column>
+            <column id="1146">
+                <property name="width">1.34375in</property>
+            </column>
+            <column id="1147">
+                <property name="width">1.1666666666666667in</property>
+            </column>
+            <header>
+                <row id="1121">
+                    <cell id="1122"/>
+                    <cell id="1123"/>
+                    <cell id="1124"/>
+                    <cell id="1125"/>
+                    <cell id="1126"/>
+                    <cell id="1127"/>
+                </row>
+            </header>
+            <detail>
+                <row id="1128">
+                    <property name="fontWeight">bold</property>
+                    <cell id="1129">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <text id="1154">
+                            <property name="textAlign">right</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[CONTRATO Nº:]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1130">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1153">
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">n_contrato</property>
+                        </data>
+                    </cell>
+                    <cell id="1131">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <text id="1155">
+                            <property name="textAlign">right</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[MÊS / ANO:]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1132">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1151">
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">mes_ano</property>
+                        </data>
+                    </cell>
+                    <cell id="1133">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderLeftColor">#000000</property>
+                        <property name="borderLeftStyle">solid</property>
+                        <property name="borderLeftWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <text id="1156">
+                            <property name="textAlign">right</property>
+                            <property name="contentType">auto</property>
+                            <text-property name="content"><![CDATA[ETAPA:]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="1134">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderRightColor">#000000</property>
+                        <property name="borderRightStyle">solid</property>
+                        <property name="borderRightWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <data id="1149">
+                            <property name="textAlign">left</property>
+                            <property name="resultSetColumn">etapa</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1135">
+                    <cell id="1136"/>
+                    <cell id="1137"/>
+                    <cell id="1138"/>
+                    <cell id="1139"/>
+                    <cell id="1140"/>
+                    <cell id="1141"/>
+                </row>
+            </footer>
+        </table>
+        <text id="1556">
+            <property name="fontSize">13pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[1. OBJETIVO]]></text-property>
+        </text>
+        <text id="1634">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <table id="1637">
+            <property name="dataSet">PR004_objetivo</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">objetivo</property>
+                    <text-property name="displayName">objetivo</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["objetivo"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="1646"/>
+            <header>
+                <row id="1638">
+                    <cell id="1639"/>
+                </row>
+            </header>
+            <detail>
+                <row id="1641">
+                    <cell id="1642">
+                        <text-data id="1647">
+                            <expression name="valueExpr">row["objetivo"]</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1644">
+                    <cell id="1645"/>
+                </row>
+            </footer>
+        </table>
+        <text id="1649">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <text id="1559">
+            <property name="fontSize">13pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[2. REFERÊNCIAS]]></text-property>
+        </text>
+        <text id="1650">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <table id="1667">
+            <property name="dataSet">PR004_refencia</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">referencia</property>
+                    <text-property name="displayName">referencia</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["referencia"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="1676"/>
+            <header>
+                <row id="1668">
+                    <cell id="1669"/>
+                </row>
+            </header>
+            <detail>
+                <row id="1671">
+                    <cell id="1672">
+                        <text-data id="1677">
+                            <expression name="valueExpr">row["referencia"]</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1674">
+                    <cell id="1675"/>
+                </row>
+            </footer>
+        </table>
+        <text id="1561">
+            <property name="fontSize">13pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[3. DISCRIMINAÇÃO DO OBJETO RECEBIDO
+
+3.1. Composição da Etapa]]></text-property>
+        </text>
+        <text id="1749">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <table id="1679">
+            <property name="dataSet">PR004_itens_etapa_todos</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">cd_item_componente</property>
+                    <text-property name="displayName">cd_item_componente</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cd_item_componente"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nm_item_componente</property>
+                    <text-property name="displayName">nm_item_componente</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nm_item_componente"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">local_recebidor_item</property>
+                    <text-property name="displayName">local_recebidor_item</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["local_recebidor_item"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">vl_componente</property>
+                    <text-property name="displayName">vl_componente</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["vl_componente"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">qtd_componente</property>
+                    <text-property name="displayName">qtd_componente</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["qtd_componente"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">vl_total</property>
+                    <text-property name="displayName">vl_total</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["vl_total"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">qtd_nao_conforme</property>
+                    <text-property name="displayName">qtd_nao_conforme</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["qtd_nao_conforme"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">status_regra</property>
+                    <text-property name="displayName">status_regra</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["status_regra"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">quantidade_retida</property>
+                    <text-property name="displayName">quantidade_retida</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["quantidade_retida"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">vl_retido</property>
+                    <text-property name="displayName">vl_retido</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["vl_retido"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">observacao_componente</property>
+                    <text-property name="displayName">observacao_componente</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["observacao_componente"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="1738"/>
+            <column id="1739"/>
+            <column id="1740"/>
+            <column id="1741"/>
+            <column id="1742"/>
+            <column id="1743"/>
+            <column id="1744"/>
+            <column id="1745"/>
+            <column id="1746"/>
+            <column id="1747"/>
+            <column id="1748"/>
+            <header>
+                <row id="1680">
+                    <property name="fontWeight">bold</property>
+                    <property name="height">0.5416666666666666in</property>
+                    <cell id="1681">
+                        <property name="textAlign">center</property>
+                        <label id="1682">
+                            <text-property name="text">Código</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1683">
+                        <property name="textAlign">center</property>
+                        <label id="1684">
+                            <text-property name="text">Nome</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1685">
+                        <property name="textAlign">center</property>
+                        <label id="1686">
+                            <text-property name="text">Local</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1687">
+                        <property name="textAlign">center</property>
+                        <label id="1688">
+                            <text-property name="text">Valor unitário	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1689">
+                        <property name="textAlign">center</property>
+                        <label id="1690">
+                            <text-property name="text">Qtd</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1691">
+                        <property name="textAlign">center</property>
+                        <label id="1692">
+                            <text-property name="text">Valor total	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1693">
+                        <property name="textAlign">center</property>
+                        <label id="1694">
+                            <text-property name="text">Qtd não conforme	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1695">
+                        <property name="textAlign">center</property>
+                        <label id="1696">
+                            <text-property name="text">Recuperável?	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1697">
+                        <property name="textAlign">center</property>
+                        <label id="1698">
+                            <text-property name="text">Quantidade retida	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1699">
+                        <property name="textAlign">center</property>
+                        <label id="1700">
+                            <text-property name="text">Valor retido	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1701">
+                        <property name="textAlign">center</property>
+                        <label id="1702">
+                            <text-property name="text">Obs.</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="1703">
+                    <cell id="1704">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1705">
+                            <property name="resultSetColumn">cd_item_componente</property>
+                        </data>
+                    </cell>
+                    <cell id="1706">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1707">
+                            <property name="resultSetColumn">nm_item_componente</property>
+                        </data>
+                    </cell>
+                    <cell id="1708">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1709">
+                            <property name="resultSetColumn">local_recebidor_item</property>
+                        </data>
+                    </cell>
+                    <cell id="1710">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1711">
+                            <property name="resultSetColumn">vl_componente</property>
+                        </data>
+                    </cell>
+                    <cell id="1712">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1713">
+                            <property name="resultSetColumn">qtd_componente</property>
+                        </data>
+                    </cell>
+                    <cell id="1714">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1715">
+                            <property name="resultSetColumn">vl_total</property>
+                        </data>
+                    </cell>
+                    <cell id="1716">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1717">
+                            <property name="resultSetColumn">qtd_nao_conforme</property>
+                        </data>
+                    </cell>
+                    <cell id="1718">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1719">
+                            <property name="resultSetColumn">status_regra</property>
+                        </data>
+                    </cell>
+                    <cell id="1720">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1721">
+                            <property name="resultSetColumn">quantidade_retida</property>
+                        </data>
+                    </cell>
+                    <cell id="1722">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1723">
+                            <property name="resultSetColumn">vl_retido</property>
+                        </data>
+                    </cell>
+                    <cell id="1724">
+                        <property name="borderBottomColor">#000000</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <property name="borderTopColor">#000000</property>
+                        <property name="borderTopStyle">solid</property>
+                        <property name="borderTopWidth">1px</property>
+                        <property name="textAlign">center</property>
+                        <data id="1725">
+                            <property name="resultSetColumn">observacao_componente</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1726">
+                    <cell id="1727">
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="1728">
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="1729">
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="1730">
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="1731">
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="1732">
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="1733">
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="1734">
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="1735">
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="1736">
+                        <property name="textAlign">center</property>
+                    </cell>
+                    <cell id="1737">
+                        <property name="textAlign">center</property>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+        <text id="1750">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <text id="1751">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <text id="1752">
+            <property name="fontSize">13pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[3.2. Não conformidades]]></text-property>
+        </text>
+        <text id="1970">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <text id="1971">
+            <property name="fontSize">10pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[Itens da etapa não conforme]]></text-property>
+        </text>
+        <text id="1895">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <table id="1897">
+            <property name="textAlign">center</property>
+            <property name="dataSet">PR004_itens_etapa_nConforme</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">cd_item_componenteNconf</property>
+                    <text-property name="displayName">cd_item_componenteNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["cd_item_componenteNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">nm_item_componenteNconf</property>
+                    <text-property name="displayName">nm_item_componenteNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["nm_item_componenteNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">local_recebidor_itemNconf</property>
+                    <text-property name="displayName">local_recebidor_itemNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["local_recebidor_itemNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">vl_componenteNconf</property>
+                    <text-property name="displayName">vl_componenteNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["vl_componenteNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">qtd_componenteNconf</property>
+                    <text-property name="displayName">qtd_componenteNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["qtd_componenteNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">vl_totalNconf</property>
+                    <text-property name="displayName">vl_totalNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["vl_totalNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">qtd_nao_conformeNconf</property>
+                    <text-property name="displayName">qtd_nao_conformeNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["qtd_nao_conformeNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">status_regraNconf</property>
+                    <text-property name="displayName">status_regraNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["status_regraNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">quantidade_retidaNconf</property>
+                    <text-property name="displayName">quantidade_retidaNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["quantidade_retidaNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">vl_retidoNconf</property>
+                    <text-property name="displayName">vl_retidoNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["vl_retidoNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">observacao_componenteNconf</property>
+                    <text-property name="displayName">observacao_componenteNconf</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["observacao_componenteNconf"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="1956"/>
+            <column id="1957"/>
+            <column id="1958"/>
+            <column id="1959"/>
+            <column id="1960"/>
+            <column id="1961"/>
+            <column id="1962"/>
+            <column id="1963"/>
+            <column id="1964"/>
+            <column id="1965"/>
+            <column id="1966"/>
+            <header>
+                <row id="1898">
+                    <property name="fontWeight">bold</property>
+                    <property name="height">0.5in</property>
+                    <cell id="1899">
+                        <label id="1900">
+                            <text-property name="text">Código</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1901">
+                        <label id="1902">
+                            <text-property name="text">Nome</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1903">
+                        <label id="1904">
+                            <text-property name="text">Local</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1905">
+                        <label id="1906">
+                            <text-property name="text">Valor unitário	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1907">
+                        <label id="1908">
+                            <text-property name="text">Qtd</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1909">
+                        <label id="1910">
+                            <text-property name="text">Valor total	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1911">
+                        <label id="1912">
+                            <text-property name="text">Qtd não conforme	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1913">
+                        <label id="1914">
+                            <text-property name="text">Recuperável?	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1915">
+                        <label id="1916">
+                            <text-property name="text">Quantidade retida	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1917">
+                        <label id="1918">
+                            <text-property name="text">Valor retido	</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1919">
+                        <label id="1920">
+                            <text-property name="text">Obs.</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="1921">
+                    <property name="borderBottomColor">#000000</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">1px</property>
+                    <property name="borderTopColor">#000000</property>
+                    <property name="borderTopStyle">solid</property>
+                    <property name="borderTopWidth">1px</property>
+                    <cell id="1922">
+                        <data id="1923">
+                            <property name="resultSetColumn">cd_item_componenteNconf</property>
+                        </data>
+                    </cell>
+                    <cell id="1924">
+                        <data id="1925">
+                            <property name="resultSetColumn">nm_item_componenteNconf</property>
+                        </data>
+                    </cell>
+                    <cell id="1926">
+                        <data id="1927">
+                            <property name="resultSetColumn">local_recebidor_itemNconf</property>
+                        </data>
+                    </cell>
+                    <cell id="1928">
+                        <data id="1929">
+                            <property name="resultSetColumn">vl_componenteNconf</property>
+                        </data>
+                    </cell>
+                    <cell id="1930">
+                        <data id="1931">
+                            <property name="resultSetColumn">qtd_componenteNconf</property>
+                        </data>
+                    </cell>
+                    <cell id="1932">
+                        <data id="1933">
+                            <property name="resultSetColumn">vl_totalNconf</property>
+                        </data>
+                    </cell>
+                    <cell id="1934">
+                        <data id="1935">
+                            <property name="resultSetColumn">qtd_nao_conformeNconf</property>
+                        </data>
+                    </cell>
+                    <cell id="1936">
+                        <data id="1937">
+                            <property name="resultSetColumn">status_regraNconf</property>
+                        </data>
+                    </cell>
+                    <cell id="1938">
+                        <data id="1939">
+                            <property name="resultSetColumn">quantidade_retidaNconf</property>
+                        </data>
+                    </cell>
+                    <cell id="1940">
+                        <data id="1941">
+                            <property name="resultSetColumn">vl_retidoNconf</property>
+                        </data>
+                    </cell>
+                    <cell id="1942">
+                        <data id="1943">
+                            <property name="resultSetColumn">observacao_componenteNconf</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1944">
+                    <cell id="1945"/>
+                    <cell id="1946"/>
+                    <cell id="1947"/>
+                    <cell id="1948"/>
+                    <cell id="1949"/>
+                    <cell id="1950"/>
+                    <cell id="1951"/>
+                    <cell id="1952"/>
+                    <cell id="1953"/>
+                    <cell id="1954"/>
+                    <cell id="1955"/>
+                </row>
+            </footer>
+        </table>
+        <text id="1972">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+        <text id="1973">
+            <property name="fontWeight">bold</property>
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ Regras da etapa não conforme]]></text-property>
+        </text>
+        <text id="1974">
+            <property name="contentType">auto</property>
+            <text-property name="content"><![CDATA[ ]]></text-property>
+        </text>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">download.jpg</property>
+            <property name="data">
+                /9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhMTExQVFRUXFyAXGBkXGB8YFh0eFR4YIBUeGCAZ
+                HyggGCEmIBobIjIiJiotLy8vHSE1OTUtOCguLy0BCgoKDw0PHBAQHDgnISYyNzU1NTUwMC42LCwvMC44
+                Li8zMC0yLS0yOC0tMi4xMC4vLTEtMS01NzItODctLzctLv/AABEIAMUBAAMBIgACEQEDEQH/xAAcAAEA
+                AgMBAQEAAAAAAAAAAAAABQYDBAcCAQj/xABEEAACAQIEAwYCBwYDCAIDAAABAgMAEQQSITEFE0EGIjJR
+                YXFCgQcUI1KRobEzYnKCovCSwdEVJDRDY3PC4bLxFlOD/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAQFAQID
+                Bgf/xAA6EQABAgQEBAQFAQcEAwAAAAABAhEAAyExBBJBUQUiYXETgaHwMpGxwdFCBhQVI1Lh8SQzYnIl
+                gpL/2gAMAwEAAhEDEQA/AO40pSkIUpSkIUpSkIUpSkIUpSkIUpVXXjjgsRZ1JzLfTu66X+E2IOoOit6V
+                xmz0ymza+dg+le1LsLkRulBVaLRWKaUKpZjYAEk+gqOg43G2jXQ/vbbDqPetHjmPDHlqxyjxkdQRqAev
+                dJrC8QhKcwI/v/apPQGAlklmhHxtg7MQShAIXQEC6j8bMTb0qVxHEUWFpgcwA0A3J2VR6kkC3maqYbz3
+                Gp99Qo/+Nar4oK0jNflwIGcD4pCqlF/iBJ/FaqP4mqTLK1B+moKgpQHZylIDUv0iQuSnT/Nh+YuuBx6v
+                Esp7t9CCfCwNmX1Ia49aipeOMzqygiMakaXYXI67aqary4zNy5FuEmUsF+5LGCZV98qn/A1bZa17fxAe
+                YNsw/qJ/Gtf4mqdKC0jK198ycqiB0opJ3aMokAGvt3H4MXaGYOoZTcEXFZarPBMfkblu2hHdPTTS/oCF
+                v7n1rYm7VYUPkWQO2vhIsLbi50uPIXPpVzLnpUnMTah7in9x0MRlIILRPUqrPxtyRsgBubC5sLaX+K/e
+                2A+Hzqzq1xcbGsyZ6JwJRp5XD61sftcEAtBTePVKUrtGkKUpSEKUpSEKUpSEKUpSEKUpSEKUpSEKUpSE
+                KUpSEKVB8dxLxsmRiN9Oh/vy/DXQxP8AtOa37RreZy/np/e/naJNxiJaikg+m3UjVgdnBPKQY6plFQce
+                /frpWkWLjE2SFyLXIsL+vi0O+lzb0qpFrfoLn/M7n9depArLjOIMVPMbujva2AUD9Lee4+Qvy7tF2hMs
+                wZNeXcwqDseksn3BYaehPnUNf+rmDJQDVrV62sCx/UAboWI6P4Ka3Onv23cE9HxeJSJGeRgqINWOw6/l
+                e9vMm9UHjnbOWS6QBo1sCWyky94j5R90m19beR1qI7QcTlxMoErgIqghVvkTTMWsdSwuLX6vtvWs6BUy
+                uQFzBhALEnbLzj6nU/2K7YfABNViu2go22gZI6CtSY4TcWSeT/Pv2WaOhcN7TiWRwsTZI4wwZiLuz+HQ
+                eeXz8vOvvHcQIY1hY3KD6xiCPikfVV/0HQBB5VGdiIpF5kk8YSKH7dj8bu4+zUj4Qqqthv4bgXqO4/iS
+                xZW8TXlk/iPgX5AAeyrVNNlCfjBLT8KS5q9S2vRLFv0qLPSJYn+BJViJn6R81fpHzPyix8AxAmRor5ea
+                ObDf4ZU1K/lqOoDjavIxkUju07FFBsqOzIO5mzm2it3n9bDKT0r7xHBmI4d00zpHIh8pIkFx/Mo+YzVt
+                46ZQVnRe5OBIv7sqhgym+173v5o/mKi4PEBK8yUvntWygC4tqlxuSOsSpnxBe/1199Y9cNYPAY2HgVoy
+                qHvWAyixH3ky7b5rg7VqxgkR4dlW9xcjQFALkjKBYkDYWtr5VF4otEzZCCQfCpAFrK2W7WAUtfuk3BOm
+                9e5sdnniePxsRYSA3DBJcykHY5XNjsbjUgVcZfDfKzMSB8IpbtTlJq+VLWIEcTCCRrrreLgB026f6Aep
+                0/p9RVs4JNnhXa4009PD/TauK9qcSXZFLMVjBmNwLiRWGXQbgG+mx+Wk1J24eIwNE1kLHnobFwNNfW2b
+                NceIX2O0jDylSFZjXM9hsSatWvMWZsxVqUpjhNWlRKHs3rt2oOzd47DSqb/tSUjSU23v3fLppt/97VK8
+                DxLu75mJ0Fh0H/v0/SpEvGomKCQD6UvsTqCOpBaiSRoqUUhz79/5uInaUpUyOUKUpSEKUpSEKUpSEKUp
+                SEKUpSEKUpSEKVrYjFIls7Bb7XP9/j61GT8eQXCqxYG3e7tclzkI+I/3OwF3bSNgkmwjF2n2j2tre+/T
+                8vP/AC0IrkWMRk5iupSxOYHSw8Wvp/dj4na/jriItZc1+XFobhn0111sASbWPd+R5pNIylYkc5GAzL0Z
+                kcLc9dmN7b2AOlV6pAxSlTEHZjvvpo9DW5BcFaI3VP8AAZChv/b5n89Yke1HH+dCgVbeItGTuVZVRTbc
+                d4Nb2qDRFvIrtdVAaVhcFn+7mGlhp3R6U4jirh41ADrOWWTW1+73T0A7o3v4RWPBcPxTLG5jOSwyKFug
+                P3ioa5b1brUuSUSgUWY6m+1T8u4ufiPOfImqSmaR8Qcenfv69Ix/UgVDOqq8rWTMxDXv3SWvZFAt0O3r
+                Vu4R2dhw8Yd/tXAvmO19hkFzs1tdzf1tUXw7gErksxdCbjmP4yL7KoJVBfS5/DrVq4JgIobb8jDKZ2JJ
+                OZtTHvub96w+ILaoPEsWmWglKna4GvR9zYCu5BjphpZDlQ99vf5+8al5UaQsdR/vGIPm7eBPxuf5U86p
+                UzEhmbxMCW97aj5Cw+VSXGcc0snLAeSRjzZViUyMLH7NCEBsBb+kedfP9gYxluMLKARu5jT8ma/5VC4e
+                ZWFSDOWAo1qQPOrUex2AiFxwT5uXDSkEhNVU/UdHtyi/UmOj4nh/PwUaDRuUjofJlUFfl0PoSKrvCftU
+                kw5sC/2sWb4ZU8aH0JAP+Op7h/FpFijVsLiLKiglOXJ4QBsr36eVVfi3EI1xQaIlHf7VElVomDobSLZw
+                NGBB0vu3pXmsE6s0kGtwxdiNaPSzmzPvHoEHMDL3t3H5FPlHkwoy95VW5zAnR1KjKyADXRtPxvqKiONY
+                fDoArSyKQRlZMvdK63W+pF+g6X86s2NtzFxEVuXiEzgMNA1u+N+6euX72bqar/FeGNGXxAbOdAylRoqm
+                zG48iQTpqb+lesweITNCSVEPpsXb5gu9ANwzxDnPkcByPtELgeILiZmJ7x5IDWFgTnctb07wI8r+la3C
+                yCS2XSCMRHTU5Wu/5AH5msuMLoRMEEh3DQj4LDMD5jqK88GxYkfElWF3syjyGXLqPPQXq8QgJASIqFnO
+                694u3ZDGNmeBtcoEkforGxX+VgPkw30t0LsyNZNrWHvrf+/9dzxiLiTxSIyMolMVrEaHO8RYW8rK/wCF
+                dL7O8bJjWVQMsgBYHe6khhe+hBzC5vqPkK2YlMjEeIaJf5EgdNXG+iXAAlxYSVFcrLq339+6xfaVBw8e
+                U6OjBr2sve/939N6ksPi0e+Rg1rXt0vt+h/A1YInIX8J/L3Yi4LaGo1jQpIuI2qUpXSNYUpSkIUpSkIU
+                pSkIUpSkIUpSkIjONwZ4iQLldR/5W+V6pHGuJrBEWNr+GNPNjso8hfU7W1Opq28Y4nLG4jESFHFg8khQ
+                E9Vssba28yL9KofH+HRu6riMXHGY9RHHFdwHFhcsSDpe3dHXeqLHzsOJ6ULJdqgJJ5b6CoNrlIN0uCRJ
+                lFeQ5fLv72r1isY7iD/VoXmk5lpZGZrW0VHsABt3b2B1taoJyqmBl3RS2u5MhARddrkfgKtq8A4cAAfr
+                s9hYAnILWy/CEB0JHzrYdMFHqvDo76d7ESLfTw62esS+MoSCES1GpNWTTaqiadujAQPD50wgto2v41cx
+                QZZIsrqhWRyC7tcli7XyhEHUHz2qy8FxmJZoERZzECc98OzWUDbRb94+/wAqsMPHH2hTCp6RQtKw9mUg
+                f016xfFMXkzM2JtcAZYxHcsbKB3QdSQN6jzuJzpicvhJSTbMp69KDteOqMEtHxLbuofYn0jzjppUAJw8
+                xzGyr3AzG2wVnDsfM5drE2tUTjuJpHHysQRNKz53gib7PPmuBPINZGWyjKumnzrX4/xqSDNHzGkxDC00
+                pbNyw3/JgPS3xNuT+C6mM4XCseEbCStLipLFkAvlcAXy90ZbNc979Berng/AziEIxGPog1SA4cAOFKVd
+                CLkMyiOblAAMHEYsglEupF/pQan322JsbjOdHhG/3FXYAIgMCAMbXugufK+xrS4j2fjj4gMPNiAVuM09
+                gbAi97s3Qbm+hvvapXjYRpBLxGcyTAACLDgXW3R3Oi+w18j0rTh4nCukeCw4H/VDzn/ESv6V6bAzFS0A
+                8PkUysShKJaCo2UFzClSm3AUDopogzcoLTV1fVyezJoPQxqf7DhbiH1eCdRGWOSawsBlLbhtQBpm01vp
+                UhJjcXHiJMIjnHKrEZGUzqw/nF7geWg9a+tjInFpMHhiP+mrwt/iDNb8K2uEwIkwmwMpimGgjxADK2bo
+                jr52tZhf1FMZNKpf/kJBKQlucImIcfqUqWVKTTUgAaqEJYDtKVc6OC2zGh7O8fcJxJHQwQsMNKHzrDIb
+                QiQNciNt4WJJFjcG586zY1MTNEwhgnSSNxmUMlwU+EgPm1FwDa2t7m9RGH4WkrYxsdK0OIUFlUi2diCB
+                e6kWJyju62v71l7PcbebLC8jJMBaGbMVJ/6UxG6Hodwa85xPgfgS1Yjh9UpZSgXUKhypCndaWYl3IFQV
+                AtE2TiiohE2j2011Gh7dohOI4bFRG4hnQHxLLCbH17gIPvYfOonE42RSGYxqwOhAAPsQbNb5GujR9qZF
+                JUyzoykqyugexXxC+U/rWf8A/Ji3jODl9JIijH3YsR/TVSnimKlpGeSD/wBSRTS4I9YlpwSVn+WsKOvM
+                CX9D8w+8c+4TPzmmme10iygD94HMQPYfnV47BYk6qx1kUSgDobZSB7jLtub+dZOVg5dZOGwH97DyKT+J
+                VP1r1gOH8PifmRDGYdspXfmizeIWbmjoK1ncYQuWUqlqB0Zj2qC4+XzEZTw+dKXmIp2NotY8vlb/ACPp
+                6a+oBq0cDgyxXIsWN/l8N7+n61SMNLzHCRYuJib9ySIiQgDUXDAeVzlNWzg/E5XkMRiQIgsXjkZwDpZS
+                GjXW3QE267ituGzpSpxR+oBgMpFNTUUGlMiSf0A1KeS319/5PWJ+lKV6CIkKUpSEKUpSEKUpSEKUpSEK
+                wzTKguxsP70HmfSs1R/FcCJUOgLAHLckfIkdDWqyoAlIc929WP0MZAD1iE4xxIyDl2KKdwwGdvLRvB77
+                7a1XMREspELyWnUfZS/EQfgmGmp/A7jWpNgUDd1lCg5gtwBbobA3rmnF8fDJNJiVOUZY1zWtbfMrgeXd
+                uPY361QLwy8cp1uC1CyhlP8A7EO+rS6i9WMSlzRIGZO+jP6fmN3ieHljkLWJKaSQMXKfxoEZc4P9i9xU
+                pwbtHglsXwUSH78Kq/z1Ab9ay8Ox64yNEkbLMvcjmI+Ii+STQXDDUefowqC4pw10Zu5lZf2kf/nH5qd/
+                /YIqvRLlTlHD4oMobEj6UbqQSLK3jGN8eanx8MXUBVJDhQ3TqC1wDXStD03hnF8NNpDKhP3Ro491Nj+V
+                VvttxjlhpL/sjy4h/wBZ1N5D/wBuO9vVz1tVBYKQCcpG48vcVI8cWYtg4Yg7yJGstgSzF5TnYk3vcAAX
+                v0qXwz9m5Rx8tKlOipUDTlQHLl2YlkGllRWSOKGfKWQliGtWptS+5jW4JxMQpiIpcNzZcQo5Zcd8cwAr
+                Yiz2fMDowvYVmxkowSHDwkHEMLTyr4l84kPS3xEVvw8cmxEsuMxAAbCQ5UWxC8xmYRkg9dev3apzMSSS
+                bkm5J6k6sfe9fSJWH/fsStM5PIjKVgF0rmkOkbZUJKVZbFSk/wBLRGmzPCljKal2OoGvmS48qR7iW5q7
+                8SxWCbBwpBGVmW2a9yQCzM4zaA94k7fFYWqlYapXD1d4mQJpQok8pehv39/3hyV5QQ1424oa+yQVngNe
+                520rkVkF465Q0fMq4pBh5j9oNIJT4s3wxueqMdBfY29KjOM8SV4YcMmFEc8Js7KLuxQMGF9XsDr4rb+l
+                trikKKxWOUSrlBzhSup8Q13t51uz8akw8kGOhRWeVDHICL3kjsrHTW5GU6b61S5f3edLVJHJMcoSTlCJ
+                oBV5CYkKUUkMFpcf7heUDmSpKjUXN3T9aFq7HpGhPN9YhjxXxqRDP6kD7GX3Ze6fVR5VpIuZsigux2VA
+                Xf8AwqCa3eAPIcRiYpoyGmjZwjX1ZftEHz29jXV8FHDFEGjWOKPKHuoCLa17n5dTXg+OYscIxBkIQ4Vz
+                IrQJVUB2qEqzJFuUC0ZPC04xXiqU2hpUka1s4Z6GObYPsZO4zMkcIGpaa2YDzsuo+ZFecLw4iUcp5ZQd
+                EUEhXPxNlJORB5n38qn+L8VfFOIo1JQnupsZLfE/lGN9fn0FR/FeNxYENGrF5iLTzIL8u47kab6k2FgD
+                a92qqGJxc/lIdRskCw3JLn1vS/w3eFwsrAJcO+gJPzIduwbvG62Kjw8qYYOTiZu48wFxGLXyJobEmwF+
+                pBPQVbeC8QMQ5erqNlUDOD18Pjvv5361yHDMzSojj7QyQ3tqou+awuToArG53NzXUjGSAMpIOw1dfYaa
+                fjVmnCKwJBQSVEcxZRzHT4XYNYZFMLVrGiJwxGZSt7uNgXr+RFzgnVxdTf8AUehHQ+hrNUbwnACNL2s7
+                AZtb29BfyqSq+QVFIzBj3f1YfQRGLPSFKUraMQpSlIQpSlIQpSlIQpSsckgUFmNgBck9BSEVD6QmhiiW
+                R1/avySRm0LqxDd11tbLvXGXRpFdYst2WxOhRyhyN7EWBB8rV1Dt7L9ZgmANwgDKtsrDIQ2+9zauXOrh
+                HAzcxHMi5fiVxfYbg6j3FQ8KqVMK5kqxNSMrFtXS7+dem+uKCxlSr703FfK0eTjm5hfVCdBHa+Z4wxbP
+                5LYkfMHpV8wnEYsTlheQCVVDQzXBIz/BNbcX0v19GFzRsYUZxIlvtFK5/u2GZmHrkzD5CvkfEniN8sax
+                teGzIGDKhJQgdNyL+vpXPiOAGKTQsoWNq92NGdwAx1sGzh8QZZHtu2t4muPcLdBN3crhGzp01B+0jPUd
+                f9DpWfiGLxUXFpjgwTIl0VQM3dEYvp1tv7gVJcLxH1vCJHiTlZ1Ign62clY1cncMLane4+KxMbxDGYqP
+                iPMwhImxEaMBprzUFhZu6SDqL6AgVr+zU1asYuTMAKhKXf4SAqWb7cpaxGp1jfHJlt4qQxURmbU1q2jv
+                Xr1eNPETOcBiHk8b4zLJ7pGX/VjUTwnhbz8zIVHLjMrZmtoCA1r9damORKcLjYZRaaKVZ3Xu6XGWUnJp
+                93aqyhr3fCwopxCUEBXiXZwxRLKW6ZGArFPiiMyCoOG+5f1jLC1ScEtQ4NSj8YkaKKFiOXFfIAAPESWu
+                eu/4AfO5XmLBIo9a2HTerRDQQHcxJRzV9eeotMRX1sRWvhVjp4gjPPJW2Z2GBR08aY5cnzhc2/xAGoSW
+                epowyfUcPGgJlmxRlRdLnlpy10bQglr672qs4ykZJKdTNT8khSlP0yBT9I7YVTqUR/Sfs3q0bMOPxUnF
+                cNJi1yykoALW7pzKpt0vqamfrcsyQYdFNlRUVL+MooDPIekYI/z1NhUNgMfipuJQnGEl4AWYEAZQikk5
+                V7oY6E2A/KprES8nDSRwEmURHnzLuCinMkZGi5Tpfpr8VyPnn7VJ/wBZJSlIziWGb4Q65lX2DvqXIasX
+                3DlBIUpnrR96X7Rr8Q4quHY4TDuGxLC+In+4BbuR+uug6bm5qpPCoR9ScuIU66+GQG1zvqWJ/irVggPN
+                JjI7kfNB8y4TKH6nVCa2sc94okjFy0qkHoSpzFva97mpWCwKMKggVUbnUn7AaCwHmTBnzlTl5iae794y
+                YPiyjERzAErnAAsNSEa25HxOL66Wrp/0Xs8/1meXISsoWMJfKvcUtYnfxDX3rkseGBcd28EIy3+8ym7a
+                de8B8xauqdhC2FiQNlUuS0iWDOc5JUEjXMoNvKmJMiUpM2aA9gTl5bm6mbycx3w4WQUIt7p8tI6TSsUM
+                oZQym4IuDWWpkZhSlKQhSlKQhSlKQhSlKQhUbxfDSSJZGsNcwsDm9NSP1HuKkqVqtAWCk+hI9QxjILFx
+                FGlDAFWBIG6tcge6nQfjXOePcEkgkLoHy3+zZQ0gVdO5IFvpfQEX0HnXcsbgEl8Q1GzDcf8Ar0qlNio8
+                7okgkMblWy6sCDZjbW2u4sPeqtYmYRed3BpWtq7Z32IK9XESCEz05TQ+/LvQRx3FYl0JHLyZXDsP+4GV
+                igNiQb36V4kjcGyx2CDlpmYZrvbUAX1ttbQa1vcYxrviZ2dGjF3C9wyAEG2+v3b29aw8FIYs4FgsWZQT
+                m7xuuZh8J7lqsJcxaiCR8vStHjXESZEvDiYhTqsx7l6B/UijkOSwumAxMJhhjACh1KKjW+AZXVulhaxu
+                TWjx5ZY4sLi4yyPEeWGBObKS7QEnqCLqfkOtVkzMI2fNfIRyiPhdyHf+piPUV0XjICOsD3MQw0cEoH7x
+                NnH7ynKR/N56VK5x4di5M0DMHJI3T8Kg1nKVUsMzbRgA4lCkChA9QH9C8V7DDExMmOxl2gxQ5bte7FHG
+                9hsF6A693QbVXeMcNbDysja/ErDZ1bwOPQj8NqlW4XIcSmCxE5SEEsjsboFYCzrcjQhAB5EW86z4mWDO
+                +AmkzJEzLBiFBLJbTK22ZOhtsdtNR7uVNMmaMRJ50qSMwQk1lg/y1poHUlyFJDFQLAZkgGqWjOnIqhBo
+                5/VqD0NGO/elWBr1epDi3A5cPYsM0Z8Mqd6Jh/ENvY1G16DD4iViZYmyVBSTqC499DUa1itmS1SzlUGM
+                TfCuzeKxETyxIWVCot8RzX1S+4Fhf396iXuCQdwbGrDwHttiMLA0EYVlLX79yAtrMoAIsCdb3qL4VweX
+                EElEsg3dtI1H7zHy+ZqMcSvDiZMxZSiWLEkAeZJ+QathoI6+ElYAlOVaj3+YxcLwLzyrGg7zHf4VHxMf
+                JQNTVixaYiRjisEPsMEAiPcDRASXAO9zfa51GlYYMRCrLgYJAOcwjmxJB+I2yx21Edza5366Vhl4bKmJ
+                fBYXEGSOQgllNkKgNq9jawDG+wP4VUzZpxE/x5nIlCSUhYI5D/uTFOOUkBkJNQhyQCtky5cvw0ZRUk1b
+                fQDet+ttzv8ABJZpUxeNlJd2HKvsbaNNb+GPT5jyrBx7EWeGGMWjQqZALWyuwjVN/DlLHTyF6svZ4Rs4
+                gjN4ORJAp8yD9pIfViG+QHrXPFxucMZXAbMS5654jliQDqBYaeg3vXh5c/8Af8dOmlOVIbKNQlilIOzM
+                5Giid4tlJVh5SUmpLE6u9fw0ZUuJpIzdXAjjcHqAJAx/DX51rS8TzzFYgLquRG1IANszADUnQAADpUjj
+                Bz8QkzwNkEQzC4hzNY+O1+7qRpa9SeB7QJHZYcNCPLlyKq/zWTQHc2t896nCfNyAhBJ8hXzr3oVDY1aO
+                EScx5w3zja7KdmTlUzKwjUh0jbR2Km+eYnQC+oW/vV7TMVsLm/QXAPso3PzqG7KY6TEpnkEcYaSyle8L
+                aC5JtcXvYW/1roeB4ekXhHeI1Y7n/QelQ0y50+aSss1KMKdLq83RdwDEwFEtAy1evfvp6GMXB8LJGtna
+                97ELYDL1I0JG58z7mpOlKtEICE5R6kn1LmI5Ll4UpStoxClKUhClKUhClKUhClKUhGtjpgiMxNrDT36a
+                e9cP7W4QRTlwivzry6jUsukvLJ31Cm3nmrsvGMPJIoVAtr3Ob08NtCN/0FUTtnhWWAs0TZg65WYbNtmY
+                66Wve19OtQpsxaZyWSctrb/OzahIH9VWO5lpXKLmt/l796c8w4GqxsQsg5sZBvr8Y1vfWxI9T5V6MSsx
+                KhY5viI8/Uf8xTtWljED2ZRyZVe4JJWIn4iCAQb+wNbs+MOgZRmHeDKOYg/MEH0/WpwiuCTce/z73jT4
+                Nw7PNhImj731sB7HQKHDtp1ugNj5V0WY83Hgb3xAHygXP+qEVV+wn2/Eo5PhjiZzpYFluhOut7ORt86s
+                3ZD7TErJ8Jjkl+c8iGP+nOK8jxyb/PUx+FDeaifwHi9wKFJlqURp9SPsaRIdquzsUsbZhZVuVcDvRdTl
+                84juV6bjoBRsG/1ATpPhkmE6WilsHQjfMjHRxcI2X09qs/b3j2YnCxnQW5rfvbrGPyJ9wPO1XwfFWiUp
+                3WibxRyC6H3HQ+oqw/Z3FYvD4TJM55Si+Qkg/wDZKv0knRilQuz5opMbjJCZ+TUagPXYjXyqLDp67P4f
+                EJgpcVFigqo1jCe9m0v3lbu39bHS5r7HiS+HOJfh2HaIMVLxFoBm0+FH1JzbgdDX2bhWFmXNkmwxJ005
+                sRv1VLiUdNAOlZ5uA4qOH6suMhWFmuEmeSC/oEZDpre3nrXpF8U4VPmGdMVkmKVcpXLVl1HiSfj0Z1kC
+                kdjh58pITlLN7LKYiNczlcN9aTh2HWLMFDSlpxmufhd+7Yjc+Yp2ghxD4OLEy4lSrmywL3AulxlVe6T6
+                kba3rNhuAYp4vq/12FoQbmOGSSW2n3FjGnW23WvOA4Hg0IuZ59e82TlRLl6umsxtrpbrWv8AFOE4Zfjo
+                VnWlT0TMmqy6DPOok3DhQezRlOGxE0FATRugruyb+dI18S4x6YaLD4VY3hS0svgTa7MWvZFzF21uddKz
+                NJFBGYcOc2f9tNszj7q+Uf6+1dI4PgIeWpQoyDVQgAiB87Dc+rEmqb244FyJOdGPspG71vgdun7ob9dO
+                orziv2lHEJ37plKJbuEkuVKd+cm51SmwVupjHPGYabKkGZLLq1Oydcu3U3axEavZDEZXi/dxFvlKAf8A
+                5Paq/jcMIeIY0CIsyzu4IF7CbvqPQAP0F63eHT5eaRuqLIPeBmb/AErz9JzyRY8tE2UTwoS3qCVJ2Ols
+                uta4fk4kX/Uk/Nwr7mJY/nYCSof0gf8AySD9BGjMuUXnkDK2uQZlLX6BR3n6Cx09K13ilktEqSqd0hVR
+                lKg6ZyDqDpfUAA61r/V5FJ5ihWNlEmUyljvcEkBa6D2FyBHU/wDEKRzWubt9xgeika2HhN9NibjETjKR
+                mAf7fKvyHdg5EeRLC1AP76aer9oneEGURKZVSOQDURk5F6eQyDYaWXoL1fcBiM8ate+mvuNG/Oqlh4Hb
+                woxsdCo2P6A/P+bc1Y+DYZ41ZWy2vdcu/wC9fQDy29ag4DOFE5aHpR7vdqvcZ31WbCfPZhWvv3p2ESlK
+                Uq2iNClKUhClKUhClKUhClKUhClYzIAQCRc7C+/tUf2jaUYWdob81Y2ZLdWQXUfMi3zoKloRKV8IqK7O
+                cajxcCTx7MO8Put8Sn+/KpatlJKSUqFR9YAvURRu2HZrDuyuq8t3JzGPQttuCCrHXcg79ap8vZHDoeZP
+                LmRCCQyoqH7ucqLvr0BF/XpcPpSx7w4UOlg3hDaaZyoNr9bX/wA9Lg8jwHH8QzBJJXZGuLNZxdvPmqb+
+                Wvp5Vx/h2KxEuZNlq5BQhyCaAlmfQ3cG4DHnjBnypRAUK3enXt9+tGEWXs+Ah4tiIlCKIykQtazOv5Zn
+                sbab7DYbMPFlwcUzIRzDkhjB6BFuzn0Gc+5sKxcGCrgHayx83F2OmTSEA3IJ01jINtK+4DgfNd5wtlOp
+                mnOWNQo3jB8Q65tBvrXjsR4JnTFTqJBCWpXIEhtNQbC1htay0qXhyy2JarWYaC5ZwwtvEDHhXcFicqk6
+                vJsSett2JPtVg4bwAheZpGg3mxG/8iafLb51mxmPhwtmjjM8tiVnnBWEZbZuWPnuNx8RqAx3GJp5ACzs
+                5AyAG99O8Y8ugXU6DW3iJ3q0kysXxA0aWitTsHflvcNzU/43iBJRhsGppIdf9Rqqu2gfpXrFww6LH/w8
+                ZLWN8RiBdtLZuWunS33R6GsUKn602Z2c8tSGc3OpkFwNk22AG1UrFLiIJEzZ42Y3U38jqdD06irvAP8A
+                eSb3HKS3teRr/wBX5VMk8MRg50tSFBRUDzXNA166t8JYbB43XMzpOa/5jAinnRFWZCICSUNibcoL6Hxb
+                EEVuYpVk/wCIS7CwE8As430ddb267g+QrWiH20RvYCAk/wAoiP6gVTYUxE8rhc0jgkkg9CbX1IFjWZ3D
+                E42csqUElIFdQDS9NiGJ8jplC8iQReLecBNF9tC+df8A9sGp/wD6R6hj57+wrew3aJJozFikBRgULx3K
+                H3XVoz+IFt6pmB4vJh5Ls7obgNvf926n9ppawPTYi96nF4xhpjfEJ9VkY2WaO1n+7zF1/O9vMVTcQ4LO
+                kqBWnxAzhSPiAoxYd6EOLltY7pxctdJt97H8H0PWIkYPkYoRlg6MGyONQ6NsbjS9xYjofcV97X4KSXD8
+                MkTMWERgcouY3ACsbdRnUX96keI8DyGOYjPGp5iywEtEbi2Z1F7aHxajTcU4ni5F4cZIDd4sT3SBn7uI
+                tew2NzJp62rROKzTZM8EKIIBNhUEV2dw+oOlhD90RKw3hpLpzFm0Cqsx6gtFPXCYnlqsaSOTtG0bOh0B
+                8TKMnzJ966Z2E7Jd+OeWVleMKeWiqq3+JXPeLAHoCKo/aHj+JQRQcwiRVBldSFbMdbXW1rdbdSa6N9FX
+                EHnw+d9WBKltLmx0Bt6Hr5aV7BWGxKZUuetsijo72UUkuzAgAipZwNiK1JlZlIFx26Aj1i+gW2r1Sozt
+                BxePCQPPIdFGg6sfhUepNZAKiwqTGSWiTpUR2ZlkfCwyTX5kiCRgenM71rdLAgW9Kkw4JIBFxuL6i9CG
+                JEZFYyUpSsQhSlKQhSlKQhSlKQiG7UcI+swMitkkU54nGhV18Jv+R9Ca5/gfpUkhPJxmHJkQ5XZSFNxo
+                3cItf5gV1mub/Sh2L56nFQL9so+0UfGo6j94fmPlU7AqkKV4WIHKbG2U/g9aA13fjOCwMyL/AFiBTtTD
+                gseZcOc2ExKq7ovwnUMQvQg30+XlXXsHiklRZI2DIwurDYivyvXQuyPGcVw1Y+YDJhpFzlBcugPx2+AX
+                89D71Z8S4clKUZVc9gDdbAmm6gn5gb0MXD4kklxT6P8Ab6Rk+kftCmPljwuFDSZXIJsQGYG1lvuBqc23
+                yqh8R4fJBIYplswtpupHuNxV9CJgpnxEQEmGxDEpMnjW9zySTpHdrKSdbfiNjinBlxRMLAGRVzSyhWOS
+                +XlxxqAAykXA9id94ieKpwE1KChpGVyq6if1E6AJpLKfjKykIBzNGy5KptX5tPs31ewY7PG5wieM8OSW
+                LDiZYwZreNI3kJfIL6yOufLYDS2pU1SeO8UxOMYMXBjvdOYQsZ23iUt3h0JN6muynEJuGvJFPZsLIWUt
+                uAVYpzEF9VuNfTXprr9qo4Aw5DKZZO9JGDdCp3e48LajVdyTp5eaVwrD4LECYnnzuyqEEkuRrlIc0SxA
+                CsxJZphmqmyjo1wdve99IhOINihlYkPkbNlR2N9CG7r+hOx0vtWTCd5w+HU5xdyoU9xh98DZWBKH3rRx
+                LFhZIWbLrmSQ9OgZlv06VJ8IMsbYmQNkkGF7tnLOv2sOuYgVKmkpQyAHJSK25lBNWq1a9I4oDkFR370D
+                7mJbjwedY8QgJXli6/HGTcuCN7XU6+1+lOw8l3kBO1tD08X4VDQ9tMSPFy5P+5GG/EizH8a2uAwHGTGw
+                jhaQ3OUFEsAgbILk3sCbE73rviZeL4bhQnFoT4YoFJU+5AIICjR6tVq1LxNwnhYtaglTMMxcPqAbbk/n
+                eNztdJYQWO6gEDr3V09dqzdlsM6MZZO4mUix0ZvlvYb/AKVH9oMKcHNa0UpQ3XPdxYtZRILjWx6GtObt
+                niT4eXH/ANuML+Ba7D8axhU4vieFIwiE5FUKlKbYkMEqNj8TNWlRGcV4WEWnMp3GYMG1I16g/aMnaLiL
+                SyXaKRTIPslyWflg6bjQMd77LYb1py4TZ5bKdMqR95z8zrf2tbzrY4txHMMI00r5pIHuw1drTyC17EjT
+                yrCuIVADDDKzGwBYMNPUvrb0qPhgpKMiwHSVJLWdKil9Ls9h2EQZpOZxqx+YGth5RIcJ4jPhiDCGhjBu
+                wazBvvErm08771bTxRfqEuJbDckOeYjaLDNJCQ0fqmZkAGYC99zVT4VMnNti8xJ1jWM2iGUX+0B71/U9
+                2t7tZxabiLfV8KhbD4dbsVFgxt3nt5XvlHvWn8Ik4+eSoZMrEroNaPVjUD4twxvHRM5UqW7u9hf+/wAo
+                pc7vNIzAFmYljYE+v4Crp9F/ayHBO8c5KxyEWexIVr21A6HTXpat7hPBo8NYxtcMFIxHdOR20UMAbmJ7
+                2YH016jUj4Hh8TPzivIhictinLAw5ge8kOnezWv6B9thXpjxTD4wqk5P5YAZQblIemU1D/CB8T0UlIUh
+                RiJlTJZCga/Xz1+m1QQO14rEpGjSSMFRQSzE2AA61yDF9qoMdj1ac5cFhwzqrfGV8LFepJ0C+Xuah+3v
+                bh8a3LjumHU6L1Yj4m/yXp77Uw1JwHCClBVMoshh/wAXue5FOne2s/FB2TUfWOs8Q+ldpLxYTDnOxyoz
+                kMbtovcXr6XNX3spwg4aAK7F5nOeZzqWdvFr5DQD0Aqm/Rb2L5QGLnW0jD7JCPAG+IjoxH4D3rptVOOV
+                ISrwsOOUXN8x77DowJrtEqTnIzTL7bQpSlQI7wpSlIQpSlIQpSlIQpSlIRzPtz2FvJ9cwsas4OZ4SO4/
+                W4A6+Y6/rWYeNBomyu74qaymLLrzcxA3FjGq2AQ3G9wNa7lVK7XdiFnb6zhmEGKXvBhorH962x/et73q
+                Tnlz0pl4muWx6AuEKoSUFQBOVlUDFgAOKpZDqRr7cdfSOfrg5+HISsi4iN+7LAVZ43UCzsd7BW7ofTX8
+                KywwjEIPqE0gUOJJcLmtiBoFYxPvKoXQC+n4V6xHaGfDBoZ4mTEkgL3V5JAsqa38Ki5AW4JN71lxPZyI
+                QQLCRz8rFZAxXUEGWRmXXItsq2vctXf98mSsv8QAzqVyqASpKmSSVkABLJFAsHNVRYZSkcggFwiw0q4t
+                R+u1rDWJnDSRzty0AZEsCjRnKD4II2RhfKgu7X61WsZ2fi5qGGy5w8pWRVeNYohYNY33YGxvcZtDUZx7
+                iGJVjz1ZZ0ugnjJV2ygd2QrYSCxGuhFx7Viwna+QaSIrdxIiwFn5aMGK+RzAW+VcsPwfE4dObCrzIUAG
+                cKBDEZi/ItiQsOEkBIQ2WpyqehRZV/fmNvN4n8JhFQoMRg5mzbDDTu1jlDFSmYshCkGwbrUnjeK8KeH6
+                vFmgDBg/ctJfNGe8znU9y12N61uE9psG2IL82RMxFhJoMzteUrYlVUKqLvrrpWjwVo2gRTYvisbYiynu
+                3XPe+oBzHbrUcpUpCvHlKQRkqHTUlSiRnCwyEocsbggtpuFN8JBv9tmu8bWA4Jw/4BHIdLB58zXJUWyx
+                Ea97Y+VYeP8AA3ws45bqhccy0V0yBgFspuTc5WNwakDwyCQYl3hWwlkQfZ8sqsULNcAHTvW161q4Tsvg
+                zOYjGllhiLWdgc0hjDZ7DQ97S29xe1Vq1yZgWZ02ao5XIU8wAUdgqYKupKKhO4oS86RiFSFfy0CtNA/f
+                lI0eMHAOCPisQFlkVyqhvtbvdYyAy3uDcXBuTWfH8EwH/MEMbdQk+VgbkWtKT5A2HnWGLs3hkhikMOb7
+                fK+e/gZ5IwDbTMpyHTrWzhuGQXYGGNb4uXCiw2DRXiOv7w/OtwJMr/ZnTBkKgcnICUkOGE27MBSyg4Jj
+                E/EqxBzLQLBrUFdkjUnSNvh3GeFQwNhphz4woUBoxITd5H0I00LaEG+l60JsFCxC4fASRKys4fFTTiKw
+                Aucoa5Go0v8AlUhx/DRHD4uK8UdnYoNAxZI4WULYde+PnUcna/Dph4izl5LJmjAObuq8ct2ItqhFtdwP
+                epOHWZuHEzCylLUVEHMcx50hSVukIAclTk8oy9RERZZWVZAbbpcVfpo8anDezCSDELJZZ45DGI0yRx3I
+                vEdLZszd25N7W1qeaeCMQTIBEGUIyRqqvZzayBdXaKVQdidTVJxna2QTvLAMudEQ5wGY5AuViNs11vWx
+                wGXEhJZoEvMMxeaQqXUkFnESnQNa5JAJ3qbP4XiJyfExSwiWyWS4SElaAJia8g5myEZlDQOc0cUzkA8o
+                c73sXHpcUGp2Nj4k8UQkOKAgSW7DDRhfrEmexbMw1hRiqmx1NvS1UvtBx6WchCvKhj0jhQZY1Ht1bzY6
+                6mrHh+HKkcOPRmmkB5kmdtXVf22h1zIxXW58V61+0WHXGvB9WUyzlbEKc7ZLDIZWsAGGqm/lvtVhw2fI
+                lzwiWglLqClmmRab5klyHAH8xas5JCS3MBznJUpJ06bg9fsKRSwPKus/R19HuUrisWuuhjibp5NIPPyX
+                pufITPYb6PY8JlmnyyYjcdUj/hvu37x+VX2t+I8W8QGVJ+HU79th6m1r7YfC5eZd4UpSqKJsKUpSEKUp
+                SEKUpSEKUpSEKUpSEKUpSERfHOBwYuPlzoHHQ7Mp81I1U1znG9j8ZgWMmEtiY8uTJILuqhsyiwIzWOul
+                vautUrsiepKDLLKQbpNQfLTuGMaKlhRfXfWOI8N4zFLy4Jgc/facS2TO+YtkF/DmYre9tFt1rziOy0E+
+                dkJS5bKFCmIiPKjGw2zSMAADteuq8d7MYXFj7aJS1rBxpIP5hrb0OlUvFfR1iYDmwOKNrg8uXw903XUA
+                jQ6i43rZISkqXhJplKNweZBJUSTQFnoA8tQCQE1FuSkGyhmHyPvetYoWO7GyJGXRhIQ7R2XqEZVzLfzc
+                kW9Kg5sDPETmV0KGxNiuU9PY+VdBlfH4flpPgXKRshzxAsGWIuwuVzAEuxYsbX00qJftKv1OaN+YZ5C4
+                OYFlPNZCSWPkEsB0q1wuL4iCypaZgKwHSQ+VRucrgBCRzEgGqTu0aZLljUjuNu++kfOwHC8Rj3xEXPkj
+                jCXdh3rlzYBwSM2YBv8ADUl2k4bi8LiMv1tnPLQhytmIzEqLa7Ml9/Kpz6DZ0MOJQD7QSqzG3wstkF/d
+                ZNOl/Wsv0oEiaIkBFCECQjQlm8N9riwP8x9agcXxC5c1aUAUOqEq2c8yTdvbCJ2AkomZc9X6kfQiKzwP
+                hOKxcow5xTKpUs1lvYKwa9rj/mMp361o/SFwObBSRgzvKst5S5GW7g2bQE94Arr6+lXH6MCTiJCLOvLs
+                XA0U5h3b+bXv/IK9/TdOgw0CMDnaUlDbYKpD3P8AMunX5VnhGLmrmoSpqk2SlN9eVKdgSelbQx0iWjNl
+                DMNyfqTHG5GZjdiSepJJ/wBKsGF7HTNybkLzC1gd1CLnuQB1XUCq+ik7An2ro+Gkx+IjhWHByho2R+ZI
+                MqExoU0z2DKVOoB6VfcWmYqUEDD5a5gSoinKcpqRQKLqYFRZmrFXh0pU+Z/L190ii43DHDTlDkfIw13R
+                uoNuo9KuUHaGOOZZFuRiolZ0iAJScEBrKdCGsRbcqxqcg+jOWeTm4yZVNgMkI2CiwFz0tpt86u/AuymF
+                wmsMSh7W5jd6Q/zHUewsKqcdiMNiZSBPGdeXKpqJLsSHIFlpCgydGNC0S5MlaFEigfz9tS/WKBwHsdjM
+                RzBIzYTCyOzcvQyWfxAAjuAi2/4V0fgPAcPg4+XAgUdTu7HzZjqTUrSq6bPVMcWGw1LM51UW/UolXWJK
+                JYTb3+PKFKUrjG8KUpSEKUpSEKUpSEKUpSEKUpSEKUpSEKUpSEKUpSEKUpSEK1p8JHJ+0jR/4lDfqKUr
+                BhHrC4SOMWjRUHkqgD8q0O0HBkxUXLYlbd5WHQ+x3pSjOGMZBILiPPZzgiYWMqrFixzsx6m1thtUjicI
+                kgyyKrjyZQR+Br7SjABhAkkkmPGHwMUf7ONE/hUD9BWzSlBGIUpSswhSlKQhSlKQhSlKQhSlKQhSlKQj
+                /9k=
+</property>
+        </structure>
+    </list-property>
+</report>

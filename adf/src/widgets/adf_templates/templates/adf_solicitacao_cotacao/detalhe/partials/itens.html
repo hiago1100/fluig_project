@@ -1,0 +1,53 @@
+<div class="panel-group" ng-init="itensCollapsed = true">
+    <div class="panel panel-default">
+        <div class="panel-heading fs-cursor-pointer" ng-click="itensCollapsed = !itensCollapsed">
+            <a class="collapse-icon" ng-class="{'up': itensCollapsed}">
+                <h3 class="panel-title">Itens Solicitados</h3>
+            </a>
+        </div>
+        <div id="collapseItens" class="panel-collapse collapse" ng-class="{'in': itensCollapsed}">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-info" ng-repeat="item in documento.Itens">
+                    <div class="panel-heading fs-cursor-pointer" ng-click="item.collapsed=!item.collapsed">
+                        <a class="collapse-icon" ng-class="{'up': item.collapsed}">
+                            <!--data-toggle="collapse" data-parent="#accordion" href="#collapseItem{{item.itemSeq}}"-->
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="col-sm-12">
+                                        <b>Item</b>
+                                        <p>{{item.itemDescricao || 'Não informado'}}</p>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <i>{{item.itemObservacao || 'Não informado'}}</i>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="col-sm-4">
+                                        <b>Qtde</b>
+                                        <p>{{item.itemQtd | number : 2}} {{item.itemUnMedida}}</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Saldo em estoque</b>
+                                        <p>{{item.itemQtdSaldo | number : 2}} {{item.itemUnMedida}}</p>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <b>Data da Entrega</b>
+                                        <p>{{item.itemDataEntrega | date}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="collapseItem{{item.itemSeq}}" ng-class="{'in': item.collapsed}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion{{item.itemSeq}}">
+                                <!-- partial:item-UltCompras.html -->
+                                <!-- partial -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,354 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+		 crossorigin="anonymous">
+		<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="jquery.mask.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+		<script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+	</head>
+
+	<body onload=init()>
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="panel panel-default" id="div_dadosSolicitacao">
+					<div class="panel-body">
+
+						<div class="col-md-12 title">
+							<img src="img\logo450x95.fw.png" class="imagen">&nbsp;
+							<h1>
+								<b><span class="fluigicon fluigicon-process fluigicon-md"></span> Reembolso de Despesas</b>
+							</h1>
+							<br>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3 col-xs-12">
+								<div class="form-group">
+									<label>Solicitante:</label>
+									<input type="text" name="cpSolicitante" id="cpSolicitante" class="form-control" readonly="">
+								</div>
+							</div>
+
+							<div class="col-md-4 col-xs-12">
+								<div class="form-group">
+									<label>Reembolsado:</label>
+									<input type="zoom" class="form-control" id="cpReembolsado" name="cpReembolsado" data-zoom="{
+										'displayKey':'Nome',
+										'datasetId':'ds_reembolsado',
+										'fields':[
+											{'field':'Nome', 'standard' :'true', 'search': 'true'},
+											{'field':'CPF', 'label':'CPF', 'visible' : 'false'},
+											{'field':'Código Reembolso', 'label':'Cod', 'visible' : 'false'},
+											{'field':'Banco', 'label':'Banco', 'visible' : 'false'},
+											{'field':'Agencia', 'label':'Agencia', 'visible' : 'false'},
+											{'field':'Número da Conta', 'label':'Num_Conta', 'visible' : 'false'}
+										]
+									}" />
+								</div>
+							</div>
+
+							<div class="col-md-3 col-xs-12" id="centroCusto" name="centroCusto">
+								<div class="form-group">
+									<label>Centro de Custo:</label>
+									<input type="zoom" class="form-control" id="cpCentroCusto" name="cpCentroCusto" data-zoom="{
+										'displayKey':'centroCustoTeste',
+										'datasetId':'teste',
+										'fields':[
+											{'field':'centroCustoTeste', 'label':'Centro de Custo', 'standard' :'true', 'search': 'true'},
+											{'field':'cpfAprovadorUm', 'label':'cpfUm', 'visible' : 'false'},
+											{'field':'cpfAprovadorDois', 'label':'cpfDois', 'visible' : 'false'},
+											{'field':'codCusto', 'label':'Codigo', 'visible' : 'false'}
+										]
+									}" />
+								</div>
+							</div>
+
+							<div class="col-md-2 col-xs-12">
+								<div class="form-group">
+									<label>CC-Custo</label>
+									<input type="text" name="aux_codCusto" id="aux_codCusto" class="form-control" readonly="">
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4 col-xs-12">
+								<div class="form-group">
+									<label>Agência:</label>
+									<input type="text" name="cpAgencia" id="cpAgencia" class="form-control" readonly>
+								</div>
+								<input type="text" name="valorKM" id="valorKM" class="form-control" style="display: none">
+							</div>
+
+							<div class="col-md-3 col-xs-12">
+								<div class="form-group">
+									<label>Conta:</label>
+									<input type="text" name="cpConta" id="cpConta" class="form-control" readonly>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-xs-12">
+								<div class="form-group">
+									<label>Banco:</label>
+									<input type="text" name="cpBanco" id="cpBanco" class="form-control" readonly>
+								</div>
+							</div>
+
+							<div class="col-md-2 col-xs-12">
+								<div class="form-group">
+									<label>Data:</label>
+									<input type="text" name="cpDataSolic" id="cpDataSolic" class="form-control" readonly="">
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4 col-xs-12">
+								<div class="form-group">
+									<label>CPF:</label>
+									<input type="text" name="cpCpf" id="cpCpf" class="form-control" readonly>
+								</div>
+							</div>
+
+							<div class="col-md-4 col-xs-12">
+								<div class="form-group">
+									<label>Cod.Reembolsado</label>
+									<input type="text" name="codReembolsado" id="codReembolsado" class="form-control" readonly="">
+								</div>
+							</div>
+
+							<div class="col-md-4 col-xs-12">
+								<div class="form-group">
+									<label>.</label>
+									<div class="custom-checkbox custom-checkbox-primary" style="height: 34px; padding: 6px;">
+										<input type="checkbox" name="checkCartao" id="checkCartao" onchange="validateCard()">
+										<label for="checkCartao">Cartão Corporativo</label>
+									</div>
+									<input type="hidden" name="infoCheckCard" id="infoCheckCard" class="form-control">
+								</div>
+								<!-- <input type="checkbox" name="checkCartao" id="checkCartao"> -->
+							</div>
+
+							<input type="text" name="aprovadorCerto" id="aprovadorCerto" style="display: none">
+							<input type="text" name="aprovadorA" id="aprovadorA" style="display: none">
+							<input type="text" name="aprovadorB" id="aprovadorB" style="display: none">
+						
+						</div>
+
+						<br>
+
+						<div class="form-group row">
+							<div class="col-md-12 table-responsive" id="datatablePA" name="datatablePA">
+							
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3 col-xs-12">
+								<div class="form-group">
+									<label>Valor total de PA's</label>
+									<div class="input-group">
+										<span class="input-group-addon">$</span>
+										<input type="text" id="totalPA" name="totalPA" class="form-control" readonly="">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-3 col-xs-12" name="div_pa" id="div_pa" style="display: none;">
+								<div class="form-group">
+									<label>Utiliza PA?</label>
+									<select name="pa" id="pa" class="form-control" onchange="infoPa(this.value)">
+										<option value="" disabled selected>Selecione</option>
+										<option value="N"> Não </option>
+										<option value="S"> Sim </option>
+									</select>
+									<input type="text" name="descPa" id="descPa" class="form-control" style="display: none;" readonly>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<!-- <div class="col-md-3" name="div_pa" id="div_pa" style="display: none">
+								<label>Utiliza PA?</label>
+								<input type="radio" name="pa" id="pa1" value="S"> Sim
+								<input type="radio" name="pa" id="pa2" value="N"> Não
+							</div> -->
+
+							<input type="text" id="aux_total_pa" name="aux_total_pa" style="display: none">
+							<input type="text" id="aux_total_titulo" name="aux_total_titulo" style="display: none">
+							<input type="text" id="condicaoPA" name="condicaoPA" style="display: none">
+							<input type="hidden" id="aux_pa" name="aux_pa">
+						</div>
+
+						<br>
+						<br>
+
+						<div class="col-md-12 col-xs-12">
+							<a id="btAddChildTable" class="btn btn-primary" onclick="adicionarLinha(),somarValorDespesa()">
+								<i class="fluigicon fluigicon-plus fluigicon-xs"></i> Adicionar Despesa
+							</a>
+						</div>
+
+						<div class="row form-group"></div>
+
+						<div class="col-md-12 col-sm-12 table-responsive">
+							<table tablename="tblItem" id="tblItem" noaddbutton="true" class="table table-hover table-striped" customFnDelete="fnCustomDelete(this)">
+								<thead>
+									<tr class="tableHeadRow">
+										<th width="20%" style="text-align: center;">Tipo Despesa</th> 
+										<th width="20%" style="text-align: center;">Valor</th>
+										<th width="30%" style="text-align: center;">Descrição</th>
+										<th width="15%" style="text-align: center;">Data</th>
+										<th width="10%" style="text-align: center;">Código</th>
+										<th width="05%" style="text-align: center;">Anexo</th> 
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<input type="zoom" class="form-control" id="cpTipoDespesa" name="cpTipoDespesa" data-zoom="{
+			        							'displayKey':'ED_DESCRIC',
+			        							'datasetId':'ds_reembolso_sql',
+			        							'fields':[
+													{'field':'ED_CODIGO', 'label':'Codigo', 'standard' : 'true', 'visible': 'false'},
+													{'field':'ED_DESCRIC', 'label':'Tipo', 'search': 'true'}
+			        							]
+			        						}" />
+										</td>
+
+										<td>
+											<div class="input-group">
+												<span class="input-group-addon">$</span>
+												<input type="text" name="cpValor" id="cpValor" class="form-control money" readonly onchange="somarValorDespesa()">
+											</div>
+
+											<br>
+
+											<input type="number" name="qtd" id="qtd" class="form-control" placeholder="KM" onchange="calcula(this, this.value),somarValorDespesa()"
+											style="display: none"> 
+										</td>
+
+										<td>
+											<input type="text" name="cpDescricao" id="cpDescricao" class="form-control">
+										</td>
+
+										<td>
+											<input type="text" name="dtReb" id="dtReb" class="form-control calendario" onclick="calendario()" onchange="Condicao()">
+										</td>
+
+										<td>
+											<input type="text" name="aux_codigo" id="aux_codigo" class="form-control" readonly>
+										</td>
+
+										<td>
+											<a id="btnTeste" name="btnTeste" class="btn btn-primary m-b-20" onclick="showCamera(this)">
+												<i class="fluigicon fluigicon-upload fluigicon-xs" data-file-upload></i> Upload
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<br>
+
+						<div class="row">
+							<div class="col-md-3 col-xs-12">
+								<div class="form-group">
+									<label>Valor total do titulo:</label>
+									<div class="input-group">
+										<span class="input-group-addon">$</span>
+										<input type="text" name="totalTitulo" id="totalTitulo" class="form-control" readonly>
+									</div>
+									<input type="text" name="verificaTitulo" id="verificaTitulo" style="display: none">
+								</div>
+							</div>
+
+							<div class="col-md-2 col-xs-12" style="padding: 24px 0px 0px 0px;">
+								<div class="form-group">
+									<a id="btTitulo" class="btn btn-primary" style="width: 150px;" onclick="consultaSaldo()">
+										<i class="fluigicon fluigicon-bell fluigicon-xs"></i> Saldo
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3 col-xs-12">
+								<div class="form-group">
+									<input type="text" id="saldoReb" name="saldoReb" style="display: none" class="form-control">
+								</div>
+							</div>
+						</div>
+
+						<div id="div_financeiro" name="div_financeiro">
+							<div class="col-md-12 col-xs-12">
+								<div class="conteudo_pagina" style="text-align:center;">
+									<div class="labels_form" style="height:30px;width:100%;text-align:center;background-color: #93bf59;color: #ffff;padding-top:6px;">
+										FINANCEIRO
+									</div>
+								</div>
+							</div>
+
+							<div class="row form-group"></div>
+							<div class="row form-group"></div>
+
+							<div class="form-field" data-type="checkbox" name="div_swtButtonFinanceiro" id="div_swtButtonFinanceiro">
+
+								<div class="form-input">
+									<div class="col-md-3">
+										<input type="checkbox" class="filter-toggle" name="swtButtonFinanceiro" id="swtButtonFinanceiro" data-toggle="toggle" data-on="Valido"
+										 data-off="Invalido" data-width="180" data-size="large" data-onstyle="success" data-offstyle="danger" onchange="mostraJustificativaFinanceiro()">
+										<br>
+										<input type="text" name="aux_financeiro" id="aux_financeiro" style="display: none" value="reprovado">
+									</div>
+
+									<div class="col-md-3">
+										<label>Em:</label>
+										<input type="text" name="dtFinanceiro" id="dtFinanceiro" class="form-control" readonly="">
+									</div>
+
+									<div class="col-md-3 col-md-offset-1">
+										<label>Por:</label>
+										<input type="text" name="cpNomeFinanceiro" id="cpNomeFinanceiro" class="form-control" readonly="">
+									</div>
+
+									<div class="row form-group"></div>
+									<div class="row form-group"></div>
+
+									<div id="div_justificativaFinanceiro" name="div_justificativaFinanceiro">
+
+										<div class="form-group">
+											<div class="col-md-12">
+												<label>Hist&oacute;rico de justificativa</label>
+												<textarea class="form-control" rows="3" id="justificativaFinanceiro" name="justificativaFinanceiro" placeholder="Informar o motivo da não validação"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<input type="hidden" name="formMode" id="formMode" class="form-control">
+					<input type="hidden" name="isMobile" id="idMobile" class="form-control">
+					<input type="hidden" name="atvAtual" id="atvAtual" class="form-control" value="0">
+				</div>
+			</form>
+
+			
+		</div>
+	</body>
+</html>

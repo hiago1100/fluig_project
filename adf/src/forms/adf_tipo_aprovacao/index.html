@@ -1,0 +1,29 @@
+<html ng-app="AdfApp">
+
+<head>
+	<!-- partial:../partials/head.html -->
+	<!-- partial -->
+	<title>Tipos de Aprovação</title>
+</head>
+
+<body ng-controller="AdfController as vm">
+	<div class="fluig-style-guide ng-cloak">
+		<div class="container">
+			<form name="form" role="form" class="form form-horizontal">
+				<div class="row">
+					<div ng-if="vm.Params.edit && vm.Errors.length <= 0" class="alert alert-info animate" role="alert">
+						Cadastre os tipos de aprovação
+					</div>
+				</div>
+				<!-- partial:../partials/alerts.html -->
+				<!-- partial -->
+				<!-- partial:partials/angularMap.html -->
+				<!-- partial -->
+				<!-- partial:partials/header.html -->
+				<!-- partial -->
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>

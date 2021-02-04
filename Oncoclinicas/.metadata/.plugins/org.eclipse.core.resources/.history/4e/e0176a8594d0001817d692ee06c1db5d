@@ -1,0 +1,35 @@
+function createDataset(fields, constraints, sortFields) {
+
+	
+	log.info("ENTRANDO NO MEU DATASET FECHAMENTO DE CAIXA");
+	
+	var dataset = DatasetFactory.newDataset();
+	dataset.addColumn("SALDO");
+	dataset.addColumn("SUCESSO");
+	dataset.addColumn("FECHADO");
+	
+
+	var	periodicService = ServiceManager.getService('ws_FechamentoCaixa');
+	var serviceHelper = periodicService.getBean();
+	var serviceLocator = serviceHelper.instantiate('br.com.oncoclinicas.webservices.wsfechamentocaixa_apw.WSFECHAMENTOCAIXA');
+	var service = serviceLocator.getWSFECHAMENTOCAIXASOAP();
+
+	var filial = "001";
+
+	
+	for ( var i in constraints) {
+		if(constraints[i].fieldName == "FILIAL"){
+			filial = constraints[i].initialValue;
+		}
+	}
+	
+	var resultObj = service.WSSALDOCAIXA(filial);
+	var result = resultObj.getWSRETCAIXAGERAL().toArray();
+	
+	for (var x in result) {
+		dataset.addRow(new Array(result[x].getFECHADO(), result[x].getSALDO, result[x].getSUCESSO()));
+	}
+	
+	return dataset;
+	
+}

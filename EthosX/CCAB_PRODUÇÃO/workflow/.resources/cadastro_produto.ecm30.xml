@@ -1,0 +1,2291 @@
+<list>
+  <ProcessDefinition>
+    <processDefinitionPK>
+      <companyId>1</companyId>
+      <processId>cadastro_produto</processId>
+    </processDefinitionPK>
+    <processDescription>Cadastro de Produto</processDescription>
+    <instruction></instruction>
+    <active>true</active>
+    <publicProcess>true</publicProcess>
+    <volumeId>Default</volumeId>
+    <categoryId>Registros</categoryId>
+    <managerEngineAllocationId>Papel</managerEngineAllocationId>
+    <managerEngineAllocationConfiguration>&lt;AssignmentController&gt;&lt;Role&gt;admin&lt;/Role&gt;&lt;/AssignmentController&gt;</managerEngineAllocationConfiguration>
+    <snapshotFrequency>0</snapshotFrequency>
+    <baseDay>0</baseDay>
+    <baseMonth>0</baseMonth>
+    <periodId>Default</periodId>
+    <uniqueCardVersion>false</uniqueCardVersion>
+    <keyWord></keyWord>
+    <complementsLevel>1</complementsLevel>
+    <notifyRequisitionerComplements>false</notifyRequisitionerComplements>
+    <notifyManagerComplements>false</notifyManagerComplements>
+    <deadlineTime>0</deadlineTime>
+    <warningDeadlineTime>0</warningDeadlineTime>
+    <notifyAuthorityComplements>false</notifyAuthorityComplements>
+  </ProcessDefinition>
+  <ProcessDefinitionVersion>
+    <processDefinitionVersionPK>
+      <companyId>1</companyId>
+      <processId>Cadastro de Produto</processId>
+      <version>15</version>
+    </processDefinitionVersionPK>
+    <versionDescription></versionDescription>
+    <formId>2153</formId>
+    <editionMode>true</editionMode>
+    <updateAttachmentsVersion>false</updateAttachmentsVersion>
+    <controlsAttachmentsSecurity>false</controlsAttachmentsSecurity>
+    <active>true</active>
+    <blockedVersion>false</blockedVersion>
+    <counterSign>false</counterSign>
+    <openInstances>0</openInstances>
+    <bpmnVersion>2</bpmnVersion>
+    <processStates/>
+    <favorito>false</favorito>
+    <inheritFormSecurity>false</inheritFormSecurity>
+    <mobileReady>false</mobileReady>
+  </ProcessDefinitionVersion>
+  <list>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </processStatePK>
+      <stateName>Início</stateName>
+      <stateDescription>Início</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>true</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>155</positionX>
+      <positionY>83</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>10</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>20</sequence>
+      </processStatePK>
+      <stateName>Complementa informações do produto (Logistica)</stateName>
+      <stateDescription>Complementa informações do produto (Logistica)</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName>logistPrazo</deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;logistResp&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>350</positionX>
+      <positionY>230</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>ccab</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>22</sequence>
+      </processStatePK>
+      <stateName>Complementa informações do produto (Contabilidade)</stateName>
+      <stateDescription>Complementa informações do produto (Contabilidade)</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName>contabPrazo</deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;contabResp&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>120</positionX>
+      <positionY>400</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>ccab</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>24</sequence>
+      </processStatePK>
+      <stateName>Complementa informações do produto (Fiscal)</stateName>
+      <stateDescription>Complementa informações do produto (Fiscal)</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName>fiscalPrazo</deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;fiscalResp&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>120</positionX>
+      <positionY>575</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>ccab</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>41</sequence>
+      </processStatePK>
+      <stateName>Integra informações Produto</stateName>
+      <stateDescription>Integra informações Produto</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>0</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>350</positionX>
+      <positionY>735</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>82</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>1</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>43</sequence>
+      </processStatePK>
+      <stateName>Verifica Erro </stateName>
+      <stateDescription>Verifica Erro </stateDescription>
+      <instruction></instruction>
+      <deadlineTime>3600</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Usuário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;User&gt;25171803854&lt;/User&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>170</positionX>
+      <positionY>750</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>ccab</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>46</sequence>
+      </processStatePK>
+      <stateName>Produto Integrado</stateName>
+      <stateDescription>Produto Integrado</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>7200</deadlineTime>
+      <deadlineFieldName></deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;usuario_solicitante&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>600</positionX>
+      <positionY>742</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>ccab</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>55</sequence>
+      </processStatePK>
+      <stateName>Complementa informações do produto (Suprimentos)</stateName>
+      <stateDescription>Complementa informações do produto (Suprimentos)</stateDescription>
+      <instruction></instruction>
+      <deadlineTime>0</deadlineTime>
+      <deadlineFieldName>supplyPrazo</deadlineFieldName>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId>Campo Formulário</engineAllocationId>
+      <engineAllocationConfiguration>&lt;AssignmentController&gt;&lt;FormField&gt;supplyResp&lt;/FormField&gt;&lt;/AssignmentController&gt;</engineAllocationConfiguration>
+      <selectColleague>1</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>false</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>3600</allowanceAuthorityTime>
+      <frequenceAuthorityTime>3600</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>600</positionX>
+      <positionY>52</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId>ccab</periodId>
+      <stateType>0</stateType>
+      <bpmnType>80</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <noticeExpirationAuthorityTime>0</noticeExpirationAuthorityTime>
+      <noticeExpirationRequisitionerTime>0</noticeExpirationRequisitionerTime>
+      <noticeExpirationManagerTime>0</noticeExpirationManagerTime>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <executionType>0</executionType>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>42</sequence>
+      </processStatePK>
+      <stateName>Intermediário</stateName>
+      <stateDescription>Intermediário</stateDescription>
+      <instruction>Evento intermediário do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>1</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>true</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>340</positionX>
+      <positionY>790</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>43</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+      <parentSequence>41</parentSequence>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>18</sequence>
+      </processStatePK>
+      <stateName>Verifica tipo produto</stateName>
+      <stateDescription>Verifica tipo produto</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>143</positionX>
+      <positionY>221</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>34</sequence>
+      </processStatePK>
+      <stateName>Verifica</stateName>
+      <stateDescription>Verifica</stateDescription>
+      <joint>false</joint>
+      <initialState>false</initialState>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <automatic>true</automatic>
+      <positionX>373</positionX>
+      <positionY>580</positionY>
+      <inhibitTransfer>false</inhibitTransfer>
+      <stateType>1</stateType>
+      <bpmnType>120</bpmnType>
+      <signalId>0</signalId>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+    <ProcessState>
+      <processStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>48</sequence>
+      </processStatePK>
+      <stateName>Fim</stateName>
+      <stateDescription>Fim</stateDescription>
+      <instruction>Atividade final do processo</instruction>
+      <deadlineTime>0</deadlineTime>
+      <joint>false</joint>
+      <agreementPercentage>0</agreementPercentage>
+      <engineAllocationId></engineAllocationId>
+      <engineAllocationConfiguration></engineAllocationConfiguration>
+      <selectColleague>0</selectColleague>
+      <initialState>false</initialState>
+      <notifyAuthorityDelay>true</notifyAuthorityDelay>
+      <notifyRequisitionerDelay>false</notifyRequisitionerDelay>
+      <allowanceAuthorityTime>0</allowanceAuthorityTime>
+      <frequenceAuthorityTime>1</frequenceAuthorityTime>
+      <allowanceRequisitionerTime>0</allowanceRequisitionerTime>
+      <frequenceRequisitionerTime>0</frequenceRequisitionerTime>
+      <transferAttachments>false</transferAttachments>
+      <subProcessId></subProcessId>
+      <formFolder>0</formFolder>
+      <notifyAuthorityFollowUp>false</notifyAuthorityFollowUp>
+      <notifyRequisitionerFollowUp>false</notifyRequisitionerFollowUp>
+      <automatic>false</automatic>
+      <positionX>760</positionX>
+      <positionY>760</positionY>
+      <forecastedEffortType>0</forecastedEffortType>
+      <forecastedEffort>0</forecastedEffort>
+      <notifyManagerFollowUp>false</notifyManagerFollowUp>
+      <notifyManagerDelay>false</notifyManagerDelay>
+      <allowanceManagerTime>0</allowanceManagerTime>
+      <frequenceManagerTime>0</frequenceManagerTime>
+      <inhibitTransfer>false</inhibitTransfer>
+      <periodId></periodId>
+      <stateType>0</stateType>
+      <bpmnType>60</bpmnType>
+      <signalId>0</signalId>
+      <counterSign>false</counterSign>
+      <openInstances>0</openInstances>
+      <destinationStates/>
+      <digitalSignature>false</digitalSignature>
+    </ProcessState>
+  </list>
+  <list>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>15</version>
+        <sequence>18</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;tipoProd&quot;) == &quot;direta&quot;</condition>
+      <destinationSequenceId>20</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>15</version>
+        <sequence>18</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;tipoProd&quot;) == &quot;indireta&quot;</condition>
+      <destinationSequenceId>22</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>15</version>
+        <sequence>18</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;tipoProd&quot;) == &quot;servico&quot;</condition>
+      <destinationSequenceId>34</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>1</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;20&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplLogist&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot;</condition>
+      <destinationSequenceId>22</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>2</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;22&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoProduto&quot;) != &quot;servico&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplCont&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &apos;nao&apos;</condition>
+      <destinationSequenceId>24</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>3</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;24&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoProduto&quot;) != &quot;servico&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplFisc&quot;) == &quot;nao&quot;</condition>
+      <destinationSequenceId>41</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>4</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;0&quot; &amp;&amp; hAPI.getCardValue(&quot;departCadastrante&quot;) == &quot;suprimentos&quot; </condition>
+      <destinationSequenceId>22</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>5</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;0&quot; &amp;&amp; hAPI.getCardValue(&quot;departCadastrante&quot;) == &quot;fiscal&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplFisc&quot;) == &quot;nao&quot;</condition>
+      <destinationSequenceId>22</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>6</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;0&quot; &amp;&amp; hAPI.getCardValue(&quot;departCadastrante&quot;) == &quot;fiscal&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplFisc&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;departFisc3&quot;) == &quot;supply&quot;	</condition>
+      <destinationSequenceId>55</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>7</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;20&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplLogist&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;departLogist&quot;) == &quot;supply&quot; </condition>
+      <destinationSequenceId>55</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>8</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;20&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplLogist&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;departamento&quot;) == &quot;contabilidade&quot;	</condition>
+      <destinationSequenceId>22</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>9</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;20&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplLogist&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;departamento&quot;) == &quot;fiscal&quot;</condition>
+      <destinationSequenceId>24</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>10</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;22&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplCont&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;departCont1&quot;) == &quot;supply&quot; </condition>
+      <destinationSequenceId>55</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>11</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;22&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplCont&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;departCont2&quot;) == &quot;supply&quot; </condition>
+      <destinationSequenceId>55</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>12</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;22&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplCont&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;departCont1&quot;) == &quot;logistica&quot; </condition>
+      <destinationSequenceId>20</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>13</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;22&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplCont&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;departamento&quot;) == &quot;fiscal&quot;</condition>
+      <destinationSequenceId>24</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>14</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;24&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplFisc&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;departFisc1&quot;) == &quot;supply&quot; </condition>
+      <destinationSequenceId>55</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>15</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;24&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplFisc&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;departFisc1&quot;) == &quot;logistica&quot; </condition>
+      <destinationSequenceId>20</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>16</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;24&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplFisc&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;departFisc1&quot;) == &quot;contabilidade&quot;</condition>
+      <destinationSequenceId>22</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>17</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;24&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplFisc&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;departFisc2&quot;) == &quot;supply&quot; </condition>
+      <destinationSequenceId>55</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>18</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;24&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplFisc&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;departFisc2&quot;) == &quot;contabilidade&quot;</condition>
+      <destinationSequenceId>22</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>19</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;55&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;departamento&quot;) == &quot;logistica&quot;</condition>
+      <destinationSequenceId>20</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>20</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;55&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;departamento&quot;) == &quot;contabilidade&quot;</condition>
+      <destinationSequenceId>22</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>21</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;55&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;departamento&quot;) == &quot;fiscal&quot;</condition>
+      <destinationSequenceId>24</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>22</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;55&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; 	</condition>
+      <destinationSequenceId>24</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>23</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;24&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoProduto&quot;) == &quot;servico&quot; &amp;&amp; hAPI.getCardValue(&quot;departCadastrante&quot;) == &quot;fiscal&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplFisc&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot;</condition>
+      <destinationSequenceId>22</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>24</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;22&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoProduto&quot;) == &quot;servico&quot; &amp;&amp; hAPI.getCardValue(&quot;departCadastrante&quot;) == &quot;fiscal&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplCont&quot;) == &quot;nao&quot;</condition>
+      <destinationSequenceId>41</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>25</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;22&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoProduto&quot;) == &quot;servico&quot; &amp;&amp; hAPI.getCardValue(&quot;departCadastrante&quot;) == &quot;suprimentos&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplCont&quot;) == &quot;nao&quot;</condition>
+      <destinationSequenceId>24</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>26</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;24&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoProduto&quot;) == &quot;servico&quot; &amp;&amp; hAPI.getCardValue(&quot;departCadastrante&quot;) == &quot;suprimentos&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplFisc&quot;) == &quot;nao&quot;	</condition>
+      <destinationSequenceId>41</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>27</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;22&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoProduto&quot;) == &quot;servico&quot; &amp;&amp; hAPI.getCardValue(&quot;departCadastrante&quot;) == &quot;fiscal&quot; &amp;&amp; hAPI.getCardValue(&quot;infoComplCont&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;departCont3&quot;) == &quot;fiscal&quot;</condition>
+      <destinationSequenceId>24</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>28</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;24&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoProduto&quot;) == &quot;servico&quot; &amp;&amp; hAPI.getCardValue(&quot;departCadastrante&quot;) == &quot;fiscal&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;sim&quot; &amp;&amp; hAPI.getCardValue(&quot;departamento&quot;) == &quot;contabilidade&quot;</condition>
+      <destinationSequenceId>22</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+    <ConditionProcessState>
+      <conditionProcessStatePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <expressionOrder>29</expressionOrder>
+        <version>15</version>
+        <sequence>34</sequence>
+      </conditionProcessStatePK>
+      <condition>hAPI.getCardValue(&quot;atvAtual&quot;) == &quot;24&quot; &amp;&amp; hAPI.getCardValue(&quot;tipoProduto&quot;) == &quot;servico&quot; &amp;&amp; hAPI.getCardValue(&quot;departCadastrante&quot;) == &quot;fiscal&quot; &amp;&amp; hAPI.getCardValue(&quot;retorno&quot;) == &quot;nao&quot; &amp;&amp; hAPI.getCardValue(&quot;selecDepartFisc&quot;) == &quot;supply&quot;</condition>
+      <destinationSequenceId>55</destinationSequenceId>
+      <conditionType>0</conditionType>
+    </ConditionProcessState>
+  </list>
+  <list>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>19</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>4</initialStateSequence>
+      <finalStateSequence>18</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>21</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>18</initialStateSequence>
+      <finalStateSequence>20</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Compra direta</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>23</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>18</initialStateSequence>
+      <finalStateSequence>22</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>35</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>24</initialStateSequence>
+      <finalStateSequence>34</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>36</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>22</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>37</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>20</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>40</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>41</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>44</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>42</initialStateSequence>
+      <finalStateSequence>43</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Erro durante</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>45</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>43</initialStateSequence>
+      <finalStateSequence>41</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>49</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>46</initialStateSequence>
+      <finalStateSequence>48</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>51</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>20</initialStateSequence>
+      <finalStateSequence>34</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>52</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>24</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>53</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>46</initialStateSequence>
+      <finalStateSequence>48</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>true</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>54</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>22</initialStateSequence>
+      <finalStateSequence>34</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>56</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>34</initialStateSequence>
+      <finalStateSequence>55</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>57</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>55</initialStateSequence>
+      <finalStateSequence>34</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>58</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>18</initialStateSequence>
+      <finalStateSequence>34</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Serviço</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>63</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>43</initialStateSequence>
+      <finalStateSequence>46</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name>Falso Negativo</name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+    <ProcessLink>
+      <processLinkPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>64</linkSequence>
+      </processLinkPK>
+      <actionLabel></actionLabel>
+      <returnPermited>false</returnPermited>
+      <initialStateSequence>41</initialStateSequence>
+      <finalStateSequence>46</finalStateSequence>
+      <returnLabel></returnLabel>
+      <name></name>
+      <automaticLink>false</automaticLink>
+      <defaultLink>false</defaultLink>
+      <type>0</type>
+    </ProcessLink>
+  </list>
+  <list/>
+  <list>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>afterTaskComplete</eventId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function afterTaskComplete(colleagueId,nextSequenceId,userList){&#xd;
+    var NumProcess = getValue(&quot;WKNumProces&quot;);&#xd;
+&#xd;
+    if(nextSequenceId == 55 || nextSequenceId == 20 || nextSequenceId == 22 || nextSequenceId == 24 || nextSequenceId == 46){&#xd;
+        log.info(&quot;#### NUMERO DO PROCESSO: &quot;+NumProcess);&#xd;
+        log.info(&quot;#### PROXIMA ATIVIDADE: &quot;+nextSequenceId);&#xd;
+&#xd;
+        /* CONSULTA PROCESSO */&#xd;
+        var c1  = new Array();&#xd;
+        c1.push(DatasetFactory.createConstraint(&quot;workflowProcessPK.processInstanceId&quot;, NumProcess, NumProcess, ConstraintType.MUST));&#xd;
+        var dsProcesso = DatasetFactory.getDataset(&quot;workflowProcess&quot;, null, c1, null);&#xd;
+        var idDocument = dsProcesso.getValue(0, &quot;cardDocumentId&quot;);&#xd;
+&#xd;
+        /* CONSULTA DOCUMENTO */&#xd;
+        var c2  = new Array();&#xd;
+        c2.push(DatasetFactory.createConstraint(&quot;metadata#id&quot;, idDocument, idDocument, ConstraintType.MUST));&#xd;
+        c2.push(DatasetFactory.createConstraint(&quot;metadata#active&quot;, &apos;true&apos;, &apos;true&apos;, ConstraintType.MUST));               &#xd;
+        var dsForm = DatasetFactory.getDataset(&quot;ds_cadastroProduto&quot;, null, c2, null);&#xd;
+        &#xd;
+        var aux          = dsForm.getValue(0, &quot;auxRetorno&quot;);&#xd;
+        var ret          = dsForm.getValue(0, &quot;retorno&quot;);&#xd;
+        var necess       = dsForm.getValue(0, &quot;necess_retorno&quot;);&#xd;
+        var categoria    = dsForm.getValue(0, &quot;tipoProdDesc&quot;);&#xd;
+        var departamento = dsForm.getValue(0, &quot;departamento&quot;);&#xd;
+        var urlFluig     = &quot;http://192.168.9.25/portal/p/1/&quot;;&#xd;
+        var substituto = null;&#xd;
+        &#xd;
+        log.info(&quot;########### ------------- AFTER TASK COMPLETE ------------- ###########&quot;);&#xd;
+        &#xd;
+        switch(nextSequenceId){&#xd;
+            case 55:&#xd;
+                var resp = dsForm.getValue(0, &quot;supplyResp&quot;);&#xd;
+    &#xd;
+                if(departamento != &quot;&quot; &amp;&amp; ret == &quot;nao&quot; &amp;&amp; aux == &quot;&quot;){&#xd;
+                    if(resp == &apos;Pool:Role:suprimentos&apos;){&#xd;
+                        var emailResp   = &quot;suprimentos@ccab-agro.com.br&quot;;&#xd;
+                        var responsavel = &quot;Para o departamento de &lt;b&gt;Suprimentos&lt;/b&gt;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de um ajuste ou complemento nas informações complementares referentes ao seu departamento.&lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot;&lt;br&gt;&lt;br&gt; Informações adicionais: &lt;br&gt;&lt;br&gt; Departamento requisitante: &quot;+departamento+&quot;. &lt;br&gt; Necessidade: &quot;+necess+&quot;. &quot;;&#xd;
+                    }else{&#xd;
+                        /* CONSULTA USUARIO */&#xd;
+                        var c3 = new Array();&#xd;
+                        c3.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, resp, resp, ConstraintType.MUST));&#xd;
+                        var dsUser = DatasetFactory.getDataset(&quot;colleague&quot;, null, c3, null);&#xd;
+        &#xd;
+                        var nome  = dsUser.getValue(0, &quot;colleagueName&quot;);&#xd;
+                        var emailResp = dsUser.getValue(0, &quot;mail&quot;);&#xd;
+&#xd;
+                        //VERIFICA SE HOUVE SUBSTITUTO&#xd;
+                        substituto = getInfoSubstituto(NumProcess, nextSequenceId);&#xd;
+                        if (substituto) {&#xd;
+                            var vsubst = getUserInfo(substituto);&#xd;
+                            if (vsubst.length &gt; 0) {&#xd;
+                                substituto = vsubst[1];	&#xd;
+                            }	&#xd;
+                            else{&#xd;
+                                substituto = false;&#xd;
+                            }			&#xd;
+                        }&#xd;
+                        // --------&#xd;
+        &#xd;
+                        var responsavel = &quot;Prezado &quot;+nome+&quot;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de um ajuste nas informações complementares que você forneceu. &lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot;&lt;br&gt;&lt;br&gt; Informações adicionais: &lt;br&gt;&lt;br&gt; Departamento requisitante: &quot;+departamento+&quot;. &lt;br&gt; Necessidade: &quot;+necess+&quot;. &quot;;&#xd;
+                    }&#xd;
+                }else{&#xd;
+                    if(resp == &apos;Pool:Role:suprimentos&apos;){&#xd;
+                        var emailResp   = &quot;suprimentos@ccab-agro.com.br&quot;;&#xd;
+                        var responsavel = &quot;Para o departamento &lt;b&gt;Suprimentos&lt;/b&gt;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de informações complementares referentes ao seu departamento.&lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot; &quot;;&#xd;
+&#xd;
+                    }else{&#xd;
+                        var c3 = new Array();&#xd;
+                        c3.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, resp, resp, ConstraintType.MUST));&#xd;
+                        var dsUser = DatasetFactory.getDataset(&quot;colleague&quot;, null, c3, null);&#xd;
+        &#xd;
+                        var nome  = dsUser.getValue(0, &quot;colleagueName&quot;);&#xd;
+                        var emailResp = dsUser.getValue(0, &quot;mail&quot;);&#xd;
+&#xd;
+                        //VERIFICA SE HOUVE SUBSTITUTO&#xd;
+                        substituto = getInfoSubstituto(NumProcess, nextSequenceId);&#xd;
+                        if (substituto) {&#xd;
+                            var vsubst = getUserInfo(substituto);&#xd;
+                            if (vsubst.length &gt; 0) {&#xd;
+                                substituto = vsubst[1];	&#xd;
+                            }	&#xd;
+                            else{&#xd;
+                                substituto = false;&#xd;
+                            }			&#xd;
+                        }&#xd;
+                        // --------&#xd;
+        &#xd;
+                        var responsavel = &quot;Prezado &quot;+nome+&quot;, &quot;;&#xd;
+                        var detalhes    = &quot; que recebeu complemento sobre a sua solicitação de complemento de informações de outro departamento. &lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot; &quot;;&#xd;
+                    }&#xd;
+                }&#xd;
+            break;&#xd;
+            case 20:&#xd;
+                var resp = dsForm.getValue(0, &quot;logistResp&quot;);&#xd;
+&#xd;
+                if(departamento != &quot;&quot; &amp;&amp; ret == &quot;nao&quot; &amp;&amp; aux == &quot;&quot;){&#xd;
+                    if(resp == &apos;Pool:Role:logistica&apos;){&#xd;
+                        &#xd;
+                        var emailResp   = &quot;logistica@ccab-agro.com.br&quot;;&#xd;
+                        var responsavel = &quot;Para o departamento &lt;b&gt;Logistica&lt;/b&gt;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de um ajuste ou complemento nas informações complementares referentes ao seu departamento.&lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot;&lt;br&gt;&lt;br&gt; Informações adicionais: &lt;br&gt; Departamento requisitante: &quot;+departamento+&quot;. &lt;br&gt; Necessidade: &quot;+necess+&quot;. &quot;;&#xd;
+                        &#xd;
+                    }else{&#xd;
+                        /* CONSULTA USUARIO */&#xd;
+                        var c3 = new Array();&#xd;
+                        c3.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, resp, resp, ConstraintType.MUST));&#xd;
+                        var dsUser = DatasetFactory.getDataset(&quot;colleague&quot;, null, c3, null);&#xd;
+            &#xd;
+                        var nome  = dsUser.getValue(0, &quot;colleagueName&quot;);&#xd;
+                        var emailResp = dsUser.getValue(0, &quot;mail&quot;);&#xd;
+&#xd;
+                        //VERIFICA SE HOUVE SUBSTITUTO&#xd;
+                        substituto = getInfoSubstituto(NumProcess, nextSequenceId);&#xd;
+                        if (substituto) {&#xd;
+                            var vsubst = getUserInfo(substituto);&#xd;
+                            if (vsubst.length &gt; 0) {&#xd;
+                                substituto = vsubst[1];	&#xd;
+                            }	&#xd;
+                            else{&#xd;
+                                substituto = false;&#xd;
+                            }			&#xd;
+                        }&#xd;
+                        // --------&#xd;
+            &#xd;
+                        var responsavel = &quot;Prezado &quot;+nome+&quot;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de um ajuste nas informações complementares que você forneceu. &lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot;&lt;br&gt;&lt;br&gt; Informações adicionais: &lt;br&gt; Departamento requisitante: &quot;+departamento+&quot;. &lt;br&gt; Necessidade: &quot;+necess+&quot;. &quot;;&#xd;
+                    }&#xd;
+                }else{&#xd;
+                    if(resp == &apos;Pool:Role:logistica&apos;){&#xd;
+                        &#xd;
+                        var emailResp   = &quot;logistica@ccab-agro.com.br&quot;;&#xd;
+                        var responsavel = &quot;Para o departamento &lt;b&gt;Logistica&lt;/b&gt;, &quot;;&#xd;
+                        var detalhes    = &quot;que necessita de informações complementares referentes ao seu departamento.&lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot; &quot;;&#xd;
+                    }else{&#xd;
+                        var c3 = new Array();&#xd;
+                        c3.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, resp, resp, ConstraintType.MUST));&#xd;
+                        var dsUser = DatasetFactory.getDataset(&quot;colleague&quot;, null, c3, null);&#xd;
+        &#xd;
+                        var nome  = dsUser.getValue(0, &quot;colleagueName&quot;);&#xd;
+                        var emailResp = dsUser.getValue(0, &quot;mail&quot;);&#xd;
+&#xd;
+                        //VERIFICA SE HOUVE SUBSTITUTO&#xd;
+                        substituto = getInfoSubstituto(NumProcess, nextSequenceId);&#xd;
+                        if (substituto) {&#xd;
+                            var vsubst = getUserInfo(substituto);&#xd;
+                            if (vsubst.length &gt; 0) {&#xd;
+                                substituto = vsubst[1];	&#xd;
+                            }	&#xd;
+                            else{&#xd;
+                                substituto = false;&#xd;
+                            }			&#xd;
+                        }&#xd;
+                        // --------&#xd;
+        &#xd;
+                        var responsavel = &quot;Prezado &quot;+nome+&quot;, &quot;;&#xd;
+                        var detalhes    = &quot; que recebeu complemento sobre a sua solicitação de complemento de informações de outro departamento. &lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot; &quot;;&#xd;
+                    }&#xd;
+                }&#xd;
+            break;&#xd;
+            case 22:&#xd;
+                var resp = dsForm.getValue(0, &quot;contabResp&quot;);&#xd;
+&#xd;
+                if(departamento != &quot;&quot; &amp;&amp; ret == &quot;nao&quot; &amp;&amp; aux == &quot;&quot;){&#xd;
+                    if(resp == &apos;Pool:Role:contabilidade&apos;){&#xd;
+                        &#xd;
+                        var emailResp   = &quot;contabilidade@ccab-agro.com.br&quot;;&#xd;
+                        var responsavel = &quot;Para o departamento &lt;b&gt;Contabilidade&lt;/b&gt;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de um ajuste ou complemento nas informações complementares referentes ao seu departamento.&lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot;&lt;br&gt;&lt;br&gt; Informações adicionais: &lt;br&gt; Departamento requisitante: &quot;+departamento+&quot;. &lt;br&gt; Necessidade: &quot;+necess+&quot;. &quot;;&#xd;
+&#xd;
+                    }else{&#xd;
+                        /* CONSULTA USUARIO */&#xd;
+                        var c3 = new Array();&#xd;
+                        c3.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, resp, resp, ConstraintType.MUST));                        &#xd;
+                        var dsUser = DatasetFactory.getDataset(&quot;colleague&quot;, null, c3, null);&#xd;
+        &#xd;
+                        var nome  = dsUser.getValue(0, &quot;colleagueName&quot;);&#xd;
+                        var emailResp = dsUser.getValue(0, &quot;mail&quot;);&#xd;
+&#xd;
+                        //VERIFICA SE HOUVE SUBSTITUTO&#xd;
+                        substituto = getInfoSubstituto(NumProcess, nextSequenceId);&#xd;
+                        if (substituto) {&#xd;
+                            var vsubst = getUserInfo(substituto);&#xd;
+                            if (vsubst.length &gt; 0) {&#xd;
+                                substituto = vsubst[1];	&#xd;
+                            }	&#xd;
+                            else{&#xd;
+                                substituto = false;&#xd;
+                            }			&#xd;
+                        }&#xd;
+                        // --------&#xd;
+        &#xd;
+                        var responsavel = &quot;Prezado &quot;+nome+&quot;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de um ajuste nas informações complementares que você forneceu. &lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot;&lt;br&gt;&lt;br&gt; Informações adicionais: &lt;br&gt; Departamento requisitante: &quot;+departamento+&quot;. &lt;br&gt; Necessidade: &quot;+necess+&quot;. &quot;;&#xd;
+                    }&#xd;
+                }else{&#xd;
+                    if(resp == &apos;Pool:Role:contabilidade&apos;){&#xd;
+&#xd;
+                        var emailResp   = &quot;contabilidade@ccab-agro.com.br&quot;;&#xd;
+                        var responsavel = &quot;Para o departamento &lt;b&gt;Contabilidade&lt;/b&gt;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de informações complementares referentes ao seu departamento.&lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot; &quot;;&#xd;
+                    }else{&#xd;
+                        var c3 = new Array();&#xd;
+                        c3.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, resp, resp, ConstraintType.MUST));                        &#xd;
+                        var dsUser = DatasetFactory.getDataset(&quot;colleague&quot;, null, c3, null);&#xd;
+        &#xd;
+                        var nome  = dsUser.getValue(0, &quot;colleagueName&quot;);&#xd;
+                        var emailResp = dsUser.getValue(0, &quot;mail&quot;);&#xd;
+&#xd;
+                        //VERIFICA SE HOUVE SUBSTITUTO&#xd;
+                        substituto = getInfoSubstituto(NumProcess, nextSequenceId);&#xd;
+                        if (substituto) {&#xd;
+                            var vsubst = getUserInfo(substituto);&#xd;
+                            if (vsubst.length &gt; 0) {&#xd;
+                                substituto = vsubst[1];	&#xd;
+                            }	&#xd;
+                            else{&#xd;
+                                substituto = false;&#xd;
+                            }			&#xd;
+                        }&#xd;
+                        // --------&#xd;
+        &#xd;
+                        var responsavel = &quot;Prezado &quot;+nome+&quot;, &quot;;&#xd;
+                        var detalhes    = &quot; que recebeu complemento sobre a sua solicitação de complemento de informações de outro departamento. &lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot; &quot;;&#xd;
+                    }&#xd;
+                }&#xd;
+            break;&#xd;
+            case 24:&#xd;
+                var resp = dsForm.getValue(0, &quot;fiscalResp&quot;);&#xd;
+&#xd;
+                if(departamento != &quot;&quot; &amp;&amp; ret == &quot;nao&quot; &amp;&amp; aux == &quot;&quot;){&#xd;
+                    if(resp == &apos;Pool:Role:fiscal&apos;){&#xd;
+                        var emailResp   = &quot;fiscal@ccab-agro.com.br&quot;;&#xd;
+                        var responsavel = &quot;Para o departamento &lt;b&gt;Fiscal&lt;/b&gt;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de um ajuste ou complemento nas informações complementares referentes ao seu departamento.&lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot;&lt;br&gt;&lt;br&gt; Informações adicionais: &lt;br&gt; Departamento requisitante: &quot;+departamento+&quot;. &lt;br&gt; Necessidade: &quot;+necess+&quot;. &quot;;&#xd;
+                    }else{&#xd;
+                        /* CONSULTA USUARIO */&#xd;
+                        var c3 = new Array();&#xd;
+                        c3.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, resp, resp, ConstraintType.MUST));                        &#xd;
+                        var dsUser = DatasetFactory.getDataset(&quot;colleague&quot;, null, c3, null);&#xd;
+        &#xd;
+                        var nome  = dsUser.getValue(0, &quot;colleagueName&quot;);&#xd;
+                        var emailResp = dsUser.getValue(0, &quot;mail&quot;);&#xd;
+&#xd;
+                        //VERIFICA SE HOUVE SUBSTITUTO&#xd;
+                        substituto = getInfoSubstituto(NumProcess, nextSequenceId);&#xd;
+                        if (substituto) {&#xd;
+                            var vsubst = getUserInfo(substituto);&#xd;
+                            if (vsubst.length &gt; 0) {&#xd;
+                                substituto = vsubst[1];	&#xd;
+                            }	&#xd;
+                            else{&#xd;
+                                substituto = false;&#xd;
+                            }			&#xd;
+                        }&#xd;
+                        // --------&#xd;
+        &#xd;
+                        var responsavel = &quot;Prezado &quot;+nome+&quot;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de um ajuste nas informações complementares que você forneceu. &lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot;&lt;br&gt;&lt;br&gt; Informações adicionais: &lt;br&gt; Departamento requisitante: &quot;+departamento+&quot;. &lt;br&gt; Necessidade: &quot;+necess+&quot;. &quot;;&#xd;
+                    }&#xd;
+                }else{&#xd;
+                    if(resp == &apos;Pool:Role:fiscal&apos;){&#xd;
+                        var emailResp   = &quot;fiscal@ccab-agro.com.br&quot;;&#xd;
+                        var responsavel = &quot;Para o departamento &lt;b&gt;Fiscal&lt;/b&gt;, &quot;;&#xd;
+                        var detalhes    = &quot; que necessita de informações complementares referentes ao seu departamento.&lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot; &quot;;&#xd;
+                    }else{&#xd;
+                        var c3 = new Array();&#xd;
+                        c3.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, resp, resp, ConstraintType.MUST));                        &#xd;
+                        var dsUser = DatasetFactory.getDataset(&quot;colleague&quot;, null, c3, null);&#xd;
+        &#xd;
+                        var nome  = dsUser.getValue(0, &quot;colleagueName&quot;);&#xd;
+                        var emailResp = dsUser.getValue(0, &quot;mail&quot;);&#xd;
+&#xd;
+                        //VERIFICA SE HOUVE SUBSTITUTO&#xd;
+                        substituto = getInfoSubstituto(NumProcess, nextSequenceId);&#xd;
+                        if (substituto) {&#xd;
+                            var vsubst = getUserInfo(substituto);&#xd;
+                            if (vsubst.length &gt; 0) {&#xd;
+                                substituto = vsubst[1];	&#xd;
+                            }	&#xd;
+                            else{&#xd;
+                                substituto = false;&#xd;
+                            }			&#xd;
+                        }&#xd;
+                        // --------&#xd;
+        &#xd;
+                        var responsavel = &quot;Prezado &quot;+nome+&quot;, &quot;;&#xd;
+                        var detalhes    = &quot; que recebeu complemento sobre a sua solicitação de complemento de informações de outro departamento. &lt;br&gt;&quot;;&#xd;
+                        var infoComp    = &quot; &quot;;&#xd;
+                    }&#xd;
+                }&#xd;
+            break;&#xd;
+            case 46:&#xd;
+                var descricao = dsForm.getValue(0, &quot;desc_produto&quot;);&#xd;
+                var codigo = hAPI.getCardValue(&apos;codigo_produto&apos;);&#xd;
+&#xd;
+                var responsavel = &quot;Aos interessados, &quot;;&#xd;
+                var detalhes    = &quot;&lt;br&gt;&lt;br&gt; Existe um novo &lt;b&gt;Produto&lt;/b&gt; cadastrado no sistema.&lt;br&gt;&quot;;&#xd;
+                var infoComp = &quot;&lt;br&gt;&lt;br&gt; Informações adicionais: &lt;br&gt; Categoria: &quot;+categoria+ &quot;&lt;br&gt; Codigo: &quot;+codigo+&quot;. &lt;br&gt; Descrição: &quot;+descricao+&quot;. &quot;;&#xd;
+            break;&#xd;
+&#xd;
+        }&#xd;
+&#xd;
+        // var emailDev = &quot;andreia.botto@wikitec.com.br&quot;;&#xd;
+&#xd;
+        if(nextSequenceId == 46){&#xd;
+            // EMAIL DOS INTERESSADOS&#xd;
+            var emailInt1 = &quot;suprimentos@ccab-agro.com.br&quot;;&#xd;
+            var emailInt2 = &quot;logistica@ccab-agro.com.br&quot;;&#xd;
+            var emailInt3 = &quot;fiscal@ccab-agro.com.br&quot;;&#xd;
+            var emailInt4 = &quot;contabilidade@ccab-agro.com.br&quot;;&#xd;
+            var emailInt5 = &quot;admvendas@ccab-agro.com.br&quot;;&#xd;
+            var emailInt6 = &quot;wanderley.neto@wikitec.com.br&quot;;&#xd;
+&#xd;
+            var linkProc = &apos;&lt;a target=&quot;_blank&quot; href=&quot;&apos;+ urlFluig +&apos;pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=&apos;+ NumProcess +&apos;&quot;&gt; &lt;b&gt;&apos;+ NumProcess +&apos;&lt;/b&gt; - Cadastro do Produto &lt;/a&gt;&apos;;&#xd;
+&#xd;
+            try{&#xd;
+                var subject = &quot;Novo Produto no Sistema &quot;;&#xd;
+                var template = &quot;templateConclProd2&quot;;&#xd;
+&#xd;
+                parameters = new java.util.HashMap();&#xd;
+                parameters.put(&quot;subject&quot;, subject);&#xd;
+&#xd;
+                parameters.put(&quot;responsavel&quot;, responsavel);&#xd;
+                parameters.put(&quot;detalhe&quot;, detalhes);&#xd;
+                parameters.put(&quot;info&quot;, infoComp);&#xd;
+                parameters.put(&quot;linkProc&quot;, linkProc);&#xd;
+                &#xd;
+                recipients = new java.util.ArrayList();&#xd;
+                var campos   = hAPI.getCardData(NumProcess);&#xd;
+                var contador = campos.keySet().iterator();&#xd;
+&#xd;
+                while (contador.hasNext()) {&#xd;
+                    var id = contador.next();&#xd;
+                &#xd;
+                    if (id.match(&quot;td_email&quot;)) {&#xd;
+                        var campo = campos.get(id);&#xd;
+                        recipients.add(campo);&#xd;
+                    }&#xd;
+                }&#xd;
+                // recipients.add(emailDev);&#xd;
+                recipients.add(emailInt1); // INTERESSADOS REAL&#xd;
+                recipients.add(emailInt2); // INTERESSADOS REAL&#xd;
+                recipients.add(emailInt3); // INTERESSADOS REAL&#xd;
+                recipients.add(emailInt4); // INTERESSADOS REAL&#xd;
+                recipients.add(emailInt5); // INTERESSADOS REAL&#xd;
+                recipients.add(emailInt6); // INTERESSADOS REAL                &#xd;
+                &#xd;
+                notifier.notify(&quot;44209840823&quot;, template, parameters, recipients,&quot;text/html&quot;);&#xd;
+                log.info(&quot;#### ---- Notificação enviada com sucesso para &quot;+emailResp+&quot; ---- ####&quot;);&#xd;
+            }catch(e){&#xd;
+                log.info(&quot;#### ---- Ops! Aconteceu um erro durante a tentativa de envio de e-mail: &quot;+ e +&quot; ---- ####&quot;);&#xd;
+            }&#xd;
+            &#xd;
+        }else{&#xd;
+            var linkProc = &apos;&lt;a target=&quot;_blank&quot; href=&quot;&apos;+ urlFluig +&apos;pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID=&apos;+ NumProcess +&apos;&quot;&gt; &lt;b&gt;&apos;+ NumProcess +&apos;&lt;/b&gt; - Cadastro do Produto &lt;/a&gt;&apos;;&#xd;
+            &#xd;
+            try{&#xd;
+                var subject = &quot;Cadastro de Produto - &quot;+NumProcess+&quot;&quot;;&#xd;
+                var template = &quot;templateCadProd&quot;;&#xd;
+&#xd;
+                parameters = new java.util.HashMap();&#xd;
+                parameters.put(&quot;subject&quot;, subject);&#xd;
+&#xd;
+                parameters.put(&quot;responsavel&quot;, responsavel);&#xd;
+                parameters.put(&quot;detalhe&quot;, detalhes);&#xd;
+                parameters.put(&quot;categoria&quot;, categoria);&#xd;
+                parameters.put(&quot;info&quot;, infoComp);&#xd;
+                parameters.put(&quot;linkProc&quot;, linkProc);&#xd;
+                &#xd;
+                recipients = new java.util.ArrayList();&#xd;
+                // recipients.add(emailDev);&#xd;
+                recipients.add(emailResp); // USUARIO REAL&#xd;
+&#xd;
+                if (substituto) {&#xd;
+                    log.info(&quot;#### ---- Notificação enviada com sucesso para SUBSTITUTO:  &quot;+substituto+&quot; ---- ####&quot;);&#xd;
+                    recipients.add(substituto);                    &#xd;
+                    &#xd;
+                }&#xd;
+                &#xd;
+                notifier.notify(&quot;44209840823&quot;, template, parameters, recipients,&quot;text/html&quot;);&#xd;
+                log.info(&quot;#### ---- Notificação enviada com sucesso para &quot;+emailResp+&quot; ---- ####&quot;);&#xd;
+                // log.info(&quot;#### ---- Notificação enviada com sucesso para &quot;+emailDev+&quot; ---- ####&quot;);&#xd;
+            }catch(e){&#xd;
+                log.info(&quot;#### ---- Ops! Aconteceu um erro durante a tentativa de envio de e-mail: &quot;+ e +&quot; ---- ####&quot;);&#xd;
+            }&#xd;
+        }&#xd;
+    }&#xd;
+&#xd;
+}&#xd;
+&#xd;
+// =====================================================&#xd;
+// ============== FUNÇÃO DE SUBSTITUTO =================&#xd;
+// =====================================================&#xd;
+&#xd;
+&#xd;
+function getUserInfo(userid){&#xd;
+		&#xd;
+	var userInfo = new Array();&#xd;
+&#xd;
+    var c3 = new Array();&#xd;
+    c3.push(DatasetFactory.createConstraint(&quot;colleaguePK.colleagueId&quot;, userid, userid, ConstraintType.MUST));                        &#xd;
+	var dsUser = DatasetFactory.getDataset(&quot;colleague&quot;, null, c3, null);    &#xd;
+	var tam = dsUser.rowsCount; &#xd;
+	if (tam &gt; 0) {    &#xd;
+		userInfo[0]  = dsUser.getValue(0, &quot;colleagueName&quot;);&#xd;
+		userInfo[1] =  dsUser.getValue(0, &quot;mail&quot;);	&#xd;
+		return userInfo;&#xd;
+	}&#xd;
+	&#xd;
+	return false;&#xd;
+    &#xd;
+}&#xd;
+&#xd;
+function getInfoSubstituto(solicitacao, atv) {&#xd;
+        &#xd;
+    solicitacao = 2352;&#xd;
+    &#xd;
+    var c1 = DatasetFactory.createConstraint(&apos;processTaskPK.processInstanceId&apos;, solicitacao, solicitacao, ConstraintType.MUST);&#xd;
+    var c2 = DatasetFactory.createConstraint(&apos;choosedSequence&apos;, atv, atv, ConstraintType.MUST);&#xd;
+    var movState = DatasetFactory.getDataset(&apos;processTask&apos;, null, new Array(c1, c2), null);&#xd;
+    var tam = movState.rowsCount; &#xd;
+    &#xd;
+    var sequence = movState.getValue(tam - 2, &quot;processTaskPK.movementSequence&quot;);&#xd;
+    sequence =  parseInt(sequence) + 1;&#xd;
+        		&#xd;
+    var c3 = DatasetFactory.createConstraint(&apos;processTaskPK.processInstanceId&apos;, solicitacao, solicitacao, ConstraintType.MUST);&#xd;
+    var c4 = DatasetFactory.createConstraint(&apos;processTaskPK.movementSequence&apos;, sequence, sequence, ConstraintType.MUST);&#xd;
+	var sol = DatasetFactory.getDataset(&apos;processTask&apos;, null, new Array(c3, c4), null);   &#xd;
+	tam = sol.rowsCount; &#xd;
+        &#xd;
+	if (tam &gt;= 0) {&#xd;
+		var substituto = sol.getValue(0, &quot;completeColleagueId&quot;);	&#xd;
+		if (substituto) return substituto;&#xd;
+	}    &#xd;
+&#xd;
+    return false;&#xd;
+&#xd;
+}</eventDescription>
+    </WorkflowProcessEvent>
+    <WorkflowProcessEvent>
+      <workflowProcessEventPK>
+        <companyId>1</companyId>
+        <eventId>servicetask41</eventId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+      </workflowProcessEventPK>
+      <eventDescription>function servicetask41(attempt, message) {
+	var newPrincp = hAPI.getCardValue(&quot;codNewPrincpAtivo&quot;);
+	var newPreProd = hAPI.getCardValue(&quot;codNewPreProd&quot;);
+
+	if(newPrincp == &apos;Sim&apos;){
+		var codigoPrincip = hAPI.getCardValue(&quot;codigo_princpAtiv&quot;);
+		var descPrincip = hAPI.getCardValue(&quot;desc_principAtiv&quot;);
+		var condPrincip = true;
+	}else{
+		var codigoPrincip = hAPI.getCardValue(&quot;codPrincpAtivo_produto&quot;);
+		var descPrincip = &quot;&quot;;
+		var condPrincip = false;
+	}
+
+	if(newPreProd == &apos;Sim&apos;){
+		var codigoPreProd = hAPI.getCardValue(&quot;codigo_preproduto&quot;);
+		var descPreProd = hAPI.getCardValue(&quot;desc_preproduto&quot;);
+		var condPreProd = true;
+	}else{
+		var codigoPreProd = hAPI.getCardValue(&quot;codPreProd_produto&quot;);
+		if(codigoPreProd){
+			codigoPreProd = codigoPreProd.trim();
+		}
+		var descPreProd = &quot;&quot;;
+		var condPreProd = false;
+	}
+
+
+	// ======================================================================
+	try{
+		log.info(&quot;################# ESTRUTURA DE INTEGRAÇÃO #################&quot;);
+		
+		var dados = &quot;{&quot;;
+		dados +=	&apos;&quot;companyId&quot; : &quot;&apos;+ getValue(&apos;WKCompany&apos;) + &apos;&apos;+&apos;&quot; ,&apos;;
+		dados +=	&apos;&quot;serviceCode&quot; :&apos;+ &apos;&quot;RESTPROTHEUS&quot;&apos;+&apos;  ,&apos;;
+		dados +=	&apos;&quot;endpoint&quot; :&apos; + &apos;&quot;/produtos&quot;&apos; + &apos;  ,&apos;;
+		dados +=	&apos;&quot;method&quot;:&apos;+&apos;&quot;post&apos;+ &apos;&quot;  ,&apos;;
+		dados +=	&apos;&quot;params&quot; :{&apos;;				
+		dados +=	&apos;&quot;codigo&quot;&apos; + &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codigo_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=	&apos;&quot;descricao&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;desc_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=	&apos;&quot;tipo&quot;&apos;+ &apos;: &quot;&apos; + 			hAPI.getCardValue(&apos;codTipo_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;armazem&quot;&apos; + &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codArmazem_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=	&apos;&quot;grupo&quot;&apos; + &apos;: &quot;&apos; +			hAPI.getCardValue(&apos;codGrupo_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=	&apos;&quot;formulacao&quot;&apos; + &apos;: &quot;&apos; + 	hAPI.getCardValue(&apos;codFormula_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=	&apos;&quot;classe&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;codClasse_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;uniMed&quot;&apos;+ &apos;: &quot;&apos; +			hAPI.getCardValue(&apos;codUniMed_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;segUniMed&quot;&apos;+ &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codSegUniMed_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;concentracao&quot;&apos; + &apos;: &quot;&apos; + 	hAPI.getCardValue(&apos;concentracao_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;fabricante&quot;&apos;+ &apos;: &quot;&apos; + 	hAPI.getCardValue(&apos;fabric_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;registrante&quot;&apos; + &apos;: &quot;&apos; + 	hAPI.getCardValue(&apos;registrante_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;bloqueio&quot;&apos; + &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codBloq_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;infComp&quot;&apos; + &apos;: &quot;&apos; 	+ 	hAPI.getCardValue(&apos;infoComp_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;pesoLiq&quot;&apos; + &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;pesoLiq_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=	&apos;&quot;pesoBru&quot;&apos; + &apos;: &quot;&apos; 	+	hAPI.getCardValue(&apos;pesoBrut_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;fatConver&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;fatorConver_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;tipConver&quot;&apos;+ &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codTipoConver_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;rastro&quot;&apos; + &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codRastro_produto&apos;) + &apos;&quot;  ,&apos;; 
+		dados +=    &apos;&quot;ncm&quot;&apos;+ &apos;: &quot;&apos; 	+ 			hAPI.getCardValue(&apos;codNcm_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;prodImp&quot;&apos;+ &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codImport_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;prodInd&quot;&apos;+ &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codIndus_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;quantEmb&quot;&apos; + &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;qtdEmb_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;quantEmb2&quot;&apos;+ &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;qtdEmb2_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;emb&quot;&apos; + &apos;: &quot;&apos; 		+	hAPI.getCardValue(&apos;embalagem_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;princAtivo&quot;&apos;+ &quot;:&quot; + &quot;{&quot;;
+		dados +=	&apos;&quot;cadPrincpAtivo&quot;&apos; + &apos;: &apos; +	condPrincip + &apos;,&apos;;
+		dados +=    &apos;&quot;codigo&quot;&apos; + &apos;: &quot;&apos; 		+	codigoPrincip.trim() + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;descricao&quot;&apos; + &apos;: &quot;&apos; 	+	descPrincip + &apos;&quot;&apos;;
+		dados +=    &apos;},&apos;;
+		dados +=     &apos;&quot;preProd&quot;&apos;+ &apos;: {&apos;;
+		dados +=       &apos;&quot;cadPreProd&quot;&apos; + &apos;: &apos; +	condPreProd + &apos;  ,&apos;;
+		dados +=       &apos;&quot;codigo&quot;&apos; + &apos;: &quot;&apos; +	codigoPreProd	 + &apos;&quot;  ,&apos;;
+		dados +=       &apos;&quot;descricao&quot;&apos;+ &apos;: &quot;&apos; + 	descPreProd + &apos;&quot;&apos;;
+		dados +=     &quot;},&quot;;
+		dados +=    &apos;&quot;contaContab&quot;&apos; + &apos;: &quot;&apos; + 	hAPI.getCardValue(&apos;codContaContb_produto&apos;) + &apos;&quot;,&apos;;
+		dados +=    &apos;&quot;itemContab&quot;&apos; + &apos;: &quot;&apos; +	hAPI.getCardValue(&apos;codItemContb_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;ccusto&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;ccusto_produto&apos;)+ &apos;&quot; ,&apos;;
+		dados +=    &apos;&quot;ativoContab&quot;&apos;+ &apos;: &quot;&apos; +	hAPI.getCardValue(&apos;codAtivo_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;origem&quot;&apos; + &apos;: &quot;&apos; 		+	hAPI.getCardValue(&apos;codOrigem_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;grupTrib&quot;&apos; + &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codGrupTrib_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;codTribMun&quot;&apos; + &apos;: &quot;&apos; + 	hAPI.getCardValue(&apos;codTribMunic_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;impRend&quot;&apos; + &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codImpostRenda_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;foraEst&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;codForaEstado_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;classFisc&quot;&apos;+ &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;classeFiscal_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;percCsll&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;percSll_produto&apos;)+ &apos;&quot;,&apos;;
+		dados +=    &apos;&quot;percConf&quot;&apos;+ &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;percCofins_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=	&apos;&quot;percPis&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;percPis_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;aliqIcms&quot;&apos;+ &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;alqIcms_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;aliqIpi&quot;&apos;+ &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;alqIpi_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;aliqIss&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;alqIss_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=	&apos;&quot;codServIss&quot;&apos; + &apos;: &quot;&apos; +	hAPI.getCardValue(&apos;codServIss_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;formRetIss&quot;&apos; + &apos;: &quot;&apos; +	hAPI.getCardValue(&apos;codfRetInss_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;percRedInss&quot;&apos; + &apos;: &quot;&apos; +	hAPI.getCardValue(&apos;redInss_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;percRedIrrf&quot;&apos; + &apos;: &quot;&apos; +	hAPI.getCardValue(&apos;redIrrf_produto&apos;) + &apos; &quot;,&apos;;
+		dados +=    &apos;&quot;percRedPis&quot;&apos; + &apos;: &quot;&apos; +	hAPI.getCardValue(&apos;redPid_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;percRedConf&quot;&apos; + &apos;: &quot;&apos; +	hAPI.getCardValue(&apos;redCof_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;calcInss&quot;&apos; + &apos;: &quot;&apos; + 		hAPI.getCardValue(&apos;codCalcInss_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;espTipi&quot;&apos; + &apos;: &quot;&apos;	+		hAPI.getCardValue(&apos;espTipi_produto&apos;) + &apos;&quot; ,&apos;;
+		dados +=    &apos;&quot;exNcm&quot;&apos; + &apos;: &quot;&apos; +			hAPI.getCardValue(&apos;codExNcm_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;tePadrao&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;tePadrao_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;tsPadrao&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;tsPadrao_produto&apos;) + &apos;&quot;,&apos;;
+		dados +=    &apos;&quot;retemPis&quot;&apos; + &apos;: &quot;&apos;	+	hAPI.getCardValue(&apos;codRetemPis_produto&apos;)+ &apos;&quot;,&apos;;
+		dados +=    &apos;&quot;retemConf&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;codRetemConfins_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;retemCsll&quot;&apos;+ &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;codRetemCsll_produto&apos;)+ &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;cnae&quot;&apos;+ &apos;: &quot;&apos; +			hAPI.getCardValue(&apos;cnae_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;credIcms&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;codCreditoIcms_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;tabNatRec&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;codTabNatRec_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;sitTrib&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;sitTrib_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;retornoOp&quot;&apos; + &apos;: &quot;&apos; +		hAPI.getCardValue(&apos;codRetornoOp_produto&apos;) + &apos;&quot;  ,&apos;;
+		dados +=    &apos;&quot;rastroAtivo&quot;&apos; + &apos;: &quot;&apos; +	hAPI.getCardValue(&apos;codRastroAtivo_produto&apos;) + &apos;&quot; ,&apos;;
+		dados +=    &apos;&quot;descricao_complementar&quot;&apos; + &apos;: &quot;&apos; +	hAPI.getCardValue(&apos;descricao_produto&apos;) + &apos;&quot;&apos;;
+		dados +=&apos;}&apos;;			
+		dados +=&apos;}&apos;; 
+		
+		log.info(dados);
+		log.info(&apos;############## FIM ESTRUTURA DE INTEGRAÇÃO ################&apos;);
+
+		var c1 = DatasetFactory.createConstraint(&apos;retorno&apos;, dados, dados, ConstraintType.MUST);		
+		var constraints = new Array(c1);
+		var dataset = DatasetFactory.getDataset(&quot;ds_cadastraProduto&quot;, new Array(), constraints, new Array());		
+		var vo = dataset.getValue(0, &quot;retorno&quot;);
+		
+		var o = vo.toString();
+		o = o.split(&quot;&quot;);
+
+		log.info(&apos;######################## RETORNO ###############################&apos;);		
+		log.info(vo);
+		log.info(&apos;######################## FIM RETORNO ###########################&apos;);
+		
+		var n = vo.indexOf(&quot;error&quot;);
+		var n2 = vo.indexOf(&quot;jboss&quot;);
+		var n3 = vo.indexOf(&quot;Exception&quot;);
+		if ((n &gt;=  0) || (n2 &gt;= 0) || (n3 &gt;= 0)) {
+			if(o[0] == &quot;{&quot;){
+				var obj = JSON.parse(vo);
+				if (obj.hasOwnProperty(&apos;errorMessage&apos;)) {
+					throw obj[&apos;errorMessage&apos;];
+				}
+			}
+			else{
+				throw vo;
+			}
+			
+		}
+		
+		if(vo == null || vo.isEmpty()){			
+			throw (&apos;Erro ao realizar integração - Retorno nulo, tente Novamente.&apos;);
+		}
+
+		// return true;
+		        
+	}catch(e){
+		
+		var o = e.toString();
+		o = o.split(&quot;&quot;);
+
+		if(o[0] == &quot;{&quot;){
+			var obj = JSON.parse(e);
+			
+			if (obj.hasOwnProperty(&apos;errorMessage&apos;)) {
+				throw obj[&apos;errorMessage&apos;];
+			}					
+			else{
+				throw (e);	
+			}
+		}
+		else{
+			throw (e);
+		}
+	}
+}
+
+
+  
+</eventDescription>
+    </WorkflowProcessEvent>
+  </list>
+  <list/>
+  <list>
+    <SwimLane>
+      <color>FFFFFF</color>
+      <height>891</height>
+      <width>831</width>
+      <positionX>10</positionX>
+      <positionY>10</positionY>
+      <stateName>Cadastro de Produto v2</stateName>
+      <type>1</type>
+      <parentSequence>0</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>1</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>9F9F9F</color>
+      <height>178</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>10</positionY>
+      <stateName>Logistica</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>2</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>C0C0C0</color>
+      <height>178</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>544</positionY>
+      <stateName>Suprimentos / Suppy</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>3</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>82b0b7</color>
+      <height>178</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>188</positionY>
+      <stateName>Contabilidade</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>4</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>adc9ac</color>
+      <height>178</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>366</positionY>
+      <stateName>Fiscal</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>5</sequence>
+      </swimLanePK>
+    </SwimLane>
+    <SwimLane>
+      <color>d0daae</color>
+      <height>179</height>
+      <width>801</width>
+      <positionX>40</positionX>
+      <positionY>722</positionY>
+      <stateName>Fluig</stateName>
+      <type>2</type>
+      <parentSequence>1</parentSequence>
+      <swimLanePK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <sequence>6</sequence>
+      </swimLanePK>
+    </SwimLane>
+  </list>
+  <list>
+    <ProcessComponGraf>
+      <componType>1</componType>
+      <positionX>270</positionX>
+      <positionY>65</positionY>
+      <processComponGrafPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <componGrafSequence>7</componGrafSequence>
+      </processComponGrafPK>
+      <stateName>Start supply com as informações a serem basicas do produto a ser cadastrado</stateName>
+    </ProcessComponGraf>
+  </list>
+  <list>
+    <ProcessLinkAssoc>
+      <processLinkAssocPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>1</version>
+        <linkSequence>8</linkSequence>
+      </processLinkAssocPK>
+      <initialStateSequence>7</initialStateSequence>
+      <finalStateSequence>4</finalStateSequence>
+    </ProcessLinkAssoc>
+  </list>
+  <list>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>35</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>300</positionX>
+      <positionY>571</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>36</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>303</positionX>
+      <positionY>448</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>44</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>354</positionX>
+      <positionY>835</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>44</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>222</positionX>
+      <positionY>835</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>51</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>500</positionX>
+      <positionY>278</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>51</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>500</positionX>
+      <positionY>467</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>56</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>555</positionX>
+      <positionY>572</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>56</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>555</positionX>
+      <positionY>100</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>57</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>652</positionX>
+      <positionY>623</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>58</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>217</positionX>
+      <positionY>344</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>58</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>336</positionX>
+      <positionY>344</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>63</linkSequence>
+        <bendSequence>1</bendSequence>
+      </processLinkBendPK>
+      <positionX>221</positionX>
+      <positionY>738</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>63</linkSequence>
+        <bendSequence>2</bendSequence>
+      </processLinkBendPK>
+      <positionX>89</positionX>
+      <positionY>738</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>63</linkSequence>
+        <bendSequence>3</bendSequence>
+      </processLinkBendPK>
+      <positionX>89</positionX>
+      <positionY>879</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>63</linkSequence>
+        <bendSequence>4</bendSequence>
+      </processLinkBendPK>
+      <positionX>322</positionX>
+      <positionY>879</positionY>
+    </ProcessLinkBend>
+    <ProcessLinkBend>
+      <processLinkBendPK>
+        <companyId>1</companyId>
+        <processId>cadastro_produto</processId>
+        <version>15</version>
+        <linkSequence>63</linkSequence>
+        <bendSequence>5</bendSequence>
+      </processLinkBendPK>
+      <positionX>652</positionX>
+      <positionY>879</positionY>
+    </ProcessLinkBend>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list>
+    <ProcessStateService>
+      <companyId>1</companyId>
+      <processId>cadastro_produto</processId>
+      <version>1</version>
+      <sequence>41</sequence>
+      <attempts>0</attempts>
+      <sucessFullMessage>Integração executada com sucesso</sucessFullMessage>
+      <serviceName></serviceName>
+      <frequency>1</frequency>
+      <frequencyType>0</frequencyType>
+    </ProcessStateService>
+  </list>
+  <list/>
+  <list/>
+  <list/>
+  <list/>
+</list>

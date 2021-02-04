@@ -1,0 +1,59 @@
+<div class="panel panel-default" ng-init="itensCollapsed = true">
+    <div class="panel-heading fs-cursor-pointer" ng-click="itensCollapsed = !itensCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': itensCollapsed}">
+                Eventos
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': itensCollapsed}">
+        <div class="panel-body">
+            <i ng-if="documento.Eventos.length<=0">Sem Eventos</i>
+            <div class="row" ng-if="documento.Eventos.length>0">
+                <div class="col-md-10">
+                    <table class="table table-striped">
+                        <thead class="hidden-xs">
+                            <tr>
+                                <th>
+                                    <!--<div class="hidden-sm col-md-4">Item</div>-->
+                                    <div class="col-sm-3">Data Prev</div>
+                                    <div class="col-sm-3">Data Real</div>
+                                    <div class="col-sm-2">Previsto</div>
+                                    <div class="col-sm-2">Realizado</div>
+                                    <div class="col-sm-2">Situação</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="evento in documento.Eventos">
+                                <td>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Data Prev</label>
+                                        <p>{{evento.eventoDataPrev | date}}</p>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <label class="visible-xs-block">Data Real</label>
+                                        <p>{{evento.eventoDataReal | date}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Previsto</label>
+                                        <p>{{evento.qtdPrev | number}} {{contratoItemUnMedida}} - {{evento.eventoValorPrev | currency:evento.eventoMoeda}} - {{evento.eventoPercPrev | percentage:2}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Realizado</label>
+                                        <p>{{evento.qtdReal | number}} {{contratoItemUnMedida}} - {{evento.eventoValorReal | currency:evento.eventoMoeda}} - {{evento.eventoPercReal | percentage:2}}</p>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <label class="visible-xs-block">Situação</label>
+                                        <p>{{evento.eventoSituacao}}</p>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="panel panel-default" ng-if="documento.Clausulas.length>0">
+    <div class="panel-heading fs-cursor-pointer" ng-click="clausulasCollapsed = !clausulasCollapsed">
+        <h4 class="panel-title">
+            <a class="collapse-icon" ng-class="{'up': clausulasCollapsed}">
+                Cláusulas
+                </a>
+        </h4>
+    </div>
+    <div class="panel-collapse collapse" ng-class="{'in': clausulasCollapsed}">
+        <div class="panel-body">
+            <div ng-repeat="clausula in documento.Clausulas">
+                <blockquote>
+                    <p>{{clausula.clausulaSeq}} - {{clausula.clausulaDescricao}}</p>
+                </blockquote>
+                <p>{{clausula.clausulaNarrativa || "&lt;i&gt;Sem detalhes&lt;/i&gt;"}}</p>
+            </div>
+        </div>
+    </div>
+</div>

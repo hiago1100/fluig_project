@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8">
+		<link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+		<link href="https://csc.direcional.com.br/scripts/js/jquery-ui/jquery-ui.css" rel="stylesheet" />
+		<link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/css/estilo.css" />
+		<link type="text/css" rel="stylesheet" href="https://csc.direcional.com.br/scripts/css/jquery.timepicker.css" />
+	
+	<style type="text/css">
+		.input-group {
+		padding-bottom: 5px;
+		width: 100% !important;
+		}
+		.input-group-addon {
+			text-align: left;
+		}
+		
+		.openDatepicker {
+			height:34px;
+		}
+		
+		a {color:#5bc0de !important;}
+		.panel-heading a{color:black !important;}
+		.atividade-titulo{ cursor:pointer; }
+		
+		.customTooltip {
+		  background-color: white !important;
+		  color: black !important;
+		}
+		
+		.cadastroErrado {
+		  border: 2px solid red !important;
+		}
+		
+		.destaca {
+		  border-top: 5px solid rgb(250, 235, 204) !important;
+		  border-bottom: 5px solid rgb(250, 235, 204) !important;
+		  background-color: rgb(252, 248, 227) !important;
+		}
+		
+		.destacaEsquerda {
+		  border-left: 5px solid rgb(250, 235, 204) !important;
+		}
+		
+		.destacaDireita {
+		  border-right: 5px solid rgb(250, 235, 204) !important;
+		  height: 36px !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="fluig-style-guide">
+		<form name="form" role="form" id="FormMovimentacaoDePessoal">
+		
+<input type="hidden" name="cpTipoSecao" id="cpTipoSecao" />
+
+
+<!-- DADOS REQUISICAO DE COLABORADORES -->
+<input type="hidden" name="cpNumRequisicao" id="cpNumRequisicao"/>
+<input type="hidden" name="cpDtRequisicao" id="cpDtRequisicao"/>
+
+
+<input type="hidden" name="cpMatriculaSolicitante" id="cpMatriculaSolicitante" />
+<input type="hidden" name="cpConsultoriaOrigem" id="cpConsultoriaOrigem" class="dadosColaborador" />
+<input type="hidden" name="cpGestorOrigem" id="cpGestorOrigem" />
+<input type="hidden" name="cpGerenteGeralOrigem" id="cpGerenteGeralOrigem" class="dadosColaborador"/>
+<input type="hidden" name="cpSuperintendenteOrigem" id="cpSuperintendenteOrigem" class="dadosColaborador"/>
+<input type="hidden" name="cpDiretorOrigem" id="cpDiretorOrigem" class="dadosColaborador" />
+<input type="hidden" name="cpFolhaColaborador" id="cpFolhaColaborador" class="dadosColaborador" />
+<input type="hidden" name="cpFolha" id="cpFolha" class="dadosColaborador" />
+<input type="hidden" name="cpGestorDestino" id="cpGestorDestino" class="detalheNovaObraDep"/>
+<input type="hidden" name="cpConsultoriaDestino" id="cpConsultoriaDestino" class="detalheNovaObraDep"/>
+<input type="hidden" name="cpGerenteGeralDestino" id="cpGerenteGeralDestino" class="detalheNovaObraDep"/>
+<input type="hidden" name="cpSuperintendenteDestino" id="cpSuperintendenteDestino" class="detalheNovaObraDep" />
+<input type="hidden" name="cpErroParceiro" id="cpErroParceiro" />
+<input type="hidden" name="cpAvancoAutomatico" id="cpAvancoAutomatico" />
+<input type="hidden" name="cpLoginFluig" id="cpLoginFluig" />
+<input type="hidden" name="cpColigadaDep" id="cpColigadaDep" />
+<input type="hidden" name="cpCodSecao" id="cpCodSecao" />
+<input type="hidden" name="cpCodFuncaoNovo" id="cpCodFuncaoNovo" />
+<input type="hidden" name="cpCodFuncao" id="cpCodFuncao" class="dadosColaborador" />
+<input type="hidden" name="cpCodSecaoNovo" id="cpCodSecaoNovo" class="detalheNovaObraDep" />
+<input type="hidden" name="cpNome" id="cpNome" class="dadosColaborador" />
+<input type="hidden" name="cpAdcTransferencPadrao" id="cpAdcTransferencPadrao" />
+<input type="hidden" name="cpPercAumentoPadrao" id="cpPercAumentoPadrao" />
+<input type="hidden" name="cpDiretorDestino" id="cpDiretorDestino" class="detalheNovaObraDep" />
+<input type="hidden" name="cpCodColigada" id="cpCodColigada" />
+<input type="hidden" name="cpCodColigadaNovo" id="cpCodColigadaNovo" class="detalheNovaObraDep" />
+<input type="hidden" name="cpTipoMaoObra" id="cpTipoMaoObra" />
+<input type="hidden" name="cpSituacaoColaborador" id="cpSituacaoColaborador" />
+<input type="hidden" name="cpDescritor" id="cpDescritor" />
+<input type="hidden" name="cpPreenchedorChapa" id="cpPreenchedorChapa" />
+<input type="hidden" name="cpIsObra" id="cpIsObra" />
+<input type="hidden" class="detalheNovaObraDep" name="cpDestinoIsObra" id="cpDestinoIsObra" />
+<input type="hidden" class="infoRecolhedorASO" name="cpRecolhedorASOChapa" id="cpRecolhedorASOChapa" />
+<input type="hidden" name="cpNomeConsultorOrigem" id="cpNomeConsultorOrigem" />
+<input type="hidden" name="cpNomeConsultorDestino" id="cpNomeConsultorDestino" />
+         
+        	<!-- MOVIMENTACAO DE PESSOAL -->
+            <div class="panel panel-default">
+            	<div class="panel-heading">
+            		<h3 class="panel-title">
+            			<span class="fluigicon fluigicon-home fluigicon-lg"></span>
+            			&nbsp;<span id="descricaoProcesso"></span>
+            		</h3>
+            	</div>
+            	<div class="panel-body">
+            		O formul&aacute;rio abaixo refere-se ao preenchimento de informa&ccedil;&otilde;es necess&aacute;rias no processo de <b><span id="descricaoProcessoDesc"></span>.</b><br><br>
+					Para conhecer o passo a passo dessa solicita&ccedil;&atilde;o e conferir todas as regras para a abertura desse chamado <b><a href="" target="_blank" id="ID_LINK_MANUAL">acesse o manual</a></b> 
+            	</div>
+            </div>
+            
+            <!-- DADOS DO SOLICITANTE -->
+			<div class="panel panel-default">
+			
+            	<div class="panel-heading">
+            		<h3 class="panel-title">
+            			<span class="fluigicon fluigicon-user fluigicon-lg"></span>
+            			&nbsp; Dados do Solicitante
+            		</h3>
+            	</div>
+            	
+				<div class="panel-body">
+				
+					<div class="row">
+            		
+            			<div class="col-md-6">
+            				<div class="input-group">
+               					<span class="input-group-addon">N&ordm; da Solicita&ccedil;&atilde;o</span>
+                            	<input type="text" class="form-control" readonly="readonly"  name="cpNumSolicitacao"  id="cpNumSolicitacao">
+                        	</div>
+                        </div>
+               		
+	               		<div class="col-md-6">
+	               			<div class="input-group">
+	               				<span class="input-group-addon">Data de Abertura</span>
+	                            <input type="text" class="form-control" readonly="readonly"  name="cpDataAbertura"  id="cpDataAbertura">
+	                        </div>
+	               		</div>
+               		
+	               		<div class="col-md-6">
+	               			<div class="input-group">
+	               				<span class="input-group-addon">Solicitante</span>
+	                            <input type="text" class="form-control" readonly="readonly"  name="cpSolicitante"  id="cpSolicitante">
+	                        </div>
+	               		</div>
+               		
+	               		<div class="col-md-6">
+	               			<div class="input-group">
+	               				<span class="input-group-addon">Fun&ccedil;&atilde;o</span>
+	               				<input type="text" class="form-control" readonly="readonly"  name="cpFuncao"  id="cpFuncao">
+	                         </div>
+	               		</div>
+               		
+	               		<div class="col-md-6">
+	               			<div class="input-group">
+	               				<span class="input-group-addon">Empresa</span>
+	               				<input type="text" class="form-control" readonly="readonly"  name="cpEmpresa"  id="cpEmpresa">
+	                        </div>
+	               		</div>
+               		
+	               		<div class="col-md-6">
+	               			<div class="input-group">
+	               				<span class="input-group-addon">Obra/Departamento</span>
+	               				<input type="text" class="form-control" readonly="readonly"  name="cpObraDep"  id="cpObraDep">
+	                        </div>
+	               		</div>
+               		
+	               		<div class="col-md-6">
+	               			<div class="input-group">
+	               				<span class="input-group-addon">Estado</span>
+	               				<input type="text" class="form-control" readonly="readonly"  name="cpEstado"  id="cpEstado">
+	               			</div>
+	               		</div>
+               		
+	               		<div class="col-md-6">
+	               			<div class="input-group">
+	               				<span class="input-group-addon">Email</span>
+	               				<input type="text" class="form-control" readonly="readonly"  name="cpEmail"  id="cpEmail">
+	               			</div>
+	               		</div>
+	               		
+	               	</div>
+	            </div>
+	        </div>
+	        
+	        <div class="" id="blockAvisoRequisicao">
+	           <div class="row">
+	               <div class="col-md-12">
+	                   <div class="alert alert-info">
+	                       <strong>“Recrutamento interno. Chamado criado a partir do chamado de requisição de pessoal [<span id="slotNumRequisicao"></span>].”</strong>
+	                   </div>
+	               </div>
+	           </div>
+	        </div>
+            
+            <!-- DADOS DA SOLICITACAO -->
+            <div class="panel panel-default">
+            
+            	<div class="panel-heading">
+            		<h3 class="panel-title">
+                    	<span class="fluigicon fluigicon-fileedit fluigicon-lg"></span>
+                    	&nbsp; Dados da Solicita&ccedil;&atilde;o
+                    </h3>
+                </div>
+                
+                <!-- PANEL BODY -->
+                <div class="panel-body">
+                
+                	<!-- CONTAINER -->
+                	<div class="container">
+                	
+                		<!-- Obra/Dep Origem -->
+                		<div id="blockOrigem">
+                		
+                			<div class="row">
+                				<div class="col-md-12">
+                					<br>
+		               				<h4>
+		               					<span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>
+		               					Informa&ccedil;&otilde;es da Obra/Departamento
+		               				</h4>
+                				</div>
+                			</div>
+                			
+                			<div class="row">
+	               				<div class="col-md-7">
+	               					<div class="input-group">
+	               						<span class="input-group-addon">Obra/Departamento</span>
+	                              		<input type="text" class="form-control" readonly="readonly"  name="cpZoomObraDep"  id="cpZoomObraDep">
+	                              		<span class="input-group-btn">
+			                           		<button type="button" class="btn btn-info buttonZoom" id="BuscarCpObraDep">
+			                           			<span class="fluigicon fluigicon-search"></span>
+				                            </button>
+	                              		</span>
+	                           		</div>
+	               				</div>
+	               				
+	               				<div class="col-md-3">
+	               					<div class="input-group">
+	               						<span class="input-group-addon">Cod. Empresa</span>
+	                              		<input type="text" class="form-control" readonly="readonly"  name="cpCodEmpresa"  id="cpCodEmpresa">
+	                           		</div>
+	               				</div>
+	               				
+	               				<div class="col-md-2">
+	               					<div class="input-group">
+	               						<span class="input-group-addon">Estado</span>
+	                              		<input type="text" class="form-control" readonly="readonly" name="cpEstadoOrigem"  id="cpEstadoOrigem">
+	                           		</div>
+	               				</div>
+                			</div>
+                			
+                			<div class="row">
+	               				<div class="col-md-6">
+	               					<div class="input-group">
+	               						<span class="input-group-addon">Empresa</span>
+	                              		<input type="text" class="form-control" readonly="readonly"  name="cpDoisEmpresa"  id="cpDoisEmpresa">
+	                           		</div>
+	               				</div>
+	               				
+	               				<div class="col-md-6">
+	               					<div class="input-group">
+	               						<span class="input-group-addon">Gestor Atual</span>
+								  		<input type="text" class="form-control" readonly="readonly"  name="cpGestorAtual"  id="cpGestorAtual">
+							  		</div>
+	               				</div>
+                			</div>
+                			
+                			<div class="row">
+                			    <div class="col-md-3">
+                			        <div class="form-group">
+                			            <div class="input-group">
+                			                <span class="input-group-addon">Obra parceira?</span>
+                			                <input class="form-control" readonly name="cpOrigemParceiro" id="cpOrigemParceiro">
+                			            </div>
+                			        </div>
+                			    </div>
+                			    
+                			    <div class="col-md-6">
+                			        <div class="form-group">
+                			            <div class="input-group">
+                			                <span class="input-group-addon">Nome do Parceiro</span>
+                			                <input class="form-control" readonly name="cpNomeParceiroOrigem" id="cpNomeParceiroOrigem">
+                			            </div>
+                			        </div>
+                			    </div>
+                			    
+                			    <div class="col-md-3">
+                			        <div class="form-group">
+                			            <div class="input-group">
+                			                <span class="input-group-addon">Construtor?</span>
+                			                <input class="form-control" readonly name="cpOrigemConstrutor" id="cpOrigemConstrutor">
+                			            </div>
+                			        </div>
+                			    </div>
+                			</div>
+                		
+                		</div>
+                		<!-- FIM - Obra/Dep Origem -->
+                		
+	            		<!-- Colaborador -->
+	            		<div id="blockColaborador">
+	            		
+	            			<div class="row">
+	            				<div class="col-md-12">
+	            				<br>
+		              				<h4>
+		               					<span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>
+		               					Informa&ccedil;&otilde;es do Colaborador
+		               				</h4>
+	            				</div>
+	            			</div>
+	            			
+	            			<div class="row">
+	               				<div class="col-md-7">
+	               					<div class="input-group">
+	                              		<span class="input-group-addon">Colaborador</span>
+	                              		<input type="text" class="form-control dadosColaborador" readonly="readonly"  name="cpColaborador"  id="cpColaborador">
+	                                	<span class="input-group-btn">
+		                                	<button type="button" class="btn btn-info buttonZoom" id="BuscarCpColaborador">
+		                                		<span class="fluigicon fluigicon-search"></span>
+		                                	</button>
+	                                	</span>
+	                                </div>
+	               				</div>
+	               				
+	               				<div class="col-md-5">
+	               					<div class="input-group">
+	               						<input type="hidden" name="cpPCD" id="cpPCD"/>
+	               						<span class="input-group-addon">Fun&ccedil;&atilde;o atual</span>
+	               						<input type="text" class="form-control dadosColaborador" readonly="readonly"  name="cpFuncaoAtual"  id="cpFuncaoAtual">
+	               					</div>
+	               				</div>
+	               				
+	            			</div>
+	            			
+	            			<div class="row">
+	            			
+	               				<div class="col-md-3">
+	               					<div class="input-group">
+	               						<span class="input-group-addon">Matricula</span>
+	               						<input type="text" class="form-control dadosColaborador" readonly="readonly"  name="cpMatricula"  id="cpMatricula">
+	               					</div>
+	               				</div>
+	               				
+	               				<div class="col-md-3">
+	               					<div class="input-group">
+	               						<span class="input-group-addon"> Data de Admiss&atilde;o</span>
+	               						<input type="text" class="form-control dadosColaborador" readonly="readonly"  name="cpDataAdmissao"  id="cpDataAdmissao">
+	               					</div>
+	               				</div>
+	            			
+	               				<div class="col-md-3">
+	               					<div class="input-group">
+	               						<span class="input-group-addon">Sal&aacute;rio atual</span>
+	               						<input type="text" class="form-control dadosColaborador" readonly="readonly"  name="cpSalario"  id="cpSalario">
+	               					</div>
+	               				</div>
+	               				
+	               				<div class="col-md-3">
+	               					<div class="input-group">
+	               						<span class="input-group-addon">Situa&ccedil;&atilde;o</span>
+	               						<input type="text" class="form-control dadosColaborador" readonly="readonly"  name="cpSituacao"  id="cpSituacao">
+	               					</div>
+	               				</div>
+	               				
+	            			</div>
+	            			
+	            			<div class="row">
+	            			    <div class="col-md-6">
+	            			        <div class="form-group">
+	            			            <div class="input-group">
+                                            <span class="input-group-addon">Per&iacute;odo de F&eacute;rias</span>
+                                             <input type="hidden" class="form-control dadosColaborador" name="cpPeriodoFimFerias"  id="cpPeriodoFimFerias">
+                                            <input type="text" class="form-control dadosColaborador" readonly="readonly"  name="cpPeriodoFerias"  id="cpPeriodoFerias">
+	            			            </div>
+	            			        </div>
+	            			    </div>
+	            			    
+	            			    <div class="col-md-6">
+	            			        <div class="form-group">
+	            			            <div class="input-group">
+	            			                <span class="input-group-addon">C.P.F</span>
+	            			                <input type='text' class="form-control" readonly name="cpCPF" id="cpCPF" mask="000.000.000-00">
+	            			            </div>
+	            			        </div>
+	            			    </div>
+	            			</div>
+	            		
+	            		</div>
+	            		<!-- FIM - Colaborador -->
+
+	                	<!-- TRANSFERENCIA -->
+	                	<div id="blockTransferencia">
+	                	
+	                		<div class="row">
+	                			<div class="col-md-12">
+	                			<br>
+		               				<h4>
+		               					<span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>
+		               					Informa&ccedil;&otilde;es da Transfer&ecirc;ncia
+		               				</h4>
+	                			</div>
+	                		</div>
+	                		
+	                		<div class="row">
+	               				<!-- TRANSFERENCIA -->
+	               				<div class="col-md-6">
+	               					<div class="input-group">
+	               						<span class="input-group-addon">Transfer&ecirc;ncia</span>
+	               						<select name="cpTransferencia" id="cpTransferencia" class="selectpicker form-control">
+	                                    	<option value="0">Selecione...</option>
+	                                    	<option value="1">Sim</option>
+	                                    	<option value="2">N&atilde;o</option>
+	                                    </select>
+	                                </div>
+	                            </div>
+	                		</div>
+	                		
+	                		<!-- NOVA OBRA/DEP -->
+	                		<div id="blockNovaObraDep">
+	                		
+	                			<div class="row">
+	                            	<div class="col-md-7">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Nova Obra/Departamento</span>
+	                            			<input type="text" class="form-control detalheNovaObraDep" readonly="readonly" name="cpZoomNovaObraDepTransPadrao"  id="cpZoomNovaObraDepTransPadrao">
+	                                        <span class="input-group-btn">
+	                                        	<button type="button" class="btn btn-info buttonZoom" id="BuscarCpNovaObraDep">
+	                                          		<span class="fluigicon fluigicon-search"></span>
+	                                          	</button>
+	                                        </span>
+	                                    </div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-3">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">C&oacute;digo da empresa</span>
+	                            			<input type="text" class="form-control detalheNovaObraDep" readonly="readonly" name="cpCodigoEmpresaTransPadrao"  id="cpCodigoEmpresaTransPadrao">
+	                            		</div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-2">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Estado</span>
+	                            			<input type="text" class="form-control detalheNovaObraDep" readonly="readonly" name="cpEstadoDestino" id="cpEstadoDestino" />
+	                            		</div>
+	                            	</div>
+	                            	
+	                            	
+	                			</div>
+	                			
+	                			<div class="row">
+	                            	<div class="col-md-6">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Nova Empresa</span>
+	                            			<input type="text" class="form-control detalheNovaObraDep" readonly="readonly" name="cpNovaEmpresaTransPadrao"  id="cpNovaEmpresaTransPadrao">
+	                                    </div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-6">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Novo Gestor</span>
+	                            			<input type="text" class="form-control detalheNovaObraDep" name="cpNovoGestorTransPadrao" readonly="readonly" id="cpNovoGestorTransPadrao">
+	                                    </div>
+	                            	</div>
+	                            	
+	                           </div>
+	                           
+	                            <div class="row">
+	                                <div class="col-md-3">
+	                                    <div class="form-group">
+	                                        <div class="input-group">
+	                                            <span class="input-group-addon">Obra parceira?</span>
+	                                            <input class="form-control detalheNovaObraDep" readonly name="cpDestinoParceiro" id="cpDestinoParceiro">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                
+	                                <div class="col-md-6">
+	                                    <div class="form-group">
+	                                        <div class="input-group">
+	                                            <span class="input-group-addon">Nome do Parceiro</span>
+	                                            <input class="form-control detalheNovaObraDep" readonly name="cpNomeParceiroDestino" id="cpNomeParceiroDestino">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                
+	                                <div class="col-md-3">
+	                                    <div class="form-group">
+	                                        <div class="input-group">
+	                                            <span class="input-group-addon">Construtor?</span>
+	                                            <input class="form-control detalheNovaObraDep" readonly name="cpDestinoConstrutor" id="cpDestinoConstrutor">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                           
+	                           <div class="row">
+
+			            			<div class="col-md-12" id="blockPreenchedor">
+			            				<div class="form-group">
+			            				
+			            					<label for="cpPreenchedorNome">Respons&aacute;vel pelo preenchimento dos Dados da Movimenta&ccedil;&atilde;o</label>
+											<div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-danger buttonZoom" id="apagaPreenchedor">
+                                                        <span class="fluigicon fluigicon-remove-circle"></span>
+                                                    </button>
+                                                </span>
+												<input type="text" readonly="readonly" class="form-control hasTooltip" name="cpPreenchedorNome" id="cpPreenchedorNome" data-content="Somente preencher este campo caso seja o DP de Obra/Solicitante do centro de custo de Destino que ir&aacute; preencher os Dados da Movimenta&ccedil;&atilde;o.">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-info buttonZoom" id="BuscarPreenchedor">
+														<span class="fluigicon fluigicon-search"></span>
+													</button>
+												</span>
+											</div>
+			            				</div>
+			            			</div>
+			            			
+	                                <!-- MAIS DE 300 KM -->
+	                                <div id="blockTransferenciaKm">
+	                                    <div class="col-md-6">
+	                                        <div class="input-group">
+	                                            <span class="input-group-addon">Transfer&ecirc;ncia com mais de 300km?</span>
+	                                            <select name="cpTransferenciaKm" id="cpTransferenciaKm"  class="selectpicker form-control">
+	                                                <option value="0">Selecione...</option>
+	                                                <option value="1">Sim</option>
+	                                                <option value="2">N&atilde;o</option>
+	                                            </select>
+	                                        </div>
+	                                    </div>
+	                                </div>
+			            			
+			            		</div>
+	                		
+	                		</div>
+	                		<!-- FIM - NOVA OBRA/DEP -->
+	                		
+	                		<!-- MUDANCA -->
+	                		<div id="blockMudanca">
+	                		
+	                			<div class="row">
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Mudan&ccedil;a</span>
+	                            			<select name="cpMudanca" id="cpMudanca" class="selectpicker form-control selectDetalheMudanca" >
+	                            				<option value="0">Selecione...</option>
+	                                            <option value="1">Com Fam&iacute;lia</option>
+	                                            <option value="2">Sem Fam&iacute;lia</option>
+	                                        </select>
+	                                	</div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Membros da Fam&iacute;lia</span>
+	                            			<select name="cpMembrosFamilia" id="cpMembrosFamilia" class="selectpicker form-control selectDetalheMudanca" >
+	                            				<option value="0">Selecione...</option>
+	                                            <option value="1">C&ocirc;njuge</option>
+	                                            <option value="2">Filho (s)</option>
+	                                            <option value="3">C&ocirc;njuge e Filho (s)</option>
+	                                        </select>
+	                                    </div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Quantidade de Membros</span>
+	                            			<input type="text" class="form-control inputDetalheMudanca"  mask="000" name="cpQuantidadeMembros"  id="cpQuantidadeMembros">
+	                                    </div>
+	                            	</div>
+	                			</div>
+	                			
+	                			<div class="row">
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Tipo de Moradia</span>
+	                            			<select name="cpTipoMoradia" id="cpTipoMoradia" class="selectpicker form-control selectDetalheMudanca" >
+	                                        	<option value="0">Selecione...</option>
+	                                            <option id="MoradiaTipoAlojamento" value="1">Alojamento</option>
+	                                            <option id="MoradiaTipoRepublica" value="2">Rep&uacute;blica</option>
+	                                            <option id="MoradiaTipoImovelProprio" value="3">Im&oacute;vel Pr&oacute;prio</option>
+	                                        </select>
+	                                    </div>
+	                            	</div>
+	                			</div>
+	                			
+	                			<div class="row">
+	                            	<div class="col-md-4">
+	                            		<div class="input-group" id="auxilioInstalacao">
+	                            			<span class="input-group-addon">Auxilio Instala&ccedil;&atilde;o</span>
+											<select name="cpAuxilioInstalacao" id="cpAuxilioInstalacao" class="selectpicker form-control selectDetalheMudanca" >
+	                                        	<option value="0">Selecione...</option>
+	                                            <option value="1">Sim</option>
+	                                            <option value="2">N&atilde;o</option>
+	                                        </select>
+	                                    </div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Valor do Aux&iacute;lio</span>
+	                            			<input type="text" class="form-control inputDetalheMudanca" mask="0000" name="cpValorAuxilio"  id="cpValorAuxilio">
+	                                    </div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Data do Aux&iacute;lio</span>
+	                            			<input type="text" readonly="readonly" class="form-control inputDetalheMudanca"  name="cpDataAuxilio"  id="cpDataAuxilio">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-info openDatepicker">
+													<span class="fluigicon fluigicon-calendar"></span>
+												</button>
+											</span>
+	                                    </div>
+	                            	</div>
+	                			</div>
+	                			
+
+	                			
+	                			<div class="row">
+	                			
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Transporte de Mobili&aacute;rio</span>
+	                            			<select name="cpTransporteMobiliario" id="cpTransporteMobiliario" class="selectpicker form-control selectDetalheMudanca" >
+	                            				<option value="0">Selecione...</option>
+	                                            <option value="1">Sim</option>
+	                                            <option value="2">N&atilde;o</option>
+	                                        </select>
+	                                    </div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Data do Transporte</span>
+	                            			<input type="text" class="form-control inputDetalheMudanca" readonly="readonly" name="cpDataTransporte"  id="cpDataTransporte">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-info openDatepicker">
+													<span class="fluigicon fluigicon-calendar"></span>
+												</button>
+											</span>
+	                                    </div>
+	                            	</div>
+	                            	
+	
+	                			</div>
+	                			
+	                			<div class="row">
+	                			
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Transporte de Ve&iacute;culo</span>
+	                                        <select name="cpTransVeiculo" id="cpTransVeiculo" class="selectpicker form-control selectDetalheMudanca" >
+	                                        	<option value="0">Selecione...</option>
+	                                            <option value="1">Sim</option>
+	                                            <option value="2">N&atilde;o</option>
+	                                        </select>
+	                                    </div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Data do Transporte</span>
+	                                        <input type="text" class="form-control inputDetalheMudanca"  readonly="readonly" name="cpDataTransporteVeic"  id="cpDataTransporteVeic">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-info openDatepicker">
+													<span class="fluigicon fluigicon-calendar"></span>
+												</button>
+											</span>
+	                                    </div>
+	                            	</div>
+	                			</div>
+	                			
+	                			<div class="row">
+                            		<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Passagem de Retorno</span>
+										    <select name="cpPassagemRetorno" id="cpPassagemRetorno" class="selectpicker form-control selectDetalheMudanca" >
+										    	<option value="0">Selecione...</option>
+										        <option value="1">Sim</option>
+										        <option value="2">N&atilde;o</option>
+										    </select>
+										</div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-4">
+	                            		<div class="input-group">
+	                            			<span class="input-group-addon">Peridiocidade</span>
+	                            			<select name="cpPeridiocidade" id="cpPeridiocidade" class="selectpicker form-control selectDetalheMudanca" >
+	                                        	<option value="0">Selecione...</option>
+	                                            <option value="1">Bimestral</option>
+	                                            <option value="2">Trimestral</option>
+	                                         </select>
+	                                    </div>
+	                            	</div>
+	                            	
+	                            	<div class="col-md-4">
+	                            		<div class="input-group" >
+	                            			<span class="input-group-addon">Quantidade de Viajantes</span>
+	                            			<input type="text" class="form-control inputDetalheMudanca" mask="000" name="cpQtViajantes"  id="cpQtViajantes">
+	                                    </div>
+	                            	</div>
+	                			
+	                			</div>
+	                			
+	                			<div class="row">
+	                            	<div class="col-md-12">
+	                            		<div  class="alert alert-info" >
+	                            			<h6> Obs.: O Transporte do Mobili&aacute;rio e/ou Ve&iacute;culo ser&aacute; conduzido pela &aacute;rea de Suprimentos da Direcional, mediante cota&ccedil;&#227;o de no m&iacute;nimo 3 (tr&ecirc;s) empresas.</h6>
+	                                    </div>
+	                            	</div>
+	                			</div>
+	
+	                		</div>
+	                		<!-- FIM - MUDANCA -->
+	                		
+	            		</div>
+	            		<!-- FIM - TRANSFERENCIA -->
+	            		
+            			<div class="row">
+                        	<div class="col-md-12">
+	                        	<br>
+                            	<h4>
+                            		<span class="fluigicon  fluigicon-pointer-right fluigicon-sm"></span>
+                            		Informa&ccedil;&otilde;es da movimenta&ccedil;&atilde;o
+                            	</h4>
+                        	</div>
+            			</div>
+	            		
+	            		<!-- MOVIMENTACAO -->
+	            		<div id="blockMovimentacao">
+
+	            			<div class="row">
+								<!-- TIPO DE MOVIMENTA??O -->
+								<div class="col-md-6">
+									<div class="input-group">
+										<span class="input-group-addon">Tipo de Movimenta&ccedil;&atilde;o</span>
+										<select name="cpTipoMovimentacao" id="cpTipoMovimentacao" class="form-control">
+											<option value="0">Selecione...</option>
+											<option id="promocao" value="1">Promo&ccedil;&atilde;o</option>
+											<option id="progressao" value="2">Progress&atilde;o</option>
+											<option id="enquadramento" value="3">Enquadramento</option>
+											<option id="recassificacao" value="4">Reclassifica&ccedil;&atilde;o</option>
+											<option id="semAlteracaoSalarial" value="5">Sem altera&ccedil;&atilde;o salarial</option>
+										</select>
+									</div>
+								</div>
+								<!-- FIM TIPO DE MOVIMENTA??O -->
+	            			</div>
+	            			
+	            			<div id="blockNovoCargo">
+	                			<div class="row">
+									<!-- NOVO CARGO/FUN??O -->
+									<div class="col-md-6" >
+										<div class="input-group">
+											<span class="input-group-addon">Novo Cargo/Fun&ccedil;&atilde;o</span>
+											<input type="text" class="form-control" readonly="readonly"  name="cpZoomNovoCargo"  id="cpZoomNovoCargo">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-info buttonZoom" id="BuscarNovoCargo">
+													<span class="fluigicon fluigicon-search"></span>
+												</button>
+											</span>
+										</div>
+									</div>
+									<!-- FIM NOVO CARGO/FUN??O -->
+	                			</div>
+	            			</div>
+	            			
+	            			<div id="blockNovoSalario">
+	            				<div class="row">
+									<!-- NOVO SALARIO -->
+									<div class="col-md-6">
+										<div class="input-group">
+											<span class="input-group-addon">Novo Sal&aacute;rio</span>
+											<input type="text" class="form-control" readonly="readonly"  name="cpZoomNovoSalario"  id="cpZoomNovoSalario">
+											<span class="input-group-btn">
+												<button type="button" class="btn btn-info buttonZoom" id="BuscarNovoSalario">
+													<span class="fluigicon fluigicon-search"></span>
+												</button>
+											</span>
+										</div>
+									</div>
+									<!-- FIM NOVO SALARIO -->
+								                                
+									<!-- PERCENTUAL DE AUMENTO -->
+									<div class="col-md-6">
+										<div class="input-group">
+											<span class="input-group-addon">Percentual de aumento</span>
+											<input type="text" class="form-control" readonly="readonly"  name="cpPercentualAumento"  id="cpPercentualAumento">
+										</div>
+									</div>
+									<!-- PERCENTUAL DE AUMENTO -->
+	            				</div>
+	            			</div>
+	            			
+	            			<div id="blockAdicionalTransferencia">
+	            				<div class="row">
+									<!-- ADICIONAL DE TRANSFER?NCIA -->
+									<div class="col-md-4">              
+										<div class="input-group">
+											<span class="input-group-addon">Adicional de transfer&ecirc;ncia</span>
+											<select class="form-control" name="cpAdicionalTransferencia"  id="cpAdicionalTransferencia">
+											<option value="0">Adicional de 0%</option>
+											<option value="25">Adicional de 25%</option>
+											<option value="35">Adicional de 35%</option>
+											</select>
+										</div>
+									</div>
+									<!-- FIM ADICIONAL DE TRANSFER?NCIA -->
+									
+									<!-- CHECKBOX SEM ADICIONAL -->
+									<div class="col-md-4">
+										<div class="checkbox">
+											<label id="semAdicional">
+												<input type="checkbox" name="cpSemAdicionalTransferencia" id="cpSemAdicionalTransferencia" value="SemAdicional">
+												Sem Adicional
+											</label>
+										</div>
+									</div>
+									<!-- FIM CHECKBOX SEM ADICIONAL -->
+									
+									<!-- NOVO SAL?RIO COM ADICIONAL -->
+									<div class="col-md-4">
+										<div class="input-group">
+											<span class="input-group-addon">Novo Sal&aacute;rio com Adicional</span>
+											<input type="text" class="form-control" readonly="readonly"  name="cpNovoSalarioComAdicional"  id="cpNovoSalarioComAdicional">
+										</div>
+									</div>
+									<!-- FIM NOVO SAL?RIO COM ADICIONAL -->
+	            				</div>
+	            			</div>
+	            		</div>
+						<!-- FIM MOVIMENTACAO -->
+						
+                		<div class="row">
+	                		<!-- TIPO DE M?O DE OBRA -->
+	               			<div class="col-md-6">
+	               				<div class="input-group">
+	               					<span class="input-group-addon">Tipo de m&atilde;o de obra</span>
+	               					<input class="form-control" type="text" name="cpTipoMaoObraTexto" id="cpTipoMaoObraTexto" readonly="readonly">
+	                           </div>
+	               			</div>
+	               			<!-- FIM - TIPO DE M?O DE OBRA -->
+
+							<!-- M?S DE COMPETENCIA DA MOVIMENTA??o -->
+							<div class="col-md-6">
+								<div class="input-group">
+									<span class="input-group-addon" id="labelCompetencia">M&ecirc;s de compet&ecirc;ncia da Movimenta&ccedil;&atilde;o</span>
+									<input type="text" class="form-control" readonly="readonly"  name="cpMesCompetencia"  id="cpMesCompetencia">
+								</div>
+							</div>
+							<!-- FIM M?S DE COMPETENCIA DA MOVIMENTA??o -->
+            			</div>
+            			
+            			<div class="row" id="blockRecolhedorASO">
+	                        <div class="col-md-12" >
+	                            <div class="form-group">
+	                                <label for="cpRecolhedorASONome">Respons&aacute;vel pelo Recolhimento do ASO de mudan&ccedil;a de fun&ccedil;&atilde;o</label>
+	                                <div class="input-group">
+	                                    <span class="input-group-btn actionRecolhedorASO">
+	                                        <button type="button" class="btn btn-danger buttonZoom" id="apagaRecolhedorASO">
+	                                            <span class="fluigicon fluigicon-remove-circle"></span>
+	                                        </button>
+	                                    </span>
+	                                    <input type="text" readonly="readonly" class="form-control hasTooltip infoRecolhedorASO" name="cpRecolhedorASONome" id="cpRecolhedorASONome" data-content="Em caso de Obra e Escrit&oacute;rios Regionais selecionar o DP de Obra como respons&aacute;vel pelo Recolhimento ASO e documentos da nova Fun&ccedil;&atilde;o. E em caso de Sede, o respons&aacute;vel &eacute; o Consultor de RH da &aacute;rea.">
+	                                    <span class="input-group-btn actionRecolhedorASO">
+	                                        <button type="button" class="btn btn-info buttonZoom" id="BuscarRecolhedorASO">
+	                                            <span class="fluigicon fluigicon-search"></span>
+	                                        </button>
+	                                    </span>
+	                                </div>
+	                            </div>
+	                        </div>
+            			</div>
+            			
+            			<div class="row">
+							<!-- ALERTA -->
+							<div class="col-md-12">
+								<div  class="alert alert-info" >
+									<h6>O m&ecirc;s de compet&ecirc;ncia da movimenta&ccedil;&atilde;o est&aacute; sujeita a altera&ccedil;&otilde;es, de acordo com a Data em que o chamado chegar para Processamento da Movimenta&ccedil;&atilde;o.</h6>
+									<h6>Chamados que chegarem para Processamento da Movimenta&ccedil;&atilde;o at&eacute; o &uacute;ltimo dia do m&ecirc;s atual ser&atilde;o processados at&eacute; dia 10 do m&ecirc;s seguinte. Ap&oacute;s o &uacute;ltimo dia do m&ecirc;s atual ser&atilde;o processados at&eacute; dia 10 do 2&ordm; m&ecirc;s subsequente.</h6>
+								    <h6>Se o colaborador possui f&eacute;rias marcadas ou em andamento, no M&ecirc;s de Compet&ecirc;ncia da movimenta&ccedil;&atilde;o, o processamento ser&aacute; no m&ecirc;s seguinte da Data de T&eacute;rmino das F&eacute;rias.</h6>
+								    <h6>N&atilde;o haver&aacute; movimenta&ccedil;&otilde;es para o m&ecirc;s de Dezembro, o processamento ser&aacute; para Janeiro do ano seguinte.</h6>
+								</div>
+							</div>
+							<!-- FIM ALERTA -->
+            			</div>
+            			
+            			<div class="row">
+							<!-- OBSERVA??O -->
+							<div class="col-md-12">
+								<label for="comment">Observa&ccedil;&atilde;o:</label>
+								<br/>
+								<textarea class="form-control"  rows="3" name="cpObs" id="cpObs"></textarea>
+							</div>
+							<!-- FIM OBSERVA??O -->
+            			</div>
+                	</div>
+                	<!-- FIM - CONTAINER -->
+				</div>
+				<!-- FIM - PANEL BODY -->
+			</div>
+			<!-- FIM - PANNEL -->
+            
+<!-- REABERTURA DO PROCESSO -->
+<div class="panel panel-default" id="blockReabertura">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+            Reabertura do Processo
+        </h3>
+    </div>
+    <div class="panel-body container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Aprova&ccedil;&atilde;o</label>
+                    <select name="cpReabertura" id="cpReabertura" class="form-control" aprovacao>
+                        <option value="" data-status="default">Selecione...</option>
+                        <option value="1" data-status="success">Reenviar Chamado</option>
+                        <option value="2" data-status="danger">Cancelar Chamado</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="cpParecerReabertura">Parecer</label>
+                    <textarea class="form-control" rows="3" name="cpParecerReabertura" id="cpParecerReabertura" parecer></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--FIM REABERTURA DO CHAMADO-->
+
+
+      <!-- ETAPAS DO PROCESSO -->
+	<div class="panel panel-default" id="aprovacoes">
+		<div class="panel-heading">
+			<h3 class="panel-title">
+				<span class="fluigicon fluigicon-questions fluigicon-lg"></span>
+				Etapas do processo
+			</h3>
+		</div>
+		<!-- PANEL-BODY - ETAPAS DO PROCESSO -->
+		<div class="panel-body">
+		
+			<!-- PANEL GROUP -->
+			<div class="panel-group">
+			
+			<!-- Relações Trabalhistas -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_437">
+							Confer&ecirc;ncia da &aacute;rea de Rela&ccedil;&otilde;es Trabalhistas
+						</div>
+					</div>
+					<div id="panelAtividade_437" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarRelaTrab" id="aprovarRelaTrab" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="1">Aprovado com Ressalva</option>
+			                                    <option value="2">Reprovado</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerRelaTrab" id="parecerRelaTrab"></textarea>
+									</div>
+								</div>
+							</div>
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - Relações Trabalhistas -->
+			
+				<!-- APROVACAO CONSULTORIA -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_7">
+							Parecer Consultoria RH (Origem)
+						</div>
+					</div>
+					<div id="panelAtividade_7" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarConsultoria" id="aprovarConsultoria" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerConsultoria" id="parecerConsultoria"></textarea>
+									</div>
+								</div>
+							</div>
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAO CONSULTORIA -->
+				
+				<!-- PARECER DA REMUNERACAO -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_38">
+							Parecer da Remunera&ccedil;&atilde;o (Origem)
+						</div>
+					</div>
+					<div id="panelAtividade_38" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarRemuneracao" id="aprovarRemuneracao" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerRemuneracao" id="parecerRemuneracao"></textarea>
+									</div>
+								</div>
+							</div>
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - PARECER DA REMUNERACAO -->
+				
+				<!-- APROVACAO GESTOR -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_18">
+							Aprova&ccedil;&atilde;o Gestor (Origem)
+						</div>
+					</div>
+					<div id="panelAtividade_18" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarGestor" id="aprovarGestor" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerGestor" id="parecerGestor"></textarea>
+									</div>
+								</div>
+							</div>
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAO GESTOR -->
+				
+				<!-- APROVACAO GERENTE GERAL -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_20">
+							Aprova&ccedil;&atilde;o Gerente Geral (Origem)
+						</div>
+					</div>
+					<div id="panelAtividade_20" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarGerenteGeral" id="aprovarGerenteGeral" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerGerenteGeral" id="parecerGerenteGeral"></textarea>
+									</div>
+								</div>
+							</div>
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAO GERENTE GERAL -->
+				
+				<!-- APROVACAO SUPERINTENDENTE -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_21">
+							Aprova&ccedil;&atilde;o Superintendente (Origem)
+						</div>
+					</div>
+					<div id="panelAtividade_21" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarSuperintendente" id="aprovarSuperintendente" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerSuperintendente" id="parecerSuperintendente"></textarea>
+									</div>
+								</div>
+							</div>
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAO SUPERINTENDENTE -->
+					
+				<!-- APROVACAO DIRETOR -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_22">
+							Aprova&ccedil;&atilde;o Diretor (Origem)
+						</div>
+					</div>
+					<div id="panelAtividade_22" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarDiretor" id="aprovarDiretor" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerDiretor" id="parecerDiretor"></textarea>
+									</div>
+								</div>
+							</div>
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAO DIRETOR -->	
+				
+				<!-- PREENCHIMENTO DOS DADOS DA MOVIMENTACAO -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_313">
+							Preenchimento dos dados da Movimenta&ccedil;&atilde;o/Transfer&ecirc;ncia
+						</div>
+					</div>
+					<div id="panelAtividade_313" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarPreenchimento" id="aprovarPreenchimento" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div  class="alert alert-warning">
+                                    Obs.: Prezado, caso haja altera&ccedil;&atilde;o salarial e/ou de fun&ccedil;&atilde;o, favor preencher as Informa&ccedil;&otilde;es da Movimenta&ccedil;&atilde;o e as Informa&ccedil;&otilde;es da Transfer&ecirc;ncia
+                                    </div>
+                                </div>
+                            </div>
+							
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerPreenchimento" id="parecerPreenchimento"></textarea>
+									</div>
+								</div>
+							</div>
+							
+<div class="row">
+    <div class="col-md-12">
+        <table class="table" id="histPreenchimento" tablename="histPreenchimento" noaddbutton="true" nodeletebutton="true">
+            <thead>
+                <tr>
+                    <th>Altera&ccedil;&otilde;es</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <input name="cpHistDtPreenchimento" id='cpHistDtPreenchimento' type="hidden" value="">
+                    <input name="cpHistAltPreenchimento" id="cpHistAltPreenchimento" type="hidden" value="">
+                    <td class="container"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+							
+
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - PREENCHIMENTO DOS DADOS DA MOVIMENTACAO -->	
+				
+				<!-- APROVACAO GESTOR DESTINO -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_45">
+							Aprova&ccedil;&atilde;o Gestor e Complementa&ccedil;&atilde;o de Dados (Destino)
+						</div>
+					</div>
+					<div id="panelAtividade_45" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarGestorDestino" id="aprovarGestorDestino" class="selectpicker form-control" aprovacao>
+												<option value="0"> Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado - Retorna para o in&iacute;cio</option>
+			                                    <option value="3">Reprovado - Retorna para Preenchimento dos Dados</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-warning">
+                                        Obs.:Prezado gestor, caso haja altera&ccedil;&atilde;o salarial e/ou de fun&ccedil;&atilde;o, favor complementar as Informa&ccedil;&otilde;es da Movimenta&ccedil;&atilde;o e as Informa&ccedil;&otilde;es da Transfer&ecirc;ncia
+                                    </div>
+                                </div>
+                            </div>
+							
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerGestorDestino" id="parecerGestorDestino"></textarea>
+									</div>
+								</div>
+							</div>
+							
+<div class="row">
+    <div class="col-md-12">
+        <table class="table" id="histComplemento" tablename="histComplemento" noaddbutton="true" nodeletebutton="true">
+            <thead>
+                <tr>
+                    <th>Altera&ccedil;&otilde;es</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <input name="cpHistDtComplemento" id="cpHistDtComplemento" type="hidden" value="">
+                    <input name="cpHistAltComplemento" id="cpHistAltComplemento" type="hidden" value="">
+                    <td class="container"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAO GESTOR DESTINO -->	
+				
+				<!-- CONSULTORIA DESTINO -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_47">
+							Parecer Consultoria RH (Destino)
+						</div>
+					</div>
+					<div id="panelAtividade_47" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarConsultoriaDestino" id="aprovarConsultoriaDestino" class="selectpicker form-control" aprovacao>
+												<option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado - Retornar para In&iacute;cio</option>
+			                                    <option value="3">Reprovado - Retorna para Preenchimento dos Dados</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerConsultoriaDestino" id="parecerConsultoriaDestino"></textarea>
+									</div>
+								</div>
+							</div>
+						
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - CONSULTORIA DESTINO -->
+				
+				<!-- APROVACAO REMUNERACAO DESTINO -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_49">
+							Parecer Remunera&ccedil;&atilde;o (Destino)
+						</div>
+					</div>
+					<div id="panelAtividade_49" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarRemuneracaoDestino" id="aprovarRemuneracaoDestino" class="selectpicker form-control" aprovacao>
+												<option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado - Retorna para In&iacute;cio</option>
+			                                    <option value="3">Reprovado - Retorna para Preenchimento dos Dados</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerRemuneracaoDestino" id="parecerRemuneracaoDestino"></textarea>
+									</div>
+								</div>
+							</div>
+						
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAO REMUNERACAO DESTINO -->
+				
+				<!-- APROVACAOGERENTE GERAL DESTINO -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_51">
+							Aprova&ccedil;&atilde;o Gerente Geral (Destino)
+						</div>
+					</div>
+					<div id="panelAtividade_51" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarGerenteGeralDestino" id="aprovarGerenteGeralDestino" class="selectpicker form-control" aprovacao>
+												<option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado</option>
+			                                    <option value="2">Reprovado - Retorna para In&iacute;cio</option>
+			                                    <option value="3">Reprovado - Retorna para Preenchimento dos Dados</option>
+			                                 </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerGerenteGeralDestino" id="parecerGerenteGeralDestino"></textarea>
+									</div>
+								</div>
+							</div>
+						
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAOGERENTE GERAL DESTINO -->
+				
+				<!-- APROVACAO SUPERINTENDENTE DESTINO -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_55">
+							Aprova&ccedil;&atilde;o Superintendente (Destino)
+						</div>
+					</div>
+					<div id="panelAtividade_55" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarSuperintendenteDestino" id="aprovarSuperintendenteDestino" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+			                                   	 <option value="1">Aprovado</option>
+			                                   	 <option value="2">Reprovado - Retorna para In&iacute;cio</option>
+			                                   	 <option value="3">Reprovado - Retorna para Preenchimento dos Dados</option>
+			                                </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerSuperintendenteDestino" id="parecerSuperintendenteDestino"></textarea>
+									</div>
+								</div>
+							</div>
+						
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAO SUPERINTENDENTE DESTINO -->
+				
+				<!-- APROVACAO DIRETOR DESTINO -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_102">
+							Aprova&ccedil;&atilde;o Diretor (Destino)
+						</div>
+					</div>
+					<div id="panelAtividade_102" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarDiretorDestino" id="aprovarDiretorDestino" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+				                                 <option value="1">Aprovado</option>
+				                                 <option value="2">Reprovado - Retorna para In&iacute;cio</option>
+				                                 <option value="3">Reprovado - Retorna para Preenchimento dos Dados</option>
+				                             </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerDiretorDestino" id="parecerDiretorDestino"></textarea>
+									</div>
+								</div>
+							</div>
+						
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAO DIRETOR DESTINO -->
+				
+				<!-- APROVACAO DIRETORIA -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_118">
+							Aprova&ccedil;&atilde;o Diretoria de RH
+						</div>
+					</div>
+					<div id="panelAtividade_118" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarDiretoria" id="aprovarDiretoria" class="selectpicker form-control" aprovacao>
+												 <option value="0">Selecione...</option>
+				                                 <option value="1">Aprovado</option>
+				                                 <option value="2">Reprovado - Retorna para in&iacute;cio</option>
+				                                 <option id="reprovaT" value="3">Reprovado - Retorna para Preenchimento dos Dados</option>
+				                             </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerDiretoria" id="parecerDiretoria"></textarea>
+									</div>
+								</div>
+							</div>
+						
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - APROVACAO DIRETORIA -->
+				
+				<!-- RECOLHIMENTO DO ASO -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_339">
+							Recolhimento do ASO e Documentos da nova fun&ccedil;&atilde;o
+						</div>
+					</div>
+					<div id="panelAtividade_339" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="cpAprovaASO" id="cpAprovaASO" class="selectpicker form-control" aprovacaoCusto>
+												 <option value="0">Selecione...</option>
+			                                     <option value="1">Aprovado</option>
+			                                     <option value="2">REPROVADO – Retorna para Inicio</option>
+			                                     <option value="3">REPROVADO – Retorna para Preenchimento dos Dados</option>
+			                                     <option value="4">Cancelamento do chamado</option>
+		                                   </select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<!-- ALERTA -->
+								<div class="col-md-12">
+									<div  class="alert alert-info" >
+										<p>
+										    Obs.: Favor anexar o documento do ASO (Atestado de Sa&uacute;de Ocupacional) de altera&ccedil;&atilde;o de fun&ccedil;&atilde;o do colaborador.<br>
+										    Caso necess&aacute;rio, anexar tamb&eacute;m o Termo de Compromisso em Nova Fun&ccedil;&atilde;o e/ou as Avalia&ccedil;&otilde;es de Efic&aacute;cia para Classifica&ccedil;&atilde;o de M&atilde;o de Obra.
+										</p>
+									</div>
+								</div>
+								<!-- FIM ALERTA -->
+            				</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="cpParecerASO" id="cpParecerASO"></textarea>
+									</div>
+								</div>
+							</div>
+						
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - RECOLHIMENTO DO ASO -->
+				
+                <!-- CONFERENCIA DO ASO -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_354">
+                            Confer&ecirc;ncia do ASO
+                        </div>
+                    </div>
+                    <div id="panelAtividade_354" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+                                            <select name="cpAprovacaoASO" id="cpAprovacaoASO" class="selectpicker form-control" ConfAso>
+                                                 <option value="0">Selecione...</option>
+                                                 <option value="1">Aprovado</option>
+                                                 <option value="2">Aprovado - Com resava</option>
+                                                 <option value="3">Reprovado</option>
+                                             </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Parecer:</label>
+                                        <textarea class="form-control" rows="3" name="cpParecerConfASO" id="cpParecerConfASO"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div> <!-- CLOSE PANEL-BODY -->
+                    </div>
+                </div>
+                <!-- FIM - CONFERENCIA DO ASO -->
+				
+				
+				
+				<!-- PROCESSAMENTO DA MOVIMENTACAODE PESSOAL - PMP -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_80">
+							Processamento da Movimenta&ccedil;&atilde;o de Pessoal
+						</div>
+					</div>
+					<div id="panelAtividade_80" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarPMP" id="aprovarPMP" aprovacaoProcMov class="selectpicker form-control">
+												<option value="">Selecione...</option>
+			                                    <option value="1">PROCESSADO</option>
+			                                    <option value="4">PROCESSADO COM ALTERA&Ccedil;&Otilde;ES</option>
+			                                    <option value="2">REPROVADO Retorna para Inicio</option>
+			                                    <option class="obra" value="3">REPROVADO Retorna para Preenchimento dos Dados</option>
+                                 			</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row" id="blockCCT">
+							    <div class="col-md-6">
+							        <div class="form-group">
+							            <label>Houve CCT?</label>
+							            <select class="form-control dadoCCT" name="cpHouveCCT" id="cpHouveCCT">
+							                <option value="">Selecione...</option>
+							                <option value="1">Sim</option>
+							                <option value="2">N&atilde;o</option>
+							            </select>
+							        </div>
+							    </div>
+							    
+							    <div class="col-md-2">
+							        <div class="form-group">
+							            <label>Novo sal&aacute;rio com CCT</label>
+							            <input type="text" class="form-control dadoCCT" mask="#00.000.000.000.000,00" name="cpSalarioCCT" id="cpSalarioCCT"/>
+							        </div>
+							    </div>
+							</div>
+							
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Parecer:</label>
+                                        <textarea class="form-control" rows="3" name="parecerPMP" id="parecerPMP"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="blockProcessado">
+							
+								<div class="row">
+								    <div class="col-md-2">
+								        <div class="form-group">
+								            <label>Matr&iacute;cula</label>
+								            <div class="input-group">
+								                <input type="text" class="form-control" name="cpConfMatriculaAtual" id="cpConfMatriculaAtual"/>
+								                <div class="input-group-btn" id="buscaMatriculaAtual">
+								                    <button class="btn btn-info">
+								                        <span class="fluigicon fluigicon-search"></span>
+								                    </button>
+								                </div>
+								            </div>
+								        </div>
+								    </div>
+	                                <div class="col-md-5">
+	                                    <div class="form-group">
+	                                        <label>Colaborador</label>
+	                                        <input type="text" class="form-control" name="cpNomeAtual" id="cpNomeAtual" readonly/>
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-5">
+	                                    <div class="form-group">
+	                                        <label>Obra/Departamento</label>
+	                                        <input type="text" class="form-control" name="cpSecaoAtual" id="cpSecaoAtual" readonly/>
+	                                    </div>
+	                                </div>
+								</div>
+							
+								<div class="row">
+								    <div class="col-md-6">
+								        <div class="form-group">
+								            <label>Fun&ccedil;&atilde;o</label>
+								            <input type="text" class="form-control" name="cpConfFuncaoAtual" id="cpConfFuncaoAtual" readonly/>
+								        </div>
+								    </div>
+	                                <div class="col-md-2">
+	                                    <div class="form-group">
+	                                        <label>Sal&aacute;rio</label>
+	                                        <input type="text" class="form-control" name="cpConfSalarioAtual" id="cpConfSalarioAtual" readonly/>
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-2">
+	                                    <div class="form-group">
+	                                        <label>Adicional de Transf.</label>
+	                                        <div class="input-group">
+	                                            <input type="text" class="form-control" name="cpConfAdicionalAtual" id="cpConfAdicionalAtual" readonly/>
+	                                            <span class="input-group-addon">%</span>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                <div class="col-md-2">
+	                                    <div class="form-group">
+	                                        <label>Sal&aacute;rio com Adicional</label>
+	                                        <input type="text" class="form-control" name="cpConfSalarioAjustadoAtual" id="cpConfSalarioAjustadoAtual" readonly/>
+	                                    </div>
+	                                </div>
+								</div>
+							
+								<div class="row">
+	                                <div class="col-md-4">
+	                                    <div class="form-group">
+	                                        <label>M&ecirc;s de Compet&ecirc;ncia RM Labore</label>
+	                                        <input type="text" class="form-control" name="cpConfMesCompRM" id="cpConfMesCompRM" readonly/>
+	                                    </div>
+	                                </div>
+								</div>
+								
+					        </div>
+							
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - PROCESSAMENTO DA MOVIMENTACAODE PESSOAL - PMP -->
+				
+				<!-- CONFERENCIA DA MOVIMENTACAO DE PESSOAL - CMP -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_85">
+							Confer&ecirc;ncia da Movimenta&ccedil;&atilde;o de Pessoal
+						</div>
+					</div>
+					<div id="panelAtividade_85" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarCMP" id="aprovarCMP" class="selectpicker form-control" aprovacao >
+												<option value="0">Selecione...</option>
+			                                    <option value="1">Aprovado - encerrar chamado</option>
+			                                    <option value="2">Reprovado - enviar para ajuste</option>
+                                 			</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerCMP" id="parecerCMP"></textarea>
+									</div>
+								</div>
+							</div>
+                            
+                            <div id="blockAvaliacao">
+                            
+                                <h3> Avalia&ccedil;&atilde;o de atendimento</h3>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Qual o seu grau de satisfa&ccedil;&atilde;o quanto ao atendimento desse chamado?</label>
+                                            <select class="form-control campoAvaliacao" name="cpAvaliacao" id="cpAvaliacao">
+                                                <option value="">Selecione...</option>
+                                                <option value="1">Muito satisfeito</option>
+                                                <option value="2">Satisfeito</option>
+                                                <option value="3">Insatisfeito (Justifique)</option>
+                                                <option value="4">Muito insatisfeito (Justifique)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Observa&ccedil;&otilde;es / Justificativas</label>
+                                            <textarea rows="3" class="form-control campoAvaliacao" name="cpParecerAvaliacao" id="cpParecerAvaliacao"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            </div>
+						
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - CONFERENCIA DA MOVIMENTACAO DE PESSOAL - CMP -->
+				
+				<!-- AJUSTE DA MOVIMENTACAO DE PESSOAL - AMP -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_84">
+							Ajuste da Movimenta&ccedil;&atilde;o Pessoal
+						</div>
+					</div>
+					<div id="panelAtividade_84" class="panel-collapse collapse">
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">Aprova&ccedil;&atilde;o</span>
+											<select name="aprovarAMP" id="aprovarAMP" class="selectpicker form-control" aprovacao>
+												<option value="0">Selecione...</option>
+			                                    <option value="1">Ajustado</option>
+			                                    <option value="2">Reprovado</option>
+                                 			</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerAMP" id="parecerAMP"></textarea>
+									</div>
+								</div>
+							</div>
+						
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - AJUSTE DA MOVIMENTACAO DE PESSOAL - AMP -->
+				
+				<!-- ALTERACAO DA HIERARQUIA / MATRICULA NO PORTAL CSC - AHMP -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title collapse-icon atividade-titulo" data-toggle="collapse" data-target="#panelAtividade_96">
+							Altera&ccedil;&atilde;o da Hierarquia/Matricula no Portal CSC
+						</div>
+					</div>
+					<div id="panelAtividade_96" class="panel-collapse collapse">
+						<div class="panel-body">
+							
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label>Parecer:</label>
+										<textarea class="form-control" rows="3" name="parecerAHMP" id="parecerAHMP"></textarea>
+									</div>
+								</div>
+							</div>
+						
+						</div> <!-- CLOSE PANEL-BODY -->
+					</div>
+				</div>
+				<!-- FIM - ALTERACAO DA HIERARQUIA / MATRICULA NO PORTAL CSC - AHMP -->
+				
+					</div>
+					<!-- FIM - PANEL GROUP -->
+				</div>
+				<!--  FIM - PANEL-BODY - ETAPAS DO PROCESSO -->
+			</div>
+			<!-- FIM PANEL DEFAULT - ETAPAS DO PROCESSO -->
+  
+    	</form>
+	</div>
+			<!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/vcXMLRPC.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+	<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery.mask.min.js"></script>
+	<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery.timepicker.min.js"></script>
+	<script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/jquery-ui/datepicker-pt-BR.js"></script>
+	<script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/zoom.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/compartilhados.js" charset="utf-8"></script>
+        <script type="text/javascript" src="https://csc.direcional.com.br/scripts/js/model.js" charset="utf-8"></script>
+	<!-- scrpts essenciais - DEVE CONTER EM TODOS OS FORMS -->
+		<script type="text/javascript" src="FLUIG_0105_ZoomConfigs.js"></script>
+	<script type="text/javascript" src="FLUIG_0105.js"></script>
+	<script type="text/javascript" src="FLUIG_0105_Script.js"></script>
+	<script type="text/javascript" src="FLUIG_0105_View.js"></script>
+	<script type="text/javascript" src="FLUIG_0105_Processamento.js"></script>
+	<script type="text/javascript" src="FLUIG_0105_FormHelper.js"></script>
+    <script type="text/javascript" src="FLUIG_0105_Atividade_85.js"></script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+function defineStructure() {}
+
+function onSync(lastSyncDate) {
+
+    var num = iniciarprocesso("Brz@3461", "dkpadmin","");
+    var dataset = DatasetBuilder.newDataset();
+        dataset.addColumn("OK");
+        dataset.addRow(new Array(num));
+
+    return dataset;
+}
+
+function createDataset(fields, constraints, sortFields) {
+
+    var num = iniciarprocesso("Brz@3461", "dkpadmin","");
+    var dataset = DatasetBuilder.newDataset();
+        dataset.addColumn("OK");
+        dataset.addRow(new Array(num));
+
+    return dataset;
+
+}
+
+function onMobileSync(user) {}
+
+function iniciarprocesso(numvend, empreendimento,corduser) {
+
+    //var query = "SELECT * FROM FLUIG_DEV.DBO.BRZ_COMISSAO WHERE DATAVENDA BETWEEN '"+pastWeekDate()+"' AND '"+todayDate()+"' ORDER BY NUM_VENDA, COD_COMPN DESC";
+        
+    /*
+        - O Primeiro parâmetro acima é a data que iremo iniciar a busca de vendas
+        - O Segundo Parâmetro é a data final.
+        - Após alteração efetuar o Deploy no Eclipse e posteriormente sincronizar no Fluig.
+            @@ Hiago Oliveira Grupo DPK
+
+        var query = "SELECT * FROM FLUIG.DBO.BRZ_COMISSAO WHERE DATAVENDA BETWEEN '2019-04-12' AND '2019-04-13' ORDER BY NUM_VENDA, COD_COMPN DESC";
+    */
+
+	 var query = "SELECT * FROM FLUIG.DBO.BRZ_COMISSAO WHERE DATAVENDA BETWEEN '2019-04-12' AND '2019-05-12' ORDER BY NUM_VENDA, COD_COMPN DESC";
+
+    var c1 = DatasetFactory.createConstraint('SQL', query, query, ConstraintType.MUST);
+    var dtsComissao = DatasetFactory.getDataset('ds_buscaDB', null, [c1], null);
+    var dtsPercent = DatasetFactory.getDataset('ds_AtualizaInfoParam', null, [], null);
+
+    var EMPRRENDIMENTO = new Array();
+    var COD_PESS_EMPR = new Array();
+    var NUM_VENDA = new Array();
+    var BLOCO = new Array();
+    var APARTAMENTO = new Array();
+    var DATAVENDA = new Array();
+    var DATAAGREGACAO = new Array();
+    var CLIENTE = new Array();
+    var IMOBILIARIA = new Array();
+    var CORRETOR = new Array();
+    var VALORVENDA = new Array();
+    var COD_COMPN = new Array();
+    var COMPONENTE = new Array();
+    var SITUACAOCONTRATO = new Array();
+    var VALORREFCOMISSAO = new Array();
+    var EFIFTY = new Array();
+    var VALORBAIXADO = new Array();
+    var VALORPRIMVENCIMENTO = new Array();
+    var DATAPRIMVENCIMENTO = new Array();
+    var DATAPRIMPAGAMENTO = new Array();
+    var VALORPRIMPAGAMENTO = new Array();
+    var DATAENTREGAAP = new Array();
+
+
+    var arr  = new Array();
+    var arr2 = new Array();
+
+    for (i = 0; i < dtsComissao.values.length; i++) {
+
+
+        log.info("*********** VENDAS EFETIVADAS : "+ i);
+
+        
+        var COD = dtsComissao.getValue(i, "COD_COMPN");
+        
+        if(COD != 8 && COD != 20 && COD != 62 && COD != 515 && COD != 530 && COD != 550 && COD != 565 && COD != 899){
+            var numVenda = dtsComissao.getValue(i, "NUM_VENDA");
+            var cod = parseInt(dtsComissao.getValue(i, "COD_COMPN"));
+
+            var sitCont = dtsComissao.getValue(i, "SITUACAOCONTRATO");
+
+            if(arr2.indexOf(cod) === -1) arr2.push(cod);
+
+            if(arr.indexOf("'"+numVenda+"'") === -1 && cod != 899 && (sitCont == 'Efetivada' || sitCont == 'Quitada' || sitCont == 'Distratada')){
+
+                // data do primeiro vencimento do valor gerado 
+                var dataPrimVenc = dtsComissao.getValue(i, "DATAPRIMVENCIMENTO").trim();
+                if( dataPrimVenc != null ){
+                    dataPrimVenc = dtsComissao.getValue(i, "DATAPRIMVENCIMENTO").split(" ");
+                    DATAPRIMVENCIMENTO.push(dataPrimVenc[0]); 
+                }else{
+                    DATAPRIMVENCIMENTO.push(dataPrimVenc);
+                }
+                
+                // data de vencimento do primeiro pagamento
+                var dataPrimPgto = dtsComissao.getValue(i, "DATAPRIMPAGAMENTO").trim();
+                if( dataPrimPgto != null ){
+                    dataPrimPgto = dtsComissao.getValue(i, "DATAPRIMPAGAMENTO").split(" ");  
+                    DATAPRIMPAGAMENTO.push(dataPrimPgto[0]);   
+                }else{
+                    DATAPRIMPAGAMENTO.push(dataPrimPgto);
+                }
+
+                // data do primeiro pagamento da caixa
+                var dataAgregac = dtsComissao.getValue(i, "DATAAGREGACAO").trim();
+                if( dataAgregac != null ){
+                    dataAgregac = dtsComissao.getValue(i, "DATAAGREGACAO").split(" ");  
+                    DATAAGREGACAO.push(dataAgregac[0]);   
+                }else{
+                    DATAAGREGACAO.push(dataAgregac);
+                }
+
+                // data da entrega das chaves
+                var dataEntrega = dtsComissao.getValue(i, "DATAENTREGAAP").trim();
+                if( dataEntrega){
+                    dataEntrega = dtsComissao.getValue(i, "DATAENTREGAAP").split(" ");  
+                    DATAENTREGAAP.push(dataEntrega[0]);   
+                }else{
+                    DATAENTREGAAP.push(dataEntrega);
+                }
+
+
+                var comp  = dtsComissao.getValue(i, "COD_COMPN").trim()
+                var valLq = dtsComissao.getValue(i, "VALORVENDA").trim()
+                var valPg = dtsComissao.getValue(i, "VALORPRIMPAGAMENTO").trim()
+
+                var type; 
+                if(comp == '500' || comp == 500){
+                    type = "Financiamento CEF";
+                }else if(comp != '500' && comp != 500 && valLq != valPg){
+                    type = "Financiamento BRZ";
+                }else if(valLq == valPg){
+                    type = "Pagamento à vista";
+                }
+
+                EMPRRENDIMENTO.push(dtsComissao.getValue(i, "EMPRRENDIMENTO").trim());           // nome do empreendimento
+                COD_PESS_EMPR.push(dtsComissao.getValue(i, "COD_PESS_EMPR").trim());             // código do empreendimento
+                NUM_VENDA.push(dtsComissao.getValue(i, "NUM_VENDA").trim());                     // código da venda
+                BLOCO.push(dtsComissao.getValue(i, "BLOCO").trim());                             // bloco do condomínio
+                APARTAMENTO.push(dtsComissao.getValue(i, "APARTAMENTO").trim());                 // unidade vendida
+                DATAVENDA.push( dtsComissao.getValue(i, "DATAVENDA").trim());                    // data da venda
+                CLIENTE.push(dtsComissao.getValue(i, "CLIENTE").trim());                         // nome do cliente
+                IMOBILIARIA.push(dtsComissao.getValue(i, "IMOBILIARIA").trim());                 // nome da imobiliaria
+                CORRETOR.push(dtsComissao.getValue(i, "CORRETOR").trim());                       // nome do corretor(a)
+                VALORVENDA.push(dtsComissao.getValue(i, "VALORVENDA").trim());                   // valor da venda
+                COD_COMPN.push( dtsComissao.getValue(i, "COD_COMPN").trim() );                   // codigo do tipo de financiamento
+                COMPONENTE.push(type);                                                           // descricao do tipo de financiamento
+                SITUACAOCONTRATO.push(dtsComissao.getValue(i, "SITUACAOCONTRATO").trim());       // descricao da situacao do contrato
+                VALORREFCOMISSAO.push(dtsComissao.getValue(i, "VALORREFCOMISSAO").trim());       // valor da comissao
+                EFIFTY.push(dtsComissao.getValue(i, "EFIFTY").trim() || "N");                    // se é fifty
+                VALORBAIXADO.push(dtsComissao.getValue(i, "VALORBAIXADO").trim());               // a somatória do que já foi pago pelo cliente até o presente momento
+                VALORPRIMVENCIMENTO.push(dtsComissao.getValue(i, "VALORPRIMVENCIMENTO").trim()); // valor do primeiro lancamento
+                VALORPRIMPAGAMENTO.push(dtsComissao.getValue(i, "VALORPRIMPAGAMENTO").trim());   // valor do primeiro pagamento efetuado pelo cliente
+                
+
+                arr.push("'"+dtsComissao.getValue(i, "NUM_VENDA").trim()+"'");
+            }
+        }
+    }
+    
+    var numprocesso = "";
+
+    for(i=0; i<arr.length; i++){
+
+        var userId = "";
+        // if (notafiscal != '') {
+        //     //notafiscal = ''
+        //     notafiscal.trim();
+        // }
+        //var servico = ServiceManager.getService("ECMWorkflowEngineService").getBean();
+        //var servico = ServiceManager.getServiceInstance("ECMWorkflowEngineService_Prod");
+
+        var servico = ServiceManager.getServiceInstance("ECMWorkflowEngineService");
+        var ECMWorkflowEngineServiceService = servico.instantiate("com.totvs.technology.ecm.workflow.ws.ECMWorkflowEngineServiceService");
+        var WorkflowEngineService = ECMWorkflowEngineServiceService.getWorkflowEngineServicePort();
+
+        var matricula_aprovador = 'dkpadmin'; //hAPI.getAdvancedProperty("integrador-userid");
+
+        var username = 'dkpadmin'//'adiasadmin'; //hAPI.getAdvancedProperty("ws-login");
+        var password = 'Brz@3461'//'@Dias!@#2017'; //hAPI.getAdvancedProperty("ws-password");
+        var companyId = parseInt(getValue("WKCompany"));
+        var processId = 'CALCULODECOMISSÃO1'; //hAPI.getAdvancedProperty("proc_aprovacao");
+        var choosedState = 59;
+
+        var colleagueIds = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+        if(corduser != ""){
+        	colleagueIds.getItem().add(corduser);
+        	userId = corduser;
+        }else{
+        	colleagueIds.getItem().add('dkpadmin');
+        	userId = 'dkpadmin';
+            // userId = 'hiago.oliveira';
+        }
+
+        var comments = "INICIO DATASET";
+       // var userId = 'adiasadmin'; //hAPI.getAdvancedProperty("integrador-userid");
+        var completeTask = true;
+        var attachments = servico.instantiate("com.totvs.technology.ecm.workflow.ws.ProcessAttachmentDtoArray");
+        var cardData = servico.instantiate("net.java.dev.jaxb.array.StringArrayArray");
+        var appointment = servico.instantiate("com.totvs.technology.ecm.workflow.ws.ProcessTaskAppointmentDtoArray");
+        var managerMode = true;
+
+        var numVenda = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            numVenda.getItem().add("cpNumeroVenda");
+            numVenda.getItem().add(NUM_VENDA[i]);
+            cardData.getItem().add(numVenda);
+
+        var empreendimento = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            empreendimento.getItem().add("cpEmpreendimento");
+            empreendimento.getItem().add(EMPRRENDIMENTO[i]);
+            cardData.getItem().add(empreendimento);
+
+        var empreendimentoCod = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            empreendimentoCod.getItem().add("cpEmpreendimentoCod");
+            empreendimentoCod.getItem().add(COD_PESS_EMPR[i]);
+            cardData.getItem().add(empreendimentoCod);
+
+        var bloco = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            bloco.getItem().add("cpBloco");
+            bloco.getItem().add(BLOCO[i]);
+            cardData.getItem().add(bloco);
+
+        var unidade = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            unidade.getItem().add("cpUnidade");
+            unidade.getItem().add(APARTAMENTO[i]);
+            cardData.getItem().add(unidade);
+
+        var dataVenda = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            dataVenda.getItem().add("dtVenda");
+            dataVenda.getItem().add(DATAVENDA[i]);
+            cardData.getItem().add(dataVenda);
+
+        var dataAgregacao = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            dataAgregacao.getItem().add("dtAgregacao");
+            dataAgregacao.getItem().add(DATAAGREGACAO[i]);
+            cardData.getItem().add(dataAgregacao);
+
+        var NomeCliente = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            NomeCliente.getItem().add("cpNomeCliente");
+            NomeCliente.getItem().add(CLIENTE[i]);
+            cardData.getItem().add(NomeCliente);
+
+        var nomeImobil = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            nomeImobil.getItem().add("cpNomeImobiliaria");
+            nomeImobil.getItem().add(IMOBILIARIA[i]);
+            cardData.getItem().add(nomeImobil);
+
+        var nomeCorret = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            nomeCorret.getItem().add("cpNomeCorretor");
+            nomeCorret.getItem().add(CORRETOR[i]);
+            cardData.getItem().add(nomeCorret);
+
+        var valLiquido = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            valLiquido.getItem().add("cpValorLiquidoVenda");
+            valLiquido.getItem().add(VALORVENDA[i]);
+            cardData.getItem().add(valLiquido);
+
+        var valRefComissao = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            valRefComissao.getItem().add("cpValorReferenciaComissao");
+            valRefComissao.getItem().add(VALORREFCOMISSAO[i]);
+            cardData.getItem().add(valRefComissao);
+
+        var fifty = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            fifty.getItem().add("slFifty");
+            fifty.getItem().add(EFIFTY[i]);
+            cardData.getItem().add(fifty);
+
+        var tipoVenda = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            tipoVenda.getItem().add("cpTipoVenda");
+            tipoVenda.getItem().add(COMPONENTE[i]);
+            cardData.getItem().add(tipoVenda);
+
+        var tipoVenda = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            tipoVenda.getItem().add("cpTipoVendaCod");
+            tipoVenda.getItem().add(COD_COMPN[i]);
+            cardData.getItem().add(tipoVenda);
+
+        var statusVenda = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            statusVenda.getItem().add("slStatusUnidade");
+            statusVenda.getItem().add(SITUACAOCONTRATO[i]);
+            cardData.getItem().add(statusVenda);
+
+        var valPago = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            valPago.getItem().add("cpValorPagoAteMomento");
+            valPago.getItem().add(VALORBAIXADO[i]);
+            cardData.getItem().add(valPago); 
+
+        var valGerado = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            valGerado.getItem().add("cp1ValorGerado");
+            valGerado.getItem().add(VALORPRIMVENCIMENTO[i]);
+            cardData.getItem().add(valGerado);
+
+        var dataFechaPer = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            dataFechaPer.getItem().add("cpDataFechamentoPeriodo");
+            dataFechaPer.getItem().add(DATAPRIMVENCIMENTO[i]);
+            cardData.getItem().add(dataFechaPer);
+
+        var dataBaixaRec = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            dataBaixaRec.getItem().add("cp1ValorPagoCliente");
+            dataBaixaRec.getItem().add(VALORPRIMPAGAMENTO[i]);
+            cardData.getItem().add(dataBaixaRec);
+
+        var dataBaixaRec = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            dataBaixaRec.getItem().add("cpDataBaixaRecebimento");
+            dataBaixaRec.getItem().add(DATAPRIMPAGAMENTO[i]);
+            cardData.getItem().add(dataBaixaRec);
+
+        var dataAtual = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            dataAtual.getItem().add("dtAtual");
+            dataAtual.getItem().add(todayDate());
+            cardData.getItem().add(dataAtual);
+
+        var dataChaves = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            dataChaves.getItem().add("cpDataChaves");
+            dataChaves.getItem().add(DATAENTREGAAP[i]);
+            cardData.getItem().add(dataChaves);
+
+        // percentuais de calculo
+        var primParc = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            primParc.getItem().add("cpPorcentCalculo1Parc");
+            primParc.getItem().add(dtsPercent.getValue(0, "PRIMPARCELA").trim());
+        log.info("O PROBLEMA DO TRIM ESTA AQUI = "+ primParc);
+            cardData.getItem().add(primParc);
+
+        var segParc = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            segParc.getItem().add("cpPorcentCalculo2Parc");
+            segParc.getItem().add(dtsPercent.getValue(0, "SEGPARCELA").trim());
+            cardData.getItem().add(segParc);
+
+        var parcUnic = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            parcUnic.getItem().add("cpPorcentCalculoParcUnica");
+            parcUnic.getItem().add(dtsPercent.getValue(0, "PARCELAUNICA").trim());
+            cardData.getItem().add(parcUnic);
+
+        var demandMin = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            demandMin.getItem().add("cpPorcentDemMin");
+            demandMin.getItem().add(dtsPercent.getValue(0, "DEMANDAMIN").trim());
+            cardData.getItem().add(demandMin);
+
+        var demandMax = servico.instantiate("net.java.dev.jaxb.array.StringArray");
+            demandMax.getItem().add("cpPorcentDemMax");
+            demandMax.getItem().add(dtsPercent.getValue(0, "DEMANDAMAX").trim());
+            cardData.getItem().add(demandMax);
+
+        // percentuais de calculo
+
+        var properties = {};
+            properties["disable.chunking"] = "true";
+            properties["log.soap.messages"] = "true";
+            properties["receive.timeout"] = "100000";
+
+        var customClient = servico.getCustomClient(WorkflowEngineService, "com.totvs.technology.ecm.workflow.ws.WorkflowEngineService", properties);
+
+        var retorno = customClient.startProcess(
+            username,
+            password,
+            companyId,
+            processId,
+            choosedState,
+            colleagueIds,
+            comments,
+            userId,
+            completeTask,
+            attachments,
+            cardData,
+            appointment,
+            managerMode
+        );
+
+        numprocesso = getArrayReturn(retorno, "iProcess");
+    } // FIM DO FOR
+
+    return numprocesso;
+}
+
+function buscausuario(email_consultor){
+	var codusuario = "";
+	var cMail = DatasetFactory.createConstraint("mail", email_consultor, email_consultor, ConstraintType.MUST);
+    var arrayConstraintmail = new Array(cMail);
+    var ds = DatasetFactory.getDataset("colleague", null, arrayConstraintmail, null);	
+    //var ds = DatasetFactory.getDataset("colleague", ["colleaguePK.colleagueId"], arrayConstraintmail, null);
+    if(ds.values.length > 0){
+    //for (var g = 0; g < ds.rowsCount; g++) {
+        codusuario = ds.getValue(0, "colleaguePK.colleagueId");
+    }
+    return codusuario;
+}
+
+
+function pastWeekDate(){
+    var todayDate = new Date();
+    var weekDate  = new Date();
+        weekDate.setTime(todayDate.getTime()-(1*24*3600000))
+
+    var theyear  = weekDate.getFullYear();
+    var themonth = weekDate.getMonth() + 1;
+    var thetoday = weekDate.getDate();
+    
+    if(themonth < 10 ) themonth = "0"+themonth;
+    if(thetoday < 10 ) thetoday = "0"+thetoday;
+
+        weekDate = theyear + "-" + themonth + "-" + thetoday;
+
+    return weekDate;
+}
+
+function todayDate(){
+    var todayDate = new Date();
+
+    var year  = todayDate.getFullYear();
+    var month = todayDate.getMonth() + 1;
+    var today = todayDate.getDate();
+
+    if(month < 10 ) month = "0"+month;
+    if(today < 10 ) today = "0"+today;
+    
+        todayDate = year + "-" + month + "-" + today;
+
+    return todayDate;
+}
+
+function getArrayReturn(obj, campo) {
+    for (var i = 0; i < obj.getItem().size(); i++) {
+        if (obj.getItem().get(i).getItem().get(0) == campo) {
+            return obj.getItem().get(i).getItem().get(1);
+        }
+    }
+}

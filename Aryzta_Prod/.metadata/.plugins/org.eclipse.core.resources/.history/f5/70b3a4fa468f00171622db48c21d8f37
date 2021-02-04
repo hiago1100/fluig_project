@@ -1,0 +1,445 @@
+var ultimaLinha = 0;
+var ultimaLinhaProg = 0;
+var ultimaLinhaConf = 0;
+var UltimaLinhaConcat = 0;
+
+
+var controle = [];
+var ARYForms = {
+        params: {},
+        initForm: function(params) {    
+            this.params = params;
+            var $this = this;   
+            $(function () {
+                if (params.formMode == "ADD" || params.formMode == "MOD") { 
+                    $this.onEdit(params);
+                } else {
+                    $this.onView(params);
+                }
+            });
+        },
+        onView: function(params) { //Visualização do formulário sem a possibilidade de edição (consulta)
+
+        },
+        onEdit: function(params) {  //Edição do formulário
+
+
+
+            var WKNumState = params.WKNumState;
+
+            $(".aba2Obs").attr('readonly','readonly');
+            $(".aba3Obs").attr('readonly','readonly');
+            //$(".aba4Obs").attr('readonly','readonly');
+            $(".aba5Obs").attr('readonly','readonly');
+
+            var index2 = 0;
+            var index3 = 0;
+            var index5 = 0;
+
+            // Atividade gestor Usuário - Aprovar
+            if (WKNumState == 32 ) {   
+
+                // Controle de bloqueio de botão na aba 2 após incluir um filho
+                $('#btnNovo').removeAttr('disabled');
+                $(".aba2Obs").removeAttr('readonly');
+
+                $('#btnNovo').click(function(){
+
+                    if($("#aba2Index").val() != '' || $("#aba2Index").val() != 0){
+                        $('#btnNovo').attr('disabled','disabled');
+                    }
+                });
+
+
+                $('#tabelaAba2').arqmasterdetail({
+                    buttonNewRow: "#btnNovo",
+                    onCustomizeRow: function($tr, index){
+
+                        index2++;
+                        $("#aba2Index").val(index2);
+                    }   
+                });
+
+                index2 = 0;
+                $("#aba2Index").val(index2);
+
+
+            }    
+
+            // Tarefa Gestor Grupo
+            if (WKNumState == 41) {  
+
+                $('.aba3Obs').removeAttr('readonly');
+                $('#btnNovo3').removeAttr('disabled');
+                $('#btnNovo3').click(function(){
+
+                    if($("#aba3Index").val() != '' || $("#aba3Index").val() != 0){
+                        $('#btnNovo3').attr('disabled','disabled');
+                    }
+                });
+
+                $('#tabelaAba3').arqmasterdetail({
+                    buttonNewRow: "#btnNovo3",
+                    onCustomizeRow: function($tr, index){
+
+                        index3++;
+                        $("#aba3Index").val(index3);
+                    }   
+                });
+
+                index3 = 0;
+                $("#aba3Index").val(index3);
+
+            }
+
+            // Tarefa Segurança da Informação
+            if (WKNumState == 27) {  
+
+                $('.aba5Obs').removeAttr('readonly');
+                $('#btnNovo5').removeAttr('disabled');
+                $('#btnNovo5').click(function(){
+
+                    if($("#aba5Index").val() != '' || $("#aba5Index").val() != 0){
+                        $('#btnNovo5').attr('disabled','disabled');
+                    }
+                });
+
+                $('#tabelaAba5').arqmasterdetail({
+                    buttonNewRow: "#btnNovo5",
+                    onCustomizeRow: function($tr, index){
+
+                        index5++;
+                        $("#aba5Index").val(index5);
+                    }   
+                });
+
+                index5 = 0;
+                $("#aba5Index").val(index5);
+            } 
+
+
+
+            //$(':input').prop('disabled', true);
+            $('#tipoAcao').prop('disabled', false); 
+            $('.selecioneHid').addClass('hide');  
+
+            $('.revisa').removeClass('hide');
+            $('#copia').addClass('hide');
+            $('.selecioneHid').removeClass('hide');
+            $(".allProgramas").addClass('hide'); 
+
+
+
+            // ESTOU POR AQUI
+            $('#addGrupoUser').click(function(){
+                $("#incluirOk").val("Ok");
+                var context = $('#addGrupo');
+                if (context.val() != ''){
+                    wdkAddChild('tabela_programas3');
+                    ultimaLinhaProg = ultimaLinhaProg +1 ;
+
+            $("#nomeProgAuxTwo___"+ultimaLinhaProg).val($('#codProgramaCopiaAux').val());
+            $("#descProgAuxTwo___"+ultimaLinhaProg).val($('#nomeProgramaCopiaAux').val());
+
+
+                }
+                concatenaDesc();
+              var numRegistros = $("#tabela_programas3 tr").length - 2;
+
+              $(".numProg").text(numRegistros);
+
+            });
+
+
+            $("#populaCombo").change(function(){
+                var context = $(this);
+
+                console.log('context', context.val());
+                $('input[id^="moduloPrograma___"]').each(function(){
+                    var context1 = $(this);
+                    context1.parent().parent('tr').removeClass('hide');
+                    if(context.val() != 'Todos'){
+                        if (context1.val() != context.val() )
+                            context1.parent().parent('tr').addClass('hide');
+                    }
+                });
+
+            });
+        }                           
+    };
+
+
+function setSelectedZoomItem(selectedItem) {     
+
+
+
+if(selectedItem.inputName == 'codGrupo'){  
+
+       // $('input[id^="nomeUsuarioAux___"]').parent().parent('tr').remove(); 
+        $('input[id^="nomeProgAuxTwo___"]').parent().parent('tr').remove(); 
+        $('input[id^="nomeProgAux___"]').parent().parent('tr').remove();
+        $('input[id^="appConflitoC___"]').parent().parent('tr').remove();         
+
+
+        $('#nomeGrupo').val(selectedItem['desc_grupo']);
+        $('#gestorGrupo').val(selectedItem['NOME_GESTOR']);
+        $("#codGest").val(selectedItem["GESTOR"]);        
+
+        var cod_grupo = selectedItem['cod_grupo'];
+        //carregaScroll();
+        $("#codDoGrupo").val(selectedItem["cod_grupo"]);
+
+        $(".grupoSetado").text(cod_grupo);    
+
+
+
+    //var cod_grupo = $("#codDoGrupo").val();
+
+    var indiceGrupo = 0;
+    var indiceScroll = 0;
+    $("#content").scroll(function(){
+
+        //alert("passa do scroll");      
+        indiceScroll = indiceScroll+1;   
+
+        var  idUsuario = $("#codGest").val();
+        var c4 = DatasetFactory.createConstraint('cod_usuario', idUsuario ,idUsuario ,ConstraintType.MUST);
+        var dsGrupo = DatasetFactory.getDataset('ARY-sql2dataset-usuario-grupos', null, [c4],null);
+
+        if(indiceScroll > 1){
+            indiceGrupo = ultimaLinha / dsGrupo.values.length;  
+        }
+
+        for(var e=0;e<dsGrupo.values.length;e++){            
+
+            var cod_grupo = $("#codDoGrupo").val();
+
+
+            var c9 = DatasetFactory.createConstraint('cod_grupo', cod_grupo ,cod_grupo ,ConstraintType.MUST);
+            var c2 = DatasetFactory.createConstraint('indice', indiceGrupo ,indiceGrupo ,ConstraintType.MUST);      
+            var dsGrupoProg = DatasetFactory.getDataset('ARY-sql2dataset-programas', null, [c9,c2],null);
+
+         //   console.log("Tamano dos dados -> " ,dsGrupoProg.values.length);
+
+
+
+            for(var i = 0; i < dsGrupoProg.values.length; i++){
+
+                wdkAddChild('tabela_programas2');
+
+                ultimaLinha = ultimaLinha + 1;
+
+               // $("#contaProgramas").html($("#tabela_programas2 tr").length - 2);
+                $("#nomeProgAux___"+ultimaLinha).val(dsGrupoProg.values[i]["COD_PROGRAM"]);
+                $("#descProgAux___"+ultimaLinha).val(dsGrupoProg.values[i]["DESCRIPTION_PROGRAM"]);
+
+            }
+        }    
+    });
+
+    
+
+        var c1 = DatasetFactory.createConstraint('cod_grupo', cod_grupo ,cod_grupo ,ConstraintType.MUST);
+        var dsGrupo = DatasetFactory.getDataset('ARY-sql2dataset-programas', null,[c1],null);
+
+
+        for(var i = 0; i < dsGrupo.values.length; i++){
+
+            wdkAddChild('tabela_programas2');
+
+            ultimaLinha = ultimaLinha + 1;
+
+            //    $("#countProg").html(ultimaLinha);
+//            $("#contaProgramas").html(contaProg);
+            $("#nomeProgAux___"+ultimaLinha).val(dsGrupo.values[i]["COD_PROGRAM"]);
+            $("#descProgAux___"+ultimaLinha).val(dsGrupo.values[i]["DESCRIPTION_PROGRAM"]);
+
+        }  
+
+
+
+        var cod_grupo_revisao = selectedItem['cod_grupo'];   
+        var constraint = DatasetFactory.createConstraint('cod_grupo_revisao', cod_grupo_revisao ,cod_grupo_revisao ,ConstraintType.MUST);
+        var dsUsuarios = DatasetFactory.getDataset('ARY-sql2dataset-usuario-grupos',null,[constraint],null);
+        console.log(dsUsuarios.values);
+        var dadoss = '';
+        for(var h = 0; h < dsUsuarios.values.length; h++){
+            var row = dsUsuarios.values[h];
+
+            var nomeUsuario          =   row['NOME_USUARIO'];
+            var nomeGestor           =   row['NOME_GESTOR']; 
+
+
+          //  wdkAddChild('tabela_usuarios');
+
+         //   ultimaLinhaConf = ultimaLinhaConf + 1 ;
+
+         //   $("#contaUser").html($("#tabela_usuarios tr").length);
+            dadoss += '<tr>';
+            dadoss += '<td class="col-sm-6">'; 
+            dadoss += '<a style="background-color:#f5f5f5;text-decoration: none;" class="collapse-icon up" data-toggle="collapse" data-parent="#accordion" href="#unidade'+ nomeUsuario+'"><button class="valordoDia" style="width:100%"></div>';
+            dadoss += 'Usuário : '+ nomeUsuario + " R$ " + '</button></a>';
+            dadoss += '<div id="unidade'+ nomeUsuario+'" class="panel-collapse collapse"></tr></td>';
+            dadoss += '<table class="table table-bordered text-center" id="tt-usuarios" width="100%"></tr></td>';
+            dadoss += '<thead>';
+            dadoss += '<th class="col-sm-6">Usuário</th>';
+            dadoss += '<th class="col-sm-6">Gestor</th></tr>';              
+            dadoss += '<tr class="concat" id="concatUser">';
+            dadoss += '<td class="col-sm-6">' + nomeUsuario + '</td>';     
+            dadoss += '<td class="col-sm-6">' + nomeGestor + '</td>';            
+            dadoss += '</td></tr></thead></table></div>';
+            
+            // $("#nomeUsuarioAux___"+ultimaLinhaConf).val(dsUsuarios.values[h]["NOME_USUARIO"]);
+            // $("#gestorUserAux___"+ultimaLinhaConf).val(dsUsuarios.values[h]["NOME_GESTOR"]);
+
+
+        }
+
+
+
+       console.log(dadoss);
+
+
+        $("#testeColappse").html(dadoss);
+
+             var coduser = selectedItem['GESTOR'];
+
+             var c8 = DatasetFactory.createConstraint('cod_usuario',coduser,coduser, ConstraintType.MUST);
+             var dsConflitos = DatasetFactory.getDataset('ARY-sql2dataset-programa-conflito-inclusao2', null, [c8],null);
+
+             var linha = 0;
+             for(var m=0; m < dsConflitos.values.length; m++){
+                 linha = m + 1;
+                 wdkAddChild('tabela_conflitos');
+                 console.log("ENTROU NO IF "+ linha);
+
+                 $("#contConfli").html($("#tabela_conflitos tr").length - 2);
+                 $("#appConflitoC___"+linha).val(dsConflitos.values[m]['APPMAIN']);
+                 $("#descConflitoC___"+linha).val(dsConflitos.values[m]['APPCONFLITO']);
+                 $("#descMainC___"+linha).val(dsConflitos.values[m]['DESCCONFLITO']);
+                 $("#codConflitoC___"+linha).val(dsConflitos.values[m]['COD_GRUPO']);
+                 $("#grupoConfito___"+linha).val(dsConflitos.values[m]['GRUPO_CONFLITO']);
+
+                 if(dsConflitos.values[m]['APPRISCO'] == "alto"){
+                   $("#farol___"+linha).parent().parent('tr').addClass('danger');
+                    $("#farol___"+linha).val("Alto");
+                 }
+                 if(dsConflitos.values[m]['APPRISCO'] == "medio"){
+                    $("#farol___"+linha).parent().parent('tr').addClass('warning');
+                    $("#farol___"+linha).val("Médio");
+                 }
+                 if(dsConflitos.values[m]['APPRISCO'] == "baixo"){
+                    $("#farol___"+linha).parent().parent('tr').addClass('success');
+                    $("#farol___"+linha).val("Baixo");
+                 }
+                                
+            }
+        
+
+    } else if(selectedItem.inputName == "addGrupo") {
+
+        $("#codProgramaCopiaAux").val(selectedItem['cod_program']);
+        $("#nomeProgramaCopiaAux").val(selectedItem['description_program']);
+ 
+    } 
+
+}
+
+
+function carregaTabelaProgramasCopia(campo, valor){
+    var c1 = DatasetFactory.createConstraint(campo, valor ,valor ,ConstraintType.MUST);
+    var dsProgramas = DatasetFactory.getDataset('ARY-sql2dataset-programas', null, [c1],null);
+
+    if (dsProgramas.values.length > 0){
+        for(var i = 0; i < dsProgramas.values.length; i++){
+            var j = i + 1;
+            wdkAddChild('tabela_programas');
+            $("#codProgramaCopia___"+j).val(dsProgramas.values[i]['COD_PROGRAM']);
+            $("#nomeProgramaCopia___"+j).val(dsProgramas.values[i]['DESCRIPTION_PROGRAM']);
+            $("#descProgramaCopia___"+j).val(dsProgramas.values[i]['OBS_UPC']);         
+        }
+        validaConflito();
+    }
+}
+
+
+function displayConlitos(mostrar){
+//  console.log('displayConlitos', mostrar);    
+    $('input[id^="codConflito___"]').each(function(){
+        var context = $(this);
+        if (context.val() == ''){
+            var objLinha = context.parent().parent('tr');
+            if (!mostrar) {
+                objLinha.removeClass('hide');
+            } else {
+                objLinha.addClass('hide');
+            }
+        }
+    });
+}
+
+
+function setaUltimaLinha(){
+    $('input[id^="nomedoseugrupo___"]').each(function(){
+        var context = $(this);
+        ultimaLinha = parseInt(context.attr('id').split('___')[1]);     
+    });
+
+}
+
+function setaUltimaLinhaProg(){
+    $('input[id^="descRotina___"]').each(function(){
+        var context1 = $(this);
+        ultimaLinhaProg = parseInt(context1.attr('id').split('___')[1]);     
+    });
+
+}
+
+function setaUltimaLinhaConflitos(){
+    $('input[id^="codConflitoC___"]').each(function(){
+        var context = $(this);
+        ultimaLinhaConf = parseInt(context.attr('id').split('___')[1]);     
+    });
+}
+
+function setaUltimaLinhaConcat(){
+    $('input[id^="gestorHide___"]').each(function(){
+        var context = $(this);
+        UltimaLinhaConcat = parseInt(context.attr('id').split('___')[1]);     
+    });
+}
+
+function concatenaDesc(){
+    var arr = [] ;
+
+    $('input[id^="nomedoseugrupo___"]').each(function(x){
+        var context = $(this);
+        var linha = context.attr('id').split("___")[1];
+        arr.push($("#gestorHide___" + linha).val());  
+
+        var contador = arr.length;
+
+    });
+
+    $("#cont_aprovador").val(arr);
+
+}
+
+function carregaScroll() {
+
+    
+
+    setaUltimaLinha();
+
+}
+
+  function fnCustomDelete(oElement){
+   
+      // Chamada a funcao padrao, NAO RETIRAR
+      fnWdkRemoveChild(oElement);
+      var numRegistros = $("#tabela_programas3 tr").length - 2;
+      $(".numProg").text(numRegistros);
+     
+  }
+
+

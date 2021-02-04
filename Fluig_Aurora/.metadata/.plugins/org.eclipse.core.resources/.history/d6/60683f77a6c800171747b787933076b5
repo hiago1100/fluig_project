@@ -1,0 +1,257 @@
+var ultimaLinha = 0;
+var ultimaLinhaProg = 0;
+var ultimaLinhaConf = 0;
+var UltimaLinhaConcat = 0;
+var myLoading2  = FLUIGC.loading(window);
+var carregaProg = FLUIGC.loading("#home");
+var carregaConf = FLUIGC.loading("#menu1");
+
+var controle = [];
+var ARYForms = {
+		params: {},
+		initForm: function(params) {    
+			this.params = params;
+			var $this = this;   
+			$(function () {
+				if (params.formMode == "ADD" || params.formMode == "MOD") { 
+					$this.onEdit(params);
+				} else {
+					$this.onView(params);
+				}
+			});
+		},
+		onView: function(params) { //Visualização do formulário sem a possibilidade de edição (consulta)
+
+		},
+		onEdit: function(params) {  //Edição do formulário;
+
+
+
+			var cod_solicitante = $("#matriculaSolicitante").val();
+
+			carregaRepresentante(cod_solicitante); 
+
+			$("input[name='aprova']").change(function(e){               
+				if ($(this).val() === 'sim') {
+					$("#aprovacaoSupDir").val("sim");
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoSupDir").val("nao");
+				}     
+			});
+
+			$("input[name='aprovaDif']").change(function(e){               
+				if ($(this).val() === 'sim') {
+					$("#aprovacaoDif").val("sim");
+				} else if ($(this).val() === 'nao') {
+					$("#aprovacaoDif").val("nao");
+				}     
+			});
+
+			// carregaProgramasAll($("#codDoGrupo").val());
+			// carregaUsuariosAll($("#codDoGrupo").val());
+			// carregaTela($("#codDoGrupo").val());  
+
+			var WKNumState = params.WKNumState;
+			// Atividade gestor Usuário - Aprovar
+
+			
+			//AQUI
+
+			var EMAIL = "informatica@aurora.com.br";
+			
+			reloadZoomFilterValues("testeZoom", "mail", + EMAIL);
+			
+		}   
+};
+
+function carregaTela(cod_solicitante){
+	carregaRepresentante(cod_solicitante);
+
+
+}
+
+// function setSelectedZoomItem(selectedItem) {
+// 	var NAME = "Administrador Aurora";
+// 	var EMAIL = "informatica@aurora.com.br";
+
+// 	if(selectedItem.inputId == "nomeCliente"){
+// 		console.log("------ Limpando zoom de e-mail --------------");
+// 		$("#colleagueMail").val('');
+// 		console.log("------ Atualizando zoom de e-mail --------------");
+// 		reloadZoomFilterValues("nome_campo_zoom_do_form", "mail," + EMAIL);
+// 	}
+// }
+
+function carregaRepresentante(cod_solicitante){
+
+	var cod_solicitante = $("#matriculaSolicitante").val();
+	if (cod_solicitante != ""){ 
+		console.log(cod_solicitante);
+
+		var dados = {
+			"name": "repres_Solicitante",
+		    "fields":null,
+		    "constraints":[
+                {
+                   "_field":"matr_fluig",
+                   "_initialValue": cod_solicitante,
+                   "_finalValue": cod_solicitante,
+                   "_type":1
+                }
+		    ]
+		};
+		$.ajax({
+			method: "POST",
+			url: "/api/public/ecm/dataset/datasets/",
+			data: JSON.stringify(dados),
+			contentType: "application/json", 
+			async: false,
+			error: function(x, e) {
+				if (x.status == 500) {
+					alert("Erro Interno do Servidor: entre em contato com o Administrador.");
+				}
+			},
+			beforeSend: function(){
+
+			},
+			success:function(model) {
+
+				$.each(model.content.values, function(index, value){
+					var nomeRegiao = value.nome_ab_reg;
+					var nomeSuper = value.nome_super;
+					var hideSuper = value.supervisor;
+
+					$("#supervisor").val(nomeSuper);
+					$("#regional").val(nomeRegiao);
+
+					if(hideSuper == "SIM"){
+						$("#verificaSuper").val("SIM");
+						$("#zoomRep").removeClass("hide");
+
+					} else if (hideSuper == "NÃO"){
+						$("#verificaSuper").val("NÃO");
+					}
+				});
+				return model;
+			}
+		});
+	}
+}
+
+//function concatenaDesc(){
+//var arr = [] ;
+//var arr1 = [] ;
+//var arr2 = [] ;
+//var teste = "";
+//$('input[id^="descProgAuxTwo___"]').each(function(x){
+//var context = $(this);
+//var linha = context.attr('id').split("___")[1];
+//var aspa = "'";
+//arr.push(aspa+$("#nomeProgAuxTwo___"+linha).val()+aspa);  
+//var contador = arr.length;
+
+//});
+
+//$('input[id^="descProgAuxTwo___"]').each(function(x){
+//var context = $(this);
+//var linha = context.attr('id').split("___")[1];
+
+//if($("#codGestorModuloTwo___"+linha).val() != ""){
+//arr1.push($("#codGestorModuloTwo___"+linha).val());  
+//var contador = arr1.length;
+
+//} 
+
+//});
+
+$('input[id^="descProgAuxTwo___"]').each(function(x){
+	var context = $(this);
+	var linha = context.attr('id').split("___")[1];
+
+	if($("#codGestorModuloTwo___"+linha).val() == ""){
+		teste = "sim";
+	}
+});
+
+
+
+
+
+function carregaScroll() {
+	setaUltimaLinha();
+}
+
+function fnCustomDelete(oElement){
+	// Chamada a funcao padrao, NAO RETIRAR
+	fnWdkRemoveChild(oElement);
+	var numRegistros = $("#tabela_programas3 tr").length  - 2;
+	$(".numProg").text(numRegistros);
+
+	$("#recebeContAux").val(numRegistros);
+	concatenaDesc();
+
+	var cod_grupo_revisao = $("#codDoGrupo").val();
+
+	carregaUsuarios(cod_grupo_revisao);
+}
+
+function getIDUserResp(idElemento){
+	idElemento = idElemento.replace(/[^0-9]/g,'');
+	if ($("#NomUserResp___" + idElemento).val() == "" || $("#NomUserResp___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserResp___" + idElemento).val(UserRespTrick);
+	}
+
+	if ($("#NomUserDif___" + idElemento).val() == "" || $("#NomUserDif___" + idElemento).val() == null){
+		var UserRespTrick = $("#NomUserResptrick").val();
+		$("#NomUserDif___" + idElemento).val(UserRespTrick);
+	}
+}
+
+
+function getID(idElemento){
+	idElemento = idElemento.replace(/[^0-9]/g,'');
+	if ($("#HoraResp___" + idElemento).val() == "" || $("#HoraResp___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraResp___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}
+
+	if ($("#HoraRespDif___" + idElemento).val() == "" || $("#HoraRespDif___" + idElemento).val() == null){
+		var dataResp = new Date();
+		$("#HoraRespDif___" + idElemento).val(dataResp.toLocaleDateString() + " " + dataResp.toLocaleTimeString());
+	}
+}
+
+function respbtn(){
+//	var texto = ""; 
+	wdkAddChild('tabelaNF');  
+}
+
+
+function respostaAprova(){
+	wdkAddChild('respoCham');
+}   
+
+function respostaDiferenca(){
+	wdkAddChild('respoChamDif'); 
+}
+
+function tableDesc(){
+	wdkAddChild('respoChamDesc');    
+}
+
+function setaUltimaLinha(){
+	$('input[id^="codItem___"]').each(function(){
+		var context = $(this);
+		ultimaLinha = parseInt(context.attr('id').split('___')[1]);    
+
+	});
+}
+
+function ReadInputArea(){
+	$('.respArea').each(function(i){
+		if ($(this).val() !="" || $(this).val() == null){
+			$(this).attr('readonly', true);
+		}
+	});
+}

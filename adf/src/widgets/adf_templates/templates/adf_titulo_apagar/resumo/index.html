@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-sm-6">
+        <label>Número <span ng-show="documento.tituloSerie"> / Série </span> <span ng-show="documento.tituloParcela"> / Parcela </span></label>
+        <p>{{documento.tituloNumero}} <span ng-show="documento.tituloSerie">  / {{documento.tituloSerie}} </span> <span ng-show="documento.tituloParcela"> / {{documento.tituloParcela}} </span></p>
+    </div>
+    <div class="col-sm-6">
+        <label>Fornecedor</label>
+        <p>{{documento.tituloFornecedor || 'Não informado'}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <label>Data de Emissão</label>
+        <p>{{documento.tituloDataEmissao | date}}</p>
+    </div>
+    <div class="col-sm-6">
+        <label>Data de Vencimento</label>
+        <p>{{documento.tituloDataVencimento | date}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <label>Valor Original</label>
+        <p>{{documento.tituloValorOriginal | currency:documento.tituloMoeda}}</p>
+    </div>
+    <div class="col-sm-6">
+        <label>Saldo</label>
+        <p>{{documento.tituloValorSaldo | currency:documento.tituloMoeda}}</p>
+    </div>
+</div>

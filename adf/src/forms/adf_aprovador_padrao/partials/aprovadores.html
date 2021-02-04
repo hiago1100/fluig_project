@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Aprovadores</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-offset-3 col-sm-5">
+                <table class="table table-condensed table-striped" tablename="aprovadores" noaddbutton="true" nodeletebutton="true">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <th class="col-sm-12">Usuário</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span ng-if="vm.Params.edit" ng-click="vm.removeAprovador($event)" class="fluigicon fluigicon-md fluigicon-trash fs-cursor-pointer"></span>
+                            </td>
+                            <td ng-child="vm.Formulario.aprovadorUsuario" id="aprovadorUsuario">
+                                <input type="text" class="form-control" name="aprovadorUsuario_input" ng-model="vm.Formulario.aprovadorUsuario" ng-child-tags='{"fluig-autocomplete":""}'
+                                    values="vm.Usuarios" display-key="colleagueName">
+                                <textarea hidden ng-value="vm.Formulario.aprovadorUsuario | json:0" ng-bind="vm.Formulario.aprovadorUsuario | json:0" name="aprovadorUsuario"></textarea>
+                                <input type="hidden" name="aprovadorCodUsuario" ng-value="vm.Formulario.aprovadorUsuario.colleagueId">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button ng-if="vm.Params.edit" type="button" class="btn btn-lg btn-default" ng-click="vm.adicionaAprovador()">Incluir Aprovador</button>
+            </div>
+        </div>
+    </div>
+</div>

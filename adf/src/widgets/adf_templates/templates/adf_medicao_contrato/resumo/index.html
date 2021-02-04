@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-sm-4">
+        <label>Número</label>
+        <p>{{documento.contratoNumero || 'Não informado'}}</p>
+    </div>
+    <div class="col-sm-8">
+        <label>Fornecedor</label>
+        <p>{{documento.contratoFornecedor | date}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <label>Item Medido</label>
+        <p>{{documento.contratoItemDescricao || 'Não informado'}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Qtde</label>
+        <p>{{documento.contratoItemQtde}} {{documento.contratoItemUnMedida}}</p>
+    </div>
+    <div class="col-sm-4">
+        <label>Saldo</label>
+        <p>{{documento.contratoItemSaldo}} {{documento.contratoItemUnMedida}}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="hidden-xs">
+                    <tr>
+                        <th>
+                            <div class="col-sm-3">Data</div>
+                            <div class="col-sm-3">Valor</div>
+                            <div class="col-sm-3">Qtde</div>
+                            <div class="col-sm-3">Saldo</div>
+                            
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="medicao in documento.Medicoes" ng-if="$index < 2">
+                        <td>
+                            <div class="col-sm-3">
+                                <p><b class="visible-xs-inline">Data: </b> {{medicao.medicaoData | date}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b class="visible-xs-inline">Valor: </b>{{medicao.medicaoValor | currency:medicao.medicaoMoeda}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b class="visible-xs-inline">Qtde: </b>{{medicao.medicaoQtd | number:2}} {{medicao.medicaoUnMedida}}</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <p><b class="visible-xs-inline">Saldo: </b>{{medicao.medicaoSaldo | number:2}} {{medicao.medicaoUnMedida}}</p>
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr ng-if="documento.Itens.length > 2">
+                        <td colspan="3">{{documento.Medicoes.length - 2}} mais...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

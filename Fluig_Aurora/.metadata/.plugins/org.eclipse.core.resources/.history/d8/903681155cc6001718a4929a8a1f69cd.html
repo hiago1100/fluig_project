@@ -1,0 +1,1074 @@
+<html>
+<head>
+<link type="text/css" rel="stylesheet"
+  href="/portal/resources/style-guide/css/fluig-style-guide.min.css" />
+<script type="text/javascript"
+  src="/portal/resources/js/jquery/jquery.js"></script>
+<script type="text/javascript"
+  src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript"
+  src="/portal/resources/js/mustache/mustache-min.js"></script>
+<script type="text/javascript"
+  src="/portal/resources/style-guide/js/fluig-style-guide.min.js"
+  charset="utf-8"></script>
+
+<script type="text/javascript" src="../vcXMLRPC.js"></script>
+
+<link rel="stylesheet" type="text/css" href="select2.min.css">
+<script type="text/javascript" src="select2.min.js"></script>
+<script type="text/javascript" src="main.js" charset="utf-8"></script>
+
+<!-- Css y Scripts Arq -->
+<link rel="stylesheet" type="text/css"
+  href="/arq-marvin-v1/ui/arq-marvin-ui.min.css">
+<script src="/arq-marvin-v1/ui/arq-marvin-ui.min.js"></script>
+
+<style>
+.form-group {
+  float: left;
+  width: 100%;
+}
+
+.select2-container {
+  width: 370px !important;
+}
+
+*[readonly="readonly"], *[disabled="disabled"],
+  .select2-container--disabled li span {
+  color: #000 !important;
+}
+
+.select2-container ul li, .select2-container ul span,
+  .select2-container--default .select2-selection--multiple .select2-selection__choice>span
+  {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice
+  {
+  background-color: #777;
+  border: solid 1px #5e5e5e;
+  color: white;
+}
+
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice.conflict
+  {
+  background-color: #a00e0e;
+}
+
+.conflict {
+  background-color: #a00e0e;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice>span
+  {
+  color: white;
+}
+
+.fluig-style-guide .bootstrap-tagsinput .tag .tag-text {
+  font-weight: 100;
+}
+
+.fluig-style-guide .tab-content {
+  float: left;
+  width: 100%;
+  border: solid 1px #ddd;
+  border-top: none;
+}
+
+.fluigicon-trash {
+  display: none !important;
+}
+
+.Bcolor {
+  background-color: #FFFACD;
+  height: 80px;
+}
+
+.mostraMod {
+  align-contet: center;
+}
+
+#menu2 .tab-content {
+  color: white;
+  background-color: #428bca;
+  padding: 5px 15px;
+}
+
+#menu2 .tab-content {
+  color: white;
+  background-color: #E0FFFF;
+  padding: 5px 15px;
+}
+
+.grupoSetado {
+  color: #0000FF;
+}
+
+
+#imgConflito{
+visibility:hidden;
+margin-left: 16px;
+}
+
+td.a{ 
+float:right;
+width:100px;
+}
+</style>
+
+</head>
+<body onload="ReadInputArea()">
+  <div class="fluig-style-guide">
+    <form name="form" role="form" id="form">
+
+        <input class="hide" type="text" name="cont_aprovador" id="cont_aprovador" /> 
+        <input type="text" class="hide" name="recebeCod"  id="recebeCod"> 
+         <input type="text" class="hide" name="recebeCod1"  id="recebeCod1"> 
+        <input type="text" class="hide" name="codDoGrupo" id="codDoGrupo"> 
+        <input type="text" name="cont" id="cont" class="hide" value="0"> 
+        <input type="text" name="incluirOk" class="hide" id="incluirOk" value="">
+         <input type="text" name="recebeContAux" class="hide" id="recebeContAux" value="0">
+          <input type="text" class="hide" name="NomUserResptrick" id="NomUserResptrick">
+          <input type="text" class="hide" name="aprovacaoSupDir" id="aprovacaoSupDir" value="">
+          <input type="text" class="hide" name="aprovacaoDif" id="aprovacaoDif" value="">
+          
+
+
+
+
+       
+
+<!--       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row text-center">
+        <h2 style="margin-bottom: 75px;">Descritivo de Devolu&ccedil;&atilde;o</h2>
+      </div>
+ -->
+     <ul class="nav nav-tabs nav-justified " >
+        <li style="background-color: #364287">
+        <h2 style="margin-bottom: 10px;;color: white" align="center">Descritivo de Devolu&ccedil;&atilde;o</h2>
+        </a>
+      </li>
+      </ul>
+
+
+
+<div class="form-group">
+
+<div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <label for="dataSolic" class="control-label">Data</label> <input
+                  type="text" class="form-control dataSolic" name="dataSolic"
+                  id="dataSolic" readonly>
+              </div>
+            </div>
+
+            <div class="label-field">
+              <div class="label-field">
+                <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
+                  <label for="horaSolic" class="control-label">Hora</label> <input
+                    type="text" class="form-control horaSolic" name="horaSolic"
+                    id="horaSolic" readonly>
+                </div>
+              </div>
+            </div>
+
+</div>
+
+
+
+   <div class="form-group">
+        
+
+        <div class="label-field">
+          <div class="form-group selecioneHid">
+          <div class="col-md-2">
+            <label for="devolucaoVenda" class="control-label">Devolu&ccedil;&atilde;o de vendas</label>
+          <select class="form-control selectPrograma" name="devolucaoVenda" id="devolucaoVenda">
+            <option value='nao'>N&atilde;o</option>
+            <option value='sim'>Sim</option>
+          </select>
+        </div>
+        </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="matriculaSolicitante" class="control-label">Vendedor / Representante vendas</label>
+                <input type="text"
+                  class="form-control matriculaSolicitante hide"
+                  name="matriculaSolicitante" id="matriculaSolicitante">
+                <input type="text" class="form-control nomeSolicitante"
+                  name="nomeSolicitante" id="nomeSolicitante" readonly>
+              </div>
+
+               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="supervisor" class="control-label">Supervisor</label>
+                <input type="text" class="form-control supervisor"
+                  name="supervisor" id="supervisor" readonly>
+              </div>
+            </div>
+
+               <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="regional" class="control-label">Regional</label>
+                <input type="text" class="form-control regional"
+                  name="regional" id="regional" readonly>
+              </div>
+            
+
+
+          </div>
+
+      <input type="text" class="hide" name="temConflito" id="temConflito" />
+      <br></br>
+      <div id="menu" class="row-fluid">
+        <ul class="nav nav-tabs nav-justified">
+          <li id="li1" class="active"><a href="#tab1" data-toggle="tab">Solicitante</a></li>
+          <li id="li2"><a href="#tab2" data-toggle="tab">Aprova&ccedil;&atilde;o</a></li>
+          <li id="li2"><a href="#tab3" data-toggle="tab">Comparar Descritivo</a></li>  
+          <li id="li2"><a href="#tab4" data-toggle="tab">Log&iacute;stica</a></li>                  
+          <li id="li2"><a href="#tab5" data-toggle="tab">Aprova&ccedil;&atilde;o Diferen&ccedil;a</a></li>
+        </ul>
+      </div>
+
+      <div class='tab-content'>
+        <div class="tab-pane active" id="tab1">
+
+      
+<!--        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row text-center" style="background-color: #364287">
+         <h4 style="margin-bottom: 20px;color: white;">Dados do Cliente</h4>
+       </div> -->
+
+
+      <ul class="nav nav-tabs nav-justified " style="margin-top:5%">
+        <li style="background-color: #364287">
+        <h2 style="margin-bottom: 10px;color: white" align="center">Dados do Cliente</h2>
+        </a>
+      </li>
+      </ul>
+
+        <div class="form-group" style="margin-top: 5%">
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> 
+              
+                <label for="nomeCliente" class="control-label">Nome do Cliente</label>
+                <div class="nomeCliente">
+                   <input
+                    type="zoom" class="form-control" name="nomeCliente"
+                    id="nomeCliente"
+                    data-zoom="{
+                  'displayKey': 'nome_cliente',
+                  'datasetId':'ARY-sql2dataset-usuario-grupos',
+                  'fields':[
+                    {
+                      'field':'nome_cliente',
+                      'label':'Cliente',                                                         
+                      'standard':'true'
+                    },{
+                     'field':'desc_grupo',
+                     'label':'Desc. Grupo' 
+                    }
+                  ]
+                }" />
+              </div>
+              </div>  
+              </div>
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="codCliente" class="control-label">C&oacute;digo do Cliente</label>
+                <input type="text" class="form-control codCliente"
+                  name="codCliente" id="codCliente" readonly>
+              </div>               
+            </div>
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="nomeAbrev" class="control-label">Nome Abreviado</label>
+                <input type="text" class="form-control nomeAbrev"
+                  name="nomeAbrev" id="nomeAbrev" readonly>
+              </div>               
+            </div> 
+
+            </div>  
+        
+
+        <div class="form-group">
+          
+                     
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="cidade" class="control-label">Cidade</label>
+                <input type="text" class="form-control cidade"
+                  name="cidade" id="cidade" readonly>
+              </div>               
+            </div> 
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="endereco" class="control-label">Endere&ccedil;o</label>
+                <input type="text" class="form-control endereco"
+                  name="endereco" id="endereco" readonly>
+              </div>               
+            </div>
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="estado" class="control-label">Estado</label>
+                <input type="text" class="form-control estado"
+                  name="estado" id="estado" readonly>
+              </div>               
+            </div> 
+
+
+        </div>
+
+
+
+       <div class="form-group">
+          
+                      
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="bairro" class="control-label">Bairro</label>
+                <input type="text" class="form-control bairro"
+                  name="bairro" id="bairro" readonly>
+              </div>               
+            </div> 
+
+            <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="cnpj" class="control-label">CNPJ</label>
+                <input type="text" class="form-control cnpj"
+                  name="cnpj" id="cnpj" readonly>
+              </div>               
+            </div> 
+
+
+             <div class="label-field">
+              <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <label for="cep" class="control-label">Cep</label>
+                <input type="text" class="form-control cep"
+                  name="cep" id="cep" readonly>
+              </div>               
+            </div>  
+
+        </div>
+
+
+
+
+       <div class="form-group" style="margin-left: 7%">
+          
+       
+
+            <div class="label-field" align="center">
+              <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" align="center">
+                <label for="email" class="control-label">E-mail</label>
+                <input type="text" class="form-control email"
+                  name="email" id="email" placeholder="Digite o email do cliente">
+              </div>               
+            </div> 
+       
+        </div>
+
+
+
+
+        </div>
+
+<div class="tab-pane" id="tab2">
+
+      <ul class="nav nav-tabs nav-justified " style="margin-top:5%">
+        <li style="background-color: #364287">
+        <h2 style="margin-bottom: 10px;color: white" align="center">Aprova&ccedil;&atilde;o</h2>
+        </a>
+      </li>
+      </ul>
+
+   <table class="TablUnidade" align="center" style="margin-top: 3%">
+
+        <tr>
+          <td><label>Aprovar</label></td>
+          <td align="left"><input type="radio" class="RespDiretRadio" name="aprova" id="aprova" value="sim" style="margin-top: 4%"></td>
+        </tr>
+        <tr>
+          <td><label>Reprovar</label></td>
+          <td align="left"><input type="radio" class="RespDiretRadio" name="aprova" id="aprova" value="nao"></td>
+        </tr>
+
+        <tr>
+          <td> </td>
+        </tr>
+
+        <br>
+      </table>
+
+<div class="table-responsive">
+    <table class="viaportaltab4" tablename="respoCham" id="respoCham" noaddbutton=true align="center">
+
+ <thead>
+
+  <tr>
+
+   <td></td>
+
+   <td></td>
+
+  </tr>
+
+ </thead>
+  
+  <tr>
+   
+   <td style="text-align:left;margin-top: 5%"><input class="form-control input-sm UsernamResp" type="text" id="NomUserResp" name="NomUserResp" readonly > <input type="text"  class="HoraResp" id="HoraResp" name="HoraResp" readonly>
+    
+    <textarea onfocus="getIDUserResp(this.id)" onblur="getID(this.id); ObsResponse(this.id);" class="form-control 
+    input-sm respArea" cols="64" type="text" rows="8" id="areaResp" name="areaResp"></textarea></td>
+
+   </tr>
+
+</table>
+<div align="center" class="btnrespContainer" id="btnrespContainer" name="btnrespContainer" style="height: 250px;margin-top: 90px">
+
+<button class="btn btn-default" onclick="respostaAprova()">Resposta</button>
+
+</div>
+
+          </div>
+
+</div>
+
+
+
+<div class="tab-pane" id="tab5">
+
+    <ul class="nav nav-tabs nav-justified " style="margin-top:5%">
+        <li style="background-color: #364287">
+        <h2 style="margin-bottom: 10px;color: white" align="center">Aprova&ccedil;&atilde;o Diferen&ccedil;a</h2>
+        </a>
+      </li>
+    </ul>
+
+   <table class="TablUnidade" align="center" style="margin-top: 3%">
+
+        <tr>
+          <td><label>Aprovar</label></td>
+          <td align="left"><input type="radio" class="RespDiretRadio" name="aprovaDif" id="aprovaDif" value="sim" style="margin-top: 4%"></td>
+        </tr>
+        <tr>
+          <td><label>Reprovar</label></td>
+          <td align="left"><input type="radio" class="RespDiretRadio" name="aprovaDif" id="aprovaDif" value="nao"></td>
+        </tr>
+
+        <tr>
+          <td> </td>
+        </tr>
+
+        <br>
+      </table>
+
+<div class="table-responsive">
+    <table class="viaportaltab3" tablename="respoChamDif" id="respoChamDif" noaddbutton=true align="center">
+
+ <thead>
+
+  <tr>
+
+   <td></td>
+
+   <td></td>
+
+  </tr>
+
+ </thead>
+  
+  <tr>
+   
+   <td style="text-align:left;margin-top: 5%"><input class="form-control input-sm UsernamResp" type="text" id="NomUserDif" name="NomUserDif" readonly> <input type="text"  class="HoraRespDif" id="HoraRespDif" name="HoraRespDif" readonly>
+    
+    <textarea onfocus="getIDUserResp(this.id)" onblur="getID(this.id); ObsResponse(this.id);" class="form-control 
+    input-sm respArea" cols="64" type="text" rows="8" id="areaRespDif" name="areaRespDif"></textarea></td>
+
+   </tr>
+
+</table>
+<div align="center" class="btnrespContainer" id="btnrespContainer" name="btnrespContainer" style="height: 250px;margin-top: 90px">
+
+<button class="btn btn-default" onclick="respostaDiferenca()">Resposta</button>
+
+</div>
+
+          </div>
+
+</div>
+
+
+
+<div id="tab3" class="tab-pane">
+  
+
+    <ul class="nav nav-tabs nav-justified " style="margin-top:5%">
+        <li style="background-color: #364287">
+        <h2 style="margin-bottom: 10px;color: white" align="center">Comparar Descritivo</h2>
+        </a>
+      </li>
+    </ul>
+
+    <div align="center" style="margin-top: 3%;">
+      <button class="btn btn-success" onclick="tableDesc()">Adicionar NFD</button>
+    </div>
+
+<table tablename="respoChamDesc" id="respoChamDesc" noaddbutton=true align="center">
+    
+<thead>
+
+  <tr>
+
+   <td></td>
+
+   <td></td>
+
+  </tr>
+
+ </thead>
+
+
+<tr>
+
+  <td>
+
+         <div style="background-color: #364287">
+            <h4 style="color: white;">Adicionar NFD</h4>
+          </div>            
+
+<div class="row">
+              <div class="col-md-4">
+                
+                <label for="chaveNfd" class="control-label">Chave acesso da NFD</label>
+                <input type="text" class="form-control"
+                  name="chaveNfd" id="chaveNfd" >
+             </div>
+              <div class="col-md-2">
+                <label for="numeroNotas" class="control-label">N&uacute;mero de Notas</label>
+                <input type="text" class="form-control"
+                  name="numeroNotas" id="numeroNotas" >
+             </div>
+             
+           <div class="col-md-2">
+                <label for="serieNota" class="control-label">S&eacute;rie</label>
+                <input type="text" class="form-control serieNota"
+                  name="serieNota" id="serieNota" >
+            </div>
+             <div class="col-md-2">
+                <label for="dataEmissao" class="control-label">Data de Emiss&atilde;o</label>
+                <input type="date" class="form-control dataEmissao"
+                  name="dataEmissao" id="dataEmissao" >
+                 </div>
+
+             <div class="col-md-2">
+                <label for="totalMercadoriaLog" class="control-label">Total da Mercadoria</label>
+                <input type="text" class="form-control totalMercadoriaLog"
+                  name="totalMercadoriaLog" id="totalMercadoriaLog" >
+                 </div>     
+
+
+          </div>    
+
+
+<div class="row">
+              <div class="col-md-4">
+                
+                <label for="totalIPI" class="control-label">Total IPI</label>
+                <input type="text" class="form-control"
+                  name="totalIPI" id="TotalIpi" >
+             </div>
+              <div class="col-md-2">
+                <label for="baseCms" class="control-label">Base C&aacute;lculo CMS</label>
+                <input type="text" class="form-control"
+                  name="baseCms" id="baseCms" >
+             </div>
+             
+           <div class="col-md-2">
+                <label for="totalCms" class="control-label">Total CMS</label>
+                <input type="text" class="form-control totalCms"
+                  name="totalCms" id="totalCms" >
+            </div>
+             <div class="col-md-2">
+                <label for="totalSt" class="control-label">Total ST</label>
+                <input type="text" class="form-control totalSt"
+                  name="totalSt" id="totalSt" >
+                 </div>
+
+             <div class="col-md-2">
+                <label for="valorTotalNota" class="control-label">Valor Total da Nota</label>
+                <input type="text" class="form-control valorTotalNota"
+                  name="valorTotalNota" id="valorTotalNota" >
+                 </div>     
+
+
+          </div>
+
+       </td>
+     </tr>     
+
+
+ </table>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="tab4" class="tab-pane">
+  
+
+    <ul class="nav nav-tabs nav-justified " style="margin-top:5%">
+        <li style="background-color: #364287">
+        <h2 style="margin-bottom: 10px;color: white" align="center">Log&iacute;stica</h2>
+        </a>
+      </li>
+    </ul>
+
+
+<table id="respoChamDesc" noaddbutton=true align="center">
+    
+
+<tr>
+
+  <td>
+
+         <div style="background-color: #364287">
+            <h4 style="color: white;">Adicionar NFD</h4>
+          </div>            
+
+<div class="row">
+              <div class="col-md-4">
+                
+                <label for="chaveNfd" class="control-label">Retirar/Destruir</label>
+                <input type="radio" class="form-control"
+                  name="logistica" id="retirar" value="retirar"> Retirar<input type="radio" class="form-control" name="logistica" id="destruir" value="destruir"> Destruir
+                    
+             </div>
+              <div class="col-md-4">
+                <label for="dataRetirada" class="control-label">Data de Retirada</label>
+                <input type="date" class="form-control"
+                  name="dataRetirada" id="dataRetirada" readonly="">
+             </div>
+             
+           <div class="col-md-4">
+                <label for="transportadora" class="control-label">Transportadora</label>
+                <input type="text" class="form-control transportadora"
+                  name="transportadora" id="transportadora" readonly="">
+            </div>
+             
+
+          </div>
+          
+
+       </td>
+     </tr>     
+
+
+ </table>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+      <!-- Fim da div tab-content-->
+
+
+
+      <ul class="nav nav-tabs nav-justified " >
+        <li style="background-color: #364287">
+        <h2 style="margin-bottom: 10px;color: white" align="center">Preenchimento de Itens</h2>
+        </a>
+      </li>
+      </ul>
+
+      <input type="text" class="hide" name="codProgramaCopiaAux"  id="codProgramaCopiaAux" /> 
+      <input type="text" class="hide" name="nomeProgramaCopiaAux" id="nomeProgramaCopiaAux" />
+      <input type="text" class="hide" name="codGestorModuloCopiaAux" id="codGestorModuloCopiaAux" />
+      <input type="text" class="hide" name="nomeGestorModuloCopiaAux" id="nomeGestorModuloCopiaAux" />
+      <input type="text" class="hide" name="codModuloCopiaAux" id="codModuloCopiaAux" />   
+      <input type="text" class="hide" name="codProgramaRemoveAux" id="codProgramaRemoveAux" />
+      <input type="text" class="hide" name="descProgramaRemoveAux" id="descProgramaRemoveAux" />
+
+    
+
+      <div class="tab-content">
+        
+        <div id="menu1" class="tab-pane fade in active">
+             
+          <div class="form-group">
+
+          <div class="label-field">
+
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+
+            <h4 align="center">Pesquisar por NF</h4>  
+
+                <label for="numeroNF" class="control-label">N&uacute;mero NF</label> <input
+                  type="text" class="form-control numeroNF" name="numeroNF"
+                  id="numeroNF" >
+                
+                <label for="serieNF" class="control-label">S&eacute;rie NF</label> <input
+                    type="text" class="form-control serieNF" name="serieNF"
+                    id="serieNF" >
+
+                     <button class="btn btn-success" name="pesquisaNF"
+                id="pesquisaNF" style="margin-top: 7%">Pesquisar</button>
+
+
+              </div>
+            </div>
+
+            
+              <div class="label-field" >
+
+              
+
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="border-left: 2px solid">
+
+                  <h4 align="center">Pesquisar por Item</h4>  
+
+
+                  <label for="familia" class="control-label">Fam&iacute;lia</label> 
+                  <input
+                    type="zoom" class="form-control" name="familia"
+                    id="familia"
+                    data-zoom="{
+                  'displayKey': 'nome_cliente',
+                  'datasetId':'ARY-sql2dataset-usuario-grupos',
+                  'fields':[
+                    {
+                      'field':'nome_cliente',
+                      'label':'Cliente',                                                         
+                      'standard':'true'
+                    },{
+                     'field':'desc_grupo',
+                     'label':'Desc. Grupo' 
+                    }
+                  ]
+                }" />
+
+                    <label for="item" class="control-label">Item</label> 
+                    <input
+                    type="zoom" class="form-control" name="item"
+                    id="item"
+                    data-zoom="{
+                  'displayKey': 'nome_cliente',
+                  'datasetId':'ARY-sql2dataset-usuario-grupos',
+                  'fields':[
+                    {
+                      'field':'nome_cliente',
+                      'label':'Cliente',                                                         
+                      'standard':'true'
+                    },{
+                     'field':'desc_grupo',
+                     'label':'Desc. Grupo' 
+                    }
+                  ]
+                }" />
+                   <label for="descItem" class="control-label">Descri&ccedil;</label> <input
+                    type="text" class="form-control descItem" name="descItem"
+                    id="descItem" readonly>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              
+             <div align="center" class="btnrespContainer" id="btnrespContainer" name="btnrespContainer">
+
+              <button class="btn btn-success" onclick="respbtn()">Adicionar item NFD</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+
+
+    <table class="table table-striped" tablename="tabelaNF" id="tabelaNF" noaddbutton=true align="center" >
+
+ <thead>
+
+  <tr>
+
+   <td></td>
+
+   <td></td>
+
+  </tr>
+
+ </thead>
+  
+ <thead> 
+  <tr style="margin-top: 20px">
+
+        <td>
+
+<!--       <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#relacaoItem">Simple collapsible</button>
+ -->      <div style="background-color: #364287">
+            <h4 style="color: white;">Adicionar Item</h4>
+          </div>            
+              <div class="row">
+              <div class="col-md-2">
+                
+                <label for="codItem" class="control-label">C&oacute;digo</label>
+                <input type="text" class="form-control"
+                  name="codItem" id="codItem" readonly>
+             </div>
+              <div class="col-md-2">
+                <label for="referencia" class="control-label">Refer&ecirc;ncia</label>
+                <input type="text" class="form-control"
+                  name="referencia" id="referencia" readonly>
+             </div>
+             
+           <div class="col-md-2">
+                <label for="descricao" class="control-label">Descri&ccedil;&atilde;o</label>
+                <input type="text" class="form-control descricao"
+                  name="descricao" id="descricao" readonly>
+            </div>
+             <div class="col-md-2">
+                <label for="unidade" class="control-label">Unidade</label>
+                <input type="text" class="form-control unidade"
+                  name="unidade" id="unidade" readonly>
+                 </div>
+         <div class="col-md-2">
+                <label for="nfsaida" class="control-label">NF Sa&iacute;da</label>
+                <input type="text" class="form-control nfsaida"
+                  name="nfsaida" id="nfsaida" readonly>
+        </div>
+         <div class="col-md-2">
+                <label for="emissao" class="control-label">Emiss&atilde;o</label>
+                <input type="text" class="form-control emissao"
+                  name="emissao" id="emissao" readonly>
+           </div>
+     
+          </div>
+
+          <div class="row">  
+
+              <div class="col-md-2">
+                <label for="natop" class="control-label">Nat. Op.</label>
+                <input type="text" class="form-control natop"
+                  name="natop" id="natop" readonly>
+              </div>
+              <div class="col-md-2">
+                <label for="venda" class="control-label">Venda</label>
+                <input type="text" class="form-control venda"
+                  name="venda" id="venda" readonly>
+              </div>      
+              <div class="col-md-2">
+                <label for="ean" class="control-label">Ean</label>
+                <input type="text" class="form-control ean"
+                  name="ean" id="ean" readonly>
+              </div>
+              <div class="col-md-2">    
+                <label for="dun" class="control-label">Dun</label>
+                <input type="text" class="form-control dun"
+                  name="dun" id="dun" readonly>
+              </div>
+              
+              <div class="col-md-2">      
+                  <label for="pesokg" class="control-label">Peso KG</label>
+                <input type="text" class="form-control pesokg"
+                  name="pesokg" id="pesokg" readonly>
+
+                  </div>
+                  <div class="col-md-2">
+                <label for="qtdNfCliente" class="control-label">Qtd.NF.Cli</label>
+                <input type="text" class="form-control qtdNfCliente"
+                  name="qtdNfCliente" id="qtdNfCliente" >
+                  </div>
+              </div>  
+             
+
+       
+            <div class="row">
+              <div class="col-md-2">
+                <label for="quantidade" class="control-label">Qtd</label>
+                <input type="text" class="form-control"
+                  name="quantidade" id="quantidade">
+              </div>
+
+              <div class="col-md-2">
+                <label for="motivo" class="control-label">Motivo</label>
+                <select name="motivo" id="motivo" class="form-control">
+                  <option value="teste">Teste 1 </option>
+                  <option>Teste 2               </option>
+                </select>
+             </div>
+          
+             <div class="col-md-2">
+                <label for="ispreco" class="control-label">IS Pre&ccedil;o</label>
+                <input type="text" class="form-control ispreco"
+                  name="ispreco" id="ispreco" readonly>
+            </div>
+            <div class="col-md-2"> 
+                <label for="precobruto" class="control-label">Pre&ccedil;</label>
+                <input type="text" class="form-control precobruto"
+                  name="precobruto" id="precobruto" readonly>
+            </div>
+            
+            <div class="col-md-2">      
+               
+                <label for="desconto" class="control-label">Desconto</label>
+                <input type="text" class="form-control desconto"
+                  name="desconto" id="desconto" readonly>
+            </div>
+            <div class="col-md-2">         
+                <label for="precoliquido" class="control-label">Pre&ccedil; L&iacute;quido</label>
+                <input type="text" class="form-control precoliquido"
+                  name="precoliquido" id="precoliquido" readonly>
+            </div>  
+          </div>
+
+         <div class="row">   
+            <div class="col-md-2">  
+                <label for="ipi" class="control-label">IPI %</label>
+                <input type="text" class="form-control ipi"
+                  name="ipi" id="ipi" readonly>
+            </div>
+
+            <div class="col-md-2">
+                <label for="icms" class="control-label">ICMS %</label>
+                <input type="text" class="form-control icms"
+                  name="icms" id="icms" readonly>
+            </div>
+            
+
+            <div class="col-md-2">
+                <label for="valorIpi" class="control-label">IPI R$</label>
+                <input type="text" class="form-control ipi"
+                  name="valorIpi" id="valorIpi" readonly>
+            </div>
+            
+            <div class="col-md-2">      
+                <label for="bcicms" class="control-label">BC ICMS R$</label>
+                <input type="text" class="form-control bcicms"
+                  name="bcicms" id="bcicms" readonly>
+            </div>
+
+            <div class="col-md-2">  
+                <label for="valoricms" class="control-label">ICMS R$</label>
+                <input type="text" class="form-control valoricms"
+                  name="valoricms" id="valoricms" readonly>
+            </div>
+            
+            <div class="col-md-2">      
+                <label for="totalMercadoria" class="control-label">Total Merc.</label>
+                <input type="text" class="form-control totalMercadoria"
+                  name="totalMercadoria" id="totalMercadoria" readonly>
+            </div>        
+          </div>       
+
+
+           <div class="row">
+            <div class="col-md-4"> 
+  
+                <label for="valorbcst" class="control-label">BC ST R$</label>
+                <input type="text" class="form-control valorbcst"
+                  name="valorbcst" id="valorbcst" readonly>
+
+            </div>
+            
+            <div class="col-md-4">       
+                <label for="valorst" class="control-label">ST R$</label>
+                <input type="text" class="form-control valorst"
+                  name="valorst" id="valorst" readonly>
+
+            </div>  
+             
+            <div class="col-md-2">   
+                  <label for="totalitem" class="control-label">Total item</label>
+                <input type="text" class="form-control totalitem"
+                  name="totalitem" id="totalitem" readonly>
+            </div>
+            <div class="col-md-2">       
+                <label for="totalnfcli" class="control-label">Tot.NF.Cli</label>
+                <input type="text" class="form-control totalnfcli"
+                  name="totalnfcli" id="totalnfcli" >
+            </div>        
+           </div> 
+    
+
+        </td>
+
+
+
+</div>
+   </tr>
+</thead>
+</table>
+
+
+
+          </div>
+
+
+
+
+
+
+
+            </div>
+
+            </div>
+
+            </div>
+            
+
+          </div>
+      
+        <!-- INICIO DA TABELA DE USUARIOS -->
+
+        <div id="menu3" class="tab-pane fade" >
+          <div class="testeColappse">
+          </div>
+
+        </div>
+
+        <!-- FIM DA LISTA USUARIOS -->
+
+      </div>
+
+    </form>
+  </div>
+</body>
+</html>

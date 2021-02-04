@@ -1,0 +1,60 @@
+function enableFields(form){ 
+	
+	var numeroAtividade = form.getValue("numeroAtividade");
+	
+	
+	if(numeroAtividade == 0 || numeroAtividade == 4) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+	
+
+	if(numeroAtividade == 5) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+
+
+	if(numeroAtividade == 12) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+
+
+	if(numeroAtividade == 13) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+
+
+	if(numeroAtividade == 15) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+
+
+	if(numeroAtividade == 42) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+
+
+	if(numeroAtividade == 44) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+
+
+	if(numeroAtividade == 50) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+
+
+	if(numeroAtividade == 59) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+
+
+	if(numeroAtividade == 63) {
+        form.setEnabled("transportadora",true); // aqui você coloca o name do campo do formulário
+    }
+
+
+	if(numeroAtividade == 68) {
+        form.setEnabled("transportadora",false); // aqui você coloca o name do campo do formulário
+    }
+	
+}

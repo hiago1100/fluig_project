@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-sm-6">
+                <h4>Pedido {{documento.pedidoNumero}}</h4>
+                <h4>{{documento.pedidoEmpresa}} - {{documento.pedidoEstab}}</h4>
+            </div>
+            <div class="col-sm-3">
+                <h4> Valor Total</h4>
+                <h4> {{documento.pedidoValor | currency:documento.pedidoMoeda}}</h4>
+            </div>
+            <div class="col-sm-3">
+                <h4> Primeiro Vencimento</h4>
+                <h4 ng-if="documento.primeiroVencimento"> {{documento.primeiroVencimento | date}}</h4>
+                <h4 ng-if="!documento.primeiroVencimento"> <i>Não informado</i></h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-8">
+                <label> Fornecedor: </label>
+                <p>{{documento.pedidoCodFornecedor}} - {{documento.pedidoFornecedor}}</p>
+            </div>
+            <div class="col-sm-4">
+                <label> Condição de Pagamento: </label>
+                <p>{{documento.pedidoCondPagto  || 'Não informada'}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <label> Natureza: </label>
+                <p>{{documento.pedidoNatureza  || 'Não informada'}}</p>
+            </div>
+            <div class="col-sm-4">
+                <label> Data do Pedido: </label>
+                <p>{{documento.pedidoDataPedido  | date}}</p>
+            </div>
+            <div class="col-sm-4">
+                <label> Comprador: </label>
+                <p>{{documento.pedidoComprador || 'Não informado'}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <label> Comentários: </label>
+                <p ng-show="documento.pedidoComentarios">{{documento.pedidoComentarios}}</p>
+                <p><i ng-show="!documento.pedidoComentarios">Não informado</i></p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,900 @@
+<!DOCTYPE> 
+<html>
+<head>
+  <title>Resumo Caixa</title>
+<link type="text/css" rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- <link type="text/css" rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
+
+<script type="text/javascript" src="http://viaportal.com.br/webdesk/vcXMLRPC.js"></script>
+
+
+<script type="text/javascript">
+
+
+    function consultaRegistros(tipo){
+  
+      dataAtual2 = new Date();
+      mesAtual2  = dataAtual2.getMonth();
+      anoAtual   = dataAtual2.getFullYear();
+
+
+    if (tipo == "onLoad") {
+
+        var mes   = mesAtual2;
+		var ano   = anoAtual;       
+    } else {
+        var mes  = $("#mesSelecionado").val();
+        var ano  = $("#anoSolicita").val();
+    } 
+
+
+    if (anoAtual == $(".2017").val()) {
+
+		$(".2017").attr("selected","selected");    	
+
+    }
+
+
+    if (mesAtual2 == $(".janeiro").val()) {
+          
+         $(".janeiro").attr("selected","selected"); 
+
+      }
+      if (mesAtual2 == $(".fevereiro").val()) {
+          
+         $(".fevereiro").attr("selected","selected"); 
+
+      }
+      if (mesAtual2 == $(".março").val()) {
+          
+         $(".março").attr("selected","selected"); 
+
+      }
+      if (mesAtual2 == $(".abril").val()) {
+          
+         $(".abril").attr("selected","selected"); 
+
+      }
+      if (mesAtual2 == $(".maio").val()) {
+          
+         $(".maio").attr("selected","selected"); 
+
+      }
+      if (mesAtual2 == $(".junho").val()) {
+          
+         $(".junho").attr("selected","selected"); 
+
+      } if (mesAtual2 == $(".julho").val()) {
+          
+         $(".julho").attr("selected","selected"); 
+
+      }if (mesAtual2 == $(".agosto").val()) {
+          
+         $(".agosto").attr("selected","selected"); 
+
+      }if (mesAtual2 == $(".setembro").val()) {
+          
+         $(".setembro").attr("selected","selected"); 
+
+      }if (mesAtual2 == $(".outubro").val()) {
+          
+         $(".outubro").attr("selected","selected"); 
+
+      }if (mesAtual2 == $(".novembro").val()) {
+          
+         $(".novembro").attr("selected","selected"); 
+
+      }if (mesAtual2 == $(".dezembro").val()) {
+          
+         $(".dezembro").attr("selected","selected"); 
+
+      }
+
+
+ 
+
+
+
+   // var constraints   = null ;
+
+   // var fields = null;
+   // var sortingFields = null; 
+  
+   var lojaAux;
+   var dataLancamentoAux;
+   var documentoAux;
+   var solicitacaoAux;
+
+   var textoAux = "";
+   
+ 
+
+
+   var contador = 0;
+   var vlTotalEntAux;
+   var vlTotalSaiAux;
+   var entradaAux;
+
+   var vlTotalEntDediq = 0;
+   var vlTotalSaiDediq = 0;
+   var vlTotalDediq = 0;
+   var vlTotalEnDediqAnt = 0;
+   var vlTotalSaiDediqAnt = 0;
+   var vlTotalDediqAnt = 0;
+   var vlTotalEnDediqAtual = 0;
+   var vlTotalSaiDediqAtual = 0;
+   var vlTotalDediqAtual = 0;
+
+   var recorrenteDediq = 0;
+
+   var totalLiquido = 0;
+       
+
+     //Busca o dataset
+    
+    // var c1 = DatasetFactory.createConstraint("numSolicitacao", "0", "999999", ConstraintType.SHOULD);
+    // var constraints   = new Array(c1);
+
+   
+var constraints   = null;
+var fields = null;
+var sortingFields = new Array("dataLancamento");  
+  
+      try {
+
+// testeGrillBackup
+          
+          var dataset = DatasetFactory.getDataset("DQ_CaixaInterno", fields, constraints, sortingFields);
+
+          for(i = 0; i < dataset.values.length; i++) {
+
+
+          
+           var row = dataset.values[i];
+              documentoAux = row["documento"];
+              dataLancamentoAux = row["dataLancamento"];                
+              emitenteAux = row["emitente"];
+              lojaAux = row["loja"];
+              entradaAux = row["entrada"];
+              saidaAux = row["saida"];
+              tipoAux = row["tipo"];
+              solicitacaoAux = row["numSolicitacao"];
+              var valorMovto = row["vlTotal"];
+              tipoEntradaAux = row["tipoEntrada"];
+              
+
+            if(tipoAux ==  "entrada" || tipoAux == "ENT") {
+               vlTotalEntAux = row["vlTotal"];
+               vlTotalSaiAux = 0;
+
+             }else{
+               vlTotalSaiAux = row["vlTotal"];
+               vlTotalEntAux = 0;
+
+            }
+
+            vlTotalEntAux = vlTotalEntAux + "";
+            vlTotalSaiAux = vlTotalSaiAux + "";
+            vlTotalEntAux = vlTotalEntAux.replace(",",".");
+            vlTotalSaiAux = vlTotalSaiAux.replace(",",".");
+            vlTotalEntAux = parseFloat(vlTotalEntAux);
+            vlTotalSaiAux = parseFloat(vlTotalSaiAux);
+                   
+                dataAtual = new Date();
+                 mesAtual = dataAtual.getMonth();
+
+                 
+             
+
+           switch (lojaAux){
+            case "Dediq":
+               
+                 var dataSplit = dataLancamentoAux.split("/");                  
+                 var mesLancamento =  dataSplit[1] - 1;
+
+                 if (dataLancamentoAux != null && dataSplit[2] != "2017" && ano == "2016") {
+
+
+                 if (mesAtual == mesLancamento) {
+                 vlTotalEntDediq = vlTotalEntDediq + vlTotalEntAux;
+                 vlTotalSaiDediq = vlTotalSaiDediq + vlTotalSaiAux; 
+                 vlTotalDediq    = vlTotalEntDediq - vlTotalSaiDediq;
+
+                  }
+
+
+                     if ( mesLancamento < mes) {                
+                      vlTotalEnDediqAnt  = vlTotalEnDediqAnt  +  vlTotalEntAux;
+                      vlTotalSaiDediqAnt = vlTotalSaiDediqAnt +  vlTotalSaiAux;  
+                      vlTotalDediqAnt    = vlTotalEnDediqAnt  -  vlTotalSaiDediqAnt;     
+                 
+
+                 }  
+                  
+
+
+              if (mes == mesLancamento) {
+
+                vlTotalEnDediqAtual  = vlTotalEnDediqAtual  +  vlTotalEntAux;
+                vlTotalSaiDediqAtual = vlTotalSaiDediqAtual +  vlTotalSaiAux;  
+                vlTotalDediqAtual    = vlTotalEnDediqAtual  -  vlTotalSaiDediqAtual;
+                    
+               
+              } 
+
+             
+
+              
+
+                   if (mes == mesLancamento) {  
+
+
+               linkSoclicitacao = '<a href="http://viaportal.com.br/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID='+solicitacaoAux+'" target="_blank">'+solicitacaoAux+'</a>';
+                               
+               textoAux += "<tr>";
+               
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>"+dataLancamentoAux+"</font></td>";
+
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>"+linkSoclicitacao+"</font></td>";
+              
+               textoAux += "<td class=\"td\">";      
+               textoAux += "<font>"+emitenteAux+"</font></td>";
+
+               if (tipoAux == "entrada"){
+
+               textoAux += "<td class=\"td\" align=\"center\">";  
+
+               textoAux += "<font>"+entradaAux+"</font></td>"; 
+
+
+               } else if (tipoAux == "saida" || tipoAux == "SAI"){
+
+               textoAux += "<td class=\"td\" align=\"center\">";  
+
+               textoAux += "<font>"+saidaAux+"</font></td>"; 
+
+               }else if ( tipoAux =="ENT") {
+
+                  textoAux += "<td class=\"td\" align=\"center\">";  
+
+                  textoAux += "<font>"+tipoEntradaAux+"</font></td>"; 
+
+
+               }
+               
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>"+documentoAux+"</font></td>";                    
+               
+               if (tipoAux == "entrada" || tipoAux == "saida") {
+
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>"+tipoAux+"</font></td>"; 
+              } else if (tipoAux == "ENT") {
+
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>entrada</font></td>";
+
+              } else if (tipoAux == "SAI") {
+
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>saida</font></td>";
+
+              }
+
+               textoAux += "<td class=\"td\" align=\"center\">";;
+             if(tipoAux ==  "entrada" || tipoAux == "ENT") {
+                 textoAux += "<font style=\"color:green;\">";
+             }else {
+
+                 textoAux += "<font style=\"color:red;\">";
+             } 
+               textoAux += "" +valorMovto+ "";   
+               
+               textoAux += "<font\>";
+
+
+                }  
+          
+
+                recorrenteDediq  = vlTotalDediqAnt + vlTotalDediqAtual;
+
+
+
+            if(recorrenteDediq >= 0){
+              $("#vlTotalDediq").attr("style","color:green");
+            }else if (recorrenteDediq < 0){
+              $("#vlTotalDediq").attr("style", "color:red");
+            }
+
+            $("#totalMes").html("Total:  R$" + recorrenteDediq.toFixed(2) );
+			$("#AtualDediq").html("Saldo Anterior: R$ " + vlTotalDediqAnt.toFixed(2));
+
+		} else if (dataLancamentoAux != null && dataSplit[2] != "2016" && ano == "2017") {
+
+
+                 if (mesAtual == mesLancamento) {
+                 vlTotalEntDediq = vlTotalEntDediq + vlTotalEntAux;
+                 vlTotalSaiDediq = vlTotalSaiDediq + vlTotalSaiAux; 
+                 vlTotalDediq    = vlTotalEntDediq - vlTotalSaiDediq;
+
+                  }
+
+
+                     if ( mesLancamento < mes) {                
+                      vlTotalEnDediqAnt  = vlTotalEnDediqAnt  +  vlTotalEntAux;
+                      vlTotalSaiDediqAnt = vlTotalSaiDediqAnt +  vlTotalSaiAux;  
+                      vlTotalDediqAnt    = vlTotalEnDediqAnt  -  vlTotalSaiDediqAnt;     
+                 
+
+                 }  
+                  
+
+
+              if (mes == mesLancamento) {
+
+                vlTotalEnDediqAtual  = vlTotalEnDediqAtual  +  vlTotalEntAux;
+                vlTotalSaiDediqAtual = vlTotalSaiDediqAtual +  vlTotalSaiAux;  
+                vlTotalDediqAtual    = vlTotalEnDediqAtual  -  vlTotalSaiDediqAtual;
+                    
+               
+              } 
+
+             
+
+              
+
+                   if (mes == mesLancamento) {  
+
+
+               linkSoclicitacao = '<a href="http://viaportal.com.br/portal/p/1/pageworkflowview?app_ecm_workflowview_detailsProcessInstanceID='+solicitacaoAux+'" target="_blank">'+solicitacaoAux+'</a>';
+                               
+               textoAux += "<tr>";
+               
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>"+dataLancamentoAux+"</font></td>";
+
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>"+linkSoclicitacao+"</font></td>";
+              
+               textoAux += "<td class=\"td\">";      
+               textoAux += "<font>"+emitenteAux+"</font></td>";
+
+               if (tipoAux == "entrada"){
+
+               textoAux += "<td class=\"td\" align=\"center\">";  
+
+               textoAux += "<font>"+entradaAux+"</font></td>"; 
+
+
+               } else if (tipoAux == "saida" || tipoAux == "SAI"){
+
+               textoAux += "<td class=\"td\" align=\"center\">";  
+
+               textoAux += "<font>"+saidaAux+"</font></td>"; 
+
+               }else if ( tipoAux =="ENT") {
+
+                  textoAux += "<td class=\"td\" align=\"center\">";  
+
+                  textoAux += "<font>"+tipoEntradaAux+"</font></td>"; 
+
+
+               }
+               
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>"+documentoAux+"</font></td>";                    
+               
+               if (tipoAux == "entrada" || tipoAux == "saida") {
+
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>"+tipoAux+"</font></td>"; 
+              } else if (tipoAux == "ENT") {
+
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>entrada</font></td>";
+
+              } else if (tipoAux == "SAI") {
+
+               textoAux += "<td class=\"td\" align=\"center\">";      
+               textoAux += "<font>saida</font></td>";
+
+              }
+
+               textoAux += "<td class=\"td\" align=\"center\">";;
+             if(tipoAux ==  "entrada" || tipoAux == "ENT") {
+                 textoAux += "<font style=\"color:green;\">";
+             }else {
+
+                 textoAux += "<font style=\"color:red;\">";
+             } 
+               textoAux += "" +valorMovto+ "";   
+               
+               textoAux += "<font\>";
+
+
+                }  
+          
+
+                recorrenteDediq  = vlTotalDediqAnt + vlTotalDediqAtual;
+
+
+
+            if(recorrenteDediq >= 0){
+              $("#vlTotalDediq").attr("style","color:green");
+            }else if (recorrenteDediq < 0){
+              $("#vlTotalDediq").attr("style", "color:red");
+            }
+
+            $("#totalMes").html("Total:  R$" + recorrenteDediq.toFixed(2) );
+			$("#AtualDediq").html("Saldo Anterior: R$ " + vlTotalDediqAnt.toFixed(2));
+
+		}
+
+            
+           
+               default:
+               break;
+
+               }
+
+            
+         
+              
+
+
+
+               }
+               } catch(erro) {
+               alert(erro);
+               } 
+
+      
+                // $(document).ready(function() {
+                // $("#modalTable").DataTable({"order":[[0,'desc']]});});
+      
+        
+             
+            
+          	  $("#tableResumo").html(textoAux);
+            
+           
+  
+
+               
+               
+              
+
+            
+              
+
+
+
+             $("#vlTotalDediq").html("<div class=\"panel panel-default\" style=\"height:3%;\"> <div class=\"panel-heading\" align=\"center\"> Dediq </div> R$ " + recorrenteDediq.toFixed(2) + "</div>");  
+             
+             
+
+            
+
+            
+                                  
+
+  } 
+
+  function permissao(){
+
+
+    var logado = "${pageRender.user.userCode}";
+    
+    
+    var c1 = DatasetFactory.createConstraint("usuario", logado, logado, ConstraintType.SHOULD);
+    var constraints   = new Array(c1);
+    var fields = null;
+    var sortingFields = null;  
+    var lojaDediq;
+     
+    try {
+          
+          var dataset = DatasetFactory.getDataset("Dediq_Permissionamentos", fields, constraints, sortingFields);
+
+          for(i = 0; i < dataset.values.length; i++) {
+
+          
+          var row = dataset.values[i];
+
+
+              lojaDediq = row["Dediq"];
+             
+             
+
+              if (lojaDediq == "True") {
+                $(".Dediq").css('display','block');
+              }
+
+             
+                }
+
+  } catch(erro) {
+    alert(erro);
+    } 
+
+
+}
+
+
+
+ function initialize(){
+
+  consultaRegistros("onLoad");
+  permissao();
+
+ }
+
+  
+ 
+
+</script>
+
+
+<style type="text/css">
+
+#scrolly {
+  height:200px;
+  overflow:auto;
+  overflow-y:
+  hidden;margin:0 auto;
+  white-space:nowrap;
+
+}
+
+
+@media print {
+
+html,  
+  body * {
+    visibility: hidden;
+}
+
+a[href]:after {
+    content: none !important;
+  }
+
+.modalDialog, .modalDialog * {
+    visibility: visible;
+}
+
+.modalDialog > div {
+    width: 95%;
+position: relative;
+margin: 10% auto;
+border-radius: 10px;
+padding: -1px 5px 13px 20px;   
+    
+}
+
+
+}
+
+  .modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    overflow: auto;
+}
+
+
+.modalDialog:target {
+    opacity:1;
+    pointer-events: auto;
+}
+
+.close {
+    background: #c0c0c0;
+color: #FFFFFF;
+line-height: 25px;
+position: absolute;
+margin-top: 5%;
+text-align: center;
+top: -25px;
+width: 24px;
+right: 98px;
+text-decoration: none;
+font-weight: bold;
+-webkit-border-radius: 12px;
+-moz-border-radius: 12px;
+border-radius: 12px;
+-moz-box-shadow: 1px 1px 3px #000;
+-webkit-box-shadow: 1px 1px 3px #000;
+box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #808080;
+
+}
+
+
+.modalDialog1 {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+.modalDialog1:target {
+    opacity:1;
+    pointer-events: auto;
+}
+.modalDialog1 > div {
+    width: 85%;
+    position: relative;
+    margin: 10% auto;
+    border-radius: 10px;
+    padding: -1px 5px 13px 20px;   
+    
+}
+.close1 {
+    background: #C0C0C0;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    right: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close1:hover {
+    background: #00d9ff;
+
+}
+
+a{
+  animation: none;
+}
+
+
+#modalTable{
+
+border: 1px  #A9A9A9;
+
+border-radius:20px;
+
+}
+
+
+
+
+
+
+
+#testeDiv {
+
+width: 90%;
+height: 90%;  
+}
+
+
+th{
+  background-color:  #DCDCDC  ;
+}
+
+
+
+div[class=wcm_title_widget] {
+
+display:none;
+
+}
+
+.Dediq {
+  display: none;
+  /*visibility: hidden;*/
+} 
+
+.Iguatemi {
+  display: none;
+  /*visibility: hidden;*/
+}
+
+.bonno {
+  display: none;
+  /*visibility: hidden;*/
+}
+
+.record {
+  display: none;
+  /*visibility: hidden;*/
+}
+
+.penha {
+  display: none;
+  /*visibility: hidden;*/
+}
+
+
+</style>
+</head>
+
+
+
+
+
+<body onload="initialize()">
+
+<input type="hidden" name="sessao" id="sessao" value="" />
+
+
+<div class="fluig-style-guide">
+<div class="panel panel-default">
+      <div class="panel-heading" align="center">
+
+<h4 align="center">Resumo Caixa <span class="fluigicon fluigicon-money-circle fluigicon-md"></span> </h4>
+
+</div>
+<div id="scrolly" class="media-heading" style="width: 70%;height: 50%;">
+   <table  width="70%" align="center">
+
+   
+      <br>
+      
+    <tr align="center">     
+      <td id="td" class="Dediq" align="center"  style="width: 70%;">
+      
+      <a href="#openModal"><strong>       
+      <span align="center" id="vlTotalDediq" height="5%"></span></strong></a>
+
+      </td>
+      
+    
+                  
+      </tr>
+
+
+     
+
+   </table> 
+
+</div>
+</div>
+</div>
+
+                                    <!-- APENAS MODAL (MODAL 1) -->
+
+
+
+
+<div id="openModal" class="modalDialog">
+    <div> <a href="#close" title="Close" class="close">X</a>
+
+
+<div class="fluig-style-guide">  
+    <!-- Tamanho da modal -->
+<div id="testeDiv">
+    <!-- Tamanho da modal -->
+
+
+ <div class="panel panel-default" style="margin-top: 65px; margin-left:40px;margin-right:-35px;">
+      <div class="panel-heading" align="center" >
+<h3 align="center">Resumo Caixa</h3>
+
+ <span class="glyphicon glyphicon-calendar
+" style="margin-left: 30px"></span>
+<select name="anoSolicita" id="anoSolicita" onchange="consultaRegistros('modal')">
+  <option value="2016" class="2016">2016</option>
+  <option value="2017" class="2017">2017</option>
+</select>
+ <select id="mesSelecionado" class="form-control2" onchange="consultaRegistros('modal')">
+    <option class="janeiro" value="0">Janeiro</option>
+    <option class="fevereiro" value="1">Fevereiro</option>
+    <option class="março" value="2">Março</option>
+    <option class="abril" value="3">Abril</option>
+    <option class="maio" value="4">Maio</option>
+    <option class="junho" value="5">Junho</option>
+    <option class="julho" value="6">Julho</option>
+    <option class="agosto" value="7">Agosto</option>
+    <option class="setembro" value="8">Setembro</option>
+    <option class="outubro" value="9">Outubro</option>
+    <option class="novembro" value="10">Novembro</option>
+    <option class="dezembro" value="11">Dezembro</option>
+  </select> 
+  <input type="button" name="imprimir" value="Imprimir" onclick="window.print();">
+</div>
+<table id="modalTable" class="table display" width="90%" border="1" cellspacing="0" >
+ <br>
+
+
+
+<thead>
+  
+<td align="center" style="background-color: #DCDCDC;"  >
+Data   
+</td>
+<td align="center" style="background-color: #DCDCDC;"  >
+Solicitação 
+</td>
+<td align="center" style="background-color: #DCDCDC;"  >
+Emitente  
+</td>
+<td align="center" style="background-color: #DCDCDC;"  >
+Resumo  
+</td>
+<td align="center" style="background-color: #DCDCDC;"  >
+Documento 
+</td>
+<td align="center" style="background-color: #DCDCDC;"  >
+Tipo  
+</td>
+<td align="center" style="background-color: #DCDCDC;"  >
+Movimentação  
+</td>   
+<td  id="AtualDediq" style="background-color: #DCDCDC;">
+Atual:
+<!-- <input class="form-control" type="text" id="vlAtual" style="width: 100%;;" readonly>  -->
+</td>
+
+
+</thead>
+
+
+
+
+<tbody align="center" id="tableResumo">
+
+</tbody>
+
+</table>
+<div align="right"  >
+<span style="margin-right:60px" id="totalMes"></span>
+</div>
+    </div>
+
+</div>
+</div>
+</div>
+            </div>
+                                       
+                                             
+
+
+</body>
+
+
+<script type="text/javascript">
+
+$("#openModal").animate({scrollTop: $('#openModal').prop("scrollHeight")}, 500);
+
+</script>
+
+</html>
+

@@ -1,0 +1,327 @@
+<!doctype html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="/portal/resources/style-guide/css/fluig-style-guide.min.css"/>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+        <script type="text/javascript" src="/portal/resources/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/webdesk/vcXMLRPC.js"></script>
+        <meta charset="ISO-8859-1">
+
+        <style media="screen">
+            #tb_descricao {
+                text-align: center;
+            }
+        </style>
+
+        <title>Zoom</title>
+
+        <!-- SCRIPT -->
+        <script type="text/javascript">
+        /**
+         * @autor : Roberto De Lucca
+         * @email : rluccaf@gmail.com
+         * @data  : 27/01/2018
+         */
+        $(document).ready(function(){
+
+            // Variaveis do zoom
+            var user = "admin";
+            var idcampo = '';
+            var val_url = window.location.href;
+            var consta = [];
+
+            if ( val_url.indexOf('?id=') != -1 )
+            {
+                idcampo = val_url.split("?id=");
+                idcampo = idcampo[1];
+            }
+            // Nome do dataset
+            var nom_dataset = window.opener.get_html_param(idcampo, 'ds_param');
+
+            // Constraint
+            var nom_cst = window.opener.get_html_param(idcampo, 'cst_param').split(',');
+
+            /**
+             * Variantes para consulta
+             * valor_inicial:valor(defaul)
+             * travar_input:true , false - bloqueia o campo input para pequisa
+             * condi_pesquisa:valor:campo:condicao - define uma condicao de pesquisa como excluir um valor se
+             *                                       for diferete que 1
+             */
+            var variantes = window.opener.get_html_param(idcampo, 'var_param').split(',');
+
+            $.fn.extend({
+                load_ds:function(dsparam, campo, consta)
+                {
+                    try
+                    {
+                    	// Realiza uma busca nos eventos cadastrados com base no formulario de evento
+                        var cst2 = DatasetFactory.createConstraint("userSecurityId", user, user, ConstraintType.MUST);
+						console.log("criou constraint de securityId = "+user) 
+						// Verifica se existe valor para uma segunda contraint
+                        if (consta != null) {
+
+                            console.log("Adicionou a constraint no Arr")
+                            consta.push(cst2);
+
+                        }
+                        else {
+                            var consta = new Array(cst2);
+                        }
+
+                        console.log(consta)
+                        
+                        // Procura o dataset
+                        var rob_ds_pern = DatasetFactory.getDataset(dsparam, campo, consta, null);
+
+						console.log(rob_ds_pern)
+						
+                        // Seta o total de colunas no titulo da descricao
+                        $("#tb_descricao").attr("colspan", (nom_cst.length - 1) );
+
+                        // Loop para adicinoar as linhas em branco para apagar os valores
+                        var cmp_append = "<tr>";
+                        for ( var a = 0; a < nom_cst.length; a++ )
+                        {
+                            cmp_append += "<td onclick=\"javascript:$.fn.escolha('');\">Remover</td>";
+                        }
+                        cmp_append += "</tr>";
+                        $("#corpo_tb").append(cmp_append);
+
+                        // Regra de revisao
+                        var cmp_cmp = '';
+
+                        // Loop para montar a tabela
+                        for (var a = 0; a < rob_ds_pern.values.length; a++)
+                        {
+                            var cmp_append = "<tr>";
+
+
+                            if ( idcampo == 'txt_cfg_codigo_docto' )
+                            {
+                                for ( var b = 0; b < nom_cst.length; b++ )
+                                {
+                                    var cmp2 = rob_ds_pern['values'][a][nom_cst[b]];
+                                    if ( b == 0)
+                                    {
+                                        cmp_cmp = cmp2;
+                                    }
+                                    else {
+                                        cmp_cmp += ';' + cmp2;
+                                    }
+                                }
+                            }
+                            
+                            for ( var b = 0; b < nom_cst.length; b++ )
+                            {
+                                var cmp1 = rob_ds_pern['values'][a][nom_cst[0]];
+                                var cmp2 = rob_ds_pern['values'][a][nom_cst[b]];
+
+                                if ( idcampo == 'txt_cfg_codigo_docto' )
+                                {
+                                    cmp_append += "<td onclick=\"javascript:$.fn.escolha('" + cmp_cmp + "')\">" + cmp2 + "</td>";
+                                }
+                                else
+                                {
+                                    cmp_append += "<td onclick=\"javascript:$.fn.escolha('" + cmp1 + "')\">" + cmp2 + "</td>";
+                                }
+                            }
+                            cmp_append += "</tr>";
+
+                            $("#corpo_tb").append(cmp_append);
+                        }
+                    }
+                    catch(err)
+                    {
+                        console.log("Ocorreu um erro ao tentar carregar o dataset de evento.");
+                        console.log("Entre em contato com administrador!");
+                        console.log("+ Verifique se existe o formulario de evento. line:18");
+                        console.log(err);
+                    }
+                },
+
+                reload_ds:function()
+                {
+                    try
+                    {
+                        var valor = $("#txt_valProc").val();
+                        if (valor.length > 0)
+                        {
+                            // Limpa a tabela
+                            $("#corpo_tb").empty();
+
+                            var constraints = [];
+
+                            // Constraint de permissao
+                            var cst2 = DatasetFactory.createConstraint("userSecurityId", user, user, ConstraintType.MUST);
+                            constraints.push(cst2);
+
+                            for ( var a = 0; a < nom_cst.length; a++ )
+                            {
+                                constraints.push(DatasetFactory.createConstraint(nom_cst[a], "%"+valor+"%", "%"+valor+"%", ConstraintType.SHOULD, true));
+                            }
+
+                            // Carrrega o dataset novamente
+                            $.fn.load_ds(nom_dataset, null, constraints);
+                        }
+                        else
+                        {
+                            $("#corpo_tb").empty();
+                            $.fn.load_ds(nom_dataset, null, null);
+                        }
+                    }
+                    catch(err)
+                    {
+                        console.log("Ocorreu um erro ao ralizar o reload dos dados do formul&aacute;rio!");
+                        console.log("Entre em contato com o administrador!");
+                    }
+                },
+
+                /**
+                  * escolha
+                  *
+                  * Funcao que seleciona o item da tabela e manda para o fomrulario
+                  *
+                  * @param valor  String : valor que o campo recebera
+                  * @param valor2 String : valor que o campo recebera
+                  */
+                escolha: function(valor) {
+
+                    console.log("Apareci no zoom.html");
+                
+                    try
+                    {
+                        // Teste de validade do Opener
+                        if (window.opener && !window.opener.closed)
+                        {
+                            // Verifica se o zoom cai na regra da revisao
+                            if ( idcampo == 'txt_cfg_codigo_docto' )
+                            {
+                                window.opener.grava_val(nom_cst,valor);
+                            }
+                            else
+                            {
+                                window.opener.grava_val(idcampo,valor);
+                            }
+                        }
+                        window.close();
+                    }
+                    catch (err)
+                    {
+                        console.log("Ocorreu um erro ao tentar escolher a opcao do formulairo!");
+                        console.log("Erro line:60");
+                    }
+                },
+
+                /**
+                  * regras_revisao
+                  *
+                  * Regras para o zoom de revisao
+                  */
+                regras_revisao:function()
+                {
+                    // Carrega as condicoes
+                    for ( var a = 0; a < variantes.length; a++ )
+                    {
+                        // Separa as condicoes
+                        var coleta_cond = variantes[a].split(":");
+                        
+                        // Verifica qual a condicao
+                        // Para valor inicial
+                        if ( coleta_cond[0] == "valor_inicial" )
+                        {
+                        	// Coleta o campo passador pela janela
+                           /* var coleta_valor =  window.opener.document.getElementById(idcampo).value;
+							
+                        	// Quebra o valor e remonta
+                            coleta_valor = coleta_valor.split("-");
+                            coleta_valor = coleta_valor[0] +"-"+ coleta_valor[1]; */
+                           	var coleta_valor1 =  window.opener.document.getElementById("txt_cfg_area").value;
+                            var coleta_valor2 =  window.opener.document.getElementById("op_cfg_tipo_docto").value.toUpperCase();
+                            
+                            coleta_valor = coleta_valor2 +"-"+ coleta_valor1; 
+                            
+
+                            // Seta o valor no campo do zoom
+                            $("#txt_valProc").val( coleta_valor );
+
+                            // Inclui porcentagem na pesquisa
+                            coleta_valor = coleta_valor+ "%";
+
+                            // Cria uma constrant de pesquisa
+                            var cst = DatasetFactory.createConstraint(coleta_cond[1], coleta_valor, coleta_valor, ConstraintType.SHOULD);
+                            consta.push(cst);
+                        }
+                        
+                        // Para travar campo input
+                        else if ( coleta_cond[0] == "travar_input" )
+                        {
+                            if ( coleta_cond[1] )
+                            {
+                                $("#txt_valProc").attr('readonly', coleta_cond[1]);
+                            }
+                        }
+                        else if ( coleta_cond[0] == "pesq_av")
+                        {
+                        	if ( coleta_cond[2] != "" )
+                        	{
+                        		var cst = DatasetFactory.createConstraint(coleta_cond[1], coleta_cond[2], coleta_cond[2], ConstraintType.MUST);
+                        		consta.push(cst);
+                        	}
+                        }
+                        else if ( coleta_cond[0] == "trava_btn" )
+                        {
+                            $("#btn_procura").removeAttr('onclick');
+                        }
+                    }
+                }
+            });
+
+            $.fn.regras_revisao();
+
+            // Verifica se existe valor no vetor
+            if ( consta.length == 0 )
+            {
+            	consta == null;
+            }
+            
+            $.fn.load_ds(nom_dataset, null, consta);
+        });
+        </script>
+
+    </head>
+    <body>
+        <div class="fluig-style-guide">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <label>Digite sua pesquisa: </label>
+                </div>
+                <div class="col-md-8 col-sm-8 col-xs-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="txt_valProc" id="txt_valProc" onkeydown="$.fn.reload_ds()">
+                        <div class="fs-cursor-pointer input-group-addon" name="btn_procura" id="btn_procura" onclick="$.fn.reload_ds()">
+                            <span class="fluigicon fluigicon-search"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-hover">
+                        <thread>
+                            <td>C&oacute;digo</td>
+                            <td id="tb_descricao">Descri&ccedil;&atilde;o</td>
+                        </thread>
+                        <tbody id="corpo_tb">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

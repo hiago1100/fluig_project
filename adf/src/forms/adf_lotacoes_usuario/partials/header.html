@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Usuário</label>
+                <div class="col-sm-5">
+                    <input type="text" name="usuario_input" class="form-control" fluig-autocomplete values="vm.Usuarios" display-key="colleagueName"
+                        ng-model="vm.Formulario.usuario" ng-change="vm.consultaDuplicado()" ng-readonly="vm.Params.formMode != 'ADD'">
+                    <textarea hidden name="usuario" ng-value="vm.Formulario.usuario | json:0" ng-bind="vm.Formulario.usuario | json:0"></textarea>
+                    <input type="hidden" name="codUsuario" ng-value="vm.Formulario.usuario.colleagueId">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
